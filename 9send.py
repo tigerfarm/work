@@ -3,7 +3,6 @@ import os
 from twilio.rest import Client
 account_sid = os.environ.get("ACCOUNT_SID")
 auth_token = os.environ.get("AUTH_TOKEN")
-# Replace with your Notification service SID:
 notifyServiceSid = os.environ.get("NOTIFY_SERVICE_SID")
 print "+ NOTIFY_SERVICE_SID =", notifyServiceSid
 client = Client(account_sid, auth_token)
