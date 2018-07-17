@@ -7,13 +7,13 @@ const syncServiceSid = process.env.SYNC_SERVICE_SID;
 console.log("+ SYNC_SERVICE_SID   :" + syncServiceSid + ":");
 const notifyServiceSid = process.env.NOTIFY_SERVICE_SID;
 console.log("+ NOTIFY_SERVICE_SID :" + notifyServiceSid + ":");
-const authorizedDefault = process.env.AUTHORIZED_DEFAULT || "new";   // default to "new" which requires authorization.
+const authorizedDefault = process.env.AUTHORIZED_DEFAULT || "self";   // default to "self" which does not require authorization.
 // const authorizedDefault = "new";   // default to "new" which requires authorization.
 console.log("+ AUTHORIZED_DEFAULT :" + authorizedDefault + ":");
 //
 const initSuccessMessage = '+ Group phone number initialized and you are subscribed as the admin.';
 const initFailMessage = '- Group phone number already initialized.';
-const helpMessage = 'Help: Text "subscribe name" to join. "authorize +PhoneNumber" to accept a new subscriber. "unsubscribe" to leave the group. "who" to receive a group list.';
+const helpMessage = 'Help: Text "!subscribe name" to join. "!authorize +PhoneNumber" to accept a new subscriber. "!unsubscribe" to leave the group. "!who" to receive a group list.';
 const subscribeSuccessMessage = "+ You are subscribed to this Group's SMS messages.";
 const subscribeFailMessage = '- Subscription process failed, try again.';
 const subscribeFailMessageNameRequired = '- Subscription name required: "subscribe name".';
@@ -42,13 +42,25 @@ class Command {
         this.event = event;
         if (this.fromNumber.indexOf('+') !== 0) {
             // If missing "+country code", fix it
-            this.fromNumber = `+1${this.fromNumber}`;
+            this.fromNumber = `+${this.fromNumber}`;
+        }
+        if (this.toNumber.indexOf('+') !== 0) {
+            // If missing "+country code", fix it
+            this.toNumber = `+${this.toNumber}`;
         }
         // console.log("+ this.fromNumber: " + this.fromNumber);
-        this.smsTextArray = this.body.split(' ');
-        this.word1 = this.smsTextArray[0].trim();
-        if (this.smsTextArray.length === 2) {
-            this.word2 = this.smsTextArray[1].trim();
+        let smsTextArray = this.body.split(' ');
+        this.word1 = this.body.trim().split(' ')[0].toLowerCase();
+        this.word2 = '';
+        if (this.word1 === "!") {
+            this.word1 = "!" + smsTextArray[1].trim();
+            if (smsTextArray.length === 3) {
+                this.word2 = smsTextArray[2].trim();
+            }
+        } else {
+            if (smsTextArray.length === 2) {
+                this.word2 = smsTextArray[1].trim();
+            }
         }
     }
     // Get an array of arguments after the first word for a command
@@ -108,64 +120,6 @@ class InitCommand extends Command {
     }
 }
 
-class SubscribeCommand extends Command {
-    // Add the person into the DB.
-    // Broadcast that they have joined.
-    // Need error checking for this.word2, that it is valid.
-    run(callback) {
-        if (this.smsTextArray.length !== 2) {
-            callback(null, subscribeFailMessageNameRequired);
-            return;
-        }
-        let theData = {'name': this.word2, 'authorized': authorizedDefault};
-        sync.syncMaps(this.toNumber).syncMapItems
-        .create({key: this.fromNumber, data: theData})
-        .then((sync_map_item) => {
-            console.log("+ Subscribed, name: " + this.word2 + " " + this.fromNumber);
-            // callback(null, subscribeSuccessMessage);
-            // ---------------------------------------------------------------------
-            // Broadcast notice of new subscriber.
-            let counter = 0;
-            let sendList = [];
-            sync.syncMaps(this.toNumber).syncMapItems.list()
-            .then(syncMapItems => {
-                syncMapItems.forEach((syncMapItem) => {
-                    console.log("+ Key: " + syncMapItem.key 
-                        + ", name: " + syncMapItem.data.name
-                        + ", authorized: " + syncMapItem.data.authorized
-                    );
-                    if (this.fromNumber !== syncMapItem.key && syncMapItem.data.authorized !== "new") {
-                        // Don't send to the sender, nor to unauthorized numbers ("new").
-                        sendList[counter] = JSON.stringify({"binding_type": "sms", "address": syncMapItem.key});
-                        counter += 1;
-                    }
-                });
-                if (counter === 0) {
-                    console.log("+ New subscription notice not sent because there is no one yet to receive the notice.");
-                    return;
-                }
-                let theMessage = "Application notice, new ";
-                if (authorizedDefault === "new") {
-                    theMessage += "unauthorized ";
-                }
-                theMessage += "group subscriber: " + this.word2;
-                console.log("+ The message |" + theMessage + "| counter = " + counter + " sendList: " + sendList);
-                notify.notifications.create({body: theMessage, toBinding: sendList})
-                .then((response) => {
-                    console.log("+ Notify response.sid: " + response.sid);
-                    callback(null, subscribeSuccessMessage + ' Notice was of your new subscription was sent to the group.');
-                }).catch(err => {
-                    // console.log(err);
-                    callback(err, broadcastFailMessage);
-                });
-            });
-            // ---------------------------------------------------------------------
-        }).catch(function (error) {
-            callback(error, subscribeFailMessage);
-        });
-    }
-}
-
 class AuthorizeCommand extends Command {
     run(callback) {
         if (this.smsTextArray.length !== 2) {
@@ -211,15 +165,72 @@ class AuthorizeCommand extends Command {
     } // run(callback)
 }
 
+class SubscribeCommand extends Command {
+    // Add the person into the DB.
+    // Broadcast that they have joined.
+    // Need error checking for this.word2, that it is valid.
+    run(callback) {
+        if (this.word2 === "") {
+            callback(null, subscribeFailMessageNameRequired);
+            return;
+        }
+        let theData = {'name': this.word2, 'authorized': authorizedDefault};
+        sync.syncMaps(this.toNumber).syncMapItems
+        .create({key: this.fromNumber, data: theData})
+        .then((sync_map_item) => {
+            console.log("+ Subscribed, name: " + this.word2 + " " + this.fromNumber);
+            // ---------------------------------------------------------------------
+            // Broadcast notice of new subscriber.
+            let counter = 0;
+            let sendList = [];
+            let sendNameList = [];
+            sync.syncMaps(this.toNumber).syncMapItems.list()
+            .then(syncMapItems => {
+                syncMapItems.forEach((syncMapItem) => {
+                    // console.log("+ Key: " + syncMapItem.key + ", authorized: " + syncMapItem.data.authorized);
+                    if (this.fromNumber !== syncMapItem.key && syncMapItem.data.authorized !== "new") {
+                        // Don't send to the sender, nor to unauthorized numbers ("new").
+                        sendList[counter] = JSON.stringify({"binding_type": "sms", "address": syncMapItem.key});
+                        sendNameList[counter] = syncMapItem.data.name;
+                        counter += 1;
+                    }
+                });
+                if (counter === 0) {
+                    console.log("+ New subscription notice not sent because there is no one yet to receive the notice.");
+                    return;
+                }
+                let theMessage = "Application notice, new ";
+                if (authorizedDefault === "new") {
+                    theMessage += "unauthorized ";
+                }
+                theMessage += "group subscriber: " + this.word2;
+                console.log("+ The message |" + theMessage + "| " + " Sent to: " + sendNameList);
+                notify.notifications.create({body: theMessage, toBinding: sendList})
+                .then((response) => {
+                    console.log("+ Notify response.sid: " + response.sid);
+                    // callback(null, subscribeSuccessMessage + ' Notice of your new subscription was sent to the group.');
+                }).catch(err => {
+                    // console.log(err);
+                    callback(err, broadcastFailMessage);
+                });
+            });
+            // ---------------------------------------------------------------------
+            callback(null, subscribeSuccessMessage);
+        }).catch(function (error) {
+            callback(error, subscribeFailMessage);
+        });
+    }
+}
+
 class UnsubscribeCommand extends Command {
     // Remove the person into the DB.
     run(callback) {
         sync.syncMaps(this.toNumber).syncMapItems(this.fromNumber)
-            .remove()
-            .then((sync_map) => {
-                console.log("+ Deleted.");
-                callback(null, UnsubscribeMessage);
-            }).catch(function (error) {
+        .remove()
+        .then((sync_map) => {
+            console.log("+ Deleted.");
+            callback(null, UnsubscribeMessage);
+        }).catch(function (error) {
             console.log("- " + error);
             callback(error, UnsubscribeFailMessage);
         }); 
@@ -243,13 +254,9 @@ class WhoCommand extends Command {
             sync.syncMaps(this.toNumber).syncMapItems.list()
             .then(
                 syncMapItems => {
-                    console.log("++ Load syncMapItems.");
                     syncMapItems.forEach((syncMapItem) => {
                         authorized = syncMapItem.data.authorized;
-                        console.log("+ Key: " + syncMapItem.key 
-                            + ", name: " + syncMapItem.data.name
-                            + ", authorized: " + authorized
-                        );
+                        // console.log("+ Key: " + syncMapItem.key + ", authorized: " + authorized);
                         if (returnMessage === '') {
                             returnMessage = syncMapItem.data.name;
                         } else {
@@ -270,48 +277,54 @@ class WhoCommand extends Command {
 class BroadcastTheMessage extends Command {
     run(callback) {
     
-    sync.syncMaps(this.toNumber).syncMapItems(this.fromNumber).fetch()
-    .then((syncMapItems) => {
-        // Check that the requester is in the group and that they are not "new".
-        let senderName = syncMapItems.data.name;
-        let authorized = syncMapItems.data.authorized;
-        console.log("+ Sender name: " + senderName + ", authorized: " + authorized);
-        if (authorized === 'new') {
-            callback(null, broadcastFailMessageNotAuthorized);
-            return;
-        }
-        // Send the broadcast to authorized recipients.
-        let counter = 0;
-        let sendList = [];
-        sync.syncMaps(this.toNumber).syncMapItems.list().then( syncMapItems => {
-            syncMapItems.forEach((syncMapItem) => {
-                console.log("+ Key: " + syncMapItem.key 
-                    + ", name: " + syncMapItem.data.name
-                    + ", authorized: " + syncMapItem.data.authorized
-                );
-                if (this.fromNumber !== syncMapItem.key && syncMapItem.data.authorized !== "new") {
-                    // Don't send to the sender nor unauthorized recipients ("new").
-                    sendList[counter] = JSON.stringify({"binding_type": "sms", "address": syncMapItem.key});
-                    counter += 1;
+        sync.syncMaps(this.toNumber).syncMapItems(this.fromNumber).fetch()
+        .then((syncMapItems) => {
+            // Check that the requester is in the group and that they are not "new".
+            let senderName = syncMapItems.data.name;
+            let authorized = syncMapItems.data.authorized;
+            console.log("+ Sender name: " + senderName + ", authorized: " + authorized);
+            if (authorized === 'new') {
+                callback(null, broadcastFailMessageNotAuthorized);
+                return;
+            }
+            // ---------------------------------------------------------------------
+            // Broadcast message.
+            let counter = 0;
+            let sendList = [];
+            let sendNameList = [];
+            sync.syncMaps(this.toNumber).syncMapItems.list()
+            .then(syncMapItems => {
+                syncMapItems.forEach((syncMapItem) => {
+                    // console.log("+ Key: " + syncMapItem.key + ", authorized: " + syncMapItem.data.authorized);
+                    if (this.fromNumber !== syncMapItem.key && syncMapItem.data.authorized !== "new") {
+                        // Don't send to the sender, nor to unauthorized numbers ("new").
+                        sendList[counter] = JSON.stringify({"binding_type": "sms", "address": syncMapItem.key});
+                        sendNameList[counter] = syncMapItem.data.name;
+                        counter += 1;
+                    }
+                });
+                if (counter === 0) {
+                    console.log("+ New subscription notice not sent because there is no one yet to receive the notice.");
+                    return;
                 }
+                let theMessage = "From: " + senderName + ", " + this.body;
+                console.log("+ The message |" + theMessage + "| " + " Sent to: " + sendNameList);
+                notify.notifications.create({body: theMessage, toBinding: sendList})
+                .then((response) => {
+                    console.log("+ Notify response.sid: " + response.sid);
+                    // callback(null, broadcastSuccessMessage);
+                    callback(null, null);
+                }).catch(err => {
+                    // console.log(err);
+                    callback(err, broadcastFailMessage);
+                });
             });
-            let theMessage = "From: " + senderName + ", " + this.body;
-            console.log("+ The message |" + theMessage + "| counter = " + counter + " sendList: " + sendList);
-            notify.notifications.create({ body: theMessage, toBinding: sendList })
-            .then((response) => {
-                console.log("+ Notify response.sid: " + response.sid);
-                callback(null, broadcastSuccessMessage);
-            }).catch(err => {
-                callback(err, broadcastFailMessage);
-            });
+            // ---------------------------------------------------------------------
+        }).catch(function (error) {
+            callback(error, broadcastFailMessage);
         });
-    }).catch(function (error) {
-        callback(error, broadcastFailMessage);
-    });
-    
     }
 }
-
 // -----------------------------------------------------------------------------
 // Handle incoming SMS commands
 //
@@ -323,8 +336,8 @@ var event;
 // 
 // event = {Body: "subscribe Name3", From: process.env.PHONE_NUMBER_4, To: process.env.PHONE_NUMBER_1};
 // event = {Body: "subscribe David1", From: "+16508661111", To: process.env.PHONE_NUMBER_1};
+//
 // event = {Body: "subscribe David2", From: "+16508662222", To: process.env.PHONE_NUMBER_1};
-// 
 event = {Body: "unsubscribe", From: "+16508662222", To: process.env.PHONE_NUMBER_1};
 // 
 // event = {Body: "who", From: "+16508662222", To: process.env.PHONE_NUMBER_1};
@@ -350,29 +363,28 @@ const notify = client.notify.services(notifyServiceSid);
 // exports.handler = (context, event, callback) => {
 //------------------
 {
+    //
+    let twiml = new Twilio.twiml.MessagingResponse();
+    //
     let smsText = event.Body || '';
     let smsTextArray = smsText.split(' ');
     let cmd = smsText.trim().split(' ')[0].toLowerCase();
-    let cmd2 = '';
-    let cmdEcho = cmd;
-    if (smsTextArray.length === 2) {
-        cmd2 = smsTextArray[1].trim();
-        cmdEcho += " " + cmd2;
+    if (cmd === "!") {
+        cmd = "!" + smsTextArray[1].trim().toLowerCase();
     }
-    let echoSms = "+ Text :" + smsText + ": cmd: " + cmdEcho + ", From: " + event.From + ", To: " + event.To;
+    let echoSms = "+ Text |" + smsText + "| cmd: " + cmd + ", From: " + event.From + ", To: " + event.To;
+    //
     console.log(echoSms);
     let cmdInstance;
     // let cmdInstance = new BroadcastCommand(event);
     switch (cmd) {
-        case 'subscribe':
-        case 'start':
+        case 'add':
             cmdInstance = new SubscribeCommand(event);      // create
             break;
         case 'authorize':
             cmdInstance = new AuthorizeCommand(event);      // retrieve and update
             break;
-        case 'unsubscribe':
-        case 'stop':
+        case 'remove':
             cmdInstance = new UnsubscribeCommand(event);    // delete
             break;
         case 'who':
@@ -392,7 +404,6 @@ const notify = client.notify.services(notifyServiceSid);
             cmdInstance = new BroadcastTheMessage(event);   // Use Notify
     }
     cmdInstance.run((err, message) => {
-        let twiml = new Twilio.twiml.MessagingResponse();
         if (err) {
             // console.log(err);
             console.log("- cmdInstance.run, " + cmdInstance.word1 + " error: " + err.status + ":" + err.message);
@@ -408,9 +419,14 @@ const notify = client.notify.services(notifyServiceSid);
                 message = 'There was a problem with your request.';
             }
         }
-        console.log("+ cmdInstance.run: " + message);
-        twiml.message(message);
-        callback(null, twiml);
+        if (message === null) {
+            console.log("+ No reply.");
+            callback(null);
+        } else {
+            console.log("+ Reply message: " + message);
+            twiml.message(message);
+            callback(null, twiml);
+        }
     });
 }
 // -----------------------------------------------------------------------------
