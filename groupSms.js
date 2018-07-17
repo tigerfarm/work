@@ -1,5 +1,6 @@
 // -----------------------------------------------------------------------------
-// New subscriber needs to receive a subscribed notice.
+// Updates to do:
+// New authorized subscriber needs to receive an authorized notice.
 //
 'use strict';
 console.log("+ Group SMS");
@@ -12,6 +13,7 @@ const authorizedDefault = process.env.AUTHORIZED_DEFAULT || "self";   // default
 console.log("+ AUTHORIZED_DEFAULT :" + authorizedDefault + ":");
 //
 const initSuccessMessage = '+ Group phone number initialized and you are subscribed as the admin.';
+const initFailMessageNameRequired = '- Init name required: "!init name".';
 const initFailMessage = '- Group phone number already initialized.';
 const helpMessage = 'Help: Text "!subscribe name" to join. "!authorize +PhoneNumber" to accept a new subscriber. "!unsubscribe" to leave the group. "!who" to receive a group list.';
 const subscribeSuccessMessage = "+ You are subscribed to this Group's SMS messages.";
@@ -98,6 +100,10 @@ class HelpCommand extends Command {
 
 class InitCommand extends Command {
     run(callback) {
+        if (this.word2 === "") {
+            callback(null, initFailMessageNameRequired);
+            return;
+        }
         // The Twilio to-phone-number, the group phone number. This is the Sync Map name.
         sync.syncMaps.create({ttl: 0, uniqueName: this.toNumber})
         .then((sync_map) => {
@@ -126,7 +132,6 @@ class AuthorizeCommand extends Command {
             callback(null, authorizeFailMessageNumberRequired);
             return;
         }
-
         sync.syncMaps(this.toNumber).syncMapItems(this.fromNumber).fetch()
         .then((syncMapItems) => {
             let senderName = syncMapItems.data.name;
@@ -276,7 +281,6 @@ class WhoCommand extends Command {
 
 class BroadcastTheMessage extends Command {
     run(callback) {
-    
         sync.syncMaps(this.toNumber).syncMapItems(this.fromNumber).fetch()
         .then((syncMapItems) => {
             // Check that the requester is in the group and that they are not "new".
@@ -331,22 +335,24 @@ class BroadcastTheMessage extends Command {
 //------------------
 // For testing:
 var event;
-// event = {Body: "help", From: process.env.PHONE_NUMBER_3, To: process.env.PHONE_NUMBER_1};
-// event = {Body: "init David", From: process.env.PHONE_NUMBER_2, To: process.env.PHONE_NUMBER_1};
+event = {Body: "!help", From: process.env.PHONE_NUMBER_3, To: process.env.PHONE_NUMBER_1};
+// event = {Body: "!init", From: process.env.PHONE_NUMBER_2, To: process.env.PHONE_NUMBER_1};
+// event = {Body: "!init David", From: process.env.PHONE_NUMBER_2, To: process.env.PHONE_NUMBER_1};
+// event = {Body: "!help", From: process.env.PHONE_NUMBER_3, To: process.env.PHONE_NUMBER_1};
 // 
-// event = {Body: "subscribe Name3", From: process.env.PHONE_NUMBER_4, To: process.env.PHONE_NUMBER_1};
-// event = {Body: "subscribe David1", From: "+16508661111", To: process.env.PHONE_NUMBER_1};
+// event = {Body: "!subscribe", From: process.env.PHONE_NUMBER_3, To: process.env.PHONE_NUMBER_1};
+// event = {Body: "!subscribe Name3", From: process.env.PHONE_NUMBER_3, To: process.env.PHONE_NUMBER_1};
+// event = {Body: "!subscribe Name4", From: process.env.PHONE_NUMBER_4, To: process.env.PHONE_NUMBER_1};
 //
-// event = {Body: "subscribe David2", From: "+16508662222", To: process.env.PHONE_NUMBER_1};
-event = {Body: "unsubscribe", From: "+16508662222", To: process.env.PHONE_NUMBER_1};
+// event = {Body: "!subscribe David2", From: "+16508662222", To: process.env.PHONE_NUMBER_1};
+// event = {Body: "!unsubscribe", From: "+16508662222", To: process.env.PHONE_NUMBER_1};
 // 
-// event = {Body: "who", From: "+16508662222", To: process.env.PHONE_NUMBER_1};
-// event = {Body: "who", From: process.env.PHONE_NUMBER_3, To: process.env.PHONE_NUMBER_1};
-// event = {Body: "who are you", From: process.env.PHONE_NUMBER_3, To: process.env.PHONE_NUMBER_1};
+// event = {Body: "!who", From: "+16508662222", To: process.env.PHONE_NUMBER_1};
+// event = {Body: "!who", From: process.env.PHONE_NUMBER_3, To: process.env.PHONE_NUMBER_1};
+// event = {Body: "!who are you", From: process.env.PHONE_NUMBER_3, To: process.env.PHONE_NUMBER_1};
 // 
-// event = {Body: "authorize", From: process.env.PHONE_NUMBER_2, To: process.env.PHONE_NUMBER_1};
-// event = {Body: "authorize " + process.env.PHONE_NUMBER_4, From: process.env.PHONE_NUMBER_2, To: process.env.PHONE_NUMBER_1};
-// event = {Body: "authorize " + process.env.PHONE_NUMBER_2, From: process.env.PHONE_NUMBER_2, To: process.env.PHONE_NUMBER_1};
+// event = {Body: "!authorize", From: process.env.PHONE_NUMBER_2, To: process.env.PHONE_NUMBER_1};
+// event = {Body: "!authorize " + process.env.PHONE_NUMBER_4, From: process.env.PHONE_NUMBER_2, To: process.env.PHONE_NUMBER_1};
 //
 // event = {Body: "Hello to all!", From: process.env.PHONE_NUMBER_4, To: process.env.PHONE_NUMBER_1};
 //
@@ -376,44 +382,39 @@ const notify = client.notify.services(notifyServiceSid);
     //
     console.log(echoSms);
     let cmdInstance;
-    // let cmdInstance = new BroadcastCommand(event);
     switch (cmd) {
-        case 'add':
-            cmdInstance = new SubscribeCommand(event);      // create
+        case '!subscribe':
+            cmdInstance = new SubscribeCommand(event);
             break;
-        case 'authorize':
-            cmdInstance = new AuthorizeCommand(event);      // retrieve and update
+        case '!authorize':
+            cmdInstance = new AuthorizeCommand(event);
             break;
-        case 'remove':
-            cmdInstance = new UnsubscribeCommand(event);    // delete
+        case '!unsubscribe':
+            cmdInstance = new UnsubscribeCommand(event);
             break;
-        case 'who':
-            if (smsTextArray.length === 1) {
-                cmdInstance = new WhoCommand(event);
-            } else {
-                cmdInstance = new BroadcastTheMessage(event);
-            }
+        case '!who':
+            cmdInstance = new WhoCommand(event);
             break;
-        case 'help':
+        case '!help':
             cmdInstance = new HelpCommand(event);
             break;
-        case 'init':
+        case '!init':
             cmdInstance = new InitCommand(event);
             break;
         default:
-            cmdInstance = new BroadcastTheMessage(event);   // Use Notify
+            cmdInstance = new BroadcastTheMessage(event);
     }
     cmdInstance.run((err, message) => {
         if (err) {
             // console.log(err);
             console.log("- cmdInstance.run, " + cmdInstance.word1 + " error: " + err.status + ":" + err.message);
-            if (err.status === 409 && cmdInstance.word1 === 'subscribe') {
+            if (err.status === 409 && cmdInstance.word1 === '!subscribe') {
                 message = '- You are already subscribed.';
-            } else if (err.status === 404 && cmdInstance.word1 === 'unsubscribe') {
+            } else if (err.status === 404 && (cmdInstance.word1 === '!unsubscribe' || cmdInstance.word1 === '!who')) {
                 message = '- You are not subscribed.';
             } else if (err.status === 404) {
                 message = 'There was a problem with your request, value not found: ' + cmdInstance.word2;
-            } else if (err.status === 409 && cmdInstance.word1 === 'init') {
+            } else if (err.status === 409 && cmdInstance.word1 === '!init') {
                 message = initFailMessage;
             } else {
                 message = 'There was a problem with your request.';
