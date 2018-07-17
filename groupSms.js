@@ -16,12 +16,12 @@ const initFailMessage = '- Group phone number already initialized.';
 const helpMessage = 'Help: Text "!subscribe name" to join. "!authorize +PhoneNumber" to accept a new subscriber. "!unsubscribe" to leave the group. "!who" to receive a group list.';
 const subscribeSuccessMessage = "+ You are subscribed to this Group's SMS messages.";
 const subscribeFailMessage = '- Subscription process failed, try again.';
-const subscribeFailMessageNameRequired = '- Subscription name required: "subscribe name".';
+const subscribeFailMessageNameRequired = '- Subscription name required: "!subscribe name".';
 const authorizeSuccessMessage = '+ You have authorized: ';
 const authorizeFailMessage = '- Failed to authorize.';
 const authorizeFailMessageNotAuthorized = '- You are not authorized to authorize.';
 const authorizeFailMessageAlreadyAuthorized = '- Already authorized.';
-const authorizeFailMessageNameRequired = '- Authorize phone number required: "authorize phone-number".';
+const authorizeFailMessageNumberRequired = '- Authorize phone number required: "!authorize phone-number".';
 const UnsubscribeMessage = '+ You have been unsubscribed from this group phone number.';
 const UnsubscribeFailMessage = '- Failed to unsubscribe.';
 const whoMessage = "+ Members: ";
@@ -122,8 +122,8 @@ class InitCommand extends Command {
 
 class AuthorizeCommand extends Command {
     run(callback) {
-        if (this.smsTextArray.length !== 2) {
-            callback(null, authorizeFailMessageNameRequired);
+        if (this.word2 === "") {
+            callback(null, authorizeFailMessageNumberRequired);
             return;
         }
 
