@@ -2,5 +2,5 @@
 1setvarsCc.sh
 2setvarsNotify-Machine.sh
 6setvarsSync-Machine.sh
-7setvarsSync-Master.sh
+8setvarsSync-Labs.sh
 #

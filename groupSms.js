@@ -1,16 +1,16 @@
+/* global authorizedDefault */
+
 // -----------------------------------------------------------------------------
 // Updates to do:
 // New authorized subscriber needs to receive an authorized notice.
 //
 'use strict';
 console.log("+ Group SMS");
+const authorizedDefault = "self";   // Default, "self", does not require new subscribers to be authorized.
 const syncServiceSid = process.env.SYNC_SERVICE_SID;
 console.log("+ SYNC_SERVICE_SID   :" + syncServiceSid + ":");
 const notifyServiceSid = process.env.NOTIFY_SERVICE_SID;
 console.log("+ NOTIFY_SERVICE_SID :" + notifyServiceSid + ":");
-const authorizedDefault = process.env.AUTHORIZED_DEFAULT || "self";   // default to "self" which does not require authorization.
-// const authorizedDefault = "new";   // default to "new" which requires authorization.
-console.log("+ AUTHORIZED_DEFAULT :" + authorizedDefault + ":");
 //
 const initSuccessMessage = '+ Group phone number initialized and you are subscribed as the admin.';
 const initFailMessageNameRequired = '- Init name required: "!init name".';
@@ -202,6 +202,7 @@ class SubscribeCommand extends Command {
                 });
                 if (counter === 0) {
                     console.log("+ New subscription notice not sent because there is no one yet to receive the notice.");
+                    callback(null, subscribeSuccessMessage);
                     return;
                 }
                 let theMessage = "Application notice, new ";
@@ -213,14 +214,13 @@ class SubscribeCommand extends Command {
                 notify.notifications.create({body: theMessage, toBinding: sendList})
                 .then((response) => {
                     console.log("+ Notify response.sid: " + response.sid);
-                    // callback(null, subscribeSuccessMessage + ' Notice of your new subscription was sent to the group.');
+                    callback(null, subscribeSuccessMessage + ' Notice of your new subscription was sent to the group.');
                 }).catch(err => {
                     // console.log(err);
                     callback(err, broadcastFailMessage);
                 });
             });
             // ---------------------------------------------------------------------
-            callback(null, subscribeSuccessMessage);
         }).catch(function (error) {
             callback(error, subscribeFailMessage);
         });
@@ -335,7 +335,7 @@ class BroadcastTheMessage extends Command {
 //------------------
 // For testing:
 var event;
-event = {Body: "!help", From: process.env.PHONE_NUMBER_3, To: process.env.PHONE_NUMBER_1};
+// event = {Body: "!help", From: process.env.PHONE_NUMBER_3, To: process.env.PHONE_NUMBER_1};
 // event = {Body: "!init", From: process.env.PHONE_NUMBER_2, To: process.env.PHONE_NUMBER_1};
 // event = {Body: "!init David", From: process.env.PHONE_NUMBER_2, To: process.env.PHONE_NUMBER_1};
 // event = {Body: "!help", From: process.env.PHONE_NUMBER_3, To: process.env.PHONE_NUMBER_1};
@@ -345,7 +345,7 @@ event = {Body: "!help", From: process.env.PHONE_NUMBER_3, To: process.env.PHONE_
 // event = {Body: "!subscribe Name4", From: process.env.PHONE_NUMBER_4, To: process.env.PHONE_NUMBER_1};
 //
 // event = {Body: "!subscribe David2", From: "+16508662222", To: process.env.PHONE_NUMBER_1};
-// event = {Body: "!unsubscribe", From: "+16508662222", To: process.env.PHONE_NUMBER_1};
+event = {Body: "!unsubscribe", From: "+16508662222", To: process.env.PHONE_NUMBER_1};
 // 
 // event = {Body: "!who", From: "+16508662222", To: process.env.PHONE_NUMBER_1};
 // event = {Body: "!who", From: process.env.PHONE_NUMBER_3, To: process.env.PHONE_NUMBER_1};
@@ -369,7 +369,6 @@ const notify = client.notify.services(notifyServiceSid);
 // exports.handler = (context, event, callback) => {
 //------------------
 {
-    //
     let twiml = new Twilio.twiml.MessagingResponse();
     //
     let smsText = event.Body || '';
@@ -417,7 +416,7 @@ const notify = client.notify.services(notifyServiceSid);
             } else if (err.status === 409 && cmdInstance.word1 === '!init') {
                 message = initFailMessage;
             } else {
-                message = 'There was a problem with your request.';
+                message = 'There was a problem with your request. Please try again.';
             }
         }
         if (message === null) {
