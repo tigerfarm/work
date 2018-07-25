@@ -1,4 +1,5 @@
-from flask import Flask, session
+from flask import Flask, session, render_template
+from twilio.twiml.messaging_response import MessagingResponse
 
 SECRET_KEY = 'a secret key'
 app = Flask(__name__)
@@ -6,7 +7,8 @@ app.config.from_object(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def hello():
-    return "+ Commands: /show /inc /clear"
+    return render_template('index.html', counter=str(session.get('counter', 0)))
+    # return "+ Commands: /show /inc /clear"
 
 @app.route('/show', methods=['GET', 'POST'])
 def doShow():
@@ -21,6 +23,14 @@ def doInc():
 def doClear():
     session.clear()
     return "+ Reset counter: " + str(session.get('counter', 0))
+
+@app.route('/sms', methods=['GET', 'POST'])
+def doSms():
+    session['counter'] = session.get('counter', 0) + 1
+    resp = MessagingResponse()
+    resp.message("+ Response counter: " + str(session.get('counter', 0)))
+    return str(resp)
+    # Sample resp: <?xml version="1.0" encoding="UTF-8"?><Response><Message>+ Response counter: 100</Message></Response>
 
 if __name__ == '__main__':
     app.run(debug=True,port=8000)
