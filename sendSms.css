@@ -19,7 +19,7 @@ h1 {
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
     font-family: Times, "Times New Roman", serif;
     font-weight: bold;
-    font-size: 3em;
+    font-size: 2.3em;
 }
 /* -------------------------------------------------------------------------- */
 .panelTitle
@@ -38,7 +38,7 @@ h1 {
 #chatBox
 {
     margin-top: 6px;
-    height: 200px;
+    height: 180px;
     width: 624px;
     border: solid tomato;
     margin-left: 15px;
@@ -64,7 +64,7 @@ input {
 /* -------------------------------------------------------------------------- */
 #logBox
 {
-    height: 203px;
+    height: 186px;
     width: 624px; 
     border: solid tomato;
     margin-top: 6px;

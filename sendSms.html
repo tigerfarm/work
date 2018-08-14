@@ -23,7 +23,8 @@
                     return;
                 }
                 logger("Send SMS message from: " + msgFrom + " to: " + msgTo + " : " + msgBody);
-                $.get("sendSms.php?msgFrom=" + msgFrom + "&msgTo=" + msgTo+ "&msgBody=" + msgBody, function (response) {
+                // https://api.jquery.com/jquery.get/
+                $.get("sendSms.php?msgFrom=" + msgFrom + "&msgTo=" + msgTo + "&msgBody=" + msgBody, function (response) {
                     logger("Response: " + response);
                 }).fail(function () {
                     logger("- Send failed.");
