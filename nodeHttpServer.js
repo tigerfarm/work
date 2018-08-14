@@ -24,6 +24,37 @@ http.createServer(function (request, response) {
         console.log("+ request.url: " + request.url + ", URI: " + uri);
 
         // ---------------------------------------------------------------------
+        if (uri === "/sendSms.php") {
+            console.log("++ Send SMS message.");
+            theParam = request.url.substring(request.url.indexOf("?"));
+            console.log("+ theParam :" + theParam + ":");
+            //
+            theHostnameFieldname = "&tokenhost=";
+            var theIndex = request.url.indexOf(theHostnameFieldname);
+            if (theIndex > 0) {
+                tokenHost = request.url.substring(theIndex + theHostnameFieldname.length);
+            }
+            theRequest = "https://" + tokenHost + "/sendsms" + theParam;
+            console.log('+ theRequest:', theRequest);
+            makeRequest(theRequest, function (theError, theFullResponse, theResponse) {
+                theResponseStatusCode = theFullResponse && theFullResponse.statusCode;
+                if (theResponseStatusCode === 200) {
+                    console.log('+ theResponse:', theResponse);
+                    response.writeHead(200);
+                    response.write(theResponse, "binary");
+                    response.end();
+                } else {
+                    console.log('- Error:', theError);
+                    console.log('- Status code: ' + theResponseStatusCode);
+                    response.writeHead(500, {"Content-Type": "text/plain"});
+                    response.write('- Error: ' + theError + "\n");
+                    response.write('- Status code: ' + theResponseStatusCode + "\n");
+                    response.end();
+                }
+            });
+            return;
+        }
+        // ---------------------------------------------------------------------
         if (uri === "/clientTokenGet.php") {
             console.log("++ Get Client token.");
             // request.url: /clientTokenGet.php?clientid=owluser
@@ -35,7 +66,7 @@ http.createServer(function (request, response) {
             if (theIndex > 0) {
                 tokenHost = request.url.substring(theIndex + theHostnameFieldname.length);
             }
-            theRequest = "https://" + tokenHost + "/generateToken"+ theParam;
+            theRequest = "https://" + tokenHost + "/generateToken" + theParam;
             console.log('+ theRequest:', theRequest);
             makeRequest(theRequest, function (theError, theResponse, theToken) {
                 theResponseStatusCode = theResponse && theResponse.statusCode;
