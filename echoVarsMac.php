@@ -11,6 +11,8 @@ use Twilio\Rest\Client;
 $client = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 echo "\xA", "+ Twilio PHP helper library works.";
 //
+echo "\xA", "+ TOKEN_HOST       : ", getenv('TOKEN_HOST');
+//
 $notifyServieSid = getenv('NOTIFY_SERVICE_SID');
 $syncServieSid = getenv('SYNC_SERVICE_SID');
 $syncMapName = getenv('SYNC_MAP_NAME');
