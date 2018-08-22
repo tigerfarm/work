@@ -5,7 +5,7 @@ Created by Stacy Thurston Sept.29,2012
 
 /* Text elements */
 body,th,td,p,div,span,a,input,select,textarea,li,notelist{
-    font-family:Arial, Helvetica, FreeSans, "Luxi-sans", "Nimbus Sans L", sans-serif;
+    font-family: Arial, Helvetica, FreeSans, "Luxi-sans", "Nimbus Sans L", sans-serif;
     background: white;
     margin: 0 0px 0 0px;
 }
@@ -51,7 +51,25 @@ body,th,td,p,div,span,a,input,select,textarea,li,notelist{
     padding:0px;
 }
 
-/*  HTML Links ----------------------------------------------------
+#topImgLeft {
+    float: left;
+    width: 150px;
+    margin: 20px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+#topImgCenter {
+    width: 780px;
+    margin: 6px 0px 0px 120px;
+    padding: 0px 0px 0px 0px;
+}
+.alignRight,
+#topImgRight{
+    float: right;
+    padding: 36px 016px 0px 0px;
+    font-size: small;
+}
+
+/*  HTML Links -----------------------------------------------------------------
 */
 a {
     text-decoration:none;
@@ -77,26 +95,9 @@ a img {
     border: none;
 }
 
-#topImgLeft {
-    float: left;
-    width: 150px;
-    margin: 20px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
-}
-#topImgCenter {
-    width: 780px;
-    margin: 6px 0px 0px 120px;
-    padding: 0px 0px 0px 0px;
-}
-.alignRight,
-#topImgRight{
-    float: right;
-    padding: 36px 016px 0px 0px;
-    font-size: small;
-}
-
-/* -------------------------------------------------------------------------- */
-/* Menu */
+/* -----------------------------------------------------------------------------
+    Page Menu
+*/
 .menuicon {
     display: inline-block;
     cursor: pointer;
@@ -138,7 +139,6 @@ a img {
 
 /* General ---------------------------------------------------------------- */
 
-/* Headers */
 h1 { 
     color:#B76418;
     font-size:18pt;
@@ -197,7 +197,7 @@ h6, h6 a {
 .panelTitle
 {
     color: white;
-    background: #F73550;
+    background: #B76418;
     padding: 9px;
     font: Helvetica,Arial,sans-serif;
     font-size: 1.0em; 
@@ -211,7 +211,7 @@ h6, h6 a {
 {
     height: 203px;
     width: 627px; 
-    border: solid tomato;
+    border: solid #B76418;
     margin-top: 30px;
     margin-left: 0px;
     padding: 6px;
@@ -232,7 +232,7 @@ button#clearLog {
     height: 30px;
     border-radius: 9px;
     color: white;
-    background-color: #F73550;
+    background-color: #B76418;
     font: Helvetica,Arial,sans-serif;
     font-size: 14px; 
 }
