@@ -1,0 +1,10 @@
+document.write('<hr/>');
+document.write('<div class="navtitle">What\'s new?</div>');
+document.write('<ul class="navlist">');
+document.write('<li><span class="MasterClassPopup"><a href="/blogging/tag/masterclass">James Patterson MasterClass writing course blogs</a></span>');
+document.write('<li><img src="/images/iconWorld.jpg" alt="Blog calendar" style="margin-right:6px;" align="middle" /><span class="TravelPopup"><a href="/blogging/tag/travel">Travel Blogs</a></span>');
+document.write('<li><a id="displayJs06" href=""><img src="/images/iconFish.jpg" alt="Fish game" style="margin-right:6px;" /><span class="GamePopup">Play/Hide the Fish Game</a></span>');
+document.write('<li><span class="PythonPopup"><a href="../tech/booksJava/python/index.html">Python Samples</a></span>');
+document.write('<li><span class="CoursePopup"><a href="../tech/booksCd/index.html">Course Development</a></span>');
+document.write('</ul>');
+document.write('<hr/>');
