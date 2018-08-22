@@ -19,7 +19,7 @@ body,th,td,p,div,span,a,input,select,textarea,li,notelist{
 
 #topHeading {
     position:fixed;
-    height: 80px;
+    height: 86px;
     margin: 0 0 0 0px;
     padding: 0px 0px 0px 6px;
     border-bottom: 2px solid black;
@@ -101,18 +101,19 @@ a img {
 .menuicon {
     display: inline-block;
     cursor: pointer;
+    padding: 0px 12px 0px 0px;
 }
 .bar1, .bar2, .bar3 {
     width: 24px;
     height: 3px;
-    background-color: #F73550;
+    background-color: #B76418;
     margin: 4px 0;
 }
 .bar1:hover,
 .bar2:hover,
 .bar3:hover
 {
-    background-color: red;
+    background-color: #CB8643;
 }
 /* ----------------*/
 .menuDropdown {
@@ -243,7 +244,7 @@ button#btn-list {
 button#clearLog:hover,
 button#clearLog:focus
 {
-    background-color: red;  /* hover background color */
+    background-color: #CB8643;  /* hover background color */
     color: #fff;                /* hover text */
     border-color: #954C08;      /* top hover border */
     text-decoration: none;
