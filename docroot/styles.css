@@ -158,6 +158,17 @@ a img {
 
 /* General ---------------------------------------------------------------- */
 
+.pI {
+    text-indent: 22.5px;
+    font-size:1.0em;
+    margin: 0px;
+    padding: 6px 0px 0px 0px;
+}
+.pPlain {
+    font-size:1.0em;
+    margin: 0px;
+    padding: 6px 0px 0px 0px;
+}
 .pNoIndent {
     text-align:justify;
     font-size:0.9em;
