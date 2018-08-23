@@ -10,12 +10,27 @@
     <body>
         <div id="thePage">
             <script type="text/javascript" src="../pageTop.js"></script>
-            <div id="content">
+            <div id="content" style="height: 500px;">
                 <h1 id="contentTopBuffer">Under the top bar</h1>
-                <h1 class="title">Home</h1>
+                <h1 class="title">Tech</h1>
                 <p>
                     Okay, content goes here.
                 </p>
+                <div id="logBox">
+                    <div class="panelTitle">
+                        Log messages for developers
+                    </div>
+                    <div class="panelArea">
+                        <textarea id="log"></textarea>
+                    </div>
+                    <div class="panelArea">
+                        <table>
+                            <tr>
+                                <td><button id="clearLog" onclick="clearLog();">Clear</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
             <script type="text/javascript" src="../pageBottom.js"></script>
         </div>
