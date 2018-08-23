@@ -22,7 +22,7 @@ document.write('        <a href="/home/index.html"><img src="/images/topImgLeft.
 document.write('    </div>');
 document.write('    <div id="topImgCenter">');
 document.write('        <img src="/images/topImgCenter.jpg" alt="Tiger Farm Press"/>');
-document.write('        <div id="topImgRight">Stacy David</div>');
+document.write('        <div id="topImgRight"><a href="about.html">Stacy David</a></div>');
 document.write('    </div>');
 document.write('</td>');
 document.write('</tr>');

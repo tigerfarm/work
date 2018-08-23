@@ -30,9 +30,8 @@ body,th,td,p,div,span,a,input,select,textarea,li,notelist{
     height: 80px;
 }
 #content {
-    height:380px;
     margin: 0px 0 0 0px;
-    padding: 6px 0px 0px 6px;
+    padding: 6px 0px 18px 6px;
 }
 
 #footer {
@@ -97,6 +96,23 @@ a img {
     border: none;
 }
 
+.tableList tbody tr th { 
+    background-color: #EBBD81;
+    color: black;
+    border-top: 2px solid black;
+    padding:3px 0px 3px 0px;
+    font-size:1.0em;
+    font-weight: normal;
+}
+.tableList tbody tr td { 
+    background-color: white;
+    padding:6px 6px 6px 6px;
+    margin:0px 0px 0px 0px;
+    vertical-align: top;
+    font-size:0.9em;
+    line-height:150%;
+}
+
 /* -----------------------------------------------------------------------------
     Page Menu
 */
@@ -142,6 +158,19 @@ a img {
 
 /* General ---------------------------------------------------------------- */
 
+.pNoIndent {
+    text-align:justify;
+    font-size:0.9em;
+    margin: 0px;
+    padding: 6px 0px 0px 0px;
+}
+.pIndent {
+    text-indent: 22.5px;
+    text-align:justify;
+    font-size:0.9em;
+    margin: 0px;
+    padding: 6px 0px 0px 0px;
+}
 h1 { 
     color:#B76418;
     font-size:18pt;
@@ -155,9 +184,9 @@ h1 a:visited {
     color:#B76418;
 }
 h2 {
+    margin:12px 0px 10px 0px;
     font-size:16pt;
     color:#CB8643;
-    margin:3px 0px 10px 0px;
     padding:0px;
 }
 h2 a {
@@ -170,7 +199,7 @@ h2 a:visited {
 h3 {
     color:black;
     font-size:14pt;
-    margin:3px 0px 10px 0px;
+    margin:12px 0px 10px 0px;
     padding:0px;
 }
 h3 a {
@@ -180,7 +209,7 @@ h4, h4 a {
     color:black;
     font-size:12pt;
     font-style: italic;
-    margin:3px 0px 10px 0px;
+    margin:12px 0px 10px 0px;
     padding:0px;
 }
 h5, h5 a { 
@@ -196,6 +225,16 @@ h6, h6 a {
     padding:0px;
 }
 
+.tfpPhoto {
+    border:3px solid #B76418;
+    border-radius:12px;
+    padding:3px;
+    margin-top: 9px;
+}
+.tfpPhotoSmall {
+    border:3px solid #B76418;
+    padding:3px;    
+}
 /* -------------------------------------------------------------------------- */
 .panelTitle
 {
