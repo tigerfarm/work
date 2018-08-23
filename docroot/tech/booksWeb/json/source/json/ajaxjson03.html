@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>AJAX JSON Request</title>
+    <style type="text/css">
+        @import "/dojo4/lib/dijit/themes/tundra/tundra.css";
+        @import "/dojo4/lib/dojo/resources/dojo.css";
+    </style>
+    <script type="text/javascript" src="/dojo4/lib/dojo/dojo.js"
+    djConfig="parseOnLoad: true">
+    </script>
+    <script type="text/javascript" src="json2.js"></script>
+    <script type="text/javascript">
+      dojo.require("dojo.parser");
+      dojo.require("dijit.form.Button");
+    </script>
+    <!-- AJAX Call here-->
+    <script>      
+      function helloCallBack(response, ioArgs) {
+        var dormdata = JSON.parse(response);
+        
+        var div1 = dojo.byId("div1");
+        var htmlStr = "<h5>Pkg Type: " + dormdata.pkgtype + "</h5>"; 
+        htmlStr = htmlStr + "<h5>Description: " + dormdata.description + "</h5>";
+        var dormArr = dormdata.dorms;
+
+        for ( x = 0; x < dormArr.length; x++){
+          htmlStr = htmlStr + "<h5>Dorm Entry </h5>";
+          htmlStr = htmlStr + "<p>Dorm Name: " + dormArr[x].name + "</p>";
+          htmlStr = htmlStr + "<p>Type: " + dormArr[x].type + "</p>";
+          htmlStr = htmlStr + "<p>Size: " + dormArr[x].size + "</p>";
+          htmlStr = htmlStr + "<p>Students: " + dormArr[x].students + "</p>";
+        }
+        div1.innerHTML = htmlStr;
+      }       
+      
+      function helloError(response, ioArgs) {
+          alert('Error when retrieving data from the server!');
+          console.error("HTTP status code: ", ioArgs.xhr.status);
+          return response;
+      }
+    </script>
+  </head>
+<body class="tundra">
+  <h2>AJAX JSON Request</h2>
+  <button dojoType="dijit.form.Button" id="helloButton">Make AJAX Call
+    <script type="dojo/method" event="onClick">
+      dojo.xhrGet(
+        {
+          url: 'dorm03.json.js',
+          handleAs: "text",
+          timeout: 5000, // Time in milliseconds
+          
+          load: helloCallBack, // Called on a successful response.
+          error: helloError  // Called in an error case.
+        }
+      );        
+        </script>
+    </button>
+  <h4>Dorm Info</h4>
+  <div id="div1">
+  </div>
+</body>
+</html>

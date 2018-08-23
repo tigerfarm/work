@@ -1,0 +1,46 @@
+<html lang="en">
+    <head>
+    <title>Javascript Timer</title>
+    <script>
+        function remind(msg1) {
+            var msg = "This is a reminder after " + msg1 +" Secs";
+            alert(msg);
+        }
+        
+        aCounter = 0;
+        function incCounter(msg1) {
+            aCounter = aCounter + 1;
+            document.theForm.theCounter.value = msg1+":"+aCounter;
+        }
+        function MultipleWait() {
+            aCounter = 0;
+            document.theForm.theCounter.value = "0:"+aCounter;
+            setTimeout('incCounter("1")',1000);
+            setTimeout('incCounter("2")',5000);
+            setTimeout('incCounter("3")',3000);
+            document.theForm.theCounter.value = "0-"+aCounter;
+        }
+        function RecursiveWait() {
+            aCounter = aCounter + 1;
+            document.theForm.theCounter.value = "wr:"+aCounter;
+            if ( aCounter<50 ) setTimeout('RecursiveWait()',100);
+        }
+    </script>
+    </head>
+    <body>
+        Click to have a message displayed:
+        <br/>
+        <input type=radio name=rm value=5000 OnClick="setTimeout('remind(1)',1000)">After 1 Secs
+        <input type=radio name=rm value=5000 OnClick="setTimeout('remind(2)',2000)">After 2 Secs
+        <input type=radio name=rm value=5000 OnClick="setTimeout('remind(3)',3000)">After 3 Secs
+        <input type=radio name=rm value=no checked>No reminder
+        <hr>
+        <form name="theForm">
+            <input type=button name="wait" value="Multiple Wait Times" onclick="MultipleWait()">
+            <input type=button name="WaitTimeRec" value="Recursive Wait" onclick="RecursiveWait()">
+            <p>
+            theCounter: <input type=text name="theCounter" size=10>
+        </form>
+        <hr>
+    </body>
+</html>

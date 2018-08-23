@@ -1,0 +1,237 @@
+<html lang="en">
+    <head>
+        <title>Move Image</title>
+        <style type="text/css">
+            div#TargetImage { position: absolute; } 
+            div#asImage { position: absolute; } 
+            div#torImage { position: absolute; } 
+            div#hitExplodeDiv { position: absolute; } 
+        </style>
+        <script>
+            // --------------------------------------------------------------
+
+            rightMost = 500;
+            leftMost = 10;
+            topMost = 170;
+
+            // Target Image
+            TargetImageSrcLeft = "graphics/theFishLeft.jpg";
+            TargetImageSrcRight = "graphics/theFishRight.jpg";
+            doMoveTargetImage = 1;
+            moveTargetImageDistance = 5;
+            TargetImageSpeed = 10;
+            direction = 0;
+            targetLeftPosition = leftMost;
+            targetTopPosition = topMost;
+            targetStartTopPosition = targetTopPosition;
+            targetStartLeftPosition = targetLeftPosition;
+
+            // Attach Ship
+            asImageSrc = "graphics/asImage1.jpg";
+            asTopPosition = rightMost;
+            asLeftPosition = leftMost + rightMost / 2;
+            asDirection = 0;
+            asDoMoveBoat = 1;
+            asSpeed = 10;
+            asRightMost = rightMost;
+
+            // Torpedo
+            shotCounterNumber = 0; // ** Add a counter of the number of torpedo shot.
+            hitCounterNumber = 0; // ** Add a counter of the number of torpedo hits.
+            doMoveTorpedo = 1;
+            torImageSrc = "graphics/torpedo1.jpg";
+            torTopPosition = rightMost - 80;
+            torLeftPosition = leftMost + rightMost / 2 + 20;
+            torStartTopPosition = torTopPosition;
+            torStartLeftPosition = torLeftPosition;
+            torCenterPosition = torLeftPosition + 30;
+            moveTorImageDistance = 5;
+            torDirection = 0;
+            torDoMoveBoat = 1;
+            torSpeed = 10;
+            torRightMost = rightMost;
+
+            function doSetup() {
+                document.getElementById("theMsg0").innerHTML = "Run: doSetup";
+                document.getElementById("theMsg1").innerHTML = "";
+                document.getElementById("theMsg2").innerHTML = "";
+
+                mv00();
+                document.getElementById("TargetImageSrc").src = TargetImageSrcRight;
+                targetReset();
+
+                var asImageObj = document.getElementById('asImage');
+                document.getElementById("asImageSrc").src = asImageSrc;
+                asImageObj.style.top = asTopPosition;
+                asImageObj.style.left = asLeftPosition;
+
+                document.getElementById("torImageSrc").src = torImageSrc;
+                torpedoReset();
+
+                document.getElementById('hitExplodeDiv').style.display = "none";
+                document.getElementById("hitExplodeSrc").src = "graphics/torpedo1explode.jpg";
+                var hitExplodeImageObj = document.getElementById('hitExplodeDiv');
+                hitExplodeImageObj.style.top = topMost;
+                hitExplodeImageObj.style.left = torLeftPosition;
+
+                document.getElementById("theMsg0").innerHTML = "doSetup: completed";
+            }
+
+            // --------------------------------------------------------------
+            function mv00() {
+                document.theForm.spd0.checked = true;
+                document.theForm.spd1.checked = false;
+                document.theForm.spd2.checked = false;
+                document.getElementById("theMsg0").innerHTML = "Run: mv00";
+                TargetImageSpeed = 50;
+            }
+            function mv01() {
+                document.theForm.spd0.checked = false;
+                document.theForm.spd1.checked = true;
+                document.theForm.spd2.checked = false;
+                document.getElementById("theMsg0").innerHTML = "Run: mv01";
+                TargetImageSpeed = 25;
+            }
+            function mv02() {
+                document.theForm.spd0.checked = false;
+                document.theForm.spd1.checked = false;
+                document.theForm.spd2.checked = true;
+                document.getElementById("theMsg0").innerHTML = "Run: mv02";
+                TargetImageSpeed = 1;
+            }
+
+            // --------------------------------------------------------------
+            function targetReset() {
+                document.getElementById("theMsg0").innerHTML = "targetReset";
+                doMoveTargetImage = 0;
+                targetLeftPosition = targetStartLeftPosition;
+                targetTopPosition = targetStartTopPosition;
+                targetMoveTo();
+            }
+            function startTargetImage() {
+                document.getElementById("theMsg0").innerHTML = "startTargetImage";
+                if (doMoveTargetImage === 0) {
+                    doMoveTargetImage = 1;
+                    moveTargetImage();
+                }
+            }
+            function stopTargetImage() {
+                document.getElementById("theMsg0").innerHTML = "stopTargetImage";
+                doMoveTargetImage = 0;
+            }
+            function targetMoveTo() {
+                var TargetImageObj = document.getElementById('TargetImage');
+                TargetImageObj.style.top = targetTopPosition;
+                TargetImageObj.style.left = targetLeftPosition;
+                // document.getElementById("theMsg1").innerHTML = "TargetImage:top:row:Y="+targetTopPosition+" left:column:X="+targetLeftPosition
+            }
+            function moveTargetImage() {
+                if (direction === 0)
+                    targetLeftPosition = targetLeftPosition + moveTargetImageDistance;
+                if (direction === 1)
+                    targetLeftPosition = targetLeftPosition - moveTargetImageDistance;
+                targetMoveTo();
+                if (targetLeftPosition > rightMost) {
+                    direction = 1;
+                    document.getElementById("TargetImageSrc").src = TargetImageSrcLeft;
+                }
+                if (targetLeftPosition < leftMost) {
+                    direction = 0;
+                    document.getElementById("TargetImageSrc").src = TargetImageSrcRight;
+                }
+                if (doMoveTargetImage === 1)
+                    setTimeout('moveTargetImage()', TargetImageSpeed);
+            }
+
+            // --------------------------------------------------------------
+            function torpedoReset() {
+                document.getElementById("theMsg0").innerHTML = "torpedoReset";
+                torTopPosition = torStartTopPosition;
+                torLeftPosition = torStartLeftPosition;
+                torpedoMoveTo();
+                doMoveTorpedo = 1;
+            }
+            function torpedoTarget() {
+                document.getElementById("theMsg0").innerHTML = "torpedoAway";
+                shotCounterNumber = shotCounterNumber + 1;
+                document.getElementById("shotCounterNumber").innerHTML = shotCounterNumber;
+                if (doMoveTorpedo === 1) {
+                    doMoveTorpedo = 0;
+                    moveTorpedo();
+                }
+            }
+            function torpedoMoveTo() {
+                var torImageObj = document.getElementById('torImage');
+                torImageObj.style.top = torTopPosition;
+                torImageObj.style.left = torLeftPosition;
+                // document.getElementById("theMsg2").innerHTML = "torImage:top:row:Y="+torTopPosition+" left:column:X="+torLeftPosition+" torCenterPosition:"+torCenterPosition
+            }
+            function moveTorpedo() {
+                torTopPosition = torTopPosition - moveTorImageDistance;
+                torpedoMoveTo();
+
+                // Decide if hit or not
+                var boatImageObj = document.getElementById('TargetImage');
+                boatImageObjHeight = topMost + 30;
+                boatImageObjLeft = parseInt(boatImageObj.style.left);
+                boatImageObjRight = boatImageObjLeft + 50 + 1;
+                torCenterPosition = torLeftPosition + 30;
+                // document.getElementById("theMsg2").innerHTML = "torImage:top:row:Y="+torTopPosition+" left:column:X="+torLeftPosition+" torCenterPosition:"+torCenterPosition+" boatImageObjHeight:"+boatImageObjHeight+" boatImageObjLeft:"+boatImageObjLeft
+                // left:column:X=280 boatImageObjLeft:300
+                if ((torTopPosition < boatImageObjHeight)
+                        && (torCenterPosition > boatImageObjLeft)
+                        && (torCenterPosition < boatImageObjRight))
+                {
+                    hitTorpedoTarget();
+                } else if (torTopPosition > topMost)
+                    setTimeout('moveTorpedo()', torSpeed);
+                else {
+                    torpedoReset();
+                }
+            }
+            function hitTorpedoTarget() {
+                document.getElementById("theMsg0").innerHTML = "hitTorpedoTarget";
+
+                //  ** When a hit occurs, increment the counter, and display it.
+                hitCounterNumber = hitCounterNumber + 1;
+                document.getElementById("hitCounter").innerHTML = hitCounterNumber;
+
+                document.getElementById('hitExplodeDiv').style.display = "block";
+                setTimeout('explodeTorpedo()', 1000);
+
+                targetReset();
+                torpedoReset();
+            }
+            function explodeTorpedo() {
+                document.getElementById('hitExplodeDiv').style.display = "none";
+                startTargetImage();
+            }
+
+            // --------------------------------------------------------------
+        </script>
+    </head>
+    <body>
+        <form name="theForm">
+            <input type=button name="b3" value="Start TargetImage" onclick="startTargetImage()">
+            <input type=button name="b2" value="Stop TargetImage" onclick="stopTargetImage()">
+            Target speed: 
+            <input type=radio name="spd0" value="0" OnClick="mv00()">Slow
+            <input type=radio name="spd1" value="1" OnClick="mv01()">Medium
+            <input type=radio name="spd2" value="2" OnClick="mv02()">Fast
+            <br/><input type=button name="b3" value="Shoot Torpedo" onclick="torpedoTarget()">
+            Hit Counter <span id="hitCounter">0</span>
+            -- Torpedo away <span id="shotCounterNumber">0</span>
+        </form>
+        <hr>
+        <div id="theMsg0">init</div>
+        <div id="theMsg1">init</div>
+        <div id="theMsg2">init</div>
+        <hr>
+        <div id="torImage"><img id="torImageSrc" src="" alt=""></div>
+        <div id="asImage"><img id="asImageSrc" src="" alt=""></div>
+        <div id="TargetImage"><img id="TargetImageSrc" src="" alt=""></div>
+        <div id="hitExplodeDiv"><img id="hitExplodeSrc" src="" alt=""></div>
+
+        <script>doSetup();</script>
+    </body>
+</html>

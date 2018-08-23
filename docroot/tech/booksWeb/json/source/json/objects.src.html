@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>objects.html</title>
+<style type="text/css"><!--
+.syntax0 {
+color: #000000;
+}
+.syntax1 {
+color: #009933;
+}
+.syntax2 {
+color: #009900;
+font-weight: bold;
+}
+.syntax3 {
+color: #009900;
+font-style: italic;
+}
+.syntax4 {
+color: #009900;
+}
+.syntax5 {
+color: #ff0000;
+}
+.syntax6 {
+color: #0000cc;
+}
+.syntax7 {
+background: #ffffcc;
+color: #ff0066;
+}
+.syntax8 {
+color: #0000ff;
+font-weight: bold;
+}
+.syntax9 {
+color: #0000ff;
+font-weight: bold;
+}
+.syntax10 {
+color: #660000;
+font-weight: bold;
+}
+.syntax11 {
+color: #cc6600;
+font-weight: bold;
+}
+.syntax12 {
+color: #cc0000;
+}
+.syntax13 {
+color: #330066;
+}
+.syntax14 {
+color: #6600ff;
+}
+.syntax15 {
+color: #9900cc;
+}
+.syntax16 {
+color: #ff33cc;
+}
+.syntax17 {
+color: #0000ff;
+}
+.syntax18 {
+color: #000000;
+font-weight: bold;
+}
+.gutter {
+background: #dbdbdb;
+color: #000000;
+}
+.gutterH {
+background: #dbdbdb;
+color: #990066;
+}
+--></style>
+</head>
+<body bgcolor="#ffffff">
+<pre><span class="syntax0"><span class="gutter">   1:</span><span class="syntax17">&lt;</span><span class="syntax17">html</span><span class="syntax17">&gt;</span>
+<span class="gutter">   2:</span>  <span class="syntax17">&lt;</span><span class="syntax17">head</span><span class="syntax17">&gt;</span>
+<span class="gutter">   3:</span>    <span class="syntax17">&lt;</span><span class="syntax17">title</span><span class="syntax17">&gt;</span>JavaScript Objects<span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">title</span><span class="syntax17">&gt;</span>
+<span class="gutter">   4:</span>    <span class="syntax17">&lt;script</span><span class="syntax17"> </span><span class="syntax17">type</span><span class="syntax17">=</span><span class="syntax17">&quot;</span><span class="syntax17">text</span><span class="syntax17">/</span><span class="syntax17">javascript</span><span class="syntax17">&quot;</span><span class="syntax17">&gt;</span>
+<span class="gutterH">   5:</span>      <span class="syntax8">function</span> <span class="syntax6">main</span><span class="syntax18">(</span><span class="syntax18">)</span><span class="syntax18">{</span>
+<span class="gutter">   6:</span>        <span class="syntax1">/*</span><span class="syntax1"> </span><span class="syntax1">Define</span><span class="syntax1"> </span><span class="syntax1">and</span><span class="syntax1"> </span><span class="syntax1">print</span><span class="syntax1"> </span><span class="syntax1">object</span><span class="syntax1"> </span><span class="syntax1">normal</span><span class="syntax1"> </span><span class="syntax1">*/</span>
+<span class="gutter">   7:</span>        <span class="syntax8">var</span> dorm1 <span class="syntax18">=</span> <span class="syntax8">new</span> <span class="syntax10">Object</span><span class="syntax18">(</span><span class="syntax18">)</span><span class="syntax18">;</span>
+<span class="gutter">   8:</span>        dorm1<span class="syntax18">.</span>name <span class="syntax18">=</span> <span class="syntax13">&quot;</span><span class="syntax13">North</span><span class="syntax13">&quot;</span><span class="syntax18">;</span>
+<span class="gutter">   9:</span>        dorm1<span class="syntax18">.</span>type <span class="syntax18">=</span> <span class="syntax13">&quot;</span><span class="syntax13">WOMEN</span><span class="syntax13">&quot;</span><span class="syntax18">;</span>
+<span class="gutterH">  10:</span>        dorm1<span class="syntax18">.</span>size <span class="syntax18">=</span> <span class="syntax5">250</span><span class="syntax18">;</span>
+<span class="gutter">  11:</span>        dorm1<span class="syntax18">.</span>students <span class="syntax18">=</span> <span class="syntax8">new</span> <span class="syntax10">Array</span><span class="syntax18">(</span><span class="syntax13">&quot;</span><span class="syntax13">Jane</span><span class="syntax13"> </span><span class="syntax13">Doe</span><span class="syntax13">&quot;</span><span class="syntax18">,</span> <span class="syntax13">&quot;</span><span class="syntax13">Martha</span><span class="syntax13"> </span><span class="syntax13">Jones</span><span class="syntax13">&quot;</span><span class="syntax18">)</span><span class="syntax18">;</span>
+<span class="gutter">  12:</span>        
+<span class="gutter">  13:</span>        <span class="syntax8">var</span> div1 <span class="syntax18">=</span> document<span class="syntax18">.</span><span class="syntax6">getElementById</span><span class="syntax18">(</span><span class="syntax13">&quot;</span><span class="syntax13">div1</span><span class="syntax13">&quot;</span><span class="syntax18">)</span><span class="syntax18">;</span>
+<span class="gutter">  14:</span>        <span class="syntax8">var</span> htmlStr <span class="syntax18">=</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;p&gt;Dorm</span><span class="syntax13"> </span><span class="syntax13">Name:</span><span class="syntax13"> </span><span class="syntax13">&quot;</span> <span class="syntax18">+</span> dorm1<span class="syntax18">.</span>name <span class="syntax18">+</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;/p&gt;</span><span class="syntax13">&quot;</span><span class="syntax18">;</span>
+<span class="gutterH">  15:</span>        htmlStr <span class="syntax18">=</span> htmlStr <span class="syntax18">+</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;p&gt;Type:</span><span class="syntax13"> </span><span class="syntax13">&quot;</span> <span class="syntax18">+</span> dorm1<span class="syntax18">.</span>type <span class="syntax18">+</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;/p&gt;</span><span class="syntax13">&quot;</span><span class="syntax18">;</span>
+<span class="gutter">  16:</span>        htmlStr <span class="syntax18">=</span> htmlStr <span class="syntax18">+</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;p&gt;Size:</span><span class="syntax13"> </span><span class="syntax13">&quot;</span> <span class="syntax18">+</span> dorm1<span class="syntax18">.</span>size <span class="syntax18">+</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;/p&gt;</span><span class="syntax13">&quot;</span><span class="syntax18">;</span>
+<span class="gutter">  17:</span>        htmlStr <span class="syntax18">=</span> htmlStr <span class="syntax18">+</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;p&gt;Students:</span><span class="syntax13"> </span><span class="syntax13">&quot;</span> <span class="syntax18">+</span> dorm1<span class="syntax18">.</span>students <span class="syntax18">+</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;/p&gt;</span><span class="syntax13">&quot;</span><span class="syntax18">;</span>
+<span class="gutter">  18:</span>        div1<span class="syntax18">.</span>innerHTML <span class="syntax18">=</span> htmlStr<span class="syntax18">;</span>
+<span class="gutter">  19:</span>
+<span class="gutterH">  20:</span>        <span class="syntax1">/*</span><span class="syntax1"> </span><span class="syntax1">Define</span><span class="syntax1"> </span><span class="syntax1">and</span><span class="syntax1"> </span><span class="syntax1">print</span><span class="syntax1"> </span><span class="syntax1">object</span><span class="syntax1"> </span><span class="syntax1">literal</span><span class="syntax1"> </span><span class="syntax1">*/</span>
+<span class="gutter">  21:</span>        <span class="syntax8">var</span> dorm2 <span class="syntax18">=</span> <span class="syntax18">{</span>
+<span class="gutter">  22:</span>          <span class="syntax13">&quot;</span><span class="syntax13">name</span><span class="syntax13">&quot;</span><span class="syntax18">:</span><span class="syntax13">&quot;</span><span class="syntax13">South</span><span class="syntax13">&quot;</span><span class="syntax18">,</span>
+<span class="gutter">  23:</span>          <span class="syntax13">&quot;</span><span class="syntax13">type</span><span class="syntax13">&quot;</span><span class="syntax18">:</span><span class="syntax13">&quot;</span><span class="syntax13">COED</span><span class="syntax13">&quot;</span><span class="syntax18">,</span>
+<span class="gutter">  24:</span>          <span class="syntax13">&quot;</span><span class="syntax13">size</span><span class="syntax13">&quot;</span><span class="syntax18">:</span><span class="syntax5">200</span><span class="syntax18">,</span>
+<span class="gutterH">  25:</span>          <span class="syntax13">&quot;</span><span class="syntax13">students</span><span class="syntax13">&quot;</span><span class="syntax18">:</span><span class="syntax18">[</span><span class="syntax13">&quot;</span><span class="syntax13">John</span><span class="syntax13"> </span><span class="syntax13">Smith</span><span class="syntax13">&quot;</span><span class="syntax18">,</span> <span class="syntax13">&quot;</span><span class="syntax13">George</span><span class="syntax13"> </span><span class="syntax13">Washington</span><span class="syntax13">&quot;</span><span class="syntax18">]</span>
+<span class="gutter">  26:</span>        <span class="syntax18">}</span>
+<span class="gutter">  27:</span>
+<span class="gutter">  28:</span>        <span class="syntax8">var</span> div2 <span class="syntax18">=</span> document<span class="syntax18">.</span><span class="syntax6">getElementById</span><span class="syntax18">(</span><span class="syntax13">&quot;</span><span class="syntax13">div2</span><span class="syntax13">&quot;</span><span class="syntax18">)</span><span class="syntax18">;</span>
+<span class="gutter">  29:</span>        <span class="syntax8">var</span> htmlStr2 <span class="syntax18">=</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;p&gt;Dorm</span><span class="syntax13"> </span><span class="syntax13">Name:</span><span class="syntax13"> </span><span class="syntax13">&quot;</span> <span class="syntax18">+</span> dorm2<span class="syntax18">.</span>name <span class="syntax18">+</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;/p&gt;</span><span class="syntax13">&quot;</span><span class="syntax18">;</span>
+<span class="gutterH">  30:</span>        htmlStr2 <span class="syntax18">=</span> htmlStr2 <span class="syntax18">+</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;p&gt;Type:</span><span class="syntax13"> </span><span class="syntax13">&quot;</span> <span class="syntax18">+</span> dorm2<span class="syntax18">.</span>type <span class="syntax18">+</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;/p&gt;</span><span class="syntax13">&quot;</span><span class="syntax18">;</span>
+<span class="gutter">  31:</span>        htmlStr2 <span class="syntax18">=</span> htmlStr2 <span class="syntax18">+</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;p&gt;Size:</span><span class="syntax13"> </span><span class="syntax13">&quot;</span> <span class="syntax18">+</span> dorm2<span class="syntax18">.</span>size <span class="syntax18">+</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;/p&gt;</span><span class="syntax13">&quot;</span><span class="syntax18">;</span>
+<span class="gutter">  32:</span>        htmlStr2 <span class="syntax18">=</span> htmlStr2 <span class="syntax18">+</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;p&gt;Students:</span><span class="syntax13"> </span><span class="syntax13">&quot;</span> <span class="syntax18">+</span> dorm2<span class="syntax18">.</span>students <span class="syntax18">+</span> <span class="syntax13">&quot;</span><span class="syntax13">&lt;/p&gt;</span><span class="syntax13">&quot;</span><span class="syntax18">;</span>
+<span class="gutter">  33:</span>        div2<span class="syntax18">.</span>innerHTML <span class="syntax18">=</span> htmlStr2<span class="syntax18">;</span>
+<span class="gutter">  34:</span>      <span class="syntax18">}</span>
+<span class="gutterH">  35:</span>    <span class="syntax17">&lt;/script&gt;</span>
+<span class="gutter">  36:</span>  <span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">head</span><span class="syntax17">&gt;</span>
+<span class="gutter">  37:</span><span class="syntax17">&lt;</span><span class="syntax17">body</span><span class="syntax17"> </span><span class="syntax17">onLoad</span><span class="syntax18">=</span><span class="syntax13">&quot;</span><span class="syntax13">main()</span><span class="syntax13">&quot;</span><span class="syntax17">&gt;</span>
+<span class="gutter">  38:</span>  <span class="syntax17">&lt;</span><span class="syntax17">h2</span><span class="syntax17">&gt;</span>JavaScript Objects<span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">h2</span><span class="syntax17">&gt;</span>
+<span class="gutter">  39:</span>  <span class="syntax17">&lt;</span><span class="syntax17">h4</span><span class="syntax17">&gt;</span>Dorms<span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">h4</span><span class="syntax17">&gt;</span>
+<span class="gutterH">  40:</span>  <span class="syntax17">&lt;</span><span class="syntax17">div</span><span class="syntax17"> </span><span class="syntax17">id</span><span class="syntax18">=</span><span class="syntax13">&quot;</span><span class="syntax13">div1</span><span class="syntax13">&quot;</span><span class="syntax17">&gt;</span>
+<span class="gutter">  41:</span>  <span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">div</span><span class="syntax17">&gt;</span>
+<span class="gutter">  42:</span>  <span class="syntax17">&lt;</span><span class="syntax17">div</span><span class="syntax17"> </span><span class="syntax17">id</span><span class="syntax18">=</span><span class="syntax13">&quot;</span><span class="syntax13">div2</span><span class="syntax13">&quot;</span><span class="syntax17">&gt;</span>
+<span class="gutter">  43:</span>  <span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">div</span><span class="syntax17">&gt;</span>
+<span class="gutter">  44:</span><span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">body</span><span class="syntax17">&gt;</span>
+<span class="gutterH">  45:</span><span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">html</span><span class="syntax17">&gt;</span>
+</span></pre>
+</body>
+</html>
+

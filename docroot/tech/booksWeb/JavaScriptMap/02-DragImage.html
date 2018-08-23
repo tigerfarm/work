@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>1Drag:Image</title>
+    </head>
+    <body>
+        <div style="font-size: 12pt; z-index: 500; background-color: white; position: relative;">
+            <div id="theMsg0">Event: mouseUp</div>
+            <div id="theMsg01">mouseUp: Do not drag</div>
+            <div id="theMsg02">MouseOver: init</div>
+            <div id="theMsg1">Cursor top:row:Y</div>
+            <div id="theMsg2">Cursor left:column:X</div>
+            <div id="theMsg3">Image top:row:Y</div>
+            <div id="theMsg4">Image left:column:X</div>
+            <hr>
+        </div>
+        <img alt="image" id="dragImg" class="dragAble"
+             src="graphics/worldsmall.jpg"
+             style="left: 120px; top: 260px; position: absolute; border:0;">
+        <script>
+            var dragobject = {
+                x: 0, y: 0, offsetX: null, offsetY: null, theTarget: null, doDrag: 0,
+                initialize: function () {
+                    document.getElementById("theMsg0").innerHTML = "Event: initialize:function";
+                    document.onmousemove = this.doMoveMove;
+                    document.onmousedown = this.doMouseDown;
+                    document.onmouseup = this.doMouseUp;
+                    // for touch screens, example: tablets
+                    document.addEventListener("touchstart", touchHandler, true);
+                    document.addEventListener("touchmove", touchHandler, true);
+                    document.addEventListener("touchend", touchHandler, true);
+                    document.addEventListener("touchcancel", touchHandler, true);
+                },
+                touchHandler: function (event) {
+                    var touch = event.changedTouches[0];
+                    var simulatedEvent = document.createEvent("MouseEvent");
+                    simulatedEvent.initMouseEvent({
+                        touchstart: "mousedown",
+                        touchmove: "mousemove",
+                        touchend: "mouseup"
+                    }[event.type], true, true, window, 1,
+                            touch.screenX, touch.screenY,
+                            touch.clientX, touch.clientY, false,
+                            false, false, false, 0, null);
+                    touch.target.dispatchEvent(simulatedEvent);
+                    event.preventDefault();
+                },
+                doMouseDown: function (e) {
+                    document.getElementById("theMsg0").innerHTML = "Event: mouseDown";
+                    if (!e)
+                        var e = window.event;
+                    if (e.target)
+                        this.theTarget = e.target;
+                    else if (e.srcElement)
+                        this.theTarget = e.srcElement; // for IE 6
+                    if (this.theTarget.id == "dragImg") {
+                        this.doDrag = 1;
+                        document.getElementById("theMsg01").innerHTML = "mouseDown + overObject: Drag object";
+
+                        var tileObj = document.getElementById('dragImg');
+                        this.offsetX = parseInt(tileObj.style.left);
+                        this.offsetY = parseInt(tileObj.style.top);
+                        this.x = e.clientX;
+                        this.y = e.clientY;
+
+                        if (e.preventDefault)
+                            e.preventDefault();
+                        // document.onmousemove=dragobject.doMoveMove;
+                    } else
+                        document.getElementById("theMsg01").innerHTML = "mouseDown + overNotOverObject: Do not drag";
+                },
+                doMoveMove: function (e) {
+                    document.getElementById("theMsg0").innerHTML = "Event: doMoveMove";
+                    if (!e)
+                        var e = window.event;
+                    document.getElementById("theMsg1").innerHTML = "Cursor top:row:Y=" + e.clientY;
+                    document.getElementById("theMsg2").innerHTML = "Cursor left:column:X=" + e.clientX;
+                    if (this.doDrag == 1) {
+                        var tileObj = document.getElementById('dragImg');
+                        tileObj.style.top = this.offsetY + e.clientY - this.y + "px";
+                        tileObj.style.left = this.offsetX + e.clientX - this.x + "px";
+                        document.getElementById("theMsg3").innerHTML = "Image top:row:Y=" + tileObj.style.top;
+                        document.getElementById("theMsg4").innerHTML = "Image left:column:X=" + tileObj.style.left;
+                        return false;
+                    }
+                    if (e.target)
+                        this.theTarget = e.target;
+                    else if (e.srcElement)
+                        this.theTarget = e.srcElement; // for IE 6
+                    document.getElementById("theMsg02").innerHTML = "MouseOver:" + this.theTarget.id;
+                },
+                doMouseUp: function (e) {
+                    this.doDrag = 0;
+                    document.getElementById("theMsg0").innerHTML = "Event: doMoveUp";
+                    document.getElementById("theMsg01").innerHTML = "mouseUp: Do not drag";
+                }
+            }
+            dragobject.initialize();
+        </script>
+    </body>
+</html>

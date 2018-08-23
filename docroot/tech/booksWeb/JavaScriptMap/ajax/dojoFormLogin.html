@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+    <head>
+        <title>Form Example</title>
+        <style type="text/css">
+            @import "../lib/dijit/themes/tundra/tundra.css";
+            @import "../lib/dojo/resources/dojo.css";
+        </style>
+        <script type="text/javascript" src="../lib/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+        <script type="text/javascript">
+            dojo.require("dojo.parser");
+            dojo.require("dijit.form.TextBox");
+            dojo.require("dijit.form.ValidationTextBox");
+            dojo.require("dijit.form.Form");
+            
+            dojo.addOnLoad(init);
+            function init(){
+                dojo.byId('formMsg').innerHTML = 'Form Initialized';
+            };
+            
+            function ajaxCall(){
+                // alert('ajaxCall');
+                dojo.byId('formMsg').innerHTML = 'Call: ajaxCall';
+                theURL = 'validateData.jsp'
+                + '?' + 'userid=' + dojo.byId('theId').value
+                + '&' + 'password=' + dojo.byId('thePassword').value;
+                // Timeout is in milliseconds
+                dojo.xhrGet( {
+                    url: theURL,
+                    handleAs: "text",
+                    timeout: 10000,
+                    load: processResponse,
+                    error: function(response, ioArgs) {
+                        console.error("HTTP status code: ", ioArgs.xhr.status);
+                        return;
+                    }
+                } );
+            };
+            function processResponse(response, ioArgs) {
+                // alert('processResponse:'+response+':');
+                if ( response.indexOf('Success')>-1 ) {
+                    location.href="dojoFormSuccess.html";
+                    return;
+                }
+                dojo.byId("formMsg").innerHTML = response;
+            };
+            
+        </script>  
+    </head>
+    <body class="tundra">
+        <div style="padding:10px">
+            <h2>Dojo Form Login Example</h2>
+            <form dojoType="dijit.form.Form" method="post" action="javascript:ajaxCall()" id="studentForm">
+                <script type="dojo/method" event="onSubmit">
+                    console.debug("Attempting to submit form\n");
+                    if (!this.validate()) {
+                        // alert('Form contains invalid data.  Please correct first');
+                        dojo.byId("formMsg").innerHTML = "Form contains invalid data.  Please correct first.";
+                        return false;
+                    }
+                    return true;
+                </script>
+                <script type="dojo/method" event="onReset">
+                    return confirm('reset Form?');
+                </script>
+                <table border="0">
+                    <tr>
+                        <td>Userid:</td><td><input type="text" maxlength="15" name="userIdname" id="theId" 
+                                                       dojoType="dijit.form.ValidationTextBox" required="true" 
+                                                       invalidmessage="Required field"/>
+                    </td></tr><tr>
+                        <td>Password:</td><td><input type="password" maxlength="15" name="userPassword"
+                                                         id="thePassword"
+                                                         dojoType="dijit.form.ValidationTextBox" required="true"
+                                                         invalidmessage="Required field"/>
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" value="Login" /> Valid userid/password is abc/def
+                <br><input type="reset" value="Rest Form" />
+            </form>
+            <p id=formMsg>JavaScript not enabled: Set your browser to use JavaScript.</p>
+            <p><hr><p>
+            <a href="http://dojotoolkit.org/book/dojo-book-0-9/part-2-dijit/form-validation-specialized-input/textbox-validating-currency-number">
+            Dojo Toolkit form validation samples and attributes</a>
+        </div>        
+    </body>
+</html>

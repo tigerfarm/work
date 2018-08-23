@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <title>AJAX Form</title>
+        <style type="text/css">
+            @import "/dojo4/lib/dijit/themes/tundra/tundra.css";
+            @import "/dojo4/lib/dojo/resources/dojo.css";
+        </style>
+        <style type="text/css">
+            /* Forms */
+            form label { 
+                float: left; 
+                width: 125px; 
+            }
+            form input, form select{
+                margin-left:125px; 
+            }
+            button[id="Submit"]{
+                margin-left:125px;
+            }
+        </style>
+        <script type="text/javascript" src="/dojo4/lib/dojo/dojo.js"
+                djConfig="parseOnLoad: true">
+        </script>
+        <script type="text/javascript">
+            dojo.require("dojo.parser");
+            dojo.require("dijit.form.Form");
+            dojo.require("dijit.form.Button");
+            dojo.require("dijit.form.TextBox");
+            dojo.require("dijit.form.ComboBox");
+            dojo.require("dijit.form.ValidationTextBox");
+        </script>
+        <!-- AJAX Call here-->
+        <script>      
+            function helloCallBack(response, ioArgs) {
+                dojo.byId("para1").innerHTML = response;
+            }       
+            function helloError(response, ioArgs) {
+                alert('Error when retrieving data from the server!');
+                console.error("HTTP status code: ", ioArgs.xhr.status);
+                return response;
+            }
+        </script>
+    </head>
+    <body style="padding:6px">
+    <body class="tundra">
+        
+        <h2>Student Form Example</h2>
+        <h4>Student Data</h4>
+        
+        <form dojoType="dijit.form.Form" method="post" id="studentForm">
+            <label>Name: </label><input type="text" maxlength="25" name="studentName" 
+                                        dojoType="dijit.form.ValidationTextBox" required="true" 
+                                        invalidmessage="Required field"/><br/>
+            <label>Student Id: </label><input type="text" maxlength="25" name="studentId" 
+                                              dojoType="dijit.form.ValidationTextBox" required="true" 
+                                              regExp="\d\d\d\d" invalidmessage="Format is: xxxx"/><br/>
+            <label>Phone: </label><input type="text" maxlength="25" name="phone" 
+                                         dojoType="dijit.form.ValidationTextBox" required="true" 
+                                         regExp="\d\d\d-\d\d\d-\d\d\d\d" invalidmessage="Format is: xxx-xxx-xxxx"/><br/>
+            <label>Major: </label><select name="major" dojoType="dijit.form.ComboBox" value="Undeclared">
+                <option>Undeclared</option>
+                <option>Computer Science</option>
+                <option>Economics</option>
+                <option>English</option>
+                <option>Geography</option>
+                <option>History</option>
+                <option>Philosophy</option>
+            </select>
+            <input id="hiddenId" type="hidden" name="hiddenId" value="test-id" 
+                   dojoType="dijit.form.TextBox" />      
+            <br/>
+            
+            <button dojoType="dijit.form.Button" id="Submit">Submit&nbsp;
+                <script type="dojo/method" event="onClick">
+                    dojo.byId("para1").innerHTML = "";
+                    if(dijit.byId("studentForm").validate()){
+                        dojo.xhrPost(
+                            {
+                                url: 'request-helper.jsp',
+                                handleAs: "text",
+                                timeout: 5000, // Time in milliseconds
+                                
+                                load: helloCallBack, //Called on a successful response.
+                                error: helloError,   // Called in an error case.
+                                form: studentForm
+                            }
+                        );
+                    } else {
+                    alert('Form contains invalid data.  Please correct first');
+                }
+                </script>
+            </button>
+            <button dojoType="dijit.form.Button" id="Reset">Reset&nbsp;
+                <script type="dojo/method" event="onClick">
+                    if (confirm('reset Form?')){
+                        dijit.byId("studentForm").reset();            
+                    }
+                </script>
+            </button>
+            
+        </form>
+        
+        <div id="div1" style="border:1px solid gray; padding:6px;">
+            <h4>Ajax Message Here</h4>
+            <p id="para1"></p>
+        </div>
+        
+    </body>
+</html>

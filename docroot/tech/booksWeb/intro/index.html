@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Website Index</title>
+    <link rel="shortcut icon" href="../ART/favicon.ico" type="image/x-icon" />
+    <link href="../styles.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../TopMenuItemsData.js"></script>
+    <script>modNum_this = modNum_intro</script>
+</head>
+<body>
+    <div class="barTop">
+        <div id="barTopImg">
+            <a href="../intro/index.html"><img src="../ART/topLogo.jpg" alt="Java"/></a>
+        </div>
+        <div class="barTopTitle">
+            <script type="text/javascript" src="../TopTitle.js"></script>
+        </div>
+    </div>
+    <div class="barModules">
+        <script type="text/javascript" src="../TopMenuItems.js"></script>
+    </div>
+    <div class="leftSidebar">
+        <div class="navpara">
+            Page <script>document.write(modNum_this)</script>-1
+            <br /><script>document.write(modOrderHrefNext[modNum_this])</script>
+        </div>
+        <script type="text/javascript" src="MenuItems.js"></script>
+        <script type="text/javascript" src="../additionalResources.js"></script>
+    </div>
+    <div class="content">
+        <h2>Introduction</h2>
+        <p>
+            Website technology program samples.
+        </p>
+    </div>
+    <hr />
+    <script type="text/javascript" src="../pageBottom.js"></script>
+</body>

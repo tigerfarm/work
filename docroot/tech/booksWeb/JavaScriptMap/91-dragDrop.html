@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Drag and Drop</title>
+        <!-- from: http://www.w3schools.com/html/html5_draganddrop.asp
+        I'm testing the addition of getting this to work for touch screens.
+        -->
+        <style>
+            #div1 {width:100px;height:70px;padding:10px;border:3px solid #C9731F;}
+        </style>
+        <script>
+            function setup(ev) {
+                // for touch screens, example: tablets
+                document.addEventListener("touchstart", touchHandler, true);
+                document.addEventListener("touchmove", touchHandler, true);
+                document.addEventListener("touchend", touchHandler, true);
+                document.addEventListener("touchcancel", touchHandler, true);
+            }
+            function touchHandler(event) {
+                var touch = event.changedTouches[0];
+                var simulatedEvent = document.createEvent("MouseEvent");
+                simulatedEvent.initMouseEvent({
+                    touchstart: "mousedown",
+                    touchmove: "mousemove",
+                    touchend: "mouseup"
+                }[event.type], true, true, window, 1,
+                        touch.screenX, touch.screenY,
+                        touch.clientX, touch.clientY, false,
+                        false, false, false, 0, null);
+                touch.target.dispatchEvent(simulatedEvent);
+                event.preventDefault();
+            }
+            function allowDrop(ev) {
+                ev.preventDefault();
+            }
+            function drag(ev) {
+                ev.dataTransfer.setData("text", ev.target.id);
+            }
+            function drop(ev) {
+                ev.preventDefault();
+                var data = ev.dataTransfer.getData("text");
+                ev.target.appendChild(document.getElementById(data));
+            }
+        </script>
+    </head>
+    <body>
+        <p>Drag and drop the image into the rectangle:</p>
+        <div style="height:100px;border: solid white;">
+            <img id="drag1" src="Firefox.jpg" alt='image' draggable="true" ondragstart="drag(event)" width="55" height="59">
+        </div>
+        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </body>
+</html>
+

@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Dojo Basics - Button Example</title>
+    <style type="text/css">
+        @import "/dojo4/lib/dijit/themes/tundra/tundra.css";
+        @import "/dojo4/lib/dojo/resources/dojo.css"
+    </style>
+    <script type="text/javascript" src="/dojo4/lib/dojo/dojo.js"
+    djConfig="parseOnLoad: true">
+    </script>
+    <script type="text/javascript">
+      dojo.require("dojo.parser");
+      dojo.require("dijit.form.Button");
+
+
+    function loader(){
+        dojo.byId("para1").innerHTML = "Page loaded. You may proceed.";
+    }
+    
+    dojo.addOnLoad(loader); // Execute on load         
+    </script>
+  </head>
+  <body>
+  <body class="tundra">
+
+    <h2>Dojo Basics - Button Example</h2>
+
+    <button dojoType="dijit.form.Button" id="Hello">Say Hello&nbsp;
+      <script type="dojo/method" event="onClick">
+        dojo.byId("para1").innerHTML = "Hello Dojo!";
+      </script>
+    </button>
+
+
+    <div id="div1">
+      <h4>Message Here</h4>
+      <p id="para1"></p>
+    </div>
+  </body>
+</html>

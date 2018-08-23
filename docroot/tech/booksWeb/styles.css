@@ -1,0 +1,869 @@
+/* 
+Company web site CSS style sheet.
+Created by Stacy Thurston Sept.29,2012
+*/
+
+/* Text elements */
+body,th,td,p,div,span,a,input,select,textarea,li,notelist{
+    font-family:Arial, Helvetica, FreeSans, "Luxi-sans", "Nimbus Sans L", sans-serif;
+    font-size:0.95em
+}
+
+/* Links
+a:visited,a:visited code{color:#2B00F4}
+a:link{color:#2B00F4}
+*/
+a[name]:hover{text-decoration:none}
+a{text-decoration:none}
+a:hover{
+    text-decoration:underline
+}
+
+
+code, kbd, tt, pre{
+    font-family:Monaco, Courier, "Anadale Mono", "Courier New", monospace;
+    font-size:1.3em
+}
+
+/* font tag overwrite - Overwrites Font Tags*/
+font{
+    font-size:0.95em
+}
+
+li{
+    margin:5px 0px 0px 5px;
+}
+
+
+/* Headers */
+h1, h1 a { 
+    color:#B76418;
+    font-size:1.8em; 
+}
+
+h2, h2 a { 
+    color:#B76418;
+    font-size:1.6em;
+}
+
+h3, h3 a { 
+    color:black;
+    font-size:1.2em;
+}
+
+h4, h4 a { 
+    color:#666666;
+    font-size:1.1em; 
+}
+
+h5, h5 a { 
+    color:#666666;
+    font-size:1.0em;
+}
+
+h6, h6 a { 
+    color:#E76F00;
+    font-size:0.95em;
+}
+
+h1,h2,h3,h4,h5,h6{
+    margin:3px 0px 10px 0px;
+    padding:0px;
+    text-decoration:none;
+}
+
+p.codetitle a{
+    color: #003399;
+}
+
+/* Classes */
+.Class {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    color: #003399;
+    font-size: 0.90em;	
+}
+
+.codepara {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    color: blue;
+}
+
+.codetitle {
+    font-weight: bold;
+    font-size: small;
+ /*   color: #003399;  */
+    color: #486c84;
+}
+
+.command {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    color: #003399;
+    font-size: 0.90em;	
+    font-weight: bold;
+}
+
+
+.field {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    color: #003399;
+    font-size: 0.90em;	
+}
+
+.filename {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    color: #003399;
+    font-size: 1.1em;	
+}
+
+.JavaCode {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    color: #003399;
+    font-size: 0.90em;	
+}
+
+
+.listtable {
+    font-size: small;
+}
+
+.method {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    color: #003399;	
+    font-size: 0.90em;	
+}
+
+.navtitle {
+    font-weight:bold;
+    color:#666666;
+}
+
+/* Stacy start */
+.barTop {
+  height: 105px;
+  width: 100%;
+  margin: 0 0 0 0px;
+  padding: 5px 0px 0px 6px;
+  background: white;
+  /* background: yellow; */
+}
+/*
+*/
+.barModules {
+  font-size:0.90em;
+  width: 99.5%;
+  margin: 0 0 0 0px;
+  padding: 1px 0px 3px 10px;
+  border-top: 1.5px solid black;
+  border-bottom: 1.5px solid black;
+  background: #FFE8A9;
+}
+
+#barTopImg {
+  float: left;
+  width: 180px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  background: white;
+  /* background: yellow; */
+}
+.barTopTitle {
+  font-size:1.2em;
+  font-weight: bold;
+  margin: 0px 0px 0px 0px;
+  padding: 30px 0px 5px 0px;
+}
+
+/* Links for Course Menu Bar */
+.barModules a[name]:hover{color: black; text-decoration:none; background:#FFE8A9;}
+.barModules a{color: black; text-decoration:none; background:#FFE8A9;}
+.barModules a:visited,a:visited code{color: black; text-decoration:none; background:#FFE8A9;}
+.barModules a:link{color: black; text-decoration:none; background:#FFE8A9;}
+.barModules a:hover{color: black; text-decoration:underline; background:#FFE8A9;}
+
+
+.leftMenuItem {
+  padding: 0px 0px 0px 16px;
+}
+
+/* Stacy end */
+
+.navpara {
+    text-align:left;
+    font-size: small;
+    margin: 6px 0px 16px 0px;
+}
+
+.navhome {
+    font-size: small;
+    margin: 3px 0px 10px 20px;
+}
+
+
+.navlist {
+    list-style-type: none;
+    margin:0px 0px 0px 5px;
+    padding:0px 0px 0px 0px;	
+    font-size: small;
+}
+
+.navlist .navlist{
+    list-style-type: none;
+    margin:0px 0px 0px 15px;	
+}
+
+.navlist li {
+    margin:5px 0px;	
+}
+
+.notelist {
+    list-style-type: none;
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;	
+}
+
+.notelist .notelist{
+    list-style-type: none;
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;	
+}
+.notelist li {
+    font-size:1.0em;
+    margin:0px 0px 0px 15px;
+    padding:0px 0px 0px 0px;
+    list-style-type:circle;
+}
+.notelist li.notelistTitle {
+    font-size:1.1em;
+    font-weight:bold;
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;	
+}
+.notelist li.notelistIndent {
+    font-size:1.0em;
+    margin:0px 0px 0px 35px;
+    padding:0px 0px 0px 0px;	
+    list-style-type:disc;
+}
+.notelist li.noteLast {
+    font-size:1.0em;
+    margin:0px 0px 15px 15px;
+    padding:0px 0px 0px 0px;	
+}
+
+
+ol.steplist li {
+    margin:30px 0px 0px 5px;	
+}
+
+ol.steplist img {
+    margin:5px 0px 0px 5px;	
+}
+
+ul.normallist li{
+    margin:5px 0px 0px 5px;	
+}
+
+.tip {
+    margin:10px 0px 0px 25px;
+    color:#3E6B8A;
+}
+.tipPre {
+    margin:10px 0px 0px 25px;
+    color:#3E6B8A;
+    font-size:0.90em;
+    border: 1px solid #adadad;
+    padding:10px;
+}
+
+/* style rules adapted from netbeans.org */
+.margin-around {margin: 10px;}
+
+.b-all {border:1px solid #adadad;}
+
+.b-right {border-right:1px solid #adadad;}
+
+.b-bottom {border-bottom:1px solid #adadad;}
+
+.examplecode {
+  font-size:0.90em;
+    border: 1px solid #adadad;
+    background-color: #f4f4f4;
+    padding:10px;
+    overflow: auto;
+    width: 90%;
+}
+
+.light {
+    background-color: #f5f7fa;
+}
+
+.dark {
+    background-color: #eaeef4;
+}
+
+.head {
+    background-color: #d3dce7;
+}
+
+.indent {
+    margin-left: 20px;
+}
+
+/* 
+Company web site CSS style sheet.
+Created by Stacy Thurston Sept.29,2012
+*/
+
+/* Text elements */
+body,th,td,p,div,span,a,input,select,textarea,li,notelist{
+    font-family:Arial, Helvetica, FreeSans, "Luxi-sans", "Nimbus Sans L", sans-serif;
+    background: white;
+}
+/*  HTML Links ----------------------------------------------------
+*/
+a {
+    text-decoration:none;
+    color: #B76418;
+}
+a:hover {
+    text-decoration:underline;
+    color: #B76418;
+}
+a:visited {
+    text-decoration:none;
+    color: #B76418;
+}
+
+.MoreInfo {
+    cursor:help;
+    color:#954C08;
+    text-decoration:underline;
+}
+
+/* This is for IE, to remove the image border when in a link */
+a img {
+    border: none;
+}
+
+/*  Paragraph styles ----------------------------------------------------
+*/
+p, div {
+    font-size:1.0em;
+}
+
+.paraText {
+    text-indent: 0px;
+    text-align:justify;
+    font-size:1.0em;
+    width: 500px;
+    line-height:200%;
+}
+.paraTextNoIndent {
+    text-indent: 0px;
+    text-align:justify;
+    font-size:1.0em;
+    width: 500px;
+    line-height:200%;
+}
+.paraTextIndent {
+    text-indent: 22.5px;
+    text-align:justify;
+    font-size:1.0em;
+    width: 500px;
+    line-height:200%;
+}
+
+/* Page layout for TFP ---------------------------------------------------------
+*/
+
+#outerBorder {
+    margin: 0px 0px 0px 0px;
+    padding: 6px 6px 6px 6px;
+    width: 900px;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
+/* Top Headings -------------------------
+*/
+.topHeading {
+    height: 78px;
+    width: 100%;
+    margin: 0 0 0 0px;
+    padding: 3px 0px 0px 6px;
+}
+#topImgLeft {
+    float: left;
+    width: 150px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+#topImgCenter {
+    width: 780px;
+    margin: 6px 0px 0px 120px;
+    padding: 0px 0px 0px 0px;
+}
+#topImgRight{
+    float: right;
+    padding: 36px 016px 0px 0px;
+    font-size: small;
+}
+
+/* Left Menu -------------------------
+*/
+.main {
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
+.leftSidebar {
+    float: left; 
+    height:380px;
+    width: 180px;
+    padding: 12px 0px 0px 6px;
+}
+/*  Left Menu items
+*/
+.navtitle {
+    font-size:1.0em;
+    font-weight:bold;
+    color:black;
+    margin-left: 3px
+}
+.navlist {
+    list-style-type: none;
+    margin:0px 0px 0px 5px;
+    padding:0px 0px 0px 0px;	
+    font-size: 0.9em;
+}
+.navlist li {
+    margin:6px 0px 0px 10px;
+}
+.navlist li a {
+    color: #B76418;
+    background: white;
+}
+.navlist li a:visited {
+    color: #B76418;
+    background: white;
+}
+
+/*  Content (body) -------------------------
+*/
+.content {
+    height:380px;
+    margin: 0 0 0 200px;
+    border-left: 2px solid black;
+    padding: 6px 0px 0px 6px;
+    width: 708px;
+}
+.contentLong {
+    margin: 0 0 0 200px;
+    border-left: 2px solid black;
+    padding: 6px 0px 6px 6px;
+    width: 708px;
+}
+.contentLong ul {
+    margin-top: 3px;
+}
+.contentLong ul li {
+    margin-top: 3px;
+    font-size:0.8em;
+    width: 500px;
+}
+.contentNav {
+    margin: 0 0 0 0px;
+    border-right: 2px solid black;
+    padding: 6px 0px 0px 6px;
+    width: 194px;
+}
+
+.contentLongAuthor {
+    margin: 0 0 0 200px;
+    border-left: 2px solid black;
+    padding: 6px 0px 6px 6px;
+    width: 708px;
+    height:660px;
+}
+.contentLongAuthor ul {
+    margin-top: 3px;
+}
+.contentLongAuthor ul li {
+    margin-top: 3px;
+    font-size:0.8em;
+    width: 500px;
+}
+
+.contentLongNarrow {
+    margin: 0 0 0 200px;
+    border-left: 2px solid black;
+    padding: 6px 0px 6px 6px;
+    width: 600px;
+}
+
+.ulHeading {
+    margin-bottom: 6px;
+}
+.content ul {
+    margin-top: 3px;
+}
+.content ul li {
+    margin-top: 3px;
+    font-size:0.8em;
+    width: 500px;
+}
+
+.socialPlugins {
+    padding:6px 0px 3px 0px;	
+}
+.socialPluginsLike {
+    padding-bottom: 3px;
+}
+
+/* Footer  -------------------------
+*/
+.footer {
+    margin: 0px 0px 0px 0px;
+    padding:6px 0px 3px 0px;	
+    width: 100%;
+    border-top: 2px solid #000000;
+    text-align: center;
+    font-size:0.8em;
+}
+.footerLeft {
+    margin: 0px 0px 0px 0px;
+    padding:6px 0px 3px 0px;	
+    width: 202px;
+    border-top: 2px solid #000000;
+    font-size:0.8em;
+}
+
+/* General ---------------------------------------------------------------- */
+li {
+    margin:5px 0px 0px 5px;
+}
+
+/* Headers */
+h1 { 
+    color:#B76418;
+    font-size:1.8em;
+    margin:3px 0px 10px 0px;
+    padding:0px;
+}
+h1 a { 
+    color:#B76418;
+}
+h1 a:visited {
+    color:#B76418;
+}
+h2 {
+    color:#B76418;
+    font-size:1.6em;
+    margin:3px 0px 10px 0px;
+    padding:0px;
+}
+h2 a {
+    color:#B76418;
+}
+h2 a:visited {
+    color:#B76418;
+}
+
+h3 {
+    color:grey;
+    font-size:1.4em;
+    margin:3px 0px 10px 0px;
+    padding:0px;
+}
+h3 a {
+    color:grey;
+}
+h4, h4 a { 
+    color:black;
+    font-size:1.2em;
+    margin:3px 0px 10px 0px;
+    padding:0px;
+}
+h5, h5 a { 
+    color:black;
+    font-size:1.2em;
+    margin:3px 0px 10px 0px;
+    padding:0px;
+}
+h6, h6 a { 
+    color:black;
+    font-size:1.2em;
+    margin:3px 0px 10px 0px;
+    padding:0px;
+}
+
+/* Tables ----------------------------------------------------------------------
+*/
+
+/* Heading */
+.tableList tbody tr th { 
+    background-color: #EBBD81;
+    color: black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding:3px 0px 3px 0px;
+    font-size:1.0em;
+    font-weight: normal;
+}
+
+/* Row items */
+.tableList tbody tr td { 
+    background-color: white;
+    padding:6px 6px 6px 6px;
+    margin:0px 0px 0px 0px;
+    vertical-align: top;
+    font-size:0.9em;
+    line-height:150%;
+}
+
+/* Home page table for the graphics
+*/
+.tableHome tbody tr td { 
+    border: none;
+    padding:0px 0px 0px 0px;
+    margin:0px 0px 0px 0px;
+    vertical-align: top;
+}
+
+/* Fancy lists --------------------------------- */
+
+/* Ordered numbered list */
+.niceNumberList { 
+    width: 500px;
+    padding-left: 0px;
+}
+.niceNumberList ol { 
+    padding-left: 20px;
+}
+.niceNumberList ol li { 
+    padding-bottom: 6px;
+    font-size:0.95em
+}
+/* Ordered numbered list for long detail documents */
+.niceNumberListSmall { 
+    width: 600px;
+    padding-left: 0px;
+}
+.niceNumberListSmall ol { 
+    padding-left: 22px;
+}
+.niceNumberListSmall ol li { 
+    padding-bottom: 3px;
+    font-size:0.9em;
+    line-height:130%;
+}
+/* Compact bullet lists */
+.niceBulletList { 
+    width: 500px;
+    padding-left: 13px;
+    font-size:1.3em;
+}
+.niceBulletList li { 
+   padding-bottom: 6px;
+}
+
+/* eBook HTML ereader ----------------------------------------------------------
+*/
+/* start: width --- height adjustment */
+.eReaderHTMLcover {
+    height:500px; 
+    padding:6px 0px 6px 20px;
+}
+.eReaderHTMLpageShort {
+    height:500px; 
+    padding:6px 6px 6px 6px;
+    font-size:1.0em;
+    line-height:160%;
+}
+.eReaderHTMLpage {
+    width:480px; 
+    height:500px; 
+    padding:6px 16px 16px 12px;
+    font-size:1.0em;
+    line-height:160%;
+    overflow:auto; 
+}
+
+#tabs_content_container {
+    width: 508px;
+    border: 1px solid #ccc;
+    border-top: none;
+    padding: 10px;
+}
+
+#tabs_wrapper {
+    width: 530px;
+}
+/* end: width --- height adjustment */
+
+#tabs_container {
+    border-bottom: 1px solid #ccc;
+}
+#tabs {
+    list-style: none;
+    padding: 5px 0 4px 0;
+    margin: 0 0 0 10px;
+    font: 0.75em arial;
+}
+#tabs li {
+    display: inline;
+}
+#tabs li a {
+    border: 1px solid #ccc;
+    padding: 4px 6px;
+    text-decoration: none;
+    background-color: #eeeeee;
+    border-bottom: none;
+    outline: none;
+    border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+}
+#tabs li a:hover {
+    background-color: #dddddd;
+    padding: 4px 6px;
+}
+#tabs li.active a {
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+    padding: 4px 6px 5px 6px;
+    border-bottom: none;
+}
+#tabs li.active a:hover {
+    background-color: #eeeeee;
+    padding: 4px 6px 5px 6px;
+    border-bottom: none;
+}
+
+#tabs li a.icon_accept {
+    background-image: url(accept.png);
+    background-position: 5px;
+    background-repeat: no-repeat;
+    padding-left: 24px;
+}
+#tabs li a.icon_accept:hover {
+    padding-left: 24px;
+}
+
+.tab_content {
+    display: none;
+}
+
+/* eBook styles ------------
+*/
+.chapterTitle {
+    color:#B76418;
+    font-size:1.8em;
+    margin:21px 0px 20px 0px;
+    text-align: center;
+}
+.pBook, .pBookIndent {
+    text-indent: 22.5px;
+    text-align:justify;
+    font-size:1.0em;
+    margin: 0px;
+    padding: 0px;
+}
+.pBookNoIndent {
+    text-indent: 0px;
+    text-align:justify;
+    font-size:1.0em;
+    margin: 0px;
+    padding: 0px;
+}
+.pBookSmall {
+    text-indent: 22.5px;
+    text-align:justify;
+    font-size:0.9em;
+    margin: 0px;
+    padding: 0px;
+}
+.pBookSmallNoIndent {
+    text-indent: 0px;
+    text-align:justify;
+    font-size:0.9em;
+    margin: 0px;
+    padding: 0px;
+}
+.pBookSmallRightLines {
+    text-align:right;
+    font-size:0.9em;
+    margin: 0px;
+    padding: 0px;
+}
+.computerMessages {
+    display: block;
+    font-family:Arial,sans-serif;
+    text-align: justify;
+    text-indent: 0;
+    margin-left: 36pt;
+    margin-right: 22.5pt;
+    font-size: 0.8em;
+    margin-bottom: 6pt;
+    margin-top: 6pt;
+}
+
+/* For the Copyright page ----------
+*/
+h1.bookTitle {
+    text-align:center;
+    font-size:x-large;
+    font-style:normal;
+    margin-top:15.0px;
+    margin-bottom:20px;
+    line-height:1em;
+}
+p.centerLines {
+    text-align:center;
+    margin-top:0px;
+    margin-bottom:0px;
+    margin-left:0px;
+    padding:0px;
+    text-indent: 0;
+}
+p.copyright {
+    font-size:small;
+    margin-top:   0px;
+    margin-bottom:0px;
+    margin-right: 0;
+    text-indent:  0px;
+}
+p.copyrightWithSpace {
+    font-size:small;
+    margin-top:   10px;
+    margin-bottom:0px;
+    margin-right: 0;
+    text-indent:  0px;
+}
+
+/* For Table of Contents */
+p.linespacing {
+    text-indent: 0px;
+    text-align:justify;
+    font-size:0.9em;
+    margin: 0px;
+    padding: 0px;
+}
+p.linespacing1 {
+    text-indent: 22.5px;
+    text-align:justify;
+    font-size:0.9em;
+    margin: 0px;
+    padding: 0px;
+}
+p.linespacing2 {
+    text-indent: 22.5px;
+    text-align:justify;
+    font-size:0.9em;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* eof */

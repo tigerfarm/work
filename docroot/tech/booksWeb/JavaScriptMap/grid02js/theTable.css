@@ -1,0 +1,14 @@
+/* Cool table CSS values: http://www.somacon.com/p141.php */
+#theTable {
+    border: solid blue;
+    border-collapse: collapse;
+    padding: 5px 5px 5px 5px;
+    font-size: 40px;
+    margin-left: 5px;
+}
+/* removed because JS does not override: background-color: yellow; */
+#theTable td { 
+    border: 5px solid blue; 
+    padding: 10px 10px 10px 10px;
+} 
+/* eof */

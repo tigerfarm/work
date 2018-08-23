@@ -1,0 +1,9 @@
+div#divFish {
+        float: left;
+        width: 250px;
+        padding: 20px;
+        position: absolute;
+        z-index: 1;
+        background: blue;
+        text-align: center;
+} 

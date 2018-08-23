@@ -1,0 +1,36 @@
+<html lang="en">
+    <head>
+    <title>Annoying Colors</title>
+    <script>
+        aCounter = 0;
+        m = 1
+        function doColors() {
+            if (m==1)
+                {document.bgColor = "RED"; m=0; }
+            else 
+                {document.bgColor = "BLUE"; m=1; }
+            aCounter = aCounter +1
+            document.getElementById('msg1').innerHTML = aCounter
+            if ( aCounter < 50 ) setTimeout('doColors()',30);
+        }
+        function doRest() {
+            aCounter = 0;
+            document.getElementById('msg1').innerHTML = aCounter
+        }
+        function doStop() {
+            aCounter = 50;
+            document.getElementById('msg1').innerHTML = aCounter
+        }
+    </script>
+    </head>
+    <body>
+        <form name="theForm">
+            <input type=button name="b2" value="Colors" onclick="doColors()">
+            <input type=button name="b3" value="Reset" onclick="doRest()">
+            <input type=button name="b4" value="Stop" onclick="doStop()">
+        </form>
+        <hr>
+        Counter: <span id="msg1">init</span>
+        <hr>
+    </body>
+</html>

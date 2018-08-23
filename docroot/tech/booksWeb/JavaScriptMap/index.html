@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>TFP Map Development</title>
+        <link href="../../../images/favicontfp.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="../../../styles.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../jqStyles.css" rel="stylesheet" type="text/css"/>
+        <!-- Note, script order is important! -->
+        <script src="../../../js/jquery310.js" type="text/javascript"></script>
+        <script src="../../../js/jqueryTFP.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            // Google Analytics
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-35906964-1']);
+            _gaq.push(['_setDomainName', 'tigerfarmpress.com']);
+            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("a#displayJs1").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "../JavaScriptMap/01-MoveFish.html";
+                });
+            });
+            $(document).ready(function () {
+                $("a#displayJs2").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "../JavaScriptMap/02-DragImage.html";
+                });
+            });
+            $(document).ready(function () {
+                $("a#displayJs3").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "../JavaScriptMap/03-DragInArea.html";
+                });
+            });
+            $(document).ready(function () {
+                $("a#displayJs4").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "../JavaScriptMap/04-DragInAreaWorld.html";
+                });
+            });
+            $(document).ready(function () {
+                $("a#displayJs5").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "../JavaScriptMap/05-Drag2InArea.html";
+                });
+            });
+            $(document).ready(function () {
+                $("a#displayJs6").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "../JavaScriptMap/06-DragEarth.html";
+                });
+            });
+
+            // -----------------------------------------------------------------
+            $(document).ready(function () {
+                $("a#displayJs1s").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "src-01.html";
+                });
+            });
+            $(document).ready(function () {
+                $("a#displayJs2s").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "src-02.html";
+                });
+            });
+            $(document).ready(function () {
+                $("a#displayJs3s").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "src-03.html";
+                });
+            });
+            $(document).ready(function () {
+                $("a#displayJs4s").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "src-04.html";
+                });
+            });
+            $(document).ready(function () {
+                $("a#displayJs5s").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "src-05.html";
+                });
+            });
+            $(document).ready(function () {
+                $("a#displayJs6s").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "src-06.html";
+                });
+            });
+
+            // -----------------------------------------------------------------
+            $(document).ready(function () {
+                $("a#displayJs01").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "../JavaScriptMap/91-dragDrop.html";
+                });
+            });
+            $(document).ready(function () {
+                $("a#displayJs02").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "../JavaScriptMap/game/timer.html";
+                });
+            });
+            $(document).ready(function () {
+                $("a#displayJs03").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "../JavaScriptMap/game/moveImage.html";
+                });
+            });
+            $(document).ready(function () {
+                $("a#displayJs04").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "../JavaScriptMap/game/moveGame.html";
+                });
+            });
+            $(document).ready(function () {
+                $("a#displayJs05").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "../JavaScriptMap/game/moveGame-counter.html";
+                });
+            });
+            $(document).ready(function () {
+                $("a#displayJs06").click(function (e) {
+                    e.preventDefault();
+                    document.getElementById('myiframe').src = "../JavaScriptMap/game/moveGame-counter-explode.html";
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="outerBorder">
+            <script type="text/javascript" src="/pageTop.js"></script>
+            <div class="main">
+                <div class="leftSidebar">
+                    <script type="text/javascript" src="../../leftMenuTop.js"></script>
+                    <script type="text/javascript" src="leftMenu.js"></script>
+                </div>
+
+                <div class="contentLong">
+                    <h2>JavaScript Map Development Steps</h2>
+                    <p style="font-size:10pt">
+                        Here I the steps I used to develop the Google Maps image array movement technique.
+                        These are the basic techniques building up to the complex technique.
+                    </p>
+                    <ol class="steplist">
+                        <li><a id="displayJs1s" href="">[Source]</a> <a id="displayJs1" href="">Mouse events, and moving an image</a></li>
+                        <li><a id="displayJs2s" href="">[Source]</a> <a id="displayJs2" href="">Drag an image, using mouse over awareness</a></li>
+                        <li><a id="displayJs3s" href="">[Source]</a> <a id="displayJs3" href="">Drag an image in a CSS id viewing area</a></li>
+                        <li><a id="displayJs4s" href="">[Source]</a> <a id="displayJs4" href="">Drag a large world image in a CSS id viewing area</a></li>
+                        <li><a id="displayJs5s" href="">[Source]</a> <a id="displayJs5" href="">Drag 2 linked images using a CSS classe</a></li>
+                        <li><a id="displayJs6s" href="">[Source]</a> <a id="displayJs6" href="">Drag graphic image tiles using array processing</a></li>
+                    </ol>
+                    <iframe frameborder="2" id="myiframe" scrolling="yes" src="0-StartMessage.html" style="height: 600px; width: 100%;"></iframe>
+                </div>
+            </div>
+            <div class="footer">
+                <script type="text/javascript" src="../pageBottom.js"></script>
+            </div>
+        </div>
+    </body>
+</html>

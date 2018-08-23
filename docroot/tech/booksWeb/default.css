@@ -1,0 +1,326 @@
+/* 
+Company web site CSS style sheet.
+Created by Stacy Thurston Sept.29,2012
+*/
+
+/* Text elements */
+body,th,td,p,div,span,a,input,select,textarea,li,notelist{
+    font-family:Arial, Helvetica, FreeSans, "Luxi-sans", "Nimbus Sans L", sans-serif;
+    font-size:0.95em
+}
+
+/* Links
+a:visited,a:visited code{color:#2B00F4}
+a:link{color:#2B00F4}
+*/
+a[name]:hover{text-decoration:none}
+a{text-decoration:none}
+a:hover{
+    text-decoration:underline
+}
+
+
+code, kbd, tt, pre{
+    font-family:Monaco, Courier, "Anadale Mono", "Courier New", monospace;
+    font-size:1.3em
+}
+
+/* font tag overwrite - Overwrites Font Tags*/
+font{
+    font-size:0.95em
+}
+
+li{
+    margin:5px 0px 0px 5px;
+}
+
+
+/* Headers */
+h1, h1 a { 
+    color:#B76418;
+    font-size:1.8em; 
+}
+
+h2, h2 a { 
+    color:#B76418;
+    font-size:1.6em;
+}
+
+h3, h3 a { 
+    color:black;
+    font-size:1.2em;
+}
+
+h4, h4 a { 
+    color:#666666;
+    font-size:1.1em; 
+}
+
+h5, h5 a { 
+    color:#666666;
+    font-size:1.0em;
+}
+
+h6, h6 a { 
+    color:#E76F00;
+    font-size:0.95em;
+}
+
+h1,h2,h3,h4,h5,h6{
+    margin:3px 0px 10px 0px;
+    padding:0px;
+    text-decoration:none;
+}
+
+p.codetitle a{
+    color: #003399;
+}
+
+/* Classes */
+.Class {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    color: #003399;
+    font-size: 0.90em;	
+}
+
+.codepara {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    color: blue;
+}
+
+.codetitle {
+    font-weight: bold;
+    font-size: small;
+ /*   color: #003399;  */
+    color: #486c84;
+}
+
+.command {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    color: #003399;
+    font-size: 0.90em;	
+    font-weight: bold;
+}
+
+
+.field {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    color: #003399;
+    font-size: 0.90em;	
+}
+
+.filename {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    color: #003399;
+    font-size: 1.1em;	
+}
+
+.JavaCode {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    color: #003399;
+    font-size: 0.90em;	
+}
+
+
+.listtable {
+    font-size: small;
+}
+
+.method {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    color: #003399;	
+    font-size: 0.90em;	
+}
+
+.navtitle {
+    font-weight:bold;
+    color:#666666;
+}
+
+/* Stacy start */
+.barTop {
+  height: 105px;
+  width: 100%;
+  margin: 0 0 0 0px;
+  padding: 5px 0px 0px 6px;
+  background: white;
+  /* background: yellow; */
+}
+/*
+*/
+.barModules {
+  font-size:0.90em;
+  width: 99.5%;
+  margin: 0 0 0 0px;
+  padding: 1px 0px 3px 10px;
+  border-top: 1.5px solid black;
+  border-bottom: 1.5px solid black;
+  background: #FFE8A9;
+}
+
+#barTopImg {
+  float: left;
+  width: 180px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  background: white;
+  /* background: yellow; */
+}
+.barTopTitle {
+  font-size:1.2em;
+  font-weight: bold;
+  margin: 0px 0px 0px 0px;
+  padding: 15px 0px 5px 0px;
+}
+.barMenuRight {
+  float: right;
+  text-align: right;
+  padding: 0px 10px 0px 0px;
+}
+/*
+.barMenuRight {
+  float: right;
+    text-align: right;
+    padding-right: 5px;
+    margin-top:0px;
+    margin-bottom:0px;
+    padding-bottom:1px;
+    color:black;
+    background: #DDDDDD;
+}
+*/
+
+/* Links for Course Menu Bar */
+.barModules a[name]:hover{color: black; text-decoration:none; background:#FFE8A9;}
+.barModules a{color: black; text-decoration:none; background:#FFE8A9;}
+.barModules a:visited,a:visited code{color: black; text-decoration:none; background:#FFE8A9;}
+.barModules a:link{color: black; text-decoration:none; background:#FFE8A9;}
+.barModules a:hover{color: black; text-decoration:underline; background:#FFE8A9;}
+
+
+.leftMenuItem {
+  padding: 0px 0px 0px 16px;
+}
+
+/* Stacy end */
+
+.navpara {
+    text-align:left;
+    font-size: small;
+}
+
+.navhome {
+    font-size: small;
+    margin: 3px 0px 10px 20px;
+}
+
+
+.navlist {
+    list-style-type: none;
+    margin:0px 0px 0px 5px;
+    padding:0px 0px 0px 0px;	
+    font-size: small;
+}
+
+.navlist .navlist{
+    list-style-type: none;
+    margin:0px 0px 0px 15px;	
+}
+
+.navlist li {
+    margin:5px 0px;	
+}
+
+.notelist {
+    list-style-type: none;
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;	
+}
+
+.notelist .notelist{
+    list-style-type: none;
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;	
+}
+.notelist li {
+    font-size:1.0em;
+    margin:0px 0px 0px 15px;
+    padding:0px 0px 0px 0px;
+    list-style-type:circle;
+}
+.notelist li.notelistTitle {
+    font-size:1.1em;
+    font-weight:bold;
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;	
+}
+.notelist li.notelistIndent {
+    font-size:1.0em;
+    margin:0px 0px 0px 35px;
+    padding:0px 0px 0px 0px;	
+    list-style-type:disc;
+}
+.notelist li.noteLast {
+    font-size:1.0em;
+    margin:0px 0px 15px 15px;
+    padding:0px 0px 0px 0px;	
+}
+
+
+ol.steplist li {
+    margin:30px 0px 0px 5px;	
+}
+
+ol.steplist img {
+    margin:5px 0px 0px 5px;	
+}
+
+ul.normallist li{
+    margin:5px 0px 0px 5px;	
+}
+
+.tip {
+    margin:10px 0px 0px 25px;
+    color:#3E6B8A;
+}
+.tipPre {
+    margin:10px 0px 0px 25px;
+    color:#3E6B8A;
+    font-size:0.90em;
+    border: 1px solid #adadad;
+    padding:10px;
+}
+
+/* style rules adapted from netbeans.org */
+.margin-around {margin: 10px;}
+
+.b-all {border:1px solid #adadad;}
+
+.b-right {border-right:1px solid #adadad;}
+
+.b-bottom {border-bottom:1px solid #adadad;}
+
+.examplecode {
+  font-size:0.90em;
+    border: 1px solid #adadad;
+    background-color: #f4f4f4;
+    padding:10px;
+    overflow: auto;
+    width: 90%;
+}
+
+.light {
+    background-color: #f5f7fa;
+}
+
+.dark {
+    background-color: #eaeef4;
+}
+
+.head {
+    background-color: #d3dce7;
+}
+
+.indent {
+    margin-left: 20px;
+}

@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>JavaScript Objects</title>
+    <script type="text/javascript">
+      function main(){
+        /* Define and print object normal */
+        var dorm1 = new Object();
+        dorm1.name = "North";
+        dorm1.type = "WOMEN";
+        dorm1.size = 250;
+        dorm1.students = new Array("Jane Doe", "Martha Jones");
+        
+        var div1 = document.getElementById("div1");
+        var htmlStr = "<p>Dorm Name: " + dorm1.name + "</p>";
+        htmlStr = htmlStr + "<p>Type: " + dorm1.type + "</p>";
+        htmlStr = htmlStr + "<p>Size: " + dorm1.size + "</p>";
+        htmlStr = htmlStr + "<p>Students: " + dorm1.students + "</p>";
+        div1.innerHTML = htmlStr;
+
+        /* Define and print object literal */
+        var dorm2 = {
+          name:"South",
+          type:"COED",
+          size:200,
+          students:["John Smith", "George Washington"]
+        }
+
+        var div2 = document.getElementById("div2");
+        var htmlStr2 = "<p>Dorm Name: " + dorm2.name + "</p>";
+        htmlStr2 = htmlStr2 + "<p>Type: " + dorm2.type + "</p>";
+        htmlStr2 = htmlStr2 + "<p>Size: " + dorm2.size + "</p>";
+        htmlStr2 = htmlStr2 + "<p>Students: " + dorm2.students + "</p>";
+        div2.innerHTML = htmlStr2;
+      }
+    </script>
+  </head>
+<body onLoad="main()">
+  <h2>JavaScript Objects</h2>
+  <h4>Dorms</h4>
+  <div id="div1">
+  </div>
+  <div id="div2">
+  </div>
+</body>
+</html>

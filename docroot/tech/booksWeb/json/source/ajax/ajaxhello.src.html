@@ -1,0 +1,137 @@
+<html>
+<head>
+<title>ajaxhello.html</title>
+<style type="text/css"><!--
+.syntax0 {
+color: #000000;
+}
+.syntax1 {
+color: #009933;
+}
+.syntax2 {
+color: #009900;
+font-weight: bold;
+}
+.syntax3 {
+color: #009900;
+font-style: italic;
+}
+.syntax4 {
+color: #009900;
+}
+.syntax5 {
+color: #ff0000;
+}
+.syntax6 {
+color: #0000cc;
+}
+.syntax7 {
+background: #ffffcc;
+color: #ff0066;
+}
+.syntax8 {
+color: #0000ff;
+font-weight: bold;
+}
+.syntax9 {
+color: #0000ff;
+font-weight: bold;
+}
+.syntax10 {
+color: #660000;
+font-weight: bold;
+}
+.syntax11 {
+color: #cc6600;
+font-weight: bold;
+}
+.syntax12 {
+color: #cc0000;
+}
+.syntax13 {
+color: #330066;
+}
+.syntax14 {
+color: #6600ff;
+}
+.syntax15 {
+color: #9900cc;
+}
+.syntax16 {
+color: #ff33cc;
+}
+.syntax17 {
+color: #0000ff;
+}
+.syntax18 {
+color: #000000;
+font-weight: bold;
+}
+.gutter {
+background: #dbdbdb;
+color: #000000;
+}
+.gutterH {
+background: #dbdbdb;
+color: #990066;
+}
+--></style>
+</head>
+<body bgcolor="#ffffff">
+<pre><span class="syntax0"><span class="gutter">   1:</span><span class="syntax17">&lt;</span><span class="syntax17">html</span><span class="syntax17">&gt;</span>
+<span class="gutter">   2:</span>  <span class="syntax17">&lt;</span><span class="syntax17">head</span><span class="syntax17">&gt;</span>
+<span class="gutter">   3:</span>    <span class="syntax17">&lt;</span><span class="syntax17">title</span><span class="syntax17">&gt;</span>AJAX Hello World!<span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">title</span><span class="syntax17">&gt;</span>
+<span class="gutter">   4:</span>    <span class="syntax17">&lt;style</span><span class="syntax17"> </span><span class="syntax17">type</span><span class="syntax17">=</span><span class="syntax17">&quot;</span><span class="syntax17">text</span><span class="syntax17">/</span><span class="syntax17">css</span><span class="syntax17">&quot;</span><span class="syntax17">&gt;</span>
+<span class="gutterH">   5:</span>        <span class="syntax9">@import</span> &quot;<span class="syntax13">.</span><span class="syntax13">.</span>/<span class="syntax13">.</span><span class="syntax13">.</span>/lib/dijit/themes/tundra/tundra<span class="syntax13">.</span><span class="syntax13">css</span>&quot;;
+<span class="gutter">   6:</span>        <span class="syntax9">@import</span> &quot;<span class="syntax13">.</span><span class="syntax13">.</span>/<span class="syntax13">.</span><span class="syntax13">.</span>/lib/dojo/resources/dojo<span class="syntax13">.</span><span class="syntax13">css</span>&quot;
+<span class="gutter">   7:</span>    <span class="syntax17">&lt;/style&gt;</span>
+<span class="gutter">   8:</span>    <span class="syntax17">&lt;script</span><span class="syntax17"> </span><span class="syntax17">type</span><span class="syntax17">=</span><span class="syntax17">&quot;</span><span class="syntax17">text</span><span class="syntax17">/</span><span class="syntax17">javascript</span><span class="syntax17">&quot;</span><span class="syntax17"> </span><span class="syntax17">src=</span><span class="syntax17">&quot;</span><span class="syntax17">.</span><span class="syntax17">.</span><span class="syntax17">/</span><span class="syntax17">.</span><span class="syntax17">.</span><span class="syntax17">/</span><span class="syntax17">lib</span><span class="syntax17">/</span><span class="syntax17">dojo</span><span class="syntax17">/</span><span class="syntax17">dojo</span><span class="syntax17">.</span><span class="syntax17">js</span><span class="syntax17">&quot;</span>
+<span class="gutter">   9:</span><span class="syntax17"> </span><span class="syntax17"> </span><span class="syntax17"> </span><span class="syntax17"> </span><span class="syntax17">djConfig</span><span class="syntax17">=</span><span class="syntax17">&quot;</span><span class="syntax17">parseOnLoad</span><span class="syntax17">:</span><span class="syntax17"> </span><span class="syntax17">true</span><span class="syntax17">&quot;</span><span class="syntax17">&gt;</span>
+<span class="gutterH">  10:</span>    <span class="syntax17">&lt;/script&gt;</span>
+<span class="gutter">  11:</span>    <span class="syntax17">&lt;script</span><span class="syntax17"> </span><span class="syntax17">type</span><span class="syntax17">=</span><span class="syntax17">&quot;</span><span class="syntax17">text</span><span class="syntax17">/</span><span class="syntax17">javascript</span><span class="syntax17">&quot;</span><span class="syntax17">&gt;</span>
+<span class="gutter">  12:</span>      dojo<span class="syntax18">.</span><span class="syntax6">require</span><span class="syntax18">(</span><span class="syntax13">&quot;</span><span class="syntax13">dojo.parser</span><span class="syntax13">&quot;</span><span class="syntax18">)</span><span class="syntax18">;</span>
+<span class="gutter">  13:</span>      dojo<span class="syntax18">.</span><span class="syntax6">require</span><span class="syntax18">(</span><span class="syntax13">&quot;</span><span class="syntax13">dijit.form.Button</span><span class="syntax13">&quot;</span><span class="syntax18">)</span><span class="syntax18">;</span>
+<span class="gutter">  14:</span>    <span class="syntax17">&lt;/script&gt;</span>
+<span class="gutterH">  15:</span>    <span class="syntax1">&lt;!--</span><span class="syntax1"> </span><span class="syntax1">AJAX</span><span class="syntax1"> </span><span class="syntax1">Call</span><span class="syntax1"> </span><span class="syntax1">here</span><span class="syntax1">--&gt;</span>
+<span class="gutter">  16:</span>    <span class="syntax17">&lt;script</span><span class="syntax17">&gt;</span>      
+<span class="gutter">  17:</span>      <span class="syntax8">function</span> <span class="syntax6">helloCallBack</span><span class="syntax18">(</span>response<span class="syntax18">,</span> ioArgs<span class="syntax18">)</span> <span class="syntax18">{</span>
+<span class="gutter">  18:</span>        dojo<span class="syntax18">.</span><span class="syntax6">byId</span><span class="syntax18">(</span><span class="syntax13">&quot;</span><span class="syntax13">para1</span><span class="syntax13">&quot;</span><span class="syntax18">)</span><span class="syntax18">.</span>innerHTML <span class="syntax18">=</span> response<span class="syntax18">;</span>
+<span class="gutter">  19:</span>      <span class="syntax18">}</span>       
+<span class="gutterH">  20:</span>      
+<span class="gutter">  21:</span>      <span class="syntax8">function</span> <span class="syntax6">helloError</span><span class="syntax18">(</span>response<span class="syntax18">,</span> ioArgs<span class="syntax18">)</span> <span class="syntax18">{</span>
+<span class="gutter">  22:</span>          <span class="syntax6">alert</span><span class="syntax18">(</span><span class="syntax13">'</span><span class="syntax13">Error</span><span class="syntax13"> </span><span class="syntax13">when</span><span class="syntax13"> </span><span class="syntax13">retrieving</span><span class="syntax13"> </span><span class="syntax13">data</span><span class="syntax13"> </span><span class="syntax13">from</span><span class="syntax13"> </span><span class="syntax13">the</span><span class="syntax13"> </span><span class="syntax13">server!</span><span class="syntax13">'</span><span class="syntax18">)</span><span class="syntax18">;</span>
+<span class="gutter">  23:</span>          console<span class="syntax18">.</span><span class="syntax6">error</span><span class="syntax18">(</span><span class="syntax13">&quot;</span><span class="syntax13">HTTP</span><span class="syntax13"> </span><span class="syntax13">status</span><span class="syntax13"> </span><span class="syntax13">code:</span><span class="syntax13"> </span><span class="syntax13">&quot;</span><span class="syntax18">,</span> ioArgs<span class="syntax18">.</span>xhr<span class="syntax18">.</span>status<span class="syntax18">)</span><span class="syntax18">;</span>
+<span class="gutter">  24:</span>          <span class="syntax8">return</span> response<span class="syntax18">;</span>
+<span class="gutterH">  25:</span>      <span class="syntax18">}</span>
+<span class="gutter">  26:</span>    <span class="syntax17">&lt;/script&gt;</span>
+<span class="gutter">  27:</span>  <span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">head</span><span class="syntax17">&gt;</span>
+<span class="gutter">  28:</span>  <span class="syntax17">&lt;</span><span class="syntax17">body</span><span class="syntax17">&gt;</span>
+<span class="gutter">  29:</span>  <span class="syntax17">&lt;</span><span class="syntax17">body</span><span class="syntax17"> </span><span class="syntax17">class</span><span class="syntax18">=</span><span class="syntax13">&quot;</span><span class="syntax13">tundra</span><span class="syntax13">&quot;</span><span class="syntax17">&gt;</span>
+<span class="gutterH">  30:</span>    <span class="syntax17">&lt;</span><span class="syntax17">h4</span><span class="syntax17">&gt;</span>Click Button to Make AJAX Call<span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">h4</span><span class="syntax17">&gt;</span>   
+<span class="gutter">  31:</span>    <span class="syntax17">&lt;</span><span class="syntax17">button</span><span class="syntax17"> </span><span class="syntax17">dojoType</span><span class="syntax18">=</span><span class="syntax13">&quot;</span><span class="syntax13">dijit.form.Button</span><span class="syntax13">&quot;</span><span class="syntax17"> </span><span class="syntax17">id</span><span class="syntax18">=</span><span class="syntax13">&quot;</span><span class="syntax13">helloButton</span><span class="syntax13">&quot;</span><span class="syntax17">&gt;</span>Make AJAX Call
+<span class="gutter">  32:</span>        <span class="syntax17">&lt;script</span><span class="syntax17"> </span><span class="syntax17">type</span><span class="syntax17">=</span><span class="syntax17">&quot;</span><span class="syntax17">dojo</span><span class="syntax17">/</span><span class="syntax17">method</span><span class="syntax17">&quot;</span><span class="syntax17"> </span><span class="syntax17">event</span><span class="syntax17">=</span><span class="syntax17">&quot;</span><span class="syntax17">onClick</span><span class="syntax17">&quot;</span><span class="syntax17">&gt;</span>
+<span class="gutter">  33:</span>         dojo<span class="syntax18">.</span><span class="syntax6">xhrGet</span><span class="syntax18">(</span>
+<span class="gutter">  34:</span>          <span class="syntax18">{</span>
+<span class="gutterH">  35:</span>            <span class="syntax12">url</span><span class="syntax18">:</span> <span class="syntax13">'</span><span class="syntax13">hello.txt</span><span class="syntax13">'</span><span class="syntax18">,</span>
+<span class="gutter">  36:</span>            <span class="syntax12">handleAs</span><span class="syntax18">:</span> <span class="syntax13">&quot;</span><span class="syntax13">text</span><span class="syntax13">&quot;</span><span class="syntax18">,</span>
+<span class="gutter">  37:</span>            <span class="syntax12">timeout</span><span class="syntax18">:</span> <span class="syntax5">5000</span><span class="syntax18">,</span> <span class="syntax2">//</span><span class="syntax2"> </span><span class="syntax2">Time</span><span class="syntax2"> </span><span class="syntax2">in</span><span class="syntax2"> </span><span class="syntax2">milliseconds</span>
+<span class="gutter">  38:</span>            
+<span class="gutter">  39:</span>            <span class="syntax2">//</span><span class="syntax2"> </span><span class="syntax2">The</span><span class="syntax2"> </span><span class="syntax2">LOAD</span><span class="syntax2"> </span><span class="syntax2">function</span><span class="syntax2"> </span><span class="syntax2">will</span><span class="syntax2"> </span><span class="syntax2">be</span><span class="syntax2"> </span><span class="syntax2">called</span><span class="syntax2"> </span><span class="syntax2">on</span><span class="syntax2"> </span><span class="syntax2">a</span><span class="syntax2"> </span><span class="syntax2">successful</span><span class="syntax2"> </span><span class="syntax2">response.</span>
+<span class="gutterH">  40:</span>            <span class="syntax12">load</span><span class="syntax18">:</span> helloCallBack<span class="syntax18">,</span>
+<span class="gutter">  41:</span>
+<span class="gutter">  42:</span>            <span class="syntax2">//</span><span class="syntax2"> </span><span class="syntax2">The</span><span class="syntax2"> </span><span class="syntax2">ERROR</span><span class="syntax2"> </span><span class="syntax2">function</span><span class="syntax2"> </span><span class="syntax2">will</span><span class="syntax2"> </span><span class="syntax2">be</span><span class="syntax2"> </span><span class="syntax2">called</span><span class="syntax2"> </span><span class="syntax2">in</span><span class="syntax2"> </span><span class="syntax2">an</span><span class="syntax2"> </span><span class="syntax2">error</span><span class="syntax2"> </span><span class="syntax2">case.</span>
+<span class="gutter">  43:</span>            <span class="syntax12">error</span><span class="syntax18">:</span> helloError
+<span class="gutter">  44:</span>          <span class="syntax18">}</span>
+<span class="gutterH">  45:</span>        <span class="syntax18">)</span><span class="syntax18">;</span>        
+<span class="gutter">  46:</span>        <span class="syntax17">&lt;/script&gt;</span>
+<span class="gutter">  47:</span>    <span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">button</span><span class="syntax17">&gt;</span>
+<span class="gutter">  48:</span>    <span class="syntax17">&lt;</span><span class="syntax17">div</span><span class="syntax17"> </span><span class="syntax17">id</span><span class="syntax18">=</span><span class="syntax13">&quot;</span><span class="syntax13">div1</span><span class="syntax13">&quot;</span><span class="syntax17">&gt;</span>
+<span class="gutter">  49:</span>      <span class="syntax17">&lt;</span><span class="syntax17">h4</span><span class="syntax17">&gt;</span>Message Here<span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">h4</span><span class="syntax17">&gt;</span>
+<span class="gutterH">  50:</span>      <span class="syntax17">&lt;</span><span class="syntax17">p</span><span class="syntax17"> </span><span class="syntax17">id</span><span class="syntax18">=</span><span class="syntax13">&quot;</span><span class="syntax13">para1</span><span class="syntax13">&quot;</span><span class="syntax17">&gt;</span><span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">p</span><span class="syntax17">&gt;</span>
+<span class="gutter">  51:</span>    <span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">div</span><span class="syntax17">&gt;</span>
+<span class="gutter">  52:</span>  <span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">body</span><span class="syntax17">&gt;</span>
+<span class="gutter">  53:</span><span class="syntax17">&lt;</span><span class="syntax17">/</span><span class="syntax17">html</span><span class="syntax17">&gt;</span>
+</span></pre>
+</body>
+</html>
+

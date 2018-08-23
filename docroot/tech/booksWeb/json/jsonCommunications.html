@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>JSON Intro</title>
+        <link href="../../../images/favicontfp.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="../../../styles.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../jqStyles.css" rel="stylesheet" type="text/css"/>
+        <!-- Note, script order is important! -->
+        <script src="../../../js/jquery310.js" type="text/javascript"></script>
+        <script src="../../../js/jqueryTFP.js" type="text/javascript"></script>
+        <!-- JSON -->
+        <script type="text/javascript" src="json2.js"></script>
+        <script>
+            function doParse() {
+                sText = document.getElementById('textEval').value;
+                // alert(sText);
+                try {
+                    var result = JSON.parse(sText);
+                    document.getElementById("statusMessage").innerHTML = "JSON syntax is good";
+                } catch (er) {
+                    // alert("err");
+                    document.getElementById("statusMessage").innerHTML = "JSON syntax error";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="outerBorder">
+            <script type="text/javascript" src="/pageTop.js"></script>
+            <div class="main">
+                <div class="leftSidebar">
+                    <script type="text/javascript" src="../../leftMenuTop.js"></script>
+                    <script type="text/javascript" src="leftMenu.js"></script>
+                </div>
+
+                <div class="contentLong">
+                    <h2>Communicating with JSON</h2>
+                    
+                    <p>JavaScript Object Notation (JSON) is a lightweight data format based on JavaScript syntax.
+                        JSON is based on object and array literal syntax, therefore it requires less parsing code than XML. 
+                        In addition, it does not have the overhead related to tags like XML. 
+                        Before using JSON, a quick review of object and literal syntax is in order.</p>
+
+                    <h3>Using Array Literals</h3>
+                    <p>In JavaScript, arrays can be defined using the <span class="jscode">Array</span> function,
+                        as in line 7 below.
+                        <br>or an array can be defined as a literal, as in line 13 below. 
+                        With the literal syntax, the list of elements is put in a pair of brackets <span class="jscode">[...]</span>. 
+                    </p>
+                    <p>Notice <span class="jscode">arrA</span> (line 7) and <span class="jscode">arrB</span> (line 13) are used in exactly the same way. So the two array definitions are equivalent.</p>
+
+                    <p class="codetitle"><a href="source/json/arrays.html" target="_blank">arrays.html</a></p>
+                    <iframe frameborder="1" scrolling="auto" width="100%" align="middle" height="300px" src="source/json/arrays.src.html"><p><a href="source/json/arrays.src.html">source/json/arrays.src.html</a></p></iframe>
+
+                    <br>&nbsp;
+                    <h3>Using Object Literals</h3>
+                    <p>JavaScript objects can be treated in a similar manner, function based syntax can be used
+                        to define object properties, for example, lines 7 to 11 below. 
+                        <br>Or, use object literal syntax as shown in lines 21 to 26. 
+                        The object is wrapped in a pair of curly brackets <span class="jscode">{...}</span>. 
+                        The object property and values are defined as name value pairs.
+                        <br>On line 25 is an example of a value that is an array, instead of a string or number.</p>
+
+                    <p class="codetitle"><a href="source/json/objects.html" target="_blank">objects.html</a></p>
+                    <iframe frameborder="1" scrolling="auto" width="100%" align="middle" height="320px" src="source/json/objects.src.html"><p><a href="source/json/objects.src.html">source/json/objects.src.html</a></p></iframe>
+                    <p>&nbsp;</p>
+                    <h3>Using JSON</h3>
+                    <p>JSON is taking the object literal object definition and putting the right side of the equals sign 
+                        in a file or HTTP response. Once the data reaches the client, it must be parsed because it is only a string. 
+                        The JavaScript <span class="jscode">eval()</span> function parses and converts a JSON string into a JavaScript object.
+                        <br>To try it, put the object definition in a separate file and make an Ajax call to retrieve.
+                        The following is
+                        <br>1. A JSON file,
+                        <br>2. Ajax script that calls and and parses the JSON file, and
+                        <br>3. Application output.</p>
+
+                    <p class="codetitle"><a href="source/json/dorm01.json.js" target="_blank">dorm01.json.js</a></p>
+                    <iframe frameborder="1" scrolling="auto" width="100%" align="middle" height="120px" src="source/json/dorm01.json.js.html"><p><a href="source/json/dorm01.json.js.html">source/json/dorm01.json.js.html</a></p></iframe>
+
+
+                    <p class="codetitle"><a href="source/json/ajaxjson01.html" target="_blank">ajaxjson01.html</a></p>
+                    <iframe frameborder="1" scrolling="auto" width="100%" align="middle" height="300px" src="source/json/ajaxjson01.src.html"><p><a href="source/json/ajaxjson01.src.html">source/json/ajaxjson01.src.html</a></p></iframe>
+
+                    <p>The are a few key points to review about the code.</p>
+                    <ul>
+                        <li>In the <span class="filename">dorm01.json.js</span> file notice that field keys are quoted as well as the field values. This is a requirement of JSON that is not required in object literals.</li>
+                        <li>Note the syntax for the <span class="method">eval</span> function on line 18. The quoted parentheses are required for the JSON string to be evaluated.</li>
+                        <li>The resulting object is treated just as if it were defined in the JavaScript code in the page.</li>
+                    </ul>
+
+                    <p>&nbsp;
+                        <img src="art/json/ajaxjson01.png" border="1" alt="Dojo HTML with Ajax and Dojo"/>
+
+
+                    <h3>Making JSON More Secure</h3>
+                    <p>JSON parses fast and is more lightweight than XML. However, you are in effect executing code when the <span class="method">eval</span> function is executed. If malicious code was sent back with your data, this would be a problem. To prevent this from happening, you should use a JSON parser to convert the JSON text into an object. A JSON parser ensures that only data is returned from your text, not code.</p>
+                    <p>You can get a JSON parser from <a href="http://www.json.org/json2.js" target="_blank">http://www.json.org/json2.js</a>. Include this file in your code. Then, use the <span class="method">parse</span> method to convert the text into an object. An updated example is shown below.</p>
+
+                    <p class="codetitle"><a href="source/json/ajaxjson02.html" target="_blank">ajaxjson02.html</a></p>
+                    <iframe frameborder="1" scrolling="auto" width="100%" align="middle" height="300px" src="source/json/ajaxjson02.src.html"><p><a href="source/json/ajaxjson02.src.html">source/json/ajaxjson02.src.html</a></p></iframe>
+
+                    <p>The JSON parser is included on line 11. To call it, take a look at line 19. Just pass the response through the <span class="method">parse</span> method and you have an object.</p>
+
+                    <p><b>Note: </b>Dojo includes a handler for both <span class="jscode">json</span> and <span class="jscode">comment-filtered-json</span>. So, instead of specifying text for the <span class="field">handlAs</span> property, you could choose either of these values. However, neither handler performs the code parsing provided in <span class="filename">json2.js</span>.</p>
+
+                    <h3>Adding More Complexity</h3>
+
+                    <p>So far the JSON text has been relatively simple. For completeness, the following example includes an array of dorm objects with an embedded list of student names. This is still a relatively straightforward example.</p>
+
+                    <p class="codetitle"><a href="source/json/dorm03.json.js" target="_blank">dorm03.json.js</a></p>
+                    <iframe frameborder="1" scrolling="auto" width="100%" align="middle" height="300px" src="source/json/dorm03.json.js.html"><p><a href="source/json/dorm03.json.js.html">source/json/dorm03.json.js.html</a></p></iframe>
+
+
+                    <p class="codetitle"><a href="source/json/ajaxjson03.html" target="_blank">ajaxjson03.html</a></p>
+                    <iframe frameborder="1" scrolling="auto" width="100%" align="middle" height="300px" src="source/json/ajaxjson03.src.html"><p><a href="source/json/ajaxjson03.src.html">source/json/ajaxjson03.src.html</a></p></iframe>
+
+                    <p>
+                        <img src="art/json/ajaxjson03.png" border="1" alt="JSON Example with Arrays of Arrays"/>
+
+
+                    <h3>JSON Syntax Debugging</h3>
+
+                    <p>JSON text can include a lot of brackets, curly brackets, and commas. Trying to debug your file can be a bit tough. To help with this, there are JSON validation tools you can be use to help out.</p>
+
+                    <ul>
+                        <li>Online validation tools: <a href="http://www.jsonlint.com/" target="_blank">jsonlint</a> or 
+                            <a href="http://www.w3.org/2005/01/yacker/uploads/json?lang=perl" target="_blank">yacker</a></li>
+                        <li>Command line validation tools: <a href="http://www.kuwata-lab.com/kwalify/" target="_blank">kwalify</a></li>
+                    </ul>
+
+                    <p>Running your JSON through one of these tools should be a standard testing practice.</p>
+                </div>
+            </div>
+            <div class="footer">
+                <script type="text/javascript" src="../pageBottom.js"></script>
+            </div>
+        </div>
+    </body>
+</html>

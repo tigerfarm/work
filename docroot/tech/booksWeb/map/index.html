@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>TFP Map</title>
+        <link href="../../../images/favicontfp.ico" rel="shortcut icon" type="image/x-icon" />
+        <script src=earthMap.js></script>
+        <link href="../../../styles.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../jqStyles.css" rel="stylesheet" type="text/css"/>
+        <!-- Note, script order is important!>
+        <script src="../../../js/jquery310.js" type="text/javascript"></script>
+        <script src="../../../js/jqueryTFP.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            // Google Analytics
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-35906964-1']);
+            _gaq.push(['_setDomainName', 'tigerfarmpress.com']);
+            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script -->
+    </head>
+    <body onload="initializePage();">
+        <div id="outerBorder">
+            <script type="text/javascript" src="/pageTop.js"></script>
+            <div class="main">
+                <div class="leftSidebar">
+                    <script type="text/javascript" src="../../leftMenuTop.js"></script>
+                    <div class="navtitle">JavaScript Map</div>
+                    <script type="text/javascript" src="leftMenu.js"></script>
+                </div>
+
+                <div class="contentLong" style="height:630px">
+                    <h2>JavaScript Map</h2>
+                    <p class="pBookSmallNoIndent">
+                        Before Google Maps was popular,
+                        before smartphones,
+                        before Google Maps covered Asian cities,
+                        I wrote this map program to inspire students to be as good as Google's California developers.
+                    </p>
+                    <p class="pBookSmall">
+                        This was part of a course I taught in Atlanta, Singapore, Kula Lumpur, Bangkok, and Hyderabad.
+                    </p>
+                    <div id="mapDiv"
+                         style="overflow: hidden;
+                         border: solid #5382A1;
+                         position: relative;
+                         margin-top: 18px;"
+                         >
+                        <img id="tileImg00" style="position: absolute;" class="drag" src="" alt="">
+                        <img id="tileImg01" style="position: absolute;" class="drag" src="" alt="">
+                        <img id="tileImg02" style="position: absolute;" class="drag" src="" alt="">
+                        <img id="tileImg03" style="position: absolute;" class="drag" src="" alt="">
+                        <img id="tileImg10" style="position: absolute;" class="drag" src="" alt="">
+                        <img id="tileImg11" style="position: absolute;" class="drag" src="" alt="">
+                        <img id="tileImg12" style="position: absolute;" class="drag" src="" alt="">
+                        <img id="tileImg13" style="position: absolute;" class="drag" src="" alt="">
+                        <img id="tileImg20" style="position: absolute;" class="drag" src="" alt="">
+                        <img id="tileImg21" style="position: absolute;" class="drag" src="" alt="">
+                        <img id="tileImg22" style="position: absolute;" class="drag" src="" alt="">
+                        <img id="tileImg23" style="position: absolute;" class="drag" src="" alt="">
+                        <img id="tileImg30" style="position: absolute;" class="drag" src="" alt="">
+                        <img id="tileImg31" style="position: absolute;" class="drag" src="" alt="">
+                        <img id="tileImg32" style="position: absolute;" class="drag" src="" alt="">
+                        <img id="tileImg33" style="position: absolute;" class="drag" src="" alt="">
+                    </div>
+                    <div style="display:'none';font-size: 23px; z-index: 500; background-color: white; position: relative;">
+                        <div id="theMsg0" style="display:none">Event: mouseUp</div>
+                        <div id="theMsg01" style="display:none">mouseUp: Do not drag</div>
+                        <div id="theMsg1" style="display:none">Cursor top:row:Y</div>
+                        <div id="theMsg2" style="display:none">Cursor left:column:X</div>
+                        <div id="theMsg3" style="display:none">Image top:row:Y</div>
+                        <div id="theMsg4" style="display:none">Image left:column:X</div>
+                        <div id="theMsg5" style="display:none">init5</div>
+                    </div>
+                    <p class="pBookSmallNoIndent" style="margin-top: 12px;">
+                        This sample demonstrates the basic image array movements of Google Maps.
+                        <br/>It has 2 views: <a href=Javascript:dragobject.toggleTileImgGeo();>Satellite view</a>
+                        and a <a href=Javascript:dragobject.toggleTileImgPolitical();>Political map view</a>
+                    </p>
+                    <p class="pBookSmallNoIndent" style="margin-top: 12px;">
+                        <a target="tfpTab" href="http://visibleearth.nasa.gov/view_set.php?categoryID=2355">Satellite graphic</a>
+                        was downloaded from the NASA website.
+                    </p>
+                </div>
+            </div>
+            <div class="footer">
+                <script type="text/javascript" src="../pageBottom.js"></script>
+            </div>
+        </div>
+    </body>
+</html>
