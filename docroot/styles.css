@@ -19,9 +19,10 @@ body,th,td,p,div,span,a,input,select,textarea,li,notelist{
 
 #topHeading {
     position:fixed;
+    width: 900px;
     height: 86px;
     margin: 0 0 0 0px;
-    padding: 0px 0px 0px 6px;
+    padding: 0px 0px 0px 0px;
     border-bottom: 2px solid black;
 }
 
@@ -35,8 +36,8 @@ body,th,td,p,div,span,a,input,select,textarea,li,notelist{
 }
 
 #footer {
-    margin: 0px 0px 30px 0px;
-    padding:6px 0px 3px 0px;	
+    margin: 0px 0px 0px 0px;
+    padding: 12px 0px 30px 0px;	
     border-top: 2px solid #000000;
     text-align: center;
     font-size: 0.8em;
@@ -58,15 +59,16 @@ body,th,td,p,div,span,a,input,select,textarea,li,notelist{
     padding: 0px 0px 0px 0px;
 }
 #topImgCenter {
-    width: 780px;
-    margin: 6px 0px 0px 120px;
+    width: 100%;
+    margin: 15px 0px 0px 120px;
     padding: 0px 0px 0px 0px;
 }
 .alignRight,
 #topImgRight{
     float: right;
-    padding: 36px 016px 0px 0px;
-    font-size: small;
+    padding: 30px 0px 0px 120px;
+    color: #B76418;
+    font-size: 0.8em;
 }
 
 /*  HTML Links -----------------------------------------------------------------
@@ -101,7 +103,7 @@ a img {
 .menuicon {
     display: inline-block;
     cursor: pointer;
-    padding: 0px 12px 0px 0px;
+    padding: 12px 12px 0px 0px;
 }
 .bar1, .bar2, .bar3 {
     width: 24px;
