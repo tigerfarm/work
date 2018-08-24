@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>expandAfterMode</key>
+	<integer>0</integer>
+	<key>expanderExceptionsMode</key>
+	<integer>4</integer>
+	<key>groupShareState</key>
+	<integer>2</integer>
+	<key>groupSpecialization</key>
+	<integer>0</integer>
+	<key>lastUpdate</key>
+	<date>50608-08-21T23:59:22Z</date>
+	<key>name</key>
+	<string>Legal / GDPR Information (4#)</string>
+	<key>notes</key>
+	<string></string>
+	<key>snippetPlists</key>
+	<array/>
+	<key>snippetUUIDs</key>
+	<array/>
+	<key>snippetsSubscribedRevision</key>
+	<integer>0</integer>
+	<key>source</key>
+	<string></string>
+	<key>sourceType</key>
+	<integer>4</integer>
+	<key>suggestAbbreviations</key>
+	<integer>1</integer>
+	<key>syncedOnlineRevision</key>
+	<integer>1534887187162</integer>
+	<key>updateFrequency</key>
+	<integer>0</integer>
+	<key>uuidString</key>
+	<string>AA6282A0-4DA7-11E8-9A21-9F9EC7D8CDAC</string>
+	<key>writable</key>
+	<integer>1</integer>
+</dict>
+</plist>

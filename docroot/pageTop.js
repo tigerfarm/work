@@ -1,3 +1,6 @@
+// Could add a simple to menu suchas: http://twilext.com/
+// Home Features Pricing Signup Login Howto Contact Us
+//
 document.write('<div id="topHeading">');
 document.write('<table>');
 document.write('<tr>');
@@ -28,4 +31,4 @@ document.write('</td>');
 document.write('</tr>');
 document.write('</table>');
 document.write('</div>');
-document.write('<h1 id="contentTopBuffer">Under the top bar</h1>');
+document.write('<div id="contentTopBuffer">&nsbp.</div>');

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>expandAfterMode</key>
+	<integer>0</integer>
+	<key>expanderExceptionsMode</key>
+	<integer>4</integer>
+	<key>groupShareState</key>
+	<integer>2</integer>
+	<key>groupSpecialization</key>
+	<integer>0</integer>
+	<key>lastUpdate</key>
+	<date>50608-08-21T23:56:36Z</date>
+	<key>name</key>
+	<string>General - Customer Management - FAQ/Console Links (1#)</string>
+	<key>notes</key>
+	<string></string>
+	<key>snippetPlists</key>
+	<array>
+		<dict>
+			<key>abbreviation</key>
+			<string>#GenManyQs</string>
+			<key>abbreviationMode</key>
+			<integer>1</integer>
+			<key>creationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>htmlText</key>
+			<string>&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; -webkit-text-stroke-color: rgb(50, 51, 51); -webkit-text-stroke-width: initial;"&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;span class="colour" style="color:rgb(50, 51, 51)"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;span style="font-kerning: none;"&gt;Please note if you have additional questions regarding how to use our SMS service, please submit a new ticket at&amp;nbsp;&lt;a href="mailto:help@twilio.com"&gt;&lt;span class="colour" style="color:rgb(0, 136, 204)"&gt;help@twilio.com&lt;/span&gt;&lt;/a&gt;. We try to ensure that each ticket is about one issue so that the information that is shared in the ticket will be concise and the information shared will not be lost. Thank you very much for your cooperation and understanding.&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</string>
+			<key>label</key>
+			<string>General - Customer Submitting Multiple Questions in Same Ticket</string>
+			<key>modificationDate</key>
+			<date>2018-08-20T21:35:35Z</date>
+			<key>plainText</key>
+			<string>
+
+Please note if you have additional questions regarding how to use our SMS service, please submit a new ticket at help@twilio.com. We try to ensure that each ticket is about one issue so that the information that is shared in the ticket will be concise and the information shared will not be lost. Thank you very much for your cooperation and understanding. </string>
+			<key>snippetType</key>
+			<integer>5</integer>
+			<key>syncedOnlineRevision</key>
+			<integer>1534800925330</integer>
+			<key>uuidString</key>
+			<string>DCA714D8-8C97-4E53-BF86-7355358A4320</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>#GenScreenShots</string>
+			<key>abbreviationMode</key>
+			<integer>1</integer>
+			<key>creationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>htmlText</key>
+			<string>&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="margin: 0px; line-height: 20px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-position: initial initial; background-repeat: initial initial;"&gt;&lt;span class="highlight" style="background-color:rgb(255, 255, 255)"&gt;&lt;span class="colour" style="color:rgb(51, 51, 51)"&gt;&lt;span class="font" style="font-family:system-ui, -apple-system, system-ui, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif"&gt;&lt;span class="size" style="font-size:14px"&gt;Please attach the screen shot from your e-mail client as a copy of this response will be sent out to your e-mail inbox.&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;/p&gt;</string>
+			<key>label</key>
+			<string>General - Ask for Screen Shots</string>
+			<key>modificationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>plainText</key>
+			<string>
+Please attach the screen shot from your e-mail client as a copy of this response will be sent out to your e-mail inbox. 
+</string>
+			<key>snippetType</key>
+			<integer>5</integer>
+			<key>syncedOnlineRevision</key>
+			<integer>1531515387352</integer>
+			<key>uuidString</key>
+			<string>37D3ED3F-0405-48FB-8677-33AD5089D5A7</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>#GenBrowser</string>
+			<key>abbreviationMode</key>
+			<integer>1</integer>
+			<key>creationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>htmlText</key>
+			<string>&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; -webkit-text-stroke-color: rgb(50, 51, 51); -webkit-text-stroke-width: initial;"&gt;&lt;span class="colour" style="color:rgb(50, 51, 51)"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;span style="font-kerning: none;"&gt;Dear ____,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; -webkit-text-stroke-color: rgb(50, 51, 51); -webkit-text-stroke-width: initial;"&gt;&lt;span class="colour" style="color:rgb(50, 51, 51)"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;span style="font-kerning: none;"&gt;&lt;br&gt;Thank you for contacting Twilio Support. &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;span class="colour" style="color:rgb(50, 51, 51)"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;span style="font-kerning: none;"&gt;&lt;br&gt;May I ask what web browser are you using? Would you be able to kindly retest using Google Chrome, Mozilla Firefox or Safari, preferably the most up-to-date version for best performance? Please note that Microsoft Edge (Internet Explorer) is not recommended when using Twilio. If you continue to experience issues, please provide a screen shot so that I can escalate this up to our Accounts and Console Team for further investigation. Please provide a screen shot through your e-mail client as a copy of this response is sent to your e-mail inbox.&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; -webkit-text-stroke-color: rgb(50, 51, 51); -webkit-text-stroke-width: initial;"&gt;&lt;span class="colour" style="color:rgb(50, 51, 51)"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;span style="font-kerning: none;"&gt;&lt;br&gt;Please kindly retest with the up-to-date version of Google Chrome, Mozilla Firefox, or Safari.&amp;nbsp;&lt;br&gt; &lt;br&gt;I look forward to hearing back from you. Please let me know if there is anything else I can help you with or further clarify. More than happy to help.&amp;nbsp;&lt;br&gt; &lt;br&gt; Warmest Regards,&lt;br&gt; &lt;br&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;/p&gt;</string>
+			<key>label</key>
+			<string>General - Browser Issues</string>
+			<key>modificationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>plainText</key>
+			<string>Dear ____,
+
+Thank you for contacting Twilio Support. 
+
+May I ask what web browser are you using? Would you be able to kindly retest using Google Chrome, Mozilla Firefox or Safari, preferably the most up-to-date version for best performance? Please note that Microsoft Edge (Internet Explorer) is not recommended when using Twilio. If you continue to experience issues, please provide a screen shot so that I can escalate this up to our Accounts and Console Team for further investigation. Please provide a screen shot through your e-mail client as a copy of this response is sent to your e-mail inbox. 
+
+Please kindly retest with the up-to-date version of Google Chrome, Mozilla Firefox, or Safari. 
+ 
+I look forward to hearing back from you. Please let me know if there is anything else I can help you with or further clarify. More than happy to help. 
+ 
+ Warmest Regards,
+ 
+
+</string>
+			<key>snippetType</key>
+			<integer>5</integer>
+			<key>syncedOnlineRevision</key>
+			<integer>1531515312312</integer>
+			<key>uuidString</key>
+			<string>245A9775-30B4-41C3-A641-026BF88EEBBD</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>#GenBadSurvey</string>
+			<key>abbreviationMode</key>
+			<integer>1</integer>
+			<key>creationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>htmlText</key>
+			<string>&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Hello ____,&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;I am reaching out as I see that you submitted “Bad, I’m unsatisfied” for this ticket.  I am sorry to hear that you were unsatisfied with the support. May I ask what I could have done better to provide a better customer experience? I would love to learn from you and continue to improve. Thank you and have a good day.&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Thanks,&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</string>
+			<key>label</key>
+			<string>General - Bad Survey Ask for Feedback</string>
+			<key>modificationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>plainText</key>
+			<string>Hello ____,
+
+I am reaching out as I see that you submitted “Bad, I’m unsatisfied” for this ticket.  I am sorry to hear that you were unsatisfied with the support. May I ask what I could have done better to provide a better customer experience? I would love to learn from you and continue to improve. Thank you and have a good day.
+
+Thanks,
+</string>
+			<key>snippetType</key>
+			<integer>5</integer>
+			<key>syncedOnlineRevision</key>
+			<integer>1531515301737</integer>
+			<key>uuidString</key>
+			<string>BF6FDB08-7927-4058-A188-2A1ADDF0FB1E</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>#GenMSG</string>
+			<key>abbreviationMode</key>
+			<integer>1</integer>
+			<key>creationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>htmlText</key>
+			<string>&lt;p class="paragraph"&gt;Please provide 3 or more Message SID examples from the past 48 hours. I will like to further investigate. To learn more about how to retrieve Message SID examples, please see below:&amp;nbsp;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;https://support.twilio.com/hc/en-us/articles/223134387-What-is-a-Message-SID-&amp;nbsp;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;/p&gt;</string>
+			<key>label</key>
+			<string>General - Ask for Message SID Examples</string>
+			<key>modificationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>plainText</key>
+			<string>Please provide 3 or more Message SID examples from the past 48 hours. I will like to further investigate. To learn more about how to retrieve Message SID examples, please see below: 
+
+https://support.twilio.com/hc/en-us/articles/223134387-What-is-a-Message-SID- 
+</string>
+			<key>snippetType</key>
+			<integer>5</integer>
+			<key>syncedOnlineRevision</key>
+			<integer>1531515286133</integer>
+			<key>uuidString</key>
+			<string>D39E31EE-8DE6-4E30-9192-8F1D2B2DECE2</string>
+		</dict>
+	</array>
+	<key>snippetUUIDs</key>
+	<array>
+		<string>DCA714D8-8C97-4E53-BF86-7355358A4320</string>
+		<string>37D3ED3F-0405-48FB-8677-33AD5089D5A7</string>
+		<string>245A9775-30B4-41C3-A641-026BF88EEBBD</string>
+		<string>BF6FDB08-7927-4058-A188-2A1ADDF0FB1E</string>
+		<string>D39E31EE-8DE6-4E30-9192-8F1D2B2DECE2</string>
+	</array>
+	<key>snippetsSubscribedRevision</key>
+	<integer>1534800925330</integer>
+	<key>source</key>
+	<string></string>
+	<key>sourceType</key>
+	<integer>4</integer>
+	<key>suggestAbbreviations</key>
+	<integer>1</integer>
+	<key>syncedOnlineRevision</key>
+	<integer>1534887186996</integer>
+	<key>updateFrequency</key>
+	<integer>0</integer>
+	<key>uuidString</key>
+	<string>971B0460-4CB2-11E8-9A21-9F9EC7D8CDAC</string>
+	<key>writable</key>
+	<integer>1</integer>
+</dict>
+</plist>

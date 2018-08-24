@@ -5,14 +5,14 @@ $client = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 //
 date_default_timezone_set( "UTC" );
 $params = array(
-    'dateSentAfter' => date('2018-08-23 00:00:00'),
-    'dateSentBefore' => date('2018-08-23 21:59:59')
+    'dateSentAfter' => date('2018-08-24 00:00:00'),
+    'dateSentBefore' => date('2018-08-24 21:59:59')
 );
 $result = $client->messages->read($params);
 echo '++ List messages.';
 foreach ($result as $message) {
     echo "\xA";
-    echo $message->dateSent->format("Y-m-d h:i:s"). " " . $message->sid . " " . $message->body;
+    echo $message->dateSent->format("Y-m-d h:i:s") . " " . $message->sid . " " . $message->status . " " . $message->body;
 }
 echo "\xA";
 echo '+ End of List.';

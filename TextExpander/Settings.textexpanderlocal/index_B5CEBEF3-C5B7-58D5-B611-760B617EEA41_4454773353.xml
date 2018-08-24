@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Automatic Backup</key>
+	<true/>
+	<key>Client Mode</key>
+	<integer>0</integer>
+	<key>Cross Platform Images</key>
+	<true/>
+	<key>Date 6.X Installed</key>
+	<date>2018-08-09T18:11:54Z</date>
+	<key>Generate Suggested Snippets</key>
+	<true/>
+	<key>Last Version</key>
+	<string>6.2.6</string>
+	<key>Restore Pasteboard</key>
+	<true/>
+	<key>Tutor Typed Snippets</key>
+	<false/>
+	<key>autoCapExceptionApps</key>
+	<array>
+		<dict>
+			<key>bundleID</key>
+			<string>com.apple.Terminal</string>
+			<key>name</key>
+			<string>Terminal</string>
+		</dict>
+		<dict>
+			<key>bundleID</key>
+			<string>com.apple.dt.Xcode</string>
+			<key>name</key>
+			<string>Xcode</string>
+		</dict>
+	</array>
+	<key>autoCapExceptionsMode</key>
+	<integer>1</integer>
+	<key>checkforupdates</key>
+	<true/>
+	<key>checkfrequency</key>
+	<integer>7</integer>
+	<key>groupsTE5</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>TextExpander Snippets</string>
+			<key>uuidString</key>
+			<string>78EF1A0C-1A9E-4240-A89A-7A5FD9720AD9</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Suggested Snippets</string>
+			<key>uuidString</key>
+			<string>F8511A42-27B1-446A-BDD0-97C609662DF7</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Alphanumeric SenderID (1!)</string>
+			<key>uuidString</key>
+			<string>19EC6D00-4CB0-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Carrier Filtering (3!)</string>
+			<key>uuidString</key>
+			<string>7011A600-4CB0-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Concatenation (5!)</string>
+			<key>uuidString</key>
+			<string>901FD340-4CB0-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Character Encoding (4!)</string>
+			<key>uuidString</key>
+			<string>8082A200-4CB0-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Third Party Integration (4$)</string>
+			<key>uuidString</key>
+			<string>3ACEA130-4CB2-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Directions - READ ME</string>
+			<key>uuidString</key>
+			<string>847D9600-4CB3-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Legal / GDPR Information (4#)</string>
+			<key>uuidString</key>
+			<string>AA6282A0-4DA7-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Twilio Filtering (5$)</string>
+			<key>uuidString</key>
+			<string>447220E0-4CB2-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Coverage (2@)</string>
+			<key>uuidString</key>
+			<string>AA8ECB00-4CB0-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Inbound / Outbound Nondelivery (2#)</string>
+			<key>uuidString</key>
+			<string>79963690-4CB1-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Pricing (2$)</string>
+			<key>uuidString</key>
+			<string>306E8840-4CB2-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Copilot (1@)</string>
+			<key>uuidString</key>
+			<string>9CE81290-4CB0-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Feedback / Queue Insights (5@)</string>
+			<key>uuidString</key>
+			<string>14268AC0-4CB2-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Incorrect / Lacking Delivery Status / Status Information (3#)</string>
+			<key>uuidString</key>
+			<string>D6BA3510-4CB1-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Duplicate Messages (3@)</string>
+			<key>uuidString</key>
+			<string>B5929E00-4CB0-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Looping (5#)</string>
+			<key>uuidString</key>
+			<string>1FA978D0-4CB2-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>API (2!)</string>
+			<key>uuidString</key>
+			<string>D4315770-532C-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Short Codes (3$)</string>
+			<key>uuidString</key>
+			<string>A9DFB996-F1C4-47F5-A222-FAEED601DE28</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Errors (4@)</string>
+			<key>uuidString</key>
+			<string>576BEAA0-4CB2-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Undesired SenderID Change (1%)</string>
+			<key>uuidString</key>
+			<string>519A0C60-4CB2-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>General - Customer Management - FAQ/Console Links (1#)</string>
+			<key>uuidString</key>
+			<string>971B0460-4CB2-11E8-9A21-9F9EC7D8CDAC</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Phone Numbers / Addresses (1$)</string>
+			<key>uuidString</key>
+			<string>9AF6B2FF-228B-4633-AF9D-5F0176761853</string>
+		</dict>
+	</array>
+	<key>notifySuggestions</key>
+	<false/>
+	<key>offlineChangesUserID</key>
+	<string>ZdKwnEKyPsmqdxLYg</string>
+	<key>offlineUserA</key>
+	<string>Qz5m5nK0X34kmaB</string>
+	<key>outlineState</key>
+	<array>
+		<string>0EA7C738-0E5C-4349-B26C-D0878D4E5618</string>
+	</array>
+	<key>rejectedHashes</key>
+	<array>
+		<integer>10694277825924933839</integer>
+	</array>
+	<key>suggestExceptionApps</key>
+	<array>
+		<dict>
+			<key>bundleID</key>
+			<string>com.apple.Terminal</string>
+			<key>name</key>
+			<string>Terminal</string>
+		</dict>
+	</array>
+	<key>suggestExceptionsMode</key>
+	<integer>1</integer>
+	<key>unsyncedChanges</key>
+	<array/>
+	<key>urlGroupsConversionStage</key>
+	<integer>2</integer>
+</dict>
+</plist>

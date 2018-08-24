@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>expandAfterMode</key>
+	<integer>0</integer>
+	<key>expanderExceptionsMode</key>
+	<integer>4</integer>
+	<key>groupShareState</key>
+	<integer>2</integer>
+	<key>groupSpecialization</key>
+	<integer>0</integer>
+	<key>lastUpdate</key>
+	<date>50608-08-21T23:55:06Z</date>
+	<key>name</key>
+	<string>Errors (4@)</string>
+	<key>notes</key>
+	<string></string>
+	<key>snippetPlists</key>
+	<array>
+		<dict>
+			<key>abbreviation</key>
+			<string>@Errors21612</string>
+			<key>abbreviationMode</key>
+			<integer>1</integer>
+			<key>creationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>htmlText</key>
+			<string>&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;Hello ____,&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;span class="highlight" style="background-color:rgb(255, 246, 217)"&gt;&lt;span class="colour" style="color:rgb(51, 51, 51)"&gt;&lt;span class="font" style="font-family:system-ui, -apple-system, system-ui, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif"&gt;&lt;span class="size" style="font-size:14px"&gt;Thank you for contacting Twilio Support. I am very sorry to hear you are unable to send messages to +1 regions (US/Canada) from your Twilio number.&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="colour" style="color:rgb(50, 51, 51)"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span style="font-kerning: none;"&gt;&lt;span class="size" style="font-size:14px"&gt;Twilio was informed by our carrier that there had been some message routing issues for Twilio's international origination numbers to reach +1 US/Canada regions. While we are trying to explore possible ways to resolve the issue, we have decided to disable the route so our customers will not continue to be charged for routes that are not stable. We now throw an API 400 response with error 21612. We are doing this to prevent customers from being charged for undelivered messages, or also to help them work around the problem by utilizing these exceptions. A way to catch these errors is to track 21612 exceptions in your code and once you see this response from Twilio, you then retry with a US local number. This will actually be a better experience for your users as your local users continue to get messages from local numbers, and US users would receive communication from a US local number.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;span class="colour" style="color:rgb(50, 51, 51)"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span style="font-kerning: none;"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;a href="https://www.twilio.com/docs/api/errors/21612"&gt;https://www.twilio.com/docs/api/errors/21612&lt;/a&gt; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; -webkit-text-stroke-color: rgb(50, 51, 51); -webkit-text-stroke-width: initial; min-height: 16px;"&gt;&lt;span class="colour" style="color:rgb(50, 51, 51)"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span style="font-kerning: none;"&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; -webkit-text-stroke-color: rgb(50, 51, 51); -webkit-text-stroke-width: initial;"&gt;&lt;span class="colour" style="color:rgb(50, 51, 51)"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span style="font-kerning: none;"&gt;&lt;span class="size" style="font-size:14px"&gt;Please kindly retest with a Twilio US number. Again, we're deeply sorry about the trouble. Please let me know if you have further questions.&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;span class="colour" style="color:rgb(50, 51, 51)"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span style="font-kerning: none;"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; -webkit-text-stroke-color: rgb(50, 51, 51); -webkit-text-stroke-width: initial;"&gt;&lt;span class="colour" style="color:rgb(50, 51, 51)"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span style="font-kerning: none;"&gt;&lt;span class="size" style="font-size:14px"&gt;Thanks,&lt;br&gt; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</string>
+			<key>label</key>
+			<string>Errors - UK 21612 International Numbers Can’t Reach US Numbers</string>
+			<key>modificationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>plainText</key>
+			<string>
+Hello ____,
+
+Thank you for contacting Twilio Support. I am very sorry to hear you are unable to send messages to +1 regions (US/Canada) from your Twilio number. 
+
+Twilio was informed by our carrier that there had been some message routing issues for Twilio's international origination numbers to reach +1 US/Canada regions. While we are trying to explore possible ways to resolve the issue, we have decided to disable the route so our customers will not continue to be charged for routes that are not stable. We now throw an API 400 response with error 21612. We are doing this to prevent customers from being charged for undelivered messages, or also to help them work around the problem by utilizing these exceptions. A way to catch these errors is to track 21612 exceptions in your code and once you see this response from Twilio, you then retry with a US local number. This will actually be a better experience for your users as your local users continue to get messages from local numbers, and US users would receive communication from a US local number.
+
+https://www.twilio.com/docs/api/errors/21612 
+
+Please kindly retest with a Twilio US number. Again, we're deeply sorry about the trouble. Please let me know if you have further questions. 
+
+Thanks,
+ </string>
+			<key>snippetType</key>
+			<integer>5</integer>
+			<key>syncedOnlineRevision</key>
+			<integer>1531413285915</integer>
+			<key>uuidString</key>
+			<string>1613CB45-ABD7-4B9B-AD31-0589D3F92F35</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>@Errors11200</string>
+			<key>abbreviationMode</key>
+			<integer>1</integer>
+			<key>creationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>htmlText</key>
+			<string>&lt;p&gt;&lt;b&gt;&lt;span class="size" style="font-size:14px"&gt;OPTION 1: &lt;/span&gt;&lt;/b&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;span class="size" style="font-size:14px"&gt;Dear _____, &lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;Thank you for contacting Twilio Support. I am very sorry to hear you are receiving 11200 HTTP Retrieval Failure error.&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;I further investigated into your webhook: ______and it appears that Twilio is unable to connect to this webhook. Twilio is receiving a ______ error. I attempted to make  a cURL request to your webhook and also received the same error . Please make sure that your webhook is publicly accessible through the internet and is configured correctly.&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;Please note that the general rules for webhooks are as follow:&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;ul class="UL"&gt;&lt;li class="listItem"&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;200 OK&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li class="listItem"&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;Content-Type: text/xml &lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li class="listItem"&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;Valid TwiML  (or just  providing a simple &amp;lt;Response/&amp;gt; body if you do not want to send back a response to your end users)&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li class="listItem"&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;**For StatusCallbackURLs, you can simply reply with 204 No Content and an empty response body.&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;Please let me know if you have further questions. &lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;Warmest Regards,&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;span class="size" style="font-size:14px"&gt;--------------------&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;span class="size" style="font-size:14px"&gt;OPTION 2: &lt;/span&gt;&lt;/b&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;Hello ____, &lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;Thank you for contacting Twilio Support. I am very sorry to hear you are receiving 11200 HTTP Retrieval Failure error.&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;After further investigation, it appears that Twilio is encountering a 11200 HTTP Retrieval Failure for your Request URL: _______ . &lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;This is an indicator of a connection failure between Twilio and your service. When Twilio requests a page from your server, we wait a maximum of 15 seconds for a response. A connection failure will occur if no response is returned in that time. This indicates that Twilio was not able to retrieve these URLs within 15 seconds. Please check your web server access logs to find what the actual request processing time was for these requests. Then examine your application logic to find out where the long delay might be introduced. I will also provide some general rules below that can help avoid receiving 11200 HTTP Retrieval Failure Errors:&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;The general rules for Request URLs are as follow:&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;ul class="UL"&gt;&lt;li class="listItem"&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;200 OK&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li class="listItem"&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;Content-Type: text/xml or other ones mentioned in below documentation (I see you application/json as Content-Type): &lt;/span&gt;&lt;a href="https://www.twilio.com/docs/api/twiml/sms/your_response#understands-mime-types"&gt;&lt;span class="size" style="font-size:14px"&gt;https://www.twilio.com/docs/api/twiml/sms/your_response#understands-mime-types&lt;/span&gt;&lt;/a&gt;&lt;span class="size" style="font-size:14px"&gt;  &lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li class="listItem"&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;Valid TwiML or just  providing a simple &amp;lt;Response/&amp;gt; body if you do not wish to send an automatic message back to your end users (I do not see proper TwiML in the body of your request). For more information regarding how to use TwiML please see below: &lt;/span&gt;&lt;a href="https://www.twilio.com/docs/api/twiml/sms/message#examples-1"&gt;&lt;span class="size" style="font-size:14px"&gt;https://www.twilio.com/docs/api/twiml/sms/message#examples-1&lt;/span&gt;&lt;/a&gt;&lt;span class="size" style="font-size:14px"&gt;  &lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li class="listItem"&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt; **For StatusCallbackURLs, you can simply reply with 204 No Content and an empty response body.&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;To see more about your notification errors in your account:&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.twilio.com/console/dev-tools/debugger"&gt;&lt;span class="size" style="font-size:14px"&gt;https://www.twilio.com/console/dev-tools/debugger&lt;/span&gt;&lt;/a&gt;&lt;span class="size" style="font-size:14px"&gt;   &lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;Please kindly retest and let me know your findings. &lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="size" style="font-size:14px"&gt;Thanks,&lt;/span&gt;&lt;/p&gt;</string>
+			<key>label</key>
+			<string>Errors - 11200 HTTP Retrieval Failure - General Rules Request URLs/ StatusCallback URLs</string>
+			<key>modificationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>plainText</key>
+			<string>OPTION 1: 
+
+Dear _____, 
+
+Thank you for contacting Twilio Support. I am very sorry to hear you are receiving 11200 HTTP Retrieval Failure error.
+
+I further investigated into your webhook: ______and it appears that Twilio is unable to connect to this webhook. Twilio is receiving a ______ error. I attempted to make  a cURL request to your webhook and also received the same error . Please make sure that your webhook is publicly accessible through the internet and is configured correctly.
+
+Please note that the general rules for webhooks are as follow:
+
+	•	200 OK
+	•	 
+	•	Content-Type: text/xml 
+	•	 
+	•	Valid TwiML  (or just  providing a simple &lt;Response/&gt; body if you do not want to send back a response to your end users)
+	•	 
+	•	**For StatusCallbackURLs, you can simply reply with 204 No Content and an empty response body.
+	•	 
+Please let me know if you have further questions. 
+
+Warmest Regards,
+
+--------------------
+
+OPTION 2: 
+
+Hello ____, 
+
+Thank you for contacting Twilio Support. I am very sorry to hear you are receiving 11200 HTTP Retrieval Failure error.
+
+After further investigation, it appears that Twilio is encountering a 11200 HTTP Retrieval Failure for your Request URL: _______ . 
+
+This is an indicator of a connection failure between Twilio and your service. When Twilio requests a page from your server, we wait a maximum of 15 seconds for a response. A connection failure will occur if no response is returned in that time. This indicates that Twilio was not able to retrieve these URLs within 15 seconds. Please check your web server access logs to find what the actual request processing time was for these requests. Then examine your application logic to find out where the long delay might be introduced. I will also provide some general rules below that can help avoid receiving 11200 HTTP Retrieval Failure Errors:
+
+
+The general rules for Request URLs are as follow:
+
+	•	200 OK
+	•	 
+	•	Content-Type: text/xml or other ones mentioned in below documentation (I see you application/json as Content-Type): https://www.twilio.com/docs/api/twiml/sms/your_response#understands-mime-types  
+	•	 
+	•	Valid TwiML or just  providing a simple &lt;Response/&gt; body if you do not wish to send an automatic message back to your end users (I do not see proper TwiML in the body of your request). For more information regarding how to use TwiML please see below: https://www.twilio.com/docs/api/twiml/sms/message#examples-1  
+	•	 
+	•	 **For StatusCallbackURLs, you can simply reply with 204 No Content and an empty response body.
+	•	 
+To see more about your notification errors in your account:
+
+https://www.twilio.com/console/dev-tools/debugger   
+
+Please kindly retest and let me know your findings. 
+
+Thanks,</string>
+			<key>snippetType</key>
+			<integer>5</integer>
+			<key>syncedOnlineRevision</key>
+			<integer>1530652108278</integer>
+			<key>uuidString</key>
+			<string>72BF1A84-4025-4DEE-BEEA-6CB7753F7C70</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>@Errors20003</string>
+			<key>abbreviationMode</key>
+			<integer>1</integer>
+			<key>creationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>htmlText</key>
+			<string>&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Dear ____, &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Thank you for contacting Twilio Support. I am sorry to hear you received a  20003 error. &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Error 20003 is generated when you are using an incorrect Twilio Account SID and Auth Token. Please make sure you are using the "live" Account Credentials that can be found on the left side in your Twilio Account Settings page below:&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;a href="https://www.twilio.com/console/account/settings"&gt;https://www.twilio.com/console/account/settings&lt;/a&gt; &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Please kindly retest and let me know your findings. Please let me know if there is anything else I can help you with or further clarify. More than happy to help. &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Warmest Regards,&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;br&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;/p&gt;</string>
+			<key>label</key>
+			<string>Errors - 20003 Permission Denied Error</string>
+			<key>modificationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>plainText</key>
+			<string>Dear ____, 
+
+Thank you for contacting Twilio Support. I am sorry to hear you received a  20003 error. 
+
+Error 20003 is generated when you are using an incorrect Twilio Account SID and Auth Token. Please make sure you are using the "live" Account Credentials that can be found on the left side in your Twilio Account Settings page below:
+
+https://www.twilio.com/console/account/settings 
+
+Please kindly retest and let me know your findings. Please let me know if there is anything else I can help you with or further clarify. More than happy to help. 
+
+Warmest Regards,
+
+
+
+</string>
+			<key>snippetType</key>
+			<integer>5</integer>
+			<key>syncedOnlineRevision</key>
+			<integer>1530652103573</integer>
+			<key>uuidString</key>
+			<string>A0B12583-742F-43B4-8869-5C393E289DE7</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>@Errors30001</string>
+			<key>abbreviationMode</key>
+			<integer>1</integer>
+			<key>creationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>htmlText</key>
+			<string>&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;Dear ______, &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Thank you for contacting Twilio Support. I am very sorry to hear you are receiving a 30001 queue overflow error. &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;For Twilio long codes, there is a message rate limit of 1 SMS message per-second, per-number. This is an industry wide standard limitation for long codes, not a limitation Twilio created. Unfortunately, we are not able to adjust this rate limit. Please note that if you go above this limit, your messages will be put into a queued state. Any messages over 4 hours will failed and will not be processed. There is no definite wait time of when your application should retry. It depends on how many messages are in queued state and how many SMS messages you have left to send out. The general guideline is to not send more than 1 SMS message per-second.&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;If your application requires a high volume of outgoing SMS, we recommend using an SMS short code. Each Twilio short code can send up to 100 messages per-second:&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;a href="https://support.twilio.com/hc/en-us/articles/223182068-What-is-a-short-code-"&gt;https://support.twilio.com/hc/en-us/articles/223182068-What-is-a-short-code-&lt;/a&gt;  &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;You can find additional information rate limits and message queues: &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;a href="https://support.twilio.com/hc/en-us/articles/115002943027-Understanding-Twilio-Rate-Limits-and-Message-Queues"&gt;https://support.twilio.com/hc/en-us/articles/115002943027-Understanding-Twilio-Rate-Limits-and-Message-Queues&lt;/a&gt;  &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Additional information that may be useful to you:&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;- Please note that messages that are 160 characters is consider as 1 message. Additional segments will add to the rate limit. &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;- Keep messages to at most 160 characters if possible. But if not possible, calculate how many SMS messages each message will be (if you are not sure you can always send 1 test message and see how much you are charged for that message).&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;- Based on the assumption that your messages is 160 characters, throttle the sending rate to 3600 messages per hour (1 message/sec * 60 sec/min * 60 min/hr).&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;This should allow you to avoid that 30001 error from Twilio.  Please let me know if there is anything else I can help you with or further clarify. More than happy to help. &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Warmest Regards,&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;br&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;/p&gt;</string>
+			<key>label</key>
+			<string>Errors - 30001 and 21611- Queue Overflow</string>
+			<key>modificationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>plainText</key>
+			<string>
+
+Dear ______, 
+
+Thank you for contacting Twilio Support. I am very sorry to hear you are receiving a 30001 queue overflow error. 
+
+For Twilio long codes, there is a message rate limit of 1 SMS message per-second, per-number. This is an industry wide standard limitation for long codes, not a limitation Twilio created. Unfortunately, we are not able to adjust this rate limit. Please note that if you go above this limit, your messages will be put into a queued state. Any messages over 4 hours will failed and will not be processed. There is no definite wait time of when your application should retry. It depends on how many messages are in queued state and how many SMS messages you have left to send out. The general guideline is to not send more than 1 SMS message per-second.
+
+If your application requires a high volume of outgoing SMS, we recommend using an SMS short code. Each Twilio short code can send up to 100 messages per-second:
+
+https://support.twilio.com/hc/en-us/articles/223182068-What-is-a-short-code-  
+
+You can find additional information rate limits and message queues: 
+
+https://support.twilio.com/hc/en-us/articles/115002943027-Understanding-Twilio-Rate-Limits-and-Message-Queues  
+
+Additional information that may be useful to you:
+
+- Please note that messages that are 160 characters is consider as 1 message. Additional segments will add to the rate limit. 
+
+- Keep messages to at most 160 characters if possible. But if not possible, calculate how many SMS messages each message will be (if you are not sure you can always send 1 test message and see how much you are charged for that message).
+
+- Based on the assumption that your messages is 160 characters, throttle the sending rate to 3600 messages per hour (1 message/sec * 60 sec/min * 60 min/hr).
+
+This should allow you to avoid that 30001 error from Twilio.  Please let me know if there is anything else I can help you with or further clarify. More than happy to help. 
+
+Warmest Regards,
+
+
+</string>
+			<key>snippetType</key>
+			<integer>5</integer>
+			<key>syncedOnlineRevision</key>
+			<integer>1530652101582</integer>
+			<key>uuidString</key>
+			<string>2B73D773-1D92-4754-BB98-E1D0AFA3D972</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>@Errors21610</string>
+			<key>abbreviationMode</key>
+			<integer>1</integer>
+			<key>creationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>htmlText</key>
+			<string>&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Dear ____, &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Thank you for contacting Twilio Support. Great question!&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;The best way to see who responded with a STOP is to look in your Debugger for error code 21610 and then press onto the event. In the event, press onto the&lt;/span&gt;&lt;b&gt;&lt;span class="size" style="font-size:14px"&gt; "Resource SID/ Message SID"&lt;/span&gt;&lt;/b&gt;&lt;span class="size" style="font-size:14px"&gt; &lt;/span&gt;&lt;span class="colour" style="color:rgb(50, 51, 51)"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;b&gt;&lt;span class="size" style="font-size:14px"&gt;(it starts with SM)&lt;/span&gt;&lt;/b&gt;&lt;span class="size" style="font-size:14px"&gt;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="-webkit-text-stroke: 0px #323333;"&gt;&lt;span class="size" style="font-size:14px"&gt;to see the customer's number that responded with a STOP. Please go into your Debugger below for more information:&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; -webkit-text-stroke-color: rgb(50, 51, 51); -webkit-text-stroke-width: initial; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; -webkit-text-stroke-color: rgb(50, 51, 51); -webkit-text-stroke-width: initial;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;a href="https://www.twilio.com/console/dev-tools/debugger?groupBy=individual&amp;amp;query=21610&amp;amp;quickDate=720"&gt;https://www.twilio.com/console/dev-tools/debugger?groupBy=individual&amp;amp;query=21610&amp;amp;quickDate=720&lt;/a&gt;  &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; -webkit-text-stroke-color: rgb(50, 51, 51); -webkit-text-stroke-width: initial; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; -webkit-text-stroke-color: rgb(50, 51, 51); -webkit-text-stroke-width: initial;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Please let me know if there is anything else I can help you with or further clarify. More than happy to help. &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; -webkit-text-stroke-color: rgb(50, 51, 51); -webkit-text-stroke-width: initial; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; -webkit-text-stroke-color: rgb(50, 51, 51); -webkit-text-stroke-width: initial;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Warmest Regards,&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; -webkit-text-stroke-color: rgb(50, 51, 51); -webkit-text-stroke-width: initial; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; -webkit-text-stroke-color: rgb(50, 51, 51); -webkit-text-stroke-width: initial;"&gt;&lt;/p&gt;</string>
+			<key>label</key>
+			<string>Errors - 21610 STOP Error in Debugger </string>
+			<key>modificationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>plainText</key>
+			<string>Dear ____, 
+
+Thank you for contacting Twilio Support. Great question!
+
+The best way to see who responded with a STOP is to look in your Debugger for error code 21610 and then press onto the event. In the event, press onto the "Resource SID/ Message SID" (it starts with SM)  to see the customer's number that responded with a STOP. Please go into your Debugger below for more information:
+
+https://www.twilio.com/console/dev-tools/debugger?groupBy=individual&amp;query=21610&amp;quickDate=720  
+
+Please let me know if there is anything else I can help you with or further clarify. More than happy to help. 
+
+Warmest Regards,
+
+</string>
+			<key>snippetType</key>
+			<integer>5</integer>
+			<key>syncedOnlineRevision</key>
+			<integer>1530652099497</integer>
+			<key>uuidString</key>
+			<string>957CF946-FD38-4767-A690-CD2B2C404A83</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>@Errors12200</string>
+			<key>abbreviationMode</key>
+			<integer>1</integer>
+			<key>creationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>htmlText</key>
+			<string>&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Dear ____,  &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Thank you for contacting Twilio Support. I am sorry to hear you are receiving a 12200- Schema Validation Warning. &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Upon further investigation, it appears that your Message Request URL: ____ does not have valid TwiML, hence Twilio is unable to send out responses to users that send inbound messages to your Twilio numbers. Please note this is not valid TwiML and Twilio will not be able to send outbound responses without proper TwiML content:&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;br&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;For more information about how to use TwiML, please see below:&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;a href="https://www.twilio.com/docs/api/twiml/sms/your_response#twiml-interpreter"&gt;https://www.twilio.com/docs/api/twiml/sms/your_response#twiml-interpreter&lt;/a&gt;  &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Please see below in your Twilio Console Debugger for more information about this error:&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;a href="https://www.twilio.com/console/dev-tools/debugger"&gt;https://www.twilio.com/console/dev-tools/debugger&lt;/a&gt;  &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Please let me know if there is anything else I can help you with or further clarify. More than happy to help.&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Warmest Regards,&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;/p&gt;</string>
+			<key>label</key>
+			<string>Errors - 12200 Schema Validation Warning</string>
+			<key>modificationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>plainText</key>
+			<string>Dear ____,  
+
+Thank you for contacting Twilio Support. I am sorry to hear you are receiving a 12200- Schema Validation Warning. 
+
+Upon further investigation, it appears that your Message Request URL: ____ does not have valid TwiML, hence Twilio is unable to send out responses to users that send inbound messages to your Twilio numbers. Please note this is not valid TwiML and Twilio will not be able to send outbound responses without proper TwiML content:
+
+
+For more information about how to use TwiML, please see below:
+
+https://www.twilio.com/docs/api/twiml/sms/your_response#twiml-interpreter  
+
+Please see below in your Twilio Console Debugger for more information about this error:
+
+https://www.twilio.com/console/dev-tools/debugger  
+
+Please let me know if there is anything else I can help you with or further clarify. More than happy to help.
+
+Warmest Regards,
+
+
+</string>
+			<key>snippetType</key>
+			<integer>5</integer>
+			<key>syncedOnlineRevision</key>
+			<integer>1530652096660</integer>
+			<key>uuidString</key>
+			<string>570FD636-0791-4ADE-BDC9-77BA37D87256</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>@Errors14107</string>
+			<key>abbreviationMode</key>
+			<integer>1</integer>
+			<key>creationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>htmlText</key>
+			<string>&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;b&gt;OPTION 1:&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;Dear _____, &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Thank you for contacting Twilio Support. I am very sorry to hear you are running into a 14107 Message Rate Limit Exceeded error. &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;This error is put in place to prevent runaway jobs or infinite loops. I understand your use case is not experiencing any runaway loops and you are not sending spam messages. However, our system is detecting this based on frequency of messages and not based on content. Our system is basing this off of how fast the end users "reply". If responses are being received in less than 15 seconds, and this continues with 20 consecutive times, our system will throw a 14107 error. Would there be any possibility for end users to respond either with longer response times or decrease the "consecutiveness" in which end users continuously respond in less than 15 seconds? &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;a href="https://www.twilio.com/docs/api/errors/14107"&gt;https://www.twilio.com/docs/api/errors/14107&lt;/a&gt;  &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Please let me know if there is anything else I can help you with or further clarify. More than happy to help. &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Warmest Regards,&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;br&gt;—&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;b&gt;OPTION 2:&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;br&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Hello _____, &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;After further investigation, please note that when you receive a&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;14107 - Message Exceeded Rate Limit error, no messages will be created and no messages will be sent. &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;To avoid in receiving a 14107 - Message Exceeded Rate Limit error, please:&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;ul class="UL"&gt;&lt;li class="listItem"&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;make certain any action or Redirect URL's do not loop back to the same TwiML document.&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li class="listItem"&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;make sure the ‘To’ and ‘From’ number of your messages are different and sent at 1 message per second. &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li class="listItem"&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;make sure you are not using the reply to send a large quantity of messages to the same phone number&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li class="listItem"&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;make sure any scripts you have are not messaging someone in a loop&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;I will recommend letting your Development Team know about this error create preventive measures based on the suggestions above in your application to avoid this error. &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Please let me know if you have further questions.&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Thanks,&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;/p&gt;</string>
+			<key>label</key>
+			<string>Errors - 14107 Message Exceeded Rate Limit error</string>
+			<key>modificationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>plainText</key>
+			<string>OPTION 1:
+
+
+Dear _____, 
+
+Thank you for contacting Twilio Support. I am very sorry to hear you are running into a 14107 Message Rate Limit Exceeded error. 
+
+This error is put in place to prevent runaway jobs or infinite loops. I understand your use case is not experiencing any runaway loops and you are not sending spam messages. However, our system is detecting this based on frequency of messages and not based on content. Our system is basing this off of how fast the end users "reply". If responses are being received in less than 15 seconds, and this continues with 20 consecutive times, our system will throw a 14107 error. Would there be any possibility for end users to respond either with longer response times or decrease the "consecutiveness" in which end users continuously respond in less than 15 seconds? 
+
+https://www.twilio.com/docs/api/errors/14107  
+
+Please let me know if there is anything else I can help you with or further clarify. More than happy to help. 
+
+Warmest Regards,
+
+
+—
+
+OPTION 2:
+
+Hello _____, 
+
+
+After further investigation, please note that when you receive a
+14107 - Message Exceeded Rate Limit error, no messages will be created and no messages will be sent. 
+
+To avoid in receiving a 14107 - Message Exceeded Rate Limit error, please:
+
+	•	make certain any action or Redirect URL's do not loop back to the same TwiML document.
+	•	 
+	•	make sure the ‘To’ and ‘From’ number of your messages are different and sent at 1 message per second. 
+	•	 
+	•	make sure you are not using the reply to send a large quantity of messages to the same phone number
+	•	 
+	•	make sure any scripts you have are not messaging someone in a loop
+	•	 
+
+I will recommend letting your Development Team know about this error create preventive measures based on the suggestions above in your application to avoid this error. 
+
+Please let me know if you have further questions.
+
+Thanks,
+
+</string>
+			<key>snippetType</key>
+			<integer>5</integer>
+			<key>syncedOnlineRevision</key>
+			<integer>1530652094673</integer>
+			<key>uuidString</key>
+			<string>66D044CD-3A8C-4582-B5EC-92597BC75626</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>@ErrorsBL21610</string>
+			<key>abbreviationMode</key>
+			<integer>1</integer>
+			<key>creationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>htmlText</key>
+			<string>&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Hello _____, &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;For 21610 - [HTTP 400] errors, this is generated when your end users text in STOP or CANCEL to unsubscribe to receiving messages. Any outbound messages you attempt to send to end users that unsubscribed to receiving messages will not be delivered and will not be charged. If your end users will like to receive messages again, please inform them to text in START or YES to resubscribe to receiving messages. &lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;For more information regarding the errors generated in your account, please visit the Debugger below:&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;a href="https://www.twilio.com/console/dev-tools/debugger?quickDate=24"&gt;https://www.twilio.com/console/dev-tools/debugger?quickDate=24&lt;/a&gt; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;br&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;For the fill list of keywords that Twilio supports please see below:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;br&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;a href="https://support.twilio.com/hc/en-us/articles/223134027-Twilio-support-for-STOP-BLOCK-and-CANCEL-SMS-STOP-filtering-"&gt;https://support.twilio.com/hc/en-us/articles/223134027-Twilio-support-for-STOP-BLOCK-and-CANCEL-SMS-STOP-filtering-&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;Please let me know if you have further questions.&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;Thanks,&lt;/span&gt;&lt;/span&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style="font-style: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; min-height: 14px;"&gt;&lt;span class="font" style="font-family:'Helvetica Neue'"&gt;&lt;span class="size" style="font-size:14px"&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p class="paragraph"&gt;&lt;/p&gt;</string>
+			<key>label</key>
+			<string>Errors - 21610 Blacklist Error</string>
+			<key>modificationDate</key>
+			<date>2018-08-20T19:38:01Z</date>
+			<key>plainText</key>
+			<string>
+Hello _____, 
+
+For 21610 - [HTTP 400] errors, this is generated when your end users text in STOP or CANCEL to unsubscribe to receiving messages. Any outbound messages you attempt to send to end users that unsubscribed to receiving messages will not be delivered and will not be charged. If your end users will like to receive messages again, please inform them to text in START or YES to resubscribe to receiving messages. 
+
+For more information regarding the errors generated in your account, please visit the Debugger below:
+
+https://www.twilio.com/console/dev-tools/debugger?quickDate=24 
+
+
+For the fill list of keywords that Twilio supports please see below:
+
+https://support.twilio.com/hc/en-us/articles/223134027-Twilio-support-for-STOP-BLOCK-and-CANCEL-SMS-STOP-filtering-
+
+
+Please let me know if you have further questions.
+
+Thanks,
+
+</string>
+			<key>snippetType</key>
+			<integer>5</integer>
+			<key>syncedOnlineRevision</key>
+			<integer>1530652088994</integer>
+			<key>uuidString</key>
+			<string>646AC1AE-F423-4EBA-A49C-07A0D401C0FD</string>
+		</dict>
+	</array>
+	<key>snippetUUIDs</key>
+	<array>
+		<string>1613CB45-ABD7-4B9B-AD31-0589D3F92F35</string>
+		<string>72BF1A84-4025-4DEE-BEEA-6CB7753F7C70</string>
+		<string>A0B12583-742F-43B4-8869-5C393E289DE7</string>
+		<string>2B73D773-1D92-4754-BB98-E1D0AFA3D972</string>
+		<string>957CF946-FD38-4767-A690-CD2B2C404A83</string>
+		<string>570FD636-0791-4ADE-BDC9-77BA37D87256</string>
+		<string>66D044CD-3A8C-4582-B5EC-92597BC75626</string>
+		<string>646AC1AE-F423-4EBA-A49C-07A0D401C0FD</string>
+	</array>
+	<key>snippetsSubscribedRevision</key>
+	<integer>1531413285915</integer>
+	<key>source</key>
+	<string></string>
+	<key>sourceType</key>
+	<integer>4</integer>
+	<key>suggestAbbreviations</key>
+	<integer>1</integer>
+	<key>syncedOnlineRevision</key>
+	<integer>1534887186906</integer>
+	<key>updateFrequency</key>
+	<integer>0</integer>
+	<key>uuidString</key>
+	<string>576BEAA0-4CB2-11E8-9A21-9F9EC7D8CDAC</string>
+	<key>writable</key>
+	<integer>1</integer>
+</dict>
+</plist>
