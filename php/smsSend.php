@@ -4,7 +4,7 @@ use Twilio\Rest\Client;
 $client = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 $fromPhoneNumber = getenv('PHONE_NUMBER_2');
 // $toPhoneNumber = getenv('PHONE_NUMBER_4');
-$toPhoneNumber = "+16508668221";
+$toPhoneNumber = "4553691767"; //4553691767 16508668221
 $theMessage = "Twilio support test message #3";
 // $theMessage = "okay";
 echo '++ Send SMS messsage, From: ' . $fromPhoneNumber . " to " . $toPhoneNumber . " :" . $theMessage . ":\xA";

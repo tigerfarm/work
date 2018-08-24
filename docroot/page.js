@@ -24,17 +24,4 @@ window.onclick = function (e) {
     theBar = 0;
 }
 
-function logger(message) {
-    var aTextarea = document.getElementById('log');
-    aTextarea.value += "\n> " + message;
-    aTextarea.scrollTop = aTextarea.scrollHeight;
-}
-function clearLog() {
-    log.value = "+ Ready";
-}
-
-window.onload = function () {
-    log.value = "+++ Start.";
-};
-
 // -----------------------------------------------------------------------------
