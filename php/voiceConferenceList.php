@@ -9,8 +9,8 @@ use Twilio\Rest\Client;
 $twilio = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 $conferences = $twilio->conferences->read(
         array(
-            "Status" => "in-progress",
-            "FriendlyName" => "support"
+            "Status" => "in-progress"
+            // ,"FriendlyName" => "support"
         ));
 foreach ($conferences as $record) {
     print("Call SID: " . $record->sid . " Name: " . $record->friendlyName . "\n");

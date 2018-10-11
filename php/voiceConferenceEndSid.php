@@ -5,7 +5,7 @@ if ($argc === 1 ) {
 }
 $theConference = $argv[1];
 
-require __DIR__ . '/twilio-php-master/Twilio/autoload.php';
+require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 
 use Twilio\Rest\Client;
 
