@@ -14,9 +14,10 @@ $call = $client->calls->create(
         $callTo,
         $callFrom,
         array(
-            "url" => "https://obedient-machine-3163.twil.io/saypolly",
+            "url" => "https://obedient-machine-3163.twil.iox/saypolly",
             "statusCallback" => "http://tigerfarmpress.com/cgi/echo.php",
-            "statusCallbackMethod" => "POST"
+            "statusCallbackMethod" => "POST",
+            "StatusCallbackEvent" => array("initiated", "ringing", "answered", "completed")
             )
 );
 echo 'Call SID: ' . $call->sid . "\xA";
