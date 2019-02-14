@@ -5,13 +5,13 @@ require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 
 $twilio = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
-$notification = $twilio->notify->v1->services("IS3a46cc3e6ca7a1b8bd7aea51c875d33a")
+$notification = $twilio->notify->v1->services(getenv('NOTIFY_SERVICE_SID'))
         ->notifications
         ->create(array(
             "body" => "hello 2.1",
             "toBinding" => array(
-                "{\"binding_type\":\"sms\", \"address\":\"+16508668232\"}",
-                "{\"binding_type\":\"sms\", \"address\":\"+16508661199\"}"
+                "{\"binding_type\":\"sms\", \"address\":\"+", getenv('PHONE_NUMBER_3'), "\"}",
+                "{\"binding_type\":\"sms\", \"address\":\"+", getenv('PHONE_NUMBER_4'), "\"}"
                 )
         )
 );
