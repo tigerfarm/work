@@ -1,7 +1,7 @@
 <?php
 echo "+++ Echo HTTP request data.\xA";
-// Sample call: http://tigerfarmpress.com/cgi/echo1.php?To=me&From=you
-// Sample response: http://tigerfarmpress.com/cgi/echo.txt
+// Sample call: http://example.com/cgi/echo1.php?To=me&From=you
+// Sample response: http://example.com/cgi/echo.txt
 // +++ Echo HTTP request data.
 // + URL: GET /cgi/echo1.php?To=me&From=you 
 // ++ To => me
