@@ -10,15 +10,18 @@ client = Client(account_sid, auth_token)
 #
 if len(sys.argv) > 1:
     parDate = sys.argv[1];
-    title = title + " for the date: " + parDate; # Example: 2018-06-13
+    print "+ Argument:", parDate; # Example: 2017-02-26
     messages = client.messages.list(date_sent=date(int(parDate[:4]), int(parDate[:7][5:]), int(parDate[:10][8:])));
 else:
-    messages = client.messages.list();
+    print "+ Date required, example:"
+    print "$ python listReceivedSmsDelete.py 2017-07-17"
+    print
+    exit()
 #
-print( title, " (Date Time From To : Text):")
+print "++ List received messages:"
 for message in messages:
-    if message.status == "received":
-        print("+ " + message.date_sent.strftime('%Y-%m-%d %H:%M:%S') + " " + message.from_ + " " + message.to + " : " + message.body)
-        # Other data values: message.sid message.status
-        client.messages(message.sid).delete()
-print("+ End of list.")
+    client.messages(message.sid).delete();
+    print "+ Deleted: " + message.date_sent.strftime('%Y-%m-%d %H:%M:%S') + " " + message.to + " " + message.from_ + " : " + message.body + " : " + message.sid
+print "+ End of list."
+
+print "+++ Completed."
