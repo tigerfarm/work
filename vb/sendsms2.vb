@@ -11,7 +11,6 @@
 Imports System
 Imports Twilio
 Imports Twilio.Rest.Api.V2010.Account
-Imports Twilio.Types
 
 Class Example
 

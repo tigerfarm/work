@@ -1,4 +1,7 @@
-' Send an SMS message using the Twilio library
+' List SMS message log data using the Twilio library
+'
+' *** Program doesn't work
+'
 ' To compile:
 ' vbnc -r:lib/Twilio.dll -r:lib/Newtonsoft.Json.dll -out:sendsms.exe sendsms.vb
 ' To run:
