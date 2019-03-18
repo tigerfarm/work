@@ -22,5 +22,7 @@ console.log("+ PHONE_NUMBER_1     :" + process.env.PHONE_NUMBER_1 + ":");
 console.log("+ PHONE_NUMBER_2     :" + process.env.PHONE_NUMBER_2 + ":");
 console.log("+ PHONE_NUMBER_3     :" + process.env.PHONE_NUMBER_3 + ":");
 console.log("+ PHONE_NUMBER_4     :" + process.env.PHONE_NUMBER_4 + ":");
+console.log("+ PHONE_NUMBER_5     :" + process.env.PHONE_NUMBER_5 + ":");
+console.log("+ PHONE_NUMBER_6     :" + process.env.PHONE_NUMBER_6 + ":");
 //
 console.log("+++ Exit.");

@@ -5,3 +5,7 @@
 6setvarsSync-Machine.sh
 8setvarsSync-Labs.sh
 #
+/java/fileio/build/
+/java/fileio/nbproject/private/
+/java/arrays/build/
+/java/arrays/nbproject/private/

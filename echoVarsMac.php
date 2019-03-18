@@ -24,6 +24,8 @@ echo "\xA", "+ PHONE_NUMBER_1     : ", getenv('PHONE_NUMBER_1');
 echo "\xA", "+ PHONE_NUMBER_2     : ", getenv('PHONE_NUMBER_2');
 echo "\xA", "+ PHONE_NUMBER_3     : ", getenv('PHONE_NUMBER_3');
 echo "\xA", "+ PHONE_NUMBER_4     : ", getenv('PHONE_NUMBER_4');
+echo "\xA", "+ PHONE_NUMBER_5     : ", getenv('PHONE_NUMBER_5');
+echo "\xA", "+ PHONE_NUMBER_6     : ", getenv('PHONE_NUMBER_6');
 //
 $via = "sms";
 $authyPhoneNumber = getenv("AUTHY_PHONE_NUMBER1");
