@@ -5,6 +5,14 @@ For complete documentation on how to use this function, please visit:
 
 https://github.com/Twilio-org/toolkit/blob/master/docs/broadcast.md
 
++ Enable ACCOUNT_SID and AUTH_TOKEN
+process.env.ACCOUNT_SID
+process.env.AUTH_TOKEN
+
++ Required Twilio Functions environment variables configured:
+process.env.TTK_BROADCAST_NOTIFY_SERVICE_SID
+process.env.TTK_BROADCAST_ADMIN_NUMBERS
+
 */
 
 /* global module, exports, require, process, console */
@@ -21,9 +29,10 @@ const adminNumbers = process.env.TTK_BROADCAST_ADMIN_NUMBERS;
 // Response strings - update these to change the copy in the messages
 const helpMessage = 'Hello! Text "subscribe" to receive updates, "stop" to stop getting messages, and "start" to receive them again.';
 const subscribeSuccessMessage = 'Thanks! You have been subscribed for updates.';
-const subscribeFailMessage = 'Dang it. We couldn\'t subscribe you - try again later?';
-const broadcastNotAuthorizedMessage = 'Your phone number is not authorized to broadcast in this application';
-const broadcastSuccessMessage = 'Boom! Message broadcast to all subscribers.';
+const stopSuccessMessage = 'You have been unsubscribed from updates.';
+const subscribeFailMessage = 'Subscribe failed - try again later?';
+const broadcastNotAuthorizedMessage = 'Your phone number is not authorized to broadcast.';
+const broadcastSuccessMessage = 'Yes! Message broadcast to all subscribers.';
 const broadcastFailMessage = 'Well this is awkward. Your message failed to send, try again later.';
 
 // Helper class for commands
@@ -64,7 +73,7 @@ class HelpCommand extends Command {
   run(callback) {
     callback(null, helpMessage);
   }
-};
+}
 
 class SubscribeCommand extends Command {
   run(callback) {
@@ -79,13 +88,25 @@ class SubscribeCommand extends Command {
       callback(err, subscribeFailMessage);
     });
   }
-};
+}
+
+class StopCommand extends Command {
+  run(callback) {
+    // Delete a Notify binding using this user's phone number
+    notify.bindings('BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX').remove()
+    .then((response) => {
+      callback(null, stopSuccessMessage);
+    }).catch(err => {
+      callback(err, subscribeFailMessage);
+    });
+  }
+}
 
 class BroadcastCommand extends Command {
   run(callback) {
     // Check if sender is in list of admins, stored in the system environment
     // as a comma-separated string
-    console.log("this.fromNumber = " + this.fromNumber);
+    console.log("BroadcastCommand, this.fromNumber = " + this.fromNumber);
     if (adminNumbers.indexOf(this.fromNumber) < 0) {
       return callback(null, broadcastNotAuthorizedMessage);
     }
@@ -101,13 +122,14 @@ class BroadcastCommand extends Command {
       callback(err, broadcastFailMessage);
     });
   }
-};
+}
 
 // Handle incoming SMS commands
 exports.handler = (context, event, callback) => {
   // Get command text from incoming SMS body
   let cmd = event.Body || '';
   cmd = cmd.trim().split(' ')[0].toLowerCase();
+  console.log("TTK, cmd = " + cmd);
 
   // Default to help command
   let cmdInstance = new HelpCommand(event, context);
@@ -116,6 +138,8 @@ exports.handler = (context, event, callback) => {
   switch(cmd) {
     case 'subscribe': cmdInstance = new SubscribeCommand(event, context); break;
     case 'broadcast': cmdInstance = new BroadcastCommand(event, context); break;
+    case 'stop': cmdInstance = new StopCommand(event, context); break;
+    case 'start': cmdInstance = new SubscribeCommand(event, context); break;
   }
 
   // Execute command
@@ -128,4 +152,4 @@ exports.handler = (context, event, callback) => {
     twiml.message(message);
     callback(null, twiml);
   });
-};
+}
