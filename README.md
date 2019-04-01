@@ -1,5 +1,5 @@
 # Work
 
-These are just my work in progress files.
+These are my sample programs in progress.
 
 Cheers...
