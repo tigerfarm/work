@@ -3,15 +3,15 @@ echo "\xA+++ Echo environment variables.";
 //
 $accountSid = getenv("ACCOUNT_SID");
 $authToken = getenv('AUTH_TOKEN');
-echo "\xA", "+ ACCOUNT_SID      : ", $accountSid;
-echo "\xA", "+ AUTH_TOKEN       : ", $authToken;
+echo "\xA", "+ ACCOUNT_SID        : ", $accountSid;
+echo "\xA", "+ AUTH_TOKEN         : ", $authToken;
 //
 require __DIR__ . '/../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 $client = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 echo "\xA", "+ Twilio PHP helper library works.";
 //
-echo "\xA", "+ TOKEN_HOST       : ", getenv('TOKEN_HOST');
+echo "\xA", "+ TOKEN_HOST         : ", getenv('TOKEN_HOST');
 //
 $notifyServieSid = getenv('NOTIFY_SERVICE_SID');
 $syncServieSid = getenv('SYNC_SERVICE_SID');
@@ -26,6 +26,10 @@ echo "\xA", "+ PHONE_NUMBER_3     : ", getenv('PHONE_NUMBER_3');
 echo "\xA", "+ PHONE_NUMBER_4     : ", getenv('PHONE_NUMBER_4');
 echo "\xA", "+ PHONE_NUMBER_5     : ", getenv('PHONE_NUMBER_5');
 echo "\xA", "+ PHONE_NUMBER_6     : ", getenv('PHONE_NUMBER_6');
+//
+echo "\xA", "+ SENDGRID_API_KEY   : ", getenv('SENDGRID_API_KEY');
+echo "\xA", "+ EMAIL_DT           : ", getenv('EMAIL_DT');
+echo "\xA", "+ EMAIL_TF           : ", getenv('EMAIL_TF');
 //
 $via = "sms";
 $authyPhoneNumber = getenv("AUTHY_PHONE_NUMBER1");
