@@ -31,6 +31,10 @@ echo "\xA", "+ SENDGRID_API_KEY   : ", getenv('SENDGRID_API_KEY');
 echo "\xA", "+ EMAIL_DT           : ", getenv('EMAIL_DT');
 echo "\xA", "+ EMAIL_TF           : ", getenv('EMAIL_TF');
 //
+echo "\xA", "+ CHAT_SERVICE_SID   : ", getenv('CHAT_SERVICE_SID');
+echo "\xA", "+ CHAT_API_KEY       : ", getenv('CHAT_API_KEY');
+echo "\xA", "+ CHAT_API_KEY_SECRET: ", getenv('CHAT_API_KEY_SECRET');
+//
 $via = "sms";
 $authyPhoneNumber = getenv("AUTHY_PHONE_NUMBER1");
 $authyCountryCode = getenv('AUTHY_PHONE_COUNTRYCODE');

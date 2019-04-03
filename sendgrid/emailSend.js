@@ -2,6 +2,7 @@
 // Create a SendGrid work directory, and change into the directory.
 // $ npm init --yes
 // $ npm install @sendgrid/mail
+// Set environment variables and run this program.
 
 console.log("++ Send email message.");
 theMsg = "Hello from SendGrid 1";
