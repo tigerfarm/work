@@ -5,7 +5,7 @@ require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 $twilio = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 //
-$phoneNumber = "+16504837603";
+$phoneNumber = "+16505552222";
 echo "+++ Get a call data from the phone number: " . $phoneNumber . "\xA";
 $calls = $twilio->calls->read(array(
     "status" => "in-progress",
