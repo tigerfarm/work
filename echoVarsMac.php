@@ -20,12 +20,12 @@ echo "\xA", "+ NOTIFY_SERVICE_SID : ", $notifyServieSid;
 echo "\xA", "+ SYNC_SERVICE_SID   : ", $syncServieSid;
 echo "\xA", "+ SYNC_MAP_NAME      : ", $syncMapName;
 //
-echo "\xA", "+ PHONE_NUMBER_1     : ", getenv('PHONE_NUMBER_1');
-echo "\xA", "+ PHONE_NUMBER_2     : ", getenv('PHONE_NUMBER_2');
-echo "\xA", "+ PHONE_NUMBER_3     : ", getenv('PHONE_NUMBER_3');
-echo "\xA", "+ PHONE_NUMBER_4     : ", getenv('PHONE_NUMBER_4');
-echo "\xA", "+ PHONE_NUMBER_5     : ", getenv('PHONE_NUMBER_5');
-echo "\xA", "+ PHONE_NUMBER_6     : ", getenv('PHONE_NUMBER_6');
+echo "\xA", "+ PHONE_NUMBER1      : ", getenv('PHONE_NUMBER1');
+echo "\xA", "+ PHONE_NUMBER2      : ", getenv('PHONE_NUMBER2');
+echo "\xA", "+ PHONE_NUMBER3      : ", getenv('PHONE_NUMBER3');
+echo "\xA", "+ PHONE_NUMBER4      : ", getenv('PHONE_NUMBER4');
+echo "\xA", "+ PHONE_NUMBER5      : ", getenv('PHONE_NUMBER5');
+echo "\xA", "+ PHONE_NUMBER6      : ", getenv('PHONE_NUMBER6');
 //
 echo "\xA", "+ SENDGRID_API_KEY   : ", getenv('SENDGRID_API_KEY');
 echo "\xA", "+ EMAIL_DT           : ", getenv('EMAIL_DT');
