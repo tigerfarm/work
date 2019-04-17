@@ -19,14 +19,18 @@ foreach ( $numbers as $number) {
      echo "\xA++ " . $number->phoneNumber;
 }
 echo "\xA+ End of list.";
-echo "\xA+ number 1: " . $numbers[0]->phoneNumber;
-$theNumber = $client->incomingPhoneNumbers->create(
-                array("phoneNumber" => $numbers[0]->phoneNumber)
-                );
-echo "\xA+ Bought number 1: " . $theNumber->sid;
-if (isset($theNumber->sid)) {
-    echo " + isset";
-}
+echo "\xA+ number 1: " . $numbers[0]->phoneNumber
+        . " isoCountry: " . $numbers[0]->region 
+        . " region: " . $numbers[0]->region
+        . " postalCode: " . $numbers[0]->postalCode
+        . " locality: " . $numbers[0]->locality;
+// $theNumber = $client->incomingPhoneNumbers->create(
+//                array("phoneNumber" => $numbers[0]->phoneNumber)
+//                );
+// echo "\xA+ Bought number 1: " . $theNumber->sid;
+// if (isset($theNumber->sid)) {
+//     echo " + isset";
+// }
         
 // Search for "List Filters" in the doc to see options.
 // echo "\xA+ List of available phone numbers in the US which are SmsEnabled: ";
