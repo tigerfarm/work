@@ -19,6 +19,7 @@ $call = $client->calls->create(
         $callFrom,
         array(
             "url" => "https://" . getenv('FUNCTIONS_HOST') . "/saypolly",
+            "answerOnBridge" => "true"
             // "timeout" => "6",
             // "StatusCallback" => "https://" . getenv('FUNCTIONS_HOST') . "/echojsonvalue",
             // "statusCallbackMethod" => "POST", // POST GET

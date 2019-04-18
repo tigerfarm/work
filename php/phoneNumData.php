@@ -9,7 +9,7 @@ $theCountry = "US";
 $theAreaCode = "650";
 // $numbers = $client->availablePhoneNumbers($theCountry)->local->read(array('areaCode' => $theAreaCode));
 //
-$theNumbers = "650866****";
+$theNumbers = "850533****";
 $numbers = $client->availablePhoneNumbers($theCountry)->local->read(array("contains" => $theNumbers));
 //
 // Optionally, list the numbers available:
