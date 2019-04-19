@@ -1,8 +1,14 @@
 // -----------------------------------------------------------------------------
+
+var clientId = process.argv[2] || "";
+if (clientId === "") {
+    addChatMessage("- Username required.");
+    process.exit();
+}
+
 console.log("+++ Chat program is starting up.");
 
 var thisChatClient;
-var clientId = "chatbot1";
 var chatChannelName = "";
 var chatChannelDescription = "";
 let thisChannel;
@@ -170,12 +176,11 @@ function setButtons(message) {
 }
 
 // -----------------------------------------------------------------------------
-createChatClient();
 
+createChatClient();
+// console.log("Enter > ");
 var standard_input = process.stdin;
 standard_input.setEncoding('utf-8');
-
-// console.log("Enter > ");
 standard_input.on('data', function (data) {
     theCommand = data.substring(0, data.length - 1);
     if (theCommand.startsWith('send')) {
