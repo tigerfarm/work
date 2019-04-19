@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-console.log("+++ Chat interactive commandline.");
+console.log("+++ Chat program is starting up.");
 
 var thisChatClient;
 var clientId = "chatbot1";
@@ -49,6 +49,8 @@ function createChatClient() {
         // logger("Chat client created: thisChatClient: " + thisChatClient);
         addChatMessage("+ Chat client created for the user: " + clientId);
         thisChatClient.getSubscribedChannels();
+        addChatMessage("+ You can now use the chat features.");
+        addChatMessage("+ Enter >");
     });
 }
 // -----------------------------------------------------------------------------
@@ -143,7 +145,7 @@ function onMessageAdded(message) {
     // > IMb0a8a05c931e466a8408e6e61c8b2211 : david : undefined : abc : back2u
     // addChatMessage("> " + message.sid + " : " + message.author + " : " + message.friendlyName
     //         + " : " + message.channel.uniqueName + " : " + message.body);
-    addChatMessage("> " + message.channel.uniqueName + message.author + " : " + " : " + message.body);
+    addChatMessage("> " + message.channel.uniqueName + " : " + message.author + " : " + message.body);
     incCount();
 }
 
@@ -173,7 +175,7 @@ createChatClient();
 var standard_input = process.stdin;
 standard_input.setEncoding('utf-8');
 
-console.log("Enter > ");
+// console.log("Enter > ");
 standard_input.on('data', function (data) {
     theCommand = data.substring(0, data.length - 1);
     if (theCommand.startsWith('send')) {
