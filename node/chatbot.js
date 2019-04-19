@@ -13,6 +13,7 @@ const Twilio = new require('twilio')(process.env.ACCOUNT_SID, process.env.AUTH_T
 // $ npm install --save twilio-chat
 const Chat = require('twilio-chat');
 
+// -----------------------------------------------------------------------------
 function generateToken(clientid) {
     console.log("+ generateToken, Client ID: " + clientid);
     const AccessToken = require('twilio').jwt.AccessToken;
@@ -40,13 +41,12 @@ function createChatClient() {
     }
     addChatMessage("++ Creating Chat Client, please wait.");
     logger("Refresh the token using client id: " + clientId);
-    generateToken(clientId);
     token = generateToken(clientId);
     logger("Token refreshed: " + token);
 // -------------------------------
     Chat.Client.create(token).then(chatClient => {
         thisChatClient = chatClient;
-        logger("Chat client created: thisChatClient: " + thisChatClient);
+        // logger("Chat client created: thisChatClient: " + thisChatClient);
         addChatMessage("+ Chat client created for the user: " + clientId);
         thisChatClient.getSubscribedChannels();
     });
@@ -72,7 +72,7 @@ function listChannels() {
     });
 }
 
-function joinChatChannel( chatChannelName ) {
+function joinChatChannel(chatChannelName) {
     logger("Function: joinChatChannel()");
     if (thisChatClient === "") {
         addChatMessage("First, create a Chat Client.");
@@ -140,8 +140,10 @@ function joinChannel() {
 
 function onMessageAdded(message) {
     // addChatMessage("> " + message.author + " : " + message.channel.uniqueName + " : " + message.body);
-    addChatMessage("> " + message.sid + " : "+ message.author + " : "+ message.friendlyName
-            + " : " + message.channel.uniqueName + " : " + message.body);
+    // > IMb0a8a05c931e466a8408e6e61c8b2211 : david : undefined : abc : back2u
+    // addChatMessage("> " + message.sid + " : " + message.author + " : " + message.friendlyName
+    //         + " : " + message.channel.uniqueName + " : " + message.body);
+    addChatMessage("> " + message.channel.uniqueName + message.author + " : " + " : " + message.body);
     incCount();
 }
 
@@ -161,6 +163,9 @@ function addChatMessage(message) {
 function logger(message) {
     console.log("++ " + message);
 }
+function setButtons(message) {
+    // console.log("++ " + message);
+}
 
 // -----------------------------------------------------------------------------
 createChatClient();
@@ -168,21 +173,36 @@ createChatClient();
 var standard_input = process.stdin;
 standard_input.setEncoding('utf-8');
 
-console.log("Enter> ");
+console.log("Enter > ");
 standard_input.on('data', function (data) {
-    if (data === 'exit\n') {
-        console.log("User input complete, program exit.");
-        process.exit();
-    } else if (data === 'list\n') {
+    theCommand = data.substring(0, data.length - 1);
+    if (theCommand.startsWith('send')) {
+        commandLength = 'send'.length + 1;
+        if (theCommand.length > commandLength) {
+            thisChannel.sendMessage(theCommand.substring(commandLength));
+        }
+    } else if (theCommand === 'list') {
         listChannels();
-    } else if (data === 'join\n') {
-        joinChatChannel( "abc" );
-    } else if (data === 'send\n') {
-        thisChannel.sendMessage("send test message.");
+    } else if (theCommand.startsWith('join')) {
+        commandLength = 'join'.length + 1;
+        if (theCommand.length > commandLength) {
+            joinChatChannel(theCommand.substring(commandLength));
+        }
+    } else if (theCommand === 'help') {
+        console.log("Commands: ");
+        console.log("+ list");
+        console.log("+ join <channel>");
+        console.log("+ send <message>");
+        console.log("+ exit");
+    } else if (theCommand === 'exit') {
+        console.log("+++ Exit.");
+        process.exit();
     } else {
-        console.log('Echo: ' + data);
-        console.log("Enter> ");
+        if (theCommand !== "") {
+            console.log('- Invaid command: ' + theCommand);
+        }
     }
+    console.log("Enter > ");
 });
 
 // -----------------------------------------------------------------------------
