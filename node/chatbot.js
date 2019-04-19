@@ -6,12 +6,12 @@ var clientId = "chatbot1";
 var chatChannelName = "";
 var chatChannelDescription = "";
 let thisChannel;
-let totalMessages = 0;  // This count of read channel messages need work to initialize and maintain the count.
+let totalMessages = 0;  // This count of read channel messages. Needs work to initialize and maintain the count.
 
-// $ npm install --save twilio-chat
-const Chat = require('twilio-chat');
 // $ npm install twilio
 const Twilio = new require('twilio')(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
+// $ npm install --save twilio-chat
+const Chat = require('twilio-chat');
 
 function generateToken(clientid) {
     console.log("+ generateToken, Client ID: " + clientid);
@@ -58,7 +58,6 @@ function listChannels() {
         logger("Required: Chat Client.");
         return;
     }
-    // chatChannelName = $("#channelName").val();
     addChatMessage("+ List of public channels (+ uniqueName: friendlyName):");
     thisChatClient.getPublicChannelDescriptors().then(function (paginator) {
         for (i = 0; i < paginator.items.length; i++) {
@@ -171,7 +170,6 @@ standard_input.setEncoding('utf-8');
 
 console.log("Enter> ");
 standard_input.on('data', function (data) {
-
     if (data === 'exit\n') {
         console.log("User input complete, program exit.");
         process.exit();
