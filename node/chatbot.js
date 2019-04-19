@@ -60,26 +60,6 @@ function createChatClient() {
     });
 }
 // -----------------------------------------------------------------------------
-function listChannels() {
-    if (thisChatClient === "") {
-        addChatMessage("First, create a Chat Client.");
-        logger("Required: Chat Client.");
-        return;
-    }
-    addChatMessage("+ List of public channels (+ uniqueName: friendlyName):");
-    thisChatClient.getPublicChannelDescriptors().then(function (paginator) {
-        for (i = 0; i < paginator.items.length; i++) {
-            const channel = paginator.items[i];
-            let listString = '++ ' + channel.uniqueName + ": " + channel.friendlyName + ": " + channel.createdBy;
-            if (channel.uniqueName === chatChannelName) {
-                listString += " *";
-            }
-            addChatMessage(listString);
-        }
-        addChatMessage("+ End list.");
-    });
-}
-
 function joinChatChannel(chatChannelName) {
     logger("Function: joinChatChannel()");
     if (thisChatClient === "") {
@@ -155,6 +135,58 @@ function onMessageAdded(message) {
     incCount();
 }
 
+function listChannels() {
+    if (thisChatClient === "") {
+        addChatMessage("First, create a Chat Client.");
+        logger("Required: Chat Client.");
+        return;
+    }
+    addChatMessage("+ List of public channels (+ uniqueName: friendlyName):");
+    thisChatClient.getPublicChannelDescriptors().then(function (paginator) {
+        for (i = 0; i < paginator.items.length; i++) {
+            const channel = paginator.items[i];
+            let listString = '++ ' + channel.uniqueName + ": " + channel.friendlyName + ": " + channel.createdBy;
+            if (channel.uniqueName === chatChannelName) {
+                listString += " *";
+            }
+            addChatMessage(listString);
+        }
+        addChatMessage("+ End list.");
+    });
+}
+
+function deleteChannel(chatChannelName) {
+    logger("Function: deleteChannel()");
+    if (thisChatClient === "") {
+        addChatMessage("First, create a Chat Client.");
+        logger("Required: Chat Client.");
+        return;
+    }
+    if (chatChannelName === "") {
+        addChatMessage("Enter a Channel name.");
+        logger("Required: Channel name.");
+        return;
+    }
+    thisChatClient.getChannelByUniqueName(chatChannelName)
+            .then(function (channel) {
+                thisChannel = channel;
+                logger("Channel exists: " + chatChannelName + " : " + thisChannel);
+                thisChannel.delete().then(function (channel) {
+                    addChatMessage('+ Deleted channel: ' + chatChannelName);
+                }).catch(function (err) {
+                    if (thisChannel.createdBy !== clientId) {
+                        addChatMessage("- Can only be deleted by the creator: " + thisChannel.createdBy);
+                    } else {
+                        logger("- Delete failed: " + thisChannel.uniqueName + ', ' + err);
+                        addChatMessage("- Delete failed: " + err);
+                    }
+                });
+            }).catch(function () {
+        logger("Channel doesn't exist.");
+        addChatMessage("- Channel doesn't exist, cannot delete it: " + chatChannelName);
+    });
+}
+
 // -----------------------------------------------------------------------------
 function listMembers() {
     // logger("+ Called: listMembers().");
@@ -215,12 +247,18 @@ standard_input.on('data', function (data) {
         if (theCommand.length > commandLength) {
             joinChatChannel(theCommand.substring(commandLength));
         }
+    } else if (theCommand.startsWith('delete')) {
+        commandLength = 'delete'.length + 1;
+        if (theCommand.length > commandLength) {
+            deleteChannel(theCommand.substring(commandLength));
+        }
     } else if (theCommand === 'help') {
         console.log("Commands: ");
         console.log("+ list");
         console.log("+ join <channel>");
         console.log("+ members");
         console.log("+ send <message>");
+        console.log("+ delete <channel>");
         console.log("+ exit");
         console.log("+ help");
     } else if (theCommand === 'exit') {
