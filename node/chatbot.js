@@ -156,6 +156,24 @@ function onMessageAdded(message) {
 }
 
 // -----------------------------------------------------------------------------
+function listMembers() {
+    // logger("+ Called: listMembers().");
+    var members = thisChannel.getMembers();
+    addChatMessage("+ -----------------------");
+    addChatMessage("+ Members of this channel: " + thisChannel.uniqueName);
+    members.then(function (currentMembers) {
+        currentMembers.forEach(function (member) {
+            if (member.lastConsumedMessageIndex !== null) {
+                addChatMessage("++ " + member.identity + ", Last Consumed Message Index = " + member.lastConsumedMessageIndex);
+            } else {
+                addChatMessage("++ " + member.identity);
+            }
+        });
+    });
+    // Not working: addChatMessage("++ getUnconsumedMessagesCount = " + thisChannel.getUnconsumedMessagesCount);
+}
+
+// -----------------------------------------------------------------------------
 function incCount() {
     totalMessages++;
     logger('+ Increment Total Messages:' + totalMessages);
@@ -190,6 +208,8 @@ standard_input.on('data', function (data) {
         }
     } else if (theCommand === 'list') {
         listChannels();
+    } else if (theCommand === 'members') {
+        listMembers();
     } else if (theCommand.startsWith('join')) {
         commandLength = 'join'.length + 1;
         if (theCommand.length > commandLength) {
@@ -199,8 +219,10 @@ standard_input.on('data', function (data) {
         console.log("Commands: ");
         console.log("+ list");
         console.log("+ join <channel>");
+        console.log("+ members");
         console.log("+ send <message>");
         console.log("+ exit");
+        console.log("+ help");
     } else if (theCommand === 'exit') {
         console.log("+++ Exit.");
         process.exit();
