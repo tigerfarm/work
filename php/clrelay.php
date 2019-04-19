@@ -17,6 +17,7 @@ if ($requestType == "GET") {
     echo "+ Request type must be GET.\xAExit.\xA";
     return;
 }
+// http://example.com/cgi/clrelay.php?https://example.com/hello.txt
 // echo "+ URL: " . $_SERVER['REQUEST_METHOD'] . " " . $_SERVER['REQUEST_URI'] . " " .  $_SERVER['QUERY_STRING']. " " . $_SERVER['DOCUMENT_ROOT'] . "\xA";
 $url = $_SERVER['QUERY_STRING'];
 // echo "+ HTTPS request URL: " . $url . "\xA";
