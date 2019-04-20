@@ -40,9 +40,6 @@ function debugMessage(message) {
 function addChatMessage(message) {
     console.log(message);
 }
-function setButtons(message) {
-    // console.log("++ " + message);
-}
 function doPrompt() {
     console.log(thePromptPrefix + thePrompt);
 }
@@ -137,7 +134,6 @@ function joinChannel() {
         if (err.message === "Member already exists") {
             // - Join failed: t: Member already exists
             addChatMessage("++ You already exist in the channel.");
-            setButtons("join");
         } else {
             debugMessage("- Join failed: " + thisChannel.uniqueName + ' :' + err.message + ":");
             addChatMessage("- Join failed: " + err.message);
