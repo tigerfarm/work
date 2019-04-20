@@ -1,8 +1,7 @@
 // -----------------------------------------------------------------------------
 // To do:
-//  Add option: sayMessage("+ join <channel> [<description>]");
-//  Token expire notice and refresh.
-
+//  Add option: join <channel> [<description>]
+//
 var clientId = process.argv[2] || "";
 if (clientId === "") {
     console.log("- User identity required.");
@@ -146,6 +145,13 @@ function joinChannel() {
     // Set channel event listener: messages sent to the channel
     thisChannel.on('messageAdded', function (message) {
         onMessageAdded(message);
+    });
+    thisChannel.on('tokenAboutToExpire', function () {
+        // https://www.twilio.com/docs/chat/access-token-lifecycle
+        updatedToken = generateToken(clientId);
+        fetchToken(function (updatedToken) {
+            thisChannel.updateToken(updatedToken);
+        });
     });
 }
 
