@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // To do:
-//  Prompt properly, example: after displaying a message.
+//  Improve prompting, example: after displaying a message.
 //  Send mode, command = "send".
 //  Token expire notice and refresh.
 
@@ -8,7 +8,7 @@ var clientId = process.argv[2] || "";
 if (clientId === "") {
     console.log("- Username required.");
     console.log("+ Syntax: chatbot <username> [debug]");
-    process.exit();     
+    process.exit();
 }
 console.log("+++ Chat program is starting up.");
 
@@ -19,6 +19,8 @@ if (debugOnOff === "debug") {
     console.log("+ Debug on.");
 }
 
+var thePromptPrefix = "";
+var thePrompt = "Enter >";
 var thisChatClient;
 var chatChannelName = "";
 var chatChannelDescription = "";
@@ -41,6 +43,9 @@ function addChatMessage(message) {
 }
 function setButtons(message) {
     // console.log("++ " + message);
+}
+function doPrompt() {
+    console.log(thePromptPrefix + thePrompt);
 }
 
 // -----------------------------------------------------------------------------
@@ -65,8 +70,7 @@ function generateToken(clientid) {
 // -----------------------------------------------------------------------------
 function createChatClient() {
     if (clientId === "") {
-        debug("Required: Username.");
-        addChatMessage("- Enter a Username to use when chatting.");
+        addChatMessage("- Required: username for creating a chat object.");
         process.exit();
     }
     addChatMessage("+ Creating Chat Client.");
@@ -77,7 +81,7 @@ function createChatClient() {
         addChatMessage("++ Chat client created for the user: " + clientId);
         thisChatClient.getSubscribedChannels();
         addChatMessage("+ You can now use the chat features.");
-        addChatMessage("+ Enter command >");
+        addChatMessage("+ Ready for command. " + thePrompt);
     });
 }
 // -----------------------------------------------------------------------------
@@ -128,6 +132,7 @@ function joinChannel() {
         debug('Joined channel as ' + clientId);
         addChatMessage('++ You have joined the channel: ' + thisChannel.friendlyName);
         addChatMessage("++ You can start chatting.");
+        doPrompt();
     }).catch(function (err) {
         // - Join failed: myChannel3, t: Member already exists
         if (err.message === "Member already exists") {
@@ -138,6 +143,7 @@ function joinChannel() {
             debug("- Join failed: " + thisChannel.uniqueName + ' :' + err.message + ":");
             addChatMessage("- Join failed: " + err.message);
         }
+        doPrompt();
     });
     // Set channel event listener: messages sent to the channel
     thisChannel.on('messageAdded', function (message) {
@@ -156,6 +162,7 @@ function onMessageAdded(message) {
         addChatMessage("< " + message.channel.uniqueName + " : " + message.author + " : " + message.body);
     }
     incCount();
+    doPrompt();
 }
 
 function listChannels() {
@@ -175,6 +182,7 @@ function listChannels() {
             addChatMessage(listString);
         }
         addChatMessage("+ End of list.");
+        doPrompt();
     });
 }
 
@@ -213,18 +221,23 @@ function deleteChannel(chatChannelName) {
 function listMembers() {
     debug("+ listMembers()");
     if (thisChannel === "") {
-        addChatMessage("Required: joined a channel.");
+        addChatMessage("Required: join a channel.");
+        doPrompt();
         return;
     }
     var members = thisChannel.getMembers();
     addChatMessage("+ -----------------------");
-    addChatMessage("+ Members of this channel: " + thisChannel.uniqueName);
+    addChatMessage("+ Members of channel: " + thisChannel.uniqueName);
     members.then(function (currentMembers) {
+        var i = 1;
         currentMembers.forEach(function (member) {
             if (member.lastConsumedMessageIndex !== null) {
                 addChatMessage("++ " + member.identity + ", Last Consumed Message Index = " + member.lastConsumedMessageIndex);
             } else {
                 addChatMessage("++ " + member.identity);
+            }
+            if (currentMembers.length === i++) {
+                doPrompt();
             }
         });
     });
@@ -248,26 +261,37 @@ function doCountZero() {
 function doSend(theCommand) {
     if (thisChannel === "") {
         addChatMessage("Required: joined a channel.");
+        doPrompt();
     } else {
         commandLength = 'send'.length + 1;
         if (theCommand.length > commandLength) {
             thisChannel.sendMessage(theCommand.substring(commandLength));
         } else {
-            console.log("+ Add a message to send: send <message>");
+            if (sendMode === 0) {
+                console.log("+ You are now in send mode.");
+                thePromptPrefix = "+ Send, ";
+                sendMode = 1;
+            } else {
+                console.log("+ Returned to command mode.");
+                thePromptPrefix = "+ Command, ";
+                sendMode = 0;
+            }
+            doPrompt();
         }
     }
 }
 
 // -----------------------------------------------------------------------------
-
+var sendMode = 0;
 token = generateToken(clientId);
 createChatClient();
-// console.log("Enter > ");
 var standard_input = process.stdin;
 standard_input.setEncoding('utf-8');
 standard_input.on('data', function (data) {
     theCommand = data.substring(0, data.length - 1);
-    if (theCommand.startsWith('send')) {
+    if (sendMode === 1) {
+        doSend("send " + theCommand);
+    } else if (theCommand.startsWith('send')) {
         doSend(theCommand);
     } else if (theCommand === 'list') {
         listChannels();
@@ -290,7 +314,6 @@ standard_input.on('data', function (data) {
     } else if (theCommand === 'debug') {
         if (debugState === 0) {
             debugState = 1;
-            console.log("+ Debug on.");
         } else {
             debugState = 0;
         }
@@ -299,6 +322,7 @@ standard_input.on('data', function (data) {
         } else {
             console.log("+ Debug on.");
         }
+        doPrompt();
     } else if (theCommand === 'help') {
         console.log("-----------------------");
         console.log("Commands: ");
@@ -314,6 +338,7 @@ standard_input.on('data', function (data) {
         console.log("+ debug");
         console.log("++ Toggle debug state on and off.\n");
         console.log("+ help\n");
+        doPrompt();
     } else if (theCommand === 'exit') {
         console.log("+++ Exit.");
         process.exit();
@@ -321,8 +346,8 @@ standard_input.on('data', function (data) {
         if (theCommand !== "") {
             console.log('- Invaid command: ' + theCommand);
         }
+        doPrompt();
     }
-    console.log("Enter > ");
 });
 
 // -----------------------------------------------------------------------------
