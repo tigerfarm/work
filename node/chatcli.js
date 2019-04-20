@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // To do:
-//  Add option: console.log("+ join <channel> [<description>]");
+//  Add option: sayMessage("+ join <channel> [<description>]");
 //  Token expire notice and refresh.
 
 var clientId = process.argv[2] || "";
@@ -16,8 +16,6 @@ const Twilio = new require('twilio')(process.env.ACCOUNT_SID, process.env.AUTH_T
 // $ npm install --save twilio-chat
 const Chat = require('twilio-chat');
 
-var thePromptPrefix = "";
-var thePrompt = "Enter >";
 var thisChatClient;
 var chatChannelName = "";
 var chatChannelDescription = "";
@@ -31,17 +29,21 @@ if (debugOnOff === "debug") {
     debugState = 1;    // 1 on
     debugMessage("+ Debug on.");
 }
-
 function debugMessage(message) {
     if (debugState !== 0) {
         console.log("?- " + message);
     }
 }
+
+var thePromptPrefix = "";
+var thePrompt = "Enter > ";
+function doPrompt() {
+    // No line feed after the prompt.
+    process.stdout.write(thePromptPrefix + thePrompt);
+}
+
 function sayMessage(message) {
     console.log(message);
-}
-function doPrompt() {
-    console.log(thePromptPrefix + thePrompt);
 }
 
 // -----------------------------------------------------------------------------
@@ -77,7 +79,8 @@ function createChatClient() {
         sayMessage("++ Chat client created for the user: " + clientId);
         thisChatClient.getSubscribedChannels();
         sayMessage("+ You can now use the chat features.");
-        sayMessage("+ Ready for command. " + thePrompt);
+        sayMessage("+ Ready for command. ");
+        doPrompt();
     });
 }
 // -----------------------------------------------------------------------------
@@ -149,7 +152,7 @@ function joinChannel() {
 function onMessageAdded(message) {
     // Other message properties: message.sid, message.friendlyName
     if (message.author === clientId) {
-        sayMessage("> " + message.channel.uniqueName + " : " + message.author + " : " + message.body);
+        debugMessage("> " + message.channel.uniqueName + " : " + message.author + " : " + message.body);
     } else {
         sayMessage("< " + message.channel.uniqueName + " : " + message.author + " : " + message.body);
     }
@@ -261,11 +264,11 @@ function doSend(theCommand) {
             thisChannel.sendMessage(theCommand.substring(commandLength));
         } else {
             if (sendMode === 0) {
-                console.log("+ You are now in send mode.");
+                sayMessage("+ You are now in send mode.");
                 thePromptPrefix = "+ Send, ";
                 sendMode = 1;
             } else {
-                console.log("+ Returned to command mode.");
+                sayMessage("+ Returned to command mode.");
                 thePromptPrefix = "+ Command, ";
                 sendMode = 0;
             }
@@ -295,14 +298,14 @@ standard_input.on('data', function (data) {
         if (theCommand.length > commandLength) {
             joinChatChannel(theCommand.substring(commandLength));
         } else {
-            console.log("+ Add a channel name: join <channel>");
+            sayMessage("+ Syntax: join <channel>");
         }
     } else if (theCommand.startsWith('delete')) {
         commandLength = 'delete'.length + 1;
         if (theCommand.length > commandLength) {
             deleteChannel(theCommand.substring(commandLength));
         } else {
-            console.log("+ To delete channel, add the channel name: delete <channel>");
+            sayMessage("+ Syntax: delete <channel>");
         }
     } else if (theCommand === 'debug') {
         if (debugState === 0) {
@@ -311,35 +314,35 @@ standard_input.on('data', function (data) {
             debugState = 0;
         }
         if (debugState === 0) {
-            console.log("+ Debug off.");
+            sayMessage("+ Debug off.");
         } else {
-            console.log("+ Debug on.");
+            sayMessage("+ Debug on.");
         }
         doPrompt();
     } else if (theCommand === 'help') {
-        console.log("-----------------------");
-        console.log("Commands: ");
-        console.log("+ list");
-        console.log("++ list public channels.\n");
-        console.log("+ join <channel>\n");
-        // To do, add option: console.log("+ join <channel> [<description>]");
-        console.log("+ members");
-        console.log("++ list channel members.\n");
-        console.log("+ send");
-        console.log("++ Toggle send mode: assume, send messages.");
-        console.log("+ send <message>\n");
-        console.log("+ delete <channel>\n");
-        console.log("+ exit\n");
-        console.log("+ debug");
-        console.log("++ Toggle debug on and off.\n");
-        console.log("+ help\n");
+        sayMessage("-----------------------");
+        sayMessage("Commands: ");
+        sayMessage("+ list");
+        sayMessage("++ list public channels.\n");
+        sayMessage("+ join <channel>\n");
+        // To do, add option: sayMessage("+ join <channel> [<description>]");
+        sayMessage("+ members");
+        sayMessage("++ list channel members.\n");
+        sayMessage("+ send");
+        sayMessage("++ Toggle send mode: assume, send messages.");
+        sayMessage("+ send <message>\n");
+        sayMessage("+ delete <channel>\n");
+        sayMessage("+ exit\n");
+        sayMessage("+ debug");
+        sayMessage("++ Toggle debug on and off.\n");
+        sayMessage("+ help\n");
         doPrompt();
     } else if (theCommand === 'exit') {
         console.log("+++ Exit.");
         process.exit();
     } else {
         if (theCommand !== "") {
-            console.log('- Invaid command: ' + theCommand);
+            sayMessage('- Invaid command: ' + theCommand);
         }
         doPrompt();
     }
