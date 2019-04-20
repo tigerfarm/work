@@ -1,23 +1,20 @@
 // -----------------------------------------------------------------------------
 // To do:
-//  Improve prompting, example: after displaying a message.
-//  Send mode, command = "send".
+//  Add option: console.log("+ join <channel> [<description>]");
 //  Token expire notice and refresh.
 
 var clientId = process.argv[2] || "";
 if (clientId === "") {
-    console.log("- Username required.");
-    console.log("+ Syntax: chatbot <username> [debug]");
+    console.log("- User identity required.");
+    console.log("+ Syntax: chatbot <identity> [debug]");
     process.exit();
 }
 console.log("+++ Chat program is starting up.");
 
-let debugState = 0;    // 0 off
-var debugOnOff = process.argv[3] || "";
-if (debugOnOff === "debug") {
-    debugState = 1;    // 1 on
-    console.log("+ Debug on.");
-}
+// $ npm install twilio
+const Twilio = new require('twilio')(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
+// $ npm install --save twilio-chat
+const Chat = require('twilio-chat');
 
 var thePromptPrefix = "";
 var thePrompt = "Enter >";
@@ -27,13 +24,15 @@ var chatChannelDescription = "";
 let thisChannel = "";
 let totalMessages = 0;  // This count of read channel messages. Needs work to initialize and maintain the count.
 
-// $ npm install twilio
-const Twilio = new require('twilio')(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
-// $ npm install --save twilio-chat
-const Chat = require('twilio-chat');
-
 // -----------------------------------------------------------------------------
-function debug(message) {
+let debugState = 0;    // 0 off
+var debugOnOff = process.argv[3] || "";
+if (debugOnOff === "debug") {
+    debugState = 1;    // 1 on
+    debugMessage("+ Debug on.");
+}
+
+function debugMessage(message) {
     if (debugState !== 0) {
         console.log("?- " + message);
     }
@@ -63,21 +62,21 @@ function generateToken(clientid) {
     token.addGrant(chatGrant);
     token.identity = clientid;
     addChatMessage("++ Token generated.");
-    debug("Token: " + token.toJwt());
+    debugMessage("Token: " + token.toJwt());
     return token.toJwt();
 }
 
 // -----------------------------------------------------------------------------
 function createChatClient() {
     if (clientId === "") {
-        addChatMessage("- Required: username for creating a chat object.");
+        addChatMessage("- Required: user identity for creating a chat object.");
         process.exit();
     }
     addChatMessage("+ Creating Chat Client.");
     // -------------------------------
     Chat.Client.create(token).then(chatClient => {
         thisChatClient = chatClient;
-        debug("Chat client created: thisChatClient: " + thisChatClient);
+        debugMessage("Chat client created: thisChatClient: " + thisChatClient);
         addChatMessage("++ Chat client created for the user: " + clientId);
         thisChatClient.getSubscribedChannels();
         addChatMessage("+ You can now use the chat features.");
@@ -86,7 +85,7 @@ function createChatClient() {
 }
 // -----------------------------------------------------------------------------
 function joinChatChannel(chatChannelName) {
-    debug("Function: joinChatChannel()");
+    debugMessage("Function: joinChatChannel()");
     if (thisChatClient === "") {
         addChatMessage("Required: create a Chat Client.");
         return;
@@ -99,16 +98,16 @@ function joinChatChannel(chatChannelName) {
     thisChatClient.getChannelByUniqueName(chatChannelName)
             .then(function (channel) {
                 thisChannel = channel;
-                debug("Channel exists: " + chatChannelName + " : " + thisChannel);
+                debugMessage("Channel exists: " + chatChannelName + " : " + thisChannel);
                 joinChannel();
-                debug("+ Channel Attributes: "
+                debugMessage("+ Channel Attributes: "
                         // + channel.getAttributes()
                         + " SID: " + channel.sid
                         + " name: " + channel.friendlyName
                         );
             })
             .catch(function () {
-                debug("Channel doesn't exist, created the channel.");
+                debugMessage("Channel doesn't exist, created the channel.");
                 chatChannelDescription = "";
                 if (chatChannelDescription === "") {
                     chatChannelDescription = chatChannelName;
@@ -127,9 +126,9 @@ function joinChatChannel(chatChannelName) {
 }
 
 function joinChannel() {
-    debug('Join the channel: ' + thisChannel.uniqueName);
+    debugMessage('Join the channel: ' + thisChannel.uniqueName);
     thisChannel.join().then(function (channel) {
-        debug('Joined channel as ' + clientId);
+        debugMessage('Joined channel as ' + clientId);
         addChatMessage('++ You have joined the channel: ' + thisChannel.friendlyName);
         addChatMessage("++ You can start chatting.");
         doPrompt();
@@ -140,7 +139,7 @@ function joinChannel() {
             addChatMessage("++ You already exist in the channel.");
             setButtons("join");
         } else {
-            debug("- Join failed: " + thisChannel.uniqueName + ' :' + err.message + ":");
+            debugMessage("- Join failed: " + thisChannel.uniqueName + ' :' + err.message + ":");
             addChatMessage("- Join failed: " + err.message);
         }
         doPrompt();
@@ -152,10 +151,7 @@ function joinChannel() {
 }
 
 function onMessageAdded(message) {
-    // addChatMessage("> " + message.author + " : " + message.channel.uniqueName + " : " + message.body);
-    // > IMb0a8a05c931e466a8408e6e61c8b2211 : david : undefined : abc : back2u
-    // addChatMessage("> " + message.sid + " : " + message.author + " : " + message.friendlyName
-    //         + " : " + message.channel.uniqueName + " : " + message.body);
+    // Other message properties: message.sid, message.friendlyName
     if (message.author === clientId) {
         addChatMessage("> " + message.channel.uniqueName + " : " + message.author + " : " + message.body);
     } else {
@@ -165,6 +161,7 @@ function onMessageAdded(message) {
     doPrompt();
 }
 
+// -----------------------------------------------------------------------------
 function listChannels() {
     if (thisChatClient === "") {
         addChatMessage("Required: Chat Client.");
@@ -188,7 +185,7 @@ function listChannels() {
 
 function deleteChannel(chatChannelName) {
     addChatMessage('+ Delete channel: ' + chatChannelName);
-    debug("Function: deleteChannel()");
+    debugMessage("Function: deleteChannel()");
     if (thisChatClient === "") {
         addChatMessage("Required: Chat Client.");
         return;
@@ -200,14 +197,14 @@ function deleteChannel(chatChannelName) {
     thisChatClient.getChannelByUniqueName(chatChannelName)
             .then(function (channel) {
                 thisChannel = channel;
-                debug("Channel exists: " + chatChannelName + " : " + thisChannel);
+                debugMessage("Channel exists: " + chatChannelName + " : " + thisChannel);
                 thisChannel.delete().then(function (channel) {
                     addChatMessage('++ Channel deleted: ' + chatChannelName);
                 }).catch(function (err) {
                     if (thisChannel.createdBy !== clientId) {
                         addChatMessage("- Can only be deleted by the creator: " + thisChannel.createdBy);
                     } else {
-                        debug("- Delete failed: " + thisChannel.uniqueName + ', ' + err);
+                        debugMessage("- Delete failed: " + thisChannel.uniqueName + ', ' + err);
                         addChatMessage("- Delete failed: " + err);
                     }
                 });
@@ -219,7 +216,7 @@ function deleteChannel(chatChannelName) {
 
 // -----------------------------------------------------------------------------
 function listMembers() {
-    debug("+ listMembers()");
+    debugMessage("+ listMembers()");
     if (thisChannel === "") {
         addChatMessage("Required: join a channel.");
         doPrompt();
@@ -246,14 +243,14 @@ function listMembers() {
 // -----------------------------------------------------------------------------
 function incCount() {
     totalMessages++;
-    debug('+ Increment Total Messages:' + totalMessages);
+    debugMessage('+ Increment Total Messages:' + totalMessages);
     thisChannel.getMessages().then(function (messages) {
         thisChannel.updateLastConsumedMessageIndex(totalMessages);
     });
 }
 
 function doCountZero() {
-    debug("+ Called: doCountZero(): thisChannel.setNoMessagesConsumed();");
+    debugMessage("+ Called: doCountZero(): thisChannel.setNoMessagesConsumed();");
     thisChannel.setNoMessagesConsumed();
 }
 
@@ -329,7 +326,7 @@ standard_input.on('data', function (data) {
         console.log("+ list");
         console.log("++ list public channels.\n");
         console.log("+ join <channel>\n");
-        // need to add option: console.log("+ join <channel> [<description>]");
+        // To do, add option: console.log("+ join <channel> [<description>]");
         console.log("+ members");
         console.log("++ list channel members.\n");
         console.log("+ send <message>\n");
