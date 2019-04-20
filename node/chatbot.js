@@ -49,7 +49,7 @@ function createChatClient() {
     logger("Refresh the token using client id: " + clientId);
     token = generateToken(clientId);
     logger("Token refreshed: " + token);
-// -------------------------------
+    // -------------------------------
     Chat.Client.create(token).then(chatClient => {
         thisChatClient = chatClient;
         // logger("Chat client created: thisChatClient: " + thisChatClient);
@@ -86,7 +86,7 @@ function joinChatChannel(chatChannelName) {
                 //
             }).catch(function () {
         logger("Channel doesn't exist, created the channel.");
-        chatChannelDescription = $("#channelDescription").val();
+        chatChannelDescription = "";
         if (chatChannelDescription === "") {
             chatChannelDescription = chatChannelName;
         }
@@ -208,10 +208,15 @@ function listMembers() {
 // -----------------------------------------------------------------------------
 function incCount() {
     totalMessages++;
-    logger('+ Increment Total Messages:' + totalMessages);
+    // logger('+ Increment Total Messages:' + totalMessages);
     thisChannel.getMessages().then(function (messages) {
         thisChannel.updateLastConsumedMessageIndex(totalMessages);
     });
+}
+
+function doCountZero() {
+    logger("+ Called: doCountZero(): thisChannel.setNoMessagesConsumed();");
+    thisChannel.setNoMessagesConsumed();
 }
 
 // -----------------------------------------------------------------------------
@@ -256,6 +261,7 @@ standard_input.on('data', function (data) {
         console.log("Commands: ");
         console.log("+ list");
         console.log("+ join <channel>");
+        // need to add option: console.log("+ join <channel> [<description>]");
         console.log("+ members");
         console.log("+ send <message>");
         console.log("+ delete <channel>");
