@@ -6,9 +6,9 @@
 
 var clientId = process.argv[2] || "";
 if (clientId === "") {
-    addChatMessage("- Username required.");
-    addChatMessage("+ Syntax: chatbot <username> [debug]");
-    process.exit();
+    console.log("- Username required.");
+    console.log("+ Syntax: chatbot <username> [debug]");
+    process.exit();     
 }
 console.log("+++ Chat program is starting up.");
 
@@ -45,7 +45,7 @@ function setButtons(message) {
 
 // -----------------------------------------------------------------------------
 function generateToken(clientid) {
-    console.log("+ generateToken, Client ID: " + clientid);
+    addChatMessage("+ Generate token, Client ID: " + clientid);
     const AccessToken = require('twilio').jwt.AccessToken;
     const token = new AccessToken(
             process.env.ACCOUNT_SID,
@@ -57,7 +57,8 @@ function generateToken(clientid) {
     });
     token.addGrant(chatGrant);
     token.identity = clientid;
-    // console.log(token.toJwt());
+    addChatMessage("++ Token generated.");
+    debug("Token: " + token.toJwt());
     return token.toJwt();
 }
 
@@ -65,23 +66,18 @@ function generateToken(clientid) {
 function createChatClient() {
     if (clientId === "") {
         debug("Required: Username.");
-        addChatMessage("Enter a Username to use when chatting.");
-        // return;
+        addChatMessage("- Enter a Username to use when chatting.");
         process.exit();
     }
-    addChatMessage("++ Creating Chat Client, please wait.");
-    debug("Refresh the token using client id: " + clientId);
-    token = generateToken(clientId);
-    addChatMessage("Token refreshed.");
-    debug("Token: " + token);
+    addChatMessage("+ Creating Chat Client.");
     // -------------------------------
     Chat.Client.create(token).then(chatClient => {
         thisChatClient = chatClient;
         debug("Chat client created: thisChatClient: " + thisChatClient);
-        addChatMessage("+ Chat client created for the user: " + clientId);
+        addChatMessage("++ Chat client created for the user: " + clientId);
         thisChatClient.getSubscribedChannels();
         addChatMessage("+ You can now use the chat features.");
-        addChatMessage("+ Enter >");
+        addChatMessage("+ Enter command >");
     });
 }
 // -----------------------------------------------------------------------------
@@ -264,6 +260,7 @@ function doSend(theCommand) {
 
 // -----------------------------------------------------------------------------
 
+token = generateToken(clientId);
 createChatClient();
 // console.log("Enter > ");
 var standard_input = process.stdin;
