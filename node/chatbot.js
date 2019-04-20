@@ -1,11 +1,13 @@
 // -----------------------------------------------------------------------------
 // To do:
 //  Prompt properly, example: after displaying a message.
-//  Send mode, command = "send"
+//  Send mode, command = "send".
+//  Token expire notice and refresh.
 
 var clientId = process.argv[2] || "";
 if (clientId === "") {
     addChatMessage("- Username required.");
+    addChatMessage("+ Syntax: chatbot <username> [debug]");
     process.exit();
 }
 console.log("+++ Chat program is starting up.");
