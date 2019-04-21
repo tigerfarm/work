@@ -16,7 +16,7 @@ const Twilio = new require('twilio')(process.env.ACCOUNT_SID, process.env.AUTH_T
 const Chat = require('twilio-chat');
 
 var thisChatClient;
-var chatChannelName = "";
+var thisChatChannelName = "";
 var chatChannelDescription = "";
 let thisChannel = "";
 let totalMessages = 0;  // This count of read channel messages. Needs work to initialize and maintain the count.
@@ -34,7 +34,7 @@ function debugMessage(message) {
     }
 }
 
-var thePromptPrefix = "";
+var thePromptPrefix = "+ Command, ";
 var thePrompt = "Enter > ";
 function doPrompt() {
     // No line feed after the prompt.
@@ -78,7 +78,7 @@ function createChatClient() {
         sayMessage("++ Chat client created for the user: " + clientId);
         thisChatClient.getSubscribedChannels();
         sayMessage("+ You can now use the chat features.");
-        sayMessage("+ Ready for command. ");
+        sayMessage("+ Ready for command, such as: help.");
         doPrompt();
     });
 }
@@ -97,6 +97,7 @@ function joinChatChannel(chatChannelName) {
     thisChatClient.getChannelByUniqueName(chatChannelName)
             .then(function (channel) {
                 thisChannel = channel;
+                thisChatChannelName = chatChannelName;
                 debugMessage("Channel exists: " + chatChannelName + " : " + thisChannel);
                 joinChannel();
                 debugMessage("+ Channel Attributes: "
@@ -115,8 +116,9 @@ function joinChatChannel(chatChannelName) {
                     uniqueName: chatChannelName,
                     friendlyName: chatChannelDescription
                 }).then(function (channel) {
-                    sayMessage("Channel created : " + chatChannelName + " " + chatChannelDescription + " : " + channel);
+                    sayMessage("++ Channel created : " + chatChannelName + " " + chatChannelDescription);
                     thisChannel = channel;
+                    thisChatChannelName = chatChannelName;
                     joinChannel();
                 }).catch(function (channel) {
                     sayMessage('-- Failed to create the channel: ' + channel);
@@ -178,7 +180,7 @@ function listChannels() {
         for (i = 0; i < paginator.items.length; i++) {
             const channel = paginator.items[i];
             let listString = '++ ' + channel.uniqueName + ": " + channel.friendlyName + ": " + channel.createdBy;
-            if (channel.uniqueName === chatChannelName) {
+            if (channel.uniqueName === thisChatChannelName) {
                 listString += " *";
             }
             sayMessage(listString);
@@ -189,7 +191,6 @@ function listChannels() {
 }
 
 function deleteChannel(chatChannelName) {
-    sayMessage('+ Delete channel: ' + chatChannelName);
     debugMessage("Function: deleteChannel()");
     if (thisChatClient === "") {
         sayMessage("Required: Chat Client.");
@@ -199,12 +200,17 @@ function deleteChannel(chatChannelName) {
         sayMessage("Required: Channel name.");
         return;
     }
+    sayMessage('+ Delete channel: ' + chatChannelName);
     thisChatClient.getChannelByUniqueName(chatChannelName)
             .then(function (channel) {
                 thisChannel = channel;
                 debugMessage("Channel exists: " + chatChannelName + " : " + thisChannel);
                 thisChannel.delete().then(function (channel) {
                     sayMessage('++ Channel deleted: ' + chatChannelName);
+                    if (chatChannelName === thisChatChannelName) {
+                        thisChatChannelName = "";
+                    }
+                    doPrompt();
                 }).catch(function (err) {
                     if (thisChannel.createdBy !== clientId) {
                         sayMessage("- Can only be deleted by the creator: " + thisChannel.createdBy);
@@ -212,10 +218,12 @@ function deleteChannel(chatChannelName) {
                         debugMessage("- Delete failed: " + thisChannel.uniqueName + ', ' + err);
                         sayMessage("- Delete failed: " + err);
                     }
+                    doPrompt();
                 });
             })
             .catch(function () {
                 sayMessage("- Channel doesn't exist, cannot delete it: " + chatChannelName);
+                doPrompt();
             });
 }
 
@@ -261,7 +269,7 @@ function doCountZero() {
 
 // -----------------------------------------------------------------------------
 function doSend(theCommand) {
-    if (thisChannel === "") {
+    if (thisChatChannelName === "") {
         sayMessage("Required: joined a channel.");
         doPrompt();
     } else {
@@ -312,7 +320,21 @@ standard_input.on('data', function (data) {
             deleteChannel(theCommand.substring(commandLength));
         } else {
             sayMessage("+ Syntax: delete <channel>");
+            doPrompt();
         }
+    } else if (theCommand === 'show') {
+        sayMessage("+ Show:");
+        if (thisChatChannelName !== "") {
+            sayMessage("++ Joined to channel: " + thisChatChannelName);
+        } else {
+            sayMessage("++ Not joined to any channel.");
+        }
+        if (debugState === 0) {
+            sayMessage("++ Debug: off");
+        } else {
+            sayMessage("++ Debug: on");
+        }
+        doPrompt();
     } else if (theCommand === 'debug') {
         if (debugState === 0) {
             debugState = 1;
@@ -327,7 +349,9 @@ standard_input.on('data', function (data) {
         doPrompt();
     } else if (theCommand === 'help') {
         sayMessage("-----------------------");
-        sayMessage("Commands: ");
+        sayMessage("Commands:\n");
+        sayMessage("+ show");
+        sayMessage("++ Show chat client attributes.\n");
         sayMessage("+ list");
         sayMessage("++ list public channels.\n");
         sayMessage("+ join <channel>\n");
@@ -336,6 +360,7 @@ standard_input.on('data', function (data) {
         sayMessage("++ list channel members.\n");
         sayMessage("+ send");
         sayMessage("++ Toggle send mode: assume, send messages.");
+        sayMessage("++ Enter blank line to exit send mode.");
         sayMessage("+ send <message>\n");
         sayMessage("+ delete <channel>\n");
         sayMessage("+ exit\n");
