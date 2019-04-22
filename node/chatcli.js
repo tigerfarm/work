@@ -18,16 +18,13 @@ const Chat = require('twilio-chat');
 var request = require('request');
 
 var firstInit = "";
-var setChannellisteners = "";
+var setChannelListeners = "";
 var theTokenUrl = "";
 var thisChatClient = "";
 var thisChatChannelName = "";
 var chatChannelDescription = "";
 let thisChannel = "";
 let totalMessages = 0;  // This count of read channel messages. Needs work to initialize and maintain the count.
-
-// token = generateToken(clientId);
-// createChatClient(token);
 
 // -----------------------------------------------------------------------------
 let debugState = 0;    // 0 off
@@ -55,12 +52,14 @@ function sayMessage(message) {
 
 // -----------------------------------------------------------------------------
 function generateToken(clientid) {
+    //
+    // Optional, if you want to use environment variables.
+    //
     if (clientId === "") {
         sayMessage("- Required: user identity for creating a chat object.");
         doPrompt();
         return "";
     }
-    // Optional, if want to use environment variables.
     sayMessage("+ Generate token, Client ID: " + clientid);
     const AccessToken = require('twilio').jwt.AccessToken;
     const token = new AccessToken(
@@ -182,6 +181,7 @@ function joinChatChannel(chatChannelName) {
                     thisChannel = channel;
                     thisChatChannelName = chatChannelName;
                     joinChannel();
+                    setChannelListnerFunctions();
                 }).catch(function (channel) {
                     sayMessage('-- Failed to create the channel: ' + channel);
                 });
@@ -193,7 +193,7 @@ function joinChannel() {
     thisChannel.join().then(function (channel) {
         debugMessage('Joined channel as ' + clientId);
         sayMessage('++ You have joined the channel: ' + thisChannel.friendlyName);
-        sayMessage("++ You can start chatting.");
+        doPrompt();
     }).catch(function (err) {
         // - Join failed: myChannel3, t: Member already exists
         if (err.message === "Member already exists") {
@@ -204,19 +204,23 @@ function joinChannel() {
             sayMessage("- Join failed: " + err.message);
         }
     });
-    if (setChannellisteners === "") {
-        // Only set this once, else can cause issues when re-joining or joining other channels.
-        setChannellisteners = "joined";
-        debugMessage("+ Set channel event listeners.");
-        //
-        thisChannel.on('messageAdded', function (message) {
-            onMessageAdded(message);
-        });
-        //
-        thisChannel.on('tokenAboutToExpire', function () {
-            refreshChatToken();
-        });
+    if (setChannelListeners === "") {
+        setChannelListnerFunctions();
     }
+}
+
+function setChannelListnerFunctions() {
+    // Only set this once, else can cause issues when re-joining or joining other channels.
+    setChannelListeners = "joined";
+    debugMessage("+ Set channel event listeners.");
+    //
+    thisChannel.on('messageAdded', function (message) {
+        onMessageAdded(message);
+    });
+    //
+    thisChannel.on('tokenAboutToExpire', function () {
+        refreshChatToken();
+    });
 }
 
 function onMessageAdded(message) {
@@ -343,7 +347,7 @@ function doCountZero() {
 // -----------------------------------------------------------------------------
 function doSend(theCommand) {
     if (thisChatChannelName === "") {
-        sayMessage("Required: joined a channel.");
+        sayMessage("Required: join a channel.");
         doPrompt();
     } else {
         commandLength = 'send'.length + 1;
