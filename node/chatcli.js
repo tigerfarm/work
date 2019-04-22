@@ -198,12 +198,14 @@ function joinChannel() {
         // Only set this once, else can cause issues when re-joining or joining other channels.
         initJoinChannel = "joined";
         sayMessage("+ Set channel event listeners: messageAdded and tokenAboutToExpire.");
+        //
         thisChannel.on('messageAdded', function (message) {
             onMessageAdded(message);
         });
+        //
         thisChannel.on('tokenAboutToExpire', function () {
             updatedToken = generateToken(clientId);
-            fetchToken(function (updatedToken) {
+            getToken(function (updatedToken) {
                 thisChannel.updateToken(updatedToken);
             });
         });
@@ -220,6 +222,13 @@ function onMessageAdded(message) {
     incCount();
     doPrompt();
 }
+
+function getToken() {
+    debugMessage("+ getToken()");
+    generateToken(clientId);
+    return token;
+}
+
 
 // -----------------------------------------------------------------------------
 function listMembers() {
