@@ -34,7 +34,7 @@ let debugState = 0;    // 0 off
 var debugOnOff = process.argv[3] || "";
 if (debugOnOff === "debug") {
     debugState = 1;    // 1 on
-    debugMessage("+ Debug on.");
+    debugMessage("Debug on.");
 }
 function debugMessage(message) {
     if (debugState !== 0) {
@@ -55,6 +55,11 @@ function sayMessage(message) {
 
 // -----------------------------------------------------------------------------
 function generateToken(clientid) {
+    if (clientId === "") {
+        sayMessage("- Required: user identity for creating a chat object.");
+        doPrompt();
+        return "";
+    }
     // Optional, if want to use environment variables.
     sayMessage("+ Generate token, Client ID: " + clientid);
     const AccessToken = require('twilio').jwt.AccessToken;
@@ -128,12 +133,16 @@ function createChatClientObject(token) {
         debugMessage("Chat client object created: thisChatClient: " + thisChatClient);
         sayMessage("++ Chat client object created for the user: " + clientId);
         thisChatClient.getSubscribedChannels();
+        if (firstInit === "") {
+            firstInit = "initialized";
+            sayMessage("+ Ready for commands such as: help, init, or local.");
+        }
         doPrompt();
     });
 }
 // -----------------------------------------------------------------------------
 function joinChatChannel(chatChannelName) {
-    debugMessage("Function: joinChatChannel()");
+    debugMessage("joinChatChannel(chatChannelName)");
     if (thisChatClient === "") {
         sayMessage("Required: create a Chat Client.");
         doPrompt();
@@ -144,7 +153,7 @@ function joinChatChannel(chatChannelName) {
         doPrompt();
         return;
     }
-    sayMessage("+ Join the channel: " + chatChannelName);
+    // sayMessage("+ Join the channel: " + chatChannelName);
     thisChatClient.getChannelByUniqueName(chatChannelName)
             .then(function (channel) {
                 thisChannel = channel;
@@ -156,6 +165,8 @@ function joinChatChannel(chatChannelName) {
                         + " SID: " + channel.sid
                         + " name: " + channel.friendlyName
                         );
+                sayMessage('+ You have joined the channel.');
+                doPrompt();
             })
             .catch(function () {
                 debugMessage("Channel doesn't exist, created the channel.");
@@ -178,27 +189,25 @@ function joinChatChannel(chatChannelName) {
 }
 
 function joinChannel() {
-    debugMessage('Join the channel: ' + thisChannel.uniqueName);
+    debugMessage('joinChannel() ' + thisChannel.uniqueName);
     thisChannel.join().then(function (channel) {
         debugMessage('Joined channel as ' + clientId);
         sayMessage('++ You have joined the channel: ' + thisChannel.friendlyName);
         sayMessage("++ You can start chatting.");
-        doPrompt();
     }).catch(function (err) {
         // - Join failed: myChannel3, t: Member already exists
         if (err.message === "Member already exists") {
             // - Join failed: t: Member already exists
-            sayMessage("++ You already exist in the channel.");
+            debugMessage("++ You already exist in the channel.");
         } else {
             debugMessage("- Join failed: " + thisChannel.uniqueName + ' :' + err.message + ":");
             sayMessage("- Join failed: " + err.message);
         }
-        doPrompt();
     });
     if (setChannellisteners === "") {
         // Only set this once, else can cause issues when re-joining or joining other channels.
         setChannellisteners = "joined";
-        sayMessage("+ Set channel event listeners.");
+        debugMessage("+ Set channel event listeners.");
         //
         thisChannel.on('messageAdded', function (message) {
             onMessageAdded(message);
@@ -416,9 +425,13 @@ function doHelp() {
 
 // -----------------------------------------------------------------------------
 if (clientId !== "") {
-    getTokenSetClient(clientId);
+    token = generateToken(clientId);
+    if (token !== "") {
+        createChatClientObject(token);
+    }
 } else {
-    sayMessage("+ Ready for commands such as: help, user, init, or local.");
+    firstInit = "initialized";
+    sayMessage("+ Ready for commands such as: help, init, or local.");
     doPrompt();
 }
 var sendMode = 0;
@@ -465,7 +478,9 @@ standard_input.on('data', function (data) {
         getTokenSetClient(clientId);
     } else if (theCommand === 'local') {
         token = generateToken(clientId);
-        createChatClientObject(token);
+        if (token !== "") {
+            createChatClientObject(token);
+        }
     } else if (theCommand.startsWith('user')) {
         commandLength = 'user'.length + 1;
         if (theCommand.length > commandLength) {
