@@ -74,6 +74,7 @@ function generateToken(clientid) {
 }
 
 function getTokenSetClient(clientid) {
+    debugMessage("getTokenSetClient(clientid)");
     if (firstInit === "") {
         firstInit = "initialized";
         sayMessage("+ Ready for commands such as: help, init, or local.");
@@ -120,12 +121,12 @@ function createChatClientObject(token) {
         doPrompt();
         return;
     }
-    sayMessage("+ Creating Chat Client.");
+    sayMessage("+ Creating chat client object.");
     // -------------------------------
     Chat.Client.create(token).then(chatClient => {
         thisChatClient = chatClient;
-        debugMessage("Chat client created: thisChatClient: " + thisChatClient);
-        sayMessage("++ Chat client created for the user: " + clientId);
+        debugMessage("Chat client object created: thisChatClient: " + thisChatClient);
+        sayMessage("++ Chat client object created for the user: " + clientId);
         thisChatClient.getSubscribedChannels();
         doPrompt();
     });
@@ -221,7 +222,8 @@ function onMessageAdded(message) {
 }
 
 function refreshChatToken() {
-    debugMessage("+ refreshChatToken()");
+    // Not tested.
+    debugMessage("refreshChatToken()");
     generateToken(clientId);
     thisChannel.updateToken(token);
     sayMessage("+ Chat token refreshed.");
@@ -230,7 +232,7 @@ function refreshChatToken() {
 
 // -----------------------------------------------------------------------------
 function listMembers() {
-    debugMessage("+ listMembers()");
+    debugMessage("listMembers()");
     if (thisChannel === "") {
         sayMessage("Required: join a channel.");
         doPrompt();
@@ -256,6 +258,7 @@ function listMembers() {
 
 // -----------------------------------------------------------------------------
 function listChannels() {
+    debugMessage("listChannels()");
     if (thisChatClient === "") {
         sayMessage("Required: Chat Client.");
         doPrompt();
@@ -278,7 +281,7 @@ function listChannels() {
 }
 
 function deleteChannel(chatChannelName) {
-    debugMessage("Function: deleteChannel()");
+    debugMessage("deleteChannel()");
     if (thisChatClient === "") {
         sayMessage("Required: Chat Client.");
         doPrompt();
@@ -353,21 +356,21 @@ function doSend(theCommand) {
 }
 
 function doShow() {
-    sayMessage("+ Show:");
+    sayMessage("+ Show chat client attribute settings:");
     if (clientId) {
         sayMessage("++ User identity: " + clientId);
     } else {
         sayMessage("++ User identity is required.");
     }
     if (theTokenUrl === "") {
-        sayMessage("++ Token URL is required.");
+        sayMessage("++ Token URL is required, if you are not use local environment variables.");
     } else {
         sayMessage("++ Token URL: " + theTokenUrl);
     }
     if (thisChatClient === "") {
-        sayMessage("++ Chat Client not created.");
+        sayMessage("++ Chat Client object not created.");
     } else {
-        sayMessage("++ Chat Client created.");
+        sayMessage("++ Chat Client object is created.");
     }
     if (thisChatChannelName) {
         sayMessage("++ Joined to channel: " + thisChatChannelName);
@@ -386,13 +389,14 @@ function doHelp() {
     sayMessage("Commands:\n");
     sayMessage("+ show");
     sayMessage("++ Show chat client attributes.\n");
-    sayMessage("+ user <identity>\n");
-    sayMessage("+ url <identity>");
-    sayMessage("++ Set the token URL.\n");
+    sayMessage("+ user <identity>");
+    sayMessage("++ Your chat user identity.\n");
+    sayMessage("+ url <URL to retrieve a token>");
+    sayMessage("++ Set the token URL value. This URL is used to retrieve a chat access token.\n");
     sayMessage("+ init");
-    sayMessage("++ Get a token using the token URL, and initialize chat client.\n");
+    sayMessage("++ Get a token using the token retrieval URL, and initialize the chat client object.\n");
     sayMessage("+ local");
-    sayMessage("++ Get a token using the local environment variables, and initialize chat client.\n");
+    sayMessage("++ Get a token using the local environment variables, and initialize the chat client object.\n");
     sayMessage("+ list");
     sayMessage("++ list public channels.\n");
     sayMessage("+ join <channel>\n");
@@ -400,7 +404,7 @@ function doHelp() {
     sayMessage("+ members");
     sayMessage("++ list channel members.\n");
     sayMessage("+ send");
-    sayMessage("++ Toggle send mode: assume, send messages.");
+    sayMessage("++ Toggle send mode. When on, send messages.");
     sayMessage("++ Enter blank line to exit send mode.");
     sayMessage("+ send <message>\n");
     sayMessage("+ delete <channel>\n");
@@ -414,7 +418,7 @@ function doHelp() {
 if (clientId !== "") {
     getTokenSetClient(clientId);
 } else {
-    sayMessage("+ Ready for command, such as: help.");
+    sayMessage("+ Ready for commands such as: help, user, init, or local.");
     doPrompt();
 }
 var sendMode = 0;
