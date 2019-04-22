@@ -10,8 +10,6 @@ if (clientId === "") {
 }
 console.log("+++ Chat program is starting up.");
 
-// $ npm install twilio
-const Twilio = new require('twilio')(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
 // $ npm install --save twilio-chat
 const Chat = require('twilio-chat');
 //
