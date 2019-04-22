@@ -3,8 +3,10 @@
 //  Add option: join <channel> [<description>]
 //
 var clientId = process.argv[2] || "";
-if (clientId !== "") {
-    console.log("+ User identity: " + clientId);
+if (clientId === "") {
+    console.log("- User identity required.");
+    console.log("+ Syntax: chatbot <identity> [debug]");
+    process.exit();
 }
 console.log("+++ Chat program is starting up.");
 
@@ -15,9 +17,7 @@ const Chat = require('twilio-chat');
 //
 var request = require('request');
 
-var firstInit = "";
-var theTokenUrl = "";
-var thisChatClient = "";
+var thisChatClient;
 var thisChatChannelName = "";
 var chatChannelDescription = "";
 let thisChannel = "";
@@ -25,6 +25,7 @@ let totalMessages = 0;  // This count of read channel messages. Needs work to in
 
 // token = generateToken(clientId);
 // createChatClient(token);
+doPrompt();
 
 // -----------------------------------------------------------------------------
 let debugState = 0;    // 0 off
@@ -52,7 +53,6 @@ function sayMessage(message) {
 
 // -----------------------------------------------------------------------------
 function generateToken(clientid) {
-    // Optional, if want to use environment variables.
     sayMessage("+ Generate token, Client ID: " + clientid);
     const AccessToken = require('twilio').jwt.AccessToken;
     const token = new AccessToken(
@@ -71,26 +71,15 @@ function generateToken(clientid) {
 }
 
 function refreshTokenClient(clientid) {
-    if (clientId === "") {
-        sayMessage("- Required: user identity for creating a chat object.");
-        doPrompt();
-        return;
-    }
-    if (theTokenUrl === "") {
-        sayMessage("- Required: the token URL.");
-        doPrompt();
-        return;
-    }
-    tokenUrl = theTokenUrl + "/tokenchat?clientid=" + clientid;
-    request(tokenUrl, function (error, response, newToken) {
+    tokenUrl = 'https://obedient-machine-3163.twil.io/tokenchat?clientid=' + clientid;
+    request(tokenUrl, function (error, response, token) {
         if (error) {
             sayMessage('error:', error); // Print the error if one occurred
         }
-        var theStatus = response && response.statusCode;
-        debugMessage('statusCode: ' + theStatus); // Print the response status code if a response was received
-        debugMessage('token: ' + newToken); // Print the HTML for the Google homepage.
+        debug('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+        debug('body:', token); // Print the HTML for the Google homepage.
         sayMessage("+ New token retrieved.");
-        createChatClient(newToken);
+        createChatClient(token);
     });
 }
 
@@ -98,8 +87,7 @@ function refreshTokenClient(clientid) {
 function createChatClient(token) {
     if (clientId === "") {
         sayMessage("- Required: user identity for creating a chat object.");
-        doPrompt();
-        return;
+        process.exit();
     }
     sayMessage("+ Creating Chat Client.");
     // -------------------------------
@@ -108,11 +96,8 @@ function createChatClient(token) {
         debugMessage("Chat client created: thisChatClient: " + thisChatClient);
         sayMessage("++ Chat client created for the user: " + clientId);
         thisChatClient.getSubscribedChannels();
-        if (firstInit === "") {
-            firstInit = "initialized";
-            sayMessage("+ You can now use the chat features.");
-            sayMessage("+ Ready for command, such as: help.");
-        }
+        sayMessage("+ You can now use the chat features.");
+        sayMessage("+ Ready for command, such as: help.");
         doPrompt();
     });
 }
@@ -121,12 +106,10 @@ function joinChatChannel(chatChannelName) {
     debugMessage("Function: joinChatChannel()");
     if (thisChatClient === "") {
         sayMessage("Required: create a Chat Client.");
-        doPrompt();
         return;
     }
     if (chatChannelName === "") {
         sayMessage("Required: Channel name.");
-        doPrompt();
         return;
     }
     sayMessage("+ Join the channel: " + chatChannelName);
@@ -208,7 +191,6 @@ function onMessageAdded(message) {
 function listChannels() {
     if (thisChatClient === "") {
         sayMessage("Required: Chat Client.");
-        doPrompt();
         return;
     }
     sayMessage("+ ------------------------");
@@ -231,12 +213,10 @@ function deleteChannel(chatChannelName) {
     debugMessage("Function: deleteChannel()");
     if (thisChatClient === "") {
         sayMessage("Required: Chat Client.");
-        doPrompt();
         return;
     }
     if (chatChannelName === "") {
         sayMessage("Required: Channel name.");
-        doPrompt();
         return;
     }
     sayMessage('+ Delete channel: ' + chatChannelName);
@@ -330,74 +310,12 @@ function doSend(theCommand) {
     }
 }
 
-function doShow() {
-    sayMessage("+ Show:");
-    if (clientId) {
-        sayMessage("++ User identity: " + clientId);
-    } else {
-        sayMessage("++ User identity is required.");
-    }
-    if (theTokenUrl === "") {
-        sayMessage("++ Token URL is required.");
-    } else {
-        sayMessage("++ Token URL: " + theTokenUrl);
-    }
-    if (thisChatClient === "") {
-        sayMessage("++ Chat Client not created.");
-    } else {
-        sayMessage("++ Chat Client created.");
-    }
-    if (thisChatChannelName) {
-        sayMessage("++ Joined to channel: " + thisChatChannelName);
-    } else {
-        sayMessage("++ Not joined to any channel.");
-    }
-    if (debugState === 0) {
-        sayMessage("++ Debug: off");
-    } else {
-        sayMessage("++ Debug: on");
-    }
-}
-
-function doHelp() {
-    sayMessage("-----------------------");
-    sayMessage("Commands:\n");
-    sayMessage("+ show");
-    sayMessage("++ Show chat client attributes.\n");
-    sayMessage("+ user <identity>\n");
-    sayMessage("+ url <identity>");
-    sayMessage("++ Set the token URL.\n");
-    sayMessage("+ init");
-    sayMessage("++ Initialize chat client.\n");
-    sayMessage("+ list");
-    sayMessage("++ list public channels.\n");
-    sayMessage("+ join <channel>\n");
-    // To do, add option: sayMessage("+ join <channel> [<description>]");
-    sayMessage("+ members");
-    sayMessage("++ list channel members.\n");
-    sayMessage("+ send");
-    sayMessage("++ Toggle send mode: assume, send messages.");
-    sayMessage("++ Enter blank line to exit send mode.");
-    sayMessage("+ send <message>\n");
-    sayMessage("+ delete <channel>\n");
-    sayMessage("+ debug");
-    sayMessage("++ Toggle debug on and off.\n");
-    sayMessage("+ help\n");
-    sayMessage("+ exit\n");
-}
-
 // -----------------------------------------------------------------------------
-if (clientId !== "") {
-    refreshTokenClient(clientId);
-} else {
-    sayMessage("+ Ready for command, such as: help.");
-    doPrompt();
-}
 var sendMode = 0;
 var standard_input = process.stdin;
 standard_input.setEncoding('utf-8');
 standard_input.on('data', function (data) {
-    theCommand = data.substring(0, data.length - 1).trim();
+    theCommand = data.substring(0, data.length - 1);
     if (sendMode === 1) {
         doSend("send " + theCommand);
     } else if (theCommand.startsWith('send')) {
@@ -409,42 +327,36 @@ standard_input.on('data', function (data) {
     } else if (theCommand.startsWith('join')) {
         commandLength = 'join'.length + 1;
         if (theCommand.length > commandLength) {
-            joinChatChannel(theCommand.substring(commandLength).trim());
+            joinChatChannel(theCommand.substring(commandLength));
         } else {
             sayMessage("+ Syntax: join <channel>");
         }
     } else if (theCommand.startsWith('delete')) {
         commandLength = 'delete'.length + 1;
         if (theCommand.length > commandLength) {
-            deleteChannel(theCommand.substring(commandLength).trim());
+            deleteChannel(theCommand.substring(commandLength));
         } else {
             sayMessage("+ Syntax: delete <channel>");
             doPrompt();
         }
     } else if (theCommand === 'show') {
-        doShow();
-        doPrompt();
-    } else if (theCommand.startsWith('url')) {
-        commandLength = 'url'.length + 1;
-        if (theCommand.length > commandLength) {
-            theTokenUrl = theCommand.substring(commandLength).trim();
+        sayMessage("+ Show:");
+        if (thisChatChannelName !== "") {
+            sayMessage("++ Joined to channel: " + thisChatChannelName);
         } else {
-            sayMessage("+ Syntax: delete <channel>");
+            sayMessage("++ Not joined to any channel.");
+        }
+        if (debugState === 0) {
+            sayMessage("++ Debug: off");
+        } else {
+            sayMessage("++ Debug: on");
         }
         doPrompt();
-    } else if (theCommand === 'init') {
-        refreshTokenClient(clientId);
-    } else if (theCommand === 'local') {
+    } else if (theCommand === 'refresh') {
         token = generateToken(clientId);
         createChatClient();
-    } else if (theCommand.startsWith('user')) {
-        commandLength = 'user'.length + 1;
-        if (theCommand.length > commandLength) {
-            clientId = theCommand.substring(commandLength).trim();
-        } else {
-            sayMessage("+ Syntax: user <identity>");
-        }
-        doPrompt();
+    } else if (theCommand === 'test') {
+        refreshTokenClient(clientId);
     } else if (theCommand === 'debug') {
         if (debugState === 0) {
             debugState = 1;
@@ -458,7 +370,25 @@ standard_input.on('data', function (data) {
         }
         doPrompt();
     } else if (theCommand === 'help') {
-        doHelp();
+        sayMessage("-----------------------");
+        sayMessage("Commands:\n");
+        sayMessage("+ show");
+        sayMessage("++ Show chat client attributes.\n");
+        sayMessage("+ list");
+        sayMessage("++ list public channels.\n");
+        sayMessage("+ join <channel>\n");
+        // To do, add option: sayMessage("+ join <channel> [<description>]");
+        sayMessage("+ members");
+        sayMessage("++ list channel members.\n");
+        sayMessage("+ send");
+        sayMessage("++ Toggle send mode: assume, send messages.");
+        sayMessage("++ Enter blank line to exit send mode.");
+        sayMessage("+ send <message>\n");
+        sayMessage("+ delete <channel>\n");
+        sayMessage("+ exit\n");
+        sayMessage("+ debug");
+        sayMessage("++ Toggle debug on and off.\n");
+        sayMessage("+ help\n");
         doPrompt();
     } else if (theCommand === 'exit') {
         console.log("+++ Exit.");
