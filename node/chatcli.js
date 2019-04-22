@@ -18,7 +18,7 @@ const Chat = require('twilio-chat');
 var request = require('request');
 
 var firstInit = "";
-var initJoinChannel = "";
+var setChannellisteners = "";
 var theTokenUrl = "";
 var thisChatClient = "";
 var thisChatChannelName = "";
@@ -194,20 +194,17 @@ function joinChannel() {
         }
         doPrompt();
     });
-    if (initJoinChannel === "") {
+    if (setChannellisteners === "") {
         // Only set this once, else can cause issues when re-joining or joining other channels.
-        initJoinChannel = "joined";
-        sayMessage("+ Set channel event listeners: messageAdded and tokenAboutToExpire.");
+        setChannellisteners = "joined";
+        sayMessage("+ Set channel event listeners.");
         //
         thisChannel.on('messageAdded', function (message) {
             onMessageAdded(message);
         });
         //
         thisChannel.on('tokenAboutToExpire', function () {
-            updatedToken = generateToken(clientId);
-            getToken(function (updatedToken) {
-                thisChannel.updateToken(updatedToken);
-            });
+            refreshChatToken();
         });
     }
 }
@@ -223,12 +220,13 @@ function onMessageAdded(message) {
     doPrompt();
 }
 
-function getToken() {
-    debugMessage("+ getToken()");
+function refreshChatToken() {
+    debugMessage("+ refreshChatToken()");
     generateToken(clientId);
-    return token;
+    thisChannel.updateToken(token);
+    sayMessage("+ Chat token refreshed.");
+    doPrompt();
 }
-
 
 // -----------------------------------------------------------------------------
 function listMembers() {
