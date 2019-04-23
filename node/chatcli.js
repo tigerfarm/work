@@ -4,6 +4,8 @@
 //      https://www.twilio.com/docs/chat/access-token-lifecycle
 //  Message properties:
 //      properties: https://media.twiliocdn.com/sdk/js/chat/releases/3.2.1/docs/Message.html
+//  sendMessage(message, messageAttributes):
+//      https://media.twiliocdn.com/sdk/js/chat/releases/2.0.0/docs/Channel.html#sendMessage__anchor
 //  Chat Presence:
 //      https://www.twilio.com/docs/chat/reachability-indicator
 //  Chat send/receive media files:
@@ -14,6 +16,7 @@
 // To do:
 //  Add option: join <channel> [<description>]
 //  Auto token refresh using tokenAboutToExpire.
+//  Presence.
 //
 var clientId = process.argv[2] || "";
 if (clientId !== "") {
@@ -469,29 +472,46 @@ function doSendMedia(theCommand) {
             theMediaFile = theCommand.substring(commandLength);
             sayMessage("++ Send media file: " + theMediaFile);
 
+            // https://media.twiliocdn.com/sdk/js/chat/releases/2.0.0/docs/Channel.html#sendMessage__anchor
+            //  sendMessage(message, messageAttributes)
+            //  
             // Form data option not working for me.
-            //      Error: Media content <Channel#SendMediaOptions> must contain non-empty contentType and media
+            // // formData.append('file', $('#formInputFile')[0].files[0]);
+            //
             // var FormData = require('form-data');
             // const formData = new FormData();
-            // formData.append('contentType', 'image/jpg');
-            // formData.append('media', fs.readFileSync(theMediaFile));
-            // thisChatClient.getChannelBySid(thisChannel.sid).then(function (channel) {
-            //    thisChannel.sendMessage(formData);
-            // });
-
-            // Only form data send option allows the sending of a filename.
+            // formData.append('file', fs.createReadStream(theMediaFile));
+            // The following don't help:
+            //  formData.append('contentType', 'application/x-www-form-urlencoded');
+            //  formData.append('contentType', 'image/jpg');
+            //  formData.append('media', fs.createReadStream(theMediaFile));
             thisChatClient.getChannelBySid(thisChannel.sid).then(function (channel) {
-                thisChannel.sendMessage({
-                    // contentType: 'application/x-www-form-urlencoded',
-                    contentType: 'image/jpg',
-                    media: fs.readFileSync(theMediaFile)
-                });
+                
+                // The following gives: Error: Media content <Channel#SendMediaOptions> must contain non-empty contentType and media
+                // channel.sendMessage(formData);
+                
+                // The following works. But only when using form data can I send the filename.
+                channel.sendMessage({ media: fs.readFileSync(theMediaFile), contentType: 'image/jpg'});
+                
             });
+
         } else {
             sayMessage("+ Media filename required: sendmedia <filename>");
             doPrompt();
         }
     }
+}
+
+function test0() {
+
+    // Only form data send option allows the sending of a filename.
+    thisChatClient.getChannelBySid(thisChannel.sid).then(function (channel) {
+        channel.sendMessage({
+            // contentType: 'application/x-www-form-urlencoded',
+            contentType: 'image/jpg',
+            media: fs.readFileSync(theMediaFile)
+        });
+    });
 }
 
 function doShow() {
