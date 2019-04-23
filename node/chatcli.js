@@ -468,7 +468,14 @@ function doHelp() {
     sayMessage("+ delete <channel>\n");
     sayMessage("+ debug");
     sayMessage("++ Toggle debug on and off.\n");
-    sayMessage("+ sms <message>\n");
+    sayMessage("+ sms");
+    sayMessage("++ Toggle SMS send mode. When on, send messages.");
+    sayMessage("++ Enter blank line to exit send mode.");
+    sayMessage("+ sms send <message>");
+    sayMessage("+ sms to <phone number>");
+    sayMessage("++ Set to phone number.");
+    sayMessage("+ sms from <phone number>");
+    sayMessage("++ Set from phone number.\n");
     sayMessage("+ help\n");
     sayMessage("+ exit\n");
 }
