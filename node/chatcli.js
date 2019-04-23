@@ -2,8 +2,14 @@
 // Docmentation links:
 //  Tokens:
 //      https://www.twilio.com/docs/chat/access-token-lifecycle
+//  Message properties:
+//      properties: https://media.twiliocdn.com/sdk/js/chat/releases/3.2.1/docs/Message.html
 //  Chat Presence:
 //      https://www.twilio.com/docs/chat/reachability-indicator
+//  Chat send/receive media files:
+//      https://www.twilio.com/docs/chat/media-support
+//      https://www.twilio.com/docs/chat/rest/media
+//      
 //  
 // To do:
 //  Add option: join <channel> [<description>]
@@ -253,6 +259,8 @@ function refreshChatToken() {
 }
 
 // -----------------------------------------------------------------------------
+// For the channel you have joined:
+
 function listMembers() {
     debugMessage("listMembers()");
     if (thisChannel === "") {
@@ -275,6 +283,42 @@ function listMembers() {
                 doPrompt();
             }
         });
+    });
+}
+
+function listMessageHistory() {
+    debugMessage("listMessageHistory()");
+    if (thisChannel === "") {
+        sayMessage("Required: join a channel.");
+        doPrompt();
+        return;
+    }
+    thisChannel.getMessages().then(function (messages) {
+        totalMessages = messages.items.length;
+        sayMessage('Total Messages: ' + totalMessages);
+        sayMessage("+ -----------------------");
+        sayMessage("+ All current messages:");
+        // const messages = messagesPaginator.items[0];
+        for (i = 0; i < totalMessages; i++) {
+            const message = messages.items[i];
+            if (message.type !== 'media') {
+                if (message.type === 'text') {
+                    sayMessage("> " + message.type + " from: " + message.author + " : " + message.body);
+                } else {
+                    sayMessage("> Type: " + message.type + " from: " + message.author + " : " + message.body);
+                }
+            } else {
+                sayMessage("> Media from: " + message.author);
+                // debugMessage('Media message attributes', message.media.toString());
+                message.media.getContentUrl().then(function (url) {
+                    sayMessage("++ Media contentType: " + message.media.contentType + ", filename: " + message.media.filename + ", size: "+ message.media.size);
+                    sayMessage("++ Media temporary URL: " + url);
+                });
+            }
+        }
+        thisChannel.updateLastConsumedMessageIndex(totalMessages);
+        sayMessage('+ Total Messages: ' + totalMessages);
+        doPrompt();
     });
 }
 
@@ -413,6 +457,31 @@ function doSend(theCommand) {
     }
 }
 
+function doSendMedia(theCommand) {
+    var fs = require("fs");
+    if (thisChatChannelName === "") {
+        sayMessage("Required: join a channel.");
+        doPrompt();
+    } else {
+        commandLength = 'sendmedia'.length + 1;
+        if (theCommand.length > commandLength) {
+            theMediaFile = theCommand.substring(commandLength);
+            sayMessage("++ Send media file: " + theMediaFile);
+            thisChatClient.getChannelBySid(thisChannel.sid).then(function (channel) {
+                // send PNG image as Buffer with content type image/png
+                thisChannel.sendMessage({
+                    contentType: 'image/jpg',
+                    media: fs.readFileSync(theMediaFile),
+                    filename: "testname.jpg"
+                });
+            });
+        } else {
+            sayMessage("+ Media filename required: sendmedia <filename>");
+            doPrompt();
+        }
+    }
+}
+
 function doShow() {
     sayMessage("+ Show chat client attribute settings:");
     if (clientId) {
@@ -507,6 +576,8 @@ standard_input.on('data', function (data) {
             thePromptPrefix = "+ Command, ";
             doPrompt();
         }
+    } else if (theCommand.startsWith('sendmedia')) {
+        doSendMedia(theCommand);
     } else if (theCommand.startsWith('send')) {
         doSend(theCommand);
     } else if (theCommand.startsWith('sms')) {
@@ -526,6 +597,8 @@ standard_input.on('data', function (data) {
         listChannels();
     } else if (theCommand === 'members') {
         listMembers();
+    } else if (theCommand === 'history') {
+        listMessageHistory();
     } else if (theCommand.startsWith('join')) {
         // join abc my new channel
         commandLength = 'join'.length + 1;
@@ -533,6 +606,7 @@ standard_input.on('data', function (data) {
             joinChatChannel(theCommand.substring(commandLength).trim());
         } else {
             sayMessage("+ Syntax: join <channel>");
+            doPrompt();
         }
     } else if (theCommand.startsWith('delete')) {
         commandLength = 'delete'.length + 1;
