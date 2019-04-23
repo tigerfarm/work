@@ -1,6 +1,9 @@
 // -----------------------------------------------------------------------------
 // Docmentation links:
-//  https://www.twilio.com/docs/chat/access-token-lifecycle
+//  Tokens:
+//      https://www.twilio.com/docs/chat/access-token-lifecycle
+//  Chat Presence:
+//      https://www.twilio.com/docs/chat/reachability-indicator
 //  
 // To do:
 //  Add option: join <channel> [<description>]
@@ -17,6 +20,9 @@ const Chat = require('twilio-chat');
 //
 var request = require('request');
 
+// Chat presence.
+var presenceState = 0; // 0 off
+
 var firstInit = "";
 var setChannelListeners = "";
 var theTokenUrl = "";
@@ -25,6 +31,9 @@ var thisChatChannelName = "";
 var chatChannelDescription = "";
 let thisChannel = "";
 let totalMessages = 0;  // This count of read channel messages. Needs work to initialize and maintain the count.
+
+var smsSendFrom = process.env.PHONE_NUMBER3;
+var smsSendTo = process.env.PHONE_NUMBER4;
 
 // -----------------------------------------------------------------------------
 let debugState = 0;    // 0 off
@@ -345,7 +354,7 @@ function doCountZero() {
 }
 
 // -----------------------------------------------------------------------------
-function doPostSms(theMessage) {
+function doSendSms(theMessage) {
     var ACCOUNT_SID = process.env.ACCOUNT_SID;
     var AUTH_TOKEN = process.env.AUTH_TOKEN;
     var theType = "json";
@@ -359,8 +368,8 @@ function doPostSms(theMessage) {
             'content-type': 'application/x-www-form-urlencoded'
         },
         formData: {
-            From: process.env.PHONE_NUMBER3,
-            To: process.env.PHONE_NUMBER4,
+            From: smsSendFrom,
+            To: smsSendTo,
             Body: theMessage
         }
     };
@@ -476,14 +485,34 @@ if (clientId !== "") {
     doPrompt();
 }
 var sendMode = 0;
+var sendModeSms = 0;
 var standard_input = process.stdin;
 standard_input.setEncoding('utf-8');
 standard_input.on('data', function (data) {
     theCommand = data.substring(0, data.length - 1).trim();
     if (sendMode === 1) {
         doSend("send " + theCommand);
+    } else if (sendModeSms === 1) {
+        if (theCommand !== '') {
+            doSendSms(theCommand);
+        } else {
+            sendModeSms = 0;
+            thePromptPrefix = "+ Command, ";
+            doPrompt();
+        }
     } else if (theCommand.startsWith('send')) {
         doSend(theCommand);
+    } else if (theCommand.startsWith('sms')) {
+        if (sendModeSms === 0) {
+            sayMessage("+ You are now in send mode SMS.");
+            thePromptPrefix = "+ Send SMS, ";
+            sendModeSms = 1;
+        } else {
+            sayMessage("+ Returned to command mode.");
+            thePromptPrefix = "+ Command, ";
+            sendModeSms = 0;
+        }
+        doPrompt();
         // ---------------------------------------------------
         // Channels
     } else if (theCommand === 'list') {
@@ -556,12 +585,52 @@ standard_input.on('data', function (data) {
         process.exit();
         // ---------------------------------------------------
     } else if (theCommand.startsWith('sms')) {
+        // sms to <phone number>
+        // sms from <phone number>
+        // sms send <message>
         commandLength = 'sms'.length + 1;
         if (theCommand.length > commandLength) {
-            doPostSms( theCommand.substring(commandLength).trim());
+            thePhrase = theCommand.substring(commandLength).trim();
+            debugMessage("thePhrase :" + thePhrase + ":");   // :to you:
+            ew = thePhrase.indexOf(" ");
+            if (ew > 1) {
+                theVerb = thePhrase.substring(0, ew).trim();
+                debugMessage("theVerb :" + theVerb + ":");   // :to you:
+                if (ew > 1) {
+                    stringText = thePhrase.substring(ew + 1).trim();
+                    debugMessage("stringText :" + stringText + ":");
+                    if (theVerb === 'send') {
+                        doSendSms(stringText);
+                    } else if (theVerb === 'to') {
+                        smsSendTo = stringText;
+                    } else if (theVerb === 'from') {
+                        smsSendFrom = stringText;
+                    } else {
+                        sayMessage("+ Syntax: sms to|from|send <string>");
+                    }
+                } else {
+                    sayMessage("+ Syntax: sms to|from|send <string>");
+                }
+            } else {
+                sayMessage("+ Syntax: sms to|from|send <string>");
+            }
         } else {
-            sayMessage("+ Syntax: sms <message>");
+            sayMessage("+ Syntax: sms to|from|send <string>");
         }
+        doPrompt();
+        // ---------------------------------------------------
+    } else if (theCommand === 'presence') {
+        if (presenceState === 0) {
+            presenceState = 1;
+        } else {
+            presenceState = 0;
+        }
+        if (presenceState === 0) {
+            sayMessage("+ Presence off.");
+        } else {
+            sayMessage("+ Presence on.");
+        }
+        doPrompt();
     } else {
         if (theCommand !== "") {
             sayMessage('- Invaid command: ' + theCommand);
