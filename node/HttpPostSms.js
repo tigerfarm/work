@@ -9,11 +9,12 @@ var options = {
     method: 'POST',
     'uri': theRequest,
     headers: {
-        "Authorization": basicAuth
+        "Authorization": basicAuth,
+        'content-type' : 'application/x-www-form-urlencoded'
     },
     formData: {
-        From: process.env.PHONE_NUMBER_3,
-        To: process.env.PHONE_NUMBER_4,
+        From: process.env.PHONE_NUMBER3,
+        To: process.env.PHONE_NUMBER4,
         Body: 'Twilio support'
     }
 };

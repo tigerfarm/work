@@ -345,6 +345,42 @@ function doCountZero() {
 }
 
 // -----------------------------------------------------------------------------
+function doPostSms(theMessage) {
+    var ACCOUNT_SID = process.env.ACCOUNT_SID;
+    var AUTH_TOKEN = process.env.AUTH_TOKEN;
+    var theType = "json";
+    var theRequest = "https://api.twilio.com/2010-04-01/Accounts/" + ACCOUNT_SID + "/Messages." + theType;
+    var basicAuth = "Basic " + new Buffer(ACCOUNT_SID + ":" + AUTH_TOKEN).toString("base64");
+    var options = {
+        method: 'POST',
+        'uri': theRequest,
+        headers: {
+            "Authorization": basicAuth,
+            'content-type': 'application/x-www-form-urlencoded'
+        },
+        formData: {
+            From: process.env.PHONE_NUMBER3,
+            To: process.env.PHONE_NUMBER4,
+            Body: theMessage
+        }
+    };
+    var request = require('request');
+    debugMessage('URL request: ' + theRequest);
+    function callback(error, response, body) {
+        debugMessage("response.statusCode: " + response.statusCode);
+        if (!error) {
+            const jsonData = JSON.parse(body);
+            sayMessage("++  Message status = " + jsonData.status);
+            debugMessage("jsonData: " + body);
+        } else {
+            sayMessage("++ error: " + error);
+        }
+        doPrompt();
+    }
+    request(options, callback);
+}
+
+// -----------------------------------------------------------------------------
 function doSend(theCommand) {
     if (thisChatChannelName === "") {
         sayMessage("Required: join a channel.");
@@ -423,6 +459,7 @@ function doHelp() {
     sayMessage("+ delete <channel>\n");
     sayMessage("+ debug");
     sayMessage("++ Toggle debug on and off.\n");
+    sayMessage("+ sms <message>\n");
     sayMessage("+ help\n");
     sayMessage("+ exit\n");
 }
@@ -447,6 +484,8 @@ standard_input.on('data', function (data) {
         doSend("send " + theCommand);
     } else if (theCommand.startsWith('send')) {
         doSend(theCommand);
+        // ---------------------------------------------------
+        // Channels
     } else if (theCommand === 'list') {
         listChannels();
     } else if (theCommand === 'members') {
@@ -467,9 +506,8 @@ standard_input.on('data', function (data) {
             sayMessage("+ Syntax: delete <channel>");
             doPrompt();
         }
-    } else if (theCommand === 'show') {
-        doShow();
-        doPrompt();
+        // ---------------------------------------------------
+        // Init chat object
     } else if (theCommand.startsWith('url')) {
         commandLength = 'url'.length + 1;
         if (theCommand.length > commandLength) {
@@ -493,6 +531,11 @@ standard_input.on('data', function (data) {
             sayMessage("+ Syntax: user <identity>");
         }
         doPrompt();
+        // ---------------------------------------------------
+        // Admin
+    } else if (theCommand === 'show') {
+        doShow();
+        doPrompt();
     } else if (theCommand === 'debug') {
         if (debugState === 0) {
             debugState = 1;
@@ -511,6 +554,14 @@ standard_input.on('data', function (data) {
     } else if (theCommand === 'exit') {
         console.log("+++ Exit.");
         process.exit();
+        // ---------------------------------------------------
+    } else if (theCommand.startsWith('sms')) {
+        commandLength = 'sms'.length + 1;
+        if (theCommand.length > commandLength) {
+            doPostSms( theCommand.substring(commandLength).trim());
+        } else {
+            sayMessage("+ Syntax: sms <message>");
+        }
     } else {
         if (theCommand !== "") {
             sayMessage('- Invaid command: ' + theCommand);
