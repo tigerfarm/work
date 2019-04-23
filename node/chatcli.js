@@ -9,7 +9,7 @@
 //  Chat send/receive media files:
 //      https://www.twilio.com/docs/chat/media-support
 //      https://www.twilio.com/docs/chat/rest/media
-//      
+//      https://www.twilio.com/docs/chat/rest/media#properties
 //  
 // To do:
 //  Add option: join <channel> [<description>]
@@ -311,7 +311,7 @@ function listMessageHistory() {
                 sayMessage("> Media from: " + message.author);
                 // debugMessage('Media message attributes', message.media.toString());
                 message.media.getContentUrl().then(function (url) {
-                    sayMessage("++ Media contentType: " + message.media.contentType + ", filename: " + message.media.filename + ", size: "+ message.media.size);
+                    sayMessage("++ Media contentType: " + message.media.contentType + ", filename: " + message.media.filename + ", size: " + message.media.size);
                     sayMessage("++ Media temporary URL: " + url);
                 });
             }
@@ -465,14 +465,26 @@ function doSendMedia(theCommand) {
     } else {
         commandLength = 'sendmedia'.length + 1;
         if (theCommand.length > commandLength) {
+            // Need to use formdata to send the filename, not the buffer which I'm using here.
             theMediaFile = theCommand.substring(commandLength);
             sayMessage("++ Send media file: " + theMediaFile);
+
+            // Form data option not working for me.
+            //      Error: Media content <Channel#SendMediaOptions> must contain non-empty contentType and media
+            // var FormData = require('form-data');
+            // const formData = new FormData();
+            // formData.append('contentType', 'image/jpg');
+            // formData.append('media', fs.readFileSync(theMediaFile));
+            // thisChatClient.getChannelBySid(thisChannel.sid).then(function (channel) {
+            //    thisChannel.sendMessage(formData);
+            // });
+
+            // Only form data send option allows the sending of a filename.
             thisChatClient.getChannelBySid(thisChannel.sid).then(function (channel) {
-                // send PNG image as Buffer with content type image/png
                 thisChannel.sendMessage({
+                    // contentType: 'application/x-www-form-urlencoded',
                     contentType: 'image/jpg',
-                    media: fs.readFileSync(theMediaFile),
-                    filename: "testname.jpg"
+                    media: fs.readFileSync(theMediaFile)
                 });
             });
         } else {
