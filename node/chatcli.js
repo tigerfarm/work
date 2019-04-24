@@ -12,11 +12,23 @@
 //      https://www.twilio.com/docs/chat/media-support
 //      https://www.twilio.com/docs/chat/rest/media
 //      https://www.twilio.com/docs/chat/rest/media#properties
+//  Blog: How to build a CLI with Node.js
+//      https://www.twilio.com/blog/how-to-build-a-cli-with-node-js
 //  
 // To do:
 //  Add option: join <channel> [<description>]
 //  Auto token refresh using tokenAboutToExpire.
 //  Presence.
+//  
+// Easy to use:
+//  $ npm install --save twilio-chat
+//  $ node --no-deprecation chatcli.js
+//  +++ Chat program is starting up.
+//  + Ready for commands such as: help, user, init, or local.
+//  + Command, Enter > url https://aoubt-time-2357.twil.io/tokenchat
+//  + Command, Enter > user me
+//  + Command, Enter > init
+//  + Command, Enter > list
 //
 var clientId = process.argv[2] || "";
 if (clientId !== "") {
@@ -592,7 +604,7 @@ if (clientId !== "") {
     }
 } else {
     firstInit = "initialized";
-    sayMessage("+ Ready for commands such as: help, init, or local.");
+    sayMessage("+ Ready for commands such as: help, user, init or local.");
     doPrompt();
 }
 var sendMode = 0;
