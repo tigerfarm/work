@@ -158,8 +158,8 @@ function createChatClientObject(token) {
     });
 }
 // -----------------------------------------------------------------------------
-function joinChatChannel(chatChannelName) {
-    debugMessage("joinChatChannel(chatChannelName)");
+function joinChatChannel(chatChannelName, chatChannelDescription) {
+    debugMessage("joinChatChannel(" + chatChannelName + ", " + chatChannelDescription + ")");
     if (thisChatClient === "") {
         sayMessage("Required: create a Chat Client.");
         doPrompt();
@@ -187,7 +187,6 @@ function joinChatChannel(chatChannelName) {
             })
             .catch(function () {
                 debugMessage("Channel doesn't exist, created the channel.");
-                chatChannelDescription = "";
                 if (chatChannelDescription === "") {
                     chatChannelDescription = chatChannelName;
                 }
@@ -195,7 +194,7 @@ function joinChatChannel(chatChannelName) {
                     uniqueName: chatChannelName,
                     friendlyName: chatChannelDescription
                 }).then(function (channel) {
-                    sayMessage("++ Channel created : " + chatChannelName + " " + chatChannelDescription);
+                    sayMessage("++ Channel created: " + chatChannelName + ", " + chatChannelDescription);
                     thisChannel = channel;
                     thisChatChannelName = chatChannelName;
                     joinChannel();
@@ -262,6 +261,84 @@ function refreshChatToken() {
 }
 
 // -----------------------------------------------------------------------------
+function listChannels() {
+    debugMessage("listChannels()");
+    if (thisChatClient === "") {
+        sayMessage("Required: Chat Client.");
+        doPrompt();
+        return;
+    }
+    sayMessage("+ ------------------------");
+    sayMessage("+ List of public channels (++ uniqueName: friendlyName: createdBy):");
+    thisChatClient.getPublicChannelDescriptors().then(function (paginator) {
+        for (i = 0; i < paginator.items.length; i++) {
+            const channel = paginator.items[i];
+            let listString = '++ ' + channel.uniqueName + ": " + channel.friendlyName + ": " + channel.createdBy;
+            if (channel.uniqueName === thisChatChannelName) {
+                listString += " *";
+            }
+            sayMessage(listString);
+        }
+        sayMessage("+ End of list.");
+        doPrompt();
+    }).catch(function (err) {
+        sayMessage("- Error listing channels: " + err);
+        doPrompt();
+    });
+}
+
+function deleteChannel(chatChannelName) {
+    debugMessage("deleteChannel()");
+    if (thisChatClient === "") {
+        sayMessage("Required: Chat Client.");
+        doPrompt();
+        return;
+    }
+    if (chatChannelName === "") {
+        sayMessage("Required: Channel name.");
+        doPrompt();
+        return;
+    }
+    sayMessage('+ Delete channel: ' + chatChannelName);
+    thisChatClient.getChannelByUniqueName(chatChannelName).then(function (channel) {
+        thisChannel = channel;
+        debugMessage("Channel exists: " + chatChannelName + " : " + thisChannel);
+        thisChannel.delete().then(function (channel) {
+            sayMessage('++ Channel deleted: ' + chatChannelName);
+            if (chatChannelName === thisChatChannelName) {
+                thisChatChannelName = "";
+            }
+            doPrompt();
+        }).catch(function (err) {
+            if (thisChannel.createdBy !== clientId) {
+                sayMessage("- Can only be deleted by the creator: " + thisChannel.createdBy);
+            } else {
+                debugMessage("- Delete failed: " + thisChannel.uniqueName + ', ' + err);
+                sayMessage("- Delete failed: " + err);
+            }
+            doPrompt();
+        });
+    }).catch(function () {
+        sayMessage("- Channel doesn't exist, cannot delete it: " + chatChannelName);
+        doPrompt();
+    });
+}
+
+// -----------------------------------------------------------------------------
+function incCount() {
+    totalMessages++;
+    debugMessage('+ Increment Total Messages:' + totalMessages);
+    thisChannel.getMessages().then(function (messages) {
+        thisChannel.updateLastConsumedMessageIndex(totalMessages);
+    });
+}
+
+function doCountZero() {
+    debugMessage("+ Called: doCountZero(): thisChannel.setNoMessagesConsumed();");
+    thisChannel.setNoMessagesConsumed();
+}
+
+// -----------------------------------------------------------------------------
 // For the channel you have joined:
 
 function listMembers() {
@@ -323,81 +400,6 @@ function listMessageHistory() {
         sayMessage('+ Total Messages: ' + totalMessages);
         doPrompt();
     });
-}
-
-// -----------------------------------------------------------------------------
-function listChannels() {
-    debugMessage("listChannels()");
-    if (thisChatClient === "") {
-        sayMessage("Required: Chat Client.");
-        doPrompt();
-        return;
-    }
-    sayMessage("+ ------------------------");
-    sayMessage("+ List of public channels (++ uniqueName: friendlyName: createdBy):");
-    thisChatClient.getPublicChannelDescriptors().then(function (paginator) {
-        for (i = 0; i < paginator.items.length; i++) {
-            const channel = paginator.items[i];
-            let listString = '++ ' + channel.uniqueName + ": " + channel.friendlyName + ": " + channel.createdBy;
-            if (channel.uniqueName === thisChatChannelName) {
-                listString += " *";
-            }
-            sayMessage(listString);
-        }
-        sayMessage("+ End of list.");
-        doPrompt();
-    });
-}
-
-function deleteChannel(chatChannelName) {
-    debugMessage("deleteChannel()");
-    if (thisChatClient === "") {
-        sayMessage("Required: Chat Client.");
-        doPrompt();
-        return;
-    }
-    if (chatChannelName === "") {
-        sayMessage("Required: Channel name.");
-        doPrompt();
-        return;
-    }
-    sayMessage('+ Delete channel: ' + chatChannelName);
-    thisChatClient.getChannelByUniqueName(chatChannelName).then(function (channel) {
-        thisChannel = channel;
-        debugMessage("Channel exists: " + chatChannelName + " : " + thisChannel);
-        thisChannel.delete().then(function (channel) {
-            sayMessage('++ Channel deleted: ' + chatChannelName);
-            if (chatChannelName === thisChatChannelName) {
-                thisChatChannelName = "";
-            }
-            doPrompt();
-        }).catch(function (err) {
-            if (thisChannel.createdBy !== clientId) {
-                sayMessage("- Can only be deleted by the creator: " + thisChannel.createdBy);
-            } else {
-                debugMessage("- Delete failed: " + thisChannel.uniqueName + ', ' + err);
-                sayMessage("- Delete failed: " + err);
-            }
-            doPrompt();
-        });
-    }).catch(function () {
-        sayMessage("- Channel doesn't exist, cannot delete it: " + chatChannelName);
-        doPrompt();
-    });
-}
-
-// -----------------------------------------------------------------------------
-function incCount() {
-    totalMessages++;
-    debugMessage('+ Increment Total Messages:' + totalMessages);
-    thisChannel.getMessages().then(function (messages) {
-        thisChannel.updateLastConsumedMessageIndex(totalMessages);
-    });
-}
-
-function doCountZero() {
-    debugMessage("+ Called: doCountZero(): thisChannel.setNoMessagesConsumed();");
-    thisChannel.setNoMessagesConsumed();
 }
 
 // -----------------------------------------------------------------------------
@@ -486,13 +488,13 @@ function doSendMedia(theCommand) {
             //  formData.append('contentType', 'image/jpg');
             //  formData.append('media', fs.createReadStream(theMediaFile));
             thisChatClient.getChannelBySid(thisChannel.sid).then(function (channel) {
-                
+
                 // The following gives: Error: Media content <Channel#SendMediaOptions> must contain non-empty contentType and media
                 // channel.sendMessage(formData);
-                
+
                 // The following works. But only when using form data can I send the filename.
-                channel.sendMessage({ media: fs.readFileSync(theMediaFile), contentType: 'image/jpg'});
-                
+                channel.sendMessage({media: fs.readFileSync(theMediaFile), contentType: 'image/jpg'});
+
             });
 
         } else {
@@ -515,6 +517,7 @@ function test0() {
 }
 
 function doShow() {
+    sayMessage("-----------------------");
     sayMessage("+ Show chat client attribute settings:");
     if (clientId) {
         sayMessage("++ User identity: " + clientId);
@@ -522,7 +525,7 @@ function doShow() {
         sayMessage("++ User identity is required.");
     }
     if (theTokenUrl === "") {
-        sayMessage("++ Token URL is required, if you are not use local environment variables.");
+        sayMessage("++ Token URL is required, if you are not using local environment variables.");
     } else {
         sayMessage("++ Token URL: " + theTokenUrl);
     }
@@ -546,39 +549,39 @@ function doShow() {
 function doHelp() {
     sayMessage("-----------------------");
     sayMessage("Commands:\n");
-    sayMessage("+ show");
+    sayMessage("> show");
     sayMessage("++ Show chat client attributes.\n");
-    sayMessage("+ user <identity>");
+    sayMessage("> user <identity>");
     sayMessage("++ Your chat user identity.\n");
-    sayMessage("+ url <URL to retrieve a token>");
-    sayMessage("++ Set the token URL value. This URL is used to retrieve a chat access token.\n");
-    sayMessage("+ init");
+    sayMessage("> url <URL to retrieve a token>");
+    sayMessage("++ Set the token URL value. This URL is used to retrieve a chat access token.");
+    sayMessage("> init");
     sayMessage("++ Get a token using the token retrieval URL, and initialize the chat client object.\n");
-    sayMessage("+ local");
+    sayMessage("> local");
     sayMessage("++ Get a token using the local environment variables, and initialize the chat client object.\n");
-    sayMessage("+ list");
-    sayMessage("++ list public channels.\n");
-    sayMessage("+ join <channel>\n");
-    // To do, add option: sayMessage("+ join <channel> [<description>]");
-    sayMessage("+ members");
+    sayMessage("> list");
+    sayMessage("++ list public channels.");
+    sayMessage("> join <channel>\n");
+    // To do, add option: sayMessage("> join <channel> [<description>]");
+    sayMessage("> members");
     sayMessage("++ list channel members.\n");
-    sayMessage("+ send");
+    sayMessage("> send");
     sayMessage("++ Toggle send mode. When on, send messages.");
     sayMessage("++ Enter blank line to exit send mode.");
-    sayMessage("+ send <message>\n");
-    sayMessage("+ delete <channel>\n");
-    sayMessage("+ debug");
+    sayMessage("> send <message>\n");
+    sayMessage("> delete <channel>\n");
+    sayMessage("> debug");
     sayMessage("++ Toggle debug on and off.\n");
-    sayMessage("+ sms");
+    sayMessage("> sms");
     sayMessage("++ Toggle SMS send mode. When on, send messages.");
     sayMessage("++ Enter blank line to exit send mode.");
-    sayMessage("+ sms send <message>");
-    sayMessage("+ sms to <phone number>");
+    sayMessage("> sms send <message>");
+    sayMessage("> sms to <phone number>");
     sayMessage("++ Set to phone number.");
-    sayMessage("+ sms from <phone number>");
+    sayMessage("> sms from <phone number>");
     sayMessage("++ Set from phone number.\n");
-    sayMessage("+ help\n");
-    sayMessage("+ exit\n");
+    sayMessage("> help\n");
+    sayMessage("> exit\n");
 }
 
 // -----------------------------------------------------------------------------
@@ -596,8 +599,8 @@ var sendMode = 0;
 var sendModeSms = 0;
 var standard_input = process.stdin;
 standard_input.setEncoding('utf-8');
-standard_input.on('data', function (data) {
-    theCommand = data.substring(0, data.length - 1).trim();
+standard_input.on('data', function (inputString) {
+    theCommand = inputString.substring(0, inputString.length - 1).trim().replace(/  /g, ' ').replace(/  /g, ' ');
     if (sendMode === 1) {
         doSend("send " + theCommand);
     } else if (sendModeSms === 1) {
@@ -633,11 +636,21 @@ standard_input.on('data', function (data) {
         listMessageHistory();
     } else if (theCommand.startsWith('join')) {
         // join abc my new channel
-        commandLength = 'join'.length + 1;
-        if (theCommand.length > commandLength) {
-            joinChatChannel(theCommand.substring(commandLength).trim());
+        commandLength = theCommand.length;
+        commandWordLength = 'join'.length + 1;
+        if (commandLength > commandWordLength) {
+            theChannel = theCommand.substring(commandWordLength, commandLength);
+            theChannelDescription = "";
+            ew = theCommand.indexOf(" ", commandWordLength + 1);
+            if (ew > 1) {
+                theChannel = theCommand.substring(commandWordLength, ew).trim();
+                theChannelDescription = theCommand.substring(ew, commandLength).trim();
+                debugMessage("theChannel :" + theChannel + ":");
+                debugMessage("theChannelDescription :" + theChannelDescription + ":");
+            }
+            joinChatChannel(theChannel, theChannelDescription);
         } else {
-            sayMessage("+ Syntax: join <channel>");
+            sayMessage("+ Syntax: join <channel> [description]");
             doPrompt();
         }
     } else if (theCommand.startsWith('delete')) {

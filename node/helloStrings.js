@@ -4,6 +4,10 @@
 // ...
 //
 // -----------------------------------------------------------------------------
+
+let endNow = 1;
+
+// -----------------------------------------------------------------------------
 function doSendSms(theMessage) {
     console.log("+ doSendSms() " + theMessage);
 }
@@ -13,6 +17,41 @@ function sayMessage(theMessage) {
 function debugMessage(theMessage) {
     console.log("?- " + theMessage);
 }
+function doPrompt() {
+    console.log("+ Enter> ");
+}
+function joinChatChannel(theMessage, description) {
+    console.log("?- joinChatChannel :" + theMessage + ": :" + description + ":" );
+}
+
+// -----------------------------------------------------------------------------
+inputString = "   join   this       is mine   \n";
+theCommand = inputString.substring(0, inputString.length - 1).trim().replace(/  /g, ' ');
+debugMessage("theCommand :" + theCommand + ":");
+commandLength = theCommand.length;
+commandWordLength = 'join'.length + 1;
+if (commandLength > commandWordLength) {
+    theChannel = theCommand.substring(commandWordLength, commandLength);
+    theChannelDescription = "";
+    ew = theCommand.indexOf(" ", commandWordLength + 1);
+    if (ew > 1) {
+        theChannel = theCommand.substring(commandWordLength, ew).trim();
+        theChannelDescription = theCommand.substring(ew, commandLength).trim();
+        debugMessage("theChannel :" + theChannel + ":");
+        debugMessage("theChannelDescription :" + theChannelDescription + ":");
+    }
+    joinChatChannel(theChannel, theChannelDescription);
+} else {
+    sayMessage("+ Syntax: join <channel> [description]");
+    doPrompt();
+}
+
+if (endNow === 1) {
+    process.exit();
+}
+
+// -----------------------------------------------------------------------------
+
 theCommand = "sms this to you";
 commandLength = 'sms'.length + 1;
 if (theCommand.length > commandLength) {
@@ -44,7 +83,6 @@ if (theCommand.length > commandLength) {
     sayMessage("+ Syntax: sms to|from|send <string>");
 }
 
-let endNow = 1;
 if (endNow === 1) {
     process.exit();
 }
