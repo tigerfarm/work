@@ -1,5 +1,6 @@
 # Ignore my specific variables:
 1setvarsCc.sh
+2setvars.sh
 2setvars-Machine.sh
 3setSync-Master.sh
 6setvarsSync-Machine.sh
