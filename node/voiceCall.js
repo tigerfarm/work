@@ -1,3 +1,5 @@
+console.log('+++ Start.');
+
 var accountSid = process.env.ACCOUNT_SID;
 var authToken = process.env.AUTH_TOKEN;
 var client = require('twilio')(accountSid, authToken);
@@ -7,12 +9,13 @@ var client = require('twilio')(accountSid, authToken);
 // TwiML Bin, Dial support queue: https://handler.twilio.com/twiml/EH5fcbab2a898d542c8e28c3e4d458c9fa
 // TwiML Bin, Dial a phone number: https://handler.twilio.com/twiml/EHf1c4aa7c2da9224d0ae7e5db0768cd08
 client.calls.create({
-    url: "https://handler.twilio.com/twiml/EH50ee33d250f3302d012d63f6b7e6b1c4",
-    from: "abc",
-    // from: process.env.PHONE_NUMBER_1,
-    // to: process.env.PHONE_NUMBER_3
+    url: "https://handler.twilio.com/twiml/EHad08f22a9f3bdef913383ca4247e0eb2",
+    // from: "abc",
+    from: process.env.PHONE_NUMBER1,
+    // to: process.env.PHONE_NUMBER3
     // to: "sip:zoiper@machine.sip.us1.twilio.com"
-    to: "client:david"
+    // to: "client:david"
+    to: process.env.MY_PHONE_NUMBER
 }, function (err, call) {
     console.log(call.sid);
 });
