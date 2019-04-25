@@ -13,19 +13,22 @@
 //      https://www.twilio.com/docs/chat/rest/media
 //      https://www.twilio.com/docs/chat/rest/media#properties
 //  Blog: How to build a CLI with Node.js
+//      https://www.youtube.com/watch?v=rTsz09zRuTU
 //      https://www.twilio.com/blog/how-to-build-a-cli-with-node-js
 //  
 // To do:
-//  Add option: join <channel> [<description>]
 //  Auto token refresh using tokenAboutToExpire.
 //  Presence.
+//  SMS Chat gateway.
+//  Make this npm available.
+//      https://docs.npmjs.com/creating-node-js-modules
 //  
 // Easy to use:
 //  $ npm install --save twilio-chat
 //  $ node --no-deprecation chatcli.js
 //  +++ Chat program is starting up.
 //  + Ready for commands such as: help, user, init, or local.
-//  + Command, Enter > url https://aoubt-time-2357.twil.io/tokenchat
+//  + Command, Enter > url https://about-time-2357.twil.io/tokenchat
 //  + Command, Enter > user me
 //  + Command, Enter > init
 //  + Command, Enter > list
@@ -125,8 +128,8 @@ function getTokenSetClient(clientid) {
         doPrompt();
         return;
     }
-    var newTokenUrl = theTokenUrl + "?clientid=" + clientid;
-    request(newTokenUrl, function (error, response, newToken) {
+    var newTokenUrl = theTokenUrl + "?identity=" + clientid + "&device=cli";
+    request(newTokenUrl, function (error, response, responseString) {
         if (error) {
             sayMessage('- error:', error);
         }
@@ -136,6 +139,10 @@ function getTokenSetClient(clientid) {
             sayMessage('- Error, invalid token URL: ' + newTokenUrl);
             doPrompt();
             return;
+        }
+        var newToken = responseString;
+        if (responseString.startsWith('{"token"')) {
+            newToken = JSON.parse(responseString).token;
         }
         debugMessage('token: ' + newToken);
         sayMessage("+ New token retrieved.");
@@ -403,7 +410,10 @@ function listMessageHistory() {
                 sayMessage("> Media from: " + message.author);
                 // debugMessage('Media message attributes', message.media.toString());
                 message.media.getContentUrl().then(function (url) {
-                    sayMessage("++ Media contentType: " + message.media.contentType + ", filename: " + message.media.filename + ", size: " + message.media.size);
+                    sayMessage("++ Media contentType: " + message.media.contentType 
+                            + ", filename: " + message.media.filename 
+                            + ", size: " + message.media.size
+                            + ", SID: " + message.media.sid);
                     sayMessage("++ Media temporary URL: " + url);
                 });
             }

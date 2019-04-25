@@ -25,6 +25,18 @@ function joinChatChannel(theMessage, description) {
 }
 
 // -----------------------------------------------------------------------------
+var newToken = "";
+responseString = '{"token":"eyJhbGciO"}';
+debugMessage("responseString :" + responseString + ":");
+let responseJson = JSON.parse(responseString);
+newToken = JSON.parse(responseString).token;
+debugMessage("newToken :" + newToken + ":");
+
+if (endNow === 1) {
+    process.exit();
+}
+
+// -----------------------------------------------------------------------------
 inputString = "   join   this       is mine   \n";
 theCommand = inputString.substring(0, inputString.length - 1).trim().replace(/  /g, ' ');
 debugMessage("theCommand :" + theCommand + ":");
