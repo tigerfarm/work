@@ -7,7 +7,7 @@ VERIFY_SID = process.env.VERIFY_SID;
 verifySid = "VE407a5bc6529b474a396c3028465a9897";
 sendTo = process.env.PHONE_NUMBER3;
 //
-verifyCode = "255691";
+verifyCode = "652191x";
 console.log(
         "++ Request a verification code check"
         + ", that was sent to: " + sendTo
@@ -24,6 +24,7 @@ client.verify.services(VERIFY_SID).verificationChecks
     console.log(
             "+ Sent, SID: " + verification_check.sid
             + " Status: " + verification_check.status
+            + " valid: " + verification_check.valid
             )).catch(function (err) {
     if (err) {
         console.error("- Error: ", err.message);
