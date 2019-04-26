@@ -16,4 +16,4 @@ client.messages.create({
         exit();
     }
 });
-console.log("+ Sent.");
+

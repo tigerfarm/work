@@ -617,8 +617,8 @@ function doHelp() {
     sayMessage("++ Get a token using the local environment variables, and initialize the chat client object.\n");
     sayMessage("> list");
     sayMessage("++ list public channels.");
-    sayMessage("> join <channel>\n");
-    // To do, add option: sayMessage("> join <channel> [<description>]");
+    sayMessage("> join <channel>");
+    sayMessage("> join <channel> [<description>]\n");
     sayMessage("> members");
     sayMessage("++ list channel members.\n");
     sayMessage("> send");
