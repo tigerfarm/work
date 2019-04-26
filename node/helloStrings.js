@@ -23,7 +23,6 @@ function doPrompt() {
 function joinChatChannel(theMessage, description) {
     console.log("?- joinChatChannel :" + theMessage + ": :" + description + ":" );
 }
-
 // -----------------------------------------------------------------------------
 var newToken = "";
 responseString = '{"token":"eyJhbGciO"}';

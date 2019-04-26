@@ -16,26 +16,50 @@
 //      https://www.youtube.com/watch?v=rTsz09zRuTU
 //      https://www.twilio.com/blog/how-to-build-a-cli-with-node-js
 //  
+// -----------------------------------------------------------------------------
 // To do:
 //  Auto token refresh using tokenAboutToExpire.
-//  Presence.
 //  SMS Chat gateway.
-//  Make this npm available.
+//  Presence: 1) subscribe/unsubscribe to users. 2) Check who is online.
+//  Make this npm available?
 //      https://docs.npmjs.com/creating-node-js-modules
 //  
-// Easy to use:
+// -----------------------------------------------------------------------------
+// Easy to use.
+// 
+//  Either create environment variables with your chat token values,
+//  or create a program to generate tokens and add the URL (command: url).
+//  
 //  $ npm install --save twilio-chat
 //  $ node --no-deprecation chatcli.js
 //  +++ Chat program is starting up.
-//  + Ready for commands such as: help, user, init, or local.
+//  + Ready for commands such as: help, user, init or local.
 //  + Command, Enter > url https://about-time-2357.twil.io/tokenchat
 //  + Command, Enter > user me
 //  + Command, Enter > init
 //  + Command, Enter > list
 //
-var clientId = process.argv[2] || "";
-if (clientId !== "") {
-    console.log("+ User identity: " + clientId);
+
+// -----------------------------------------------------------------------------
+// Required, if generating the chat tokens in this program:
+var ACCOUNT_SID = process.env.ACCOUNT_SID;
+var CHAT_API_KEY = process.env.CHAT_API_KEY;
+var CHAT_API_KEY_SECRET = process.env.CHAT_API_KEY_SECRET;
+var CHAT_SERVICE_SID = process.env.CHAT_SERVICE_SID;
+//
+// This value can be set with the url command:
+var CHAT_GENERATE_TOKEN_URL = process.env.CHAT_GENERATE_TOKEN_URL;
+
+// Required for SMS:
+var AUTH_TOKEN = process.env.AUTH_TOKEN;
+// Optional, if you don't set your own smsSendFrom and smsSendTo values.
+var smsSendFrom = process.env.PHONE_NUMBER3;
+var smsSendTo = process.env.PHONE_NUMBER4;
+
+// -----------------------------------------------------------------------------
+var userIdentity = process.argv[2] || "";
+if (userIdentity !== "") {
+    console.log("+ User identity: " + userIdentity);
 }
 console.log("+++ Chat program is starting up.");
 
@@ -49,15 +73,11 @@ var presenceState = 0; // 0 off
 
 var firstInit = "";
 var setChannelListeners = "";
-var theTokenUrl = "";
 var thisChatClient = "";
 var thisChatChannelName = "";
 var chatChannelDescription = "";
 let thisChannel = "";
 let totalMessages = 0;  // This count of read channel messages. Needs work to initialize and maintain the count.
-
-var smsSendFrom = process.env.PHONE_NUMBER3;
-var smsSendTo = process.env.PHONE_NUMBER4;
 
 // -----------------------------------------------------------------------------
 let debugState = 0;    // 0 off
@@ -88,7 +108,7 @@ function generateToken(clientid) {
     //
     // Optional, if you want to use environment variables.
     //
-    if (clientId === "") {
+    if (userIdentity === "") {
         sayMessage("- Required: user identity for creating a chat object.");
         doPrompt();
         return "";
@@ -96,12 +116,12 @@ function generateToken(clientid) {
     sayMessage("+ Generate token, Client ID: " + clientid);
     const AccessToken = require('twilio').jwt.AccessToken;
     const token = new AccessToken(
-            process.env.ACCOUNT_SID,
-            process.env.CHAT_API_KEY,
-            process.env.CHAT_API_KEY_SECRET
+            ACCOUNT_SID,
+            CHAT_API_KEY,
+            CHAT_API_KEY_SECRET
             );
     const chatGrant = new AccessToken.ChatGrant({
-        serviceSid: process.env.CHAT_SERVICE_SID
+        serviceSid: CHAT_SERVICE_SID
     });
     token.addGrant(chatGrant);
     token.identity = clientid;
@@ -118,17 +138,17 @@ function getTokenSetClient(clientid) {
         doPrompt();
         return;
     }
-    if (clientId === "") {
+    if (userIdentity === "") {
         sayMessage("- Required: user identity for creating a chat object.");
         doPrompt();
         return;
     }
-    if (theTokenUrl === "") {
+    if (CHAT_GENERATE_TOKEN_URL === "") {
         sayMessage("- Required: the token URL.");
         doPrompt();
         return;
     }
-    var newTokenUrl = theTokenUrl + "?identity=" + clientid + "&device=cli";
+    var newTokenUrl = CHAT_GENERATE_TOKEN_URL + "?identity=" + clientid + "&device=cli";
     request(newTokenUrl, function (error, response, responseString) {
         if (error) {
             sayMessage('- error:', error);
@@ -152,7 +172,7 @@ function getTokenSetClient(clientid) {
 
 // -----------------------------------------------------------------------------
 function createChatClientObject(token) {
-    if (clientId === "") {
+    if (userIdentity === "") {
         sayMessage("- Required: user identity for creating a chat object.");
         doPrompt();
         return;
@@ -167,7 +187,7 @@ function createChatClientObject(token) {
     Chat.Client.create(token).then(chatClient => {
         thisChatClient = chatClient;
         debugMessage("Chat client object created: thisChatClient: " + thisChatClient);
-        sayMessage("++ Chat client object created for the user: " + clientId);
+        sayMessage("++ Chat client object created for the user: " + userIdentity);
         thisChatClient.getSubscribedChannels();
         if (firstInit === "") {
             firstInit = "initialized";
@@ -196,7 +216,7 @@ function joinChatChannel(chatChannelName, chatChannelDescription) {
                 thisChatChannelName = chatChannelName;
                 debugMessage("Channel exists: " + chatChannelName + " : " + thisChannel);
                 joinChannel();
-                debugMessage("+ Channel Attributes: "
+                debugMessage("Channel Attributes: "
                         // + channel.getAttributes()
                         + " SID: " + channel.sid
                         + " name: " + channel.friendlyName
@@ -227,14 +247,16 @@ function joinChatChannel(chatChannelName, chatChannelDescription) {
 function joinChannel() {
     debugMessage('joinChannel() ' + thisChannel.uniqueName);
     thisChannel.join().then(function (channel) {
-        debugMessage('Joined channel as ' + clientId);
+        debugMessage('Joined channel as ' + userIdentity);
         sayMessage('++ You have joined the channel: ' + thisChannel.friendlyName);
         doPrompt();
     }).catch(function (err) {
-        // - Join failed: myChannel3, t: Member already exists
         if (err.message === "Member already exists") {
-            // - Join failed: t: Member already exists
             debugMessage("++ You already exist in the channel.");
+        } else if (err.message === "Channel member limit exceeded") {
+            // To handle this properly, would need to list the channel members to see if join has truly failed.
+            debugMessage("Join failed: Channel member limit exceeded.");
+            sayMessage("- If you are not already a member of this channel, the join has failed.");
         } else {
             debugMessage("- Join failed: " + thisChannel.uniqueName + ' :' + err.message + ":");
             sayMessage("- Join failed: " + err.message);
@@ -261,7 +283,7 @@ function setChannelListnerFunctions() {
 
 function onMessageAdded(message) {
     // Other message properties: message.sid, message.friendlyName
-    if (message.author === clientId) {
+    if (message.author === userIdentity) {
         debugMessage("> " + message.channel.uniqueName + " : " + message.author + " : " + message.body);
     } else {
         sayMessage("< " + message.channel.uniqueName + " : " + message.author + " : " + message.body);
@@ -273,7 +295,7 @@ function onMessageAdded(message) {
 function refreshChatToken() {
     // Not tested.
     debugMessage("refreshChatToken()");
-    generateToken(clientId);
+    generateToken(userIdentity);
     thisChannel.updateToken(token);
     sayMessage("+ Chat token refreshed.");
     doPrompt();
@@ -329,7 +351,7 @@ function deleteChannel(chatChannelName) {
             }
             doPrompt();
         }).catch(function (err) {
-            if (thisChannel.createdBy !== clientId) {
+            if (thisChannel.createdBy !== userIdentity) {
                 sayMessage("- Can only be deleted by the creator: " + thisChannel.createdBy);
             } else {
                 debugMessage("- Delete failed: " + thisChannel.uniqueName + ', ' + err);
@@ -400,18 +422,17 @@ function listMessageHistory() {
         // const messages = messagesPaginator.items[0];
         for (i = 0; i < totalMessages; i++) {
             const message = messages.items[i];
-            if (message.type !== 'media') {
-                if (message.type === 'text') {
-                    sayMessage("> " + message.type + " from: " + message.author + " : " + message.body);
-                } else {
-                    sayMessage("> Type: " + message.type + " from: " + message.author + " : " + message.body);
-                }
+            if (message.type === 'text') {
+                sayMessage("> " + message.type + " from: " + message.author + " : " + message.body);
             } else {
-                sayMessage("> Media from: " + message.author);
+                sayMessage("> " + message.type + " from: " + message.author + " SID: " + message.media.sid);
+            }
+            if (message.type === 'media') {
                 // debugMessage('Media message attributes', message.media.toString());
                 message.media.getContentUrl().then(function (url) {
-                    sayMessage("++ Media contentType: " + message.media.contentType 
-                            + ", filename: " + message.media.filename 
+                    sayMessage("+ Media from: " + message.author
+                            + ", Media contentType: " + message.media.contentType
+                            + ", filename: " + message.media.filename
                             + ", size: " + message.media.size
                             + ", SID: " + message.media.sid);
                     sayMessage("++ Media temporary URL: " + url);
@@ -426,8 +447,6 @@ function listMessageHistory() {
 
 // -----------------------------------------------------------------------------
 function doSendSms(theMessage) {
-    var ACCOUNT_SID = process.env.ACCOUNT_SID;
-    var AUTH_TOKEN = process.env.AUTH_TOKEN;
     var theType = "json";
     var theRequest = "https://api.twilio.com/2010-04-01/Accounts/" + ACCOUNT_SID + "/Messages." + theType;
     var basicAuth = "Basic " + new Buffer(ACCOUNT_SID + ":" + AUTH_TOKEN).toString("base64");
@@ -541,15 +560,15 @@ function test0() {
 function doShow() {
     sayMessage("-----------------------");
     sayMessage("+ Show chat client attribute settings:");
-    if (clientId) {
-        sayMessage("++ User identity: " + clientId);
+    if (userIdentity) {
+        sayMessage("++ User identity: " + userIdentity);
     } else {
         sayMessage("++ User identity is required.");
     }
-    if (theTokenUrl === "") {
+    if (CHAT_GENERATE_TOKEN_URL === "") {
         sayMessage("++ Token URL is required, if you are not using local environment variables.");
     } else {
-        sayMessage("++ Token URL: " + theTokenUrl);
+        sayMessage("++ Token URL: " + CHAT_GENERATE_TOKEN_URL);
     }
     if (thisChatClient === "") {
         sayMessage("++ Chat Client object not created.");
@@ -561,11 +580,26 @@ function doShow() {
     } else {
         sayMessage("++ Not joined to any channel.");
     }
+    // ------------------------------------------
     if (debugState === 0) {
         sayMessage("++ Debug: off");
     } else {
         sayMessage("++ Debug: on");
     }
+    // ------------------------------------------
+    if (ACCOUNT_SID !== "") {
+        sayMessage("++ Account SID: " + ACCOUNT_SID);
+    }
+    if (AUTH_TOKEN !== "") {
+        sayMessage("++ Account auth token is set.");
+    }
+    if (smsSendFrom !== "") {
+        sayMessage("++ SMS send from phone number: " + smsSendFrom);
+    }
+    if (smsSendTo !== "") {
+        sayMessage("++ SMS send to phone number:   " + smsSendTo);
+    }
+
 }
 
 function doHelp() {
@@ -607,8 +641,8 @@ function doHelp() {
 }
 
 // -----------------------------------------------------------------------------
-if (clientId !== "") {
-    token = generateToken(clientId);
+if (userIdentity !== "") {
+    token = generateToken(userIdentity);
     if (token !== "") {
         createChatClientObject(token);
     }
@@ -688,22 +722,25 @@ standard_input.on('data', function (inputString) {
     } else if (theCommand.startsWith('url')) {
         commandLength = 'url'.length + 1;
         if (theCommand.length > commandLength) {
-            theTokenUrl = theCommand.substring(commandLength).trim();
+            CHAT_GENERATE_TOKEN_URL = theCommand.substring(commandLength).trim();
         } else {
             sayMessage("+ Syntax: delete <channel>");
         }
         doPrompt();
     } else if (theCommand === 'init') {
-        getTokenSetClient(clientId);
+        getTokenSetClient(userIdentity);
     } else if (theCommand === 'local') {
-        token = generateToken(clientId);
+        token = generateToken(userIdentity);
         if (token !== "") {
             createChatClientObject(token);
         }
     } else if (theCommand.startsWith('user')) {
+        if (userIdentity !== "") {
+            sayMessage("+ Warning, changing the user identity can cause issues.");
+        }
         commandLength = 'user'.length + 1;
         if (theCommand.length > commandLength) {
-            clientId = theCommand.substring(commandLength).trim();
+            userIdentity = theCommand.substring(commandLength).trim();
         } else {
             sayMessage("+ Syntax: user <identity>");
         }
