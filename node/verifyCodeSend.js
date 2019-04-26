@@ -4,7 +4,7 @@ VERIFY_SID = process.env.VERIFY_SID;
 verifyChannel = "sms";
 sendTo = process.env.PHONE_NUMBER3;
 console.log(
-        "++ Request a verification code"
+        "++ Request a verification code sent"
         + ", to: " + sendTo
         + ", channel: " + verifyChannel
         + ", VERIFY_SID: " + VERIFY_SID

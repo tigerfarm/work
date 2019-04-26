@@ -1,4 +1,9 @@
 // Documentation: https://www.twilio.com/docs/verify/api-beta/verification-check-beta
+// Either the check status is:
+//  + pending
+//  + approved
+//  + 404 for expired, invalid code, or asking when valid, a second time.
+//
 console.log("+++ Start.");
 var client = require('twilio')(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
 VERIFY_SID = process.env.VERIFY_SID;
@@ -7,7 +12,7 @@ VERIFY_SID = process.env.VERIFY_SID;
 verifySid = "VE407a5bc6529b474a396c3028465a9897";
 sendTo = process.env.PHONE_NUMBER3;
 //
-verifyCode = "652191x";
+verifyCode = "064312";
 console.log(
         "++ Request a verification code check"
         + ", that was sent to: " + sendTo
