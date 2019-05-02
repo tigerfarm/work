@@ -1,4 +1,19 @@
 // -----------------------------------------------------------------------------
+// Easy to use.
+// 
+//  Either create environment variables with your chat token values,
+//  or create a program to generate tokens and add the URL (command: url).
+//  
+//  $ npm install --save twilio-chat
+//  $ node --no-deprecation chatcli.js
+//  +++ Chat program is starting up.
+//  + Ready for commands such as: help, user, init or local.
+//  + Command, Enter > url https://about-time-2357.twil.io/tokenchat
+//  + Command, Enter > user me
+//  + Command, Enter > init
+//  + Command, Enter > list
+//
+// -----------------------------------------------------------------------------
 // Docmentation links:
 //  Tokens:
 //      https://www.twilio.com/docs/chat/access-token-lifecycle
@@ -24,21 +39,6 @@
 //  Make this npm available?
 //      https://docs.npmjs.com/creating-node-js-modules
 //  
-// -----------------------------------------------------------------------------
-// Easy to use.
-// 
-//  Either create environment variables with your chat token values,
-//  or create a program to generate tokens and add the URL (command: url).
-//  
-//  $ npm install --save twilio-chat
-//  $ node --no-deprecation chatcli.js
-//  +++ Chat program is starting up.
-//  + Ready for commands such as: help, user, init or local.
-//  + Command, Enter > url https://about-time-2357.twil.io/tokenchat
-//  + Command, Enter > user me
-//  + Command, Enter > init
-//  + Command, Enter > list
-//
 
 // -----------------------------------------------------------------------------
 // Required, if generating the chat tokens in this program:
