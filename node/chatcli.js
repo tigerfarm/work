@@ -4,17 +4,34 @@
 //  Either create environment variables with your chat token values,
 //  or create a program to generate tokens and add the URL (command: url).
 //  
+// Required, if generating the chat tokens in this program:
+var ACCOUNT_SID = process.env.ACCOUNT_SID;
+var CHAT_API_KEY = process.env.CHAT_API_KEY;
+var CHAT_API_KEY_SECRET = process.env.CHAT_API_KEY_SECRET;
+var CHAT_SERVICE_SID = process.env.CHAT_SERVICE_SID;
+//
+// This value can be set using the Chat CLI command: url.
+var CHAT_GENERATE_TOKEN_URL = process.env.CHAT_GENERATE_TOKEN_URL;
+//
+// Run the following commands:
 //  $ npm install --save twilio-chat
 //  $ node --no-deprecation chatcli.js
-//  +++ Chat program is starting up.
-//  + Ready for commands such as: help, user, init or local.
+//  ...
 //  + Command, Enter > url https://about-time-2357.twil.io/tokenchat
 //  + Command, Enter > user me
 //  + Command, Enter > init
 //  + Command, Enter > list
+//  
+// -----------------------------------------------------------------------------
+// To do:
+//  Auto token refresh using tokenAboutToExpire.
+//  SMS Chat gateway.
+//  Presence: 1) subscribe/unsubscribe to users. 2) Check who is online.
+//  Make this npm available?
+//      https://docs.npmjs.com/creating-node-js-modules
 //
 // -----------------------------------------------------------------------------
-// Docmentation links:
+// Chat docmentation links:
 //  Tokens:
 //      https://www.twilio.com/docs/chat/access-token-lifecycle
 //  Message properties:
@@ -31,30 +48,67 @@
 //      https://www.youtube.com/watch?v=rTsz09zRuTU
 //      https://www.twilio.com/blog/how-to-build-a-cli-with-node-js
 //  
-// -----------------------------------------------------------------------------
-// To do:
-//  Auto token refresh using tokenAboutToExpire.
-//  SMS Chat gateway.
-//  Presence: 1) subscribe/unsubscribe to users. 2) Check who is online.
-//  Make this npm available?
-//      https://docs.npmjs.com/creating-node-js-modules
-//  
 
 // -----------------------------------------------------------------------------
-// Required, if generating the chat tokens in this program:
-var ACCOUNT_SID = process.env.ACCOUNT_SID;
-var CHAT_API_KEY = process.env.CHAT_API_KEY;
-var CHAT_API_KEY_SECRET = process.env.CHAT_API_KEY_SECRET;
-var CHAT_SERVICE_SID = process.env.CHAT_SERVICE_SID;
-//
-// This value can be set with the url command:
-var CHAT_GENERATE_TOKEN_URL = process.env.CHAT_GENERATE_TOKEN_URL;
-
 // Required for SMS:
 var AUTH_TOKEN = process.env.AUTH_TOKEN;
-// Optional, if you don't set your own smsSendFrom and smsSendTo values.
-var smsSendFrom = process.env.PHONE_NUMBER3;
-var smsSendTo = process.env.PHONE_NUMBER4;
+//
+// Values can be set using the Chat CLI command: sms.
+var smsSendFrom = process.env.PHONE_NUMBER3;    // sms from <phone number>
+var smsSendTo = process.env.PHONE_NUMBER4;      // sms to <phone number>
+
+// -----------------------------------------------------------------------------
+function doHelp() {
+    sayMessage("-----------------------");
+    sayMessage("Commands:\n\
+\n\
+> show\n\
+++ Show chat client attributes.\n\
+\n\
+> user <identity>\n\
+++ Set your chat user identity. \n\
+> url <URL to retrieve a token>\n\
+++ Set the token URL value. This URL is used to retrieve a chat access token.\n\
+> init\n\
+++ Get a token using the token retrieval URL, and initialize the chat client object.\n\
+\n\
+> local\n\
+++ Get a token using the local environment variables, and initialize the chat client object.\n\
+\n\
+> list\n\
+++ List public channels.\n\
+> join <channel>\n\
+> join <channel> [<description>]\n\
+> members\n\
+++ List channel members.\n\
+> history\n\
+++ List channel messages.\n\
+> delete <channel>\n\
+\n\
+> send\n\
+++ Toggle send mode. When on, send messages.\n\
+++ Enter blank line to exit send mode.\n\
+> send <message>\n\
+\n\
+> debug\n\
+++ Toggle debug on and off.\n\
+\n\
+> sms\n\
+++ Toggle SMS send mode. When on, send messages.\n\
+++ Enter blank line to exit send mode.\n\
+> sms send <message>\n\
+> sms to <phone number>\n\
+++ Set to phone number.\n\
+> sms from <phone number>\n\
+++ Set from phone number.\n\
+\n\
+> help\n\
+\n\
+> exit\n\
+"
+            );
+
+}
 
 // -----------------------------------------------------------------------------
 var userIdentity = process.argv[2] || "";
@@ -161,13 +215,22 @@ function getTokenSetClient(clientid) {
             return;
         }
         var newToken = responseString;
-        if (responseString.indexOf("token")>0) {
+        if (responseString.indexOf("token") > 0) {
             newToken = JSON.parse(responseString).token;
         }
         debugMessage('token: ' + newToken);
         sayMessage("+ New token retrieved.");
         createChatClientObject(newToken);
     });
+}
+
+function refreshChatToken() {
+    // Not tested.
+    debugMessage("refreshChatToken()");
+    generateToken(userIdentity);
+    thisChannel.updateToken(token);
+    sayMessage("+ Chat token refreshed.");
+    doPrompt();
 }
 
 // -----------------------------------------------------------------------------
@@ -292,13 +355,17 @@ function onMessageAdded(message) {
     doPrompt();
 }
 
-function refreshChatToken() {
-    // Not tested.
-    debugMessage("refreshChatToken()");
-    generateToken(userIdentity);
-    thisChannel.updateToken(token);
-    sayMessage("+ Chat token refreshed.");
-    doPrompt();
+function incCount() {
+    totalMessages++;
+    debugMessage('+ Increment Total Messages:' + totalMessages);
+    thisChannel.getMessages().then(function (messages) {
+        thisChannel.updateLastConsumedMessageIndex(totalMessages);
+    });
+}
+
+function doCountZero() {
+    debugMessage("+ Called: doCountZero(): thisChannel.setNoMessagesConsumed();");
+    thisChannel.setNoMessagesConsumed();
 }
 
 // -----------------------------------------------------------------------------
@@ -343,7 +410,7 @@ function deleteChannel(chatChannelName) {
     sayMessage('+ Delete channel: ' + chatChannelName);
     thisChatClient.getChannelByUniqueName(chatChannelName).then(function (channel) {
         thisChannel = channel;
-        debugMessage("Channel exists: " + chatChannelName + " : " + thisChannel);
+        debugMessage("Channel exists: " + chatChannelName + ", created by: " + thisChannel.createdBy);
         thisChannel.delete().then(function (channel) {
             sayMessage('++ Channel deleted: ' + chatChannelName);
             if (chatChannelName === thisChatChannelName) {
@@ -351,10 +418,11 @@ function deleteChannel(chatChannelName) {
             }
             doPrompt();
         }).catch(function (err) {
+            // Not handled: SessionError: User unauthorized for command.
             if (thisChannel.createdBy !== userIdentity) {
                 sayMessage("- Can only be deleted by the creator: " + thisChannel.createdBy);
             } else {
-                debugMessage("- Delete failed: " + thisChannel.uniqueName + ', ' + err);
+                debugMessage("- Delete failed: " + thisChannel.uniqueName);
                 sayMessage("- Delete failed: " + err);
             }
             doPrompt();
@@ -363,20 +431,6 @@ function deleteChannel(chatChannelName) {
         sayMessage("- Channel doesn't exist, cannot delete it: " + chatChannelName);
         doPrompt();
     });
-}
-
-// -----------------------------------------------------------------------------
-function incCount() {
-    totalMessages++;
-    debugMessage('+ Increment Total Messages:' + totalMessages);
-    thisChannel.getMessages().then(function (messages) {
-        thisChannel.updateLastConsumedMessageIndex(totalMessages);
-    });
-}
-
-function doCountZero() {
-    debugMessage("+ Called: doCountZero(): thisChannel.setNoMessagesConsumed();");
-    thisChannel.setNoMessagesConsumed();
 }
 
 // -----------------------------------------------------------------------------
@@ -446,40 +500,6 @@ function listMessageHistory() {
 }
 
 // -----------------------------------------------------------------------------
-function doSendSms(theMessage) {
-    var theType = "json";
-    var theRequest = "https://api.twilio.com/2010-04-01/Accounts/" + ACCOUNT_SID + "/Messages." + theType;
-    var basicAuth = "Basic " + new Buffer(ACCOUNT_SID + ":" + AUTH_TOKEN).toString("base64");
-    var options = {
-        method: 'POST',
-        'uri': theRequest,
-        headers: {
-            "Authorization": basicAuth,
-            'content-type': 'application/x-www-form-urlencoded'
-        },
-        formData: {
-            From: smsSendFrom,
-            To: smsSendTo,
-            Body: theMessage
-        }
-    };
-    var request = require('request');
-    debugMessage('URL request: ' + theRequest);
-    function callback(error, response, body) {
-        debugMessage("response.statusCode: " + response.statusCode);
-        if (!error) {
-            const jsonData = JSON.parse(body);
-            sayMessage("++  Message status = " + jsonData.status);
-            debugMessage("jsonData: " + body);
-        } else {
-            sayMessage("++ error: " + error);
-        }
-        doPrompt();
-    }
-    request(options, callback);
-}
-
-// -----------------------------------------------------------------------------
 function doSend(theCommand) {
     if (thisChatChannelName === "") {
         sayMessage("Required: join a channel.");
@@ -546,7 +566,6 @@ function doSendMedia(theCommand) {
 }
 
 function test0() {
-
     // Only form data send option allows the sending of a filename.
     thisChatClient.getChannelBySid(thisChannel.sid).then(function (channel) {
         channel.sendMessage({
@@ -557,6 +576,41 @@ function test0() {
     });
 }
 
+// -----------------------------------------------------------------------------
+function doSendSms(theMessage) {
+    var theType = "json";
+    var theRequest = "https://api.twilio.com/2010-04-01/Accounts/" + ACCOUNT_SID + "/Messages." + theType;
+    var basicAuth = "Basic " + new Buffer(ACCOUNT_SID + ":" + AUTH_TOKEN).toString("base64");
+    var options = {
+        method: 'POST',
+        'uri': theRequest,
+        headers: {
+            "Authorization": basicAuth,
+            'content-type': 'application/x-www-form-urlencoded'
+        },
+        formData: {
+            From: smsSendFrom,
+            To: smsSendTo,
+            Body: theMessage
+        }
+    };
+    var request = require('request');
+    debugMessage('URL request: ' + theRequest);
+    function callback(error, response, body) {
+        debugMessage("response.statusCode: " + response.statusCode);
+        if (!error) {
+            const jsonData = JSON.parse(body);
+            sayMessage("++  Message status = " + jsonData.status);
+            debugMessage("jsonData: " + body);
+        } else {
+            sayMessage("++ error: " + error);
+        }
+        doPrompt();
+    }
+    request(options, callback);
+}
+
+// -----------------------------------------------------------------------------
 function doShow() {
     sayMessage("-----------------------");
     sayMessage("+ Show chat client attribute settings:");
@@ -602,45 +656,10 @@ function doShow() {
 
 }
 
-function doHelp() {
-    sayMessage("-----------------------");
-    sayMessage("Commands:\n");
-    sayMessage("> show");
-    sayMessage("++ Show chat client attributes.\n");
-    sayMessage("> user <identity>");
-    sayMessage("++ Your chat user identity.\n");
-    sayMessage("> url <URL to retrieve a token>");
-    sayMessage("++ Set the token URL value. This URL is used to retrieve a chat access token.");
-    sayMessage("> init");
-    sayMessage("++ Get a token using the token retrieval URL, and initialize the chat client object.\n");
-    sayMessage("> local");
-    sayMessage("++ Get a token using the local environment variables, and initialize the chat client object.\n");
-    sayMessage("> list");
-    sayMessage("++ list public channels.");
-    sayMessage("> join <channel>");
-    sayMessage("> join <channel> [<description>]\n");
-    sayMessage("> members");
-    sayMessage("++ list channel members.\n");
-    sayMessage("> send");
-    sayMessage("++ Toggle send mode. When on, send messages.");
-    sayMessage("++ Enter blank line to exit send mode.");
-    sayMessage("> send <message>\n");
-    sayMessage("> delete <channel>\n");
-    sayMessage("> debug");
-    sayMessage("++ Toggle debug on and off.\n");
-    sayMessage("> sms");
-    sayMessage("++ Toggle SMS send mode. When on, send messages.");
-    sayMessage("++ Enter blank line to exit send mode.");
-    sayMessage("> sms send <message>");
-    sayMessage("> sms to <phone number>");
-    sayMessage("++ Set to phone number.");
-    sayMessage("> sms from <phone number>");
-    sayMessage("++ Set from phone number.\n");
-    sayMessage("> help\n");
-    sayMessage("> exit\n");
-}
-
 // -----------------------------------------------------------------------------
+// Prompt the user for commands.
+// Parse and run execute the commands.
+
 if (userIdentity !== "") {
     token = generateToken(userIdentity);
     if (token !== "") {
@@ -736,7 +755,7 @@ standard_input.on('data', function (inputString) {
         }
     } else if (theCommand.startsWith('user')) {
         if (userIdentity !== "") {
-            sayMessage("+ Warning, changing the user identity can cause issues.");
+            sayMessage("+ Warning: you have changed your user identity, which can cause issues.");
         }
         commandLength = 'user'.length + 1;
         if (theCommand.length > commandLength) {
