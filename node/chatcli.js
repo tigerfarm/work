@@ -161,7 +161,7 @@ function getTokenSetClient(clientid) {
             return;
         }
         var newToken = responseString;
-        if (responseString.toLowerCase().indexOf("token")>0) {
+        if (responseString.indexOf("token")>0) {
             newToken = JSON.parse(responseString).token;
         }
         debugMessage('token: ' + newToken);
