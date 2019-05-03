@@ -1,14 +1,18 @@
 // -----------------------------------------------------------------------------
 // Easy to use.
 // 
-//  Either create environment variables with your chat token values,
-//  or create a program to generate tokens and add the URL (command: url).
+// Setup to generate chat tokens:
+//  1. Either create environment variables with your chat token values
+//      which are used in generateToken() function.
+//  2. Or create a server side program to generate tokens
+//      and add the URL (command: url) to call the program,
+//      which are used in getTokenSeverSide() function.
 //  
 // Required, if generating the chat tokens in this program:
 var ACCOUNT_SID = process.env.ACCOUNT_SID;
+var CHAT_SERVICE_SID = process.env.CHAT_SERVICE_SID;
 var CHAT_API_KEY = process.env.CHAT_API_KEY;
 var CHAT_API_KEY_SECRET = process.env.CHAT_API_KEY_SECRET;
-var CHAT_SERVICE_SID = process.env.CHAT_SERVICE_SID;
 //
 // This value can be set using the Chat CLI command: url.
 var CHAT_GENERATE_TOKEN_URL = process.env.CHAT_GENERATE_TOKEN_URL;
@@ -59,22 +63,32 @@ var smsSendTo = process.env.PHONE_NUMBER4;      // sms to <phone number>
 
 // -----------------------------------------------------------------------------
 function doHelp() {
-    sayMessage("-----------------------");
-    sayMessage("Commands:\n\
+    sayMessage("-------------------------\n\
+Commands:\n\
 \n\
 > show\n\
-++ Show chat client attributes.\n\
+++ Show chat client attribute settings.\n\
 \n\
+> debug\n\
+++ Toggle debug on and off.\n\
+\n\
+> help\n\
+\n\
+> exit\n\
+\n\
+-------------------------\n\
 > user <identity>\n\
 ++ Set your chat user identity. \n\
+\n\
+> generate\n\
+++ Generate a token using the local environment variables, and initialize the chat client object.\n\
+\n\
 > url <URL to retrieve a token>\n\
 ++ Set the token URL value. This URL is used to retrieve a chat access token.\n\
 > init\n\
 ++ Get a token using the token retrieval URL, and initialize the chat client object.\n\
 \n\
-> local\n\
-++ Get a token using the local environment variables, and initialize the chat client object.\n\
-\n\
+-------------------------\n\
 > list\n\
 ++ List public channels.\n\
 > join <channel>\n\
@@ -85,14 +99,13 @@ function doHelp() {
 ++ List channel messages.\n\
 > delete <channel>\n\
 \n\
+-------------------------\n\
 > send\n\
 ++ Toggle send mode. When on, send messages.\n\
 ++ Enter blank line to exit send mode.\n\
 > send <message>\n\
 \n\
-> debug\n\
-++ Toggle debug on and off.\n\
-\n\
+-------------------------\n\
 > sms\n\
 ++ Toggle SMS send mode. When on, send messages.\n\
 ++ Enter blank line to exit send mode.\n\
@@ -101,21 +114,18 @@ function doHelp() {
 ++ Set to phone number.\n\
 > sms from <phone number>\n\
 ++ Set from phone number.\n\
-\n\
-> help\n\
-\n\
-> exit\n\
 "
             );
 
 }
 
 // -----------------------------------------------------------------------------
+console.log("+++ Chat program is starting up.");
+
 var userIdentity = process.argv[2] || "";
 if (userIdentity !== "") {
     console.log("+ User identity: " + userIdentity);
 }
-console.log("+++ Chat program is starting up.");
 
 // $ npm install --save twilio-chat
 const Chat = require('twilio-chat');
@@ -130,8 +140,9 @@ var setChannelListeners = "";
 var thisChatClient = "";
 var thisChatChannelName = "";
 var chatChannelDescription = "";
+let thisToken = "";
 let thisChannel = "";
-let totalMessages = 0;  // This count of read channel messages. Needs work to initialize and maintain the count.
+let totalMessages = 0;  // This is to count channel messages read. Needs work to initialize and maintain the count.
 
 // -----------------------------------------------------------------------------
 let debugState = 0;    // 0 off
@@ -184,11 +195,12 @@ function generateToken(clientid) {
     return token.toJwt();
 }
 
-function getTokenSetClient(clientid) {
-    debugMessage("getTokenSetClient(clientid)");
+function getTokenSeverSideSetClientObject(clientid) {
+    var newToken = "";
+    debugMessage("getTokenSeverSideSetClientObject(" + clientid + ")");
     if (firstInit === "") {
         firstInit = "initialized";
-        sayMessage("+ Ready for commands such as: help, init, or local.");
+        sayMessage("+ Ready for commands such as: help, init, or generate.");
         doPrompt();
         return;
     }
@@ -214,13 +226,14 @@ function getTokenSetClient(clientid) {
             doPrompt();
             return;
         }
-        var newToken = responseString;
+        newToken = responseString;
         if (responseString.indexOf("token") > 0) {
             newToken = JSON.parse(responseString).token;
         }
         debugMessage('token: ' + newToken);
         sayMessage("+ New token retrieved.");
         createChatClientObject(newToken);
+        return;
     });
 }
 
@@ -254,7 +267,7 @@ function createChatClientObject(token) {
         thisChatClient.getSubscribedChannels();
         if (firstInit === "") {
             firstInit = "initialized";
-            sayMessage("+ Ready for commands such as: help, init, or local.");
+            sayMessage("+ Ready for commands such as: help, init, or generate.");
         }
         doPrompt();
     });
@@ -620,7 +633,7 @@ function doShow() {
         sayMessage("++ User identity is required.");
     }
     if (CHAT_GENERATE_TOKEN_URL === "") {
-        sayMessage("++ Token URL is required, if you are not using local environment variables.");
+        sayMessage("++ Token URL is required, if you are not generating tokens using local environment variables.");
     } else {
         sayMessage("++ Token URL: " + CHAT_GENERATE_TOKEN_URL);
     }
@@ -667,7 +680,7 @@ if (userIdentity !== "") {
     }
 } else {
     firstInit = "initialized";
-    sayMessage("+ Ready for commands such as: help, user, init or local.");
+    sayMessage("+ Ready for commands such as: help, user, init or generate.");
     doPrompt();
 }
 var sendMode = 0;
@@ -747,12 +760,9 @@ standard_input.on('data', function (inputString) {
         }
         doPrompt();
     } else if (theCommand === 'init') {
-        getTokenSetClient(userIdentity);
-    } else if (theCommand === 'local') {
-        token = generateToken(userIdentity);
-        if (token !== "") {
-            createChatClientObject(token);
-        }
+        getTokenSeverSideSetClientObject(userIdentity);
+    } else if (theCommand === 'generate') {
+        createChatClientObject(generateToken(userIdentity));
     } else if (theCommand.startsWith('user')) {
         if (userIdentity !== "") {
             sayMessage("+ Warning: you have changed your user identity, which can cause issues.");
