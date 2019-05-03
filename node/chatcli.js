@@ -43,8 +43,11 @@ var CHAT_GENERATE_TOKEN_URL = process.env.CHAT_GENERATE_TOKEN_URL;
 // -----------------------------------------------------------------------------
 // To do:
 //  Auto token refresh using tokenAboutToExpire.
-//  SMS Chat gateway.
+//  Delete abc channel, current error: - Delete failed: SessionError: User unauthorized for command
+//      https://www.twilio.com/docs/chat/rest/users
+//      https://www.twilio.com/docs/chat/permissions
 //  Presence: 1) subscribe/unsubscribe to users. 2) Check who is online.
+//  SMS Chat gateway.
 //  Make this npm available?
 //      https://docs.npmjs.com/creating-node-js-modules
 //
@@ -91,6 +94,9 @@ Commands:\n\
 > exit\n\
 \n\
 -------------------------\n\
+> users\n\
+++ List chat users, the first 30. \n\
+\n\
 > user <identity>\n\
 ++ Set your chat user identity. \n\
 \n\
@@ -638,6 +644,28 @@ function doSendSms(theMessage) {
 }
 
 // -----------------------------------------------------------------------------
+function listUsers() {
+    sayMessage("+ List users.");
+    // https://www.twilio.com/docs/chat/rest/users#properties
+    const client = require('twilio')(ACCOUNT_SID, AUTH_TOKEN);
+    var i = 1;
+    client.chat.services(CHAT_SERVICE_SID).users.list({limit: 30}).then(users => {
+        users.forEach(user => {
+            var theInfo = user.sid + " Role: " + user.roleSid + " " + user.identity;
+            if (user.friendlyName !== null) {
+                theInfo = theInfo + ", " + user.friendlyName;
+            }
+            if (user.isOnline !== null) {
+                theInfo = theInfo + " isOnline: " + user.isOnline;
+            }
+            sayMessage("++ " + theInfo);
+            if (i++ === users.length) {
+                doPrompt();
+            }
+        });
+    });
+}
+// -----------------------------------------------------------------------------
 function doShow() {
     sayMessage("-----------------------");
     sayMessage("+ Show chat client attribute settings:");
@@ -777,6 +805,8 @@ standard_input.on('data', function (inputString) {
         getTokenSeverSideSetClientObject(userIdentity);
     } else if (theCommand === 'generate') {
         createChatClientObject(generateToken(userIdentity));
+    } else if (theCommand === 'users') {
+        listUsers();
     } else if (theCommand.startsWith('user')) {
         if (userIdentity !== "") {
             sayMessage("+ Warning: you have changed your user identity, which can cause issues.");
