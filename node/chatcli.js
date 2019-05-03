@@ -333,7 +333,6 @@ function joinChatChannel(chatChannelName, chatChannelDescription) {
                     thisChannel = channel;
                     thisChatChannelName = chatChannelName;
                     joinChannel();
-                    setChannelListnerFunctions();
                 }).catch(function (channel) {
                     sayMessage('-- Failed to create the channel: ' + channel);
                 });
@@ -358,9 +357,9 @@ function joinChannel() {
             sayMessage("- Join failed: " + err.message);
         }
     });
-    if (setChannelListeners === "") {
+    // if (setChannelListeners === "") {
         setChannelListnerFunctions();
-    }
+    // }
 }
 
 function setChannelListnerFunctions() {
