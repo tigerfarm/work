@@ -1,28 +1,42 @@
 // -----------------------------------------------------------------------------
 // Easy to use.
 // 
+// ------------------------------
 // Setup to generate chat tokens:
+// 
 //  1. Either create environment variables with your chat token values
-//      which are used in generateToken() function.
+//      which are used in the generateToken() function.
+//      
+// Required, if generating the chat tokens in this program:
+var ACCOUNT_SID = process.env.ACCOUNT_SID;
+//
+// Create a Chat Service:
+//  https://www.twilio.com/console/chat/dashboard
+var CHAT_SERVICE_SID = process.env.CHAT_SERVICE_SID;
+//
+// Create an API key and secret string:
+//  https://www.twilio.com/console/chat/runtime/api-keys
+var CHAT_API_KEY = process.env.CHAT_API_KEY;
+var CHAT_API_KEY_SECRET = process.env.CHAT_API_KEY_SECRET;
+//  
 //  2. Or create a server side program to generate tokens
 //      and add the URL (command: url) to call the program,
 //      which are used in getTokenSeverSide() function.
-//  
-// Required, if generating the chat tokens in this program:
-var ACCOUNT_SID = process.env.ACCOUNT_SID;
-var CHAT_SERVICE_SID = process.env.CHAT_SERVICE_SID;
-var CHAT_API_KEY = process.env.CHAT_API_KEY;
-var CHAT_API_KEY_SECRET = process.env.CHAT_API_KEY_SECRET;
-//
-// This value can be set using the Chat CLI command: url.
+//  url https://about-time-2357.twil.io/tokenchat
 var CHAT_GENERATE_TOKEN_URL = process.env.CHAT_GENERATE_TOKEN_URL;
 //
+// Create a Twilio Function(example path "/tokenchat") to generate access tokens:
+//  https://www.twilio.com/console/runtime/functions/manage
+// Twilio Function code to generate a token:
+//  https://github.com/tigerfarm/owlchat/blob/master/generateToken.js
+//  
+// ------------------------------
 // Run the following commands:
 //  $ npm install --save twilio-chat
 //  $ node --no-deprecation chatcli.js
 //  ...
-//  + Command, Enter > url https://about-time-2357.twil.io/tokenchat
 //  + Command, Enter > user me
+//  + Command, Enter > url https://about-time-2357.twil.io/tokenchat
 //  + Command, Enter > init
 //  + Command, Enter > list
 //  
@@ -36,14 +50,14 @@ var CHAT_GENERATE_TOKEN_URL = process.env.CHAT_GENERATE_TOKEN_URL;
 //
 // -----------------------------------------------------------------------------
 // Chat docmentation links:
+//  Chat Presence:
+//      https://www.twilio.com/docs/chat/reachability-indicator
 //  Tokens:
 //      https://www.twilio.com/docs/chat/access-token-lifecycle
 //  Message properties:
-//      properties: https://media.twiliocdn.com/sdk/js/chat/releases/3.2.1/docs/Message.html
+//      https://media.twiliocdn.com/sdk/js/chat/releases/3.2.1/docs/Message.html
 //  sendMessage(message, messageAttributes):
 //      https://media.twiliocdn.com/sdk/js/chat/releases/2.0.0/docs/Channel.html#sendMessage__anchor
-//  Chat Presence:
-//      https://www.twilio.com/docs/chat/reachability-indicator
 //  Chat send/receive media files:
 //      https://www.twilio.com/docs/chat/media-support
 //      https://www.twilio.com/docs/chat/rest/media
@@ -116,7 +130,6 @@ Commands:\n\
 ++ Set from phone number.\n\
 "
             );
-
 }
 
 // -----------------------------------------------------------------------------
@@ -272,6 +285,7 @@ function createChatClientObject(token) {
         doPrompt();
     });
 }
+
 // -----------------------------------------------------------------------------
 function joinChatChannel(chatChannelName, chatChannelDescription) {
     debugMessage("joinChatChannel(" + chatChannelName + ", " + chatChannelDescription + ")");
