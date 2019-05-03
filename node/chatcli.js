@@ -48,6 +48,7 @@ var CHAT_GENERATE_TOKEN_URL = process.env.CHAT_GENERATE_TOKEN_URL;
 //      https://www.twilio.com/docs/chat/permissions
 //  Presence: 1) subscribe/unsubscribe to users. 2) Check who is online.
 //  SMS Chat gateway.
+//  Properly mantain the message count for a user for their current channel
 //  Make this npm available?
 //      https://docs.npmjs.com/creating-node-js-modules
 //
@@ -80,11 +81,11 @@ var smsSendTo = process.env.PHONE_NUMBER4;      // sms to <phone number>
 
 // -----------------------------------------------------------------------------
 function doHelp() {
-    sayMessage("-------------------------\n\
+    sayMessage("------------------------------------------------------------------------------\n\
 Commands:\n\
 \n\
 > show\n\
-++ Show chat client attribute settings.\n\
+++ Show chat client settings.\n\
 \n\
 > debug\n\
 ++ Toggle debug on and off.\n\
@@ -161,7 +162,10 @@ var thisChatChannelName = "";
 var chatChannelDescription = "";
 let thisToken = "";
 let thisChannel = "";
-let totalMessages = 0;  // This is to count channel messages read. Needs work to initialize and maintain the count.
+
+// This is to count channel messages read. Needs work to initialize and maintain the count.
+// Needs to be reset when changing channels.
+let totalMessages = 0;
 
 // -----------------------------------------------------------------------------
 let debugState = 0;    // 0 off
@@ -186,6 +190,9 @@ function doPrompt() {
 function sayMessage(message) {
     console.log(message);
 }
+function sayRequirement(message) {
+    console.log("- " + message);
+}
 
 // -----------------------------------------------------------------------------
 function generateToken(clientid) {
@@ -193,7 +200,7 @@ function generateToken(clientid) {
     // Optional, if you want to use environment variables.
     //
     if (userIdentity === "") {
-        sayMessage("- Required: user identity for creating a chat object.");
+        sayRequirement("Required: user identity for creating a chat object.");
         doPrompt();
         return "";
     }
@@ -224,12 +231,12 @@ function getTokenSeverSideSetClientObject(clientid) {
         return;
     }
     if (userIdentity === "") {
-        sayMessage("- Required: user identity for creating a chat object.");
+        sayRequirement("Required: user identity for creating a chat object.");
         doPrompt();
         return;
     }
     if (CHAT_GENERATE_TOKEN_URL === "") {
-        sayMessage("- Required: the token URL.");
+        sayRequirement("Required: the token URL.");
         doPrompt();
         return;
     }
@@ -268,12 +275,12 @@ function refreshChatToken() {
 // -----------------------------------------------------------------------------
 function createChatClientObject(token) {
     if (userIdentity === "") {
-        sayMessage("- Required: user identity for creating a chat object.");
+        sayRequirement("Required: user identity for creating a chat object.");
         doPrompt();
         return;
     }
     if (token === "") {
-        sayMessage("- Required: chat access token.");
+        sayRequirement("Required: chat access token.");
         doPrompt();
         return;
     }
@@ -296,12 +303,12 @@ function createChatClientObject(token) {
 function joinChatChannel(chatChannelName, chatChannelDescription) {
     debugMessage("joinChatChannel(" + chatChannelName + ", " + chatChannelDescription + ")");
     if (thisChatClient === "") {
-        sayMessage("Required: create a Chat Client.");
+        sayRequirement("Required: create a Chat Client.");
         doPrompt();
         return;
     }
     if (chatChannelName === "") {
-        sayMessage("Required: Channel name.");
+        sayRequirement("Required: Channel name.");
         doPrompt();
         return;
     }
@@ -343,6 +350,7 @@ function joinChatChannel(chatChannelName, chatChannelDescription) {
 
 function joinChannel() {
     debugMessage('joinChannel() ' + thisChannel.uniqueName);
+    doCountZero();
     thisChannel.join().then(function (channel) {
         debugMessage('Joined channel as ' + userIdentity);
         sayMessage('++ You have joined the channel: ' + thisChannel.friendlyName);
@@ -360,7 +368,7 @@ function joinChannel() {
         }
     });
     // if (setChannelListeners === "") {
-        setChannelListnerFunctions();
+    setChannelListnerFunctions();
     // }
 }
 
@@ -399,6 +407,7 @@ function incCount() {
 
 function doCountZero() {
     debugMessage("+ Called: doCountZero(): thisChannel.setNoMessagesConsumed();");
+    totalMessages = 0;
     thisChannel.setNoMessagesConsumed();
 }
 
@@ -406,11 +415,11 @@ function doCountZero() {
 function listChannels() {
     debugMessage("listChannels()");
     if (thisChatClient === "") {
-        sayMessage("Required: Chat Client.");
+        sayRequirement("Required: Chat Client.");
         doPrompt();
         return;
     }
-    sayMessage("+ ------------------------");
+    sayMessage("+ ------------------------------------------------------------------------------");
     sayMessage("+ List of public channels (++ uniqueName: friendlyName: createdBy):");
     thisChatClient.getPublicChannelDescriptors().then(function (paginator) {
         for (i = 0; i < paginator.items.length; i++) {
@@ -432,12 +441,12 @@ function listChannels() {
 function deleteChannel(chatChannelName) {
     debugMessage("deleteChannel()");
     if (thisChatClient === "") {
-        sayMessage("Required: Chat Client.");
+        sayRequirement("Required: Chat Client.");
         doPrompt();
         return;
     }
     if (chatChannelName === "") {
-        sayMessage("Required: Channel name.");
+        sayRequirement("Required: Channel name.");
         doPrompt();
         return;
     }
@@ -473,12 +482,12 @@ function deleteChannel(chatChannelName) {
 function listMembers() {
     debugMessage("listMembers()");
     if (thisChannel === "") {
-        sayMessage("Required: join a channel.");
+        sayRequirement("Required: join a channel.");
         doPrompt();
         return;
     }
     var members = thisChannel.getMembers();
-    sayMessage("+ -----------------------");
+    sayMessage("+ ------------------------------------------------------------------------------");
     sayMessage("+ Members of channel: " + thisChannel.uniqueName);
     members.then(function (currentMembers) {
         var i = 1;
@@ -498,7 +507,7 @@ function listMembers() {
 function listMessageHistory() {
     debugMessage("listMessageHistory()");
     if (thisChannel === "") {
-        sayMessage("Required: join a channel.");
+        sayRequirement("Required: join a channel.");
         doPrompt();
         return;
     }
@@ -536,7 +545,7 @@ function listMessageHistory() {
 // -----------------------------------------------------------------------------
 function doSend(theCommand) {
     if (thisChatChannelName === "") {
-        sayMessage("Required: join a channel.");
+        sayRequirement("Required: join a channel.");
         doPrompt();
     } else {
         commandLength = 'send'.length + 1;
@@ -560,7 +569,7 @@ function doSend(theCommand) {
 function doSendMedia(theCommand) {
     var fs = require("fs");
     if (thisChatChannelName === "") {
-        sayMessage("Required: join a channel.");
+        sayRequirement("Required: join a channel.");
         doPrompt();
     } else {
         commandLength = 'sendmedia'.length + 1;
@@ -593,7 +602,7 @@ function doSendMedia(theCommand) {
             });
 
         } else {
-            sayMessage("+ Media filename required: sendmedia <filename>");
+            sayRequirement("+ Media filename required: sendmedia <filename>");
             doPrompt();
         }
     }
@@ -668,7 +677,7 @@ function listUsers() {
 }
 // -----------------------------------------------------------------------------
 function doShow() {
-    sayMessage("-----------------------");
+    sayMessage("------------------------------------------------------------------------------");
     sayMessage("+ Show chat client attribute settings:");
     if (userIdentity) {
         sayMessage("++ User identity: " + userIdentity);
