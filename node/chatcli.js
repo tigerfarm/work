@@ -335,6 +335,8 @@ function joinChatChannel(chatChannelName, chatChannelDescription) {
                     joinChannel();
                 }).catch(function (channel) {
                     sayMessage('-- Failed to create the channel: ' + channel);
+                    // Following happened when the token had expired.
+                    // -- Failed to create the channel: Error: Can't add command: Can't connect to twilsock
                 });
             });
 }
@@ -673,34 +675,45 @@ function doShow() {
     } else {
         sayMessage("++ User identity is required.");
     }
-    if (CHAT_GENERATE_TOKEN_URL === "") {
-        sayMessage("++ Token URL is required, if you are not generating tokens using local environment variables.");
+    if (thisChatChannelName) {
+        sayMessage("++ Joined to channel: " + thisChatChannelName);
     } else {
-        sayMessage("++ Token URL: " + CHAT_GENERATE_TOKEN_URL);
+        sayMessage("++ Not joined to any channel.");
     }
     if (thisChatClient === "") {
         sayMessage("++ Chat Client object not created.");
     } else {
         sayMessage("++ Chat Client object is created.");
     }
-    if (thisChatChannelName) {
-        sayMessage("++ Joined to channel: " + thisChatChannelName);
-    } else {
-        sayMessage("++ Not joined to any channel.");
-    }
-    // ------------------------------------------
-    if (debugState === 0) {
-        sayMessage("++ Debug: off");
-    } else {
-        sayMessage("++ Debug: on");
-    }
-    // ------------------------------------------
+    sayMessage("-----------------------");
+    sayMessage("+ Environment variables:");
     if (ACCOUNT_SID !== "") {
         sayMessage("++ Account SID: " + ACCOUNT_SID);
     }
     if (AUTH_TOKEN !== "") {
         sayMessage("++ Account auth token is set.");
     }
+    if (CHAT_SERVICE_SID !== "") {
+        sayMessage("++ Chat service SID: " + CHAT_SERVICE_SID);
+    }
+    if (CHAT_API_KEY !== "") {
+        sayMessage("++ Chat API key: " + CHAT_API_KEY);
+    }
+    if (CHAT_API_KEY_SECRET !== "") {
+        sayMessage("++ Chat API key secret is set.");
+    }
+    if (CHAT_GENERATE_TOKEN_URL === "") {
+        sayMessage("++ Token URL is required, if you are not generating tokens using local environment variables.");
+    } else {
+        sayMessage("++ Token URL: " + CHAT_GENERATE_TOKEN_URL);
+    }
+    sayMessage("-----------------------");
+    if (debugState === 0) {
+        sayMessage("++ Debug: off");
+    } else {
+        sayMessage("++ Debug: on");
+    }
+    sayMessage("-----------------------");
     if (smsSendFrom !== "") {
         sayMessage("++ SMS send from phone number: " + smsSendFrom);
     }
