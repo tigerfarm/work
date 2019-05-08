@@ -1,8 +1,3 @@
-// To Run:
-// 
-// $ node /Users/dthurston/2017m/tfpWebsite/docroot/tech/booksJava/projects/NodeJS/public_html/HrbraketloStrings.js
-// ...
-//
 // -----------------------------------------------------------------------------
 
 let endNow = 1;
@@ -102,7 +97,7 @@ const aString = "Hrbraketlo there.";
 const bString = "no go";
 //                                                                                                                100
 //               12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-const lString = '{"authy_id":40023285,"device_uuid":60414537,"callback_action":"approval_request_status","uuid":"940b6df0-7358-0136-9e2c-0a5b7c2a32fe","status":"approved","approval_request":{"transaction":{"details":null,"device_details":[],"device_geolocation":"","device_signing_time":1532647311,"encrypted":false,"flagged":false,"hidden_details":null,"message":"Allowed okay?","reason":"","requester_details":null,"status":"approved","uuid":"940b6df0-7358-0136-9e2c-0a5b7c2a32fe","created_at_time":15326';
+const lString = '{"authy_id":40055585,"device_uuid":60455537,"callback_action":"approval_request_status","uuid":"940b6df0-7358-0136-9e2c-0a5b7c2a32fe","status":"approved","approval_request":{"transaction":{"details":null,"device_details":[],"device_geolocation":"","device_signing_time":1532647311,"encrypted":false,"flagged":false,"hidden_details":null,"message":"Allowed okay?","reason":"","requester_details":null,"status":"approved","uuid":"940b6df0-7358-0136-9e2c-0a5b7c2a32fe","created_at_time":15326';
 
 let sl = 0;
 let div = 100;
