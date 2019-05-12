@@ -3,13 +3,14 @@
 These are my sample programs in progress.
 
 ---------------------------------------------------------------
-## Create and deploy a web application to Heroku
+## Create a GitHub Repository and deploy it to Heroku
 
+Create a project repository directory.
 ````
 $ mkdir myapp
 $ cd myapp
 ````
-Required for Heroku, a build file.
+Add files that are required to deploy to Heroku. Build file.
 ````
 $ cat composer.json 
 {
@@ -34,6 +35,10 @@ If the file has already been uploaded, use the following to remove it from the r
 $ git rm --cached FILENAME
 ````
 
+#### Create a new GitHub repository.
+
+On your GitHub repository home page, add a new repository by clicking the "+" icon (top right), and clicking New repository.
+
 Initialize the GitHub repository.
 ````
 $ git init
@@ -41,7 +46,10 @@ $ git remote add origin https://github.com/tigerfarm/myapp.git
 $ git add .
 $ git commit -am "init new"
 $ git push -u origin master
+...
 ````
+
+#### Deploy to Heroku
 
 Create a new Heroku app. Set the name of the Heroku app's repository. Deploy from GitHub to Heroku.
 ````
@@ -49,15 +57,12 @@ $ heroku create myapp
 $ heroku git:remote -a myapp
 $ git push heroku master
 ...
-remote: Verifying deploy... done.
-To https://git.heroku.com/myapp.git
- * [new branch]      master -> master
 ````
 
 Test with the browser.
 https://myapp.herokuapp.com/
 
-Steps to update, after initialization:
+Steps to update the GitHub repository and deployment, after initialization:
 ````
 $ git add .
 $ git commit -am "update"
