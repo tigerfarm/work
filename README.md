@@ -9,7 +9,7 @@ These are my sample programs in progress.
 $ mkdir myapp
 $ cd myapp
 ````
-+ Required for Heroku, a build file.
+Required for Heroku, a build file.
 ````
 $ cat composer.json 
 {
@@ -18,7 +18,7 @@ $ cat composer.json
   }
 }
 ````
-+ Required for Heroku, the app information.
+Required for Heroku, the app information.
 ````
 {
   "name": "My Application",
@@ -27,6 +27,11 @@ $ cat composer.json
   "logo": "http://tigerfarmpress.com/images/topImgLeft.jpg",
   "keywords": ["php", "Twilio", "Client", "Voice"]
 }
+````
+Ignoring files by adding the file name into: ".gitignore".
+If the file has already been uploaded, use the following to remove it from the repository. Once removed, it will no longer upload.
+````
+$ git rm --cached FILENAME
 ````
 
 Initialize the GitHub repository.
