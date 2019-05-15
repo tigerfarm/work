@@ -350,12 +350,13 @@ function joinChatChannel(chatChannelName, chatChannelDescription) {
 
 function joinChannel() {
     debugMessage('joinChannel() ' + thisChannel.uniqueName);
-    doCountZero();
     thisChannel.join().then(function (channel) {
         debugMessage('Joined channel as ' + userIdentity);
         sayMessage('++ You have joined the channel: ' + thisChannel.friendlyName);
+        doCountZero();
         doPrompt();
     }).catch(function (err) {
+        doCountZero();
         if (err.message === "Member already exists") {
             debugMessage("++ You already exist in the channel.");
         } else if (err.message === "Channel member limit exceeded") {
@@ -766,7 +767,7 @@ standard_input.on('data', function (inputString) {
         doSendMedia(theCommand);
     } else if (theCommand.startsWith('send')) {
         doSend(theCommand);
-    } else if (theCommand.startsWith('sms')) {
+    } else if (theCommand === 'sms') {
         if (sendModeSms === 0) {
             sayMessage("+ You are now in send mode SMS.");
             thePromptPrefix = "+ Send SMS, ";
