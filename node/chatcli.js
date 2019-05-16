@@ -680,15 +680,15 @@ function listUsers() {
 function doShow() {
     sayMessage("------------------------------------------------------------------------------");
     sayMessage("+ Show chat client attribute settings:");
-    if (userIdentity) {
-        sayMessage("++ User identity: " + userIdentity);
-    } else {
-        sayMessage("++ User identity is required.");
-    }
     if (thisChatChannelName) {
         sayMessage("++ Joined to channel: " + thisChatChannelName);
     } else {
         sayMessage("++ Not joined to any channel.");
+    }
+    if (userIdentity) {
+        sayMessage("++ User identity: " + userIdentity);
+    } else {
+        sayMessage("++ User identity is required.");
     }
     if (thisChatClient === "") {
         sayMessage("++ Chat Client object not created.");
