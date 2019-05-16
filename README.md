@@ -32,13 +32,36 @@ $ cat composer.json
     "heroku/heroku-buildpack-php": "*"
   }
 }
-#### PHP Build file.
+#### Node.js uses a package file. Following is a sample I use for Twilio Chat application.
 ````
-$ cat composer.json 
+$ cat package.json 
 {
-  "require-dev": {
-    "heroku/heroku-buildpack-php": "*"
-  }
+  "name": "nodeexpress",
+  "version": "0.1.0",
+  "description": "Sample Node.js Express web server",
+  "engines": {
+    "node": "10.x"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.15.2",
+    "twilio": "^3.31.0",
+    "twilio-chat": "^3.2.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/tigne"
+  },
+  "keywords": [
+    "node",
+    "twilio",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
 }
 ````
 Ignoring files by adding the file name into: ".gitignore".
