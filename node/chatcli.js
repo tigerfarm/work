@@ -507,7 +507,7 @@ function listMembers() {
 
 function listMessageHistory() {
     debugMessage("listMessageHistory()");
-    if (thisChannel === "") {
+    if (thisChatChannelName === "") {
         sayRequirement("Required: join a channel.");
         doPrompt();
         return;
@@ -623,13 +623,13 @@ function test0() {
 // -----------------------------------------------------------------------------
 function doSendSms(theMessage) {
     var theType = "json";
-    var theRequest = "https://api.twilio.com/2010-04-01/Accounts/" + ACCOUNT_SID + "/Messages." + theType;
-    var basicAuth = "Basic " + new Buffer(ACCOUNT_SID + ":" + AUTH_TOKEN).toString("base64");
+    var theRequest = "https://" + ACCOUNT_SID + ":" + AUTH_TOKEN + "@" + "api.twilio.com/2010-04-01/Accounts/" + ACCOUNT_SID + "/Messages." + theType;
+    // var basicAuth = "Basic " + new Buffer(ACCOUNT_SID + ":" + AUTH_TOKEN).toString("base64");
     var options = {
         method: 'POST',
         'uri': theRequest,
         headers: {
-            "Authorization": basicAuth,
+            // "Authorization": basicAuth,
             'content-type': 'application/x-www-form-urlencoded'
         },
         formData: {
