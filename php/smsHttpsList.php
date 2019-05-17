@@ -29,4 +29,3 @@ $response = $http->HTTPGet($AccountSid, $url . "?" . $dataParms);
 echo "+ Response: {$response}";
 
 echo "+++ Exit.\xA";
-?>
