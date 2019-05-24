@@ -1,4 +1,15 @@
 // -----------------------------------------------------------------------------
+console.log("-----------------");
+// cString = "http://example.com/smstochat?From=%2B16505551111";
+cString = "%2B16505551111";
+console.log("+ cString :" + cString + ":" + decodeURIComponent(cString)+ ":" );
+
+console.log("-----------------");
+theString = "<br>+ Show chat client attribute settings:<br>++ Joined to channel: +16505551111<br>++ User identity: +16505551111";
+cString = theString.replace(/<br>/g, '\n');
+console.log("+ cString :" + cString + ":");
+
+// -----------------------------------------------------------------------------
 
 let endNow = 1;
 

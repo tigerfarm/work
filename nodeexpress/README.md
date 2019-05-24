@@ -47,6 +47,11 @@ twilio-chat@3.2.3 | MIT | deps: 11 | versions: 268
 Twilio Chat service client library
 ...
 
+$ npm view twilio
+
+twilio@3.31.0 | MIT | deps: 10 | versions: 154
+...
+
 #### Create a module
 
 How to video:
