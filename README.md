@@ -88,6 +88,14 @@ $ git push -u origin master
 
 #### Deploy to Heroku
 
+If not logged into your Heroku account, do so.
+````
+$ heroku login -i
+heroku: Enter your login credentials
+Email: abc@example.com
+Password: ********
+Logged in as abc@example.com
+````
 Create a new Heroku app. Set the name of the Heroku app's repository. Deploy from GitHub to Heroku.
 ````
 $ heroku create myapp
@@ -95,11 +103,12 @@ $ heroku git:remote -a myapp
 $ git push heroku master
 ...
 ````
-Set the environment variables.
+Set and view the environment variables.
 ````
 $ heroku config:set ACCOUNT_SID=ACxxx...xxx
 $ heroku config:set AUTH_TOKEN=xxx...xxx
 $ heroku config:set TOKEN_HOST=about-time-2357.twil.io
+$ heroku config
 ````
 
 Set terminal widow to view console log messages:

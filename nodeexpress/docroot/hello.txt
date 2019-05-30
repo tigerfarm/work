@@ -1,4 +1,0 @@
-File: hello.txt
-Hello there.
-
-cheers

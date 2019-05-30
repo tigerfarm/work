@@ -11,9 +11,9 @@
 // -----------------------------------------------------------------------------
 // $ npm install express --save
 const express = require('express');
-const path = require('path');
-const PORT = process.env.PORT || 8000;
 var app = express();
+
+var request = require('request');
 
 // -----------------------------------------------------------------------------
 app.get('/hello', function (req, res) {
@@ -39,11 +39,37 @@ app.get('/redirected', function (req, res) {
 });
 
 // -----------------------------------------------------------------------------
+app.get('/show', function (req, res) {
+    console.log("+ GET headers: " + JSON.stringify(req.headers));
+    res.send('show get.');
+});
+
+app.use(express.urlencoded());
+app.post('/show', function (req, res) {
+    console.log("+ POST headers: " + JSON.stringify(req.headers));
+    console.log("+ POST body: " + JSON.stringify(req.body));
+
+    var data = '';
+    req.on('data', function (chunk) {
+        console.log('Received data:', chunk.toString());
+        data += chunk.toString();
+    });
+    req.on('end', function () {
+        console.log('Complete data:', data);
+    });
+
+    res.send('show post.');
+});
+
+// -----------------------------------------------------------------------------
 app.use(express.static('docroot'));
 app.use(function (err, req, res, next) {
-    console.error(err.stack)
-    res.status(500).send('HTTP Error 500.')
+    console.error(err.stack);
+    res.status(500).send('HTTP Error 500.');
 });
+
+// const path = require('path');
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, function () {
     console.log('+ Listening on port: ' + PORT);
 });

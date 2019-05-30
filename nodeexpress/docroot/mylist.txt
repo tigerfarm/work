@@ -1,3 +1,0 @@
-1. File: mylist.txt
-2. Hello there.
-3. cheers
