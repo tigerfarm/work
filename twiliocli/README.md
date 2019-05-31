@@ -14,12 +14,10 @@ Install the CLI globally:
 $ npm install -g twilio-cli`
 ````
 
-#### Create environment variables
+#### Create environment variables using the Recommended Method
 
 Use your current account or subaccount SID.
 The CLI will use the key-named environment variables.
-
-##### OPTION 1 (recommended)
 
 Click [here](https://twil.io/get-api-key) to use the Twilio Console to create an API key and secret text string.
 - Friendly Name: Twilio CLI.
@@ -29,11 +27,6 @@ Create environment variables:
 - `TWILIO_ACCOUNT_SID` = your Account SID from [your console](https://www.twilio.com/console)
 - `TWILIO_API_KEY` = your Twilio CLI API Key SID, starts with "SK".
 - `TWILIO_API_SECRET` = the secret text string for the API Key.
-
-##### OPTION 2
-Create environment variables:
-- `TWILIO_ACCOUNT_SID` = your Account SID from [your console](https://www.twilio.com/console)
-- `TWILIO_AUTH_TOKEN` = your Auth Token from [your console](https://www.twilio.com/console) (click view to see the value).
 
 ### Navigating Help
 
@@ -140,19 +133,19 @@ Note, when using the list command, don't include "api:core:".
 ````
 $ twilio incoming-phone-number:list
 SID                                 Phone Number   Friendly Name 
-PN1...Z  +16505558225   (650) 555-8225
-PN4fd260f72cde1f16ed96a9580373b171  +15878063883   (587) 806-3883
+PN1..............................Z  +16505557890   (650) 555-7890
+PN2..............................W  +16505552357   (650) 555-32357
 ...
 ````
 When using the fetch command, do include "api:core:".
 ````
 $ twilio api:core:incoming-phone-numbers:fetch --sid=PN1...Z
 SID                                 Phone Number  Friendly Name 
-PN1...Z  +16505558225  (650) 555-8225
+PN1..............................Z  +16505557890  (650) 555-7890
 
 $ twilio api:core:incoming-phone-numbers:fetch --sid=PN1...Z --properties=friendlyName,dateCreated,capabilities
 Friendly Name   Date Created                                               Capabilities   
-(650) 555-8225  Mon Nov 20 2017 11:04:46 GMT-0800 (Pacific Standard Time)  [object Object]
+(650) 555-7890  Mon Nov 20 2017 11:04:46 GMT-0800 (Pacific Standard Time)  [object Object]
 
 $ twilio api:core:incoming-phone-numbers:fetch --sid=PN1...Z -o json
 [
@@ -170,9 +163,9 @@ $ twilio api:core:incoming-phone-numbers:fetch --sid=PN1...Z -o json
     },
     "dateCreated": "2017-11-20T19:04:46.000Z",
     "dateUpdated": "2019-04-23T01:26:30.000Z",
-    "friendlyName": "(650) 555-8225",
+    "friendlyName": "(650) 555-7890",
     "identitySid": null,
-    "phoneNumber": "+16505558225",
+    "phoneNumber": "+16505557890",
     "origin": "twilio",
     "sid": "PN1...Z",
     "smsApplicationSid": "",
