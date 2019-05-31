@@ -4,6 +4,8 @@
 
 This software is in pre-release status and not currently supported. However, soon to be supported.
 
+Twilio CLI project repository: https://github.com/twilio/twilio-cli.
+
 --------------------------------------------------------------------------------
 ### Install
 
@@ -134,7 +136,7 @@ Note, when using the list command, don't include "api:core:".
 $ twilio incoming-phone-number:list
 SID                                 Phone Number   Friendly Name 
 PN1..............................Z  +16505557890   (650) 555-7890
-PN2..............................W  +16505552357   (650) 555-32357
+PN2..............................W  +16505552357   (650) 555-2357
 ...
 ````
 When using the fetch command, do include "api:core:".
