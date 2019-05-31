@@ -22,12 +22,12 @@ The CLI will use the key-named environment variables.
 ##### OPTION 1 (recommended)
 
 Click [here](https://twil.io/get-api-key) to use the Twilio Console to create an API key and secret text string.
-- Friendly Name: Twilio cli.
+- Friendly Name: Twilio CLI.
 - Key Type: Standard.
 
 Create environment variables:
 - `TWILIO_ACCOUNT_SID` = your Account SID from [your console](https://www.twilio.com/console)
-- `TWILIO_API_KEY` = your Twilio cli API Key SID, starts with "SK".
+- `TWILIO_API_KEY` = your Twilio CLI API Key SID, starts with "SK".
 - `TWILIO_API_SECRET` = the secret text string for the API Key.
 
 ##### OPTION 2
