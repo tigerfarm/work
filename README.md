@@ -1,4 +1,4 @@
-# Working with GitHum, Heroku, and the npm utility
+# Working with GitHub, Heroku, and the npm utility
 
 These are my sample programs in progress.
 
