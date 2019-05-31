@@ -2,16 +2,22 @@
 
 #### Pre-release software warning
 
-This software is in pre-release status and not currently supported.
+This software is in pre-release status and not currently supported. However, soon to be supported.
 
 --------------------------------------------------------------------------------
 ### Install
 
 Requirement: [Node.js](https://nodejs.org/) >= 8.0
 
-Install the CLI globally: `npm install -g twilio-cli`
+Install the CLI globally:
+````
+$ npm install -g twilio-cli`
+````
 
-Create environment variables to use your current account or subaccount.
+#### Create environment variables
+
+Use your current account or subaccount SID.
+The CLI will use the key-named environment variables.
 
 ##### OPTION 1 (recommended)
 
@@ -82,37 +88,38 @@ OPTIONS
 
 Confirm a phone number.
 ````
-$ twilio api:lookups:v1:phone-numbers:fetch --phone-number=+16508668188 --properties=nationalFormat
+$ twilio api:lookups:v1:phone-numbers:fetch --phone-number=+16505551234 --properties=nationalFormat
 National Format
-(650) 866-8188
+(650) 555-1234
 ````
 
 On _any_ command, you can add `-o json` to change the output format to JSON.
 ````
-$ twilio api:lookups:v1:phone-numbers:fetch --phone-number=+16508668188 -o json
+$ twilio api:lookups:v1:phone-numbers:fetch --phone-number=+16505551234 -o json
 [
   {
     "callerName": null,
     "countryCode": "US",
-    "phoneNumber": "+16508668188",
-    "nationalFormat": "(650) 866-8188",
+    "phoneNumber": "+16505551234",
+    "nationalFormat": "(650) 555-1234",
     "carrier": null,
     "addOns": null,
-    "url": "https://lookups.twilio.com/v1/PhoneNumbers/+16508668188"
+    "url": "https://lookups.twilio.com/v1/PhoneNumbers/+16505551234"
   }
 ]
-$ twilio api:lookups:v1:phone-numbers:fetch --phone-number=+16508668188 --properties=countryCode,nationalFormat,
+````
+Once you have the JSON attribute names, you can use them in the "--properties" tag.
+````
+$ twilio api:lookups:v1:phone-numbers:fetch --phone-number=+16505551234 --properties=countryCode,nationalFormat,
 Country Code  National Format
-US            (650) 866-8188 
+US            (650) 555-1234 
 ````
 
 #### API Core
 
 ````
 $ twilio api:core --help
-...
-COMMANDS
-...
+... COMMANDS ...
   api:core:available-phone-numbers  Country codes with available phone numbers
 ...
   api:core:conferences              Voice call conferences
@@ -133,24 +140,24 @@ Note, when using the list command, don't include "api:core:".
 ````
 $ twilio incoming-phone-number:list
 SID                                 Phone Number   Friendly Name 
-PNc4ca4a9571766997308d1b04490a3409  +16508668225   (650) 866-8225
+PN1...Z  +16505558225   (650) 555-8225
 PN4fd260f72cde1f16ed96a9580373b171  +15878063883   (587) 806-3883
 ...
 ````
 When using the fetch command, do include "api:core:".
 ````
-$ twilio api:core:incoming-phone-numbers:fetch --sid=PNc4ca4a9571766997308d1b04490a3409
+$ twilio api:core:incoming-phone-numbers:fetch --sid=PN1...Z
 SID                                 Phone Number  Friendly Name 
-PNc4ca4a9571766997308d1b04490a3409  +16508668225  (650) 866-8225
+PN1...Z  +16505558225  (650) 555-8225
 
-$ twilio api:core:incoming-phone-numbers:fetch --sid=PNc4ca4a9571766997308d1b04490a3409 --properties=friendlyName,dateCreated,capabilities
+$ twilio api:core:incoming-phone-numbers:fetch --sid=PN1...Z --properties=friendlyName,dateCreated,capabilities
 Friendly Name   Date Created                                               Capabilities   
-(650) 866-8225  Mon Nov 20 2017 11:04:46 GMT-0800 (Pacific Standard Time)  [object Object]
+(650) 555-8225  Mon Nov 20 2017 11:04:46 GMT-0800 (Pacific Standard Time)  [object Object]
 
-$ twilio api:core:incoming-phone-numbers:fetch --sid=PNc4ca4a9571766997308d1b04490a3409 -o json
+$ twilio api:core:incoming-phone-numbers:fetch --sid=PN1...Z -o json
 [
   {
-    "accountSid": "AC1b32414e8ab41e56e6393bcbba7d5a9d",
+    "accountSid": "AC1...Z",
     "addressSid": null,
     "addressRequirements": "none",
     "apiVersion": "2010-04-01",
@@ -163,26 +170,26 @@ $ twilio api:core:incoming-phone-numbers:fetch --sid=PNc4ca4a9571766997308d1b044
     },
     "dateCreated": "2017-11-20T19:04:46.000Z",
     "dateUpdated": "2019-04-23T01:26:30.000Z",
-    "friendlyName": "(650) 866-8225",
+    "friendlyName": "(650) 555-8225",
     "identitySid": null,
-    "phoneNumber": "+16508668225",
+    "phoneNumber": "+16505558225",
     "origin": "twilio",
-    "sid": "PNc4ca4a9571766997308d1b04490a3409",
+    "sid": "PN1...Z",
     "smsApplicationSid": "",
     "smsFallbackMethod": "POST",
     "smsFallbackUrl": "",
     "smsMethod": "POST",
-    "smsUrl": "https://handler.twilio.com/twiml/EHa2f79c32e49738b846e45b68b4dfefa8",
+    "smsUrl": "https://handler.twilio.com/twiml/EHa...8",
     "statusCallback": "",
     "statusCallbackMethod": "POST",
     "trunkSid": null,
-    "uri": "/2010-04-01/Accounts/AC1b32414e8ab41e56e6393bcbba7d5a9d/IncomingPhoneNumbers/PNc4ca4a9571766997308d1b04490a3409.json",
+    "uri": "/2010-04-01/Accounts/AC1...Z/IncomingPhoneNumbers/PN1...Z.json",
     "voiceApplicationSid": "",
     "voiceCallerIdLookup": false,
     "voiceFallbackMethod": "POST",
     "voiceFallbackUrl": "",
     "voiceMethod": "POST",
-    "voiceUrl": "https://webhooks.twilio.com/v1/Accounts/AC1b32414e8ab41e56e6393bcbba7d5a9d/Flows/FW685ed8c3e7107384ae761fda6eebf81a",
+    "voiceUrl": "https://webhooks.twilio.com/v1/Accounts/AC1...Z/Flows/FW6...a",
     "emergencyStatus": "Inactive",
     "emergencyAddressSid": null
   }
@@ -219,6 +226,13 @@ $ twilio api:core:conferences:update --help
 $ twilio api:core:conferences:update --sid=CF1d18648474636042929720608eccb578 --status=completed
 SID                                 Friendly Name  Status   
 CF1d18648474636042929720608eccb578  support        completed
+
+$ twilio api:core:conferences:list --properties=friendlyName,dateCreated,status --date-created=2019-05-31
+Friendly Name  Date Created                                               Status     
+support        Fri May 31 2019 12:08:37 GMT-0700 (Pacific Daylight Time)  in-progress
+sales          Fri May 31 2019 11:49:56 GMT-0700 (Pacific Daylight Time)  completed  
+support        Fri May 31 2019 11:45:59 GMT-0700 (Pacific Daylight Time)  completed
+
 ````
 --------------------------------------------------------------------------------
 
