@@ -5,16 +5,17 @@
   "engines": {
     "node": "10.x"
   },
-  "main": "index.js",
+  "main": "webserver.js",
   "scripts": {
     "start": "node webserver.js"
   },
   "dependencies": {
     "express": "^4.15.2"
+    "twilio": "^3.31.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/tigne"
+    "url": "https://github.com/heroku/tighttp"
   },
   "keywords": [
     "node",

@@ -1,7 +1,33 @@
 {
-  "name": "Sample Node-Express Web Server Application",
-  "description": "This application is a sample application.",
-  "repository": "https://github.com/tigerfarm/tigne",
-  "logo": "http://tigerfarmpress.com/images/topImgLeft.jpg",
-  "keywords": ["node", "express", "heroku", "Twilio"]
+    "name": "Sample Node-Express Web Server Application",
+    "description": "This application is a sample application.",
+    "repository": "https://github.com/tigerfarm/tighttp",
+    "logo": "http://tigerfarmpress.com/images/topImgLeft.jpg",
+    "keywords": ["node", "express", "heroku", "Twilio"],
+    "env": {
+        "TWILIO_ACCOUNT_SID": {
+            "description": "Your Twilio accountSid. You view it here: https://console.twilio.com",
+            "value": "accountSid"
+        },
+        "TWILIO_AUTH_TOKEN": {
+            "description": "Your Twilio authToken. You view it here: https://console.twilio.com",
+            "value": "authToken"
+        },
+        "TWILIO_WORKSPACE_SID": {
+            "description": "A Workspace is a container for your Tasks, Workers, TaskQueues. You can create it here: https://www.twilio.com/console/taskrouter/workspaces",
+            "value": "workspaceSid"
+        },
+        "TWILIO_CHAT_SERVICE_SID": {
+            "description": "Your Twilio Chat service instance identifier (SID). You can create a Chat service here: https://www.twilio.com/console/chat/services",
+            "value": "chatServiceSid"
+        },
+        "TWILIO_API_KEY_SID": {
+            "description": "API Keys are revokable credentials for the Twilio API. You can create it here: https://www.twilio.com/console/dev-tools/api-keys",
+            "value": "apiKeySid"
+        },
+        "TWILIO_API_KEY_SECRET": {
+            "description": "API Keys are revokable credentials for the Twilio API.",
+            "value": "apiKeySecret"
+        }
+    }
 }

@@ -19,7 +19,7 @@ console.log("+ tokenHost :" + tokenHost + ":");
 http.createServer(function (request, response) {
 
     var uri = url.parse(request.url).pathname;
-    var filename = path.join(process.cwd(), uri);
+    var filename = path.join(process.cwd(), "docroot/" + uri);
     fs.exists(filename, function (exists) {
         console.log("+ request.url: " + request.url + ", URI: " + uri);
 

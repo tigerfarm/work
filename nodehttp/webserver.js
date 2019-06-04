@@ -13,8 +13,6 @@
 const express = require('express');
 var app = express();
 
-var request = require('request');
-
 // -----------------------------------------------------------------------------
 app.get('/hello', function (req, res) {
     if (req.query.username) {
