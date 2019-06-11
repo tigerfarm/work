@@ -54,7 +54,7 @@ $ cat package.json
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/tigne"
+    "url": "https://github.com/heroku/myapp"
   },
   "keywords": [
     "node",
@@ -75,7 +75,7 @@ $ git rm --cached FILENAME
 
 On your GitHub repository home page, add a new repository by clicking the "+" icon (top right), and clicking New repository.
 
-Initialize the GitHub repository.
+In your repository directory, initialize the GitHub repository.
 ````
 $ git init
 $ git remote add origin https://github.com/tigerfarm/myapp.git
@@ -97,6 +97,8 @@ Password: ********
 Logged in as abc@example.com
 ````
 Create a new Heroku app. Set the name of the Heroku app's repository. Deploy from GitHub to Heroku.
+
+Run the following from your repository directory.
 ````
 $ heroku create myapp
 $ heroku git:remote -a myapp
@@ -158,19 +160,7 @@ $ npm install -g npm
 $ npm version
 { npm: '6.9.0',
   ares: '1.14.0',
-  cldr: '33.1',
-  http_parser: '2.8.0',
-  icu: '62.1',
-  modules: '64',
-  napi: '3',
-  nghttp2: '1.33.0',
-  node: '10.10.0',
-  openssl: '1.1.0i',
-  tz: '2018e',
-  unicode: '11.0',
-  uv: '1.23.0',
-  v8: '6.8.275.30-node.24',
-  zlib: '1.2.11' }
+... }
 ````
 
 View node.js module information.
