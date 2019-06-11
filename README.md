@@ -26,12 +26,13 @@ Required for Heroku, the app information.
 ````
 #### PHP Build file.
 ````
-$ cat composer.json 
+$ cat composer.json
 {
   "require-dev": {
     "heroku/heroku-buildpack-php": "*"
   }
 }
+````
 #### Node.js uses a package file. Following is a sample I use for Twilio Chat application.
 ````
 $ cat package.json 
