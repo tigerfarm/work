@@ -172,6 +172,9 @@ $ npm version
   v8: '6.8.275.30-node.24',
   zlib: '1.2.11' }
 ````
+
+View node.js module information.
+````
 $ npm show twilio-chat
 twilio-chat@3.2.3 | MIT | deps: 11 | versions: 268
 Twilio Chat service client library
