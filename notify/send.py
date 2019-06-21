@@ -1,10 +1,10 @@
 print("+++ Send using Notify.")
 import json
 from twilio.rest import Client
-account_sid = "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-auth_token = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+account_sid = os.environ.get("ACCOUNT_SID")
+auth_token = os.environ.get("AUTH_TOKEN")
 client = Client(account_sid, auth_token)
-notifyServiceSid = "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+notifyServiceSid = os.environ.get("NOTIFY_SERVICE_SID")
 notification = client.notify.services(notifyServiceSid).notifications.create(
     body="Hello to one recipient.",
     to_binding= [
