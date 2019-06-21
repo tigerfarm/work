@@ -5,6 +5,9 @@
 3setSync-Master.sh
 8setvarsSync-Labs.sh
 #
+/flex/plugin-p1/node_modules/
+/flex/plugin-p1/public/
+#
 /java/fileio/build/
 /java/fileio/nbproject/private/
 /java/arrays/build/

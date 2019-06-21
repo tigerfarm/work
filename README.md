@@ -137,6 +137,13 @@ $ git push -u --force origin master
 --------------------------------------------------------------------------------
 ## Working the npm utility
 
+View your version.
+````
+$ npm -v 
+6.9.0
+````
+
+Add yourself as a user.
 ````
 $ npm adduser
 Username: mynpmuser
