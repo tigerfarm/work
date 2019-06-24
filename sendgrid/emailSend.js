@@ -2,10 +2,11 @@
 // Create a SendGrid work directory, and change into the directory.
 // $ npm init --yes
 // $ npm install @sendgrid/mail
+// I'm using version: 6.4.0
 // Set environment variables and run this program.
 
 console.log("++ Send email message.");
-theMsg = "Hello from SendGrid 1";
+theMsg = "Hello from SendGrid 3";
 console.log("+ SENDGRID_API_KEY: " + process.env.SENDGRID_API_KEY
         + ", from: " + process.env.EMAIL_TF
         + ", to: " + process.env.EMAIL_DT
