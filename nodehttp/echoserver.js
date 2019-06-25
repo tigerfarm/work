@@ -1,3 +1,7 @@
+// -----------------------------------------------------------------------------
+console.log("+++ Start.");
+var port = process.argv[2] || 8000;
+
 var http = require('http');
 var url = require("url");
 //
@@ -14,15 +18,15 @@ http.createServer(function (request, response) {
         if (i === 0) {
             console.log('++ ' + theHeaders[i].substring(1, theHeaders[i].length) + '"');
         } else if (i === theHeaders.length - 1) {
-            console.log('++ "' + theHeaders[i] + '');
+            console.log('++ "' + theHeaders[i].substring(0, theHeaders[i].length-1) + '');
         } else {
-            console.log('++ "' + theHeaders[i].substring(0, theHeaders[i].length - 1) + '"');
+            console.log('++ "' + theHeaders[i].substring(0, theHeaders[i].length) + '"');
         }
     }
     console.log("---");
     //
-    var uri = url.parse(request.url).pathname;
     let theMethod = request.method;
+    var uri = url.parse(request.url).pathname;
     console.log("+ " + theMethod + " URI: " + uri + " + request.url: " + request.url);
     //
     if (theMethod === 'GET') {
@@ -73,4 +77,5 @@ http.createServer(function (request, response) {
         console.log("------------------------------------------");
     });
 
-}).listen(8000);
+}).listen(port);
+console.log("+ Static file server running at\n  => http://localhost:" + port + "/\nCTRL + C to shutdown");

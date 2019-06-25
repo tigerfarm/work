@@ -1,4 +1,32 @@
 // -----------------------------------------------------------------------------
+
+let endNow = 1;
+
+var aString = "";
+var bString = "";
+var cString = "";
+
+// -----------------------------------------------------------------------------
+console.log("-----------------");
+var RELAY_URL = '';
+const relayUriStart = '/http/get';
+var aString = '/http/get/twiml?p1=abc&p2=def';
+// var aString = relayUriStart;
+
+
+console.log("+ aString :" + aString + ":");
+var RELAY_URL = aString.substring(relayUriStart.length).trim();
+if (RELAY_URL === '') {
+    RELAY_URL = "/";
+}
+console.log("+ RELAY_URL :" + RELAY_URL + ":");
+
+if (endNow === 1) {
+    process.exit();
+}
+
+
+// -----------------------------------------------------------------------------
 console.log("-----------------");
 // cString = "http://example.com/smstochat?From=%2B16505551111";
 cString = "%2B16505551111";
@@ -8,10 +36,6 @@ console.log("-----------------");
 theString = "<br>+ Show chat client attribute settings:<br>++ Joined to channel: +16505551111<br>++ User identity: +16505551111";
 cString = theString.replace(/<br>/g, '\n');
 console.log("+ cString :" + cString + ":");
-
-// -----------------------------------------------------------------------------
-
-let endNow = 1;
 
 // -----------------------------------------------------------------------------
 function doSendSms(theMessage) {
@@ -104,8 +128,8 @@ if (endNow === 1) {
     process.exit();
 }
 // -----------------------------------------------------------------------------
-const aString = "Hrbraketlo there.";
-const bString = "no go";
+aString = "Hrbraketlo there.";
+bString = "no go";
 //                                                                                                                100
 //               12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
 const lString = '{"authy_id":40055585,"device_uuid":60455537,"callback_action":"approval_request_status","uuid":"940b6df0-7358-0136-9e2c-0a5b7c2a32fe","status":"approved","approval_request":{"transaction":{"details":null,"device_details":[],"device_geolocation":"","device_signing_time":1532647311,"encrypted":false,"flagged":false,"hidden_details":null,"message":"Allowed okay?","reason":"","requester_details":null,"status":"approved","uuid":"940b6df0-7358-0136-9e2c-0a5b7c2a32fe","created_at_time":15326';
@@ -126,7 +150,7 @@ if (sl !== 0) {
     process.exit();
 }
 // -----------------------------------------------------------------------------
-let cString = "lo";
+cString = "lo";
 console.log("+ aString: " + aString);
 if (aString.toLowerCase().indexOf(cString) > -1) {
     console.log("+ aString contains :" + cString + ":");
