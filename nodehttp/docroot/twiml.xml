@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <Say>A local TwiML response from behind a firewall.</Say>
+    <Say>TwiML response from behind a firewall. Retrieved using Twilio Sync, manage through Chat.</Say>
 </Response>

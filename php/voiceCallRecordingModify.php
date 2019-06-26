@@ -7,8 +7,8 @@ require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 $twilio = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 //
-$callSid = "CA78a32a1cb6b1d2ce83ec581610a0aeaf ";
-$recordingSid = "RE21c5145b2bcda49a93550e63be7fe6d3";
+$callSid = "CA083d3bd3b83293e3569924d4b0aa107a ";
+$recordingSid = "RE1a0d1107f9354826902ddfaa8e9784e7";
 echo "+ Modify the call recording, call SID: " . $callSid . ", recording SID: " . $recordingSid . "\xA";
 $call = $twilio->calls($callSid)
         ->recordings($recordingSid)
