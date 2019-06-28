@@ -3,17 +3,44 @@
 --------------------------------------------------------------------------------
 Sample programs.
 
-echoserver.js : Echo received HTTP information as is.
-
 webserver.js : sample basic HTTP webserver that using Express.
 
 docroot : sample static website with Ajax sample.
 
-httpcli.js : command line HTTP client.
+cliBasic.js : basic command line interactive program.
 
-cli.js : basic command line interactive program.
+cli.js : command line interactive program.
 
-clifull.js : command line interactive program.
+--------------------------------------------------------------------------------
+
+$ node webserver.js
+
+Then use a browser: http://localhost:8000
+
+--------------------------------------------------------------------------------
+
+````
+$ node cli.js 
++++ Start.
++ Command, Enter > help
+------------------------------------------------------------------------------
+Commands:
+
+> show : Show settings.
+> clear : clear the console window.
+> help
+> exit
+-------------------------
+> set <debug> <on|off>
+-------------------------
++ Command, Enter > show
+-------------------------
+++ Debug: off
+-------------------------
++ Command, Enter > exit
++ Exit.
+$
+````
 
 --------------------------------------------------------------------------------
 
