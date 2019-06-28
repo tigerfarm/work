@@ -7,13 +7,15 @@ var client = require('twilio')(ACCOUNT_SID, AUTH_TOKEN);
 console.log("++ Get voice queue list.");
 client.queues.list({
     limit: 20
-}).then(queues => queues.forEach(
-            q => console.log('+ '
-            + ' SID:' + q.sid
-            + ' currentSize:' + q.currentSize + "   "
-            + ' maxSize:' + q.maxSize
-            + ' friendlyName:' + q.friendlyName
-            + ' averageWaitTime:' + q.averageWaitTime
-            )
-    ));
+}).then(queues => queues.forEach(q => {
+        var si = q.dateCreated.toString().indexOf(' ') + 1;
+        console.log('+ '
+                + ' DateCreated:' + q.dateCreated.toString().substring(si, si + 12)
+                + ' SID:' + q.sid
+                + ' currentSize:' + q.currentSize + "   "
+                + ' maxSize:' + q.maxSize
+                + ' friendlyName:' + q.friendlyName
+                + ' averageWaitTime:' + q.averageWaitTime
+                );
+    }));
 

@@ -1,6 +1,6 @@
 <?php
 
-// Docs:
+// The following documentation link has been removed:
 //  https://www.twilio.com/docs/voice/api/recording?code-sample=code-resume-a-call-recording-13&code-language=PHP&code-sdk-version=5.x
 //
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';

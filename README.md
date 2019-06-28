@@ -118,6 +118,11 @@ Set terminal widow to view console log messages:
 $ heroku logs --tail
 ````
 
+Incase of an application crash, restart it.
+````
+$ heroku restart
+````
+
 Test with the browser.
 https://myapp.herokuapp.com/
 

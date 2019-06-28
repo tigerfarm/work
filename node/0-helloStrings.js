@@ -1,6 +1,22 @@
 // -----------------------------------------------------------------------------
+// Include declarations and functions.
 
-let endNow = 1;
+// See article:
+// https://stackoverflow.com/questions/5797852/in-node-js-how-do-i-include-functions-from-my-other-files
+
+var d2i = require("./0-declartionsToInclude.js");
+
+console.log('+ aTestString: ' + aTestString);
+funcOne();
+funcThree('funcThree parameter string');
+console.log('+ name: ' + name);
+console.log('+ myobject: ' + JSON.stringify(myobject));
+
+console.log(myobject.funcFour());
+console.log("-----------------");
+
+// -----------------------------------------------------------------------------
+const endNow = 1;
 
 var aString = "";
 var bString = "";
@@ -8,11 +24,21 @@ var cString = "";
 
 // -----------------------------------------------------------------------------
 console.log("-----------------");
+//                  123456789012
+var aString = 'Tue, 09 Jan 2018 01:30:22 +0000';
+let si = aString.indexOf(' ') + 1;
+console.log("+ Date :" + aString.substring(si, si + 11) + ":");
+
+if (endNow === 1) {
+    process.exit();
+}
+
+// -----------------------------------------------------------------------------
+console.log("-----------------");
 var RELAY_URL = '';
 const relayUriStart = '/http/get';
 var aString = '/http/get/twiml?p1=abc&p2=def';
 // var aString = relayUriStart;
-
 
 console.log("+ aString :" + aString + ":");
 var RELAY_URL = aString.substring(relayUriStart.length).trim();
@@ -30,7 +56,7 @@ if (endNow === 1) {
 console.log("-----------------");
 // cString = "http://example.com/smstochat?From=%2B16505551111";
 cString = "%2B16505551111";
-console.log("+ cString :" + cString + ":" + decodeURIComponent(cString)+ ":" );
+console.log("+ cString :" + cString + ":" + decodeURIComponent(cString) + ":");
 
 console.log("-----------------");
 theString = "<br>+ Show chat client attribute settings:<br>++ Joined to channel: +16505551111<br>++ User identity: +16505551111";
@@ -38,9 +64,6 @@ cString = theString.replace(/<br>/g, '\n');
 console.log("+ cString :" + cString + ":");
 
 // -----------------------------------------------------------------------------
-function doSendSms(theMessage) {
-    console.log("+ doSendSms() " + theMessage);
-}
 function sayMessage(theMessage) {
     console.log("+ sayMessage: " + theMessage);
 }
@@ -51,7 +74,7 @@ function doPrompt() {
     console.log("+ Enter> ");
 }
 function joinChatChannel(theMessage, description) {
-    console.log("?- joinChatChannel :" + theMessage + ": :" + description + ":" );
+    console.log("?- joinChatChannel :" + theMessage + ": :" + description + ":");
 }
 // -----------------------------------------------------------------------------
 var newToken = "";
