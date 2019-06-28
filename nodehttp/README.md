@@ -12,12 +12,14 @@ cliBasic.js : basic command line interactive program.
 cli.js : command line interactive program.
 
 --------------------------------------------------------------------------------
+### Sample basic webserver
 
 $ node webserver.js
 
 Then use a browser: http://localhost:8000
 
 --------------------------------------------------------------------------------
+### Sample command line program
 
 ````
 $ node cli.js 
