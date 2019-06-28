@@ -4,6 +4,12 @@
 // See article:
 // https://stackoverflow.com/questions/5797852/in-node-js-how-do-i-include-functions-from-my-other-files
 
+var tools = require("./0-cal.js");
+var value = tools.sum(10,20);
+console.log("+ Value = " + value);
+console.log("-----------------");
+
+// -----------------------------------------------------------------------------
 var d2i = require("./0-declartionsToInclude.js");
 
 console.log('+ aTestString: ' + aTestString);
