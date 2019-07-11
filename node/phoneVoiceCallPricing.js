@@ -1,3 +1,10 @@
+// Documentation link:
+//  https://www.twilio.com/docs/voice/pricing
+//
+// curl -X GET 'https://pricing.twilio.com/v2/Voice/Numbers/+15017122661' \
+// -u ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:your_auth_token
+
+
 console.log("++ Start.");
 var client = require('twilio')(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
 
