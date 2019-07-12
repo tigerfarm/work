@@ -42,6 +42,18 @@ https://dashboard.stripe.com/test/payments
 
 Note, the flow doesn't handle cents at this time.
 
+--------------------------------------------------------------------------------
+## Cents
+
+The flow sample is only for dollars.
+
+Suggestions:
++ Ask the caller if they want to pay an option such as:
+the current amount owed or minimum amount, and give them the full amount (dollars and cents).
++ In one Gather, ask for the dollars; and in another Gather, ask for the cents.
+Then put them together for the payment amount.
+
+--------------------------------------------------------------------------------
 Studio flow screen print:
 
 <img src="Studio-Payment.jpg" width="400"/>
