@@ -49,9 +49,10 @@ The flow sample is only for dollars.
 
 Suggestions:
 + Ask the caller if they want to pay an option such as:
-the current amount owed or minimum amount, and give them the full amount (dollars and cents).
+the current amount owed or a minimum amount, and give them the full amount (dollars and cents)
+that would be used in the Capture Payments widget.
 + In one Gather, ask for the dollars; and in another Gather, ask for the cents.
-Then put them together for the payment amount.
+Then put them together for the Capture Payments widget: payment amount.
 
 --------------------------------------------------------------------------------
 Studio flow screen print:
