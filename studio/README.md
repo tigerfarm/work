@@ -15,9 +15,9 @@ Nice tutorial, very complete, straight forward to implement:
 
 https://www.twilio.com/docs/voice/tutorials/how-capture-your-first-payment-using-pay
 
-+ I configured my Twilio account as described in the tutorial, such as enabling PCI Mode which is required to get the Capture Payments widget to show.
++ I configured my Twilio account as described in the tutorial, such as enabling PCI Mode which is required to get the Studio Capture Payments widget to show.
     Important note, when configuring your Twilio Stripe Connector, use Mode: test.
-    This will allow you to test your setup and test the following Studio flow using a Visa test phone number (listed below).
+    This will allow you to test your setup and test the following Studio flow using a Visa test phone numbers.
 + I developed a Studio flow which includes a Gather, to gather the dollar amount the person wants to pay (see screen print below).
     Note, in the Capture Payments widget, I set "Request Postal Code?" to No.
 + I configured a Twilio phone number to use the Pay Studio flow.
