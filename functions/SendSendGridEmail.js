@@ -2,7 +2,7 @@ exports.handler = function(context, event, callback) {
     theMsg = event.msg || "Hello there";
     console.log("+ Send"
         + ", from: " + context.SENDGRID_EMAIL_FROM
-        + ", to: " + "dthurston@twilio.com"
+        + ", to: " + "you@example.com"
         + ", MSG: " + theMsg);
     const sgMail = require("@sendgrid/mail");
     sgMail.setApiKey(context.SENDGRID_API_KEY);

@@ -1,6 +1,6 @@
 var request = require('request');
 exports.handler = function (context, event, callback) {
-    let theUrl = "https://tigerfarmpress.com/hello.txt";
+    let theUrl = "https://example.com/hello.txt";
     console.log('+ theUrl: ' + theUrl);
     request(theUrl, function (error, response, theResponse) {
         console.log('+ Run the request.');
