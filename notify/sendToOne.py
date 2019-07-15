@@ -11,6 +11,7 @@ auth_token = os.environ.get("AUTH_TOKEN")
 client = Client(account_sid, auth_token)
 
 theTag = "one";
+# theTag = "all";
 print("+ Send notifications tagged with: " + theTag)
 notify_service_sid = os.environ.get("NOTIFY_SERVICE_SID")
 notification = client.notify.services(notify_service_sid).notifications.create(
