@@ -10,9 +10,9 @@ auth_token = os.environ.get("AUTH_TOKEN")
 client = Client(account_sid, auth_token)
 
 notifyServiceSid = os.environ.get("NOTIFY_SERVICE_SID")
-phoneNumber1 = os.environ.get("PHONE_NUMBER_1")
-phoneNumber2 = os.environ.get("PHONE_NUMBER_2")
-phoneNumber3 = os.environ.get("PHONE_NUMBER_3")
+phoneNumber1 = os.environ.get("PHONE_NUMBER1")
+phoneNumber2 = os.environ.get("PHONE_NUMBER2")
+phoneNumber3 = os.environ.get("PHONE_NUMBER3")
 
 binding = client.notify.services(notifyServiceSid).bindings \
             .create(
