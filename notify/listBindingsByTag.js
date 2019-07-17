@@ -9,7 +9,7 @@ const authToken = process.env.AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
 const notifyServiceSid = process.env.NOTIFY_SERVICE_SID;
-console.log("+ List where tags = " + theTag + ", (SID :Tags: identity bindingType address)");
+console.log("+ List where tag = " + theTag + ", (SID :Tags: identity bindingType address)");
 client.notify.services(notifyServiceSid)
         .bindings
         .each({tag: theTag},
