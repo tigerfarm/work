@@ -1,7 +1,6 @@
 // -----------------------------------------------------------------------------
 console.log("+++ Start.");
 
-theTag = "all";
 var theTag = process.argv[2] || "all";
 
 const accountSid = process.env.ACCOUNT_SID;
