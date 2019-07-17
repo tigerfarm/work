@@ -106,9 +106,11 @@ Sample TwiML output from the above:
 </Response>
 ````
 
-#### Configure your Twilio phone number to call TwiML Bin
+#### Create a TwiML Bin to forward incoming calls.
 
-Create a TwiML Bin entry
+Go to:
+
+https://www.twilio.com/console/runtime/twiml-bins
 
 + Friendly name: DialHomeSip.
 + Sample URL:
@@ -131,6 +133,18 @@ https://www.twilio.com/console/runtime/twiml-bins/EHd2c591436a5452fcf8c282493850
   </Dial>
 </Response>
 ````
+#### Configure your Twilio Phone number to use your above TwiML Bin
+
++ Go to your list of phone numbers.
+
+https://www.twilio.com/console/phone-numbers/incoming
+
++ Click your phone number to get to the phone number's configuration page.
++ Set Voice & Fax/A Call Comes In, to: TwiML Bin, and select your above TwiML Bin.
++ Click Save.
+
++ Test by calling your Twilio Phone number.
++ The call should be forward as configured.
 
 #### Create a Twilio Function
 
