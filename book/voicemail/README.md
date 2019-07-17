@@ -1,10 +1,9 @@
-# Implement a full featured voicemail system
+# Implement a Featured Rich Voicemail System
 
---------------------------------------------------------------------------------
 ## Features:
 
-+ If the call is answered, this configuration will not send the caller to voicemail.
-+ Set your own voicemail greeting message and thank you message.
++ If the call is answered, the caller does not get a voicemail option.
++ Set your own voicemail greeting message, and a thank you message.
 + If the caller hangs up without leaving voicemail, you will receive a missed call SMS with the caller’s phone number.
 + If the person leaves a voicemail message, you will receive an SMS text message with an active link to the voicemail message. Click/tap on the link to cause your browser to display the voicemail sound file. Click on the browser icon to hear the voicemail message.
 
@@ -29,14 +28,14 @@ Go to Functions → Manage:
 
 https://www.twilio.com/console/runtime/functions/manage
 
-Click the circle icon (circle with a ‘ ‘ in the middle) to create a Blank function.
-Give the function a name: “Business hours” and 
+Click the circle icon (circle with a ‘+‘ in the middle) to create a Blank function.
 
 + Friendly name: Voicemail - Say thank you and send an SMS
-+ Set the /path to /vmsms. Sample Function URL:
++ Set the /path to /vmsms.
++ Sample Function URL:
 https://about-time-1235.twil.io/vmsms
 
-+ Code:
++ Function code:
 ````
 exports.handler = function(context, event, callback) {
     let twiml = new Twilio.twiml.VoiceResponse();
@@ -63,9 +62,10 @@ Sample TwiML output from the above:
 </Response>
 ````
 
-#### Create a Twilio Function, Friendly name:
+#### Create a Twilio Function
 
-+ Voicemail: record
++ Friendly name: Voicemail - record
++ Set the /path to /vmrecord.
 + Sample Function URL:
 https://about-time-1235.twil.io/vmrecord
 
@@ -96,7 +96,7 @@ exports.handler = function(context, event, callback) {
    	});
 };
 ````
-Sample TwiML from the above:
+Sample TwiML output from the above:
 ````
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
@@ -106,12 +106,23 @@ Sample TwiML from the above:
 </Response>
 ````
 
-#### Configure your Twilio phone number to call TwiML Bin: DialHomeSip
+#### Configure your Twilio phone number to call TwiML Bin
 
-+ Create a TwiML Bin entry, Friendly name: DialHomeSip.
+Create a TwiML Bin entry
+
++ Friendly name: DialHomeSip.
 + Sample URL:
 https://www.twilio.com/console/runtime/twiml-bins/EHd2c591436a5452fcf8c2824938507b0f
-+ Code:
++ TwiML Bin XML, if you are forwarding the incoming call to another phone number:
+````
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+  <Dial timeout="30" action="https://about-time-1235.twil.io/vmrecord">
+    +16505552222
+  </Dial>
+</Response>
+````
++ TwiML Bin XML, if you are using a SIP softphone or device:
 ````
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
@@ -121,9 +132,9 @@ https://www.twilio.com/console/runtime/twiml-bins/EHd2c591436a5452fcf8c282493850
 </Response>
 ````
 
-#### Function if you don’t want voicemail, you just want an SMS.
+#### Create a Twilio Function
 
-+ Create a Twilio Function, Friendly name: Voicemail: handle the call
++ Friendly name: Voicemail - handle the call
 + Sample Function URL:
 https://about-time-1235.twil.io/vmhandle
 + Function code:
