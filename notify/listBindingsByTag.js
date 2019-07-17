@@ -9,12 +9,11 @@ const client = require('twilio')(accountSid, authToken);
 
 const notifyServiceSid = process.env.NOTIFY_SERVICE_SID;
 console.log("+ List where tag = " + theTag + ", (SID :Tags: identity bindingType address)");
-client.notify.services(notifyServiceSid)
-        .bindings
-        .each({tag: theTag},
-                bindings => {
-                    console.log("+ " + bindings.sid + " :" + bindings.tags + ": " + bindings.identity + " " + bindings.bindingType + " " + bindings.address);
-                }
-        );
+client.notify.services(notifyServiceSid).bindings.each(
+        {tag: theTag},
+        bindings => {
+            console.log("+ " + bindings.sid + " :" + bindings.tags + ": " + bindings.identity + " " + bindings.bindingType + " " + bindings.address);
+        }
+);
 
 // -----------------------------------------------------------------------------

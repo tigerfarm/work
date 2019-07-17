@@ -15,7 +15,6 @@ const client = require('twilio')(accountSid, authToken);
 console.log("+ Send notifications tagged with: " + theTag);
 client.notify.services(process.env.NOTIFY_SERVICE_SID).notifications
 //        .create({tag: ['one'], body: `"Hello one - 1"`})
-//        .create({tag: 'all', body: "Hello one - 1"})
         .create({tag: theTag, body: "Hello one - " + testNumber})
         .then(notification =>
             console.log("+ Notification SID: " + notification.sid));

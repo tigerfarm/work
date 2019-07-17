@@ -16,7 +16,6 @@ const authToken = process.env.AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
 console.log("+ Create SMS binding for: " + theIdentity + ", Phone Number = " + thePhoneNumber + ", tag = " + theTag);
-
 client.notify.services(process.env.NOTIFY_SERVICE_SID).bindings
         .create({
             bindingType: 'sms',

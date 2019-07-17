@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-console.log("+++ Delete list of bindings.");
+console.log("+++ Start.");
 
 var theTag = process.argv[2] || "all";
 
@@ -10,13 +10,13 @@ const client = require('twilio')(accountSid, authToken);
 const notifyServiceSid = process.env.NOTIFY_SERVICE_SID;
 // theFilter = {startDate: new Date(Date.UTC(2017, 4, 26))};
 theFilter = {tag: theTag};
-client.notify.services(notifyServiceSid).bindings
-        .each(
-                theFilter,
-                bindings => {
-                    console.log("+ Delete: " + bindings.sid + " " + bindings.identity + " " + bindings.bindingType + " " + bindings.address);
-                    client.notify.services(notifyServiceSid).bindings(bindings.sid).remove();
-                }
-        );
+console.log("+ Delete where tag = " + theTag + ", (SID :Tags: identity bindingType address)");
+client.notify.services(notifyServiceSid).bindings.each(
+        theFilter,
+        bindings => {
+            console.log("+ Delete: " + bindings.sid + " " + bindings.identity + " " + bindings.bindingType + " " + bindings.address);
+            client.notify.services(notifyServiceSid).bindings(bindings.sid).remove();
+        }
+);
 
 // -----------------------------------------------------------------------------
