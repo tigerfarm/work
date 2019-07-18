@@ -22,7 +22,7 @@ Add a to-phone-number, to receive the messages.
 + VM_FROM_PHONE_NUMBER - your_Twilio_phone_number (Your Twilio phone number that was not answered).
 + VM_TO_PHONE_NUMBER - your_mobile_phone_number to receive the voicemail messages.
 
-#### Create a Twilio Function.
+#### Create a Twilio Function to: Say thank you and send an SMS
 
 Go to Functions → Manage:
 
@@ -45,9 +45,10 @@ exports.handler = function(context, event, callback) {
     twilioClient.messages.create({
       from: context.VM_FROM_PHONE_NUMBER,
       to: context.VM_TO_PHONE_NUMBER,
-      body: "New voicemail from: " + event.From
-        + " duration: "+ event.RecordingDuration
-        + " link: " + event.RecordingUrl + '.mp3'}
+      body: "Call to: " + event.To
+        + "\n New voicemail from: " + event.From
+        + "\n duration: "+ event.RecordingDuration
+        + "\n link: " + event.RecordingUrl + '.mp3'}
     ).then(message => {
       callback(null, twiml);
    	});
@@ -62,12 +63,16 @@ Sample TwiML output from the above:
 </Response>
 ````
 
-#### Create a Twilio Function
+#### Create a Twilio Function to handle the missed call.
+
+Go to Functions → Manage:
+
+https://www.twilio.com/console/runtime/functions/manage
 
 + Friendly name: Voicemail - record
-+ Set the /path to /vmrecord.
++ Set the /path to /vmhandle.
 + Sample Function URL:
-https://about-time-1235.twil.io/vmrecord
+https://about-time-1235.twil.io/vmhandle
 
 + Function code:
 ````
@@ -78,19 +83,22 @@ exports.handler = function(context, event, callback) {
     if (event.DialCallStatus == "completed" || event.DialCallStatus == "answered"){
         twiml.hangup();
     }
-    twiml.say( {voice:'alice',language:'en-CA'},
+  	twiml.say({ voice:'alice',language:'en-CA'},
         "Feel free to leave a message after the beep. Press the star key when finished.");
     twiml.record({
-        action: "https://about-time-1235.twil.io/vmsms",
+        action: "https://gruesome-rub-6266.twil.io/vmsms",
         method: "GET",
         maxLength: "21",
         finishOnKey: "*"
     });
+    //
     console.log("+ Send SMS to: " + context.VM_TO_PHONE_NUMBER);
     twilioClient.messages.create({
       from: context.VM_FROM_PHONE_NUMBER,
       to: context.VM_TO_PHONE_NUMBER,
-      body: "+++ Missed WORK call from: " + event.From}
+      body: "+++ Missed HOME call from: " + event.From
+        + "\n Call was to: " + event.To       
+    }
     ).then(message => {
       callback(null, twiml);
    	});
@@ -112,14 +120,14 @@ Go to:
 
 https://www.twilio.com/console/runtime/twiml-bins
 
-+ Friendly name: DialHomeSip.
++ Friendly name: DialHome.
 + Sample URL:
 https://www.twilio.com/console/runtime/twiml-bins/EHd2c591436a5452fcf8c2824938507b0f
 + TwiML Bin XML, if you are forwarding the incoming call to another phone number:
 ````
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Dial timeout="30" action="https://about-time-1235.twil.io/vmrecord">
+  <Dial timeout="20" action="https://about-time-1235.twil.io/vmhandle">
     +16505552222
   </Dial>
 </Response>
@@ -128,54 +136,25 @@ https://www.twilio.com/console/runtime/twiml-bins/EHd2c591436a5452fcf8c282493850
 ````
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Dial timeout="30" action="https://about-time-1235.twil.io/vmrecord">
+  <Dial timeout="30" action="https://about-time-1235.twil.io/vmhandle">
     <Sip>sip:home@example.sip.us1.twilio.com</Sip>
   </Dial>
 </Response>
 ````
-#### Configure your Twilio Phone number to use your above TwiML Bin
+#### Configure your Twilio Phone number to use the above TwiML Bin.
 
-+ Go to your list of phone numbers.
+Go to your list of phone numbers.
 
 https://www.twilio.com/console/phone-numbers/incoming
 
 + Click your phone number to get to the phone number's configuration page.
-+ Set Voice & Fax/A Call Comes In, to: TwiML Bin, and select your above TwiML Bin.
++ Set Voice & Fax/A Call Comes In, to: TwiML Bin, and select your above TwiML Bin (DialHome).
 + Click Save.
 
-+ Test by calling your Twilio Phone number.
-+ The call should be forward as configured.
+## Test
 
-#### Create a Twilio Function
-
-+ Friendly name: Voicemail - handle the call
-+ Sample Function URL:
-https://about-time-1235.twil.io/vmhandle
-+ Function code:
-````
-exports.handler = function(context, event, callback) {
-    console.log("+ Caller: " + event.From);
-    console.log("+ DialCallStatus: " + event.DialCallStatus);
-    msgBody = "";
-    if (event.DialCallStatus == "completed" || event.DialCallStatus == "answered") {
-        console.log("+ Call received and answered.");
-        msgBody = "Call received and answered, from: " + event.From;
-    } else {
-        console.log("+ Missed a call.");
-        msgBody = "Missed a call from: " + event.From;
-    }
-    const twilioClient = context.getTwilioClient();
-    twilioClient.messages.create({
-		from: context.VM_FROM_PHONE_NUMBER,
-		to: context.VM_TO_PHONE_NUMBER,
-		body: msgBody
-	}, function(err, result) {
-		console.log('Created message using callback');
-		console.log(result.sid);
-		callback(null, "");     // If the called number hangs up first, the caller will here the callback string.
-	});
-};
-````
++ Test by calling your Twilio Phone number. The call should be forward as configured.
++ If you don't answer, Twilio will make an HTTP request to the Dial action URL, to find out how to handle the call.
 
 --------------------------------------------------------------------------------
 
