@@ -14,7 +14,9 @@ client.queues(theQueueSid).fetch().then(
             // client.queues(theQueueSid).remove().then(queue => console.log('+ Removed: ' + theFriendlyName));
             client.queues(theQueueSid).members.list({limit: 20})
                     .then(members => members.forEach(
-                                member => console.log(' Voice call SID:' + member.callSid)
+                                member => console.log('++ Voice call SID:' + member.callSid
+                                + ", " + JSON.stringify(member)
+                                )
                         ));
         })
         .catch(function (err) {

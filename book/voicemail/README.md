@@ -10,7 +10,7 @@
 --------------------------------------------------------------------------------
 ## Setup
 
-The step are in some what reverse order because each step requires something from the previous step.
+The steps are in some what reverse order because (after the first step) each step requires something from the previous step.
 
 #### Configure Twilio Functions Environment Variables
 
@@ -22,7 +22,7 @@ Add a from-phone-number that is used to send voicemail and missed call SMS messa
 Add a to-phone-number, to receive the messages.
 
 + VM_FROM_PHONE_NUMBER - your_Twilio_phone_number (Your Twilio phone number that was not answered).
-+ VM_TO_PHONE_NUMBER - your_mobile_phone_number to receive the voicemail messages.
++ VM_TO_PHONE_NUMBER - your_mobile_phone_number to receive the voicemail SMS messages.
 
 #### Create a Twilio Function to: Say thank you and send an SMS
 
@@ -85,7 +85,7 @@ exports.handler = function(context, event, callback) {
     if (event.DialCallStatus == "completed" || event.DialCallStatus == "answered"){
         twiml.hangup();
     }
-  	twiml.say({ voice:'alice',language:'en-CA'},
+    twiml.say({ voice:'alice',language:'en-CA'},
         "Feel free to leave a message after the beep. Press the star key when finished.");
     twiml.record({
         action: "https://about-time-2357.twil.io/vmsms",
@@ -96,13 +96,13 @@ exports.handler = function(context, event, callback) {
     //
     console.log("+ Send SMS to: " + context.VM_TO_PHONE_NUMBER);
     twilioClient.messages.create({
-      from: context.VM_FROM_PHONE_NUMBER,
-      to: context.VM_TO_PHONE_NUMBER,
-      body: "+++ Missed call to HOME number: " + event.To
-        + "\n Call was from: " + event.From
+        from: context.VM_FROM_PHONE_NUMBER,
+        to: context.VM_TO_PHONE_NUMBER,
+        body: "+++ Missed call to HOME number: " + event.To
+          + "\n Call was from: " + event.From
     }
     ).then(message => {
-      callback(null, twiml);
+        callback(null, twiml);
     });
 };
 ````
@@ -110,7 +110,7 @@ Sample TwiML output from the above:
 ````
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-<Say voice="alice" language="en-CA">Thank you for calling. You have reached the voicemail of Stacy David of Twilio. Please leave a message and I will return your call.</Say>
+<Say voice="alice" language="en-CA">Feel free to leave a message after the beep. Press the star key when finished.</Say>
 <Record action="/vmsms" method="GET" maxLength="31" finishOnKey="*"/>
 <Sms from="+16505552222" to="+16505552222">+++ Missed WORK call from: undefined</Sms>
 </Response>
@@ -123,8 +123,6 @@ Go to:
 https://www.twilio.com/console/runtime/twiml-bins
 
 + Friendly name: DialHome.
-+ Sample URL:
-https://www.twilio.com/console/runtime/twiml-bins/EHd2c591436a5452fcf8c2824938507b0f
 + TwiML Bin XML, if you are forwarding the incoming call to another phone number:
 ````
 <?xml version="1.0" encoding="UTF-8"?>
@@ -134,7 +132,7 @@ https://www.twilio.com/console/runtime/twiml-bins/EHd2c591436a5452fcf8c282493850
   </Dial>
 </Response>
 ````
-+ TwiML Bin XML, if you are using a SIP softphone or device:
++ TwiML Bin XML, if you are using a SIP softphone or SIP device:
 ````
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
@@ -156,7 +154,12 @@ https://www.twilio.com/console/phone-numbers/incoming
 ## Test
 
 + Test by calling your Twilio Phone number. The call should be forward as configured.
-+ If you don't answer, Twilio will make an HTTP request to the Dial action URL, to find out how to handle the call.
++ If you answer the call, you will not be prompted for voicemail, nor will you be sent an SMS regarding this call.
++ If you don't answer,
+Twilio will make an HTTP request to the Dial action URL.
+You be sent an SMS regarding a missed call. If you stay on, you will be prompted to leave a voicemail message.
+++ If you leave a voicemail message, you be sent an SMS regarding the voicemail.
+++ If you stay on the call after leaving a voicemail, you will hear the thank you message and then, the call will be ended.
 
 --------------------------------------------------------------------------------
 
