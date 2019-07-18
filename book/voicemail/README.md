@@ -98,8 +98,8 @@ exports.handler = function(context, event, callback) {
     twilioClient.messages.create({
       from: context.VM_FROM_PHONE_NUMBER,
       to: context.VM_TO_PHONE_NUMBER,
-      body: "+++ Missed HOME call from: " + event.From
-        + "\n Call was to: " + event.To       
+      body: "+++ Missed call to HOME number: " + event.To
+        + "\n Call was from: " + event.From
     }
     ).then(message => {
       callback(null, twiml);
