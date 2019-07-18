@@ -10,6 +10,8 @@
 --------------------------------------------------------------------------------
 ## Setup
 
+The step are in some what reverse order because each step requires something from the previous step.
+
 #### Configure Twilio Functions Environment Variables
 
 Go to: https://www.twilio.com/console/runtime/functions/configure
@@ -33,7 +35,7 @@ Click the circle icon (circle with a ‘+‘ in the middle) to create a Blank fu
 + Friendly name: Voicemail - Say thank you and send an SMS
 + Set the /path to /vmsms.
 + Sample Function URL:
-https://about-time-1235.twil.io/vmsms
+https://about-time-2357.twil.io/vmsms
 
 + Function code:
 ````
@@ -86,7 +88,7 @@ exports.handler = function(context, event, callback) {
   	twiml.say({ voice:'alice',language:'en-CA'},
         "Feel free to leave a message after the beep. Press the star key when finished.");
     twiml.record({
-        action: "https://gruesome-rub-6266.twil.io/vmsms",
+        action: "https://about-time-2357.twil.io/vmsms",
         method: "GET",
         maxLength: "21",
         finishOnKey: "*"
@@ -101,7 +103,7 @@ exports.handler = function(context, event, callback) {
     }
     ).then(message => {
       callback(null, twiml);
-   	});
+    });
 };
 ````
 Sample TwiML output from the above:
