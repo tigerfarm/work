@@ -7,6 +7,12 @@
 + If the caller hangs up without leaving voicemail, you will receive a missed call SMS with the caller’s phone number.
 + If the person leaves a voicemail message, you will receive an SMS text message with an active link to the voicemail message. Click/tap on the link to cause your browser to display the voicemail sound file. Click on the browser icon to hear the voicemail message.
 
+Bellow is the Setup steps using Twilio Functions and TwiML Bins.
+
+Following is a screen print of a voicemail setup using the Twilio Console Studio drag and drop tool.
+
+<img width="600px"  src="Studio-VoicemailSMS.jpg"/>
+
 --------------------------------------------------------------------------------
 ## Setup
 
