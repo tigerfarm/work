@@ -1,4 +1,4 @@
-# Implement a Featured Rich Voicemail System
+# Implement a Feature Rich Voicemail System
 
 ## Features:
 
@@ -12,6 +12,10 @@ Bellow is the Setup steps using Twilio Functions and TwiML Bins.
 Following is a screen print of a voicemail setup using the Twilio Console Studio drag and drop tool.
 
 <img width="600px"  src="Studio-VoicemailSMS.jpg"/>
+
+
+When creating a new Studio flow, you have the option to, Import from JSON.
+You can this sample JSON definition: Studio-VoicemailSMS.json.
 
 --------------------------------------------------------------------------------
 ## Setup
