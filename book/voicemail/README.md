@@ -15,7 +15,11 @@ Following is a screen print of a voicemail setup using the Twilio Console Studio
 
 
 When creating a new Studio flow, you have the option to, Import from JSON.
-You can this sample JSON definition: Studio-VoicemailSMS.json.
+You can this sample JSON definition:
+
+[Studio-VoicemailSMS.json](https://github.com/tigerfarm/work/blob/master/book/voicemail/Studio-VoicemailSMS.json).
+
+[Studio-VoicemailSMS.json](Studio-VoicemailSMS.json).
 
 --------------------------------------------------------------------------------
 ## Setup
