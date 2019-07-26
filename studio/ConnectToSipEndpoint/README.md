@@ -1,8 +1,8 @@
-# Connect to Widget, Connecting to a SIP Endpoint
+# Studio Connect to Widget, Connecting to a SIP Endpoint
 
 ## Notes
 
-This sample uses my Twilio SIP Domain endpoint, which is a Cisco SPA112 device.
+In the screen print following, the sample uses my Twilio SIP Domain endpoint, which connects to a Cisco SPA112 device.
 
 --------------------------------------------------------------------------------
 Studio flow screen print:
