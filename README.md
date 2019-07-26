@@ -122,6 +122,16 @@ Incase of an application crash, restart it.
 ````
 $ heroku restart
 ````
+How to remove a remote setting
+````
+$ git remote remove origin
+````
+View a remote setting.
+````
+$ git remote -v
+heroku	https://git.heroku.com/tigtaskrouterworker.git (fetch)
+heroku	https://git.heroku.com/tigtaskrouterworker.git (push)
+````
 
 Test with the browser.
 https://myapp.herokuapp.com/
@@ -138,6 +148,52 @@ Note, this will override any new updates with the current directory updates.
 ````
 $ git push -u --force origin master
 ````
+-----------------------------
++++ Custom Domains
+
+https://devcenter.heroku.com/articles/custom-domains
+
++ Set custom domain DNS record.
+https://panel.dreamhost.com
+
+Record 	Name 	Target
+CNAME 	www 	whispering-willow-5678.herokudns.com.
+
++ Set.
+$ heroku domains:add www.example.com
+
++ Confirm.
+$ host www.example.com
+www.example.com is an alias for whispering-willow-5678.herokudns.com.
+...
+
+-----------------------------
++++ Dyno Types and billing
+
+https://devcenter.heroku.com/articles/dyno-types
+Dyno Type  Memory (RAM)  CPU Share  Compute  Dedicated  Sleeps
+free       512 MB        1x         1x-4x    no         yes
+hobby      512 MB        1x         1x-4x    no         no
+
++ Costs:
+https://devcenter.heroku.com/articles/usage-and-billing
+Dyno Type  Price per dyno/month
+free       $0
+hobby      $7
+...
+
++ Change Dyno type in the dashboard.
+https://dashboard.heroku.com/apps/tigsync/resources
+
++ Set type from command line.
+heroku ps:type hobby
+
++ Heroku ticket:
+https://help.heroku.com/tickets/746659
+https://help.heroku.com/sharing/68c39de7-1da3-4ee9-a962-e6484cd6b2ee
+++ If I upgrade 3 of my Heroku apps from free to hobby, will the cost be $7/month, or $21/month?
+
+https://www.heroku.com/pricing
 
 --------------------------------------------------------------------------------
 ## Working the npm utility
@@ -227,5 +283,76 @@ Check if there's a new version: `npm outdated -g twilio-cli`
 Update the CLI globally: `npm update -g twilio-cli`
 
 --------------------------------------------------------------------------------
++++ Trying to upgrade my Mac PHP version.
 
+$ brew info php71
+...
+$ /usr/local/opt/php\@7.1/bin/php -version
+PHP 7.1.30 (cli) (built: Jun 17 2019 19:42:18) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.1.0, Copyright (c) 1998-2018 Zend Technologies
+    with Zend OPcache v7.1.30, Copyright (c) 1999-2018, by Zend Technologies
+
+$ export PATH="/usr/local/opt/php\@7.1/bin/:$PATH"
+
+
+--------------------------------------------------------------------------------
+
+$ heroku buildpacks:clear
+
++ Create the Heroku app with the require buildpacks.
+++ Have the main one that is to run the webserver, the last buildpack. In my case, Node.
+heroku apps:create tighttp
+heroku buildpacks:add --index 1 heroku/php
+heroku buildpacks:add --index 2 heroku/nodejs
+heroku buildpacks
+
+---------------------
++ GitHub repository requires the following in the top directory:
+
+$ cat composer.json
+{}
+
+$ cat Procfile
+web: node webserver.js
+
+$ cat app.json
+{
+    "name": "Sample Node Web Server Application",
+    "description": "This application is a sample application.",
+    "repository": "https://github.com/tigerfarm/tighttp",
+    "logo": "http://tigerfarmpress.com/images/topImgLeft.jpg",
+    "keywords": ["node", "express", "heroku"]
+}
+
+$ cat package.json
+{
+  "name": "nodewebserver",
+...
+}
+
+---------------------
++ Deploy the repository to Heroku.
+git push heroku master
+
++ Test.
+++ My Node program: webserver.js, is running and PHP is available.
+
++ Log into the Heroku app and list the buildpacks.
+$ heroku run /bin/bash
+Running /bin/bash on : tighttp... up, run.3791 (Free)
+$ ls -l .heroku/
+total 12
+drwx------  2 u48201 dyno 4096 Apr 30 20:45 heroku-nodejs-plugin
+drwx------  6 u48201 dyno 4096 Jul 25 23:23 node
+drwx------ 14 u48201 dyno 4096 Jul 25 23:23 php
+$
+
++ If changes are made, do the following:
+git add .
+git commit -am "updates"
+git push -u origin master
+git push heroku master
+
+--------------------------------------------------------------------------------
 Cheers...
