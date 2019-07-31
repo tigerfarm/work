@@ -1,5 +1,9 @@
 // Manage Sync map data.
 // Documentation: https://www.twilio.com/docs/sync/maps
+// Required, create a Sync service: https://www.twilio.com/console/sync/services
+// Add your Sync service SID and Sync map name as Twilio Function environment variables:
+//      https://www.twilio.com/console/functions/configure
+//      SYNC_SERVICE_SID and SYNC_MAP_NAME.
 
 exports.handler = function (context, event, callback) {
     let theMapName = "cmap";
