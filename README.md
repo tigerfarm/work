@@ -153,8 +153,36 @@ $ git push -u --force origin master
 
 https://devcenter.heroku.com/articles/custom-domains
 
+$ heroku domains:add www.tigerfarmpress.com
+Adding www.tigerfarmpress.com to : tfpdocroot... done
+ ▸    Configure your app's DNS provider to point to the DNS Target globular-cranberry-tg035sigwv24v0lxpttgxxbf.herokudns.com.
+ ▸    For help, see https://devcenter.heroku.com/articles/custom-domains
+
+The domain www.tigerfarmpress.com has been enqueued for addition
+ ▸    Run heroku domains:wait 'www.tigerfarmpress.com' to wait for completion
+
+$ heroku domains
+=== tfpdocroot Heroku Domain
+tfpdocroot.herokuapp.com
+
+=== tfpdocroot Custom Domains
+Domain Name             DNS Record Type  DNS Target
+──────────────────────  ───────────────  ─────────────────────────────────────────────────────────
+tigerfarmpress.com      ALIAS or ANAME   dry-snowdrop-xftvrw0htlrnzokvhn8b296l.herokudns.com
+www.tigerfarmpress.com  CNAME            globular-cranberry-tg035sigwv24v0lxpttgxxbf.herokudns.com
+
+$ ping dry-snowdrop-xftvrw0htlrnzokvhn8b296l.herokudns.com
+PING dry-snowdrop-xftvrw0htlrnzokvhn8b296l.herokudns.com (34.196.237.103)
+
+ 	A 	34.200.203.60 	
+  	TXT 	dry-snowdrop-xftvrw0htlrnzokvhn8b296l.herokudns.com 	
+www  	CNAME 	globular-cranberry-tg035sigwv24v0lxpttgxxbf.herokudns.com
+
+-----------------------------
 + Set custom domain DNS record.
 https://panel.dreamhost.com
+
+A record for .tigerfarmpress.com with value 34.196.237.103
 
 Record 	Name 	Target
 CNAME 	www 	whispering-willow-5678.herokudns.com.
@@ -166,6 +194,24 @@ $ heroku domains:add www.example.com
 $ host www.example.com
 www.example.com is an alias for whispering-willow-5678.herokudns.com.
 ...
+
+https://panel.dreamhost.com/index.cgi?tree=support.msg#8686870
+
+-----------------------------
+I want to point www.tigerfarmpress.com to the website provider, Heroku. I have my new website up and running on the site.
+
+Their instructions say to add a CNAME DNS record to point www.tigerfarmpress.com to the corresponding Heroku DNS value. Here is their data instruction:
+
+Subdomain: www.tigerfarmpress.com 
+Record type: CNAME
+Value: globular-cranberry-tg035sigwv24v0lxpttgxxbf.herokudns.com
+
+From the Dreamhost panel (link following), when I add the record, I get this error message:
+You already have a record for this name. You can't have a CNAME and any other record on the same name.
+
+Dreamhost panel: https://panel.dreamhost.com/index.cgi
+
+You already have a record for this name. You can't have a CNAME and any other record on the same name.
 
 -----------------------------
 +++ Dyno Types and billing

@@ -1,4 +1,6 @@
-// Sync - create a map
+// Manage Sync map data.
+// Documentation: https://www.twilio.com/docs/sync/maps
+
 exports.handler = function (context, event, callback) {
     let theMapName = "cmap";
     console.log("+ Create: " + theMapName + ", using SYNC_SERVICE_SID: " + context.SYNC_SERVICE_SID);
