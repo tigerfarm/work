@@ -1,9 +1,26 @@
 # Using Google Spreadsheet for Twilio SMS
 
 --------------------------------------------------------------------------------
+## Receive
+
+Article, How to View Twilio SMS Received Messages in a Google Spreadsheet:
+https://www.twilio.com/blog/2018/05/receive-sms-messages-google-sheets-apps-script.html
+
+Requirements:
++ Create a Twilio account: https://twilio.com/console.
++ View your Twilio ACCOUNT SID and AUTH TOKEN (click view): https://twilio.com/console.
++ Buy a phone number. Here is the Twilio Console link to buy one:
+https://www.twilio.com/console/phone-numbers/search
+
+--------------------------------------------------------------------------------
 ## Send
 
-Steps to send SMS from a Google Spreadsheet
+Article, How to Send SMS from a Google Spreadsheet:
+https://www.twilio.com/blog/2016/02/send-sms-from-a-google-spreadsheet.html
+
+Following are simplified steps.
+
+### Steps to send SMS from a Google Spreadsheet
 
 Overview:
 + Create a new Google Spreadsheet.
@@ -15,16 +32,6 @@ Overview:
 + In column A of the Google spreadsheet, enter your mobile phone number 3 times. In column B, enter a message to send.
 + From the Google Spreadsheet Script Editor, run the script.
 ++ The script will send 3 messages to your mobile phone.
-
----------------
-Sending an SMS from a website.
-https://www.twilio.com/blog/a-how-to-send-text-messages-from-your-static-site-using-netlify-twilio-and-serverless-functions
-
-Sending SMS Messages using a Google Spreadsheet
-Over view of the steps:
-+ Create a Google Spreadsheet that can send SMS messages using a Google spreadsheet computer script.
-+ Copy leads from the lead spreadsheet to the Google spreadsheet.
-+ Run the Google spreadsheet computer script that will send an SMS message to each the phone numbers in the Google spreadsheet.
 
 Setup Steps:
 + Create a Google spreadsheet. This requires you have a Google account. If you have a Gmail account, then you have a Google account.
@@ -78,10 +85,6 @@ function sendAll() {
 + In the Google Spreadsheet Script Editor, click Select function and select sendAll.
 + Save the updates.
 + Run the script. Your messages will be sent.
-
---------------------------------------------------------------------------------
-## Receive
-
 
 --------------------------------------------------------------------------------
 
