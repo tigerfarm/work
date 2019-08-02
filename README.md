@@ -401,4 +401,52 @@ git push -u origin master
 git push heroku master
 
 --------------------------------------------------------------------------------
++++ Tomcat
+
++ Download into a work directory, for example:
+/Users/dthurston/Applications
+
++ Unzip and simplify the name.
+$ unzip apache-tomcat-8.5.43.zip 
+...
+$ mv apache-tomcat-8.5.43 tomcat
+/tomcat
+
++ Startup.
+$ cd /Users/dthurston/Applications/tomcat/bin
+$ chmod u+x startup.sh
+$ chmod u+x catalina.sh 
+$ ./startup.sh
+Using CATALINA_BASE:   /Users/dthurston/Applications/tomcat
+Using CATALINA_HOME:   /Users/dthurston/Applications/tomcat
+Using CATALINA_TMPDIR: /Users/dthurston/Applications/tomcat/temp
+Using JRE_HOME:        /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
+Using CLASSPATH:       /Users/dthurston/Applications/tomcat/bin/bootstrap.jar:/Users/dthurston/Applications/tomcat/bin/tomcat-juli.jar
+Tomcat started
+$
+
++ View the process.
+$ ps -ef | grep tomcat
+
++ View the default home page in the browser:
+http://localhost:8080/
++ or
+http://localhost:8080/index.jsp
+
++ Actual page is:
+/Users/dthurston/Applications/tomcat/webapps/ROOT/index.jsp
+
++ Shutdown.
+$ cd /Users/dthurston/Applications/tomcat/bin
+$ chmod u+x shutdown.sh
+$ ./shutdown.sh
+...
+$
+
++ I upgraded my IDE for Java EE, and linked in Tomcat.
+++ When linking in Tomcat, I was asked for a Catalina userid/password. I used: tomcat/password.
++ I'm using Apache NetBeans 11.1. I wrote a send SMS servlet.
+++ When I called the servlet, an SMS message was sent successfully.
+
+--------------------------------------------------------------------------------
 Cheers...
