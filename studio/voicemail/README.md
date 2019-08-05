@@ -25,6 +25,8 @@ The following shows the send SMS attribute which includes the message body with 
 
 <img width="600px"  src="Studio-Voicemail03.jpg"/>
 
+You can use a Studio Send Message widget to send an SMS with voicemail details and a link to the recording. On my phone, when I tap on the link it causes my browser to display the voicemail sound file link. I click on the browser icon to listen to the voicemail message.
+
 The following shows the a Twilio phone number configured to use the above Studio voicemail flow.
 
 <img width="600px"  src="Studio-Voicemail03.jpg"/>
