@@ -15,6 +15,11 @@ When creating a new Studio flow, you have the option to Import from JSON.
 You can my sample JSON definition:
 [Studio-VoicemailSMS.json](Studio-VoicemailSMS.json).
 
+Once imported, in the flow, click the connect_call_1 widget, and set who to forward the call to, for example, your mobile phone number.
++ Connect Call to: Single number
++ And enter your mobile phone number.
+
+
 --------------------------------------------------------------------------------
 
 Following is a screen print of a voicemail setup using the Twilio Console Studio drag and drop tool.
