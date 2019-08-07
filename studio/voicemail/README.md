@@ -54,9 +54,9 @@ The following shows the a Twilio phone number configured to use the above Studio
 + Test by calling your Twilio Phone number. The call should be forward as configured.
 + If you answer the call, you will not be prompted for voicemail, nor will you be sent an SMS regarding this call.
 + If you don't answer the call, you will be sent an SMS regarding the missed call.
-++ If you stay on, you will be prompted to leave a voicemail message.
-++ If you leave a voicemail message, you be sent an SMS regarding the voicemail.
-++ If you stay on the call after leaving a voicemail, you will hear the thank you message and then, the call will be ended.
++ If you stay on, you will be prompted to leave a voicemail message.
++ If you leave a voicemail message, you be sent an SMS regarding the voicemail.
++ If you stay on the call after leaving a voicemail, you will hear the thank you message and then, the call will be ended.
 
 --------------------------------------------------------------------------------
 
