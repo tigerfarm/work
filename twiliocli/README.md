@@ -9,6 +9,9 @@ This software is in pre-release status and not currently supported. However, soo
 
 Twilio CLI project repository: https://github.com/twilio/twilio-cli.
 
+Twilio CLI quickstart, click [here](https://www.twilio.com/cli),
+[examples](https://www.twilio.com/docs/twilio-cli/examples).
+
 Click [here](https://www.twilio.com/docs/twilio-cli/general-usage) for Twilio documents on Twilio CLI.
 
 --------------------------------------------------------------------------------
