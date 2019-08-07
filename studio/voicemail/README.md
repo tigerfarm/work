@@ -9,9 +9,13 @@
 
 For a Twilio Functions and TwiML Bins configuration, click [here](../book/voicemail).
 
-When creating a new Studio flow, you have the option to, Import from JSON.
-You can this sample JSON definition:
+### Import Option
+
+When creating a new Studio flow, you have the option to Import from JSON.
+You can my sample JSON definition:
 [Studio-VoicemailSMS.json](Studio-VoicemailSMS.json).
+
+--------------------------------------------------------------------------------
 
 Following is a screen print of a voicemail setup using the Twilio Console Studio drag and drop tool.
 
@@ -43,9 +47,8 @@ The following shows the a Twilio phone number configured to use the above Studio
 
 + Test by calling your Twilio Phone number. The call should be forward as configured.
 + If you answer the call, you will not be prompted for voicemail, nor will you be sent an SMS regarding this call.
-+ If you don't answer,
-Twilio will make an HTTP request to the Dial action URL.
-You be sent an SMS regarding a missed call. If you stay on, you will be prompted to leave a voicemail message.
++ If you don't answer the call, you will be sent an SMS regarding the missed call.
+++ If you stay on, you will be prompted to leave a voicemail message.
 ++ If you leave a voicemail message, you be sent an SMS regarding the voicemail.
 ++ If you stay on the call after leaving a voicemail, you will hear the thank you message and then, the call will be ended.
 
