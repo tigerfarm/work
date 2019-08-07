@@ -1,10 +1,15 @@
 # Getting Started with Twilio CLI
 
-#### Pre-release software warning
+#### Annoucement at Signal 2019
+
++ Starts at 23 minutes:
+https://www.youtube.com/watch?v=TTo37IRoMz4
 
 This software is in pre-release status and not currently supported. However, soon to be supported.
 
 Twilio CLI project repository: https://github.com/twilio/twilio-cli.
+
+Click [here](https://www.twilio.com/docs/twilio-cli/general-usage) for Twilio documents on Twilio CLI.
 
 --------------------------------------------------------------------------------
 ### Install
@@ -13,7 +18,7 @@ Requirement: [Node.js](https://nodejs.org/) >= 8.0
 
 Install the CLI globally:
 ````
-$ npm install -g twilio-cli`
+$ npm install --save -g twilio-cli
 ````
 
 #### Create environment variables using the Recommended Method
@@ -29,6 +34,40 @@ Create environment variables:
 - `TWILIO_ACCOUNT_SID` = your Account SID from [your console](https://www.twilio.com/console)
 - `TWILIO_API_KEY` = your Twilio CLI API Key SID, starts with "SK".
 - `TWILIO_API_SECRET` = the secret text string for the API Key.
+
+### Send Messages
+
+#### Send an SMS message.
+````
+$ twilio api:core:messages:create --help
+Send a message from the account used to make the request
+...
+--account-sid=account-sid
+--from=from
+--to=to
+--body=body
+
+$ twilio api:core:messages:create --account-sid=$TWILIO_ACCOUNT_SID --from=+16505551111 --to=+16505552222 --body="Hello there."
+SID                                 From          To            Status  Direction     Date Sent
+SMd76001367dc84262b1e16183660e6ba4  +16505551111  +16505552222  queued  outbound-api           
+````
+
+#### Send an email message.
+
+Click [here, Sending Email with Twilio SendGrid](https://www.twilio.com/docs/twilio-cli/general-usage#sending-email-with-twilio-sendgrid),
+for documentation on sending an email.
+````
+$ twilio email:send --help
+sends emails to single or multiple recipients using Twilio SendGrid
+...
+  --from=from                      Email address of the sender.
+  --subject=subject                The subject line for an email.
+  --text=text                      Text to send within the email body.
+  --to=to
+$ twilio email:send --from=me@example.com --to=you@example.com --subject="Subject this" --text="Hello there."
+? Would you like to send an attachment? No
+Your email containing the message "Hello there." sent from me@example.com to you@example.com with the subject line "Subject this" has been sent
+````
 
 ### Navigating Help
 
