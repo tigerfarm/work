@@ -12,7 +12,7 @@ For a Twilio Functions and TwiML Bins configuration, click [here](../book/voicem
 ### Import Option
 
 When creating a new Studio flow, you have the option to Import from JSON.
-You can my sample JSON definition:
+You can import (copy and paste) my sample JSON definition:
 [Studio-VoicemailSMS.json](Studio-VoicemailSMS.json).
 
 Once imported, in the flow, click the connect_call_1 widget, and set who to forward the call to, for example, your mobile phone number.
