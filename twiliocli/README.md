@@ -35,6 +35,7 @@ Create environment variables:
 - `TWILIO_API_KEY` = your Twilio CLI API Key SID, starts with "SK".
 - `TWILIO_API_SECRET` = the secret text string for the API Key.
 
+--------------------------------------------------------------------------------
 ### Send Messages
 
 #### Send an SMS message.
@@ -53,6 +54,8 @@ SMd76001367dc84262b1e16183660e6ba4  +16505551111  +16505552222  queued  outbound
 ````
 
 #### Send an email message.
+
+You will need a [SendGrid](https://sendgrid.com/) account. Use your SendGrid account email address as the from email address of the sender.
 
 Click [here, Sending Email with Twilio SendGrid](https://www.twilio.com/docs/twilio-cli/general-usage#sending-email-with-twilio-sendgrid),
 for documentation on sending an email.
