@@ -2,7 +2,7 @@
 
 #### Annoucement at Signal 2019
 
-+ Starts at 23 minutes:
++ Starts at 23 minutes, goes to 32 minutes:
 https://www.youtube.com/watch?v=TTo37IRoMz4
 
 This software is in pre-release status and not currently supported. However, soon to be supported.
