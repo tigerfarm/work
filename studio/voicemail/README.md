@@ -19,7 +19,7 @@ Once imported, in the flow, click the connect_call_1 widget, and set who to forw
 + Connect Call to: Single number
 + And enter your mobile phone number.
 
-<img width="600px"  src="Studio-Voicemail01.jpg"/>
+<img width="300px"  src="Studio-Voicemail01.jpg"/>
 
 --------------------------------------------------------------------------------
 
