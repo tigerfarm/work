@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
-$twilio = new Client('ACd4f38e524f922a3bfcab443c47822e29', 'a9e4ba7a8714026c8c01c13691574c86');
+$twilio = new Client(twilio_account_sid, twilio_account_auth_token);
 // $accounts = $twilio->api->v2010->accounts->read();
 // echo "+ List all subaccounts for: ", getenv('ACCOUNT_SID'), "\xA";
 // foreach ($accounts as $record) {
