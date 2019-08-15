@@ -4,7 +4,8 @@ use Twilio\Rest\Client;
 $twilio = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 
 $services = $twilio->messaging->v1->services->read(array(), 20);
+print("+ Messaging Service SID and friendlyName.". "\xA");
 foreach ($services as $record) {
-    print("+ Messaging service, SID: " . $record->sid . ", friendlyName: " . $record->friendlyName. "\xA");
+    print($record->sid . ",  " . $record->friendlyName. "\xA");
 }
 ?>

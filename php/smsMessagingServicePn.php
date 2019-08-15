@@ -11,15 +11,15 @@ print("+ Messaging Service SID and friendlyName.". "\xA");
 print("++ Messaging Service phone number SID, phone number, and friendlyName.". "\xA");
 print("----------------------------------------------------------------------". "\xA");
 foreach ($services as $record) {
-    print("+ Messaging service: " . $record->sid . " " . $record->friendlyName . "\xA");
+    print($record->sid . ", " . $record->friendlyName . "\xA");
     //
     $phoneNumbers = $twilio->messaging->v1->services($record->sid)->phoneNumbers
             ->read(array(), 20);
     foreach ($phoneNumbers as $record) {
         $incoming_phone_number = $twilio->incomingPhoneNumbers($record->sid)
                 ->fetch();
-        print("++ Phone number: " . $record->sid
-                . " " . $record->phoneNumber
+        print($record->sid
+                . ", " . $record->phoneNumber
                 . ", " . $incoming_phone_number->friendlyName
                 . "\xA");
     }
