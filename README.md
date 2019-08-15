@@ -432,6 +432,7 @@ git push heroku master
 ++ My Node program: webserver.js, is running and PHP is available.
 
 + Log into the Heroku app and list the buildpacks.
+````
 $ heroku run /bin/bash
 Running /bin/bash on : tighttp... up, run.3791 (Free)
 $ ls -l .heroku/
@@ -440,13 +441,14 @@ drwx------  2 u48201 dyno 4096 Apr 30 20:45 heroku-nodejs-plugin
 drwx------  6 u48201 dyno 4096 Jul 25 23:23 node
 drwx------ 14 u48201 dyno 4096 Jul 25 23:23 php
 $
-
+````
 + If changes are made, do the following:
+````
 git add .
 git commit -am "updates"
 git push -u origin master
 git push heroku master
-
+````
 --------------------------------------------------------------------------------
 +++ Tomcat
 
@@ -460,6 +462,7 @@ $ mv apache-tomcat-8.5.43 tomcat
 /tomcat
 
 + Startup.
+````
 $ cd /Users/dthurston/Applications/tomcat/bin
 $ chmod u+x startup.sh
 $ chmod u+x catalina.sh 
@@ -471,10 +474,11 @@ Using JRE_HOME:        /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Conten
 Using CLASSPATH:       /Users/dthurston/Applications/tomcat/bin/bootstrap.jar:/Users/dthurston/Applications/tomcat/bin/tomcat-juli.jar
 Tomcat started
 $
-
+````
 + View the process.
+````
 $ ps -ef | grep tomcat
-
+````
 + View the default home page in the browser:
 http://localhost:8080/
 + or
@@ -482,14 +486,14 @@ http://localhost:8080/index.jsp
 
 + Actual page is:
 /Users/dthurston/Applications/tomcat/webapps/ROOT/index.jsp
-
+````
 + Shutdown.
 $ cd /Users/dthurston/Applications/tomcat/bin
 $ chmod u+x shutdown.sh
 $ ./shutdown.sh
 ...
 $
-
+````
 + I upgraded my IDE for Java EE, and linked in Tomcat.
 ++ When linking in Tomcat, I was asked for a Catalina userid/password. I used: tomcat/password.
 + I'm using Apache NetBeans 11.1. I wrote a send SMS servlet.
