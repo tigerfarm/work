@@ -162,14 +162,14 @@ Here is their data instruction:
 ````
 Subdomain: www.tigerfarmpress.com 
 Record type: CNAME
-Value: globular-cranberry-tg035sigwv24v0lxpttgxxbf.herokudns.com
+Value: gl...bf.herokudns.com
 ````
 From the (Dreamhost panel)[https://panel.dreamhost.com/index.cgi], add DNS records.
 ````
 
  	A 	34.200.203.60 	
-  	TXT 	dry-snowdrop-xftvrw0htlrnzokvhn8b296l.herokudns.com 	
-www  	CNAME 	globular-cranberry-tg035sigwv24v0lxpttgxxbf.herokudns.com
+  	TXT 	dr...6l.herokudns.com 	
+www  	CNAME 	gl...bf.herokudns.com
 ````
 
 https://devcenter.heroku.com/articles/custom-domains
@@ -189,8 +189,8 @@ tfpdocroot.herokuapp.com
 === tfpdocroot Custom Domains
 Domain Name             DNS Record Type  DNS Target
 ──────────────────────  ───────────────  ─────────────────────────────────────────────────────────
-tigerfarmpress.com      ALIAS or ANAME   dry-snowdrop-xftvrw0htlrnzokvhn8b296l.herokudns.com
-www.tigerfarmpress.com  CNAME            globular-cranberry-tg035sigwv24v0lxpttgxxbf.herokudns.com
+tigerfarmpress.com      ALIAS or ANAME   dr...6l.herokudns.com
+www.tigerfarmpress.com  CNAME            gl...bf.herokudns.com
 ````
 
 -----------------------------
@@ -201,7 +201,7 @@ https://panel.dreamhost.com
 A record for ".tigerfarmpress.com".
 ````
 Record 	Name 	Target
-CNAME 	www 	whispering-willow-5678.herokudns.com.
+CNAME 	www 	gl...bf.herokudns.com.
 ````
 + Set.
 ````
@@ -210,7 +210,7 @@ $ heroku domains:add www.example.com
 + Confirm.
 ````
 $ host www.example.com
-www.example.com is an alias for whispering-willow-5678.herokudns.com.
+www.example.com is an alias for gl...bf.herokudns.com.
 ...
 ````
 
