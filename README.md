@@ -3,7 +3,7 @@
 In this repository are my sample programs which are works in progress.
 
 Following are steps I use to work with GitHub and Heroku to create applications,
-and create my personal website (https://tigerfarmpress.com)[https://tigerfarmpress.com].
+and create my personal website [https://tigerfarmpress.com](https://tigerfarmpress.com).
 
 --------------------------------------------------------------------------------
 ## Create a GitHub Repository that will be deployed to Heroku
