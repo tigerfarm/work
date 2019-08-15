@@ -377,7 +377,7 @@ Update the CLI globally: `npm update -g twilio-cli`
 
 --------------------------------------------------------------------------------
 +++ Trying to upgrade my Mac PHP version.
-
+````
 $ brew info php71
 ...
 $ /usr/local/opt/php\@7.1/bin/php -version
@@ -387,10 +387,10 @@ Zend Engine v3.1.0, Copyright (c) 1998-2018 Zend Technologies
     with Zend OPcache v7.1.30, Copyright (c) 1999-2018, by Zend Technologies
 
 $ export PATH="/usr/local/opt/php\@7.1/bin/:$PATH"
-
+````
 
 --------------------------------------------------------------------------------
-
+````
 $ heroku buildpacks:clear
 
 + Create the Heroku app with the require buildpacks.
@@ -399,10 +399,10 @@ heroku apps:create tighttp
 heroku buildpacks:add --index 1 heroku/php
 heroku buildpacks:add --index 2 heroku/nodejs
 heroku buildpacks
-
+````
 ---------------------
 + GitHub repository requires the following in the top directory:
-
+````
 $ cat composer.json
 {}
 
@@ -423,11 +423,12 @@ $ cat package.json
   "name": "nodewebserver",
 ...
 }
-
+````
 ---------------------
 + Deploy the repository to Heroku.
+````
 git push heroku master
-
+````
 + Test.
 ++ My Node program: webserver.js, is running and PHP is available.
 
