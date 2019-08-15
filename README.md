@@ -164,7 +164,7 @@ Subdomain: www.tigerfarmpress.com
 Record type: CNAME
 Value: gl...bf.herokudns.com
 ````
-From the (Dreamhost panel)[https://panel.dreamhost.com/index.cgi], add DNS records.
+From the (Dreamhost panel)[https://panel.dreamhost.com/index.cgi]  add DNS records.
 ````
  	A 	34.200.203.60 	
   	TXT 	dr...6l.herokudns.com 	
