@@ -274,6 +274,25 @@ sales          Fri May 31 2019 11:49:56 GMT-0700 (Pacific Daylight Time)  comple
 support        Fri May 31 2019 11:45:59 GMT-0700 (Pacific Daylight Time)  completed
 
 ````
+
+--------------------------------------------------------------------------------
+````
+$ twilio api:conversations:v1:conversations --help
+TODO: Resource-level docs
+
+USAGE
+  $ twilio api:conversations:v1:conversations:COMMAND
+
+COMMANDS
+  api:conversations:v1:conversations:create        [PREVIEW] create a Conversations resource
+  api:conversations:v1:conversations:fetch         [PREVIEW] fetch a Conversations resource
+  api:conversations:v1:conversations:list          [PREVIEW] list multiple Conversations resources
+  api:conversations:v1:conversations:messages      TODO: Resource-level docs
+  api:conversations:v1:conversations:participants  TODO: Resource-level docs
+  api:conversations:v1:conversations:remove        [PREVIEW] remove a Conversations resource
+  api:conversations:v1:conversations:update        [PREVIEW] update a Conversations resource
+  api:conversations:v1:conversations:webhooks      TODO: Resource-level docs
+````
 --------------------------------------------------------------------------------
 
 Cheers...
