@@ -237,7 +237,6 @@ https://dashboard.heroku.com/apps/tfpdocroot/resources
 heroku ps:type hobby
 ````
 
-
 --------------------------------------------------------------------------------
 ### In Heroku, Set Up Certificate (HTTPS) for Domain Name
 
@@ -377,7 +376,7 @@ Check if there's a new version: `npm outdated -g twilio-cli`
 Update the CLI globally: `npm update -g twilio-cli`
 
 --------------------------------------------------------------------------------
-+++ Trying to upgrade my Mac PHP version.
+## Trying to upgrade my Mac PHP version.
 ````
 $ brew info php71
 ...
