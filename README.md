@@ -164,7 +164,7 @@ Subdomain: www.tigerfarmpress.com
 Record type: CNAME
 Value: gl...bf.herokudns.com
 ````
-From the (Dreamhost panel)[https://panel.dreamhost.com/index.cgi]  add DNS records.
+From the [Dreamhost panel](https://panel.dreamhost.com/index.cgi)  add DNS records.
 ````
  	A 	34.200.203.60 	
   	TXT 	dr...6l.herokudns.com 	
@@ -223,8 +223,8 @@ free       512 MB        1x         1x-4x    no         yes
 hobby      512 MB        1x         1x-4x    no         no
 ````
 
-+ Costs: click (here)[https://devcenter.heroku.com/articles/usage-and-billing] for dashboard link.
-()[https://www.heroku.com/pricing]
++ Costs: click [here](https://devcenter.heroku.com/articles/usage-and-billing) for dashboard link.
+[Pricing details](https://www.heroku.com/pricing).
 ````
 Dyno Type  Price per dyno/month
 free       $0
@@ -251,12 +251,12 @@ Use heroku certs:add CRT KEY to add one.
 ````
 
 Following are the steps to enable HTTPS for my domain name using Heroku Automatic Certificate Management (ACM).
-Click (here)[https://devcenter.heroku.com/articles/automated-certificate-management] for Heroku document reference.
+Click [here](https://devcenter.heroku.com/articles/automated-certificate-management) for Heroku document reference.
 
 + Open an Heroku account.
 + Deploy GitHub repository to Heroku.
-+ Log into the (Heroku dashboard)[https://dashboard.heroku.com].
-+ Add a credit card into Heroku (Manage Account/Billing)[https://dashboard.heroku.com/account/billing].
++ Log into the [Heroku dashboard](https://dashboard.heroku.com).
++ Add a credit card into Heroku [Manage Account/Billing](https://dashboard.heroku.com/account/billing).
 + Go to your deployment's resources: https://dashboard.heroku.com/apps/tfpdocroot/resources
 + Configure your dyno to be a paid version. I use Hobby, the first step up from Free.
 + Point your DNS entries to your Heroku deployment (see above).
