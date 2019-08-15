@@ -149,7 +149,7 @@ Note, this will override any new updates with the current directory updates.
 $ git push -u --force origin master
 ````
 -----------------------------
-+++ Custom Domains
+### Using Custom Domains with Heroku
 
 I want to point www.tigerfarmpress.com and tigerfarmpress.comto to my website provider, Heroku.
 I have my new website up and running on the site.
@@ -191,7 +191,8 @@ www.tigerfarmpress.com  CNAME            globular-cranberry-tg035sigwv24v0lxpttg
 ````
 
 -----------------------------
-+ Set custom domain DNS record.
+#### Set custom domain DNS records
+
 https://panel.dreamhost.com
 
 A record for ".tigerfarmpress.com".
@@ -211,7 +212,7 @@ www.example.com is an alias for whispering-willow-5678.herokudns.com.
 ````
 
 -----------------------------
-### Dyno Types and billing
+### Heroku Dyno Types and billing
 
 ````
 https://devcenter.heroku.com/articles/dyno-types
@@ -238,7 +239,7 @@ heroku ps:type hobby
 
 
 --------------------------------------------------------------------------------
-### Set Up Certificate (HTTPS) for Domain Name
+### In Heroku, Set Up Certificate (HTTPS) for Domain Name
 
 A Heroku Free dyno version, no SSL certificate will not work with my domain name.
 However, the deployment does have HTTPS for the deployment Heroku subdomain name (*.herokuapp.com).
@@ -451,7 +452,7 @@ git push -u origin master
 git push heroku master
 ````
 --------------------------------------------------------------------------------
-+++ Tomcat
+## Tomcat
 
 + Download into a work directory, for example:
 /Users/dthurston/Applications
