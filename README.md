@@ -151,8 +151,26 @@ $ git push -u --force origin master
 -----------------------------
 +++ Custom Domains
 
-https://devcenter.heroku.com/articles/custom-domains
+I want to point www.tigerfarmpress.com and tigerfarmpress.comto to my website provider, Heroku.
+I have my new website up and running on the site.
+Heroku instructions say to add a CNAME DNS record to point www.tigerfarmpress.com to the corresponding Heroku DNS value.
 
+Here is their data instruction:
+````
+Subdomain: www.tigerfarmpress.com 
+Record type: CNAME
+Value: globular-cranberry-tg035sigwv24v0lxpttgxxbf.herokudns.com
+````
+From the (Dreamhost panel)[https://panel.dreamhost.com/index.cgi], add DNS records.
+````
+
+ 	A 	34.200.203.60 	
+  	TXT 	dry-snowdrop-xftvrw0htlrnzokvhn8b296l.herokudns.com 	
+www  	CNAME 	globular-cranberry-tg035sigwv24v0lxpttgxxbf.herokudns.com
+````
+
+https://devcenter.heroku.com/articles/custom-domains
+````
 $ heroku domains:add www.tigerfarmpress.com
 Adding www.tigerfarmpress.com to : tfpdocroot... done
  ▸    Configure your app's DNS provider to point to the DNS Target globular-cranberry-tg035sigwv24v0lxpttgxxbf.herokudns.com.
@@ -170,76 +188,105 @@ Domain Name             DNS Record Type  DNS Target
 ──────────────────────  ───────────────  ─────────────────────────────────────────────────────────
 tigerfarmpress.com      ALIAS or ANAME   dry-snowdrop-xftvrw0htlrnzokvhn8b296l.herokudns.com
 www.tigerfarmpress.com  CNAME            globular-cranberry-tg035sigwv24v0lxpttgxxbf.herokudns.com
-
-$ ping dry-snowdrop-xftvrw0htlrnzokvhn8b296l.herokudns.com
-PING dry-snowdrop-xftvrw0htlrnzokvhn8b296l.herokudns.com (34.196.237.103)
-
- 	A 	34.200.203.60 	
-  	TXT 	dry-snowdrop-xftvrw0htlrnzokvhn8b296l.herokudns.com 	
-www  	CNAME 	globular-cranberry-tg035sigwv24v0lxpttgxxbf.herokudns.com
+````
 
 -----------------------------
 + Set custom domain DNS record.
 https://panel.dreamhost.com
 
-A record for .tigerfarmpress.com with value 34.196.237.103
-
+A record for ".tigerfarmpress.com".
+````
 Record 	Name 	Target
 CNAME 	www 	whispering-willow-5678.herokudns.com.
-
+````
 + Set.
+````
 $ heroku domains:add www.example.com
-
+````
 + Confirm.
+````
 $ host www.example.com
 www.example.com is an alias for whispering-willow-5678.herokudns.com.
 ...
-
-https://panel.dreamhost.com/index.cgi?tree=support.msg#8686870
-
------------------------------
-I want to point www.tigerfarmpress.com to the website provider, Heroku. I have my new website up and running on the site.
-
-Their instructions say to add a CNAME DNS record to point www.tigerfarmpress.com to the corresponding Heroku DNS value. Here is their data instruction:
-
-Subdomain: www.tigerfarmpress.com 
-Record type: CNAME
-Value: globular-cranberry-tg035sigwv24v0lxpttgxxbf.herokudns.com
-
-From the Dreamhost panel (link following), when I add the record, I get this error message:
-You already have a record for this name. You can't have a CNAME and any other record on the same name.
-
-Dreamhost panel: https://panel.dreamhost.com/index.cgi
-
-You already have a record for this name. You can't have a CNAME and any other record on the same name.
+````
 
 -----------------------------
-+++ Dyno Types and billing
+### Dyno Types and billing
 
+````
 https://devcenter.heroku.com/articles/dyno-types
 Dyno Type  Memory (RAM)  CPU Share  Compute  Dedicated  Sleeps
 free       512 MB        1x         1x-4x    no         yes
 hobby      512 MB        1x         1x-4x    no         no
+````
 
-+ Costs:
-https://devcenter.heroku.com/articles/usage-and-billing
++ Costs: click (here)[https://devcenter.heroku.com/articles/usage-and-billing] for dashboard link.
+()[https://www.heroku.com/pricing]
+````
 Dyno Type  Price per dyno/month
 free       $0
 hobby      $7
 ...
+````
 
-+ Change Dyno type in the dashboard.
-https://dashboard.heroku.com/apps/tigsync/resources
-
++ Change Dyno type in the dashboard or from command line. I upgraded to Hobby version.
+https://dashboard.heroku.com/apps/tfpdocroot/resources
 + Set type from command line.
+````
 heroku ps:type hobby
+````
 
-+ Heroku ticket:
-https://help.heroku.com/tickets/746659
-https://help.heroku.com/sharing/68c39de7-1da3-4ee9-a962-e6484cd6b2ee
-++ If I upgrade 3 of my Heroku apps from free to hobby, will the cost be $7/month, or $21/month?
 
-https://www.heroku.com/pricing
+--------------------------------------------------------------------------------
+### Set Up Certificate (HTTPS) for Domain Name
+
+A Heroku Free dyno version, no SSL certificate will not work with my domain name.
+However, the deployment does have HTTPS for the deployment Heroku subdomain name (*.herokuapp.com).
+````
+$ heroku certs -a tfpdocroot
+* tfpdocroot has no SSL certificates.
+Use heroku certs:add CRT KEY to add one.
+````
+
+Following are the steps to enable HTTPS for my domain name using Heroku Automatic Certificate Management (ACM).
+Click (here)[https://devcenter.heroku.com/articles/automated-certificate-management] for Heroku document reference.
+
++ Open an Heroku account.
++ Deploy GitHub repository to Heroku.
++ Log into the (Heroku dashboard)[https://dashboard.heroku.com].
++ Add a credit card into Heroku (Manage Account/Billing)[https://dashboard.heroku.com/account/billing].
++ Go to your deployment's resources: https://dashboard.heroku.com/apps/tfpdocroot/resources
++ Configure your dyno to be a paid version. I use Hobby, the first step up from Free.
++ Point your DNS entries to your Heroku deployment (see above).
++ Run the following commands
+
+````
+$ heroku certs:auto:enable
+Enabling Automatic Certificate Management... starting. See status with heroku certs:auto or wait until active with heroku certs:auto:wait
+=== Your certificate will now be managed by Heroku.  Check the status by running heroku certs:auto.
+
+$ heroku certs:auto
+=== Automatic Certificate Management is enabled on tfpdocroot
+
+Certificate details:
+Common Name(s): www.tigerfarmpress.com
+                tigerfarmpress.com
+Expires At:     2019-11-13 15:10 UTC
+Issuer:         /C=US/O=Let's Encrypt/CN=Let's Encrypt Authority X3
+Starts At:      2019-08-15 15:10 UTC
+Subject:        /CN=www.tigerfarmpress.com
+SSL certificate is verified by a root authority.
+
+Domain                  Status       Last Updated
+──────────────────────  ───────────  ────────────
+tigerfarmpress.com      Cert issued  1 minute
+www.tigerfarmpress.com  Cert issued  1 minute
+
+$ heroku certs -a tfpdocroot
+Name               Common Name(s)                              Expires               Trusted  Type
+─────────────────  ──────────────────────────────────────────  ────────────────────  ───────  ────
+stegosaurus-95825  www.tigerfarmpress.com, tigerfarmpress.com  2019-11-13 15:10 UTC  True     ACM
+````
 
 --------------------------------------------------------------------------------
 ## Working the npm utility
