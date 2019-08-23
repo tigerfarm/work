@@ -3,12 +3,13 @@ require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 $client = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 $fromPhoneNumber = getenv('PHONE_NUMBER4');
-$toPhoneNumber = getenv('PHONE_NUMBER3');
+// $toPhoneNumber = getenv('PHONE_NUMBER3');
+$toPhoneNumber = getenv('MY_PHONE_NUMBER');
 //
-$theMessageSupport = "Twilio support test message #3";
+$theMessageSupport = "Twilio support test \nmessage #3, \n newline.";
 $theMessageChinese = "你好";
 $theMessageOkay = "okay 2";
-$theMessage = $theMessageChinese;
+$theMessage = $theMessageSupport;
 //
 echo '++ Send SMS message, From: ' . $fromPhoneNumber . " to " . $toPhoneNumber . " :" . $theMessage . ":\xA";
 // $echoUrl = "https://" . getenv('TOKEN_HOST') . "/echojson";
@@ -19,8 +20,8 @@ $sms = $client->account->messages->create(
         array(
         'from' => $fromPhoneNumber,
         // "messagingServiceSid" => 'MG725e63c260d682775183d21b21523935',
-        'body' => $theMessage,
-        'statusCallback' => $echoUrl
+        'body' => $theMessage
+        //, 'statusCallback' => $echoUrl
     )
 );
 echo "+ Sent, SID: " . $sms->sid . "\xA";

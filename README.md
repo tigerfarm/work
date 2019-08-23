@@ -503,4 +503,27 @@ $
 ++ When I called the servlet, an SMS message was sent successfully.
 
 --------------------------------------------------------------------------------
+### Testing
+
+How to reduce the time to deploy to Heroku from GitHub?
+
+Since Heroku deploy is bundle, each deploy much re-bundle all files into what is called a slug.
+Therefore, cannot replace a single deployed file, can only re-deploy all files.
+
+https://devcenter.heroku.com/articles/slug-compiler
+
+If you've already committed files, after adding the filename to the gitignore,
+You need to also remove them from being tracked (git rm --cached) and commit that removal.
+
+Using AWS S3
+
+https://aws.amazon.com/s3/pricing/
+
+Pay only for what you use. There is no minimum fee.
+
+https://devcenter.heroku.com/articles/using-amazon-s3-for-file-uploads-with-java-and-play-2
+
+https://devcenter.heroku.com/articles/s3-upload-php
+
+--------------------------------------------------------------------------------
 Cheers...

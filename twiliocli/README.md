@@ -247,10 +247,7 @@ $ twilio api:core:conferences --help
 
 $ twilio api:core:conferences:list --help
 ... OPTIONS ...
-  --date-created=date-created                       The 'YYYY-MM-DD' value of the resources to read
-  --date-updated=date-updated                       The 'YYYY-MM-DD' value of the resources to read
   --friendly-name=friendly-name                     The string that identifies the Conference resources to read
-  --properties=properties                           [default: sid,friendlyName,status] The properties you would like to display (JSON output always shows all properties).
   --status=(init|in-progress|completed)             The status of the resources to read
 
 $ twilio api:core:conferences:list --status=in-progress
@@ -293,6 +290,37 @@ COMMANDS
   api:conversations:v1:conversations:update        [PREVIEW] update a Conversations resource
   api:conversations:v1:conversations:webhooks      TODO: Resource-level docs
 ````
+
+````
+$ twilio api:conversations:v1:conversations:create --friendly-name="Hello Conversation" --messaging-service-sid=$MESSAGING_SERVICE_SID
+SID                                 Friendly Name       Date Created                 
+CHc1312b8f953047e18dfee082ee4f1722  Hello Conversation  Aug 22 2019 17:56:12 GMT-0700
+
+$ twilio api:conversations:v1:conversations:list
+SID                                 Friendly Name       Date Created                 
+CHc1312b8f953047e18dfee082ee4f1722  Hello Conversation  Aug 22 2019 17:56:12 GMT-0700
+
+$ twilio api:conversations:v1:conversations:participants --help
+COMMANDS
+  api:conversations:v1:conversations:participants:create  [PREVIEW] create a Participants resource
+  api:conversations:v1:conversations:participants:fetch   [PREVIEW] fetch a Participants resource
+  api:conversations:v1:conversations:participants:list    [PREVIEW] list multiple Participants resources
+  api:conversations:v1:conversations:participants:remove  [PREVIEW] remove a Participants resource
+  api:conversations:v1:conversations:participants:update  [PREVIEW] update a Participants resource
+
+$ twilio api:conversations:v1:conversations:participants:create --help
+OPTIONS
+  --conversation-sid=conversation-sid                                The unique id of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource).
+  --identity=identity                                                A unique string identifier.
+  --messaging-binding.address=messaging-binding.address              The address of the participant's device, e.g. a phone number.
+
+$ twilio api:conversations:v1:conversations:participants:create --conversation-sid=CF1d18648474636042929720608eccb578 --identity=david --messaging-binding.address=$PHONE_NUMBER5
+
+````
++ event: {"Called":"+16508668188","Digits":"hangup",
+"RecordingUrl":"https://api.twilio.com/2010-04-01/Accounts/AC1b32414e8ab41e56e6393bcbba7d5a9d/Recordings/REabf6486c44f5186237250133c4f6f94f",
+"ToState":"CA","CallerCountry":"US","Direction":"inbound","CallerState":"CA","ToZip":"94030","CallSid":"CAe7e1ffcdf71c59d958cb76a900963479","To":"+16508668188","CallerZip":"94030","ToCountry":"US","ApiVersion":"2010-04-01","CalledZip":"94030","CalledCity":"SAN BRUNO","CallStatus":"completed","RecordingS...
+
 --------------------------------------------------------------------------------
 
 Cheers...
