@@ -20,7 +20,7 @@ exports.handler = function(context, event, callback) {
     callback(null, exec);
 };
 
-// 2. Redirect back to the Studio flow.
+// 2. To above action URL calls this Twilio Function to redirect back to the Studio flow.
 exports.handler = function (context, event, callback) {
     console.log('Run cstr2: Redirect back to the Studio flow.');
     let twiml = new Twilio.twiml.VoiceResponse();
