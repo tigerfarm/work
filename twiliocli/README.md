@@ -311,15 +311,47 @@ COMMANDS
 $ twilio api:conversations:v1:conversations:participants:create --help
 OPTIONS
   --conversation-sid=conversation-sid                                The unique id of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource).
-  --identity=identity                                                A unique string identifier.
-  --messaging-binding.address=messaging-binding.address              The address of the participant's device, e.g. a phone number.
+  --identity=identity                                                Chat User identity string.
+  --messaging-binding.address=messaging-binding.address              The address of the participant's mobile device phone number.
+  --messaging-binding.proxy-address=messaging-binding.proxy-address  The address of the Twilio phone number that the participant is in contact with.
 
-$ twilio api:conversations:v1:conversations:participants:create --conversation-sid=CF1d18648474636042929720608eccb578 --identity=david --messaging-binding.address=$PHONE_NUMBER5
-
+$ twilio api:conversations:v1:conversations:participants:create --conversation-sid=CHc1312b8f953047e18dfee082ee4f1722 --messaging-binding.proxy-address=$PHONE_NUMBER5 --messaging-binding.address=$MY_PHONE_NUMBER
+SID                                 Messaging Binding
+MB1523ab07d8ac48d0a5d64527f5bca729  [object Object]
 ````
-+ event: {"Called":"+16508668188","Digits":"hangup",
-"RecordingUrl":"https://api.twilio.com/2010-04-01/Accounts/AC1b32414e8ab41e56e6393bcbba7d5a9d/Recordings/REabf6486c44f5186237250133c4f6f94f",
-"ToState":"CA","CallerCountry":"US","Direction":"inbound","CallerState":"CA","ToZip":"94030","CallSid":"CAe7e1ffcdf71c59d958cb76a900963479","To":"+16508668188","CallerZip":"94030","ToCountry":"US","ApiVersion":"2010-04-01","CalledZip":"94030","CalledCity":"SAN BRUNO","CallStatus":"completed","RecordingS...
+Get a Chat user token, which has an identity, in this example, "david".
+````
+$ twilio api:conversations:v1:conversations:participants:create --conversation-sid=CHc1312b8f953047e18dfee082ee4f1722 --identity=david
+SID                                 Messaging Binding
+MB337ea915c8e14ab2ba1b275ffb2a7afb
+````
+Add a participant using 2 Twilio phone numbers.
+````
+$ twilio api:conversations:v1:conversations:participants:create --conversation-sid=CHc1312b8f953047e18dfee082ee4f1722 --messaging-binding.proxy-address=$PHONE_NUMBER4 --messaging-binding.address=$PHONE_NUMBER3
+SID                                 Messaging Binding
+MBd9467123ba6c4d54aed550f94925fa00  [object Object]
+
+$ twilio api:conversations:v1:conversations:participants:list --conversation-sid=CHc1312b8f953047e18dfee082ee4f1722
+SID                                 Messaging Binding
+MB1523ab07d8ac48d0a5d64527f5bca729  [object Object]  
+MB337ea915c8e14ab2ba1b275ffb2a7afb                   
+MBd9467123ba6c4d54aed550f94925fa00  [object Object]
+````
+
+Information from the (quickstart)[https://www.twilio.com/docs/conversations/quickstart]
+````
+"messagingBindingAddress" => "Your Personal Mobile Number",
+"messagingBindingProxyAddress" => "Your purchased Twilio Phone Number"
+````
+
+For your chat-service-sid, use the unique Chat service SID starting with "ISXXX..." that you copied after creating your Conversation.
+
+Need to run the following to enable Conversations with a chat user.
+````
+$ twilio api:conversations:v1:conversations:list
+SID                                 Chat Service SID                    Friendly Name       Date Created                 
+CHc1312b8f953047e18dfee082ee4f1722  IS4feb8a8608fb4743a35f57687ae3a85a  Hello Conversation  Aug 22 2019 17:56:12 GMT-0700
+````
 
 --------------------------------------------------------------------------------
 

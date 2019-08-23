@@ -337,6 +337,9 @@ $ npm view twilio
 
 twilio@3.31.0 | MIT | deps: 10 | versions: 154
 ...
+
+$ npm update -g twilio-cli
+
 ````
 
 #### Create a module (I haven't tried this)
