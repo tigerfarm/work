@@ -92,12 +92,6 @@ $ python3 app.py
 Server listening on: http://localhost:5000
 
 Connection accepted.
-[2019-08-27 17:31:24,183] INFO in app: Connection accepted
-[2019-08-27 17:31:24,337] INFO in app: Connected Message received: {"event":"connected","protocol":"Call","version":"0.2.0"}
-...
-
-
-Connection accepted.
 [2019-08-28 10:57:30,430] INFO in app: Connection accepted
 [2019-08-28 10:57:30,520] INFO in app: Connected Message received: {"event":"connected","protocol":"Call","version":"0.2.0"}
 [2019-08-28 10:57:30,521] INFO in app: Start Message received: {"event":"start","sequenceNumber":"1",
