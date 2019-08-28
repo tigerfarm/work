@@ -12,7 +12,7 @@ Components:
 + Ngrok tunnel to the websocket server, for Twilio to stream the media.
 ````
 Caller >> Twilio >> Twilio client
-                 >> Forked media stream >> websocket server
+                 >> Forked media stream >> Ngrok tunnel >> websocket server
 ````
 --------------------------------------------------------------------------------
 ## Setup Steps
