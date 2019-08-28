@@ -351,6 +351,73 @@ Need to run the following to enable Conversations with a chat user.
 $ twilio api:conversations:v1:conversations:list
 SID                                 Chat Service SID                    Friendly Name       Date Created                 
 CHc1312b8f953047e18dfee082ee4f1722  IS4feb8a8608fb4743a35f57687ae3a85a  Hello Conversation  Aug 22 2019 17:56:12 GMT-0700
+
+$ twilio api:conversations:v1:conversations:participants:create --conversation-sid=CHc1312b8f953047e18dfee082ee4f1722 --identity=stacy
+SID                                 Messaging Binding
+MB337ea915c8e14ab2ba1b275ffb2a7afb
+
+
+twilio api:conversations:v1:conversations:participants:remove --conversation-sid=CHc1312b8f953047e18dfee082ee4f1722 --identity=stacy
+
+$ twilio api:conversations:v1:conversations:participants:fetch --conversation-sid=CHc1312b8f953047e18dfee082ee4f1722 --sid=MB1c323adb37444ed9961d52baa049ac4b -o json
+[
+  {
+    "accountSid": "AC1b32414e8ab41e56e6393bcbba7d5a9d",
+    "conversationSid": "CHc1312b8f953047e18dfee082ee4f1722",
+    "dateCreated": "2019-08-23T22:50:56.000Z",
+    "dateUpdated": "2019-08-23T22:50:56.000Z",
+    "identity": "david",
+    "messagingBinding": null,
+    "sid": "MB1c323adb37444ed9961d52baa049ac4b",
+    "url": "https://conversations.twilio.com/v1/Conversations/CHc1312b8f953047e18dfee082ee4f1722/Participants/MB1c323adb37444ed9961d52baa049ac4b"
+  }
+]
+
+````
+Use the above Chat Service SID(IS4feb8a8608fb4743a35f57687ae3a85a),
+with the participants identity (david), to join the Conversation.
+
+A Chat service was created in my account, Chat Service SID; IS4feb8a8608fb4743a35f57687ae3a85a.
+
+Sample Conversations Chat web application:
+https://codesandbox.io/s/github/TwilioDevEd/demo-chat-app
+
+Side note regarding WhatsApp
+````
+twilio api:conversations:v1:conversations:participants:create -p zod \
+    --conversation-sid CH2...0 \
+    --messaging-binding.address whatsapp:+15125551111 \
+    --messaging-binding.proxy-address "whatsapp:+15125552222"
+````
+
+Testing...
+````
+twilio api:conversations:v1:conversations:participants:list --conversation-sid=CHc1312b8f953047e18dfee082ee4f1722 
+SID                                 Messaging Binding                                                    
+MBd9467123ba6c4d54aed550f94925fa00  {"proxyAddress":"+16508668225","type":"sms","address":"+16508668232"}
+
+twilio api:conversations:v1:conversations:list
+SID                                 Chat Service SID                    Friendly Name       Date Created                 
+CHc1312b8f953047e18dfee082ee4f1722  IS4feb8a8608fb4743a35f57687ae3a85a  Hello Conversation  Aug 22 2019 17:56:12 GMT-0700
+
+twilio api:conversations:v1:conversations:remove --sid=CHc1312b8f953047e18dfee082ee4f1722
+The resource was deleted successfully
+````
+--------------------------------------------------------------------------------
+
+Testing 2
+````
+twilio api:conversations:v1:conversations:create --friendly-name="Hello Conversation" --messaging-service-sid=$MESSAGING_SERVICE_SID
+SID                                 Chat Service SID                    Friendly Name       Date Created                 
+CH9bf6c8b0012547eb9a0e6c127388a812  IS4feb8a8608fb4743a35f57687ae3a85a  Hello Conversation  Aug 23 2019 16:54:25 GMT-0700
+
+twilio api:conversations:v1:conversations:participants:create --conversation-sid=CH9bf6c8b0012547eb9a0e6c127388a812 --messaging-binding.proxy-address=$PHONE_NUMBER4 --messaging-binding.address=$MY_PHONE_NUMBER
+SID                                 Messaging Binding                                                    
+MB3c0e35cb4a074a8d91eac8db02c473ec  {"proxyAddress":"+16508668225","type":"sms","address":"+16504837603"}
+
+twilio api:conversations:v1:conversations:remove --sid=CH9bf6c8b0012547eb9a0e6c127388a812
+The resource was deleted successfully
+
 ````
 
 --------------------------------------------------------------------------------

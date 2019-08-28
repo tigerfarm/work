@@ -12,3 +12,8 @@
 /java/fileio/nbproject/private/
 /java/arrays/build/
 /java/arrays/nbproject/private/
+#
+/wss/venv/
+/wss/__pycache__/
+#
+/sendgrid/node_modules/
