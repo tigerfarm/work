@@ -11,8 +11,8 @@ Components:
 + A Python program with libraries are installed, to create and run, a websocket server.
 + Ngrok tunnel to the websocket server, for Twilio to stream the media.
 ````
-Caller >> Twilio >> Twilio client
-                 >> Forked media stream >> Ngrok tunnel >> websocket server
+Caller >> Twilio >> media stream >> Twilio client
+          Forked >> media stream >> Ngrok tunnel >> websocket server
 ````
 --------------------------------------------------------------------------------
 ## Setup Steps
