@@ -54,6 +54,18 @@ Create a TwiML Bin, and use the above Ngrok tunnel.
      <Dial>+16505552222</Dial>
 </Response>
 ````
+Another sample with a custom parameter, and dialing a Twilio Client.
+````
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Start>
+        <Stream url="wss://a08a3cc9.ngrok.io/media">
+            <Parameter name="hello" value = "HelloValue" />
+      	</Stream>
+    </Start>
+    <Dial><Client>david</Client></Dial>
+</Response>
+````
 I set a Twilio phone number to use the above.
 I call the above, which should start the stream, and call my other Twilio phone number.
 
@@ -66,6 +78,35 @@ Connection accepted.
 [2019-08-27 17:31:24,183] INFO in app: Connection accepted
 [2019-08-27 17:31:24,337] INFO in app: Connected Message received: {"event":"connected","protocol":"Call","version":"0.2.0"}
 ...
+
+
+Connection accepted.
+[2019-08-28 10:57:30,430] INFO in app: Connection accepted
+[2019-08-28 10:57:30,520] INFO in app: Connected Message received: {"event":"connected","protocol":"Call","version":"0.2.0"}
+[2019-08-28 10:57:30,521] INFO in app: Start Message received: {"event":"start","sequenceNumber":"1",
+"start":{"accountSid":"AC1b32414e8ab41e56e6393bcbba7d5a9d",
+"streamSid":"MZc3320b5e6fba10a11d7c96fe1903e3f0",
+"callSid":"CA77145f1c2f9166cab03d083d5804d9ae",
+"tracks":["inbound"],
+"mediaFormat":{"encoding":"audio/x-mulaw","sampleRate":8000,"channels":1},
+"customParameters":{"hello":"HelloValue"}
+},
+"streamSid":"MZc3320b5e6fba10a11d7c96fe1903e3f0"}
+[2019-08-28 10:57:30,522] INFO in app: Media message: {
+   "event":"media","sequenceNumber":"2",
+   "media":{"track":"inbound","chunk":"1","timestamp":"102",
+   "payload":"fvz+fXx9fXv//v///P5+/v3+fv/ ... +/fr7/v7+fHt9/g=="},
+   "streamSid":"MZc3320b5e6fba10a11d7c96fe1903e3f0"
+}
+[2019-08-28 10:57:30,522] INFO in app: Payload is: fvz+fXx9fXv//v///P5+/v3+fv/ ... +/fr7/v7+fHt9/g==
+[2019-08-28 10:57:30,522] INFO in app: That's 160 bytes
+[2019-08-28 10:57:30,523] INFO in app: Additional media messages from WebSocket are being suppressed....
+[2019-08-28 10:57:37,480] INFO in app: Stop Message received: {
+"event":"stop","sequenceNumber":"352","streamSid":"MZc3320b5e6fba10a11d7c96fe1903e3f0",
+"stop":{"accountSid":"AC1b32414e8ab41e56e6393bcbba7d5a9d","callSid":"CA77145f1c2f9166cab03d083d5804d9ae"}
+}
+[2019-08-28 10:57:37,481] INFO in app: Connection closed. Received a total of 352 messages
+
 ````
 
 --------------------------------------------------------------------------------
