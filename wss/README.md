@@ -4,8 +4,18 @@ Consume a real-time Media Stream using WebSockets, Python, and Flask
 
 https://www.twilio.com/docs/voice/tutorials/consume-real-time-media-stream-using-websockets-python-and-flask
 
+Components:
++ Twilio phone number to receive incoming calls.
++ The Twilio phone number is configured to use a TwiML Bin.
++ The TwiML Bin starts a forked media stream, and dials an outbound phone number or a Twilio client.
++ A Python program with libraries are installed, to create and run, a websocket server.
++ Ngrok tunnel to the websocket server, for Twilio to stream the media.
+````
+Caller >> Twilio >> Twilio client
+                 >> Forked media stream >> websocket server
+````
 --------------------------------------------------------------------------------
-## Steps
+## Setup Steps
 
 Set up Python environment
 ````
@@ -67,6 +77,9 @@ Another sample with a custom parameter, and dialing a Twilio Client.
 </Response>
 ````
 I set a Twilio phone number to use the above TwiML.
+
+--------------------------------------------------------------------------------
+### Test
 
 I call my Twilio phone number,
 + When the call is connected, Twilio also sends information to the websocket server,
