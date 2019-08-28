@@ -12,7 +12,7 @@ Set up Python environment
 mkdir wss
 cd wss
 pwd
-/.../Projects/wss
+/.../Projects/work/wss
 
 python3 -m venv venv
 source ./venv/bin/activate
@@ -27,7 +27,7 @@ Run the websocket server.
 $ python3 app.py
 Server listening on: http://localhost:5000
 ````
-Open the Flask server to the internet, using Ngrok.
+Open the firewall to the Flask server, using Ngrok.
 ````
 /.../Applications/ngrok http 5000
 ngrok by @inconshreveable                                                                                                                                                                                                         (Ctrl+C to quit)
@@ -59,17 +59,21 @@ Another sample with a custom parameter, and dialing a Twilio Client.
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
     <Start>
-        <Stream url="wss://a08a3cc9.ngrok.io/media">
+        <Stream url="wss://4806f5c7.ngrok.io/media">
             <Parameter name="hello" value = "HelloValue" />
       	</Stream>
     </Start>
     <Dial><Client>david</Client></Dial>
 </Response>
 ````
-I set a Twilio phone number to use the above.
-I call the above, which should start the stream, and call my other Twilio phone number.
+I set a Twilio phone number to use the above TwiML.
 
-In the websocket server terminal window the stream data was displayed.
+I call my Twilio phone number,
++ When the call is connected, Twilio also sends information to the websocket server,
++ My Twilio client is prompted to Accept the call.
++ I accept the call, and the media is streamed to the client (david) and forked to the websocket server.
+
+In the websocket server terminal window the streamed data information.
 ````
 $ python3 app.py
 Server listening on: http://localhost:5000
