@@ -17,3 +17,5 @@
 /wss/__pycache__/
 #
 /sendgrid/node_modules/
+#
+/tigauthy-node/node_modules/
