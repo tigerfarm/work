@@ -151,10 +151,11 @@ Note, this will override any new updates with the current directory updates.
 ````
 $ git push -u --force origin master
 ````
------------------------------
+
+--------------------------------------------------------------------------------
 ### Using Custom Domains with Heroku
 
-I want to point www.tigerfarmpress.com and tigerfarmpress.comto to my website provider, Heroku.
+I want to point www.tigerfarmpress.com and tigerfarmpress.com to my website provider, Heroku.
 I have my new website up and running on the site.
 Heroku instructions say to add a CNAME DNS record to point www.tigerfarmpress.com to the corresponding Heroku DNS value.
 
@@ -213,7 +214,7 @@ www.example.com is an alias for gl...bf.herokudns.com.
 ...
 ````
 
------------------------------
+--------------------------------------------------------------------------------
 ### Heroku Dyno Types and billing
 
 ````
