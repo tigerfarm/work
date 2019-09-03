@@ -15,9 +15,12 @@ When creating a new Studio flow, you have the option to Import from JSON.
 You can import (copy and paste) my sample JSON definition:
 [Studio-VoicemailSMS.json](Studio-VoicemailSMS.json).
 
-Once imported, in the flow, click the connect_call_1 widget, and set who to forward the call to, for example, your mobile phone number.
-+ Connect Call to: Single number
-+ And enter your mobile phone number.
+Once imported, in the flow:
++ Click the connect_call_1 widget and set, Connect Call to: Single number,  replace +16505552222, the your phone number that you want to dial.
++ Click the send_voicemail_message widget. In the attributes, click Message & Chat config,
+    and set, Send message To, to your mobile phone number (replace +16505552222, with your phone number).
++ Click the send_missed_call_message widget. In the attributes, click Message & Chat config,
+    and set, Send message To, to your mobile phone number (replace +16505552222, with your phone number).
 
 <img width="300px"  src="Studio-Voicemail01.jpg"/>
 
