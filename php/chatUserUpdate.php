@@ -5,9 +5,11 @@ $twilio = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 //
 $CHAT_SERVICE_SID = getenv('CHAT_SERVICE_SID');
 $chatUser = "USf79ff6faec534a0eaa2bf188aef03546";       // david
+//
 $myObj->fn = "David";
 $myObj->ln = "Here";
 $myJSON = json_encode($myObj);
+//
 echo '+ CHAT_SERVICE_SID: ' . $CHAT_SERVICE_SID . ":\xA"
  . "+ Chat user: " . $chatUser . ":\xA"
  . "+ Chat user attributes: " . $myJSON . ":\xA";
