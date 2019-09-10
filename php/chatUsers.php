@@ -14,7 +14,9 @@ $users = $twilio->chat->v2->services($CHAT_SERVICE_SID)
                          ->users
                           ->read(array(), 20);
 foreach ($users as $user) {
-    echo "++ User, friendlyName: " . $user->friendlyName
+    echo "++ User, SID: " . $user->sid
+        .", identity: " . $user->identity
+        .", friendlyName: " . $user->friendlyName
         .", attributes: " . $user->attributes
         . "\xA";
 }

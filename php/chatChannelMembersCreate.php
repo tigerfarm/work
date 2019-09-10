@@ -5,20 +5,17 @@ $twilio = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 //
 $CHAT_SERVICE_SID = getenv('CHAT_SERVICE_SID');
 $chatChannel = "CH68abfac99d55431ca14f015056251d51";
+$chatUser = "stacy";
+//
 echo '+ CHAT_SERVICE_SID: ' . $CHAT_SERVICE_SID . ":\xA"
-        . "+ Chat channel: " . $chatChannel . ":\xA";
+        . "+ Chat channel: " . $chatChannel . ":\xA"
+        . "+ channel user: " . $chatUser . ":\xA"
+        ;
 //
 $members = $twilio->chat->v2->services($CHAT_SERVICE_SID)
                             ->channels($chatChannel)
-                            ->members
-                            ->read(array(), 20);
-//
-foreach ($members as $member) {
-    echo "++ Member user"
-     . ", SID: " . $member->sid
-     . ", identity: " . $member->identity
-     . ", attributes: " . $member->attributes
-     . "\xA";
-}
-echo "+ End of list.\xA";
+                           ->members
+                           ->create($chatUser);
+
+echo "+ Create channel member user.\xA";
 ?>
