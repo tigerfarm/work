@@ -18,6 +18,7 @@ foreach ($members as $member) {
      . ", SID: " . $member->sid
      . ", identity: " . $member->identity
      . ", attributes: " . $member->attributes
+     . ", index: " . $member->lastConsumedMessageIndex
      . "\xA";
 }
 echo "+ End of list.\xA";

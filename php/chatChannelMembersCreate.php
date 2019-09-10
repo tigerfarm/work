@@ -5,7 +5,7 @@ $twilio = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 //
 $CHAT_SERVICE_SID = getenv('CHAT_SERVICE_SID');
 $chatChannel = "CH68abfac99d55431ca14f015056251d51";
-$chatUser = "stacy";
+$chatUser = "WelcomeUser";
 //
 echo '+ CHAT_SERVICE_SID: ' . $CHAT_SERVICE_SID . ":\xA"
         . "+ Chat channel: " . $chatChannel . ":\xA"
