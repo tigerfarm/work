@@ -4,20 +4,23 @@ use Twilio\Rest\Client;
 $twilio = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 //
 $CHAT_SERVICE_SID = getenv('CHAT_SERVICE_SID');
-$chatUser = "USf79ff6faec534a0eaa2bf188aef03546";       // david
+$chatUserSid = "USa4db8166ecfd4999ab5f1768e1859277";
 //
-$myObj->fn = "David";
-$myObj->ln = "Here";
+$myObj->fn = "Mau Mau";
+$myObj->ln = "Mau";
 $myJSON = json_encode($myObj);
 //
 echo '+ CHAT_SERVICE_SID: ' . $CHAT_SERVICE_SID . ":\xA"
- . "+ Chat user: " . $chatUser . ":\xA"
+ . "+ Chat user SID: " . $chatUserSid . ":\xA"
  . "+ Chat user attributes: " . $myJSON . ":\xA";
 //
-$twilio->chat->v2->services($CHAT_SERVICE_SID)->users($chatUser)
-        ->update(array("attributes" => $myJSON));
+$twilio->chat->v2->services($CHAT_SERVICE_SID)->users($chatUserSid)
+        ->update(array(
+            "friendlyName" => "Marshmellow",
+            "attributes" => $myJSON
+        ));
 //
-$user = $twilio->chat->v2->services($CHAT_SERVICE_SID)->users($chatUser)
+$user = $twilio->chat->v2->services($CHAT_SERVICE_SID)->users($chatUserSid)
         ->fetch();
 echo "++ User"
  . ", friendlyName: " . $user->friendlyName

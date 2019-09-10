@@ -4,14 +4,17 @@ use Twilio\Rest\Client;
 $twilio = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 //
 $CHAT_SERVICE_SID = getenv('CHAT_SERVICE_SID');
-$chatUser = "USf79ff6faec534a0eaa2bf188aef03546";       // david
+$chatUser = "USc11877e91b8e45a9a8166c1125597607";
 echo '+ CHAT_SERVICE_SID: ' . $CHAT_SERVICE_SID . ":\xA"
         . "+ Chat user: " . $chatUser . ":\xA";
 //
 $user = $twilio->chat->v2->services($CHAT_SERVICE_SID)
                          ->users($chatUser)
                          ->fetch();
-echo "++ User, friendlyName: " . $user->friendlyName
+//
+echo "++ User, SID: " . $user->sid
+        .", identity: " . $user->identity
+        .", friendlyName: " . $user->friendlyName
         .", attributes: " . $user->attributes
         . "\xA";
 ?>
