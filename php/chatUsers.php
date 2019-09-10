@@ -1,4 +1,6 @@
 <?php
+// Documentation: https://www.twilio.com/docs/chat/rest/user-resource
+//
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 $twilio = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
