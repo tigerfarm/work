@@ -13,12 +13,16 @@ $members = $twilio->chat->v2->services($CHAT_SERVICE_SID)
                             ->members
                             ->read(array(), 20);
 //
+date_default_timezone_set('America/Los_Angeles');
 foreach ($members as $member) {
+    // $date = new DateTime('2001-02-03 04:05:06');
+    // $date = new DateTime($member->lastConsumptionTimestamp);
     echo "++ Member user"
      . ", SID: " . $member->sid
      . ", identity: " . $member->identity
      . ", attributes: " . $member->attributes
      . ", index: " . $member->lastConsumedMessageIndex
+     . ", Timestamp: " . $member->lastConsumptionTimestamp->format('d/m/Y h:i:s')
      . "\xA";
 }
 echo "+ End of list.\xA";
