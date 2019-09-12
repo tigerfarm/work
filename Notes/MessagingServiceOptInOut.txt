@@ -12,10 +12,12 @@ Test:
 ++ From: +16505552222, To:  +16505551111, Text: back to you
 + Unsubscribe:
 ++ From: +16505552222, To:  +16505551111, Text: stop
-++ +16505552222 will receive the default unsubscribe message: You have successfully been unsubscribed. You will not receive any more messages from this number. Reply START to resubscribe.
+++ +16505552222 will receive the default unsubscribe message: You have successfully been unsubscribed.
+    You will not receive any more messages from this number. Reply START to resubscribe.
 + Test that Unsubscribe worked:
 ++ From: +16505551111, To:  +16505552222, Text: hello again
-++ +16505551111 receives an error message such as: - Error: 16505552222 has unsubscribed from receiving messages from +16505551111.
+++ +16505551111 receives an error message such as:
+    - Error: 16505552222 has unsubscribed from receiving messages from +16505551111.
 
 Configure the Messaging Service feature: Advanced Opt–In, and test.
 + Send a test message, From: +16505552222, To:  +16505551111, Text: go
@@ -37,7 +39,8 @@ Configure the Messaging Service feature: Advanced Opt–Out, and test.
 ++ And change the Custom Message for Opt-Out, to "You're unsubscribed".
 + Send a test message, From: +16505552222, To:  +16505551111, Text: done
 ++ Now, the sender receives the message, "You're unsubscribed."
-++ The receiver, receive the message, "done", and the webhook URL program receives the HTTP request with, "OptOutType":"STOP".
+++ The receiver, receive the message, "done",
+    and the webhook URL program receives the HTTP request with, "OptOutType":"STOP".
 
 --------------------------------------------------------------------------------
 Cheers
