@@ -1,10 +1,25 @@
 --------------------------------------------------------------------------------
+Create a Messaging Service and Configure the Advance Opt In, Opt Out Feature.
+
+--------------------------------------------------------------------------------
+Create a Messaging Service
 
 Add a Messaging Service: https://www.twilio.com/console/sms/services
-+ Use Case: Notifications, 2 way
++ Click the Create a New Messaging Service icon.
+++ Give it a Friendly Name.
+++ Use Case: Notifications, 2 way
+++ Click Create.
+
+In the Messaging Service, Settings:
 + Enable: Send an incoming_message Webhook
-+ Request Url: https://tigerfarmpress.com/echo, HTTP GET
++ Request URL: https://example.com/processInboundSms,
+    HTTP GET or HTTP POST, depending on your program.
+
+In the Messaging Service, Numbers:
 + Add one of your Twilio phone numbers into the Messaging Service.
+
+--------------------------------------------------------------------------------
+Test and Configure the Messaging Service Advance Opt In, Opt Out Feature
 
 Test:
 + Exchange messages between your Twilio phone number to another number, for example:
