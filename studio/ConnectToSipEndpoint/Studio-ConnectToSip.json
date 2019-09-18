@@ -1,0 +1,140 @@
+{
+  "description": "Connect-Call-To SIP Domain endpoint user",
+  "states": [
+    {
+      "type": "InitialState",
+      "name": "Trigger",
+      "properties": {
+        "offset": {
+          "x": 0,
+          "y": -30
+        },
+        "flow_url": "https://webhooks.twilio.com/v1/Accounts/AC1b32414e8ab41e56e6393bcbba7d5a9d/Flows/FW03ffeb1acd8ea4d7cb1be3da538f139a"
+      },
+      "transitions": [
+        {
+          "event": "incomingMessage",
+          "conditions": [],
+          "next": null,
+          "uuid": "716c5a57-b9f6-4b3e-a382-40f86f077940"
+        },
+        {
+          "event": "incomingCall",
+          "conditions": [],
+          "next": "FFab58e7b5184aad9ffc67e27551af236d",
+          "uuid": "9a0591e5-68f7-48e6-91f7-1b507d0d91b8"
+        },
+        {
+          "event": "incomingRequest",
+          "conditions": [],
+          "next": null,
+          "uuid": "70720007-55a2-4c4d-9f74-90919a953b15"
+        }
+      ],
+      "sid": "FFaee47e9b04278f9a0a0952a60c313d5b"
+    },
+    {
+      "type": "ConnectCaller",
+      "name": "connect_call_1",
+      "properties": {
+        "offset": {
+          "x": 110,
+          "y": 130
+        },
+        "to": "",
+        "caller_id": "{{contact.channel.address}}",
+        "record": null,
+        "noun": "sip",
+        "sip_endpoint": "zoiperuser@example.sip.us1.twilio.com",
+        "sip_username": null,
+        "sip_password": null,
+        "timeout": 30
+      },
+      "transitions": [
+        {
+          "event": "callCompleted",
+          "conditions": [],
+          "next": "FF56caf152a781fa5865c7a9bd8e9b0724",
+          "uuid": "037d65bc-ce2d-4b7e-83fe-2c6023fed16c"
+        },
+        {
+          "event": "hangup",
+          "conditions": [],
+          "next": "FF2f5d0e283f53d80a1d64bd8e991d2afa",
+          "uuid": "70d05904-76b8-44eb-ab1e-a4cf3a21ec3b"
+        }
+      ],
+      "sid": "FFab58e7b5184aad9ffc67e27551af236d"
+    },
+    {
+      "type": "Function",
+      "name": "function_1",
+      "properties": {
+        "offset": {
+          "x": -100,
+          "y": 360
+        },
+        "url": "https://about-time-2357.twil.io/echojson",
+        "timeout": null,
+        "parameters": [
+          {
+            "key": "transition",
+            "value": "Call Completed"
+          },
+          {
+            "key": "callstatus",
+            "value": "{{widgets.connect_call_1.DialCallStatus}}"
+          }
+        ]
+      },
+      "transitions": [
+        {
+          "event": "success",
+          "conditions": [],
+          "next": null,
+          "uuid": "b8e06509-de04-499c-9a95-378049d662e9"
+        },
+        {
+          "event": "fail",
+          "conditions": [],
+          "next": null,
+          "uuid": "92ab740c-96fe-4a37-b3ba-247e84f2100c"
+        }
+      ],
+      "sid": "FF56caf152a781fa5865c7a9bd8e9b0724"
+    },
+    {
+      "type": "Function",
+      "name": "function_2",
+      "properties": {
+        "offset": {
+          "x": 230,
+          "y": 360
+        },
+        "url": "https://about-time-2357.twil.io/echojson",
+        "timeout": null,
+        "parameters": [
+          {
+            "key": "transition",
+            "value": "Hangup"
+          }
+        ]
+      },
+      "transitions": [
+        {
+          "event": "success",
+          "conditions": [],
+          "next": null,
+          "uuid": "52bfa522-283c-4dc5-98c9-ae7dbce2c5d3"
+        },
+        {
+          "event": "fail",
+          "conditions": [],
+          "next": null,
+          "uuid": "24420886-0444-4a7f-9bdc-6dbfe70a2a6e"
+        }
+      ],
+      "sid": "FF2f5d0e283f53d80a1d64bd8e991d2afa"
+    }
+  ]
+}
