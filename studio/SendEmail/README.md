@@ -1,6 +1,8 @@
 # Use Twilio Studio to Send Email Messages
 
-In the following steps Twilio SendGrid is used to send the email messages.
+In the following steps, Twilio SendGrid is used to send the email messages from a Studio flow.
+The sample flow receives an SMS, and forwards the message as an SMS message to mobile phone number, 
+and then forwards the message as an email message.
 
 ## Implementation Steps
 
@@ -11,18 +13,22 @@ In the following steps Twilio SendGrid is used to send the email messages.
     Click [here](https://www.twilio.com/console/functions/configure) for the Twilio Console link.
     I added module, Name: @sendgrid/mail, version: 6.4.0.
 + Also, in the Twilio Functions [manage page](https://www.twilio.com/console/functions/configure),
-    add your , Key: SENDGRID_API_KEY, Value: your SendGrid API Key that you created above.
-+ Create a Twilio Function that uses the SendGrid SDK to send email messages.
+    add your SendGrid API key, Key: SENDGRID_API_KEY, Value: your SendGrid API Key that you created above.
++ Create a Twilio Function that uses the SendGrid SDK to send an email message.
     Click [here](https://github.com/tigerfarm/work/blob/master/functions/emailUsingSendGridSdk.js)
     for the Twilio Function source code.
     
-+ Create a Studio flow. The following sample is to forward an SMS messages and an email message.
++ Create a Studio flow. The sample is to forward an SMS message as an email message.
 
 --------------------------------------------------------------------------------
-Studio flow screen print:
+#### Studio Flow Details
 
 Click [here](Studio-SendEmail.json) 
     for the Studio flow JSON that can be used to create your flow.
+
+The flow receives an incoming SMS.
+The send_message_1 widget forwards the message as an SMS message to mobile phone number. 
+The funtion_1 widget calls the Twilio Function to forward the SMS message as an email message.
 
 <img src="Studio-SendEmail.jpg" width="400"/>
 
