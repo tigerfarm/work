@@ -21,10 +21,10 @@ In the following steps Twilio SendGrid is used to send the email messages.
 --------------------------------------------------------------------------------
 Studio flow screen print:
 
-Click [here](https://github.com/tigerfarm/work/blob/master/studio/SendEmail/Studio-SendEmail.json) 
+Click [here](Studio-SendEmail.json) 
     for the Studio flow JSON that can be used to create your flow.
 
-<img src="https://raw.githubusercontent.com/tigerfarm/work/master/studio/SendEmail/Studio-SendEmail.jpg" width="400"/>
+<img src="Studio-SendEmail.jpg" width="400"/>
 
 --------------------------------------------------------------------------------
 ++ Send Email Messages from Command Line
