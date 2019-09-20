@@ -10,7 +10,7 @@ In the following steps Twilio SendGrid is used to send the email messages.
 + Add the SendGrid SDK module into the Twilio Function NPM modules.
     Click [here](https://www.twilio.com/console/functions/configure) for the Twilio Console link.
     I added module, Name: @sendgrid/mail, version: 6.4.0.
-+ Also, in the Twilio Functions [manage page], (https://www.twilio.com/console/functions/configure),
++ Also, in the Twilio Functions [manage page](https://www.twilio.com/console/functions/configure),
     add your , Key: SENDGRID_API_KEY, Value: your SendGrid API Key that you created above.
 + Create a Twilio Function that uses the SendGrid SDK to send email messages.
     Click [here](https://github.com/tigerfarm/work/blob/master/functions/emailUsingSendGridSdk.js)
@@ -27,14 +27,14 @@ Click [here](Studio-SendEmail.json)
 <img src="Studio-SendEmail.jpg" width="400"/>
 
 --------------------------------------------------------------------------------
-++ Send Email Messages from Command Line
+## Send Email Messages from Command Line
 
 Following are side notes regarding the sending of email messages from command line.
 
 Then you can follow the video, How to Send Email with Node.js and Twilio SendGrid:
 https://www.youtube.com/watch?v=s2bzUzHeSVw
 
-++++ Mail Send
+#### Mail Send
 
 API endpoint to send email over SendGrid’s Web API v2:
 https://sendgrid.com/docs/API_Reference/Web_API/mail.html
@@ -43,8 +43,10 @@ Overview of the steps:
 + Create a SendGrid account, and create an API Key from the menu item under Settings/API Keys.
 + Create a SendGrid work directory, and change into the directory.
 + Run the following commands to prep the directory for using the SendGrid API library.
+````
 $ npm init --yes
 $ npm install @sendgrid/mail
+````
 + Create a sample program in the directory. Following is mine based on the video. I set environment variables.
 
 Note, my from email address is a GMail address, and the to email address is my Twilio email address.
