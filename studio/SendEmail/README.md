@@ -1,24 +1,30 @@
 # Use Twilio Studio to Send Email Messages
 
-Following are the steps to setup the components to send email messages.
-Twilio SendGrid is used to send the email messages.
+In the following steps Twilio SendGrid is used to send the email messages.
 
 ## Implementation Steps
 
 + Click [here](https://sendgrid.com) to create a SendGrid account.
-+ Create an API Key from the SendGrid dashboard menu item: Settings/API Keys.
++ Create an API Key from the SendGrid dashboard menu: Settings/API Keys.
     Note, create a new one verses using the default one. It was required when I did my testing.
++ Add the SendGrid SDK module into the Twilio Function NPM modules.
+    Click [here](https://www.twilio.com/console/functions/configure) for the Twilio Console link.
+    I added module, Name: @sendgrid/mail, version: 6.4.0.
++ Also, in the Twilio Functions [manage page], (https://www.twilio.com/console/functions/configure),
+    add your , Key: SENDGRID_API_KEY, Value: your SendGrid API Key that you created above.
 + Create a Twilio Function that uses the SendGrid SDK to send email messages.
     Click [here](https://github.com/tigerfarm/work/blob/master/functions/emailUsingSendGridSdk.js)
     for the Twilio Function source code.
+    
 + Create a Studio flow. The following sample is to forward an SMS messages and an email message.
 
 --------------------------------------------------------------------------------
 Studio flow screen print:
 
-Click [here](Studio-SEndEmail.json) for the Studio flow JSON that can be used to create your flow.
+Click [here](https://github.com/tigerfarm/work/blob/master/studio/SendEmail/Studio-SendEmail.json) 
+    for the Studio flow JSON that can be used to create your flow.
 
-<img src="Studio-SEndEmail.jpg" width="400"/>
+<img src="https://raw.githubusercontent.com/tigerfarm/work/master/studio/SendEmail/Studio-SendEmail.jpg" width="400"/>
 
 --------------------------------------------------------------------------------
 ++ Send Email Messages from Command Line
