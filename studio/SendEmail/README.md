@@ -1,7 +1,7 @@
 # Use Twilio Studio to Send Email Messages
 
 In the following steps, Twilio SendGrid is used to send the email messages from a Studio flow.
-The sample flow receives an SMS, and forwards the message as an SMS message to mobile phone number, 
+The sample Studio flow receives an SMS, forwards the message as an SMS message to mobile phone number, 
 and then forwards the message as an email message.
 
 ## Implementation Steps
