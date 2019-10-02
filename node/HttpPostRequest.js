@@ -32,7 +32,6 @@ callback = function (response) {
         console.log('BODY: ' + chunk);
     });
 };
-
 http.request(options, callback).end();
 
 console.log("++ Make the request.");

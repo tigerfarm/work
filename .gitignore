@@ -5,6 +5,10 @@
 3setSync-Master.sh
 8setvarsSync-Labs.sh
 #
+/mediaStreams/node_modules/
+/mediaStreams/google_creds.json
+/mediaStreams/package-lock.json
+#
 /flex/plugin-p1/node_modules/
 /flex/plugin-p1/public/
 #

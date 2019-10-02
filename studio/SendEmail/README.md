@@ -55,7 +55,7 @@ $ npm install @sendgrid/mail
 ````
 + Create a sample program in the directory. Following is mine based on the video. I set environment variables.
 
-Note, my from email address is a GMail address, and the to email address is my Twilio email address.
+Note, my from-email-address is a GMail address, and the to-email-address is my Twilio email address.
 ````
 console.log("++ Send email message.");
 theMsg = "Hello from SendGrid 1";
