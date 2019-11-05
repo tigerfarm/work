@@ -20,9 +20,8 @@ $numbers = $client->availablePhoneNumbers($theCountry)->local->read(array("conta
 //
 echo "\xA+ Data for " . $theCountry . " phone number: " . $thePhoneNumber . " ";
 echo "\xA++ " . $numbers[0]->phoneNumber
-        . " locality: " . $numbers[0]->locality
-        . " region: " . $numbers[0]->region
-        . " isoCountry: " . $numbers[0]->region 
+        . " locality: "   . $numbers[0]->locality
+        . " region: "     . $numbers[0]->region
         . " postalCode: " . $numbers[0]->postalCode
         . "\xA";
 ?>

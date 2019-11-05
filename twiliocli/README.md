@@ -24,14 +24,22 @@ Install the CLI globally:
 $ npm install --save -g twilio-cli
 ````
 
+For future reference, to update the CLI:
+````
+$ npm update -g twilio-cli
+````
+
 #### Create environment variables using the Recommended Method
 
 Use your current account or subaccount SID.
-The CLI will use the key-named environment variables.
-
-Click [here](https://twil.io/get-api-key) to use the Twilio Console to create an API key and secret text string.
+The CLI will use the key-named environment variables. Run the Twilio command:
+````
+$ twilio
+````
 - Friendly Name: Twilio CLI.
 - Key Type: Standard.
+
+Click [here](https://twil.io/get-api-key) to use the Twilio Console to create an API key and secret text string.
 
 Create environment variables:
 - `TWILIO_ACCOUNT_SID` = your Account SID from [your console](https://www.twilio.com/console)
@@ -235,6 +243,33 @@ $ twilio api:core:incoming-phone-numbers:fetch --sid=PN1...Z -o json
   }
 ]
 ````
+
+Phone numbers available for purchase:
+````
+$ twilio api:core:available-phone-numbers:local:list --country-code US
+Phone Number  Region  ISO Country  Address Requirements
++12097804046  CA      US           none                
++13236213646  CA      US           none                
++13239874629  CA      US           none  
+...
+
+$ twilio api:core:available-phone-numbers:local:list --country-code US --area-code 510
+Phone Number  Region  ISO Country  Address Requirements
++15107613747  CA      US           none                
++15107613978  CA      US           none                
++15108005997  CA      US           none  
+...
+
+$ twilio api:core:available-phone-numbers:local:list --country-code US --in-region NY
+Phone Number  Region  ISO Country  Address Requirements
++15185477074  NY      US           none                
++18452503736  NY      US           none                
++15188686191  NY      US           none                
++15188641018  NY      US           none                
++16072149237  NY      US           none
+...
+````
+
 #### Conference calls
 ````
 $ twilio api:core:conferences --help

@@ -8,6 +8,7 @@ date_default_timezone_set($theTimeZone);
 echo "+ Timezone: " . $theTimeZone;
 $now = new DateTime('now');
 echo "\xA+ now->format   : ". $now->format('Y-m-d H:i:s');
+echo "\xA+ now->format   : ". $now->format('Y:m:d:H:i:s');
 echo "\xA";
 //
 date_default_timezone_set('UTC');
