@@ -1,9 +1,6 @@
 <?php
-
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
-
 use Twilio\Rest\Client;
-
 $twilio = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 $toPhoneNumber = getenv('PHONE_NUMBER_5');
 $theMessage = "hello 2";

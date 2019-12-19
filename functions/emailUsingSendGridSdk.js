@@ -1,5 +1,7 @@
 exports.handler = function(context, event, callback) {
     theMsg = event.msg || "Hello Twilio Functions and SendGrid.";
+    // In the above, use "event.Body", if you are forwarding an SMS message.
+    //
     sendto = event.sendto || context.SENDGRID_EMAIL_TO;
     sendfrom = event.sendfrom || context.SENDGRID_EMAIL_FROM;
     sendInfo = "from: " + sendfrom
