@@ -18,12 +18,12 @@ $postVars = array(
  'FromCity' => 'SAN BRUNO',
  'Body' => 'hello 5',
  'FromCountry' => 'US',
- 'To' => '+16508668225',
+ 'To' => '+16505558225',
  'ToZip' => '94030',
  'NumSegments' => '1',
  'MessageSid' => 'SMbe794ce78f6b9fdf853d2acb76c080db',
  'AccountSid' => 'AC1b32414e8ab41e56e6393bcbba7d5a9d',
- 'From' => '+16508661199',
+ 'From' => '+16505551199',
  'ApiVersion' => '2010-04-01'
 );
 $validator = new RequestValidator($token);
