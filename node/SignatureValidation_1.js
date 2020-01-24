@@ -19,13 +19,13 @@
 // ++ ToZip => 94030
 // ++ NumSegments => 1
 // ++ MessageSid => SM5b6f34ffe3a4015a838430dfc96ba84f
-// ++ AccountSid => AC1b32414e8ab41e56e6393bcbba7d5a9d
-// ++ From => +16508661199
+// ++ AccountSid => AC1...d
+// ++ From => +16505551199
 // ++ ApiVersion => 2010-04-01
 // + End of list.
 // +++ Echo HTTP headings.++ Connection => close
 // ++ User-Agent => TwilioProxy/1.1
-// ++ X-Twilio-Signature => Y2qkTMkpIFtB7g8Eqp1NE0TZ6Lg=
+// ++ X-Twilio-Signature => Y...g=
 // ++ Host => tigerfarmpress.com
 // ++ Content-Type => application/x-www-form-urlencoded
 // ++ Content-Length => 413
@@ -40,7 +40,7 @@ const url = 'https://tigerfarmpress.com/cgi/echo1.php';
 // The post variables in Twilio's request
 // Note, the order of the parameters does not change the outcome.
 const params = {
- AccountSid: 'AC1b32414e8ab41e56e6393bcbba7d5a9d',
+ AccountSid: 'AC1...d',
  MessageSid: 'SMbe794ce78f6b9fdf853d2acb76c080db',
  SmsMessageSid: 'SMbe794ce78f6b9fdf853d2acb76c080db',
  SmsSid: 'SMbe794ce78f6b9fdf853d2acb76c080db',

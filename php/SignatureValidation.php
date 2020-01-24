@@ -1,13 +1,6 @@
 <?php
 echo "+++ Start.\xA";
 
-// {"ToCountry":"CA","ToState":"Alberta",
-// "SmsMessageSid":"SM99e3d1c71caeafef10cdf20ed9429276","NumMedia":"0","ToCity":"","FromZip":"94030",
-// "SmsSid":"SM99e3d1c71caeafef10cdf20ed9429276","FromState":"CA",
-// "SmsStatus":"received","FromCity":"SAN BRUNO","Body":"okay2","FromCountry":"US","To":"+15878063883","ToZip":"","NumSegments":"1",
-// "MessageSid":"SM99e3d1c71caeafef10cdf20ed9429276",
-// "AccountSid":"AC1b32414e8ab41e56e6393bcbba7d5a9d","From":"+16508668188","ApiVersion":"2010-04-01"} 
-
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Security\RequestValidator;
 $token = getenv('AUTH_TOKEN');
@@ -29,12 +22,12 @@ $postVars = array(
  'ToZip' => '94030',
  'NumSegments' => '1',
  'MessageSid' => 'SMbe794ce78f6b9fdf853d2acb76c080db',
- 'AccountSid' => 'AC1b32414e8ab41e56e6393bcbba7d5a9d',
+ 'AccountSid' => 'AC1...d',
  'From' => '+16505551199',
  'ApiVersion' => '2010-04-01'
 );
 $validator = new RequestValidator($token);
-$signature = 'Nz8c/Cm4u+9Zv6RBjugsXVZVVyQ=';
+$signature = 'N...Q=';
 $url = 'https://tigerfarmpress.com/cgi/echo1.php';
 if ($validator->validate($signature, $url, $postVars)) {
     echo "Confirmed to have come from Twilio.\xA";
