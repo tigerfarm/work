@@ -1,6 +1,13 @@
 <?php
 echo "+++ Start.\xA";
 
+// {"ToCountry":"CA","ToState":"Alberta",
+// "SmsMessageSid":"SM99e3d1c71caeafef10cdf20ed9429276","NumMedia":"0","ToCity":"","FromZip":"94030",
+// "SmsSid":"SM99e3d1c71caeafef10cdf20ed9429276","FromState":"CA",
+// "SmsStatus":"received","FromCity":"SAN BRUNO","Body":"okay2","FromCountry":"US","To":"+15878063883","ToZip":"","NumSegments":"1",
+// "MessageSid":"SM99e3d1c71caeafef10cdf20ed9429276",
+// "AccountSid":"AC1b32414e8ab41e56e6393bcbba7d5a9d","From":"+16508668188","ApiVersion":"2010-04-01"} 
+
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Security\RequestValidator;
 $token = getenv('AUTH_TOKEN');
