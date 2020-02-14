@@ -55,6 +55,11 @@ Send a message from the account used to make the request
 $ twilio api:core:messages:create --account-sid=$TWILIO_ACCOUNT_SID --from=+16505551111 --to=+16505552222 --body="Hello there."
 SID                                 From          To            Status  Direction     Date Sent
 SMd76001367dc84262b1e16183660e6ba4  +16505551111  +16505552222  queued  outbound-api           
+
+$ twilio api:core:messages:create --from=+16505551111 --to=+16505552222 --body="Hello there."
+SID                                 From          To            Status  Direction     Date Sent
+SMd76001367dc84262b1e16183660e6ba4  +16505551111  +16505552222  queued  outbound-api           
+
 ````
 
 #### Send an email message.
