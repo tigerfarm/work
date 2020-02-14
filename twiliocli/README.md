@@ -1,18 +1,11 @@
 # Getting Started with Twilio CLI
 
-#### Annoucement at Signal 2019
-
-+ Starts at 23 minutes, goes to 32 minutes:
-https://www.youtube.com/watch?v=TTo37IRoMz4
-
-This software is in pre-release status and not currently supported. However, soon to be supported.
-
-Twilio CLI project repository: https://github.com/twilio/twilio-cli.
-
 Twilio CLI quickstart, click [here](https://www.twilio.com/cli),
 [examples](https://www.twilio.com/docs/twilio-cli/examples).
 
 Click [here](https://www.twilio.com/docs/twilio-cli/general-usage) for Twilio documents on Twilio CLI.
+
+Twilio CLI project repository: https://github.com/twilio/twilio-cli.
 
 --------------------------------------------------------------------------------
 ### Install

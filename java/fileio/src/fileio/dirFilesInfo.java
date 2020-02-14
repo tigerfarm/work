@@ -70,6 +70,7 @@ public class dirFilesInfo {
             System.out.println("+ Syntax: dirFilesInfo <directory name>");
             return;
         }
+        // String theDirectoryName = args[0];
         String theDirectoryName = args[0];
 
         File dir = new File(theDirectoryName);
