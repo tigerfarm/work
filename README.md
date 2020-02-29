@@ -68,10 +68,15 @@ $ cat package.json
   "license": "MIT"
 }
 ````
-Ignoring files by adding the file name into: ".gitignore".
-If the file has already been uploaded, use the following to remove it from the repository. Once removed, it will no longer upload.
+Ignoring files or directories by adding the file name into: ".gitignore".
+If the file or directory has already been uploaded, use the following to remove it from the repository.
+Once removed, it will no longer upload.
 ````
 $ git rm --cached FILENAME
+$ git rm --cached derby.log
+
+$ git rm -r DIRECTORY-NAME
+$ git rm -r dist
 ````
 
 #### Create a new GitHub repository.

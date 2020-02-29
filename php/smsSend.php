@@ -4,11 +4,12 @@ use Twilio\Rest\Client;
 $client = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 $fromPhoneNumber = getenv('PHONE_NUMBER4');
 // $toPhoneNumber = getenv('PHONE_NUMBER3');
-$toPhoneNumber = getenv('MY_PHONE_NUMBER');
+// $toPhoneNumber = getenv('MY_PHONE_NUMBER');
+$toPhoneNumber = "650-483-7603";
 //
 $theMessageSupport = "Twilio support test \nmessage #3, \n newline.";
 $theMessageChinese = "你好";
-$theMessageOkay = "okay 2";
+$theMessageOkay = "okay 4";
 $theMessage = $theMessageSupport;
 //
 echo '++ Send SMS message, From: ' . $fromPhoneNumber . " to " . $toPhoneNumber . " :" . $theMessage . ":\xA";

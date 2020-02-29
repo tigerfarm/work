@@ -1,0 +1,27 @@
+{
+  "actions": [
+    {
+      "collect": {
+        "name": "convert_currencies",
+        "questions": [
+          {
+            "question": "What currency would you like to convert from?",
+            "name": "cur_from",
+            "type": "Twilio.CURRENCY"
+          },
+          {
+            "question": "What currency would you like to convert to?",
+            "name": "cur_to",
+            "type": "Twilio.CURRENCY"
+          }
+        ],
+        "on_complete": {
+          "redirect": {
+            "method": "POST",
+            "uri": "https://tangerine-toad-5117.twil.io/currency"
+          }
+        }
+      }
+    }
+  ]
+}
