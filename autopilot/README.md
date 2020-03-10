@@ -79,31 +79,31 @@ http://ratesapi.io/
 ````
 $ twilio autopilot:list
 SID                                 Unique Name  Friendly Name
-UA2af95823253d39764a2c9fa6e8e754bc  CurrencyBot  Course bot 
-$ twilio autopilot:tasks:create --assistant-sid UA2af95823253d39764a2c9fa6e8e754bc --unique-name convert_currencies
+UA6552e542c0524f037c9360368335c195  CurrencyBot  Course bot 
+$ twilio autopilot:tasks:create --assistant-sid UA6552e542c0524f037c9360368335c195 --unique-name convert_currencies
 Task "convert_currencies" was created
 ````
 I downloaded the sample CSV file, which is a text file of questions and requests.
 ````
-$ twilio autopilot:samples:upload --assistant-sid UA2af95823253d39764a2c9fa6e8e754bc --file-name convert_currencies_samples_01.csv
+$ twilio autopilot:samples:upload --assistant-sid UA6552e542c0524f037c9360368335c195 --file-name convert_currencies_samples_01.csv
 ? Select the Task you want to train with these Samples:  convert_currencies
 Samples was uploaded in "convert_currencies"
-$ twilio autopilot:export --assistant-sid UA2af95823253d39764a2c9fa6e8e754bc 
+$ twilio autopilot:export --assistant-sid UA6552e542c0524f037c9360368335c195 
 File exported in "CurrencyBot.json"
 ````
 I download actions, and added them into the default file,  CurrencyBot.json.
 ````
-$ twilio autopilot:update --schema CurrencyBot.json --unique-name UA2af95823253d39764a2c9fa6e8e754bc
+$ twilio autopilot:update --schema CurrencyBot.json --unique-name UA6552e542c0524f037c9360368335c195
 Assistant "CurrencyBot" was updated
-$ twilio autopilot:modelbuilds:create --assistant-sid UA2af95823253d39764a2c9fa6e8e754bc
+$ twilio autopilot:modelbuilds:create --assistant-sid UA6552e542c0524f037c9360368335c195
 ModelBuild status : enqueued
-$ twilio autopilot:simulate --assistant-sid UA2af95823253d39764a2c9fa6e8e754bc --text "Convert some currencies"
+$ twilio autopilot:simulate --assistant-sid UA6552e542c0524f037c9360368335c195 --text "Convert some currencies"
 Channel response
 ... "text" : "What currency would you like to convert from?"
-$ twilio autopilot:simulate --assistant-sid UA2af95823253d39764a2c9fa6e8e754bc --text "USD"
+$ twilio autopilot:simulate --assistant-sid UA6552e542c0524f037c9360368335c195 --text "USD"
 Channel response
 ... "text" : "What currency would you like to convert to?"
-$ twilio autopilot:simulate --assistant-sid UA2af95823253d39764a2c9fa6e8e754bc --text "CAD"
+$ twilio autopilot:simulate --assistant-sid UA6552e542c0524f037c9360368335c195 --text "CAD"
 Channel response
 ... "text" : "The current conversion rate from USD to CAD is 1.32."
 ````
@@ -113,6 +113,17 @@ Sent to the Function:
 https://api.ratesapi.io/api/latest?symbols=CAD&base=USD
 
 + Memory: {"twilio":{"collected_data":{"convert_currencies":{"answers":{"cur_from":{"answer":"USD"},"cur_to":{"answer":"CAD"}}}}}}
+
+To add the Twilio Function, requires Dependencies: got, 6.7.1.
+https://www.twilio.com/console/functions/configure
+
+Original: https://tangerine-toad-5117.twil.io/currency
+My Lab subaccount: https://pistachio-lobster-5847.twil.io/currency
+
+Currency codes
+https://en.wikipedia.org/wiki/ISO_4217#Active_codes
+
+"What currency would you like to convert from? For example: USD, CAD, GBP, JPY, AUD."
 
 --------------------------------------------------------------------------------
 Cheers...
