@@ -19,7 +19,7 @@
 // ++ ToZip => 94030
 // ++ NumSegments => 1
 // ++ MessageSid => SM5b6f34ffe3a4015a838430dfc96ba84f
-// ++ AccountSid => AC1b32414e8ab41e56e6393bcbba7d5a9d
+// ++ AccountSid => AC1...d
 // ++ From => +16508661199
 // ++ ApiVersion => 2010-04-01
 // + End of list.
