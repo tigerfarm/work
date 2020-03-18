@@ -10,7 +10,7 @@ foreach ($twilio->incomingPhoneNumbers->read() as $number) {
             . ", " . $number->friendlyName 
             . "\xA";
 }
-print("\xA+ Outcoming Phone numbers (Verified Caller IDs).". "\xA");
+print("\xA+ Outgoing Phone numbers (Verified Caller IDs).". "\xA");
 foreach ($twilio->outgoingCallerIds->read() as $number) {
     echo $number->dateCreated->format('Y-m-d') 
             . ", " . $number->sid 

@@ -1,3 +1,6 @@
+/*
+    https://www.twilio.com/docs/salesforce/receiving-message-status-updates-twilio#create-a-twilio-function
+ */
 exports.handler = function(context, event, callback) {
     console.log("Log message.");
     var theRequest = "https://test.salesforce.com/services/oauth2/token";
