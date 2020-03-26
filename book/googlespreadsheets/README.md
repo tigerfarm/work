@@ -13,31 +13,13 @@ Requirements:
 https://www.twilio.com/console/phone-numbers/search
 
 --------------------------------------------------------------------------------
-## Send
-
-Article, How to Send SMS from a Google Spreadsheet:
-https://www.twilio.com/blog/2016/02/send-sms-from-a-google-spreadsheet.html
-
-Following are simplified steps.
-
-### Steps to send SMS from a Google Spreadsheet
-
-Overview:
-+ Create a new Google Spreadsheet.
-+ Configure it for sending SMS messages.
-+ Copy your phone numbers into the Google spreadsheet.
-+ Run the Google spreadsheet computer script that will send an SMS message to each the phone numbers in the Google spreadsheet.
-
-+ Follow the instructions to create a Google spreadsheet. See the instructions below (Sending SMS Messages using a Google Spreadsheet). You will copy and paste your ACCOUNT SID, AUTH TOKEN, and Twilio phone number into Google spreadsheet script.
-+ In column A of the Google spreadsheet, enter your mobile phone number 3 times. In column B, enter a message to send.
-+ From the Google Spreadsheet Script Editor, run the script.
-++ The script will send 3 messages to your mobile phone.
+## Steps to send SMS from a Google Spreadsheet
 
 Setup Steps:
 + Create a Google spreadsheet. This requires you have a Google account. If you have a Gmail account, then you have a Google account.
 + In the spreadsheet, enter titles: Column A, "Phone numbers", column B, "Message body", column C, "Status".
 + For the phone numbers, set data type to text string. Click column A. Click the menu item and select: Format/Number/Plain text.
-+ Into the spreadsheet, load the phones number you will be sending SMS messages to.
++ Load your phones number into the spreadsheet's Column A, starting in row 2.
 + In the column next to the phone numbers, enter the message you wish to send.
 + From the spreadsheet menu, select Tools/Script Editor.
 + Copy and paste the script into the Google spreadsheet's Script Editor (replacing whatever is there by default):
@@ -85,6 +67,11 @@ function sendAll() {
 + In the Google Spreadsheet Script Editor, click Select function and select sendAll.
 + Save the updates.
 + Run the script. Your messages will be sent.
+
+
+Reference article, How to Send SMS from a Google Spreadsheet:
+https://www.twilio.com/blog/2016/02/send-sms-from-a-google-spreadsheet.html
+
 
 --------------------------------------------------------------------------------
 

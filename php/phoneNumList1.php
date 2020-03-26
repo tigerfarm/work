@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
-$twilio = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
+$twilio = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
 print("\xA+ Incoming Phone numbers: dateCreated, SID, phoneNumber, and friendlyName.". "\xA");
 foreach ($twilio->incomingPhoneNumbers->read() as $number) {
     echo $number->dateCreated->format('Y-m-d') 
