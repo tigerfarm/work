@@ -3,7 +3,6 @@ require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 $client = new Client('sid', 'auth');
 $fromPhoneNumber = '+16505550007';
-// $toPhoneNumber = getenv('PHONE_NUMBER3');
 $toPhoneNumber = getenv('PHONE_NUMBER2');
 //
 $theMessageSupport = "Twilio support test message #4.";
