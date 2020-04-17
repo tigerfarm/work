@@ -1,6 +1,17 @@
+// Add the following Dependencies:
+// @sendgrid/mail                  6.4.0
+// 
+// Add the following Environment Variables, using your values.
+// SENDGRID_API_KEY                SG.V...h-J...s
+// SENDGRID_EMAIL_FROM             me@example.com
+// SENDGRID_EMAIL_TO               you@example.com
+//
 exports.handler = function(context, event, callback) {
-    theMsg = event.msg || "Hello Twilio Functions and SendGrid.";
-    // In the above, use "event.Body", if you are forwarding an SMS message.
+    // If you are forwarding an SMS message, use "event.Body".
+    theMsg = event.Body || "Hello Twilio Functions and SendGrid.";
+    // If you are forwarding an SMS message, include the from phone number.
+    theMsgFrom = event.From || "Unknown";
+    theMsg = "From: " + theMsgFrom + "\n" + theMsg;
     //
     sendto = event.sendto || context.SENDGRID_EMAIL_TO;
     sendfrom = event.sendfrom || context.SENDGRID_EMAIL_FROM;
