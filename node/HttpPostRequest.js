@@ -1,5 +1,5 @@
 // To Run:
-// $ node /Users/dthurston/2017m/tfpWebsite/docroot/tech/booksJava/projects/NodeJS/public_html/HttpRequest.js 
+// $ node HttpRequest.js 
 // Sample: https://stackoverflow.com/questions/6158933/how-to-make-an-http-post-request-in-node-js?rq=1
 // Hello there.
 
