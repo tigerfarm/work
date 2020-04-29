@@ -5,6 +5,8 @@
 3setSync-Master.sh
 8setvarsSync-Labs.sh
 #
+*.log
+#
 /mediaStreams/node_modules/
 /mediaStreams/google_creds.json
 /mediaStreams/package-lock.json
