@@ -63,7 +63,7 @@ function sendAll() {
    }
 }
 ````
-+ In the script, enter your account SID (by replacing "your_account_SID") and auth token (by replacing "your_account_auth_token") into the script. You get these values from the first screen, when you log into the Twilio Console (http://twilio.com/console).Enter your Twilio phone number (by replacing "your_Twilio_phone_number") into the script, example: "+12223331234".
++ In the script, enter your account SID (by replacing "your_account_SID") and auth token (by replacing "your_account_auth_token") into the script. You get these values from the first screen, when you log into the Twilio Console (http://twilio.com/console). Enter your Twilio phone number (by replacing "your_Twilio_phone_number") into the script, example: "+12223331234".
 + In the Google Spreadsheet Script Editor, click Select function and select sendAll.
 + Save the updates.
 + Run the script. Your messages will be sent.
