@@ -15,6 +15,10 @@ https://www.twilio.com/console/phone-numbers/search
 --------------------------------------------------------------------------------
 ## Steps to send SMS from a Google Spreadsheet
 
+Screen print of a spreadsheet after sending messages:
+
+<img width="300px"  src="SendSms.jpg"/>
+
 Setup Steps:
 + Create a Google spreadsheet. This requires you have a Google account. If you have a Gmail account, then you have a Google account.
 + In the spreadsheet, enter titles: Column A, "Phone numbers", column B, "Message body", column C, "Status".
