@@ -14,7 +14,7 @@ $client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
 // $fromPhoneNumber = getenv('PHONE_NUMBER4');
 $fromPhoneNumber = getenv('MASTER_PHONE_NUMBER_1');
 // $toPhoneNumber = getenv('PHONE_NUMBER3');
-// $toPhoneNumber = getenv('MY_PHONE_NUMBER');
+$toPhoneNumber = getenv('MY_PHONE_NUMBER');
 // $toPhoneNumber = getenv('MASTER_PHONE_NUMBER_1');
 // $fromPhoneNumber = 'whatsapp:+14155551111';
 // $toPhoneNumber = 'whatsapp:+1605552222';
@@ -23,7 +23,7 @@ $fromPhoneNumber = getenv('MASTER_PHONE_NUMBER_1');
 // $theMessageSupport = "Twilio support test \nmessage #3, \n newline.";
 $theMessageSupport = "Twilio support test #4";
 $theMessageChinese = "你好";
-$theMessageOkay = "okay 4";
+$theMessageOkay = "J'aime l'été... éÉÑñ";
 $theWhatsAppTemplate = "Your Twilio code is 1234566";
 $theMessage = $theMessageOkay;
 //
@@ -34,7 +34,8 @@ $sms = $client->account->messages->create(
         $toPhoneNumber,
         array(
             'from' => $fromPhoneNumber,
-            'body' => $theMessage
+            'body' => $theMessage,
+            'smartEncoded' => false
             // "messagingServiceSid" => 'MG725e63c260d682775183d21b21523935',
             // "mediaUrl" => array("https://unnatural-seat-1873.twil.io/assets/MI01.mp3"),
             // Other media files I can send:
