@@ -14,7 +14,7 @@ $client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
 // $fromPhoneNumber = getenv('PHONE_NUMBER4');
 $fromPhoneNumber = getenv('MASTER_PHONE_NUMBER_1');
 // $toPhoneNumber = getenv('PHONE_NUMBER3');
-$toPhoneNumber = getenv('MY_PHONE_NUMBER');
+$toPhoneNumber = getenv('MY_PHONE_NUMBER') + "123";
 // $toPhoneNumber = getenv('MASTER_PHONE_NUMBER_1');
 // $fromPhoneNumber = 'whatsapp:+14155551111';
 // $toPhoneNumber = 'whatsapp:+1605552222';
@@ -44,5 +44,5 @@ $sms = $client->account->messages->create(
         //, 'statusCallback' => $echoUrl
         )
 );
-echo "+ Sent, SID: " . $sms->sid . "\xA";
+echo "+ Sent, SID: " . $sms->sid . " Status: " . $sms->status . "\xA";
 ?>
