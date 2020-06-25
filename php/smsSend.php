@@ -14,18 +14,18 @@ $client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
 // $fromPhoneNumber = getenv('PHONE_NUMBER4');
 $fromPhoneNumber = getenv('MASTER_PHONE_NUMBER_1');
 // $toPhoneNumber = getenv('PHONE_NUMBER3');
-$toPhoneNumber = getenv('MY_PHONE_NUMBER') + "123";
+$toPhoneNumber = getenv('MY_PHONE_NUMBER');
 // $toPhoneNumber = getenv('MASTER_PHONE_NUMBER_1');
 // $fromPhoneNumber = 'whatsapp:+14155551111';
 // $toPhoneNumber = 'whatsapp:+1605552222';
 // $toPhoneNumber = '+12098319168'; // : landline phone number';
 //
-// $theMessageSupport = "Twilio support test \nmessage #3, \n newline.";
-$theMessageSupport = "Twilio support test #4";
+$theMessageSupport = "Twilio support test \nmessage #3, \n newline.";
+// $theMessageSupport = "Twilio support test #4";
 $theMessageChinese = "你好";
 $theMessageOkay = "J'aime l'été... éÉÑñ";
 $theWhatsAppTemplate = "Your Twilio code is 1234566";
-$theMessage = $theMessageOkay;
+$theMessage = $theMessageSupport;
 //
 echo '++ Send SMS message, From: ' . $fromPhoneNumber . " to " . $toPhoneNumber . " :" . $theMessage . ":\xA";
 // $echoUrl = "https://tigerfarmpress.com/cgi/echo.php";

@@ -5,7 +5,8 @@ $client = new Client('sid', 'auth');
 $fromPhoneNumber = '+16505550007';
 $toPhoneNumber = getenv('PHONE_NUMBER2');
 //
-$theMessageSupport = "Twilio support test message #4.";
+// $theMessageSupport = "Twilio support test message #4.";
+$theMessageSupport = "Twilio support test \nmessage #3, \n newline.";
 $theMessageChinese = "你好";
 $theMessageOkay = "okay 2";
 $theMessage = $theMessageSupport;
