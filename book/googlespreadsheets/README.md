@@ -78,5 +78,53 @@ https://www.twilio.com/blog/2016/02/send-sms-from-a-google-spreadsheet.html
 
 
 --------------------------------------------------------------------------------
+## Lookup Phone Number from a Google Spreadsheet
+
+````
+function lookupFunction(thePhoneNumber) {
+  // ---------------------------------------------
+  // Get the JSON data.
+  var ACCOUNT_SID = "your_account_SID";
+  var ACCOUNT_TOKEN = "your_account_auth_token";
+  var options = {
+    "method" : "get"
+  };
+  options.headers = { 
+    "Authorization" : "Basic " + Utilities.base64Encode(ACCOUNT_SID + ":" + ACCOUNT_TOKEN)
+  };
+  var url="https://lookups.twilio.com/v1/PhoneNumbers/" + thePhoneNumber + "?Type=carrier";
+  var response = UrlFetchApp.fetch(url,options);
+  var dataAll = JSON.parse(response.getContentText());
+  thePhoneNumberFormatted = dataAll.phone_number;
+  theCarrier = dataAll.carrier.name;
+  theType = dataAll.carrier.type;
+}
+
+function myFunction() {
+  // ---------------------------------------------
+  // Parse the JSON data and put it into the spreadsheet's active page.
+  var theSheet = SpreadsheetApp.getActiveSheet();
+  var startRow = 2;
+  var theColumn = 2;
+  //
+  var numRows = theSheet.getLastRow() - 1;
+  var dataRange = theSheet.getRange(startRow, 1, numRows, 1)
+  var data = dataRange.getValues();
+  for (i in data) {
+    try {
+      lookupFunction( data[i] );
+      theSheet.getRange(startRow + Number(i), theColumn).setValue(thePhoneNumberFormatted);
+      theSheet.getRange(startRow + Number(i), theColumn+1).setValue(theType);
+      theSheet.getRange(startRow + Number(i), theColumn+2).setValue(theCarrier);
+    } catch(err) {
+      Logger.log(err);
+      status = "error";
+      theSheet.getRange(startRow + Number(i), 2).setValue("- Error running Lookup.");
+    }
+  }
+}
+````
+
+--------------------------------------------------------------------------------
 
 Cheers...
