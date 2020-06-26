@@ -80,6 +80,14 @@ https://www.twilio.com/blog/2016/02/send-sms-from-a-google-spreadsheet.html
 --------------------------------------------------------------------------------
 ## Lookup Phone Number from a Google Spreadsheet
 
+Sample output
+````
+Lookup        Phone number   Type        Carrier	
+16505551111   +16505551111   voip        Twilio US1 - Level3 - SMS-Sybase365/MMS-SVR	
+16505552222   +16505552222   mobile      Rogers Communications Canada Inc.	
+16505553333   +16505553333   landline    AT&T - PSTN	
+````
+Script:
 ````
 function lookupFunction(thePhoneNumber) {
   // ---------------------------------------------
