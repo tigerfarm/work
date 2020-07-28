@@ -324,7 +324,12 @@ COMMANDS
   api:conversations:v1:conversations:webhooks      TODO: Resource-level docs
 ````
 
+A Messaging Service SID is required to create Conversation.
 ````
+$ twilio api:messaging:v1:services:list
+SID                                 Friendly Name                     Date Created                 
+MG507...........................04  Send to echo program              Aug 17 2018 17:15:05 GMT-0700
+...
 $ twilio api:conversations:v1:conversations:create --friendly-name="Hello Conversation" --messaging-service-sid=$MESSAGING_SERVICE_SID
 SID                                 Friendly Name       Date Created                 
 CHc1312b8f953047e18dfee082ee4f1722  Hello Conversation  Aug 22 2019 17:56:12 GMT-0700
@@ -345,8 +350,8 @@ $ twilio api:conversations:v1:conversations:participants:create --help
 OPTIONS
   --conversation-sid=conversation-sid                                The unique id of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource).
   --identity=identity                                                Chat User identity string.
-  --messaging-binding.address=messaging-binding.address              The address of the participant's mobile device phone number.
-  --messaging-binding.proxy-address=messaging-binding.proxy-address  The address of the Twilio phone number that the participant is in contact with.
+  --messaging-binding.address=messaging-binding.address              The participant's mobile device phone number.
+  --messaging-binding.proxy-address=messaging-binding.proxy-address  Your Twilio phone number that the participant is in contact with.
 
 $ twilio api:conversations:v1:conversations:participants:create --conversation-sid=CHc1312b8f953047e18dfee082ee4f1722 --messaging-binding.proxy-address=$PHONE_NUMBER5 --messaging-binding.address=$MY_PHONE_NUMBER
 SID                                 Messaging Binding
@@ -451,6 +456,155 @@ MB3c0e35cb4a074a8d91eac8db02c473ec  {"proxyAddress":"+16508668225","type":"sms",
 twilio api:conversations:v1:conversations:remove --sid=CH9bf6c8b0012547eb9a0e6c127388a812
 The resource was deleted successfully
 
+````
+
+--------------------------------------------------------------------------------
+
+We have a new API for pulling logs, BulkExport API. Custom BulkExport Jobs allow you to create exports for any date range.
+BulkExport API overview, 
+https://www.twilio.com/docs/usage/bulkexport
++ The API provides an efficient mechanism for retrieving all of your activity logs from the Twilio platform on an ongoing basis, or for one-off downloads.
++ Using BulkExport, you can provide daily dumps of the previous day's Messages, eliminating the need to iterate through the Message list resource one page at a time to download your Message records.
+
+Export Custom Job Resource
+https://www.twilio.com/docs/usage/bulkexport/export-custom-job
+Custom Jobs allow you to create exports for any date range. If the date range spans multiple days, they will generate separate output days.
+Note, if there are no message logs on a particular day, then no report file is generated for that day.
+
+Day Resource
+https://www.twilio.com/docs/usage/bulkexport/day
+The Day resource allows you to download the export file containing a single day's data for your account and the requested data type.
+
+File output format,
+https://www.twilio.com/docs/usage/bulkexport#bulkexport-file-format
+
+````
+twilio api:bulkexports:v1:exports:jobs:create \
+    --resource-type Messages \
+    --friendly-name ExportJuly27b \
+    --start-day 2020-07-01 \
+    --end-day 2020-07-27 \
+    --properties=friendlyName \
+    --email dthurston@twilio.com \
+    --webhook-method GET \
+    --webhook-url http://www.example.com/echo
+
+$ twilio api:bulkexports:v1:exports:jobs:list --resource-type Messages --properties=friendlyName,jobSid
+Friendly Name  Job SID                           
+ExportJuly27   JS1dca2e0dfb7815c1fea2362d9f61c16c
+ExportJuly27   JS677d0986311ebb99cfa945425e1889c0
+ExportJuly27b  JSed5cd7ba5451574475d4d4bb890aed4f
+
+$ twilio api:bulkexports:v1:exports:jobs:remove --job-sid=JS677d0986311ebb99cfa945425e1889c0
+
+$ twilio api:bulkexports:v1:exports:jobs:fetch --job-sid=JSed5cd7ba5451574475d4d4bb890aed4f --properties=friendlyName,startDay,endDay,details
+Friendly Name  Start Day   End Day     Details                                            
+ExportJuly27   2020-07-01  2020-07-27  {"0":{"status":"Submitted","count":27,"days":null}}
+
+twilio api:bulkexports:v1:exports:days:fetch --resource-type Messages --day 2020-07-26
+````
+
+Following is using curl. This gives attribute names.
+````
+curl -X POST https://bulkexports.twilio.com/v1/Exports/Messages/Jobs \
+--data-urlencode "StartDay=2020-07-01" \
+--data-urlencode "EndDay=2020-07-27" \
+--data-urlencode "FriendlyName=ExportJuly27" \
+--data-urlencode "Email=dave@example.com" \
+--data-urlencode "WebhookMethod=GET" \
+--data-urlencode "WebhookUrl=http://www.example.com/echo" \
+-u TwilioAccountSID:TwilioAuthToken
+
+{"start_day": "2020-07-01", 
+"job_sid": "JS1dca2e0dfb7815c1fea2362d9f61c16c", 
+"friendly_name": "ExportJuly27", 
+"webhook_method": "GET", "details": null, 
+"end_day": "2020-07-27", 
+"webhook_url": "http://www.example.com/echo", 
+"email": "dthurston@twilio.com", "resource_type": null}
+
+curl -X GET 'https://bulkexports.twilio.com/v1/Exports/Jobs/JS1dca2e0dfb7815c1fea2362d9f61c16c' \
+-u TwilioAccountSID:TwilioAuthToken
+
+{
+"job_sid": "JS1dca2e0dfb7815c1fea2362d9f61c16c", 
+"start_day": "2020-07-01", 
+"end_day": "2020-07-27", 
+"url": "https://bulkexports.twilio.com/v1/Exports/Jobs/JS1dca2e0dfb7815c1fea2362d9f61c16c", 
+"friendly_name": "ExportJuly27", "webhook_method": "GET", 
+"webhook_url": "http://www.example.com/echo", 
+"email": "dave@example.com", 
+"resource_type": "Messages"
+"details": [{"status": "Submitted", "count": 27, "days": null}], 
+}
+
+curl -X GET 'https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=20' \
+-u TwilioAccountSID:TwilioAuthToken
+{
+"meta": {"page": 0, "page_size": 20, "first_page_url": "https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=20&Page=0", 
+"previous_page_url": null, 
+"url": "https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=20&Page=0", "next_page_url": null, "key": "days"}, 
+"days": []
+}
+
+
+curl -X GET 'https://bulkexports.twilio.com/v1/Exports/Jobs/JS1dca2e0dfb7815c1fea2362d9f61c16c' \
+-u TwilioAccountSID:TwilioAuthToken
+
+curl -X GET 'https://bulkexports.twilio.com/v1/Exports/Messages/Days/' \
+-u TwilioAccountSID:TwilioAuthToken
+
+{"meta": {"page": 0, "page_size": 50, "
+first_page_url": "https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=50&Page=0", 
+"previous_page_url": null, "url": "https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=50&Page=0", 
+"next_page_url": null, "key": "days"}, 
+"days": [
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-01", "resource_type": null, "size": 750}, 
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-02", "resource_type": null, "size": 945}, 
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-03", "resource_type": null, "size": 669}, 
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-10", "resource_type": null, "size": 997}, 
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-12", "resource_type": null, "size": 420}, 
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-13", "resource_type": null, "size": 454}, 
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-14", "resource_type": null, "size": 767}, 
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-15", "resource_type": null, "size": 1166}, 
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-16", "resource_type": null, "size": 825}, 
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-17", "resource_type": null, "size": 1146}, 
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-18", "resource_type": null, "size": 738}, 
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-19", "resource_type": null, "size": 1705}, 
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-21", "resource_type": null, "size": 554}, 
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-23", "resource_type": null, "size": 615}, 
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-24", "resource_type": null, "size": 449}, 
+{"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-26", "resource_type": null, "size": 398}
+]}
+
+curl -X GET 'https://bulkexports.twilio.com/v1/Exports/Messages/Days/2020-07-26' \
+-u TwilioAccountSID:TwilioAuthToken
+
+{"redirect_to": "https://...s3.amazonaws.com/daily/day%3D2020-07-26/type%3DMessages/account%3DACa...3/..."}
+
+Use a browser to download the file:
+{
+"status":"delivered",
+"account_sid":"ACa...3",
+"from":"+16505551111",
+"to":"+16505552222",
+"body":"+16505551111 : Hey there... do you want to try?",
+"num_segments":1,
+"date_sent":"2020-07-26T22:21:20Z","date_updated":"2020-07-26T22:21:20Z","price":"-0.00750",
+"date_created":"2020-07-26T22:21:20Z","error_code":0,
+"sid":"SM21f63b5f7629f4b69cd079b5c5225dcb","flags":65618,"messaging_service_sid":null,
+"direction":"outbound-reply","start":"2020-07-26","num_media":0}
+{
+"status":"received",
+"account_sid":"ACa...3",
+"from":"+16505551111",
+"to":"+16505552222",
+"body":"Hey there... do you want to try?",
+"num_segments":1,
+"date_sent":"2020-07-26T22:21:20Z","date_updated":"2020-07-26T22:21:20Z","price":"-0.00750",
+"date_created":"2020-07-26T22:21:20Z","error_code":0,
+"sid":"SM4ff301c8b05cbfd0ff415473190fd6f1","flags":17,"messaging_service_sid":null,
+"direction":"inbound","start":"2020-07-26","num_media":0}
 ````
 
 --------------------------------------------------------------------------------

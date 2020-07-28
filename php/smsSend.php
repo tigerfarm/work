@@ -12,10 +12,10 @@ $client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
 // $toPhoneNumber = getenv('MASTER_UK');
 //
 // $fromPhoneNumber = getenv('PHONE_NUMBER4');
-// $fromPhoneNumber = getenv('MASTER_PHONE_NUMBER_1');
+$fromPhoneNumber = getenv('MASTER_PHONE_NUMBER_1');
 // $fromPhoneNumber = 'DAVEnnec';
-$fromPhoneNumber = 'DAVENN';
-$toPhoneNumber = '+...';
+// $fromPhoneNumber = 'DAVENN';
+$toPhoneNumber = '+16515551212';
 // $toPhoneNumber = getenv('PHONE_NUMBER3');
 // $toPhoneNumber = getenv('MY_PHONE_NUMBER');
 // $toPhoneNumber = getenv('MASTER_PHONE_NUMBER_1');
