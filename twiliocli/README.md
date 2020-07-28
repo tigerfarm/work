@@ -7,6 +7,8 @@ Click [here](https://www.twilio.com/docs/twilio-cli/general-usage) for Twilio do
 
 Twilio CLI project repository: https://github.com/twilio/twilio-cli.
 
+Twilio CLI project repository issues: https://github.com/twilio/twilio-cli/issues
+
 --------------------------------------------------------------------------------
 ### Install
 
@@ -471,6 +473,10 @@ https://www.twilio.com/docs/usage/bulkexport/export-custom-job
 Custom Jobs allow you to create exports for any date range. If the date range spans multiple days, they will generate separate output days.
 Note, if there are no message logs on a particular day, then no report file is generated for that day.
 
+Job Resource
+https://www.twilio.com/docs/usage/bulkexport/job
+The Job resource allows you to view and delete the requests for exports of arbitrary date ranges, submitted through the ExportCustom Job.
+
 Day Resource
 https://www.twilio.com/docs/usage/bulkexport/day
 The Day resource allows you to download the export file containing a single day's data for your account and the requested data type.
@@ -501,8 +507,34 @@ $ twilio api:bulkexports:v1:exports:jobs:fetch --job-sid=JSed5cd7ba5451574475d4d
 Friendly Name  Start Day   End Day     Details                                            
 ExportJuly27   2020-07-01  2020-07-27  {"0":{"status":"Submitted","count":27,"days":null}}
 
+$ twilio api:bulkexports:v1:exports:days:fetch --resource-type=Messages --day= --properties=days
+[{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-01","resource_type":null,"size":750},
+{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-02","resource_type":null,"size":945},
+{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-03","resource_type":null,"size":669},
+{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-10","resource_type":null,"size":997},
+{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-12","resource_type":null,"size":420},
+{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-13","resource_type":null,"size":454},
+{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-14","resource_type":null,"size":767},
+{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-15","resource_type":null,"size":1166},
+{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-16","resource_type":null,"size":825},
+{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-17","resource_type":null,"size":1146},
+{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-18","resource_type":null,"size":738},
+{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-19","resource_type":null,"size":1705},
+{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-21","resource_type":null,"size":554},
+{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-23","resource_type":null,"size":615},
+{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-24","resource_type":null,"size":449},
+{"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-26","resource_type":null,"size":398}
+]
+
 Following doesn't work:
 $ twilio api:bulkexports:v1:exports:days:fetch --resource-type=Messages --day=2020-07-26
+
+$ twilio api:bulkexports:v1:exports:jobs:fetch --job-sid=JSed5cd7ba5451574475d4d4bb890aed4f --properties=friendlyName,startDay,endDay,details
+Friendly Name  Start Day   End Day     Details                                            
+ExportJuly27b  2020-07-01  2020-07-27  {"0":{"status":"Completed","count":27,"days":null}}
+$ twilio api:bulkexports:v1:exports:days:fetch --resource-type=Messages --day=2020-07-26
+ » Error code undefined from Twilio: undefined. See undefined for more info.
+
 ````
 
 Following is complete and uses curl. I can create and download reports using curl.
