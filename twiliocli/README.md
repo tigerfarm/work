@@ -501,10 +501,11 @@ $ twilio api:bulkexports:v1:exports:jobs:fetch --job-sid=JSed5cd7ba5451574475d4d
 Friendly Name  Start Day   End Day     Details                                            
 ExportJuly27   2020-07-01  2020-07-27  {"0":{"status":"Submitted","count":27,"days":null}}
 
-twilio api:bulkexports:v1:exports:days:fetch --resource-type Messages --day 2020-07-26
+Following doesn't work:
+$ twilio api:bulkexports:v1:exports:days:fetch --resource-type=Messages --day=2020-07-26
 ````
 
-Following is using curl. This gives attribute names.
+Following is complete and uses curl. I can create and download reports using curl.
 ````
 curl -X POST https://bulkexports.twilio.com/v1/Exports/Messages/Jobs \
 --data-urlencode "StartDay=2020-07-01" \
