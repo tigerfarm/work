@@ -526,18 +526,18 @@ $ twilio api:bulkexports:v1:exports:days:fetch --resource-type=Messages --day= -
 {"friendly_name":"ExportJuly27b","create_date":"2020-07-27","day":"2020-07-26","resource_type":null,"size":398}
 ]
 
-Following doesn't work:
-$ twilio api:bulkexports:v1:exports:days:fetch --resource-type=Messages --day=2020-07-26
-
 $ twilio api:bulkexports:v1:exports:jobs:fetch --job-sid=JSed5cd7ba5451574475d4d4bb890aed4f --properties=friendlyName,startDay,endDay,details
 Friendly Name  Start Day   End Day     Details                                            
 ExportJuly27b  2020-07-01  2020-07-27  {"0":{"status":"Completed","count":27,"days":null}}
-$ twilio api:bulkexports:v1:exports:days:fetch --resource-type=Messages --day=2020-07-26
- » Error code undefined from Twilio: undefined. See undefined for more info.
-
 ````
 
-Following is complete and uses curl. I can create and download reports using curl.
+Following doesn't work. I've tried various options.
+````
+$ twilio api:bulkexports:v1:exports:days:fetch --resource-type=Messages --day=2020-07-26
+ » Error code undefined from Twilio: undefined. See undefined for more info.
+````
+
+Following is complete steps using curl. I can create and download reports using curl.
 ````
 curl -X POST https://bulkexports.twilio.com/v1/Exports/Messages/Jobs \
 --data-urlencode "StartDay=2020-07-01" \
@@ -579,7 +579,6 @@ curl -X GET 'https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=20
 "url": "https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=20&Page=0", "next_page_url": null, "key": "days"}, 
 "days": []
 }
-
 
 curl -X GET 'https://bulkexports.twilio.com/v1/Exports/Jobs/JS1dca2e0dfb7815c1fea2362d9f61c16c' \
 -u TwilioAccountSID:TwilioAuthToken

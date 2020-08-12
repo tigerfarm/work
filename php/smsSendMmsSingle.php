@@ -3,11 +3,11 @@ require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 // $client = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 // $fromPhoneNumber = getenv('PHONE_NUMBER4');
-$toPhoneNumber = getenv('MY_PHONE_NUMBER');   // MY_PHONE_NUMBER PHONE_NUMBER3
+// $toPhoneNumber = getenv('MY_PHONE_NUMBER');   // MY_PHONE_NUMBER PHONE_NUMBER3
 $client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
 $fromPhoneNumber = getenv('MASTER_PHONE_NUMBER_2');
 // $toPhoneNumber = getenv('MASTER_PHONE_NUMBER_1');
-// $toPhoneNumber = getenv('MY_PHONE_NUMBER');
+$toPhoneNumber = getenv('MY_PHONE_NUMBER');
 // $theMessage = "Twilio support test message #1, single media image.";
 //             1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
 //                                                                                                              100                                                                                                 200                                                                                                 300                                                                                                 400                                                                                                 500                                                                                                 600                                                                                                 700                                                                                                 800                                                                                                 900                                                                                                1000                                                                                                1100                                                                                                1200                                                                                                1300                                                                                                1400                                                                                                1500                                                                                                1600
@@ -20,7 +20,8 @@ $sms = $client->account->messages->create(
         'from' => $fromPhoneNumber,
         'body' => $theMessage,
         "mediaUrl" => array(
-            "https://rocket.eth0.com.br/file-upload/J4KorbiEkFYgKwaHc/Audio%20record.mp3?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTMxOTkzNDYsIm5iZiI6MTU5MzE5OTM0NiwiZXhwIjoxNTkzMjAyOTQ2LCJhdWQiOiJSb2NrZXRDaGF0IiwiY29udGV4dCI6eyJyaWQiOiI5ZzdORDdZWG1kalA2dk1LZiIsInVzZXJJZCI6IkNtR3R1V3BKaWlLQjlUUUh1IiwiZmlsZUlkIjoiSjRLb3JiaUVrRllnS3dhSGMifX0.rxIEe5mxC_bhoj4LPH6P7eGiS-TgdFaQS_hinrvNxoA"
+            "https://unnatural-seat-1873.twil.io/assets/sampleMmsImag2e.png"
+            // "https://rocket.eth0.com.br/file-upload/J4KorbiEkFYgKwaHc/Audio%20record.mp3?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTMxOTkzNDYsIm5iZiI6MTU5MzE5OTM0NiwiZXhwIjoxNTkzMjAyOTQ2LCJhdWQiOiJSb2NrZXRDaGF0IiwiY29udGV4dCI6eyJyaWQiOiI5ZzdORDdZWG1kalA2dk1LZiIsInVzZXJJZCI6IkNtR3R1V3BKaWlLQjlUUUh1IiwiZmlsZUlkIjoiSjRLb3JiaUVrRllnS3dhSGMifX0.rxIEe5mxC_bhoj4LPH6P7eGiS-TgdFaQS_hinrvNxoA"
             // "https://unnatural-seat-1873.twil.io/assets/Cfile.mp3"
             // "https://unnatural-seat-1873.twil.io/assets/Time01.mp3"
             /// Success: "https://www.tigerfarmpress.com/StacyDavid/netscape-fountain2a.jpg"
