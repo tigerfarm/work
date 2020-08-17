@@ -11,7 +11,7 @@ client.messages.create({
     body: theMsg
 }, function (err, message) {
     if (err) {
-        console.error("- Error: ", err.message);
+        console.error("- Error: " + err.message + ", code: " + err.code);
         console.log("--- Exit.");
     }
 }).then((message) => console.log("+ Message sent, SID: " + message.sid));
