@@ -1,5 +1,7 @@
 # Autopilot Course Notes
 
+My sample, CurrencyBot, is in my Labs subaccount.
+
 To take this course please log on to https://www.twiliotraining.com/users/sign_in
 
 Direct to the course,
