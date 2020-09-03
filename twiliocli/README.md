@@ -461,6 +461,7 @@ The resource was deleted successfully
 ````
 
 --------------------------------------------------------------------------------
+### BulkExport using Twilio CLI
 
 We have a new API for pulling logs, BulkExport API. Custom BulkExport Jobs allow you to create exports for any date range.
 BulkExport API overview, 
@@ -531,11 +532,13 @@ Friendly Name  Start Day   End Day     Details
 ExportJuly27b  2020-07-01  2020-07-27  {"0":{"status":"Completed","count":27,"days":null}}
 ````
 
-Following doesn't work. I've tried various options.
+Following needs to be re-tested.
 ````
 $ twilio api:bulkexports:v1:exports:days:fetch --resource-type=Messages --day=2020-07-26
  » Error code undefined from Twilio: undefined. See undefined for more info.
 ````
+
+### BulkExport using cURL
 
 Following is complete steps using curl. I can create and download reports using curl.
 ````
