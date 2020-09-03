@@ -579,7 +579,8 @@ curl -X GET 'https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=20
 {
 "meta": {"page": 0, "page_size": 20, "first_page_url": "https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=20&Page=0", 
 "previous_page_url": null, 
-"url": "https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=20&Page=0", "next_page_url": null, "key": "days"}, 
+"url": "https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=20&Page=0", "next_page_url": null, "key": "days"
+}, 
 "days": []
 }
 
@@ -617,7 +618,7 @@ curl -X GET 'https://bulkexports.twilio.com/v1/Exports/Messages/Days/2020-07-26'
 
 {"redirect_to": "https://...s3.amazonaws.com/daily/day%3D2020-07-26/type%3DMessages/account%3DACa...3/..."}
 
-Use a browser to download the file:
+Use a browser to download the file using the above URL:
 {
 "status":"delivered",
 "account_sid":"ACa...3",
