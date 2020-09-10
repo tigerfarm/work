@@ -1,9 +1,9 @@
 # Getting Started with Twilio CLI
 
-Twilio CLI quickstart, click [here](https://www.twilio.com/cli),
-[examples](https://www.twilio.com/docs/twilio-cli/examples).
-
-Click [here](https://www.twilio.com/docs/twilio-cli/general-usage) for Twilio documents on Twilio CLI.
+Twilio CLI [overview](https://www.twilio.com/cli),
+[quickstart](https://www.twilio.com/docs/twilio-cli/quickstart),
+[examples](https://www.twilio.com/docs/twilio-cli/examples),
+[general-usage](https://www.twilio.com/docs/twilio-cli/general-usage).
 
 Twilio CLI project repository: https://github.com/twilio/twilio-cli.
 
@@ -469,21 +469,18 @@ https://www.twilio.com/docs/usage/bulkexport
 + The API provides an efficient mechanism for retrieving all of your activity logs from the Twilio platform on an ongoing basis, or for one-off downloads.
 + Using BulkExport, you can provide daily dumps of the previous day's Messages, eliminating the need to iterate through the Message list resource one page at a time to download your Message records.
 
-Export Custom Job Resource
-https://www.twilio.com/docs/usage/bulkexport/export-custom-job
+[Export Custom Job Resource](https://www.twilio.com/docs/usage/bulkexport/export-custom-job),
 Custom Jobs allow you to create exports for any date range. If the date range spans multiple days, they will generate separate output days.
 Note, if there are no message logs on a particular day, then no report file is generated for that day.
 
-Job Resource
-https://www.twilio.com/docs/usage/bulkexport/job
+[Job Resource](https://www.twilio.com/docs/usage/bulkexport/job),
 The Job resource allows you to view and delete the requests for exports of arbitrary date ranges, submitted through the ExportCustom Job.
 
-Day Resource
-https://www.twilio.com/docs/usage/bulkexport/day
+[Day Resource](https://www.twilio.com/docs/usage/bulkexport/day),
 The Day resource allows you to download the export file containing a single day's data for your account and the requested data type.
 
-File output format,
-https://www.twilio.com/docs/usage/bulkexport#bulkexport-file-format
+[File output format](https://www.twilio.com/docs/usage/bulkexport#bulkexport-file-format),
+The messages file format is a sequence of JSON records, similar to the Message Resource.
 
 ````
 twilio api:bulkexports:v1:exports:jobs:create \
@@ -495,6 +492,9 @@ twilio api:bulkexports:v1:exports:jobs:create \
     --email dthurston@twilio.com \
     --webhook-method GET \
     --webhook-url http://www.example.com/echo
+
+Friendly Name
+ExportJuly27b
 
 $ twilio api:bulkexports:v1:exports:jobs:list --resource-type Messages --properties=friendlyName,jobSid
 Friendly Name  Job SID                           
