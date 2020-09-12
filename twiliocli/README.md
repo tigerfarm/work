@@ -184,9 +184,9 @@ COMMANDS
   api:core:incoming-phone-numbers:update            Update an incoming-phone-number instance.
 ...
 ````
-Note, when using the list command, don't include "api:core:".
+List command,
 ````
-$ twilio incoming-phone-number:list
+$ twilio api:core:incoming-phone-numbers:list
 SID                                 Phone Number   Friendly Name 
 PN1..............................Z  +16505557890   (650) 555-7890
 PN2..............................W  +16505552357   (650) 555-2357
