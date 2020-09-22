@@ -8,6 +8,8 @@ const client = require('twilio')(accountSid, authToken);
 client.notify.services.each(services =>
     console.log("+ " + services.sid
             + " " + services.friendlyName
+            + " " + services.deliveryCallbackUrl
+            + " " + services.deliveryCallbackEnabled
             )
 );
 

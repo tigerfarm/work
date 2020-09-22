@@ -1,18 +1,21 @@
 // -----------------------------------------------------------------------------
-console.log("+++ List Services.");
+console.log("+++ Update a Service.");
 
-const accountSid = process.env.ACCOUNT_SID;
-const authToken = process.env.AUTH_TOKEN;
+const accountSid = process.env.MASTER_ACCOUNT_SID;
+const authToken = process.env.MASTER_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
-client.chat.services(process.env.CHAT_SERVICE_SID)
+client.notify.services('IS285725e217895f21b6bf0c1546c81f14')
         .update({
-            'notifications.addedToChannel.enabled': true,
-            'notifications.addedToChannel.sound': 'default',
-            'notifications.addedToChannel.template': 'A New message in ${CHANNEL} from ${USER}: ${MESSAGE} test: ${abc}'
+            friendlyName: 'p1serviceB',
+            deliveryCallbackUrl: 'http://www.tigerfarmpress.com/echo',
+            deliveryCallbackEnabled: true
         })
         .then(service => console.log(
-                    "+ Updated notify service SID: " + service.sid + " " + service.friendlyName
+                    "+ Updated: " + service.sid
+                    + " " + service.friendlyName
+                    + " " + service.deliveryCallbackUrl
+                    + " " + service.deliveryCallbackEnabled
                     ));
 
 // -----------------------------------------------------------------------------
