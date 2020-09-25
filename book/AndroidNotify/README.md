@@ -95,13 +95,20 @@ public class TwilioFunctionsAPI {
     public final static String BASE_SERVER_URL = "https://about-time-2357.twil.io";
 ````
 
+Run the app.
+
+When the app is running, enter Notify Binding identity and tap Register Binding.
+The app will make a call to the Twilio Binding Function which creates a Notify Binding for the identity.
+
+Can use the following Node program to list the binding, [listBindings.js](listBindings.js)
+
 #### Send a notification:
 
 Use the send notification Function to send a notification to the app user.
 
 https://about-time-2357.twil.io/send-notification?identity=user1&body=Hello
 
-Or, use the following Node program, [sendNotification.js](sendNotification.js)
+Or, use the following Node program to send a notification, [sendNotification.js](sendNotification.js)
 
 --------------------------------------------------------------------------------
 
