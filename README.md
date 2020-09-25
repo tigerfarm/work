@@ -8,6 +8,21 @@ and create my personal website [https://tigerfarmpress.com](https://tigerfarmpre
 --------------------------------------------------------------------------------
 ## Create a GitHub Repository that will be deployed to Heroku
 
+If the repository exists on GitHub, can clone the repository using command line.
+For example,
+````
+cd /Users/user/Projects/
+$ mkdir notify
+$ cd notify/
+
+$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+--- example ---
+$ git clone https://github.com/TwilioDevEd/notifications-quickstart-android
+...
+$ ls -l
+notifications-quickstart-android
+````
+
 Create a local project repository directory on your computer.
 ````
 $ mkdir myapp
