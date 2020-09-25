@@ -1,6 +1,12 @@
 # Twilio Notify Android Quickstart
 
-#### Clone the repository
+Once all requirements are configured and the Notify App compilted,
+you will install the Notify App on your phone.
+Run the app and register your user identity.
+
+User Notify App >> Binding Twilio Function
+
+#### Clone the Twilio Notify App repository
 
 ````
 cd /Users/user/Projects/
@@ -12,6 +18,8 @@ $ ls -l
 notifications-quickstart-android
 ````
 
+#### Create a Notify Service
+
 [Tutorial docs](https://www.twilio.com/docs/notify/quickstart/android)
 
 Set up a Notify Service Instance. Example SID:
@@ -19,39 +27,30 @@ Set up a Notify Service Instance. Example SID:
 IS6b86eea51935a036f0ae440652761e8a
 ````
 
-#### Configuring Android Push Notifications
+#### Create a Google App Mapping to the Notify App
 
-Documentation [link](https://www.twilio.com/docs/notify/configure-android-push-notifications).
+Configuring Android Push Notifications
+documentation [link](https://www.twilio.com/docs/notify/configure-android-push-notifications).
 
 Create a Google Firebase [project](https://console.firebase.google.com/)
+that will will map to the Notify App.
 ````
 Name: tignotify
 Disable:  Enable Google Analytics for this project
 Click Create Project, Your new project is ready. Click Continue.
 Get started by adding Firebase to your app ... Click Android icon.
-Android package name: com.twilio.notify.quickstart
+Use the Android package name that is used in the cloned app: "com.twilio.notify.quickstart".
 Click register app.
-Download config file, click Download google-services.json. Download to the project's app directory.
+Download config file, click Download google-services.json.
+Download to the Notify app project's app directory.
+````
 
+List the google-services.json.
+````
 $ pwd
 /Users/user/Projects/android/notify/notifications-quickstart-android/app
 $ cat google-services.json
 ...
-````
-
-#### Create a Functions.
-
-Go to [here](https://www.twilio.com/console/functions/manage)
-````
-Select, Twilio Notify Quickstart.
-Click Create. Enter the value of the Notify Service Instance SID, for example:
-IS6b86eea51935a036f0ae440652761e8a
-Click Create. 2 Functions are created:
-+ Twilio Notify Quickstart (Register binding)
-+ Twilio Notify Quickstart (Send notification)
-Register binding:
-https://about-time-2357.twil.io/register-binding
-https://unnatural-seat-1873.twil.io/register-binding
 ````
 
 #### Add the Google FCM token into the Twilio Notify Push Credentials
@@ -67,6 +66,42 @@ FCM Secret: AAA...oTx (Server key Token)
 Click Save.
 ````
 In the tignotify Notify Service Instance, select FCM CREDENTIAL SID: tignotify. Click Save.
+
+#### Create Twilio Functions.
+
++ One Function for the Notify app to register a user identity that can receive notifications.
++ One to make a Twilio Notify API request to send a notification to the user running the Notify app.
+
+To create the Functions, click to [here](https://www.twilio.com/console/functions/manage).
+````
+Select, Twilio Notify Quickstart.
+Click Create. Enter the value of the Notify Service Instance SID, for example:
+IS6b86eea51935a036f0ae440652761e8a
+Click Create. 2 Functions are created:
++ Twilio Notify Quickstart (Register binding)
++ Twilio Notify Quickstart (Send notification)
+Example Register binding URL:
+https://about-time-2357.twil.io/register-binding
+````
+
+In the application, enter the Twilio Function Register binding URL.
+````
+Example: https://about-time-2357.twil.io/register-binding
+Don't include, "/register-binding".
+
+public class TwilioFunctionsAPI {
+    // The URL below should be the domain for your Twilio Functions, without the trailing slash:
+    // Example: https://sturdy-concrete-1234.twil.io
+    public final static String BASE_SERVER_URL = "https://about-time-2357.twil.io";
+````
+
+#### Send a notification:
+
+Use the send notification Function to send a notification to the app user.
+
+https://about-time-2357.twil.io/send-notification?identity=user1&body=Hello
+
+Or, use the following Node program, [sendNotification.js](sendNotification.js)
 
 --------------------------------------------------------------------------------
 
