@@ -1,11 +1,16 @@
 # Twilio Notify Android Quickstart
 
-Once all requirements are configured and the Notify App compilted,
-you will install the Notify App on your phone.
+Once all requirements are configured and the Notify App compiled,
+I ran the Notify App on my phone.
 Run the app and register your user identity.
+````
+User Notify App >> Binding Twilio Function >> Twilio creates a Notify Binding.
 
-User Notify App >> Binding Twilio Function
-
+Program to send a notification >> Twilio >> Google >> phone app
+Requires a mapping from Twilio to the phone app, through Google.
+Create a Google project FCM phone app token.
+The Google token, is store by Twilio, to address the phone app.
+````
 #### Clone the Twilio Notify App repository
 
 ````
@@ -22,7 +27,7 @@ notifications-quickstart-android
 
 [Tutorial docs](https://www.twilio.com/docs/notify/quickstart/android)
 
-Set up a Notify Service Instance. Example SID:
+Create a Notify Service Instance. Example SID:
 ````
 IS6b86eea51935a036f0ae440652761e8a
 ````
@@ -102,6 +107,12 @@ The app will make a call to the Twilio Binding Function which creates a Notify B
 
 Can use the following Node program to list the binding, [listBindings.js](listBindings.js)
 
+Or, use a curl command.
+````
+curl -X GET 'https://notify.twilio.com/v1/Services/IS6b86eea51935a036f0ae440652761e8a/Bindings?PageSize=20' \
+-u $MASTER_ACCOUNT_SID:$MASTER_AUTH_TOKEN
+````
+
 #### Send a notification:
 
 Use the send notification Function to send a notification to the app user.
@@ -109,6 +120,14 @@ Use the send notification Function to send a notification to the app user.
 https://about-time-2357.twil.io/send-notification?identity=user1&body=Hello
 
 Or, use the following Node program to send a notification, [sendNotification.js](sendNotification.js)
+
+Or, use a curl command.
+````
+curl -X POST https://notify.twilio.com/v1/Services/IS6b86eea51935a036f0ae440652761e8a/Notifications \
+    -d 'Identity=davea' \
+    -d 'Body=Hello Bob' \
+    -u $MASTER_ACCOUNT_SID:$MASTER_AUTH_TOKEN
+````
 
 --------------------------------------------------------------------------------
 
