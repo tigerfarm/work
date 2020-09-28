@@ -112,13 +112,13 @@ namespace twSendSms
 		{
 			Console.WriteLine("+++ Start: twSendSms");
 
-			var accountSid = "ACae0e356ccba96d16d8d4f6f9518684a3";
-			var authToken = "d396d26bc92ad7562763410a1ad1c89d";
+			var accountSid = "your_account_sid";
+			var authToken = "your_account_token";
 			TwilioClient.Init(accountSid, authToken);
 
 			var message = MessageResource.Create(
-				to: new PhoneNumber("+16504837603"),
-				from: new PhoneNumber("+18182103863"),
+				to: new PhoneNumber("+16505552222"),
+				from: new PhoneNumber("+16505551111"),
 				body: "Hello from C#"
 			);
 			Console.WriteLine(message.Sid);

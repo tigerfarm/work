@@ -1,8 +1,11 @@
 # Twilio Notify Android Quickstart
 
+Following the steps I used to set up required configurations and run the sample Twilio notification app on my phone.
+This allows notification to be send and received on the phone that running the notification app.
+
 Once all requirements are configured and the Notify App compiled,
 I ran the Notify App on my phone.
-Run the app and register your user identity.
+In the app, I register your user identity which created a Twilio Notify Binding.
 ````
 User Notify App >> Binding Twilio Function >> Twilio creates a Notify Binding.
 
@@ -77,7 +80,7 @@ In the tignotify Notify Service Instance, select FCM CREDENTIAL SID: tignotify. 
 + One Function for the Notify app to register a user identity that can receive notifications.
 + One to make a Twilio Notify API request to send a notification to the user running the Notify app.
 
-To create the Functions, click to [here](https://www.twilio.com/console/functions/manage).
+To create the Functions in the Twilio Console, click [here](https://www.twilio.com/console/functions/manage).
 ````
 Select, Twilio Notify Quickstart.
 Click Create. Enter the value of the Notify Service Instance SID, for example:
@@ -98,6 +101,7 @@ public class TwilioFunctionsAPI {
     // The URL below should be the domain for your Twilio Functions, without the trailing slash:
     // Example: https://sturdy-concrete-1234.twil.io
     public final static String BASE_SERVER_URL = "https://about-time-2357.twil.io";
+    ...
 ````
 
 Run the app.
@@ -128,6 +132,8 @@ curl -X POST https://notify.twilio.com/v1/Services/IS6b86eea51935a036f0ae4406527
     -d 'Body=Hello Bob' \
     -u $MASTER_ACCOUNT_SID:$MASTER_AUTH_TOKEN
 ````
+
+The notification will be received on the phone that is running the notification app.
 
 --------------------------------------------------------------------------------
 
