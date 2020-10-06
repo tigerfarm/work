@@ -110,7 +110,13 @@ When the app is running, enter Notify Binding identity and tap Register Binding.
 The app will make a call to the Twilio Binding Function which creates a Notify Binding for the identity.
 
 Can use the following Node program to list the binding, [listBindings.js](listBindings.js)
-
+````
+$ node listBindings.js
++++ List bindings.
++ List, IS6b86eea51935a036f0ae440652761e8a: SID bindingType:identity<address>)
++ BS11...74 fcm:davea<fa...7V>
+$
+````
 Or, use a curl command.
 ````
 curl -X GET 'https://notify.twilio.com/v1/Services/IS6b86eea51935a036f0ae440652761e8a/Bindings?PageSize=20' \
@@ -129,7 +135,15 @@ Or, use a curl command.
 ````
 curl -X POST https://notify.twilio.com/v1/Services/IS6b86eea51935a036f0ae440652761e8a/Notifications \
     -d 'Identity=davea' \
-    -d 'Body=Hello Bob' \
+    -d 'Body=Hello 13' \
+    -u $MASTER_ACCOUNT_SID:$MASTER_AUTH_TOKEN
+````
+
+````
+curl -X POST https://notify.twilio.com/v1/Services/IS6b86eea51935a036f0ae440652761e8a/Notifications \
+    -d 'Identity=davea' \
+    -d 'Body=Hello 14' \
+    -d 'Title=Dave here' \
     -u $MASTER_ACCOUNT_SID:$MASTER_AUTH_TOKEN
 ````
 
