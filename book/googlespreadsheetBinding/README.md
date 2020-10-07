@@ -8,10 +8,8 @@ Sample Google Spreadsheet script:
 function myFunction() {
   // -------------------------------------------------------------------------------
   // Get the JSON data.
-  // var ACCOUNT_SID = "account_sid";
-  // var ACCOUNT_TOKEN = "account_auth_token";
-  var ACCOUNT_SID = "ACae0e356ccba96d16d8d4f6f9518684a3";
-  var ACCOUNT_TOKEN = "42b42e2ff808e1157d98562ae8547ea2";
+  var ACCOUNT_SID = "account_sid";
+  var ACCOUNT_TOKEN = "account_auth_token";
   var NOTIFY_SID = "IS6b86eea51935a036f0ae440652761e8a";
   var numberToRetrieve = 20;
   var options = { "method" : "get" };
