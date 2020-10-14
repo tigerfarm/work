@@ -7,9 +7,9 @@ Once all requirements are configured and the Notify App compiled,
 I ran the Notify App on my phone.
 In the app, I register a user identity. The identity is used on the server side to create a Twilio Notify Binding.
 ````
-User Notify App >> Binding Twilio Function >> Twilio creates a Notify Binding.
+User Notify App >> Twilio Function: register binding >> Twilio creates a Notify Binding.
 
-Program to send a notification >> Twilio >> Google >> Twilio sample phone app
+Laptop program to send a notification >> Twilio >> Google >> Twilio Notify phone app
 Requires a mapping from Twilio to the phone app, through Google.
 Create a Google project FCM phone app token.
 The Google token, is stored by Twilio to address the phone app.
