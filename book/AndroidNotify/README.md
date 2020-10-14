@@ -28,7 +28,8 @@ notifications-quickstart-android
 
 #### Create a Notify Service
 
-Create a Notify Service Instance ([Tutorial docs](https://www.twilio.com/docs/notify/quickstart/android)). Example SID:
+Create a Notify Service Instance: [Twilio Console link](https://www.twilio.com/console/notify/services) 
+([Tutorial docs](https://www.twilio.com/docs/notify/quickstart/android)). Example SID:
 ````
 IS6b86eea51935a036f0ae440652761e8a
 ````
