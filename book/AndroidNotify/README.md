@@ -17,7 +17,7 @@ The Google token, is stored by Twilio to address the phone app.
 #### Clone the Twilio Notify App repository
 
 ````
-cd /Users/user/Projects/
+cd /Users/<user>/Projects/
 $ mkdir notify
 $ cd notify/
 $ git clone https://github.com/TwilioDevEd/notifications-quickstart-android
@@ -28,9 +28,7 @@ notifications-quickstart-android
 
 #### Create a Notify Service
 
-[Tutorial docs](https://www.twilio.com/docs/notify/quickstart/android)
-
-Create a Notify Service Instance. Example SID:
+Create a Notify Service Instance ([Tutorial docs](https://www.twilio.com/docs/notify/quickstart/android)). Example SID:
 ````
 IS6b86eea51935a036f0ae440652761e8a
 ````
