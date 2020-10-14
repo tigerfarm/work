@@ -76,7 +76,7 @@ In the tignotify Notify Service Instance, select FCM CREDENTIAL SID: tignotify. 
 
 #### Create Twilio Functions.
 
-+ One Function for the Notify app to register a user identity (Notify binding) to receive notifications.
++ One Function for the Notify app to register a user identity (Notify binding) that is used to send notifications.
 + One to make a Twilio Notify API request to send a notification to the user running the Notify app.
 
 To create the Functions in the Twilio Console, click [here](https://www.twilio.com/console/functions/manage).
