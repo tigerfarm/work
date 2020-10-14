@@ -1,11 +1,11 @@
 # Twilio Notify Android Quickstart
 
 Following, are the steps I used to set up required configurations and run the sample Twilio notification app on my phone.
-This allows notifications to be sent from my computer, and received on the phone that running the notification app.
+This allows notifications to be sent from my computer, and received on the phone that is running the notification app.
 
 Once all requirements are configured and the Notify App compiled,
 I ran the Notify App on my phone.
-In the app, I register a user identity which created a Twilio Notify Binding.
+In the app, I register a user identity. The identity is used on the server side to create a Twilio Notify Binding.
 ````
 User Notify App >> Binding Twilio Function >> Twilio creates a Notify Binding.
 
