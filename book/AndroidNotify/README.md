@@ -1,4 +1,4 @@
-# Twilio Notify Android Quickstart
+# Twilio Notify Android Quickstart Implementation Steps
 
 Following, are the steps I used to set up required configurations and run the sample Twilio notification app on my phone.
 This allows notifications to be sent from my computer, and received on the phone that is running the notification app.
