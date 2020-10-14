@@ -9,10 +9,10 @@ In the app, I register a user identity which created a Twilio Notify Binding.
 ````
 User Notify App >> Binding Twilio Function >> Twilio creates a Notify Binding.
 
-Program to send a notification >> Twilio >> Google >> phone app
+Program to send a notification >> Twilio >> Google >> Twilio sample phone app
 Requires a mapping from Twilio to the phone app, through Google.
 Create a Google project FCM phone app token.
-The Google token, is store by Twilio, to address the phone app.
+The Google token, is stored by Twilio to address the phone app.
 ````
 #### Clone the Twilio Notify App repository
 
@@ -44,7 +44,7 @@ Create a Google Firebase [project](https://console.firebase.google.com/)
 that will will map to the Notify App.
 ````
 Name: tignotify
-Disable:  Enable Google Analytics for this project
+Disable:  Enable Google Analytics for this project.
 Click Create Project, Your new project is ready. Click Continue.
 Get started by adding Firebase to your app ... Click Android icon.
 Use the Android package name that is used in the cloned app: "com.twilio.notify.quickstart".
@@ -56,7 +56,7 @@ Download to the Notify app project's app directory.
 List the google-services.json.
 ````
 $ pwd
-/Users/user/Projects/android/notify/notifications-quickstart-android/app
+/Users/<user>/Projects/android/notify/notifications-quickstart-android/app
 $ cat google-services.json
 ...
 ````
