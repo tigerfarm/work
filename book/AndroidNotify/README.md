@@ -76,7 +76,7 @@ In the tignotify Notify Service Instance, select FCM CREDENTIAL SID: tignotify. 
 
 #### Create Twilio Functions.
 
-+ One Function for the Notify app to register a user identity that can receive notifications.
++ One Function for the Notify app to register a user identity (Notify binding) to receive notifications.
 + One to make a Twilio Notify API request to send a notification to the user running the Notify app.
 
 To create the Functions in the Twilio Console, click [here](https://www.twilio.com/console/functions/manage).
@@ -91,7 +91,7 @@ Example Register binding URL:
 https://about-time-2357.twil.io/register-binding
 ````
 
-In the application, enter the Twilio Function Register binding URL.
+In the Notify app source code, enter the Twilio Function Register binding URL.
 ````
 Example: https://about-time-2357.twil.io/register-binding
 Don't include, "/register-binding".
