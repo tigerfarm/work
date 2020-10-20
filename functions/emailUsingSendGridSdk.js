@@ -1,3 +1,5 @@
+// After creating a SendGrid account, and create an API Key from the menu item under Settings/API Keys.
+// 
 // Add the following Dependencies:
 // @sendgrid/mail                  6.4.0
 // 
