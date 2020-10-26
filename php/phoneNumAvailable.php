@@ -6,7 +6,7 @@ require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 $client = new Client(getenv("ACCOUNT_SID"), getenv('AUTH_TOKEN'));
 
-$theCountry = "GB";
+$theCountry = "US";
 // echo "\xA+ List of available phone numbers in the country, " . $theCountry .": ";
 // foreach ($client->availablePhoneNumbers($theCountry)->local->read() as $number) {
 //      echo "\xA++ " . $number->phoneNumber;

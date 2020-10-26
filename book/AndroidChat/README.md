@@ -1,13 +1,13 @@
-# Twilio Notify Android Quickstart Implementation Steps
+# Twilio Chat Android Quickstart Implementation Steps
 
-Following, are the steps I used to set up required configurations and run the sample Twilio notification app on my phone.
+Following, are the steps I used to set up required configurations and run the sample Twilio Chat app on my phone.
 This allows notifications to be sent from my computer, and received on the phone that is running the notification app.
 
-Once all requirements are configured and the Notify App compiled,
-I ran the Notify App on my phone.
-In the app, I register a user identity. The identity is used on the server side to create a Twilio Notify Binding.
+Once all requirements are configured and the Chat App compiled,
+I ran the App on my phone.
+In the app, for notifications, I register a user identity. The identity is used on the server side to create a Twilio Notify Binding.
 ````
-User Notify App >> Twilio Function: register binding >> Twilio creates a Notify Binding.
+User Chat App >> Twilio Function: register binding >> Twilio creates a Notify Binding.
 
 Laptop program to send a notification >> Twilio >> Google >> Twilio Notify phone app
 Requires a mapping from Twilio to the phone app, through Google.
@@ -16,17 +16,21 @@ The Google token, is stored by Twilio to address the phone app.
 ````
 #### Clone the Twilio Notify App repository
 
+The project code home page:
+
+https://github.com/tigerfarm/work/tree/master/book/AndroidNotify
+
 ````
-cd /Users/<user>/Projects/
-$ mkdir notify
-$ cd notify/
-$ git clone https://github.com/TwilioDevEd/notifications-quickstart-android
+cd /Users/<user>/Projects/Android
+$ mkdir chat
+$ cd chat/
+$ git clone https://github.com/twilio/twilio-chat-demo-android.git
 ...
 $ ls
-notifications-quickstart-android
+twilio-chat-demo-android
 ````
 
-#### Create a Notify Service
+#### Create a Chat Service
 
 Create a Notify Service Instance: [Twilio Console link](https://www.twilio.com/console/notify/services) 
 ([Tutorial docs](https://www.twilio.com/docs/notify/quickstart/android)). Example SID:
@@ -91,16 +95,12 @@ Example Register binding URL:
 https://about-time-2357.twil.io/register-binding
 ````
 
-In the Notify app source code, enter the Twilio Function Register binding URL.
+In the Chat app source code, enter the Twilio Function Register binding URL.
 ````
-Example: https://about-time-2357.twil.io/register-binding
-Don't include, "/register-binding".
-
-public class TwilioFunctionsAPI {
-    // The URL below should be the domain for your Twilio Functions, without the trailing slash:
-    // Example: https://sturdy-concrete-1234.twil.io
-    public final static String BASE_SERVER_URL = "https://about-time-2357.twil.io";
-    ...
+org.gradle.jvmargs=-Xmx4096m
+android.useAndroidX=true
+android.enableJetifier=true
+ACCESS_TOKEN_SERVICE_URL=https://about-time-2357.twil.io/androidchat
 ````
 
 Run the app.
