@@ -14,6 +14,19 @@ Requires a mapping from Twilio to the phone app, through Google.
 Create a Google project FCM phone app token.
 The Google token, is stored by Twilio to address the phone app.
 ````
+
+#### Create Twilio Functions.
+
++ One Function for the Notify app to register a user identity (Notify binding) that is used to send notifications.
++ One to make a Twilio Notify API request to send a notification to the user running the Notify app.
+
+To create the Functions in the Twilio Console, click [here](https://www.twilio.com/console/functions/manage).
+````
+Select, Twilio Blank.
+Click Create.
+````
+For the code, use this [here](https://github.com/tigerfarm/work/blob/master/functions/ChatTokenGenerator.js).
+
 #### Clone the Twilio Notify App repository
 
 The project code home page:
@@ -50,52 +63,46 @@ Name: tignotify
 Disable:  Enable Google Analytics for this project.
 Click Create Project, Your new project is ready. Click Continue.
 Get started by adding Firebase to your app ... Click Android icon.
-Use the Android package name that is used in the cloned app: "com.twilio.notify.quickstart".
+Use the Android package name that is used in the cloned app: "com.twilio.chat.demo".
 Click register app.
 Download config file, click Download google-services.json.
-Download to the Notify app project's app directory.
+Download to the Chat app project's app directory.
 ````
 
 List the google-services.json.
 ````
 $ pwd
-/Users/<user>/Projects/android/notify/notifications-quickstart-android/app
+/Users/<user>/Projects/android/chat/twilio-chat-demo-android/chat-demo-android/.
 $ cat google-services.json
 ...
 ````
 
-#### Add the Google FCM token into the Twilio Notify Push Credentials
+## Building
 
-Get the [Google project](https://console.firebase.google.com/)
-tignotify's Settings/Cloud messaging key/Server key Token.
+### Add google-services.json
 
-Add the key value into a newly [created/added Push Credential](https://www.twilio.com/console/notify/credentials/create):
+[Generate google-services.json](https://developers.google.com/mobile/add) file and place it under `chat-demo-android/`.
+At the link, I created a new project, xyzChat, using: com.twilio.chat.demo.
+I used the Config Android option to generate the google-services.json.
+In the download JSON file, I needed to copy the section "com.twilio.chat.demo" to create section "com.twilio.chat.demo.debug".
 ````
-Friendly Name: tignotify
-Type: FCM
-FCM Secret: AAA...oTx (Server key Token)
-Click Save.
-````
-In the tignotify Notify Service Instance, select FCM CREDENTIAL SID: tignotify. Click Save.
-
-#### Create Twilio Functions.
-
-+ One Function for the Notify app to register a user identity (Notify binding) that is used to send notifications.
-+ One to make a Twilio Notify API request to send a notification to the user running the Notify app.
-
-To create the Functions in the Twilio Console, click [here](https://www.twilio.com/console/functions/manage).
-````
-Select, Twilio Notify Quickstart.
-Click Create. Enter the value of the Notify Service Instance SID, for example:
-IS6b86eea51935a036f0ae440652761e8a
-Click Create. 2 Functions are created:
-+ Twilio Notify Quickstart (Register binding)
-+ Twilio Notify Quickstart (Send notification)
-Example Register binding URL:
-https://about-time-2357.twil.io/register-binding
+      "client_info": {
+        "mobilesdk_app_id": "1:5...4:android:d...d",
+        "android_client_info": {
+          "package_name": "com.twilio.chat.demo"
+        }
+      },
+      "client_info": {
+        "mobilesdk_app_id": "1:5...4:android:d...d",
+        "android_client_info": {
+          "package_name": "com.twilio.chat.demo.debug"
+        }
+      },
 ````
 
 In the Chat app source code, enter the Twilio Function Register binding URL.
+Set the value of ACCESS_TOKEN_SERVICE_URL in chat-demo-android/gradle.properties file to point to a valid Access-Token server.
+For example:
 ````
 org.gradle.jvmargs=-Xmx4096m
 android.useAndroidX=true

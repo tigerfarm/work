@@ -11,6 +11,7 @@ if ($FriendlyName === null) {
 }
 if ($argc > 2) {
     $CallSid = $argv[2];
+    echo "+++ CallSid: " . $CallSid . "\xA";
 } else {
     $CallSid = $_REQUEST['CallSid'];
 }
@@ -18,11 +19,12 @@ if ($CallSid === null) {
     echo "0";
     return;
 }
+    echo "+++ CallSid: " . $CallSid . "\xA";
 echo "+++ Put Conference participant on hold using the conference name: " . $FriendlyName . ", and CallSid: " . $CallSid . "\xA";
 
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
-$twilio = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
+$twilio = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
 
 // Given the Conference name, get the conference id.
 $conferences = $twilio->conferences->read(

@@ -17,7 +17,7 @@ Using the SMS channel
 https://www.twilio.com/docs/autopilot/channels/sms
 
 --------------------------------------------------------------------------------
-#### Course uses the Twilio CLI.
+#### The Course uses the Twilio CLI.
 
 https://www.twilio.com/docs/autopilot/twilio-autopilot-cli
 
@@ -126,6 +126,119 @@ Currency codes
 https://en.wikipedia.org/wiki/ISO_4217#Active_codes
 
 "What currency would you like to convert from? For example: USD, CAD, GBP, JPY, AUD."
+
+--------------------------------------------------------------------------------
+## Using Autopilot Memory Name-Value pairs
+
+Autopilot Say action documentation [link](https://www.twilio.com/docs/autopilot/actions/say).
+
+Action to collect Name-Value pairs using questions.
+````
+                "actions": [
+                    {
+                        "collect": {
+                            "name": "convert_currencies",
+                            "questions": [
+                                {
+                                    "question": "What currency would you like to convert from?",
+                                    "name": "cur_from",
+                                    "type": "Twilio.CURRENCY"
+                                },
+                                {
+                                    "question": "What currency would you like to convert to?",
+                                    "name": "cur_to",
+                                    "type": "Twilio.CURRENCY"
+                                }
+                            ],
+                            "on_complete": {
+                                "redirect": {
+                                    "method": "POST",
+                                    "uri": "https://tangerine-toad-5117.twil.io/currency"
+                                }
+                            }
+                        }
+                    }
+                ]
+````
+Twilio Function for the above "redirect".
+````
+const got = require('got');
+exports.handler = function (context, event, callback) {
+    console.log("+ Memory: " + event.Memory );
+    // + Memory: {"twilio":{"chat":
+    // {"ChannelSid":"CH0607e9cd21374d0cab8484ee5fc650ea","AssistantName":"","Attributes":{},"ServiceSid":"IS36b7df8c2ba5484c9189b7eb647f259d","Index":39,"From":"user","MessageSid":"IM950f22ca27dd43d68c9a5d89bdce2205"},
+    // "collected_data":{
+    // "convert_currencies":{
+    // "answers":{
+    // "cur_from":{"confirm_attempts":0,"answer":"cn","filled":true,"type":"Twilio.CURRENCY","confirmed":false,"validate_attempts":1,"attempts":1},
+    // "cur_to":{"answer":"us","type":"Twilio.CURRENCY","filled":true,"at...
+  const answers = JSON.parse(event.Memory).twilio.collected_data.convert_currencies.answers;
+  const cur_from = answers.cur_from.answer.toUpperCase();
+  const cur_to = answers.cur_to.answer.toUpperCase();
+  got(`https://api.ratesapi.io/api/latest?symbols=${cur_to}&base=${cur_from}`,
+    { json: true }).then(response => {
+      const rate = response.body.rates[cur_to];
+      callback(null, {
+        "actions": [
+          { say: `The current conversion rate from ${cur_from} to ${cur_to} is ${rate.toFixed(2)}.` }
+        ]
+      });
+    }).catch(error => {
+      callback(null, {
+        "actions": [
+          { say: `Sorry, a problem occurred: ${error.response.body.error}` }
+        ]
+      });
+    });
+};
+````
+
+------------------------
+Ask a question and say back the answer.
+````
+{
+	"actions": [
+		{
+			"collect": {
+				"name": "get_name",
+				"questions": [
+					{
+						"question": "What's your name?",
+						"name": "the_name",
+						"type": "Twilio.FIRST_NAME"
+					}
+				],
+				"on_complete": {
+					"redirect": {
+						"method": "GET",
+						"uri": "https://unnatural-seat-1873.twil.io/autopilotsayname"
+					}
+				}
+			}
+		}
+	]
+}
+````
+Twilio Function for the above "redirect".
+````
+exports.handler = function(context, event, callback) {
+    let theJson = JSON.stringify(event);
+    console.log("+ JSON: " + theJson);
+    const answer = event.CurrentInput;
+    console.log("+ answer: " + answer );
+    let AutopilotJSONresponse = { "actions": [ { say: "Autopilot Say the name: " + answer } ] };
+    callback(null, AutopilotJSONresponse);
+};
+````
+
+Basic say Twilio Function.
+````
+exports.handler = function(context, event, callback) {
+  let AutopilotJSONresponse = { "actions": [ { say: "From Say Function. v2" } ] };
+  callback(null, AutopilotJSONresponse);
+  // callback(null, { "actions": [{ say: 'From Say Function. v1' }] });
+};
+````
 
 --------------------------------------------------------------------------------
 Cheers...
