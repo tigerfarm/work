@@ -2,11 +2,8 @@
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 $client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
-$fromPhoneNumber = '+16508668221';
-// $toPhoneNumber = getenv('PHONE_NUMBER3');
-// $toPhoneNumber = getenv('MY_PHONE_NUMBER');
-// $toPhoneNumber = "650-483-7603";
-$toPhoneNumber = "+14415997753";
+$fromPhoneNumber == getenv('PHONE_NUMBER3');
+$toPhoneNumber = getenv('MY_PHONE_NUMBER');
 //
 // $theMessageSupport = "This is a test message from Stacy, Twilio support test \nmessage #3, \n newline.";
 // $theMessageChinese = "你好";

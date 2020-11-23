@@ -40,10 +40,10 @@ $sms = $client->account->messages->create(
             'body' => $theMessage
             // , 'smartEncoded' => false
             // , "messagingServiceSid" => 'MG725e63c260d682775183d21b21523935',
-            // , "mediaUrl" => array("https://unnatural-seat-1873.twil.io/assets/MI01.mp3"),
+            // , "mediaUrl" => array("https://about-time-2357.twil.io/assets/MI01.mp3"),
             // Other media files I can send:
-            // MP3: https://unnatural-seat-1873.twil.io/assets/MI01.mp3
-            // JPG: https://unnatural-seat-1873.twil.io/assets/netscapeIcons.jpg
+            // MP3: https://about-time-2357.twil.io/assets/MI01.mp3
+            // JPG: https://about-time-2357.twil.io/assets/netscapeIcons.jpg
         , 'statusCallback' => $echoUrl
         )
 );
