@@ -1,6 +1,6 @@
 
 exports.handler = function(context, event, callback) {
-    // https://byzantine-prawn-9082.twil.io/cliff-send-mail?phone_numbers=+16505552222&email=dthurston@example.com&email_subject=theSubject
+    // https://about-time-2357.twil.io/cliff-send-mail?phone_numbers=+16505552222&email=dthurston@example.com&email_subject=theSubject
   console.log(event);
   var htmlContent = "";
   const SENDGRID_API_KEY = context.CLIFF_SEND_GRID_API_KEY;

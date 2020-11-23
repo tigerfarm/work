@@ -6,7 +6,7 @@ client.notify
     body: 'Knok-Knok! This is your first Notify SMS',
     toBinding: JSON.stringify({
       binding_type: 'sms',
-      address: '+16508668232'
+      address: '+16505551111'
     })
   })
   .then(notification => console.log(notification.sid))
