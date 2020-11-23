@@ -241,4 +241,59 @@ exports.handler = function(context, event, callback) {
 ````
 
 --------------------------------------------------------------------------------
+#### Dynamic Say and Question. And nested redirect.
+````
+Sample I just wrote and tested an Autopilot task with an a Twilio Function. Suggestion, implement the sample as is, then modify it after testing.
+
+Autopilot Task:
+{
+ "actions": [
+  {
+      "say": "Ask question."
+  },
+  {
+      "redirect": {
+    "method": "GET",
+    "uri": "https://unnatural-seat-1873.twil.io/askq"
+      }
+  }
+ ]
+}
+Function that returns Question JSON. My sample is static, however, your code can dynamically create the question. I also have a dynamic "on_complete" section which works.
+exports.handler = function(context, event, callback) {
+  // { "actions": [ { say: "From Say Function." } ] };
+  let AutopilotJSONresponse = {
+ "actions": [
+  {
+      "collect": {
+    "name": "get_name",
+    "questions": [
+        {
+      "question": "What's your name?",
+      "name": "the_name",
+      "type": "Twilio.FIRST_NAME"
+        }
+    ],
+    "on_complete": {
+        "redirect": {
+      "method": "GET",
+      "uri": "https://about-time-2347.twil.io/autopilotsayname"
+        }
+    }
+      }
+  }
+ ]
+}
+  // ----------------------------------------
+  callback(null, AutopilotJSONresponse);
+};
+
+Twilio Function, autopilotsayname:
+exports.handler = function(context, event, callback) {
+  let AutopilotJSONresponse = { "actions": [ { say: "From Say Function." } ] };
+  callback(null, AutopilotJSONresponse);
+};
+````
+
+--------------------------------------------------------------------------------
 Cheers...

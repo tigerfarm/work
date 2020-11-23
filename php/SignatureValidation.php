@@ -28,7 +28,7 @@ $postVars = array(
 );
 $validator = new RequestValidator($token);
 $signature = 'N...Q=';
-$url = 'https://tigerfarmpress.com/cgi/echo1.php';
+$url = 'https://tigerfarmpress.com/cgi/echo.php';
 if ($validator->validate($signature, $url, $postVars)) {
     echo "Confirmed to have come from Twilio.\xA";
 } else {

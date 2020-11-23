@@ -31,20 +31,20 @@ $theWhatsAppTemplate = "Your code is 1234566";
 $theMessage = $theWhatsAppTemplate;
 //
 echo '++ Send SMS message, From: ' . $fromPhoneNumber . " to " . $toPhoneNumber . " :" . $theMessage . ":\xA";
-// $echoUrl = "https://tigerfarmpress.com/cgi/echo.php";
+$echoUrl = "https://postb.in/1604958023910-9146091821603";
 echo '++ Echo URL: ', $echoUrl, "\xA";
 $sms = $client->account->messages->create(
         $toPhoneNumber,
         array(
             'from' => $fromPhoneNumber,
-            'body' => $theMessage,
-            'smartEncoded' => false
-            // "messagingServiceSid" => 'MG725e63c260d682775183d21b21523935',
-            // "mediaUrl" => array("https://unnatural-seat-1873.twil.io/assets/MI01.mp3"),
+            'body' => $theMessage
+            // , 'smartEncoded' => false
+            // , "messagingServiceSid" => 'MG725e63c260d682775183d21b21523935',
+            // , "mediaUrl" => array("https://unnatural-seat-1873.twil.io/assets/MI01.mp3"),
             // Other media files I can send:
             // MP3: https://unnatural-seat-1873.twil.io/assets/MI01.mp3
             // JPG: https://unnatural-seat-1873.twil.io/assets/netscapeIcons.jpg
-        //, 'statusCallback' => $echoUrl
+        , 'statusCallback' => $echoUrl
         )
 );
 echo "+ Sent, SID: " . $sms->sid . " Status: " . $sms->status . "\xA";
