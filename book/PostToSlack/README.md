@@ -24,7 +24,7 @@ exports.handler = function(context, event, callback) {
   const requestBody = {
     text: theText
   };
-  got.post('https://hooks.slack.com/services/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', {
+  got.post('https://hooks.slack.com/services/T...S/B...r', {
     headers: {
       'Content-Type': 'application/json'
     },
