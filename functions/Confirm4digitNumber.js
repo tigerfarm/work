@@ -7,7 +7,6 @@ exports.handler = function(context, event, callback) {
 	    splitNumbers = "Sorry, I didn't get 4 digits."
 	}
 	console.log("+ theNumber = " + splitNumbers);
-	
 	let twiml = new Twilio.twiml.VoiceResponse();
     twiml.say({voice: 'alice',language: 'en-US',},"You entered: " + splitNumbers);
     callback(null, twiml);

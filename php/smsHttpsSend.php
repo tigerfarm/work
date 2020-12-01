@@ -11,17 +11,20 @@ class HTTPRequester {
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $query);
-        $response = curl_exec($ch);
+        // $response = curl_exec($ch);
+        // curl_close($ch);
+        // return $response;
+        curl_exec($ch);
         curl_close($ch);
-        return $response;
+        return "";
     }
 }
 
 echo "+++ Start.\xA";
 
 $AccountSid = getenv("ACCOUNT_SID");
-$fromPhoneNumber = getenv("PHONE_NUMBER_2");
-$toPhoneNumber = getenv("PHONE_NUMBER_3");
+$fromPhoneNumber = getenv("MASTER_PHONE_NUMBER_1");
+$toPhoneNumber = getenv("MY_PHONE_NUMBER");
 $theMessage = "Message #1";
 //
 $url = "https://api.twilio.com/2010-04-01/Accounts/{$AccountSid}/Messages.json";
