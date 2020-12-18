@@ -12,10 +12,22 @@ $theCountry = "US";
 //      echo "\xA++ " . $number->phoneNumber;
 // }
 
-$theAreaCode = "650";
-echo "\xA+ Available phone numbers in the country, " . $theCountry .", area code, " . $theAreaCode . ": ";
-// $numbers = $client->availablePhoneNumbers($theCountry)->local->read(array('areaCode' => $theAreaCode, 'SmsEnabled' => TRUE));
-$numbers = $client->availablePhoneNumbers($theCountry)->local->read(array('SmsEnabled' => TRUE));
+$theAreaCode = "857";
+$postalCode = "02101";
+//  $postalCode = "02101"; // Boston
+// + number 1: +16504494926 isoCountry: CA region: CA postalCode: 94105 locality: San Francisco
+// + number 1: +16504594191 isoCountry: CA region: CA postalCode: 94019 locality: Half Moon Bay
+// echo "\xA+ Available phone numbers in the country, " . $theCountry .", area code, " . $theAreaCode . ": ";
+$numbers = $client->availablePhoneNumbers($theCountry)->local->read(
+        array(
+            'countryCode' => $theCountry,
+            // 'inPostalCode' => $postalCode, 
+            // 'Distance' => 500,
+            'areaCode' => $theAreaCode, 
+            'SmsEnabled' => TRUE
+            )
+        );
+// $numbers = $client->availablePhoneNumbers($theCountry)->local->read(array('SmsEnabled' => TRUE));
 foreach ( $numbers as $number) {
      echo "\xA++ " . $number->phoneNumber;
 }
