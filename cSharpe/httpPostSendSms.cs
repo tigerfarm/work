@@ -24,14 +24,14 @@ namespace twSendSmsPost
       var theMessage = "POST: Hello World";
       var formContent = new FormUrlEncodedContent(new[]
       {
-    new KeyValuePair<string, string>("From", sendFrom),
-    new KeyValuePair<string, string>("To", sendTo),
-    new KeyValuePair<string, string>("Body", theMessage)
+        new KeyValuePair<string, string>("From", sendFrom),
+        new KeyValuePair<string, string>("To", sendTo),
+        new KeyValuePair<string, string>("Body", theMessage)
       });
       Console.WriteLine("++ POST: + " + theURL);
       HttpClientHandler handler = new HttpClientHandler
       {
-    Credentials = new System.Net.NetworkCredential(ACCOUNT_SID, AUTH_TOKEN)
+        Credentials = new System.Net.NetworkCredential(ACCOUNT_SID, AUTH_TOKEN)
       };
       HttpClient client = new HttpClient(handler);
       HttpResponseMessage response = await client.PostAsync(theURL, formContent);
@@ -40,8 +40,8 @@ namespace twSendSmsPost
       string result = await content.ReadAsStringAsync();
       if (result != null && result.Length >= 50)
       {
-    Console.WriteLine("+ Response: " + result);
-    Console.WriteLine("+ End of response.");
+        Console.WriteLine("+ Response: " + result);
+        Console.WriteLine("+ End of response.");
       }
   }
  }
