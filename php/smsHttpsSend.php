@@ -26,9 +26,10 @@ $AccountSid = getenv("ACCOUNT_SID");
 $fromPhoneNumber = getenv("MASTER_PHONE_NUMBER_1");
 $toPhoneNumber = getenv("MY_PHONE_NUMBER");
 $theMessage = "Message #1";
+$theMessageOkay = "J'aime l'été... éÉÑñ";
 //
 $url = "https://api.twilio.com/2010-04-01/Accounts/{$AccountSid}/Messages.json";
-$data = array('From' => $fromPhoneNumber, 'To' => $toPhoneNumber, 'Body' => $theMessage);
+$data = array('From' => $fromPhoneNumber, 'To' => $toPhoneNumber, 'Body' => $theMessageOkay);
 echo "+ Send the messsage, URL: " . $url . "\xA";
 print_r($data);
 
