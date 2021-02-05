@@ -172,6 +172,12 @@ Note, this will override any new updates with the current directory updates.
 $ git push -u --force origin master
 ````
 
+Check build packs. Set a build pack.
+````
+$ heroku buildpacks 
+$ heroku buildpacks:set heroku/nodejs
+````
+
 --------------------------------------------------------------------------------
 ### Using Custom Domains with Heroku
 
