@@ -647,6 +647,8 @@ Use a browser to download the file using the above URL:
 ````
 
 --------------------------------------------------------------------------------
+### Create, Run/Test, and Deploy Twilio Functions and Assets
+
 ````
 $ twilio serverless:init p1
  ›   Warning: twilio-cli update available from 2.16.1 to 2.18.0.
