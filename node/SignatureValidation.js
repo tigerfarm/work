@@ -44,5 +44,5 @@ const params = {
 };
 // The X-Twilio-Signature header attached to the request
 // "x-twilio-signature":"lhPWa1tr2uXDFmMvdg9LQOAvsmM="
-const twilioSignature = 'y...Q=';
+const twilioSignature = 'lhPWa1tr2uXDFmMvdg9LQOAvsmM=';
 console.log(client.validateRequest(authToken, twilioSignature, url, params));

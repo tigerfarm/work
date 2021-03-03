@@ -9,6 +9,9 @@ Twilio CLI project repository: https://github.com/twilio/twilio-cli.
 
 Twilio CLI project repository issues: https://github.com/twilio/twilio-cli/issues
 
+Adam's Twilio CLI repository:
+https://github.com/adamchasetaylor/twilio-cli-keys
+
 --------------------------------------------------------------------------------
 ### Install
 
@@ -643,6 +646,71 @@ Use a browser to download the file using the above URL:
 "direction":"inbound","start":"2020-07-26","num_media":0}
 ````
 
+--------------------------------------------------------------------------------
+````
+$ twilio serverless:init p1
+ ›   Warning: twilio-cli update available from 2.16.1 to 2.18.0.
+✔ Creating project directory
+✔ Creating project directories and files
+✔ Downloading .gitignore file
+✔ Installing dependencies
+...
+│   Success!
+│   Created p1 at /Users/.../Projects/work/twiliocli
+│   Inside that directory, you can run the following command:                  │
+│   npm start                                                                  │
+│     Serves all functions in the ./functions subdirectory and assets in the   │
+│     ./assets directory                                                       │
+│   Get started by running:                                                    │
+│   cd p1                                                                      │
+│   npm start                              
+````
+To run locally:
+````
+$ cd /Users/.../Projects/work/twiliocli
+$ npm start
+
+> p1@0.0.0 start /Users/dthurston/Projects/work/twiliocli/p1
+> twilio-run
+
+
+│ WARNING Different Node.js Version Found
+│ 
+│ You are currently running Node.js 12.6.0 on this local machine. The production environment for Twilio Serverless currently supports versions 10.x.
+│ 
+│ When you deploy to Twilio Serverless, you may encounter differences between local development and production.
+│ 
+│ For a more accurate local development experience, please switch your Node.js version.
+│ A tool like nvm (https://github.com/creationix/nvm) can help.
+
+┌────────────────────────────────────────────────────────────────────┐
+│                                                                    │
+│   Twilio functions available:                                      │
+│   ├── /hello-world | http://localhost:3000/hello-world             │
+│   ├── /private-message | http://localhost:3000/private-message     │
+│   └── [protected] /sms/reply | http://localhost:3000/sms/reply     │
+│                                                                    │
+│   Twilio assets available:                                         │
+│   ├── /index.html | http://localhost:3000/index.html               │
+│   ├── [private] /message.js | Runtime.getAssets()['/message.js']   │
+│   └── /style.css | http://localhost:3000/style.css                 │
+│                                                                    │
+└────────────────────────────────────────────────────────────────────┘
+````
+Use a browser to all the [hello world function](http://localhost:3000/hello-world).
+
+Deploy to the Twilio account, which is is the Twilio CLI environment Twilio account SID.
+````
+$ twilio serverless:deploy
+
+Deploying functions & assets to the Twilio Runtime
+...
+````
+Check from the Twilio Console [Functions/Service](https://www.twilio.com/console/functions/overview/services),
+````
+Unique Name     Friendly Name   SID                                 Date Created		
+p1              p1              ZS7e3ea7f1875d690c3cafec2a7312a60f  2021-03-03T18:24:51Z
+````
 --------------------------------------------------------------------------------
 
 Cheers...
