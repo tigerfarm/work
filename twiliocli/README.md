@@ -649,6 +649,12 @@ Use a browser to download the file using the above URL:
 --------------------------------------------------------------------------------
 ### Create, Run/Test, and Deploy Twilio Functions and Assets
 
+#### Create a Project on Your Development Computer
+
+The following is based on the
+[General Usage lab](https://www.twilio.com/docs/labs/serverless-toolkit/general-usage).
+
+Create (init) a new project in a working directory.
 ````
 $ twilio serverless:init p1
 ✔ Creating project directory
@@ -666,7 +672,23 @@ $ twilio serverless:init p1
 │   cd p1                                                                      │
 │   npm start                                                                  │
 ````
-To run locally:
+
+#### Run and Test the Project
+
+Next, you can create, run and test Functions locally.
+For example, list the hello world function that was created by default.
+The function returns 'Hello World!' Say TwiML.
+````
+$ cat functions/hello-world.js 
+exports.handler = function(context, event, callback) {
+  const twiml = new Twilio.twiml.VoiceResponse();
+  twiml.say('Hello World!');
+  callback(null, twiml);
+};
+````
+
+To run the hello world function locally,
+start the local NodeJS Twilio CLI webserver.
 ````
 $ cd /Users/.../Projects/work/twiliocli
 $ npm start
@@ -702,6 +724,8 @@ $ twilio serverless:start
 └────────────────────────────────────────────────────────────────────┘
 ````
 Use a browser to all the [hello world function](http://localhost:3000/hello-world).
+
+#### Deploy the Project
 
 Deploy to the Twilio account, which is is the Twilio CLI environment Twilio account SID.
 ````
