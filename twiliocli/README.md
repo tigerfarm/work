@@ -651,7 +651,6 @@ Use a browser to download the file using the above URL:
 
 ````
 $ twilio serverless:init p1
- ›   Warning: twilio-cli update available from 2.16.1 to 2.18.0.
 ✔ Creating project directory
 ✔ Creating project directories and files
 ✔ Downloading .gitignore file
@@ -665,12 +664,14 @@ $ twilio serverless:init p1
 │     ./assets directory                                                       │
 │   Get started by running:                                                    │
 │   cd p1                                                                      │
-│   npm start                              
+│   npm start                                                                  │
 ````
 To run locally:
 ````
 $ cd /Users/.../Projects/work/twiliocli
 $ npm start
+--- or ---
+$ twilio serverless:start
 
 > p1@0.0.0 start /Users/dthurston/Projects/work/twiliocli/p1
 > twilio-run
@@ -678,9 +679,10 @@ $ npm start
 
 │ WARNING Different Node.js Version Found
 │ 
-│ You are currently running Node.js 12.6.0 on this local machine. The production environment for Twilio Serverless currently supports versions 10.x.
-│ 
-│ When you deploy to Twilio Serverless, you may encounter differences between local development and production.
+│ You are currently running Node.js 12.6.0 on this local machine. 
+    The production environment for Twilio Serverless currently supports versions 10.x.
+│ When you deploy to Twilio Serverless, 
+    you may encounter differences between local development and production.
 │ 
 │ For a more accurate local development experience, please switch your Node.js version.
 │ A tool like nvm (https://github.com/creationix/nvm) can help.
