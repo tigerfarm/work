@@ -683,7 +683,7 @@ assets			functions		node_modules		package-lock.json	package.json
 
 List the functions that were created by default.
 List the hello world function that was created.
-The hello world function, returns 'Hello World!' Say TwiML.
+The hello world function, will return 'Hello World!' Say TwiML.
 ````
 $ cd /Users/.../Projects/work/twiliocli/p1
 $ ls functions/
@@ -723,7 +723,7 @@ $ twilio serverless:start
 └────────────────────────────────────────────────────────────────────┘
 ````
 Use a browser to run the [hello world function](http://localhost:3000/hello-world).
-Browser result:
+Browser response:
 ````
 <Response>
 <Say>Hello World!</Say>
@@ -754,7 +754,14 @@ Click p1.
 Under Functions, copy the public URL for /hello-world.
 Run the URL from your browser, for example:
 
-https://p1-2357-dev.twil.io/hello-world (this isn't my actual URL)
+https://p1-2357-dev.twil.io/hello-world (this isn't actual, just reference for syntax)
+
+Browser response, same as running it locally:
+````
+<Response>
+<Say>Hello World!</Say>
+</Response>
+````
 
 --------------------------------------------------------------------------------
 
