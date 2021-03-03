@@ -649,13 +649,16 @@ Use a browser to download the file using the above URL:
 --------------------------------------------------------------------------------
 ### Create, Run/Test, and Deploy Twilio Functions and Assets
 
+You can create, run and test Functions locally using the Twilio CLI.
+
 #### Create a Project on Your Development Computer
 
 The following is based on the
 [General Usage lab](https://www.twilio.com/docs/labs/serverless-toolkit/general-usage).
 
-Create (init) a new project in a working directory.
+Change to a working directory and create (init) a new project, under that directory.
 ````
+$ cd /Users/.../Projects/work/twiliocli
 $ twilio serverless:init p1
 ✔ Creating project directory
 ✔ Creating project directories and files
@@ -675,10 +678,14 @@ $ twilio serverless:init p1
 
 #### Run and Test the Project
 
-Next, you can create, run and test Functions locally.
-For example, list the hello world function that was created by default.
-The function returns 'Hello World!' Say TwiML.
+List the functions that were created by default.
+List the hello world function that was created.
+The hello world function, returns 'Hello World!' Say TwiML.
 ````
+$ cd /Users/.../Projects/work/twiliocli/p1
+$ ls functions/
+hello-world.js		private-message.js	sms
+
 $ cat functions/hello-world.js 
 exports.handler = function(context, event, callback) {
   const twiml = new Twilio.twiml.VoiceResponse();
@@ -724,6 +731,16 @@ $ twilio serverless:start
 └────────────────────────────────────────────────────────────────────┘
 ````
 Use a browser to all the [hello world function](http://localhost:3000/hello-world).
+Browser result:
+````
+<Response>
+<Say>Hello World!</Say>
+</Response>
+````
+Page source of the result:
+````
+<?xml version="1.0" encoding="UTF-8"?><Response><Say>Hello World!</Say></Response>
+````
 
 #### Deploy the Project
 
