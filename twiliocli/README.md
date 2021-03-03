@@ -647,7 +647,7 @@ Use a browser to download the file using the above URL:
 ````
 
 --------------------------------------------------------------------------------
-### Create, Run/Test, and Deploy Twilio Functions and Assets
+### Create, Run and Test, and Deploy Twilio Functions and Assets
 
 You can create, run and test Functions locally using the Twilio CLI.
 
@@ -674,6 +674,9 @@ $ twilio serverless:init p1
 │   Get started by running:                                                    │
 │   cd p1                                                                      │
 │   npm start                                                                  │
+
+$ ls p1
+assets			functions		node_modules		package-lock.json	package.json
 ````
 
 #### Run and Test the Project
@@ -704,18 +707,7 @@ $ twilio serverless:start
 
 > p1@0.0.0 start /Users/dthurston/Projects/work/twiliocli/p1
 > twilio-run
-
-
-│ WARNING Different Node.js Version Found
-│ 
-│ You are currently running Node.js 12.6.0 on this local machine. 
-    The production environment for Twilio Serverless currently supports versions 10.x.
-│ When you deploy to Twilio Serverless, 
-    you may encounter differences between local development and production.
-│ 
-│ For a more accurate local development experience, please switch your Node.js version.
-│ A tool like nvm (https://github.com/creationix/nvm) can help.
-
+...
 ┌────────────────────────────────────────────────────────────────────┐
 │                                                                    │
 │   Twilio functions available:                                      │
@@ -730,14 +722,14 @@ $ twilio serverless:start
 │                                                                    │
 └────────────────────────────────────────────────────────────────────┘
 ````
-Use a browser to all the [hello world function](http://localhost:3000/hello-world).
+Use a browser to run the [hello world function](http://localhost:3000/hello-world).
 Browser result:
 ````
 <Response>
 <Say>Hello World!</Say>
 </Response>
 ````
-Page source of the result:
+Page source TwiML of the hello world function output:
 ````
 <?xml version="1.0" encoding="UTF-8"?><Response><Say>Hello World!</Say></Response>
 ````
@@ -756,6 +748,14 @@ Check from the Twilio Console [Functions/Service](https://www.twilio.com/console
 Unique Name     Friendly Name   SID                                 Date Created		
 p1              p1              ZS7e3ea7f1875d690c3cafec2a7312a60f  2021-03-03T18:24:51Z
 ````
+Run the p1 project hello world function from your browser.
+From the [Functions/Service](https://www.twilio.com/console/functions/overview/services) link,
+Click p1.
+Under Functions, copy the public URL for /hello-world.
+Run the URL from your browser, for example:
+
+https://p1-2357-dev.twil.io/hello-world (this isn't my actual URL)
+
 --------------------------------------------------------------------------------
 
 Cheers...
