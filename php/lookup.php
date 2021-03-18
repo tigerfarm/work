@@ -3,7 +3,7 @@ require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 $twilio = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
 // $phoneNumber = getenv('PHONE_NUMBER_4');
-$phoneNumber = '+447480728290';
+$phoneNumber = '+16505552222';
 echo '++ Lookup phone number: ' . $phoneNumber . ":\xA";
 $carriers = $twilio->lookups->v1->phoneNumbers(
         $phoneNumber)->fetch(
