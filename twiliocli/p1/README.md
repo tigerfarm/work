@@ -90,7 +90,8 @@ Page source TwiML of the hello world function output:
 
 #### Deploy the Project
 
-Deploy to the Twilio account, which is is the Twilio CLI environment Twilio account SID.
+To deploy to your Twilio account, use the following command.
+The Twilio account is base on your Twilio CLI environment Twilio account SID.
 ````
 $ twilio serverless:deploy
 
