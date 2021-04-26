@@ -647,5 +647,80 @@ Use a browser to download the file using the above URL:
 ````
 
 --------------------------------------------------------------------------------
+### Delete a Function from a Function Service
+
+It takes preliminary steps to be able to delete a function. Following are the deletion steps with an example I went through.
+
+1. Undeploy the build.
+
+Given the Twilio Functions Service SID, get the environment SID which also gives the current build.
+````
+$ twilio api:serverless:v1:services:environments:list --service-sid ZSb2201277346da03f6ca1ea804ce3aaba
+SID                                 Unique Name  Domain Name            Build SID                         
+ZE962caae126f94f91c52b5beb3c5403a0  ui           mine-2357.twil.io  ZBbea269aac6dcf9332e57e3a0702659c0
+````
+
+Use create to delete the build.
+````
+$ twilio api:serverless:v1:services:environments:deployments:create --service-sid ZSb2201277346da03f6ca1ea804ce3aaba --environment-sid ZE962caae126f94f91c52b5beb3c5403a0
+SID                                 Build SID  Date Created                 
+ZDba15f7e0415c23cfb6baa40938db741f  null       Mar 29 2021 13:57:13 GMT-0700
+````
+Note, the Function Service is no longer deployed (Build SID = null).
+
+2. Delete any builds that reference the function that haven't been reaped
+
+Remove the build.
+````
+$ twilio api:serverless:v1:services:builds:remove --service-sid ZSb2201277346da03f6ca1ea804ce3aaba --sid ZBbea269aac6dcf9332e57e3a0702659c0
+The resource was deleted successfully
+````
+
+3. Delete the Function Resource
+````
+$ twilio api:serverless:v1:services:functions:remove --service-sid ZSb2201277346da03f6ca1ea804ce3aaba --sid ZH1100b8ce0150592646eaf625cee01e5a
+The resource was deleted successfully
+````
+
+#### Tailing Log Messages
+
+To test the display of log messages, I enabled live logs in the Twilio Console and did a test by running my "/sayHello" function from a browser.
+From the Twilio Console, I went to my Twilio Function service and click, Enable live logs.
+Then, log messages were streamed to the lower part of the page.
+
+Next, I used the Twilio CLI to tail the streaming log messages.
+
+Twilio CLI help options shows the syntax requirements.
+````
+$ twilio serverless:logs --help
+USAGE
+ $ twilio serverless:logs
+OPTIONS
+ ...
+ --environment=environment [default: dev] The environment to retrieve the logs for
+ --function-sid=function-sid Specific Function SID to retrieve logs for
+ --load-system-env Uses system environment variables as fallback for variables specified in your .env file. Needs to be used with --env explicitly specified.
+ --service-sid=service-sid Specific Serverless Service SID to retrieve logs for
+ --tail  Continuously stream the logs
+````
+I retrieved my service's environment value:
+````
+$ twilio api:serverless:v1:services:environments:list --service-sid ZSb2201277346da03f6ca1ea804ce3aaba
+SID  Unique Name Domain Name Build SID 
+ZE962caae126f94f91c52b5beb3c5403a0 ui  classics-8587.twil.io ZB41959c4e3784967e7b71ef14e112e9c5
+````
+I used the service's environment value in the command to tail my logs:
+````
+$ twilio serverless:logs --service-sid=ZSb2201277346da03f6ca1ea804ce3aaba --environment=ZE962caae126f94f91c52b5beb3c5403a0 --tail
+[INFO][2021-04-26T23:06:29Z]: Hello there.
+[INFO][2021-04-26T23:06:40Z]: Hello there.
+[INFO][2021-04-26T23:06:47Z]: Hello there.
+[INFO][2021-04-26T23:14:01Z]: Hello there.
+[INFO][2021-04-26T23:21:53Z]: Hello there.
+````
+Each time I ran my "/sayHello" function, the log messages were listed.
+
+
+--------------------------------------------------------------------------------
 
 Cheers...

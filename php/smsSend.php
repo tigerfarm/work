@@ -21,7 +21,6 @@ $toPhoneNumber = getenv('MY_PHONE_NUMBER');
 // $toPhoneNumber = getenv('MASTER_PHONE_NUMBER_1');
 // $fromPhoneNumber = 'whatsapp:+14155551111';
 // $toPhoneNumber = 'whatsapp:+1605552222';
-// $toPhoneNumber = '+12098319168'; // : Sample landline phone number';
 //
 $theMessageSupport = "Twilio support test \nmessage #3, \n newline.";
 // $theMessageSupport = "Twilio support test #4";
@@ -31,10 +30,12 @@ $theWhatsAppTemplate = "Your code is 1234566";
 $theMessage = $theWhatsAppTemplate;
 //
 echo '++ Send SMS message, From: ' . $fromPhoneNumber . " to " . $toPhoneNumber . " :" . $theMessage . ":\xA";
-$echoUrl = "https://postb.in/1604958023910-9146091821603";
+// $echoUrl = "https://postb.in/1604958023910-9146091821603";
+$echoUrl = "http://www.tigerfarmpress.com/echo";
 echo '++ Echo URL: ', $echoUrl, "\xA";
 $sms = $client->account->messages->create(
-        $toPhoneNumber,
+        // $toPhoneNumber,
+        "+504837603",
         array(
             'from' => $fromPhoneNumber,
             'body' => $theMessage

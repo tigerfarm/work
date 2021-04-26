@@ -1,5 +1,5 @@
-console.log("++ Send SMS message.");
-var client = require('twilio')(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
+console.log("++ Create a Conversation.");
+var client = require('twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 conversationFriendlyName = 'Hello Conversation';
 console.log("+ Messaging Service SID: " + process.env.MESSAGING_SERVICE_SID
         + ", Friendly Name: " + conversationFriendlyName);
