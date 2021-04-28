@@ -682,7 +682,7 @@ $ twilio api:serverless:v1:services:functions:remove --service-sid ZSb2201277346
 The resource was deleted successfully
 ````
 
-#### Tailing Log Messages
+#### Tailing Twilio Functions Log Messages
 
 To test the display of log messages, I enabled live logs in the Twilio Console and did a test by running my "/sayHello" function from a browser.
 From the Twilio Console, I went to my Twilio Function service and click, Enable live logs.

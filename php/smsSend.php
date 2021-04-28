@@ -34,8 +34,7 @@ echo '++ Send SMS message, From: ' . $fromPhoneNumber . " to " . $toPhoneNumber 
 $echoUrl = "http://www.tigerfarmpress.com/echo";
 echo '++ Echo URL: ', $echoUrl, "\xA";
 $sms = $client->account->messages->create(
-        // $toPhoneNumber,
-        "+504837603",
+        $toPhoneNumber,
         array(
             'from' => $fromPhoneNumber,
             'body' => $theMessage
