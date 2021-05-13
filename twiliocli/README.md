@@ -510,7 +510,7 @@ Friendly Name  Job SID                             Details
 ExportJuly27   JS1dca2e0dfb7815c1fea2362d9f61c16c  {"0":{"status":"Running",...
 ...
 
-Statuses: "Submitted", "Running", "CompletedEmptyRecords"
+Statuses: "Submitted", "Running", "CompletedEmptyRecords", "Completed".
 
 $ twilio api:bulkexports:v1:exports:jobs:remove --job-sid=JS677d0986311ebb99cfa945425e1889c0
 
