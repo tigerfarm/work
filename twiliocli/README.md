@@ -505,6 +505,13 @@ ExportJuly27   JS1dca2e0dfb7815c1fea2362d9f61c16c
 ExportJuly27   JS677d0986311ebb99cfa945425e1889c0
 ExportJuly27b  JSed5cd7ba5451574475d4d4bb890aed4f
 
+$ twilio api:bulkexports:v1:exports:jobs:list --resource-type Messages --properties=friendlyName,jobSid,details
+Friendly Name  Job SID                             Details 
+ExportJuly27   JS1dca2e0dfb7815c1fea2362d9f61c16c  {"0":{"status":"Running",...
+...
+
+Statuses: "Submitted", "Running", "CompletedEmptyRecords"
+
 $ twilio api:bulkexports:v1:exports:jobs:remove --job-sid=JS677d0986311ebb99cfa945425e1889c0
 
 $ twilio api:bulkexports:v1:exports:jobs:fetch --job-sid=JSed5cd7ba5451574475d4d4bb890aed4f --properties=friendlyName,startDay,endDay,details
