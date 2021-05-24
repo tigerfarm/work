@@ -35,16 +35,14 @@ $urlMediaFilenameWrite = "httpsMediaUrl.jpg";
 $urlFileWrite = fopen($urlMediaFilenameWrite, 'w');
 fwrite($urlFileWrite, $urlFileContent);
 
-// Use an MMS media file URL, to get the content and write it to a file.
+// Use a Twilio MMS media file URL, to download the media file to a local disk file.
+// ---
 // Use the following to send an MMS:
-// $ php mmsSend.php 
-// ++ Send MMS message, From: +16505551111 to +16505552222 :Twilio support MMS test.:
-// ++ Media URL: https://raw.githubusercontent.com/tigerfarm/arduino/master/Altair101/AltairDesktop01a.jpg
-// + Sent, SID: MM537ab3ba8dd149bfa9af998867d61f64 Status: queued
-// Get the Media URL from the Twilio Console SMS logs report: https://www.twilio.com/console/sms/logs
-// Sample program to send an MMS:
 // $ php smsSendMmsSingle.php
-// Webhook receives: {...,"SmsMessageSid":"MM0888aad8ca4ab5c698a58ecc6e6c96f9","MediaContentType0":"image/jpeg","MediaUrl0":"https://api.twilio.com/2010-04-01/Accounts/ACa...3/Messages/MM0888aad8ca4ab5c698a58ecc6e6c96f9/Media/ME7d57db8c0196a2f45d3da1d5ad496910",...} 
+// + Sent, SID: MM0888aad8ca4ab5c698a58ecc6e6c96f9
+// ---
+// Get the Media URL from the Twilio Console SMS log: https://www.twilio.com/console/sms/logs
+// Or from a webhook: {...,"SmsMessageSid":"MM0888aad8ca4ab5c698a58ecc6e6c96f9","MediaContentType0":"image/jpeg","MediaUrl0":"https://api.twilio.com/2010-04-01/Accounts/ACa...3/Messages/MM0888aad8ca4ab5c698a58ecc6e6c96f9/Media/ME7d57db8c0196a2f45d3da1d5ad496910",...} 
 // 
 $mmsMedia = 'https://api.twilio.com/2010-04-01/Accounts/ACa...3/Messages/MM0888aad8ca4ab5c698a58ecc6e6c96f9/Media/ME7d57db8c0196a2f45d3da1d5ad496910';
 $mmsFileContent = $http->getMediaContent($mmsMedia);
