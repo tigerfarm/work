@@ -727,7 +727,21 @@ $ twilio serverless:logs --service-sid=ZSb2201277346da03f6ca1ea804ce3aaba --envi
 ````
 Each time I ran my "/sayHello" function, the log messages were listed.
 
+--------------------------------------------------------------------------------
+### Generate API Keys and secret strings
 
+To [generate API Keys and secret strings](https://www.twilio.com/docs/iam/keys/api-key), use TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN for
+[authentication](https://www.twilio.com/docs/twilio-cli/general-usage#want-to-use-environment-variables-instead-of-creating-a-profile)(Option 2).
+````
+export TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+export TWILIO_AUTH_TOKEN=yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+````
+The following creates an API Key and secret string.
+````
+$ twilio api:core:keys:create --friendly-name=p1 
+SID            Friendly Name Date Created 
+SK93...5b      p1            May 24 2021 09:25:21 GMT-0700
+````
 --------------------------------------------------------------------------------
 
 Cheers...
