@@ -27,7 +27,9 @@ $theFileContent=fread($fileRead, $fileSize);
 fwrite($fileWrite, $theFileContent);
 
 // Get a media file from a URL and write to file.
+$http = new HTTPRequester();
 $urlMedia = 'https://raw.githubusercontent.com/tigerfarm/arduino/master/Altair101/AltairDesktop01a.jpg';
+echo "+ $urlMedia \xA";
 $urlFileContent = $http->getMediaContent($urlMedia);
 $urlMediaFilenameWrite = "httpsMediaUrl.jpg";
 $urlFileWrite = fopen($urlMediaFilenameWrite, 'w');
@@ -40,8 +42,12 @@ fwrite($urlFileWrite, $urlFileContent);
 // ++ Media URL: https://raw.githubusercontent.com/tigerfarm/arduino/master/Altair101/AltairDesktop01a.jpg
 // + Sent, SID: MM537ab3ba8dd149bfa9af998867d61f64 Status: queued
 // Get the Media URL from the Twilio Console SMS logs report: https://www.twilio.com/console/sms/logs
+// Sample program to send an MMS:
+// $ php smsSendMmsSingle.php
+// Webhook receives: {...,"SmsMessageSid":"MM0888aad8ca4ab5c698a58ecc6e6c96f9","MediaContentType0":"image/jpeg","MediaUrl0":"https://api.twilio.com/2010-04-01/Accounts/ACa...3/Messages/MM0888aad8ca4ab5c698a58ecc6e6c96f9/Media/ME7d57db8c0196a2f45d3da1d5ad496910",...} 
 // 
-$mmsMedia = 'https://media.twiliocdn.com/ACa...3/60ab91a9734616b539e86e67f2eebec5?x-amz-security-token=IQoJb3JpZ2luX2VjEOn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIDT764Q1SOlnPX9aU75eNUQSA3KB1WBrxBSBnKeZdWiPAiEAmltOMl%2BBCARok1TwQV0g0%2Bknm%2F6y%2FZwGTrZV4ZHvWGkqtAMIYRAAGgwyMDExNjQ5MjE0MDgiDLGaQSyFbUKPRAQYaSqRAzFY3q3Qr6ZUGpiRCayeuz%2BCfSKD3kpCNcwyzHQiVyLH3uRIk9l8hIxcfxtISWsta%2Be6707Jg6Pph0dr%2B0rQvVfNO6pW6Mdi%2FYHbMgXSfL8saaOenKXW4qu%2B2URxTOheWOoCCS3SKEIjHotws%2FXGfj9%2B7fGCCnIQvFbLlq5H4UURUO5tWNmlllxR2DVHwVQ2M9uiC%2BLHVNvOOD%2B800R8%2Bpu3QljGEiY2txTPjfH3YZrn6dJfPY1xq7yweiRwWzTpnSfAQmEX9JlNArxR8%2FI76iFBdnd7QNNuEZevTUoyksL%2FspmRSzxU0dfy8Dn1XEu596Fr7G71Ycw9465dCxdW%2B3KgBlLtdF%2BMNoGw6bPEAPa5mWWb80FNu8QH%2FuTfJUOeFXA4MAQUdGfkUo2PPwe93bTjCjNCHfpKb2np90DA5ACDcW0RTcEV7WWgecYDvU9bn5w%2FLrCBz8xPFhpzOKeQs%2F5Cp14DVotmnmDAjFb9WvRnu1A1zfjKcuEHQuuJvyHSW3p5tCFtR%2F4R9UeJfDDt9HxFMKeYpoQGOusBCwWyLe0tnkTGEcSOe%2Bw%2BsNkjSnJ2fzLBbLXiMUlyuwHX1AqKmisZw%2BdqnhpeRVYueYiieRPj30hAySOC3pOa6gPryWQWsta7KfNobTPawykDu2XkLwO9pFT8W2ozmZpLpc%2FVXzANr9RelnjzH2vsOMbL2N8Q5580AiSEyQM5GTVBZETidWNWZHUf%2FJ8tWAQnxQMKt5soi3XaCtDYIvMl7x%2BT9cr7GDpJlASQs2HubFMs%2BEPDAYkSS%2BlJndYP6REzXxC1QwlmrA2HUP8g1e%2BVho2%2B4baMdw%2Fg%2BlfNrP9glDdaYCrp7ZKFZdRUEA%3D%3D&AWSAccessKeyId=ASIAS5VS5DJAMFFLSQ2N&Expires=1619633379&Signature=5m%2FTxeZc2Be5UNiNvcdxkmHDsCg%3D';
+// $mmsMedia = 'https://media.twiliocdn.com/ACa...3/60ab91a9734616b539e86e67f2eebec5?x-amz-security-token=IQoJb3JpZ2luX2VjEOn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIDT764Q1SOlnPX9aU75eNUQSA3KB1WBrxBSBnKeZdWiPAiEAmltOMl%2BBCARok1TwQV0g0%2Bknm%2F6y%2FZwGTrZV4ZHvWGkqtAMIYRAAGgwyMDExNjQ5MjE0MDgiDLGaQSyFbUKPRAQYaSqRAzFY3q3Qr6ZUGpiRCayeuz%2BCfSKD3kpCNcwyzHQiVyLH3uRIk9l8hIxcfxtISWsta%2Be6707Jg6Pph0dr%2B0rQvVfNO6pW6Mdi%2FYHbMgXSfL8saaOenKXW4qu%2B2URxTOheWOoCCS3SKEIjHotws%2FXGfj9%2B7fGCCnIQvFbLlq5H4UURUO5tWNmlllxR2DVHwVQ2M9uiC%2BLHVNvOOD%2B800R8%2Bpu3QljGEiY2txTPjfH3YZrn6dJfPY1xq7yweiRwWzTpnSfAQmEX9JlNArxR8%2FI76iFBdnd7QNNuEZevTUoyksL%2FspmRSzxU0dfy8Dn1XEu596Fr7G71Ycw9465dCxdW%2B3KgBlLtdF%2BMNoGw6bPEAPa5mWWb80FNu8QH%2FuTfJUOeFXA4MAQUdGfkUo2PPwe93bTjCjNCHfpKb2np90DA5ACDcW0RTcEV7WWgecYDvU9bn5w%2FLrCBz8xPFhpzOKeQs%2F5Cp14DVotmnmDAjFb9WvRnu1A1zfjKcuEHQuuJvyHSW3p5tCFtR%2F4R9UeJfDDt9HxFMKeYpoQGOusBCwWyLe0tnkTGEcSOe%2Bw%2BsNkjSnJ2fzLBbLXiMUlyuwHX1AqKmisZw%2BdqnhpeRVYueYiieRPj30hAySOC3pOa6gPryWQWsta7KfNobTPawykDu2XkLwO9pFT8W2ozmZpLpc%2FVXzANr9RelnjzH2vsOMbL2N8Q5580AiSEyQM5GTVBZETidWNWZHUf%2FJ8tWAQnxQMKt5soi3XaCtDYIvMl7x%2BT9cr7GDpJlASQs2HubFMs%2BEPDAYkSS%2BlJndYP6REzXxC1QwlmrA2HUP8g1e%2BVho2%2B4baMdw%2Fg%2BlfNrP9glDdaYCrp7ZKFZdRUEA%3D%3D&AWSAccessKeyId=ASIAS5VS5DJAMFFLSQ2N&Expires=1619633379&Signature=5m%2FTxeZc2Be5UNiNvcdxkmHDsCg%3D';
+$mmsMedia = 'https://api.twilio.com/2010-04-01/Accounts/ACae0e356ccba96d16d8d4f6f9518684a3/Messages/MM0888aad8ca4ab5c698a58ecc6e6c96f9/Media/ME7d57db8c0196a2f45d3da1d5ad496910';
 $mmsFileContent = $http->getMediaContent($mmsMedia);
 $mmsMediaFilenameWrite = "httpsMmsMediaUrl.jpg";
 $mmsFileWrite = fopen($mmsMediaFilenameWrite, 'w');
