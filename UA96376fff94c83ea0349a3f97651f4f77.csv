@@ -1,0 +1,4 @@
+Query,Status,Source channel,Date created,Date updated,Task unique name,Field name,Field value,Field type,Language,AssistantSid
+"""Hello""",pending-review,custom.txtbot,2021-05-07T19:16:20.000Z,2021-05-07T21:19:41.000Z,hello_world,,,,en-US,UA96376fff94c83ea0349a3f97651f4f77
+For.,pending-review,voice,2021-05-05T00:21:53.000Z,2021-05-05T00:21:53.000Z,,,,,en-US,UA96376fff94c83ea0349a3f97651f4f77
+"Okay, yes.",pending-review,voice,2021-05-05T00:21:47.000Z,2021-05-05T00:21:47.000Z,yes_world,,,,en-US,UA96376fff94c83ea0349a3f97651f4f77
