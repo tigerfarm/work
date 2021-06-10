@@ -17,6 +17,17 @@ You'll need a Conversations Service SID(starts with IS).
 Twilio Console [link](https://www.twilio.com/console/conversations/services) to create a Conversations service. 
 
 ----------------------------------------------------------------------------------
+## Using the  Conversations API
+
+Documentation [API Overview link](https://www.twilio.com/docs/conversations/api)
+
+A Conversation has the following resources:
+[Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource),
+[Participants](https://www.twilio.com/docs/conversations/api/conversation-participant-resource),
+[Messages](https://www.twilio.com/docs/conversations/api/conversation-message-resource), and 
+[Conversation Webhooks](https://www.twilio.com/docs/conversations/api/conversation-scoped-webhook-resource)
+
+----------------------------------------------------------------------------------
 ## Generate a Conversations Access Token
 
 You can generate a token in a few ways:

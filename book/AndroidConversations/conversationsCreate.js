@@ -9,4 +9,6 @@ client.conversations.conversations
             messagingServiceSid: process.env.MESSAGING_SERVICE_SID,
             friendlyName: conversationFriendlyName
         })
-        .then(conversation => console.log(conversation.sid));
+        .then(conversation => {
+            console.log(conversation.sid);
+        });
