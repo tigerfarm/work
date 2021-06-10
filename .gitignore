@@ -7,6 +7,8 @@
 #
 *.log
 #
+/book/AndroidConversations/0setvars.sh
+#
 /mediaStreams/node_modules/
 /mediaStreams/google_creds.json
 /mediaStreams/package-lock.json
