@@ -17,6 +17,13 @@ You'll need a Conversations Service SID(starts with IS).
 Twilio Console [link](https://www.twilio.com/console/conversations/services) to create a Conversations service. 
 
 ----------------------------------------------------------------------------------
+#### Issues
+
+2 issues to work through:
++ Update a participant's identity
++ Get webhook to work, when a message is added
+
+----------------------------------------------------------------------------------
 ## Using the  Conversations API
 
 Documentation [API Overview link](https://www.twilio.com/docs/conversations/api)

@@ -3,7 +3,7 @@ var client = require('twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTE
 
 conversationSid = process.env.CONVERSATION_SID;
 participantIdentity = 'chat3a';
-messageText = 'Hello there 3a.';
+messageText = 'Hello there 6a.';
 console.log("+ Conversation SID: " + conversationSid
         + " Participant Identity: " + participantIdentity
         + " messageText: " + messageText
