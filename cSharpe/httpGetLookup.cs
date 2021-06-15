@@ -24,7 +24,7 @@ namespace HttpGet
       Console.WriteLine("++ GET: + " + theURL);
       HttpClientHandler handler = new HttpClientHandler
       {
-    Credentials = new System.Net.NetworkCredential(ACCOUNT_SID, AUTH_TOKEN)
+        Credentials = new System.Net.NetworkCredential(ACCOUNT_SID, AUTH_TOKEN)
       };
       HttpClient client = new HttpClient(handler);
 
@@ -34,9 +34,9 @@ namespace HttpGet
       string result = await content.ReadAsStringAsync();
       if (result != null && result.Length >= 50)
       {
-    Console.WriteLine("+ Response: " + result);
-    Console.WriteLine("+ End of response.");
-    }
+        Console.WriteLine("+ Response: " + result);
+        Console.WriteLine("+ End of response.");
+      }
   }
  }
 }

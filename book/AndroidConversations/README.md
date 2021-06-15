@@ -19,9 +19,8 @@ Twilio Console [link](https://www.twilio.com/console/conversations/services) to 
 ----------------------------------------------------------------------------------
 #### Issues
 
-2 issues to work through:
-+ Update a participant's identity
-+ Get webhook to work, when a message is added
+Issues to work through:
++ Get webhook to work, when a message is added.
 
 ----------------------------------------------------------------------------------
 ## Using the  Conversations API
