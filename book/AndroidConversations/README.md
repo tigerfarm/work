@@ -31,7 +31,7 @@ Adding an emulator is straight forward. And my new phone was reconginized immedi
 Since I was using the Twilio CLI, I needed to add the Twilio token plugin.
 I thought that was only recommended, but it turns out to required.
 
-Based on my work to get find my token issue, I suggested a 
+Based on my work to get find the token issue, I suggested a 
 [documentation](https://www.twilio.com/docs/conversations/error-handling-diagnostics#android-logging-java)
 change from:
 ````
@@ -44,6 +44,18 @@ ConversationsClient.setLogLevel(ConversationsClient.LogLevel.DEBUG);
 This allowed me to view the debug messages that statement the authorization problem
 because the token was generated incorrectly.
 Once I added the Twilio token plugin to my Twilio CLI, the token generated fine.
+
+Following is where I added the line into the program: QuickstartConversationsManager.java.
+````
+...
+    void initializeWithAccessToken(final Context context, final String token) {
+        Log.e(MainActivity.TAG, "+ initializeWithAccessToken(..., " + token + ")");
+        ConversationsClient.setLogLevel(ConversationsClient.LogLevel.DEBUG);
+        ConversationsClient.Properties props = ConversationsClient.Properties.newBuilder().createProperties();
+        ConversationsClient.create(context, token, props, mConversationsClientCallback);
+    }
+...
+````
 
 ----------------------------------------------------------------------------------
 ## Using the  Conversations API
