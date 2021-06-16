@@ -9,7 +9,11 @@ const twilioApiKey = process.env.MASTER_API_KEY;
 const twilioApiSecret = process.env.MASTER_API_KEY_SECRET;
 
 // Used specifically for creating Chat tokens
-const serviceSid = 'ISd5c080247aaa4200a730da6c6ea08990';
+// const serviceSid = 'ISd5c080247aaa4200a730da6c6ea08990';
+// Note, to communicate with the command line programs, need to use the Conversations service:
+// https://www.twilio.com/console/conversations/configuration/defaults
+// Because the command line programs do not have the option to select a Conversations service.
+const serviceSid = 'IS4ebcc2d46cda47958628e59af9e53e55';
 const identity = 'dave';
 
 // Create a "grant" which enables a client to use Chat as a given user,
@@ -24,7 +28,7 @@ const token = new AccessToken(
   twilioAccountSid,
   twilioApiKey,
   twilioApiSecret,
-  {identity: identity}
+  {identity: identity, ttl: 43200}  // ttl is good for 12 hours.
 );
 
 token.addGrant(chatGrant);

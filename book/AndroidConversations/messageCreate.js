@@ -2,8 +2,8 @@ console.log("++ Create a text message for a Conversation.");
 var client = require('twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
 conversationSid = process.env.CONVERSATION_SID;
-participantIdentity = 'chat3a';
-messageText = 'Hello there 6a.';
+participantIdentity = 'stacy';
+messageText = 'Got it.';
 console.log("+ Conversation SID: " + conversationSid
         + " Participant Identity: " + participantIdentity
         + " messageText: " + messageText

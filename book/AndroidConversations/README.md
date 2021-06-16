@@ -21,6 +21,8 @@ Twilio Console [link](https://www.twilio.com/console/conversations/services) to 
 
 Issues to work through:
 + Get webhook to work, when a message is added.
++ Android app, update the emulator
++ 
 
 ----------------------------------------------------------------------------------
 ## Using the  Conversations API
@@ -40,7 +42,7 @@ For example, a program for each: create, fetch one, list all, update one, and de
 ## Generate a Conversations Access Token
 
 You can generate a token in a few ways:
-* Using the [twilio-cli](https://www.twilio.com/docs/twilio-cli/quickstart) and 
+* Using a [command line](https://www.twilio.com/docs/conversations/create-tokens) and 
 [twilio token plugin](https://github.com/twilio-labs/plugin-token) (Recommended)
 * Using [Twilio Runtime Function](https://www.twilio.com/docs/runtime/functions)
 
@@ -55,6 +57,30 @@ Manually generated tokens expire after a timeout period. So you will need to rep
 To use this in production software, you would typically create a token endpoint in your back end application
 that uses your existing user authentication strategy.
 
+Note, to exchange messages with the Conversations command line programs created based on the documentation,
+create access tokens using the [Default Conversation Service SID](https://www.twilio.com/console/conversations/configuration/defaults),
+not any other Conversations service SID.
+Because the documentation command line programs don’t have an option to set the Conversations service SID,
+they can only use the Default Conversation Service SID.
+
+Following is the token display using the [JWT.io](https://jwt.io/) website.
+Note, this token expires in one hour .
+````
+{
+  "jti": "ACa...3-1623781947",
+  "grants": {
+    "identity": "dave1",
+    "chat": {
+      "service_sid": "IS97...02"
+    }
+  },
+  "iat": 1623781947,
+  "exp": 1623785547,
+  "iss": "ACa...3",
+  "sub": "ACa...3"
+}
+````
+
 `test_access_token` is the placeholder in the `strings.xml` resource for the manually generated access token.
 
 Location of the strings.xml file:
@@ -64,7 +90,7 @@ Location of the strings.xml file:
 Sample:
 ````
 <resources>
-    <string name="app_name">Dave\'s Conversations Quickstart</string>
+    <string name="app_name">Dave\'s Conversations App</string>
     <string name="error_retrieving_access_token">Error retrieving access token from the server.</string>
     <string name="send">Send1</string>
     <string name="chat_token_url">https://YOUR_DOMAIN_HERE.twil.io/chat-token</string>
@@ -72,12 +98,26 @@ Sample:
     <string name="test_access_token">eyJhbGciOi...pogFA8</string>
 </resources>
 ````
-Token is used in the program: MainActivity.java.
+
+#### Program: MainActivity.java.
+
+App identity is hard coded.
+Token string is used here.
+Note, the hard coded identity needs to match the identity in the token.
 ````
 /.../conversations-quickstart-android-main/app/src/main/java/com/twilio/conversationsquickstart/MainActivity.java
 
+private String identity = "dave1";
+
 // Token Method 1 - supplied from strings.xml as the test_access_token
 quickstartConversationsManager.initializeWithAccessToken(this, getString(R.string.test_access_token));
+````
+
+#### Program file, QuickstartConversationsManager.java,
+
+The Conversation name is hard coded.
+````
+private final static String DEFAULT_CONVERSATION_NAME = "general";
 ````
 
 ----------------------------------------------------------------------------------
