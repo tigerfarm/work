@@ -5,7 +5,7 @@ The app is a lightweight Android application for [Twilio Conversations](https://
 
 Conversations Android Quickstart 
 [GitHub link](https://github.com/TwilioDevEd/conversations-quickstart-android) with a brief Readme file, and
-the [documentation link](https://www.twilio.com/docs/conversations/android/exploring-conversations-android-quickstart),
+the [documentation link](https://www.twilio.com/docs/conversations/android/exploring-conversations-android-quickstart).
 
 The general Twilio Conversations quickstart [link](https://www.twilio.com/docs/conversations/quickstart).
 
@@ -38,6 +38,12 @@ A Conversation has the following resources:
 To get started, I create a sample Node.JS program to manage each of the resources.
 For example, a program for each: create, fetch one, list all, update one, and delete one.
 
+Note, to exchange messages with the Conversations command line programs created based on the documentation,
+create access tokens using the [Default Conversation Service SID](https://www.twilio.com/console/conversations/configuration/defaults),
+not any other Conversations service SID.
+Because the documentation command line programs don’t have an option to set the Conversations service SID,
+they can only use the Default Conversation Service SID.
+
 ----------------------------------------------------------------------------------
 ## Generate a Conversations Access Token
 
@@ -56,12 +62,6 @@ Note: You need to generate an access token with a ChatGrant for a Conversations 
 Manually generated tokens expire after a timeout period. So you will need to replace the token.
 To use this in production software, you would typically create a token endpoint in your back end application
 that uses your existing user authentication strategy.
-
-Note, to exchange messages with the Conversations command line programs created based on the documentation,
-create access tokens using the [Default Conversation Service SID](https://www.twilio.com/console/conversations/configuration/defaults),
-not any other Conversations service SID.
-Because the documentation command line programs don’t have an option to set the Conversations service SID,
-they can only use the Default Conversation Service SID.
 
 Following is the token display using the [JWT.io](https://jwt.io/) website.
 Note, this token expires in one hour .
