@@ -22,7 +22,7 @@ Twilio Console [link](https://www.twilio.com/console/conversations/services) to 
 Issues to work through:
 + Get webhook to work, when a message is added.
 + Android app, update the emulator
-+ 
++ Get the access token to work.
 
 ----------------------------------------------------------------------------------
 ## Using the  Conversations API
