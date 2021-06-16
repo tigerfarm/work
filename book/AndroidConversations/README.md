@@ -3,11 +3,11 @@
 
 The app is a lightweight Android application for [Twilio Conversations](https://www.twilio.com/docs/conversations).
 
-Twilio Conversations quickstart [link](https://www.twilio.com/docs/conversations/quickstart).
-
 Conversations Android Quickstart 
-[documentation link](https://www.twilio.com/docs/conversations/android/exploring-conversations-android-quickstart),
-[GitHub link](https://github.com/TwilioDevEd/conversations-quickstart-android) with a brief Readme file.
+[GitHub link](https://github.com/TwilioDevEd/conversations-quickstart-android) with a brief Readme file, and
+the [documentation link](https://www.twilio.com/docs/conversations/android/exploring-conversations-android-quickstart),
+
+The general Twilio Conversations quickstart [link](https://www.twilio.com/docs/conversations/quickstart).
 
 ## Configuring and getting started
 
