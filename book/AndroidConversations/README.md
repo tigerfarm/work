@@ -21,10 +21,29 @@ Twilio Console [link](https://www.twilio.com/console/conversations/services) to 
 
 Issues I worked through:
 + Get the webhook to work, when a message is added.
-+ Android Studio updates: update the emulator I was using to Android 11.
++ Android Studio updates: add an emulator for Android 11.
 + Get the access token to work.
 
-The Conversations webhook only works for the Default Conversation Service SID](https://www.twilio.com/console/conversations/configuration/defaults).
+The Conversations webhook only works for the [Default Conversation Service SID](https://www.twilio.com/console/conversations/configuration/defaults).
+
+Adding an emulator is straight forward. And my new phone was reconginized immediately by Studio.
+
+Since I was using the Twilio CLI, I needed to add the Twilio token plugin.
+I thought that was only recommended, but it turns out to required.
+
+Based on my work to get find my token issue, I suggested a 
+[documentation](https://www.twilio.com/docs/conversations/error-handling-diagnostics#android-logging-java)
+change from:
+````
+ConversationsClient.setLogLevel(android.util.Log.DEBUG);
+````
+To:
+````
+ConversationsClient.setLogLevel(ConversationsClient.LogLevel.DEBUG);
+````
+This allowed me to view the debug messages that statement the authorization problem
+because the token was generated incorrectly.
+Once I added the Twilio token plugin to my Twilio CLI, the token generated fine.
 
 ----------------------------------------------------------------------------------
 ## Using the  Conversations API
