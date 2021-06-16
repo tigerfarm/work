@@ -19,10 +19,12 @@ Twilio Console [link](https://www.twilio.com/console/conversations/services) to 
 ----------------------------------------------------------------------------------
 #### Issues
 
-Issues to work through:
-+ Get webhook to work, when a message is added.
-+ Android app, update the emulator
+Issues I worked through:
++ Get the webhook to work, when a message is added.
++ Android Studio updates: update the emulator I was using to Android 11.
 + Get the access token to work.
+
+The Conversations webhook only works for the Default Conversation Service SID](https://www.twilio.com/console/conversations/configuration/defaults).
 
 ----------------------------------------------------------------------------------
 ## Using the  Conversations API
