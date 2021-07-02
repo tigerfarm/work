@@ -24,9 +24,13 @@ Issues I worked through:
 + Android Studio updates: add an emulator for Android 11.
 + Get the access token to work.
 
-The Conversations webhook only works for the [Default Conversation Service SID](https://www.twilio.com/console/conversations/configuration/defaults).
+The Conversations webhook only works for:
++ The [Default Conversation Service SID](https://www.twilio.com/console/conversations/configuration/defaults)
+    when using API calls such as my command line programs.
++ SDK calls will trigger webhooks from services other than the Default Conversation Service SID.
+    I haven't tested this, but I got it for a reliable source.
 
-Adding an emulator is straight forward. And my new phone was reconginized immediately by Studio.
+Adding an emulator is straight forward. And my new phone was recognized immediately by Studio.
 
 Since I was using the Twilio CLI, I needed to add the Twilio token plugin.
 I thought that was only recommended, but it turns out to required.

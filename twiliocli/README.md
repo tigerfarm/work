@@ -12,7 +12,7 @@ Twilio CLI project repository issues: https://github.com/twilio/twilio-cli/issue
 Adam's Twilio CLI repository:
 https://github.com/adamchasetaylor/twilio-cli-keys
 
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 ### Install
 
 Requirement: [Node.js](https://nodejs.org/) >= 8.0
@@ -44,7 +44,7 @@ Create environment variables:
 - `TWILIO_API_KEY` = your Twilio CLI API Key SID, starts with "SK".
 - `TWILIO_API_SECRET` = the secret text string for the API Key.
 
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 ### Send Messages
 
 #### Send an SMS message.
@@ -310,7 +310,9 @@ support        Fri May 31 2019 11:45:59 GMT-0700 (Pacific Daylight Time)  comple
 
 ````
 
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+### Testing Twilo Conversations
+
 ````
 $ twilio api:conversations:v1:conversations --help
 TODO: Resource-level docs
@@ -446,7 +448,7 @@ CHc1312b8f953047e18dfee082ee4f1722  IS4feb8a8608fb4743a35f57687ae3a85a  Hello Co
 twilio api:conversations:v1:conversations:remove --sid=CHc1312b8f953047e18dfee082ee4f1722
 The resource was deleted successfully
 ````
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 
 Testing 2
 ````
@@ -463,7 +465,7 @@ The resource was deleted successfully
 
 ````
 
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 ### BulkExport using Twilio CLI
 
 We have a new API for pulling logs, BulkExport API. Custom BulkExport Jobs allow you to create exports for any date range.
@@ -653,7 +655,7 @@ Use a browser to download the file using the above URL:
 "direction":"inbound","start":"2020-07-26","num_media":0}
 ````
 
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 ### Delete a Function from a Function Service
 
 It takes preliminary steps to be able to delete a function. Following are the deletion steps with an example I went through.
@@ -689,6 +691,7 @@ $ twilio api:serverless:v1:services:functions:remove --service-sid ZSb2201277346
 The resource was deleted successfully
 ````
 
+--------------------------------------------------------------------------------
 #### Tailing Twilio Functions Log Messages
 
 To test the display of log messages, I enabled live logs in the Twilio Console and did a test by running my "/sayHello" function from a browser.
@@ -727,7 +730,7 @@ $ twilio serverless:logs --service-sid=ZSb2201277346da03f6ca1ea804ce3aaba --envi
 ````
 Each time I ran my "/sayHello" function, the log messages were listed.
 
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 ### Generate API Keys and secret strings
 
 To [generate API Keys and secret strings](https://www.twilio.com/docs/iam/keys/api-key), use TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN for
@@ -742,6 +745,6 @@ $ twilio api:core:keys:create --friendly-name=p1
 SID            Friendly Name Date Created 
 SK93...5b      p1            May 24 2021 09:25:21 GMT-0700
 ````
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 
 Cheers...

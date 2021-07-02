@@ -54,7 +54,7 @@ exports.handler = function(context, event, callback) {
 To run the hello world function locally,
 start the local NodeJS Twilio CLI webserver.
 ````
-$ cd /Users/.../Projects/work/twiliocli
+$ cd /Users/.../Projects/work/twiliocli/p1
 $ npm start
 --- or ---
 $ twilio serverless:start

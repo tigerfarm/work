@@ -1,7 +1,7 @@
 console.log('+++ Start.');
 
-var accountSid = process.env.ACCOUNT_SID;
-var authToken = process.env.AUTH_TOKEN;
+var accountSid = process.env.MASTER_ACCOUNT_SID;
+var authToken = process.env.MASTER_AUTH_TOKEN;
 var client = require('twilio')(accountSid, authToken);
 // TwiML Bin, Say poem: https://handler.twilio.com/twiml/EH83382136170f8b9fa841074a99eab808
 // TwiML Bin, Say message: https://handler.twilio.com/twiml/EH9e38aeacae211a78a911357b4c444849
@@ -10,9 +10,11 @@ var client = require('twilio')(accountSid, authToken);
 // TwiML Bin, Dial support queue: https://handler.twilio.com/twiml/EH5fcbab2a898d542c8e28c3e4d458c9fa
 // TwiML Bin, Dial home phone number: https://handler.twilio.com/twiml/EHbf385249d1463893db058702529c684e
 client.calls.create({
-    url: "https://handler.twilio.com/twiml/EHbf385249d1463893db058702529c684e",
+    machineDetection: 'Enable',
+    url: "https://handler.twilio.com/twiml/EH92a1cf781574e781b22e618f65d7712f",
+    // url: "https://handler.twilio.com/twiml/EHbf385249d1463893db058702529c684e",
     // from: "abc",
-    from: process.env.PHONE_NUMBER1,
+    from: process.env.MASTER_PHONE_NUMBER_1,
     // to: process.env.PHONE_NUMBER_HOME
     // to: "sip:zoiper@machine.sip.us1.twilio.com"
     to: "client:david"
