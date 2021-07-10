@@ -7,6 +7,8 @@ Conversations Android Quickstart
 [GitHub link](https://github.com/TwilioDevEd/conversations-quickstart-android) with a brief Readme file, and
 the [documentation link](https://www.twilio.com/docs/conversations/android/exploring-conversations-android-quickstart).
 
+[JavaScript docs link](http://media.twiliocdn.com/sdk/js/conversations/releases/1.2.1/docs/Conversation.html).
+
 The general Twilio Conversations quickstart [link](https://www.twilio.com/docs/conversations/quickstart).
 
 ## Configuring and getting started

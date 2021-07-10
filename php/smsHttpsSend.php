@@ -2,7 +2,7 @@
 
 class HTTPRequester {
     public static function HTTPPost($AccountSid, $url, array $params) {
-        $AuthToken = getenv('AUTH_TOKEN');
+        $AuthToken = getenv('MASTER_AUTH_TOKEN');
         $query = http_build_query($params);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -22,9 +22,10 @@ class HTTPRequester {
 
 echo "+++ Start.\xA";
 
-$AccountSid = getenv("ACCOUNT_SID");
+$AccountSid = getenv("MASTER_ACCOUNT_SID");
 $fromPhoneNumber = getenv("MASTER_PHONE_NUMBER_1");
-$toPhoneNumber = getenv("MY_PHONE_NUMBER");
+$toPhoneNumber = getenv("MASTER_PHONE_NUMBER_2");
+// $toPhoneNumber = getenv("MY_PHONE_NUMBER");
 $theMessage = "Message #1";
 $theMessageOkay = "J'aime l'été... éÉÑñ";
 //

@@ -1,4 +1,4 @@
-console.log("++ Create a chat participant for a Conversation.");
+console.log("++ Create a chat participant into a Conversation.");
 var client = require('twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
 conversationSid = process.env.CONVERSATION_SID;

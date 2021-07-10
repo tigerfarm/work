@@ -7,9 +7,8 @@
     "start": "twilio-run",
     "deploy": "twilio-run deploy"
   },
-  "dependencies": {},
   "devDependencies": {
-    "twilio-run": "^2.6.0"
+    "twilio-run": "^2.9.0"
   },
   "engines": {
     "node": "10"
