@@ -13,6 +13,8 @@
 /mediaStreams/google_creds.json
 /mediaStreams/package-lock.json
 #
+/php/node_modules
+#
 /flex/plugin-p1/node_modules/
 /flex/plugin-p1/public/
 #
