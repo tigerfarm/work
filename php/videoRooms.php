@@ -14,6 +14,7 @@ try {
         print('+ Room SID: ' . $room->sid
                 . " status:" . $room->status
                 . " uniqueName:" . $room->uniqueName
+                . " maxParticipants:" . $room->maxParticipants
                 . "\xA");
     }
 } catch (RestException $e) {
