@@ -14,6 +14,7 @@
 /mediaStreams/package-lock.json
 #
 /php/node_modules
+/node/node_modules
 #
 /flex/plugin-p1/node_modules/
 /flex/plugin-p1/public/
