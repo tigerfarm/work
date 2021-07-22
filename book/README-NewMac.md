@@ -109,7 +109,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 + Run the following to add command to run brew in a terminal.
 $ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/dave/.bash_profile
 
-+++ Install Twilio SDK
+#### Install Twilio SDK
 
 Reference:
 https://www.twilio.com/docs/twilio-cli/quickstart
