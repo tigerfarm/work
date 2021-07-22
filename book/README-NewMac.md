@@ -3,11 +3,20 @@
 
 When I went through the computer initial setup, I called my computer: dave.
 
+I have an Apple connector unit that has a USB, HDMI, and Apple connector.
+Item description from Amazon.com: 
+USB C to HDMI Adapter USB Type C Adapter Multiport AV Converter with 4K HDMI Output USB C Port & USD3.0 
+Fasting Charging Port Compatible for MacBook Pro MacBook Air 2019/2018 iPad Pro 2019.
+
+I use a USB hub to connect devices.
+
 M1 Air doesn't have fan. I love the quiet.
 If the CPU heats up too much, it throttles itself to keep cool.
 It runs warm to the touch. I haven't noticed any slow down.
 I watched a comparison video between an M1 Air and a MacBook Pro.
 The M1 won most tests, only slightly loosing one.
+
+It's suppose to have great battery life. I've left it plugged in, so haven't tested this feature.
 
 I found out that Mac M1 is unable to run Android Studio emulators. 
 The workaround is test on actual hardware. My Hello World app runs fine on my phone.
@@ -20,13 +29,13 @@ When allowing a new downloaded app,
 + Apple/System Preferences/Security & Privacy
 + Click/enable Allow apps ...
 
-Stay on when lid is closed:
+Getting the laptop to stay on when lid is closed:
 + Apple/System Preferences/Battery/Schedule
 + Enable: Startup or wake, Every Day. I set at: 8:00AM.
 
 #### Mac to/from Mac transfer
 
-From old computer to the new one, I uses SMB, which is finicky.
+From old computer to the new one, I used SMB, which is finicky.
 Mark suggested using Google docs upload/download.
 
 --------------------------------------------------------------------------------
