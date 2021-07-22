@@ -164,20 +164,21 @@ $ python setup.py install
 ````
 --------------------------------------------------------------------------------
 ### PHP
-
+````
 $ php -version
 ...
 PHP 7.3.24-(to be removed in future macOS) (cli) (built: May  8 2021 09:40:34) ( NTS )
 Copyright (c) 1997-2018 The PHP Group
 Zend Engine v3.3.24, Copyright (c) 1998-2018 Zend Technologies
-
+````
 Downloaded the new version
 https://github.com/twilio/twilio-php
 
 Use the following require to replace the older version:
+````
 require __DIR__ . '/../../twilio-php-main/src/Twilio/autoload.php';
 // require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
-
+````
 --------------------------------------------------------------------------------
 ### C#, Xamarin, Git
 
