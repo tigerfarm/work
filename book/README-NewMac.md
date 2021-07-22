@@ -99,21 +99,23 @@ source ~/.profile
 ### Install brew, Twilio SDK, and Twilio CLI.
 
 + Install brew.
+````
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ...
 - Add Homebrew to your PATH in /Users/dave/.bash_profile:
     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/dave/.bash_profile
     eval "$(/opt/homebrew/bin/brew shellenv)
 ...
-
+````
 + Run the following to add command to run brew in a terminal.
+````
 $ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/dave/.bash_profile
-
+````
 #### Install Twilio SDK
 
 Reference:
 https://www.twilio.com/docs/twilio-cli/quickstart
-
+````
 $ brew tap twilio/brew && brew install twilio
 ...
 $ twilio
@@ -121,13 +123,14 @@ $ twilio
 VERSION
   twilio-cli/2.25.0 darwin-arm64 node-v16.4.2
 ...
-
+````
 + Confirm the install and environment variables by listing Twilio account phone number.
+````
 $ twilio api:core:incoming-phone-numbers:list
 SID                                 Phone Number   Friendly Name                     
 PN ...
 ...
-
+````
 --------------------------------------------------------------------------------
 ### Languages
 
