@@ -1,6 +1,8 @@
 --------------------------------------------------------------------------------
 # New MacBook Notes
 
+When I went through the computer initial setup, I called my computer: dave.
+
 --------------------------------------------------------------------------------
 ### Getting Started
 
@@ -148,7 +150,7 @@ require __DIR__ . '/../../twilio-php-main/src/Twilio/autoload.php';
 // require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 
 --------------------------------------------------------------------------------
-### C#, Xamarin
+### C#, Xamarin, Git
 
 Xamarin is now integrated into Visual Studio. 
 https://docs.microsoft.com/en-us/xamarin/get-started/installation/windows
@@ -161,6 +163,16 @@ VisualStudioForMacInstaller__1737205245.1626116930.dmg
 When I installed, I selected the option to install Git.
 This is how I got Git on my computer.
 
+Note, I zipped my code repositories from my old computer,
+copied the zip to the new computer,
+and the git commands worked:
+````
+$ git add .
+$ git commit -am "update"
+...
+/Users/dave/work $ git push -u origin master
+...
+````
 --------------------------------------------------------------------------------
 ### Android Studio
 
