@@ -9,6 +9,12 @@ It runs warm to the touch. I haven't noticed any slow down.
 I watched a comparison video between an M1 Air and a MacBook Pro.
 The M1 won most tests, only slightly loose one.
 
+I found out that Mac M1 is unable to run Android Studio emulators. 
+The workaround is test on actual hardware. My Hello World app runs fine on my phone.
+Article on installing the Android Emulator Preview for the M1 chip:
+
+https://medium.com/techiepedia/setting-up-android-emulator-in-m1-mac-fff58ec8bff8
+
 --------------------------------------------------------------------------------
 ### Getting Started
 
@@ -196,9 +202,6 @@ I added emulator options.
 
 Then found out that Mac M1 is unable to run Android Studio emulators. 
 The workaround is test on actual hardware. My Hello World app runs fine on my phone.
-
-Article on installing the Android Emulator Preview for the M1 chip:
-https://medium.com/techiepedia/setting-up-android-emulator-in-m1-mac-fff58ec8bff8
 
 --------------------------------------------------------------------------------
 ### Install NetBeans
