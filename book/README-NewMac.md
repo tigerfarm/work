@@ -3,6 +3,12 @@
 
 When I went through the computer initial setup, I called my computer: dave.
 
+Doesn't have fan. I love the quiet.
+If the CPU heats up too much, it throttles itself to keep cool.
+It runs warm to the touch. I haven't noticed any slow down.
+I watched a comparison video between an M1 Air and a MacBook Pro.
+The M1 won most tests, only slightly loose one.
+
 --------------------------------------------------------------------------------
 ### Getting Started
 
