@@ -1,14 +1,19 @@
 --------------------------------------------------------------------------------
-# New MacBook Notes
+# New MacBook Air M1 Notes
 
-When I went through the computer initial setup, I called my computer: dave.
-
-I have an Apple connector unit that has a USB, HDMI, and Apple connector.
+I have an Apple Adapter unit that has a USB, HDMI, and Apple connector.
 Item description from Amazon.com: 
 USB C to HDMI Adapter USB Type C Adapter Multiport AV Converter with 4K HDMI Output USB C Port & USD3.0 
 Fasting Charging Port Compatible for MacBook Pro MacBook Air 2019/2018 iPad Pro 2019.
 
-I use a USB hub to connect devices.
+Connected to the Apple Adapter unit
++ USB hub
++ HDMI cable to my 32" TV flat screen monitor.
+
+I use a USB hub to connect devices:
++ Wireless keyboard
++ Mouse
++ Phone charger cable
 
 M1 Air doesn't have fan. I love the quiet.
 If the CPU heats up too much, it throttles itself to keep cool.
@@ -24,6 +29,8 @@ Article on installing the [Android Emulator Preview for the M1 chip](https://med
 
 --------------------------------------------------------------------------------
 ### Getting Started
+
+When I went through the Twilio computer initial setup, I called my computer: dave.
 
 When allowing a new downloaded app,
 + Apple/System Preferences/Security & Privacy
