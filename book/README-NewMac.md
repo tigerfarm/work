@@ -68,7 +68,7 @@ The USB mic is not selectable from Audacity.
 
 --------------------------------------------------------------------------------
 ### Configure the terminal
-
+````
 + Start Terminal.
 + Menu item: Terminal/Preferences
 + Change Shells open with: Command:
@@ -88,13 +88,14 @@ Set the prompt:     export PS1="/Users/dave/\W $ "
 + Start Terminal.
 + If prompt is not changed, set to use the bash shell:
 /usr/bash
+
 + Quit Terminal.
 + Start Terminal.
 Note, ignore the message, "The default interactive shell is now zsh. ..."
 
 After changing .bash_profile, use the following:
 source ~/.profile
-
+````
 --------------------------------------------------------------------------------
 ### Install brew, Twilio SDK, and Twilio CLI.
 
