@@ -99,7 +99,7 @@ source ~/.profile
 --------------------------------------------------------------------------------
 ### Install brew, Twilio SDK, and Twilio CLI.
 
-+ Install brew.
+Install brew.
 ````
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ...
@@ -108,7 +108,8 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
     eval "$(/opt/homebrew/bin/brew shellenv)
 ...
 ````
-+ Run the following to add command to run brew in a terminal.
+
+Run the following to add command to run brew in a terminal.
 ````
 $ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/dave/.bash_profile
 ````
