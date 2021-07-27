@@ -27,6 +27,11 @@ I found out that Mac M1 is unable to run Android Studio emulators.
 The workaround is test on actual hardware. My Hello World app runs fine on my phone.
 Article on installing the [Android Emulator Preview for the M1 chip](https://medium.com/techiepedia/setting-up-android-emulator-in-m1-mac-fff58ec8bff8).
 
+Here something I really like with the new machine.
+For a Zoom session, I open the lid for the camera to work.
+After a Zoom session and close the lid.
+Here's the part I like, there’s no monitor flash as the video adjusts to the closing of the lid.
+
 --------------------------------------------------------------------------------
 ### Getting Started
 
@@ -44,6 +49,23 @@ Getting the laptop to stay on when lid is closed:
 
 From old computer to the new one, I used SMB, which is finicky.
 Mark suggested using Google docs upload/download.
+
+--------------------------------------------------------------------------------
+### Zoom screen share
+
+For screen share:
++ Click the system apple.
++ Click System Preferences/Security & Privacy.
++ On the left, click Screen Recording.
++ Click the lock in the bottom left to allow changes.
++ Click the "+".
+++ In the popup, go to the Application directory and click "Zoom.us".
+++ Zoom.us will be added and enabled.
+
+You are now ready for Zoom screen sharing.
+To confirm, [Host a session](https://twilio.zoom.us/) and click Share.
+The pop will display the windows options to be shared.
+Note, before running the above, I was given screen share options with question marks on the disabled options.
 
 --------------------------------------------------------------------------------
 ### Mic
