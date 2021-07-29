@@ -8,6 +8,7 @@
 *.log
 #
 /book/AndroidConversations/0setvars.sh
+/book/AndroidConversations/node_modules/
 #
 /mediaStreams/node_modules/
 /mediaStreams/google_creds.json
