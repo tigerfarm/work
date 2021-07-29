@@ -1,4 +1,4 @@
-console.log("++ List Services Conversations.");
+console.log("++ List a Service's Conversations.");
 var client = require('twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
 serviceSid = process.env.CONVERSATIONS_SERVICE_SID;

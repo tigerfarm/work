@@ -24,20 +24,21 @@ Twilio Console [link](https://www.twilio.com/console/conversations/services) to 
 Issues I worked through:
 + Get the webhook to work, when a message is added.
 + Android Studio updates: add an emulator for Android 11.
-+ Get the access token to work.
+  Adding an emulator is straight forward. And my new phone was recognized immediately by Studio.
++ Get the access token to work. It can be used in the Android sample app,
+  and is use in the repository: [tfpconversations](https://github.com/tigerfarm/tfpconversations)
 
-The Conversations webhook only works for:
+The Conversations webhook details:
 + The [Default Conversation Service SID](https://www.twilio.com/console/conversations/configuration/defaults)
     when using API calls such as my command line programs.
 + SDK calls will trigger webhooks from services other than the Default Conversation Service SID.
     I haven't tested this, but I got it for a reliable source.
 
-Adding an emulator is straight forward. And my new phone was recognized immediately by Studio.
-
-Since I was using the Twilio CLI, I needed to add the Twilio token plugin.
+The Android Studio sample app requires a hard coded token for testing.
+Since I was using the Twilio CLI to generate tokens, I needed to add the Twilio token plugin.
 I thought that was only recommended, but it turns out to required.
 
-Based on my work to get find the token issue, I suggested a 
+Based on my work to solve the token issue, I suggested a 
 [documentation](https://www.twilio.com/docs/conversations/error-handling-diagnostics#android-logging-java)
 change from:
 ````
@@ -69,19 +70,27 @@ Following is where I added the line into the program: QuickstartConversationsMan
 Documentation [API Overview link](https://www.twilio.com/docs/conversations/api)
 
 A Conversation has the following resources:
+[Services](https://www.twilio.com/docs/conversations/api/service-resource)
 [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource),
 [Participants](https://www.twilio.com/docs/conversations/api/conversation-participant-resource),
 [Messages](https://www.twilio.com/docs/conversations/api/conversation-message-resource), and 
 [Conversation Webhooks](https://www.twilio.com/docs/conversations/api/conversation-scoped-webhook-resource)
 
+##### Note, Conversation, Participants, and Messages Resources use the Default Conversations Service SID
+
+For example, if you want to list conversations you can use the 
+[documentation sample](https://www.twilio.com/docs/conversations/api/conversation-resource?code-sample=code-read-multiple-conversation-resources&code-language=Node.js&code-sdk-version=3.x)
+to list the conversations in the default Conversations service.
+Click [here](https://github.com/tigerfarm/work/blob/master/book/AndroidConversations/servicesConversation.js)
+for a program that will list the conversations in the choosen Conversations service.
+
 To get started, I create a sample Node.JS program to manage each of the resources.
 For example, a program for each: create, fetch one, list all, update one, and delete one.
 
-Note, to exchange messages with the Conversations command line programs created based on the documentation,
+Note, to exchange messages with the Conversations command line program created based on the documentation,
 create access tokens using the [Default Conversation Service SID](https://www.twilio.com/console/conversations/configuration/defaults),
 not any other Conversations service SID.
-Because the documentation command line programs don’t have an option to set the Conversations service SID,
-they can only use the Default Conversation Service SID.
+This is because the documentation Conversation, Participants, and Messages command line programs only work with the Default Conversation Service SID.
 
 ----------------------------------------------------------------------------------
 ## Generate a Conversations Access Token
