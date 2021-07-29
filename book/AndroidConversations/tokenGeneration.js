@@ -13,7 +13,7 @@ const token = new AccessToken(
   twilioApiSecret,
   {identity: identity}
 );
-const serviceSid = 'IS973ddbf230364f8dab02c6418779a602';
+const serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 const chatGrant = new ChatGrant({
   serviceSid: serviceSid,
 });

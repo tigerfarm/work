@@ -1,6 +1,6 @@
 console.log("++ Create a Conversation.");
 var client = require('twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
-conversationFriendlyName = 'Hello Conversation';
+conversationFriendlyName = 'Hello Conversation 2';
 console.log("+ Messaging Service SID: " + process.env.MESSAGING_SERVICE_SID
         + ", Friendly Name: " + conversationFriendlyName);
 
