@@ -2,7 +2,7 @@ console.log("++ Create an SMS participant for a Conversation.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
 conversationSid = process.env.CONVERSATION_SID;
-participantIdentity = 'sms6a';
+participantIdentity = 'sms2me';
 console.log("+ Conversation SID: " + conversationSid
         + " Participant Identity: " + participantIdentity
         );
@@ -11,7 +11,8 @@ client.conversations.conversations(conversationSid)
         .create({
             // identity: participantIdentity,
             // - Error: Participants on SMS, WhatsApp or other non-chat channels cannot have Identities
-            'messagingBinding.address': process.env.CONVERSATION_PHONE_NUMBER_1,
+            // 'messagingBinding.address': process.env.CONVERSATION_PHONE_NUMBER_1,
+            'messagingBinding.address': process.env.MY_PHONE_NUMBER,
             'messagingBinding.proxyAddress': process.env.CONVERSATION_PROXY_PHONE_NUMBER_1
         })
         .then(participant => console.log(

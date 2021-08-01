@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
-$client = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
+$client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
 //
 date_default_timezone_set( "UTC" );
 $todayStart = date('Y-m-d') + ' 00:00:00';  // date('2018-08-24 00:00:00')

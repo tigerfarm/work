@@ -124,8 +124,13 @@ Create a new Heroku app. Set the name of the Heroku app's repository. Deploy fro
 Run the following from your repository directory.
 ````
 $ heroku create myapp
+Creating ⬢ myapp... done
+https://tfpconversations.herokuapp.com/ | https://git.heroku.com/myapp.git
 $ heroku git:remote -a myapp
+set git remote heroku to https://git.heroku.com/myapp.git
 $ git push heroku master
+... Installs the GitHub repository, myapp.git, to Heroku
+$ 
 ...
 ````
 Set and view the environment variables.

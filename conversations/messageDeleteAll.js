@@ -6,7 +6,7 @@ console.log("+ Conversation SID: " + conversationSid);
 console.log("  SID                                 Author, Message");
 client.conversations.conversations(conversationSid)
         .messages
-        .list({limit: 20})
+        .list({limit: 200})
         .then(messages => messages.forEach(message => {
                 console.log(
                         "+ " + message.sid

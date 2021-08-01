@@ -3,7 +3,7 @@ var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID
 
 serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 conversationSid = process.env.CONVERSATION_SID;
-participantSid = 'MB466c691bc70d4b00940d2f80c5abdae8';
+participantSid = 'MB47ac8a7b1b20447189373bbe5db39030';
 console.log("+ Conversation SID: " + conversationSid
         + " Participant Identity: " + participantSid
         );

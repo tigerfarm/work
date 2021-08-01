@@ -2,7 +2,8 @@ console.log("++ Delete a participant from a Conversation.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
 conversationSid = process.env.CONVERSATION_SID;
-participantSid = 'MB5878e13ebe9a4566a478323b1da8c77e';
+// conversationSid = "CH56053c069586435795bf7c14417cead9";
+participantSid = 'MB875702719b9148e58f3b6035e39c7f3c';
 console.log("+ Conversation SID: " + conversationSid
         + " participant Sid: " + participantSid
         );

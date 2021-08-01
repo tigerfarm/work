@@ -194,6 +194,33 @@ https://github.com/twilio/twilio-python/zipball/main
 ````
 $ python setup.py install
 ````
+
+Install Heroku CLI
+````
+$ brew tap heroku/brew && brew install heroku
+...
+$ heroku login -i
+ ›   Warning: Our terms of service have changed: https://dashboard.heroku.com/terms-of-service
+heroku: Enter your login credentials
+Email: abc@example.com
+Password: ********
+ ›   Error: Your account has MFA enabled; API requests using basic authentication with email and password are not supported. Please generate an authorization token for API access. 
+ ›
+ ›   Error ID: vaas_enrolled
+````
+Don't know if this helped, I log into dashbord, Account settings, Create Authorization.
+And created a token.
+````
+$ heroku update
+heroku: Updating CLI... already on latest version: 7.56.1
+$ heroku login
+heroku: Press any key to open up the browser to login or q to exit: 
+Opening browser to https://cli-auth.heroku.com/auth/cli/browser/19...ncQY
+Logging in... done
+Logged in as abc@example.com
+$
+````
+
 --------------------------------------------------------------------------------
 ### PHP
 ````
