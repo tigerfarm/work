@@ -328,7 +328,7 @@ stegosaurus-95825  www.tigerfarmpress.com, tigerfarmpress.com  2019-11-13 15:10 
 View your version.
 ````
 $ npm -v 
-6.9.0
+7.18.1
 ````
 
 Add yourself as a user.
@@ -360,14 +360,12 @@ $ npm version
 
 View node.js module information.
 ````
-$ npm show twilio-chat
-twilio-chat@3.2.3 | MIT | deps: 11 | versions: 268
-Twilio Chat service client library
+$ npm view twilio
+twilio@3.66.1 | MIT | deps: 11 | versions: 216
 ...
 
-$ npm view twilio
-
-twilio@3.31.0 | MIT | deps: 10 | versions: 154
+$ npm show express
+express@4.17.1 | MIT | deps: 30 | versions: 264
 ...
 
 $ npm update -g twilio-cli
