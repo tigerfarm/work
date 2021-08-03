@@ -487,6 +487,7 @@ The Day resource allows you to download the export file containing a single day'
 [File output format](https://www.twilio.com/docs/usage/bulkexport#bulkexport-file-format),
 The messages file format is a sequence of JSON records, similar to the Message Resource.
 
+Create a job.
 ````
 twilio api:bulkexports:v1:exports:jobs:create \
     --resource-type Messages \
@@ -500,7 +501,9 @@ twilio api:bulkexports:v1:exports:jobs:create \
 
 Friendly Name
 ExportJuly27b
-
+````
+List the recent jobs.
+````
 $ twilio api:bulkexports:v1:exports:jobs:list --resource-type Messages --properties=friendlyName,jobSid
 Friendly Name  Job SID                           
 ExportJuly27   JS1dca2e0dfb7815c1fea2362d9f61c16c
@@ -511,11 +514,14 @@ $ twilio api:bulkexports:v1:exports:jobs:list --resource-type Messages --propert
 Friendly Name  Job SID                             Details 
 ExportJuly27   JS1dca2e0dfb7815c1fea2362d9f61c16c  {"0":{"status":"Running",...
 ...
-
 Statuses: "Submitted", "Running", "CompletedEmptyRecords", "Completed".
-
+````
+Remove a job.
+````
 $ twilio api:bulkexports:v1:exports:jobs:remove --job-sid=JS677d0986311ebb99cfa945425e1889c0
-
+````
+Fetch a single job's information.
+````
 $ twilio api:bulkexports:v1:exports:jobs:fetch --job-sid=JSed5cd7ba5451574475d4d4bb890aed4f --properties=friendlyName,startDay,endDay,details
 Friendly Name  Start Day   End Day     Details                                            
 ExportJuly27   2020-07-01  2020-07-27  {"0":{"status":"Submitted","count":27,"days":null}}
@@ -547,7 +553,7 @@ ExportJuly27b  2020-07-01  2020-07-27  {"0":{"status":"Completed","count":27,"da
 Following needs to be re-tested.
 ````
 $ twilio api:bulkexports:v1:exports:days:fetch --resource-type=Messages --day=2020-07-26
- » Error code undefined from Twilio: undefined. See undefined for more info.
+...
 ````
 
 ### BulkExport using cURL
