@@ -559,6 +559,8 @@ $ twilio api:bulkexports:v1:exports:days:fetch --resource-type=Messages --day=20
 ### BulkExport using cURL
 
 Following is complete steps using curl. I can create and download reports using curl.
+
+Create a job.
 ````
 curl -X POST https://bulkexports.twilio.com/v1/Exports/Messages/Jobs \
 --data-urlencode "StartDay=2020-07-01" \
@@ -576,7 +578,9 @@ curl -X POST https://bulkexports.twilio.com/v1/Exports/Messages/Jobs \
 "end_day": "2020-07-27", 
 "webhook_url": "http://www.example.com/echo", 
 "email": "dthurston@twilio.com", "resource_type": null}
-
+````
+Get a job's information.
+````
 curl -X GET 'https://bulkexports.twilio.com/v1/Exports/Jobs/JS1dca2e0dfb7815c1fea2362d9f61c16c' \
 -u TwilioAccountSID:TwilioAuthToken
 
@@ -601,10 +605,9 @@ curl -X GET 'https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=20
 }, 
 "days": []
 }
-
-curl -X GET 'https://bulkexports.twilio.com/v1/Exports/Jobs/JS1dca2e0dfb7815c1fea2362d9f61c16c' \
--u TwilioAccountSID:TwilioAuthToken
-
+````
+Get a job's information that is processing a number of days.
+````
 curl -X GET 'https://bulkexports.twilio.com/v1/Exports/Messages/Days/' \
 -u TwilioAccountSID:TwilioAuthToken
 
@@ -630,13 +633,17 @@ first_page_url": "https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSi
 {"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-24", "resource_type": null, "size": 449}, 
 {"friendly_name": "ExportJuly27b", "create_date": "2020-07-27", "day": "2020-07-26", "resource_type": null, "size": 398}
 ]}
-
+````
+Get information for a specific job report day.
+````
 curl -X GET 'https://bulkexports.twilio.com/v1/Exports/Messages/Days/2020-07-26' \
 -u TwilioAccountSID:TwilioAuthToken
 
 {"redirect_to": "https://...s3.amazonaws.com/daily/day%3D2020-07-26/type%3DMessages/account%3DACa...3/..."}
+````
 
 Use a browser to download the file using the above URL:
+````
 {
 "status":"delivered",
 "account_sid":"ACa...3",
