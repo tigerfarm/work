@@ -2,6 +2,8 @@ console.log("++ Create an SMS participant for a Conversation.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
 conversationSid = process.env.CONVERSATION_SID;
+// conversationSid = "CHeedba31ca8114e099294549b22fe3336";
+
 participantIdentity = 'sms2me';
 console.log("+ Conversation SID: " + conversationSid
         + " Participant Identity: " + participantIdentity
