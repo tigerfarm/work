@@ -101,7 +101,7 @@ On your GitHub repository home page, add a new repository by clicking the "+" ic
 In your repository directory, initialize the GitHub repository.
 ````
 $ git init
-$ git remote add origin https://github.com/tigerfarm/myapp.git
+$ git remote add origin https://github.com/tigerfarm/tfp.git
 $ git add .
 $ git commit -am "init new"
 $ git push -u origin master
@@ -123,11 +123,11 @@ Create a new Heroku app. Set the name of the Heroku app's repository. Deploy fro
 
 Run the following from your repository directory.
 ````
-$ heroku create myapp
-Creating ⬢ myapp... done
-https://tfpconversations.herokuapp.com/ | https://git.heroku.com/myapp.git
-$ heroku git:remote -a myapp
-set git remote heroku to https://git.heroku.com/myapp.git
+$ heroku create tfpapp
+Creating ⬢ tfpapp... done
+https://tfpconversations.herokuapp.com/ | https://git.heroku.com/tfpapp.git
+$ heroku git:remote -a tfpapp
+set git remote heroku to https://git.heroku.com/tfpapp.git
 $ git push heroku master
 ... Installs the GitHub repository, myapp.git, to Heroku
 $ 
