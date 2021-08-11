@@ -183,6 +183,27 @@ $ heroku buildpacks
 $ heroku buildpacks:set heroku/nodejs
 ````
 
+#### Other Heroku commands
+
+````
+$ heroku help
+CLI to interact with Heroku
+VERSION
+  heroku/7.56.1 darwin-x64 node-v12.21.0
+USAGE
+  $ heroku [COMMAND]
+COMMANDS
+  access          manage user access to apps
+...
+````
+Restart a dyno.
+````
+$ heroku restart 
+Restarting dynos on * tfpecho... done
+/Users/dave/tfpecho
+$
+````
+
 --------------------------------------------------------------------------------
 ### Using Custom Domains with Heroku
 

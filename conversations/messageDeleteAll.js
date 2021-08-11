@@ -1,7 +1,8 @@
 console.log("++ Delete all messages for a Conversation.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
-conversationSid = process.env.CONVERSATION_SID;
+// conversationSid = process.env.CONVERSATION_SID;
+conversationSid = process.env.CONVERSATIONS_ECHO_SID;
 console.log("+ Conversation SID: " + conversationSid);
 console.log("  SID                                 Author, Message");
 client.conversations.conversations(conversationSid)
