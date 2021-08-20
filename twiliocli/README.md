@@ -313,8 +313,10 @@ support        Fri May 31 2019 11:45:59 GMT-0700 (Pacific Daylight Time)  comple
 ----------------------------------------------------------------------------------
 ### Testing Twilo Programmable Chat
 
+##### List Chat services.
 ````
 $ twilio api:chat:v2:services
+Top level scope for all chat resources
 USAGE
   $ twilio api:chat:v2:services:COMMAND
 COMMANDS
@@ -334,7 +336,9 @@ ISb0f6d2b83ec44f91885008ef51eb7d6b  autopilot_simulator_UA96376fff94c83ea0349a3f
 IS4ebcc2d46cda47958628e59af9e53e55  Default Conversations Service                           Jul 23 2020 10:03:03 GMT-0700
 IS973ddbf230364f8dab02c6418779a602  chatService1                                            Jul 30 2018 16:58:17 GMT-0700
 IS186702e405b74452a449d67b9265669f  Frontline Service                                       Jul 13 2021 18:14:52 GMT-0700
-
+````
+##### List channels for a service.
+````
 $ twilio api:chat:v2:services:channels
 Channels represent chat rooms
 USAGE
@@ -358,7 +362,9 @@ CH36ac5fb4a42e4f92a63155b4524fd8fb  null         Hello Conversation
 CH56053c069586435795bf7c14417cead9  null         ReadyP1           
 CHc97669141a784c92a74c296c84850d25  abc          abc               
 CHeedba31ca8114e099294549b22fe3336  c1a          c1a  
-
+````
+##### List members in a channel.
+````
 $ twilio api:chat:v2:services:channels:members
 Users joined to specific channels
 USAGE
