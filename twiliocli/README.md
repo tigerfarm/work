@@ -311,6 +311,72 @@ support        Fri May 31 2019 11:45:59 GMT-0700 (Pacific Daylight Time)  comple
 ````
 
 ----------------------------------------------------------------------------------
+### Testing Twilo Programmable Chat
+
+````
+$ twilio api:chat:v2:services
+USAGE
+  $ twilio api:chat:v2:services:COMMAND
+COMMANDS
+  api:chat:v2:services:bindings  Push notification subscription for users
+  api:chat:v2:services:channels  Channels represent chat rooms
+  api:chat:v2:services:create    create a Services resource
+  api:chat:v2:services:fetch     fetch a Services resource
+  api:chat:v2:services:list      list multiple Services resources
+  api:chat:v2:services:remove    remove a Services resource
+  api:chat:v2:services:roles     Roles determining user or member permissions
+  api:chat:v2:services:update    update a Services resource
+  api:chat:v2:services:users     Unique chat users within a chat service
+
+$ twilio api:chat:v2:services:list
+SID                                 Friendly Name                                           Date Created                 
+ISb0f6d2b83ec44f91885008ef51eb7d6b  autopilot_simulator_UA96376fff94c83ea0349a3f97651f4f77  Aug 19 2021 17:11:41 GMT-0700
+IS4ebcc2d46cda47958628e59af9e53e55  Default Conversations Service                           Jul 23 2020 10:03:03 GMT-0700
+IS973ddbf230364f8dab02c6418779a602  chatService1                                            Jul 30 2018 16:58:17 GMT-0700
+IS186702e405b74452a449d67b9265669f  Frontline Service                                       Jul 13 2021 18:14:52 GMT-0700
+
+$ twilio api:chat:v2:services:channels
+Channels represent chat rooms
+USAGE
+  $ twilio api:chat:v2:services:channels:COMMAND
+COMMANDS
+  api:chat:v2:services:channels:create    create a Channels resource
+  api:chat:v2:services:channels:fetch     fetch a Channels resource
+  api:chat:v2:services:channels:invites   Pending invitations to users to become channel members
+  api:chat:v2:services:channels:list      list multiple Channels resources
+  api:chat:v2:services:channels:members   Users joined to specific channels
+  api:chat:v2:services:channels:messages  Individual chat messages
+  api:chat:v2:services:channels:remove    remove a Channels resource
+  api:chat:v2:services:channels:update    update a Channels resource
+  api:chat:v2:services:channels:webhooks  Webhooks for specific channels
+
+$ twilio api:chat:v2:services:channels:list --service-sid IS4ebcc2d46cda47958628e59af9e53e55
+SID                                 Unique Name  Friendly Name     
+CHb8fabd3cf43948ddaaaa6f34162f972f  chatc1a      chatc1a           
+CH0d499dee76f04d5b97ee6bf27e72a3cd  tfpecho      tfpecho           
+CH36ac5fb4a42e4f92a63155b4524fd8fb  null         Hello Conversation
+CH56053c069586435795bf7c14417cead9  null         ReadyP1           
+CHc97669141a784c92a74c296c84850d25  abc          abc               
+CHeedba31ca8114e099294549b22fe3336  c1a          c1a  
+
+$ twilio api:chat:v2:services:channels:members
+Users joined to specific channels
+USAGE
+  $ twilio api:chat:v2:services:channels:members:COMMAND
+COMMANDS
+  api:chat:v2:services:channels:members:create  create a Members resource
+  api:chat:v2:services:channels:members:fetch   fetch a Members resource
+  api:chat:v2:services:channels:members:list    list multiple Members resources
+  api:chat:v2:services:channels:members:remove  remove a Members resource
+  api:chat:v2:services:channels:members:update  update a Members resource
+
+$ twilio api:chat:v2:services:channels:members:list --service-sid IS4ebcc2d46cda47958628e59af9e53e55 --channel-sid CHc97669141a784c92a74c296c84850d25
+SID                                 Identity  Date Created                 
+MB07e08f36c62b4500ade72c3a82c96f2f  dave      Aug 12 2021 14:21:11 GMT-0700
+MB54907865d0eb407c8208e228dd6a4216  dave2     Aug 12 2021 13:12:48 GMT-0700
+````
+
+----------------------------------------------------------------------------------
 ### Testing Twilo Conversations
 
 ````

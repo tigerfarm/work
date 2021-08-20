@@ -32,6 +32,15 @@ Add files that are required to deploy to Heroku.
 
 Required for Heroku, the app information.
 
+##### Update remote URL for GitHub command line access Authentication:
+````
+git remote set-url origin https://<token>@github.com/<account>/<repository>.git
+git remote set-url origin https://gh...hU@github.com/tigerfarm/work.git
+````
+Generating a token:
+https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
+
 #### Heroku repository information file.
 ````
 {
@@ -578,6 +587,32 @@ Pay only for what you use. There is no minimum fee.
 https://devcenter.heroku.com/articles/using-amazon-s3-for-file-uploads-with-java-and-play-2
 
 https://devcenter.heroku.com/articles/s3-upload-php
+
+----------------------------------------------------------------------------------
+### How to run Ngrok
+
++ Download Ngrok zip file and unzip it.
++ Move the unzip file to a location of choosing. Or move to a directory in your PATH environment variable.
+````
+$ sudo mv ngrok /usr/local/bin
+````
+Run it. 
+````
+$ ngrok http 3000
+...
+Forwarding                    http://360b5f748544.ngrok.io -> http://localhost:3000                                                                                                                                                                    
+Forwarding                    https://360b5f748544.ngrok.io -> http://localhost:3000
+...
+````
+The above indicates that HTTP reqeusts to
+````
+https://360b5f748544.ngrok.io
+````
+Will be forward to:
+````
+http://localhost:3000
+````
+Effectively making the internal URL http://localhost:3000, available on the internet.
 
 --------------------------------------------------------------------------------
 Cheers...
