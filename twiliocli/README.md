@@ -374,6 +374,10 @@ $ twilio api:chat:v2:services:channels:members:list --service-sid IS4ebcc2d46cda
 SID                                 Identity  Date Created                 
 MB07e08f36c62b4500ade72c3a82c96f2f  dave      Aug 12 2021 14:21:11 GMT-0700
 MB54907865d0eb407c8208e228dd6a4216  dave2     Aug 12 2021 13:12:48 GMT-0700
+
+$ twilio api:chat:v2:services:channels:members:fetch --service-sid IS4ebcc2d46cda47958628e59af9e53e55 --channel-sid CHc97669141a784c92a74c296c84850d25 --sid MB07e08f36c62b4500ade72c3a82c96f2f
+SID                                 Identity  Date Created                 
+MB07e08f36c62b4500ade72c3a82c96f2f  dave      Aug 12 2021 14:21:11 GMT-0700
 ````
 
 ----------------------------------------------------------------------------------
