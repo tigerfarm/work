@@ -27,6 +27,23 @@ For future reference, to update the CLI:
 $ npm update -g twilio-cli
 ````
 
+If "npm" becomes missing, reinstall or update node.
+````
+$ npm -version
+-bash: /opt/homebrew/bin/npm: No such file or directory
+$ brew reinstall node
+...
+$ npm -version
+7.20.3
+````
+
+Brew commands:
+````
+$ brew update
+$ brew install node
+$ brew upgrade node
+````
+
 #### Create environment variables using the Recommended Method
 
 Use your current account or subaccount SID.
