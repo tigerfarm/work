@@ -6,8 +6,9 @@ use Twilio\Jwt\Grants\VoiceGrant;
 echo "+++ Start.\xA";
 // Required for all Twilio access tokens
 $twilioAccountSid = getenv('ACCOUNT_SID');
-$twilioApiKey = getenv('CHAT_API_KEY');
-$twilioApiSecret = getenv('CHAT_API_KEY_SECRET');
+$twilioApiKey = getenv('API_KEY');
+// $twilioApiSecret = getenv('API_KEY_SECRET');
+$twilioApiSecret = getenv('TWILIO_API_SECRET');
 $outgoingApplicationSid = 'AP7bcb6d12228748038b9baa65566a615a';
 $identity = "david";
 // Create access token, which we will serialize and send to the client

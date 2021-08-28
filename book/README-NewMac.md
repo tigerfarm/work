@@ -239,7 +239,7 @@ require __DIR__ . '/../../twilio-php-main/src/Twilio/autoload.php';
 // require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 ````
 --------------------------------------------------------------------------------
-### C#, Xamarin, Git
+### C#, Xamarin, Git for GitHub
 
 Xamarin is now integrated into Visual Studio. 
 https://docs.microsoft.com/en-us/xamarin/get-started/installation/windows
@@ -262,6 +262,48 @@ $ git commit -am "update"
 /Users/dave/work $ git push -u origin master
 ...
 ````
+
+This also install the Mono compilier.
+````
+$ mono --version
+Mono JIT compiler version 6.12.0.140 (2020-02/51d876a041e Thu Apr 29 10:44:55 EDT 2021)
+Copyright (C) 2002-2014 Novell, Inc, Xamarin Inc and Contributors. www.mono-project.com
+	TLS:           
+	SIGSEGV:       altstack
+	Notification:  kqueue
+	Architecture:  amd64
+	Disabled:      none
+	Misc:          softdebug 
+	Interpreter:   yes
+	LLVM:          yes(610)
+	Suspend:       hybrid
+	GC:            sgen (concurrent by default)
+$ 
+````
+A quick test for Mono.
+````
+$ mkdir csharpe
+$ cd csharpe/
+$ vi hello.cs
+using System;
+public class HelloWorld
+{
+    static public void Main ()
+    {
+        Console.WriteLine ("Hello World");
+    }
+}
+
+$ mcs hello.cs 
+$ ls -l
+total 16
+-rw-r--r--  1 dthurston  410487729   135 Jun 21 15:28 hello.cs
+-rwxr-xr-x  1 dthurston  410487729  3072 Jun 21 15:28 hello.exe
+$ mono hello.exe 
+Hello Mono World
+$ 
+````
+
 --------------------------------------------------------------------------------
 ### Android Studio
 
