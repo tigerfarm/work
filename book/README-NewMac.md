@@ -45,6 +45,13 @@ Getting the laptop to stay on when lid is closed:
 + Apple/System Preferences/Battery/Schedule
 + Enable: Startup or wake, Every Day. I set at: 8:00AM.
 
+To change keyboard keys,
++ From the Apple menu, select System Preferences/Keyboard/Modifier Keys… button.
++ Enable, Use F1, F2, etc. keys as standard functions. *** Press Fn to use special functions.
+    Hopefully, this will stop the case when a cat steps on 1/F1, causing my keyboard to stop working.
++ Select keyboard: USB Receiver for my external keyboard.
++ I swapped Option Key with Command Key, Option(Z)Key: Command, Command(X)Key: Option.
+
 #### Mac to/from Mac transfer
 
 From old computer to the new one, I used SMB, which is finicky.

@@ -10,10 +10,11 @@ console.log("++ List documents, Sync SID: " + syncServiceSid);
 console.log('-------------');
 client.sync.services(syncServiceSid).documents
     .each(syncDocuments => {
-        // console.log( "+ SID: " + syncDocItems.sid + ' ' + JSON.stringify(syncDocItems) );
+        // console.log( "+ SID: " + syncDocuments.sid + ' ' + JSON.stringify(syncDocuments) );
         console.log( "+ uniqueName: " + syncDocuments.uniqueName
                 + ', Created by: ' + syncDocuments.createdBy
                 + ', data: ' + JSON.stringify( syncDocuments.data )
+                + ', dateExpires based on original ttl: ' + syncDocuments.dateExpires
                 );
     });
 

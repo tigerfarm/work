@@ -49,7 +49,6 @@ Programs to manage Sync service Map items:
 - [listMapItems.php](listMapItems.php) : List Sync Map Items.
 - [updateMapItem.php](listMapItem.php) : Update a specific Sync Map Item.
 - [delMapItem.php](delMapItem.php) : Delete a specific Sync Map Item.
-- [setvars.sh](setvars.sh) : Set program environment variables.
 
 API documentation link: [https://www.twilio.com/docs/sync/api/maps](https://www.twilio.com/docs/sync/api/maps)
 
