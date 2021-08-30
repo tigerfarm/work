@@ -50,7 +50,7 @@ To change keyboard keys,
 + Enable, Use F1, F2, etc. keys as standard functions. *** Press Fn to use special functions.
     Hopefully, this will stop the case when a cat steps on 1/F1, causing my keyboard to stop working.
 + Select keyboard: USB Receiver for my external keyboard.
-+ I swapped Option Key with Command Key, Option(Z)Key: Command, Command(X)Key: Option.
++ I swapped functions for the Option Key with Command Key, Option(Z)Key: Command, Command(X)Key: Option.
 
 #### Mac to/from Mac transfer
 
