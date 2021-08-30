@@ -16,7 +16,7 @@ $items = $twilio->chat->v2->services($CHAT_SERVICE_SID)
                     [
                         "configurationFilters" => ["onMessageSent"],
                         "configurationMethod" => "POST",
-                        "configurationUrl" => "https://channels.autopilot.twilio.com/v1/" . $CHAT_SERVICE_SID . "/UA96376fff94c83ea0349a3f97651f4f77/twilio-chat"
+                        "configurationUrl" => "https://channels.autopilot.twilio.com/v1/" . getenv('ACCOUNT_SID') . "/UA96376fff94c83ea0349a3f97651f4f77/twilio-chat"
                    ]
             );
 
