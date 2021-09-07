@@ -6,6 +6,13 @@ Following, are the steps I used to implement and test Frontline.
 
 [Quickstart page](https://www.twilio.com/docs/frontline/nodejs-demo-quickstart)
 
+Frontline implementation setup components:
++ My Okta account is configured for Frontline.
++ The Okta account settings are configured into the Frontline Twilio Console settings.
++ I can log into the Frontline app on my Android phone.
++ I setup a localhost Frontline server side application to server customer data to the Frontline app, through Ngrok.
++ I can view customer data in the Frontline app: Customer name, SMS phone number, and avatar graphic.
+
 ### Getting Started
 
 To get started, I went to the Twilio Console Frontline Overview product page.
@@ -83,6 +90,132 @@ https://www.twilio.com/docs/frontline/nodejs-demo-quickstart#configure-the-twili
 
 https://www.twilio.com/docs/frontline/nodejs-demo-quickstart#populate-the-my-customers-list
 
+I download the sample application, 
+[Frontline Integration Service Example](https://github.com/twilio/frontline-demo-service).
+Unzipped it into a work directory: /.../Projects/frontline/frontlinedemo.
+
+Ran the following.
+````
+$ npm install -g yarn
+added 1 package, and audited 2 packages in 933ms
+...
+$ yarn
+yarn install v1.22.11
+...
+✨  Done in 2.23s.
+
+$ cp .env.example .env
+$ vi .env
+TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_AUTH_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_SSO_REALM_SID=JBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#
+# Variables for chat configuration
+TWILIO_SMS_NUMBER=+xxxxxxxxxxx
+TWILIO_WHATSAPP_NUMBER=whatsapp:+xxxxxxxxxxx
+#
+# default 5000
+PORT=8000
+````
+In the [tutorial](https://www.twilio.com/docs/frontline/nodejs-demo-quickstart#populate-the-my-customers-list),
+I added a customer profile into: .../src/providers/customers.js
+
+I started Ngrok.
+````
+$ ngrok http http://localhost:8000
+````
+I set Twilio Console Frontline/Manage/Callbacks/CRM Callback URL,
+to the Ngrok URL.
+````
+https://14d2-107-210-221-195.ngrok.io/callbacks/crm
+````
+
+When first testing the application,
+1) I changed: .../scr/create-app.js
+````
+    // app.use(express.urlencoded());
+    // The following, fixes an issue with the above.
+    app.use(express.urlencoded({ extended: true }));
+````
+2) I got rid of the customer list filter: .../src/providers/customers.js
+````
+const getCustomersList = async (worker, pageSize, anchor) => {
+    // const workerCustomers = customers.filter(customer => customer.worker === worker);
+    const workerCustomers = customers;
+...
+};
+````
+Then, I realized that the attribute, customers.worker, is the Frontline app logged in user id.
+So, I changed the customers.worker attribute to match my logged in identity.
+
+Start the application.
+````
+$ yarn run start
+...
+Application started at 8000
+````
+
+### Start a Conversation from the Frontline App
+
+[Demo step](https://www.twilio.com/docs/frontline/nodejs-demo-quickstart#start-your-first-outgoing-conversation).
+
+I set Twilio Console Frontline/Manage/Callbacks/Outgoing Conversations Callback URL,
+to the Ngrok URL.
+````
+https://14d2-107-210-221-195.ngrok.io/callbacks/outgoing-conversation
+````
+
+The only issue was that I got a warning message. When I ignored it, I could send and receive messages.
+````
+Unable to create a new conversation.
+Another worker is already engaged in conversation with this customer over SMS.
+````
+The warning could have been because the logged in worker was, status = unavailable.
+
+--------------------------------------------------------------------------------
+### Customer list.
+
+Information added into: .../src/providers/customers.js
+````
+const customers = [
+    {
+        customer_id: 1,
+        display_name: 'Coleridge',
+        channels: [
+            {type: 'sms', value: '+16505551111'}
+        ],
+        worker: 'stacy@example.com',
+        avatar: 'https://abouttime-2357.twil.io/Coleridge.jpg'
+    },
+    {
+        customer_id: 2,
+        display_name: 'Percy Byshee Shelley',
+        channels: [
+            {type: 'sms', value: '+16505552222'}
+        ],
+        worker: 'dave@example.com',
+        avatar: 'https://abouttime-2357.twil.io/Shelley.jpg'
+    },
+    {
+        customer_id: 3,
+        display_name: 'John Keats',
+        channels: [
+            {type: 'sms', value: '+16505559999'}
+        ],
+        worker: 'dave@example.com',
+        avatar: 'https://abouttime-2357.twil.io/Keats.jpg'
+    },
+    {
+        customer_id: 33,
+        display_name: 'Lord Byron',
+        channels: [
+            {type: 'sms', value: '+16505553333'}
+        ],
+        worker: 'dave@example.com',
+        avatar: 'https://abouttime-2357.twil.io/avatarMine1.jpg'
+    }
+];
+````
 
 --------------------------------------------------------------------------------
 

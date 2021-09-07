@@ -344,6 +344,18 @@ echo Starting NetBeans...
 echo .
 ````
 --------------------------------------------------------------------------------
+### Install Xcode
+
+Use Twilio Self Service.
++ On the top bar, click the Twilio icon.
++ Click Self Service.
++ Scroll down and click Xcode Install.
++ In a minute or so, it finishes.
++ Needed to run a license command:
+$ sudo xcodebuild -license
++ Then I could open Xcode from Twilio/Self Service/Apps.
+
+--------------------------------------------------------------------------------
 ### Arduino IDE
 
 I downloaded, unzipped, moved it to Applications and it ran.
