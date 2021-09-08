@@ -119,63 +119,12 @@ TWILIO_WHATSAPP_NUMBER=whatsapp:+xxxxxxxxxxx
 # default 5000
 PORT=8000
 ````
-In the [tutorial](https://www.twilio.com/docs/frontline/nodejs-demo-quickstart#populate-the-my-customers-list),
-I added a customer profile into: .../src/providers/customers.js
-
-I started Ngrok.
-````
-$ ngrok http http://localhost:8000
-````
-I set Twilio Console Frontline/Manage/Callbacks/CRM Callback URL,
-to the Ngrok URL.
-````
-https://14d2-107-210-221-195.ngrok.io/callbacks/crm
-````
-
-When first testing the application,
-1) I changed: .../scr/create-app.js
-````
-    // app.use(express.urlencoded());
-    // The following, fixes an issue with the above.
-    app.use(express.urlencoded({ extended: true }));
-````
-2) I got rid of the customer list filter: .../src/providers/customers.js
-````
-const getCustomersList = async (worker, pageSize, anchor) => {
-    // const workerCustomers = customers.filter(customer => customer.worker === worker);
-    const workerCustomers = customers;
-...
-};
-````
-Then, I realized that the attribute, customers.worker, is the Frontline app logged in user id.
-So, I changed the customers.worker attribute to match my logged in identity.
-
-Start the application.
-````
-$ yarn run start
-...
-Application started at 8000
-````
-
-### Start a Conversation from the Frontline App
-
-[Demo step](https://www.twilio.com/docs/frontline/nodejs-demo-quickstart#start-your-first-outgoing-conversation).
-
-I set Twilio Console Frontline/Manage/Callbacks/Outgoing Conversations Callback URL,
-to the Ngrok URL.
-````
-https://14d2-107-210-221-195.ngrok.io/callbacks/outgoing-conversation
-````
-
-The only issue was that I got a warning message. When I ignored it, I could send and receive messages.
-````
-Unable to create a new conversation.
-Another worker is already engaged in conversation with this customer over SMS.
-````
-The warning could have been because the logged in worker was, status = unavailable.
 
 --------------------------------------------------------------------------------
 ### Customer list.
+
+In the [tutorial](https://www.twilio.com/docs/frontline/nodejs-demo-quickstart#populate-the-my-customers-list),
+I added a customer profile info.
 
 Information added into: .../src/providers/customers.js
 ````
@@ -218,6 +167,61 @@ const customers = [
     }
 ];
 ````
+
+--------------------------------------------------------------------------------
+### Ngrok
+
+I started Ngrok.
+````
+$ ngrok http 8000
+````
+I set Twilio Console Frontline/Manage/Callbacks/CRM Callback URL,
+to the Ngrok URL.
+````
+https://14d2-107-210-221-195.ngrok.io/callbacks/crm
+````
+
+When first testing the application,
+1) I changed: .../scr/create-app.js
+````
+    // app.use(express.urlencoded());
+    // The following, fixes an issue with the above.
+    app.use(express.urlencoded({ extended: true }));
+````
+2) I got rid of the customer list filter: .../src/providers/customers.js
+````
+const getCustomersList = async (worker, pageSize, anchor) => {
+    // const workerCustomers = customers.filter(customer => customer.worker === worker);
+    const workerCustomers = customers;
+...
+};
+````
+When I realized that the attribute, customers.worker, is the Frontline app logged in user id.
+So, I changed the customers.worker attribute to match my logged in identity.
+
+Start the application.
+````
+$ yarn run start
+...
+Application started at 8000
+````
+
+### Start a Conversation from the Frontline App
+
+[Demo step](https://www.twilio.com/docs/frontline/nodejs-demo-quickstart#start-your-first-outgoing-conversation).
+
+I set Twilio Console Frontline/Manage/Callbacks/Outgoing Conversations Callback URL,
+to the Ngrok URL.
+````
+https://14d2-107-210-221-195.ngrok.io/callbacks/outgoing-conversation
+````
+
+The only issue was that I got a warning message. When I ignored it, I could send and receive messages.
+````
+Unable to create a new conversation.
+Another worker is already engaged in conversation with this customer over SMS.
+````
+The warning could have been because the logged in worker was, status = unavailable.
 
 --------------------------------------------------------------------------------
 ### Customer Server Side Application Notes.
@@ -278,31 +282,43 @@ const handleGetCustomerDetailsByCustomerIdCallback = async (req, res) => {
 
 [Quickstart page](https://www.twilio.com/docs/frontline/nodejs-demo-quickstart)
 
-1) Highlight the link between the customer attribute worker,
+1) Highlight the link between the customer attribute worker in customers.js,
 and the Frontline login identity, which matches the worker attribute.
 I totally missed this and my server side application failed to return any customer data.
 I did figure it out, but took a while.
-
+Sample from customers.js:
+````
+   {
+        customer_id: 3,
+        display_name: ‘John Keats’,
+        channels: [
+            {type: ‘sms’, value: ‘+16505559999’}
+        ],
+        worker: ‘dave@example.com’,
+        avatar: ‘https://abouttime-2357.twil.io/Keats.jpg’
+    },
+````
 2) Include the specifications for the backend customer application.
 I wanted to write a simple application using hardcoded text,
 but quickly realized I would have to reverse engineer the application.
 My long term plan is to write API calls to Google Contacts so that I can
-use Frontline as SMS app to communicate with people when I'm traveling.
-All I will need is an WiFi connection and I'm ready to SMS people.
+use Frontline as my SMS app to communicate with people when I’m traveling.
+All I will need is Frontline and a WiFi connection to do SMS with people.
 
-Basics would be enough:
-+ API requests: HTTP request structure sent from the Frontline app to the backend.
+API basics would be enough:
++ API requests: HTTP request structure sent from the Frontline app to the backend. 
+    For example, the worker identity that is used to select customers from the customers.js database.
 + API response: Data structures returned from the backend to the Frontline app.
 
 3) Clarify the attributes for the SSO service on the Frontline SSO setup page,
 How to Configure Okta as a Frontline Identity Provider,
 [Step 4. Configure Claims](https://www.twilio.com/docs/frontline/sso/okta#4-configure-claims).
-Now that I'm writing this, it should have been obvious that the attributes would be case sensitive.
+Now that I’m writing this, it should have been obvious that the attributes would be case sensitive.
 But I missed this when working through it.
 
 I was using Okta:
-+ "email" and "roles" are case sensitive, use lowercase.
-+ I made the mistake of using first letter upper case, "Email" and "Roles",
++ “email” and “roles” are case sensitive, use lowercase.
++ I made the mistake of using first letter upper case, “Email” and “Roles”,
     which caused an 70252 error on my Frontline app.
 
 4) Clarify the URLs of sample application serving customer data.
