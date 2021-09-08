@@ -34,6 +34,7 @@ Frontline/Getting started/Node.js Quickstart.
 As recommeneded in the quickstart,
 + I set my Conversations Default Service to: Frontline Service, and clicked Save.
 + In the Conversations Default Messaging Service:
+````
 ++ Sender Pool: I added a Twilio phone number in the pool.
 ++ Integration: Autocreate a Conversation, is selected.
 ````
