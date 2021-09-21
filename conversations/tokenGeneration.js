@@ -11,7 +11,7 @@ const token = new AccessToken(
   twilioAccountSid,
   twilioApiKey,
   twilioApiSecret,
-  {identity: identity}
+  {identity: identity, ttl:3600}
 );
 const serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 const chatGrant = new ChatGrant({

@@ -195,7 +195,7 @@ $ twilio api:core --help
   api:core:incoming-phone-numbers   Incoming phone numbers on a Twilio account/project
 ...
 
-$ twilio api:core:incoming-phone-numbers -help
+$ twilio api:core:incoming-phone-numbers --help
 COMMANDS
   api:core:incoming-phone-numbers:create            Purchase a phone-number for the account.
   api:core:incoming-phone-numbers:fetch             Fetch an incoming-phone-number belonging to the account used to make the request.
@@ -210,6 +210,15 @@ $ twilio api:core:incoming-phone-numbers:list
 SID                                 Phone Number   Friendly Name 
 PN1..............................Z  +16505557890   (650) 555-7890
 PN2..............................W  +16505552357   (650) 555-2357
+...
+````
+List only phone numbers that begin with "+1650".
+````
+$ twilio api:core:incoming-phone-numbers:list --phone-number="+1650"
+````
+A default listing, is for at most 50 phone numbers. 
+````
+$ twilio api:core:incoming-phone-numbers:list --no-limit
 ...
 ````
 When using the fetch command, do include "api:core:".

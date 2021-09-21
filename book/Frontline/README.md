@@ -278,6 +278,72 @@ const handleGetCustomerDetailsByCustomerIdCallback = async (req, res) => {
 ````
 
 --------------------------------------------------------------------------------
+### Testing Frontline App API Requests
+
+[Get Customer Details By Customer Id](https://www.twilio.com/docs/frontline/my-customers#getcustomerdetailsbycustomerid)
+
+Request example:
+````
+curl -X POST 'http://localhost:8000/callbacks/crm?location=GetCustomerDetailsByCustomerId' \
+   --data-urlencode "Token=jwe token" \
+   --data-urlencode "Worker=john@example.com" \
+   --data-urlencode "CustomerId=1"
+````
+JSON response example:
+````
+{
+ "objects": {
+   "customer": {
+     "display_name": "Bobby S.",
+     "customer_id": "1",
+     "channels": [{ type: "sms", "value":"+123456789" }]
+   }
+ }
+}
+````
+
+[Get Customer list](https://www.twilio.com/docs/frontline/my-customers#getcustomerslist)
+
+Request example:
+````
+curl -X POST 'http://localhost:8000/callbacks/crm?location=GetCustomersList' \
+   --data-urlencode "Token=jwe token" \
+   --data-urlencode "Worker=john@example.com" \
+   --data-urlencode "PageSize=30"
+````
+JSON response example:
+````
+{
+ "objects": {
+   "customers": [{ "display_name": "Bobby S.", "customer_id": "1" }]
+ }
+}
+````
+
+803 bytes sent from Frontline app.
+A token is 746 bytes.
+````
+         1         2         3         4         5         6         7         8         9       100         1         2         3         4         5         6         7         8         9       200         1         2         3         4         5         6         7         8         9       300         1         2         3         4         5         6         7         8         9       400         1         2         3         4         5         6         7         8         9       500         1         2         3         4         5         6         7         8         9       600         1         2         3         4         5         6         7         8         9       700         1         2         3         4         5         6         7         8         9       800
+12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+PageSize=30&Worker=t23456789@g23456789&Token=eyJ6aXAiOiJERUYiLCJjdHkiOiJ0d2lsaW8tZnBhO3Y9MSIsImVuYyI6IkEyNTZHQ00iLCJhbGciOiJkaXIiLCJ0d3IiOiJ1czEiLCJraWQiOiJTQVNfUzNfX19LTVNfdjEifQ..fKSs5e7wXgd0LawT.B4bRCnCdP74paTz5P1Qn4gZiqwtQ4WilEb8HCKK3zSMt1oo7r1E7-PbMlIYrIWDC-tfRFHN9cKas_PbMMvOgSupzSWc2k0K_WGPQ1el6pjFNaumKNfag3Cm-JeI2Vf-So57B4qrJbEQkqj5wlreHtFAPBtSj1j-2H0VVkJwzFp6yn0F2_aZMxYYK-MWsI7M5a6elJZbY-Pu1QbyQsmtR__UjkfZhhpcpFG60LuabPCjoZVRr8DcuF98uAP6MAJpcgHs2NEddpIDWqqfcl-zwNjcNqLpTf-8aLMDHog2j225VFnHvsiNRsLgsSwdK7vSsRkUl0Q_3ID866iNvyCZ4CnPPnsa3c1rXEOgshixxBA77ENQH34OkU4CKKOZupv2R7QQZ3qMZJbr-yE-eFswpFiWQkjBZ0oeiiT8xiphMgiyybQWitFFLR0RwSdUECvrgXExqD7v3QpXrYKqQA7TPtss7FGcMbFXXNdEEKnNuGFzbqx-6fAWEvFsulyx6JSNsU9Kz1a2PjKRsM5ooZmdJKKagGeJVqWq_6iRx8CJO6yNpR30FikNzUGBNng.MspHaXIi3lGuuehPHvRPfw
+````
+
+--------------------------------------------------------------------------------
+### Handle Incomming Conversations
+
+To [Handle Incoming Conversations](https://www.twilio.com/docs/frontline/handle-incoming-conversations),
+you can let Twilio Conversations create new conversations for you automatically.
+
+What missing from a newly created conversation is a Twilio Frontline user.
+You will need to add a Frontline user with routing.
+
+The onConversationAdd webhook will be called before creating a conversation.
+There are three options to handle the routing of incoming conversations: 
++ Do not route, a Conversation will be created but it won't be routed.
++ Custom routing, and 
++ Pool routing.
+
+--------------------------------------------------------------------------------
 ### Suggested Tutorial Updates:
 
 [Quickstart page](https://www.twilio.com/docs/frontline/nodejs-demo-quickstart)
@@ -326,34 +392,6 @@ In the step, [Populate the My Customers List](https://www.twilio.com/docs/frontl
 Suggest adding the complete URL in text, as the graphic is really small and I missed this.
 And, I missed reading the paragraph text that explains the URLs.
 + Complete URLsample : https://5d70b0c7.ngrok.io/callbacks/crm 
-
-Suggestion, re-order the tutorial:
-
-Part I:
-+ Setup SSO, for example: Okta account is configured for Frontline.
-+ Create Frontline service in Twilio Console to get the JB id.
-+ Configure the Okta account settings into the Frontline Twilio Console settings.
-+ Test: install the Frontline app, and log into the app which reconfirms the SSO configurations.
-+ Add another worker into the SSO account.
-+ Test: Log into the app using the new worker identity.
-
-Part II:
-+ Download the sample application.
-+ Add customer data for one of the SSO workers in the customer.js program file.
-+ Set up the localhost Frontline server side application to serve the customer data to the Frontline app, through Ngrok.
-+ Add both application URLs into the Frontline Twilio Console configuration.
-+ Test: View customer data in the Frontline app: Customer name and SMS phone number. Optionally, the customer avatar graphic.
-+ Test: Start a new conversation and exchange messages.
-
-Part III:
-+ Add customer data for the second worker.
-+ In the Frontline app, log in with the new worker.
-+ View the customers and exchange conversation messages.
-
-Suggestion, add a chat option.
-The currently listed communication options are: SMS, WhatsApp, and email.
-A chat option would allow Frontline users to chat among themself.
-For example, a company group chat.
 
 --------------------------------------------------------------------------------
 
