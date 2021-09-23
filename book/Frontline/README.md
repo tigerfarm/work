@@ -2,21 +2,32 @@
 
 Following, are the steps I used to implement and test Frontline.
 
-[Documentation](https://www.twilio.com/docs/frontline)
-
-[Quickstart page](https://www.twilio.com/docs/frontline/nodejs-demo-quickstart)
+Links:
++ [Quickstart page](https://www.twilio.com/docs/frontline/nodejs-demo-quickstart)
++ Documentation, [Handle Incoming Conversations](https://www.twilio.com/docs/frontline/handle-incoming-conversations)
++ Documentation, [Okta for Frontline](https://www.twilio.com/docs/frontline/sso/okta), How to Configure Okta as a Frontline Identity Provider
++ [My Okta account](https://dev-29758280.okta.com/) for managing apps such as Frontline, and Okta users.
++ [Documentation](https://www.twilio.com/docs/frontline)
++ Twilio Console [Admin Center](https://www.twilio.com/console/admin)
 
 Frontline implementation setup components:
-+ My Okta account is configured for Frontline.
-+ The Okta account settings are configured into the Frontline Twilio Console settings.
++ Added an organization using Twilio Console, Project: [Admin Center](https://www.twilio.com/console/admin).
++ My Okta account is configured for the Frontline app.
+    It uses the Realm SID (starts with JB) from the Twilio Console: Frontline/Manage/SSO/Log in
++ Okta account settings are configured in Twilio Console: Frontline/Manage/SSO/Log in
 + I can log into the Frontline app on my Android phone.
 + I setup a localhost Frontline server side application to server customer data to the Frontline app, through Ngrok.
 + I can view customer data in the Frontline app: Customer name, SMS phone number, and avatar graphic.
 + I can start a new conversation and exchange messages.
 
+Profiles that are created and managed:
++ From the Twilio Console, Frontline user profiles: Frontline/Manage/Users.
++ Customer profiles in the demo application: .../frontlinedemo/src/providers/customers.js.
++ Okta SSO user profiles for authentication in the Frontline app.
+
 ### Getting Started
 
-To get started, I went to the Twilio Console Frontline Overview product page.
+I went to the Twilio Console Frontline Overview product page.
 It said that I needed a Frontline Conversations service, which it created,
 and listed on the bottom of the page:
 ````
@@ -26,9 +37,10 @@ and listed on the bottom of the page:
 ````
 I installed the Twilio Frontline app on my Android phone.
 When it started, it prompted me for my company name.
-+ I entered my company name: TigerFarmPress. It said, Company name not found.
+Since I had not created the Company name, it said not found for anything I entered.
++ Company name will be created in the Twilio Console: Frontline/Manage/SSO/Log in.
 
-Since, I got an error message on the app, I started going through the quickstart.
+Next, I started going through the quickstart.
 Frontline/Getting started/Node.js Quickstart.
 
 As recommeneded in the quickstart,
@@ -63,6 +75,8 @@ https://www.twilio.com/docs/frontline/sso/okta#4-configure-claims
 I had used "Email" and "Roles".
 That Okta configuration mistake caused an 70252 error on my Frontline app.
 Once changed to lowercase, all was good.
+
+Note, 70002 is for an Okta user not set with the "Agent" value.
 
 + Eventually,
 ++ Copy values from Okta 
@@ -126,7 +140,7 @@ PORT=8000
 In the [tutorial](https://www.twilio.com/docs/frontline/nodejs-demo-quickstart#populate-the-my-customers-list),
 I added a customer profile info.
 
-Information added into: .../src/providers/customers.js
+Information added into: .../frontlinedemo/src/providers/customers.js
 ````
 const customers = [
     {
@@ -327,6 +341,15 @@ A token is 746 bytes.
 12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
 PageSize=30&Worker=t23456789@g23456789&Token=eyJ6aXAiOiJERUYiLCJjdHkiOiJ0d2lsaW8tZnBhO3Y9MSIsImVuYyI6IkEyNTZHQ00iLCJhbGciOiJkaXIiLCJ0d3IiOiJ1czEiLCJraWQiOiJTQVNfUzNfX19LTVNfdjEifQ..fKSs5e7wXgd0LawT.B4bRCnCdP74paTz5P1Qn4gZiqwtQ4WilEb8HCKK3zSMt1oo7r1E7-PbMlIYrIWDC-tfRFHN9cKas_PbMMvOgSupzSWc2k0K_WGPQ1el6pjFNaumKNfag3Cm-JeI2Vf-So57B4qrJbEQkqj5wlreHtFAPBtSj1j-2H0VVkJwzFp6yn0F2_aZMxYYK-MWsI7M5a6elJZbY-Pu1QbyQsmtR__UjkfZhhpcpFG60LuabPCjoZVRr8DcuF98uAP6MAJpcgHs2NEddpIDWqqfcl-zwNjcNqLpTf-8aLMDHog2j225VFnHvsiNRsLgsSwdK7vSsRkUl0Q_3ID866iNvyCZ4CnPPnsa3c1rXEOgshixxBA77ENQH34OkU4CKKOZupv2R7QQZ3qMZJbr-yE-eFswpFiWQkjBZ0oeiiT8xiphMgiyybQWitFFLR0RwSdUECvrgXExqD7v3QpXrYKqQA7TPtss7FGcMbFXXNdEEKnNuGFzbqx-6fAWEvFsulyx6JSNsU9Kz1a2PjKRsM5ooZmdJKKagGeJVqWq_6iRx8CJO6yNpR30FikNzUGBNng.MspHaXIi3lGuuehPHvRPfw
 ````
+
+--------------------------------------------------------------------------------
+### Frontline User Profiles
+
+From the Twilio Console,
++ Get the list of users: Frontline/Manage/Users
++ Click a user to modify their information.
+
+Or, your the API, [user resource](https://www.twilio.com/docs/frontline/api/user-resource).
 
 --------------------------------------------------------------------------------
 ### Handle Incomming Conversations
