@@ -1,7 +1,7 @@
 console.log("++ Delete a Conversation.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
-conversationSid = 'CHd869e1a5de294e68843aca67947dcfd5';
+conversationSid = 'CHf231522f87974852a218e165e61768dc';
 
 client.conversations.conversations(conversationSid)
         .fetch()
