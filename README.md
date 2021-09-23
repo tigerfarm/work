@@ -388,11 +388,17 @@ $ npm version
 ... }
 ````
 
-View node.js module information.
+Show lastest version of module that is available.
 ````
+$ npm view twilio version
+3.68.0
 $ npm view twilio
 twilio@3.66.1 | MIT | deps: 11 | versions: 216
 ...
+````
+
+View node.js module information.
+````
 
 $ npm show express
 express@4.17.1 | MIT | deps: 30 | versions: 264
@@ -400,6 +406,8 @@ express@4.17.1 | MIT | deps: 30 | versions: 264
 
 $ npm update -g twilio-cli
 
+$ npm -v twilio
+7.24.0
 ````
 
 #### Create a module (I haven't tried this)
