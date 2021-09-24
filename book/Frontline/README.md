@@ -215,6 +215,7 @@ So, I changed the customers.worker attribute to match my logged in identity.
 
 Start the application.
 ````
+$ cd ~/Projects/frontline/frontlinedemo/
 $ yarn run start
 ...
 Application started at 8000
