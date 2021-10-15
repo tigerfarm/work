@@ -526,14 +526,18 @@ git push heroku master
 --------------------------------------------------------------------------------
 ## Tomcat
 
-+ Download into a work directory, for example:
+Download into a work directory, for example:
+````
 /Users/dthurston/Applications
+````
 
-+ Unzip and simplify the name.
+Unzip and simplify the name.
+````
 $ unzip apache-tomcat-8.5.43.zip 
 ...
 $ mv apache-tomcat-8.5.43 tomcat
 /tomcat
+````
 
 + Startup.
 ````
