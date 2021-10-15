@@ -528,7 +528,7 @@ git push heroku master
 
 Download into a work directory, for example:
 ````
-/Users/dthurston/Applications
+/Users/.../Applications
 ````
 
 Unzip and simplify the name.
@@ -541,19 +541,20 @@ $ mv apache-tomcat-8.5.43 tomcat
 
 Startup.
 ````
-$ cd /Users/dthurston/Applications/tomcat/bin
+$ cd /Users/.../Applications/tomcat/bin
 $ chmod u+x startup.sh
 $ chmod u+x catalina.sh 
 $ ./startup.sh
-Using CATALINA_BASE:   /Users/dthurston/Applications/tomcat
-Using CATALINA_HOME:   /Users/dthurston/Applications/tomcat
-Using CATALINA_TMPDIR: /Users/dthurston/Applications/tomcat/temp
+Using CATALINA_BASE:   /Users/.../Applications/tomcat
+Using CATALINA_HOME:   /Users/.../Applications/tomcat
+Using CATALINA_TMPDIR: /Users/.../Applications/tomcat/temp
 Using JRE_HOME:        /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
-Using CLASSPATH:       /Users/dthurston/Applications/tomcat/bin/bootstrap.jar:/Users/dthurston/Applications/tomcat/bin/tomcat-juli.jar
+Using CLASSPATH:       /Users/.../Applications/tomcat/bin/bootstrap.jar:/Users/.../Applications/tomcat/bin/tomcat-juli.jar
 Tomcat started
 $
 ````
-+ View the process.
+
+View the process.
 ````
 $ ps -ef | grep tomcat
 ````
@@ -563,10 +564,10 @@ or
 http://localhost:8080/index.jsp
 
 Actual page is:
-/Users/dthurston/Applications/tomcat/webapps/ROOT/index.jsp
+/Users/.../Applications/tomcat/webapps/ROOT/index.jsp
 ````
 + Shutdown.
-$ cd /Users/dthurston/Applications/tomcat/bin
+$ cd /Users/.../Applications/tomcat/bin
 $ chmod u+x shutdown.sh
 $ ./shutdown.sh
 ...
