@@ -539,7 +539,7 @@ $ mv apache-tomcat-8.5.43 tomcat
 /tomcat
 ````
 
-+ Startup.
+Startup.
 ````
 $ cd /Users/dthurston/Applications/tomcat/bin
 $ chmod u+x startup.sh
@@ -557,12 +557,12 @@ $
 ````
 $ ps -ef | grep tomcat
 ````
-+ View the default home page in the browser:
+View the default home page in the browser:
 http://localhost:8080/
-+ or
+or
 http://localhost:8080/index.jsp
 
-+ Actual page is:
+Actual page is:
 /Users/dthurston/Applications/tomcat/webapps/ROOT/index.jsp
 ````
 + Shutdown.
@@ -572,10 +572,10 @@ $ ./shutdown.sh
 ...
 $
 ````
-+ I upgraded my IDE for Java EE, and linked in Tomcat.
-++ When linking in Tomcat, I was asked for a Catalina userid/password. I used: tomcat/password.
-+ I'm using Apache NetBeans 11.1. I wrote a send SMS servlet.
-++ When I called the servlet, an SMS message was sent successfully.
+I upgraded my IDE for Java EE, and linked in Tomcat.
++ When linking in Tomcat, I was asked for a Catalina userid/password. I used: tomcat/password.
+I'm using Apache NetBeans 11.1. I wrote a send SMS servlet.
++ When I called the servlet, an SMS message was sent successfully.
 
 --------------------------------------------------------------------------------
 ### Testing
