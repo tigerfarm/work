@@ -1,4 +1,4 @@
-console.log("++ Create an Chat participant for a Conversation.");
+console.log("++ Create an Chat participant for a conversation.");
 // https://www.twilio.com/docs/conversations/api/service-participant-resource
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
