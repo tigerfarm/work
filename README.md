@@ -35,11 +35,20 @@ Required for Heroku, the app information.
 ##### Update remote URL for GitHub command line access Authentication:
 ````
 git remote set-url origin https://<token>@github.com/<account>/<repository>.git
-git remote set-url origin https://gh...hU@github.com/tigerfarm/work.git
+git remote set-url origin https://gh...hU@github.com/tigerfarm/work.git     (see doc: 00-Acc.txt)
 ````
 Generating a token:
 https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
 
+Daily use authentication.
+````
+$ heroku login
+heroku: Press any key to open up the browser to login or q to exit: 
+Opening browser to https://cli-auth.heroku.com/auth/cli/browser/cd...i0
+Logging in... done
+Logged in as t...@gmail.com
+$ git push heroku master
+````
 
 #### Heroku repository information file.
 ````
