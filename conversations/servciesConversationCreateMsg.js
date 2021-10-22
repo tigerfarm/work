@@ -5,10 +5,10 @@ var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID
 serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
 
 // conversationSid = process.env.CONVERSATION_SID;
-conversationSid = "CH0269d9f270744259977cff1ae19d5a5f";
+conversationSid = "CH183bde74b2314d2faef9a1c757b8f028";
 
 participantIdentity = 'dave3';
-messageText = 'Send it #1';
+messageText = 'From dave3';
 console.log("+ Conversation SID: " + conversationSid
         + " Participant Identity: " + participantIdentity
         + " messageText: " + messageText

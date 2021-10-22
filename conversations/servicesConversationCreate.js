@@ -1,10 +1,14 @@
-console.log("++ Create a Conversation.");
+console.log("++ Create a conversation.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
-conversationFriendlyName = 'Hello1';
-console.log("+ Messaging Service SID: default configured service."
+
+// serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
+serviceSid = 'IS186702e405b74452a449d67b9265669f'; // Frontline
+
+conversationFriendlyName = 'Fc1';
+console.log("+ Messaging Service SID: " + serviceSid
         + ", Friendly Name: " + conversationFriendlyName);
 
-client.conversations.conversations
+client.conversations.services(serviceSid).conversations
         .create({
             messagingServiceSid: process.env.MESSAGING_SERVICE_SID,
             friendlyName: conversationFriendlyName
@@ -15,4 +19,3 @@ client.conversations.conversations
                     + " " + conversation.friendlyName
                     );
         });
-        
