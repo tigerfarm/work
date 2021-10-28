@@ -14,6 +14,9 @@ console.log("+ decodeURI(eString) :" + decodeURI(eString) + ":");
 
 console.log("+ decodeURI(eString) :" + decodeURI("DeliveryState%5B0%5D") + ":");
 
+eString = 'SAN+BRUNO';
+console.log("+ decodeDoubleEncodedBuffer(eString) :" + decodeDoubleEncodedBuffer(eString) + ":");
+
 // -----------------------------------------------------------------------------
 console.log("+++ Exit.");
 

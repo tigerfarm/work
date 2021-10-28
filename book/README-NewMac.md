@@ -364,4 +364,32 @@ The serial port worked fine.
 Then I installed the USB serial device drivers
 
 --------------------------------------------------------------------------------
+### Squid Proxy
+
+Install Squid.
+````
+$ brew install squid
+...
+$ squid --version
+Squid Cache: Version 4.17
+...
+$ squid
+2021/10/27 13:20:57| WARNING: Could not determine this machines public hostname. Please configure one or set 'visible_hostname'
+$
+$ brew services start squid
+==> Tapping homebrew/services
+...
+==> Successfully started `squid` (label: homebrew.mxcl.squid)
+$ ps -ef | grep squid
+  501 91998     1   0  1:20PM ??         0:00.00 squid
+  501 92000 91998   0  1:20PM ??         0:00.08 (squid-1) --kid squid-1
+...
+$
+````
+Documentation: http://www.squid-cache.org/Versions/v4/cfgman/
+
+Configuration: https://devopscube.com/setup-and-configure-proxy-server/
+
+
+--------------------------------------------------------------------------------
 eof

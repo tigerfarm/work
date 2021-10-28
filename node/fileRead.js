@@ -2,7 +2,7 @@
 console.log("+++ Start: fileRead.js");
 
 var fs = require("fs");
-fs.readFile("HttpPost.js", function (err, data) {
+fs.readFile("fileSample.txt", function (err, data) {
     if (err) {
         console.log("- Error: Not Found.");
     } else {
