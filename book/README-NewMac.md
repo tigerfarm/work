@@ -390,6 +390,16 @@ Documentation: http://www.squid-cache.org/Versions/v4/cfgman/
 
 Configuration: https://devopscube.com/setup-and-configure-proxy-server/
 
+--------------------------------------------------------------------------------
+### TextExpander
 
+Find the process:
+```
+$ ps -ef | grep TextExpander
+```
+Run from commandline:
+```
+/Applications/TextExpander.app/Contents/MacOS/TextExpander
+```
 --------------------------------------------------------------------------------
 eof

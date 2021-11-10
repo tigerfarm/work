@@ -42,7 +42,9 @@ Brew commands:
 $ brew update
 $ brew install node
 $ brew upgrade node
+$ brew reinstall node
 ````
+Note, "reinstall" will bring back npm, when it disappears.
 
 #### Create environment variables using the Recommended Method
 
@@ -61,6 +63,59 @@ Create environment variables:
 - `TWILIO_API_KEY` = your Twilio CLI API Key SID, starts with "SK".
 - `TWILIO_API_SECRET` = the secret text string for the API Key.
 
+----------------------------------------------------------------------------------
+### Setting Up Multiple Profiles
+
+````
+$ twilio login
+...
+[? The Account SID for your Twilio Account or Subaccount: AC5...1
+[? Your Twilio Auth Token for your Twilio Account or Subaccount: [hidden]
+[? Shorthand identifier for your profile: Writers
+[? Account credentials are currently stored in environment variables and will take precedence over the "Writers" profile when connecting to Twilio, unless the "Writers" profile is explicitly specified. Continue setting up "Writers" profile? Ye
+s
+Created API Key SK6...9 and stored the secret in your keychain. See: https://www.twilio.com/console/runtime/api-keys/SK6...9
+twilio-cli configuration saved to "/Users/.../.twilio-cli/config.json"
+Saved Writers.
+$ cat /Users/.../.twilio-cli/config.json
+{"email":{},"prompts":{},"projects":[{"id":"Writers","accountSid":"AC5...1"}],"activeProject":null}
+$
+$ twilio profiles:list
+ID       Account SID                         Active
+[env]    ACa...3                             true  
+Writers  AC5...1                             false
+$ twilio profiles:use Writers
+set "Writers" as active profile
+twilio-cli configuration saved to "/Users/.../.twilio-cli/config.json"
+$ cat /Users/dave/.twilio-cli/config.json
+{"email":{},"prompts":{},"projects":[{"id":"Writers","accountSid":"AC5...1"}],"activeProject":"Writers"}
+$ twilio profiles:list
+ID       Account SID                         Active
+[env]    ACa...3                             true  
+Writers  AC5...1                             false
+$ 
+````
+The [env] profile will override the selected active profile.
+To use the config.json profiles, remove the environment variable TWILIO_ACCOUNT_SID.
+Here is how I remove it on my MacBook:
+````
+$ echo $TWILIO_ACCOUNT_SID
+AC123...89
+$ export TWILIO_ACCOUNT_SID=
+$ echo $TWILIO_ACCOUNT_SID
+
+$ twilio profiles:list
+ID       Account SID                         Active
+Writers  AC5...1                             true
+machine  AC1...d                             false 
+$ twilio profiles:use machine
+set "machine" as active profile
+twilio-cli configuration saved to "/Users/.../.twilio-cli/config.json"
+$ twilio profiles:list
+ID       Account SID                         Active
+Writers  AC5...1                             false
+machine  AC1...d                             true 
+````
 ----------------------------------------------------------------------------------
 ### Send Messages
 
