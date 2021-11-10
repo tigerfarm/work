@@ -14,7 +14,7 @@ $client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
 // -----------------------------------------------------------------------------
 $pageCounter = 0;
 $rowCounter = 0;
-$numberRowsPerPage = 10;
+$numberRowsPerPage = 10;    // pageSize
 $nextPageRows = $client->messages->page([], $numberRowsPerPage, \Twilio\Values::NONE, 0);
 while ($nextPageRows->valid()) {
     echo "++ $pageCounter ---------------------------------\xA";
