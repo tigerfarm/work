@@ -11,19 +11,20 @@ $client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
 
 // -----------------------------------------------------------------------------
 $pageCounter = 0;
-$counter = 0;
-$nextPageRows = $client->messages->page([], 3, \Twilio\Values::NONE, 0);
+$rowCounter = 0;
+$numberRowsPerPage = 10;
+$nextPageRows = $client->messages->page([], $numberRowsPerPage, \Twilio\Values::NONE, 0);
 while ($nextPageRows->valid()) {
     echo "++ $pageCounter ---------------------------------\xA";
     foreach ($nextPageRows as $message) {
         echo "++ ";
-        $counter = $counter + 1;
-        if ($counter < 10) {
+        $rowCounter = $rowCounter + 1;
+        if ($rowCounter < 10) {
             echo "  ";
-        } else if ($counter < 100) {
+        } else if ($rowCounter < 100) {
             echo " ";
         }
-        echo $counter . ": ";
+        echo $rowCounter . ": ";
         echo $message->dateSent->format("Y-m-d h:i:s") . " " . $message->sid . " " . $message->from . " " . $message->to . " " . $message->status . " " . $message->body . "\xA";
     }
     $pageCounter = $pageCounter + 1;
