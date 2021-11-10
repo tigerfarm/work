@@ -1,6 +1,8 @@
 <?php
 
 // C# paging: https://stackoverflow.com/questions/38086548/twilio-getnextpage-to-page-through-sms-logs
+// $previousPageData = $messages->previousPage(); // For reference, previous page of data
+
 echo "\xA+++ Start paging list program.\xA";
 
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
