@@ -16,6 +16,9 @@ $notification = $twilio->notify->v1->services($notifySid)
             )
             // I couldn't get DeliveryCallbackUrl to work in this PHP program.
             // , "delivery_callbackurl" => "https://tfpecho.herokuapp.com/deliveryCallbackUrl"
+            // No media attachment. The following doesn't work.
+            // "mediaUrl" => "https://www.tigerfarmpress.com/tigsms/custom/companyLogo.jpg",
+            // "mediaUrl" => array("https://www.tigerfarmpress.com/tigsms/custom/companyLogo.jpg"),
         )
 );
 echo "+ Notification SID: " . $notification->sid . "\xA";

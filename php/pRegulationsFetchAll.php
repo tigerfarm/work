@@ -12,10 +12,20 @@ $regulations = $twilio->numbers->v2->regulatoryCompliance
         ->read();
 $counter = 0;
 foreach ($regulations as $regulation) {
+    echo "++ ";
     $counter = $counter + 1;
-    echo "+ SID: " . $regulation->sid
+    if ($counter < 10) {
+        echo "   ";     // "---1"
+    } else if ($counter < 100) {
+        echo "  ";      // "--12"
+    } else if ($counter < 1000) {
+        echo " ";       // "-123"
+    }
+    echo $counter
+    . ": SID: " . $regulation->sid
     . " isoCountry: " . $regulation->isoCountry
-    . "  " . $counter
+    . " numberType: " . $regulation->numberType
+    . " friendlyName: " . $regulation->friendlyName
     . "\xA";
 }
 ?>
