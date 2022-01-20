@@ -7,7 +7,7 @@ serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
 // conversationSid = process.env.CONVERSATION_SID;
 conversationSid = "CH183bde74b2314d2faef9a1c757b8f028";
 
-participantIdentity = 'dave3';
+participantIdentity = 'dave3a';
 messageText = 'From dave3';
 console.log("+ Conversation SID: " + conversationSid
         + " Participant Identity: " + participantIdentity

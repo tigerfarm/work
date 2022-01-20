@@ -1,4 +1,5 @@
 <?php
+
 class HTTPRequester {
 
     // From: https://stackoverflow.com/questions/66771025/save-a-copy-of-any-attachments-included-with-an-incoming-sms-via-twilio
@@ -15,25 +16,37 @@ class HTTPRequester {
 
 }
 
+class copyFile {
+
+    public function getMediaContent($url) {
+        // Copy a file to test read and write.
+        $mediaFilenameRead = "httpsMediaSample.jpg";
+        $mediaFilenameWrite = "httpsMediaSample2.jpg";
+        $fileRead = fopen($mediaFilenameRead, 'r');
+        $fileWrite = fopen($mediaFilenameWrite, 'w');
+        $fileSize = filesize($mediaFilenameRead);
+        $theFileContent = fread($fileRead, $fileSize);
+        fwrite($fileWrite, $theFileContent);
+    }
+
+}
+
 echo "+++ Start.\xA";
 
-// Copy a file to test read and write.
-$mediaFilenameRead = "httpsMediaSample.jpg";
-$mediaFilenameWrite = "httpsMediaSample2.jpg";
-$fileRead = fopen($mediaFilenameRead, 'r');
-$fileWrite = fopen($mediaFilenameWrite, 'w');
-$fileSize =  filesize($mediaFilenameRead);
-$theFileContent=fread($fileRead, $fileSize);
-fwrite($fileWrite, $theFileContent);
-
 // Get a media file from a URL and write to file.
+//
+// $urlMedia = 'https://raw.githubusercontent.com/tigerfarm/arduino/master/Altair101/AltairDesktop01a.jpg';
+// $urlMediaFilenameWrite = "httpsMediaUrl.jpg";
+$urlMedia = 'https://someassets-1403.twil.io/2001operational.mp3';
+$urlMediaFilenameWrite = "httpsMediaUrl.mp3";
+//
+echo "+ $urlMedia, Download filenamee: $urlMediaFilenameWrite \xA";
 $http = new HTTPRequester();
-$urlMedia = 'https://raw.githubusercontent.com/tigerfarm/arduino/master/Altair101/AltairDesktop01a.jpg';
-echo "+ $urlMedia \xA";
 $urlFileContent = $http->getMediaContent($urlMedia);
-$urlMediaFilenameWrite = "httpsMediaUrl.jpg";
 $urlFileWrite = fopen($urlMediaFilenameWrite, 'w');
 fwrite($urlFileWrite, $urlFileContent);
+
+return;
 
 // Use a Twilio MMS media file URL, to download the media file to a local disk file.
 // ---

@@ -7,7 +7,7 @@ use Twilio\Rest\Client;
 
 $twilio = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
 
-$rn = "RN581d4e917a8612eb36f0af24ecc6b592"; // Indonesia
+$rn = "RN569325039eb53a52cb387eedab3d3ffe"; // Indonesia numberType: Individual, local
 echo '++ RN: ', $rn, "\xA";
 $regulation = $twilio->numbers->v2->regulatoryCompliance
         ->regulations($rn)
@@ -28,6 +28,14 @@ foreach ($regulation->requirements as $item) {
 /* Indonesia
  * 
  * https://www.twilio.com/guidelines/id/regulatory
+ * Phone number types:
+++   71: SID: RN581d4e917a8612eb36f0af24ecc6b592 isoCountry: ID numberType: toll-free friendlyName: Indonesia: Toll-Free - Business
+++   72: SID: RNb6e54f22f77d4aff951e01a171fa2eec isoCountry: ID numberType: toll-free friendlyName: Indonesia: Toll-Free - Individual
+++   73: SID: RN0ee6c4b35962f8dc999d3b71bb5160c2 isoCountry: ID numberType: mobile friendlyName: Indonesia: Mobile - Business
+++   74: SID: RNc6d7a78cc4358d19c38b3fcbc0e3ba71 isoCountry: ID numberType: mobile friendlyName: Indonesia: Mobile - Individual
+++   75: SID: RN48f693684e4546e1997cf77dac93da9f isoCountry: ID numberType: local friendlyName: Indonesia: Local - Business
+++   76: SID: RN569325039eb53a52cb387eedab3d3ffe isoCountry: ID numberType: local friendlyName: Indonesia: Local - Individual
+
  * 
  * output :
 $ php pRegulationsFetch1.php 

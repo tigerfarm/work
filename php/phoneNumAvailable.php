@@ -1,5 +1,5 @@
 <?php
-// Docs: https://www.twilio.com/docs/phone-numbers/api/available-phone-numbers
+// Docs: https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource
 
 // require __DIR__ . '/twilio-php-master/Twilio/autoload.php';
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';

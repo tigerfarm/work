@@ -1,0 +1,583 @@
+++ RN: RN569325039eb53a52cb387eedab3d3ffe
++ SID: RN569325039eb53a52cb387eedab3d3ffe isoCountry: ID requirements: Array numberType: local friendlyName: Indonesia: Local - Individual
++ Name: Array
+array(6) {
+  ["name"]=>
+  string(10) "Individual"
+  ["url"]=>
+  string(74) "https://numbers.twilio.com/v2/RegulatoryCompliance/EndUserTypes/individual"
+  ["fields"]=>
+  array(3) {
+    [0]=>
+    string(10) "first_name"
+    [1]=>
+    string(9) "last_name"
+    [2]=>
+    string(12) "mothers_name"
+  }
+  ["detailed_fields"]=>
+  array(3) {
+    [0]=>
+    array(2) {
+      ["machine_name"]=>
+      string(10) "first_name"
+      ["friendly_name"]=>
+      string(10) "First Name"
+    }
+    [1]=>
+    array(2) {
+      ["machine_name"]=>
+      string(9) "last_name"
+      ["friendly_name"]=>
+      string(9) "Last Name"
+    }
+    [2]=>
+    array(2) {
+      ["machine_name"]=>
+      string(12) "mothers_name"
+      ["friendly_name"]=>
+      string(13) "Mother's Name"
+    }
+  }
+  ["type"]=>
+  string(10) "individual"
+  ["requirement_name"]=>
+  string(15) "individual_info"
+}
++ Name: 
++ Name: Array
+array(5) {
+  [0]=>
+  array(5) {
+    ["description"]=>
+    string(0) ""
+    ["type"]=>
+    string(8) "document"
+    ["name"]=>
+    string(11) "Nationality"
+    ["accepted_documents"]=>
+    array(3) {
+      [0]=>
+      array(5) {
+        ["url"]=>
+        string(91) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/national_id_card"
+        ["fields"]=>
+        array(1) {
+          [0]=>
+          string(11) "nationality"
+        }
+        ["detailed_fields"]=>
+        array(1) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(11) "nationality"
+            ["friendly_name"]=>
+            string(11) "Nationality"
+          }
+        }
+        ["type"]=>
+        string(16) "national_id_card"
+        ["name"]=>
+        string(35) "National ID for Indonesian citizens"
+      }
+      [1]=>
+      array(5) {
+        ["url"]=>
+        string(83) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/passport"
+        ["fields"]=>
+        array(1) {
+          [0]=>
+          string(11) "nationality"
+        }
+        ["detailed_fields"]=>
+        array(1) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(11) "nationality"
+            ["friendly_name"]=>
+            string(11) "Nationality"
+          }
+        }
+        ["type"]=>
+        string(8) "passport"
+        ["name"]=>
+        string(28) "Passport for non-Indonesians"
+      }
+      [2]=>
+      array(5) {
+        ["url"]=>
+        string(91) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/residence_permit"
+        ["fields"]=>
+        array(1) {
+          [0]=>
+          string(11) "nationality"
+        }
+        ["detailed_fields"]=>
+        array(1) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(11) "nationality"
+            ["friendly_name"]=>
+            string(11) "Nationality"
+          }
+        }
+        ["type"]=>
+        string(16) "residence_permit"
+        ["name"]=>
+        string(50) "Residence Permit (KITAP/KITAS) for non-Indonesians"
+      }
+    }
+    ["requirement_name"]=>
+    string(16) "nationality_info"
+  }
+  [1]=>
+  array(5) {
+    ["description"]=>
+    string(0) ""
+    ["type"]=>
+    string(8) "document"
+    ["name"]=>
+    string(15) "Identity Number"
+    ["accepted_documents"]=>
+    array(3) {
+      [0]=>
+      array(5) {
+        ["url"]=>
+        string(91) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/national_id_card"
+        ["fields"]=>
+        array(1) {
+          [0]=>
+          string(15) "document_number"
+        }
+        ["detailed_fields"]=>
+        array(1) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(15) "document_number"
+            ["friendly_name"]=>
+            string(15) "Document Number"
+          }
+        }
+        ["type"]=>
+        string(16) "national_id_card"
+        ["name"]=>
+        string(35) "National ID for Indonesian citizens"
+      }
+      [1]=>
+      array(5) {
+        ["url"]=>
+        string(83) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/passport"
+        ["fields"]=>
+        array(1) {
+          [0]=>
+          string(15) "document_number"
+        }
+        ["detailed_fields"]=>
+        array(1) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(15) "document_number"
+            ["friendly_name"]=>
+            string(15) "Document Number"
+          }
+        }
+        ["type"]=>
+        string(8) "passport"
+        ["name"]=>
+        string(28) "Passport for non-Indonesians"
+      }
+      [2]=>
+      array(5) {
+        ["url"]=>
+        string(91) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/residence_permit"
+        ["fields"]=>
+        array(1) {
+          [0]=>
+          string(15) "document_number"
+        }
+        ["detailed_fields"]=>
+        array(1) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(15) "document_number"
+            ["friendly_name"]=>
+            string(15) "Document Number"
+          }
+        }
+        ["type"]=>
+        string(16) "residence_permit"
+        ["name"]=>
+        string(50) "Residence Permit (KITAP/KITAS) for non-Indonesians"
+      }
+    }
+    ["requirement_name"]=>
+    string(20) "identity_number_info"
+  }
+  [2]=>
+  array(5) {
+    ["description"]=>
+    string(133) "Must be within locality or region covered by the phone number's prefix; a PO Box is not acceptable where a local address is required."
+    ["type"]=>
+    string(8) "document"
+    ["name"]=>
+    string(7) "Address"
+    ["accepted_documents"]=>
+    array(5) {
+      [0]=>
+      array(5) {
+        ["url"]=>
+        string(101) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/government_issued_document"
+        ["fields"]=>
+        array(1) {
+          [0]=>
+          string(12) "address_sids"
+        }
+        ["detailed_fields"]=>
+        array(1) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(12) "address_sids"
+            ["friendly_name"]=>
+            string(14) "Address Sid(s)"
+          }
+        }
+        ["type"]=>
+        string(26) "government_issued_document"
+        ["name"]=>
+        string(20) "Government issued ID"
+      }
+      [1]=>
+      array(5) {
+        ["url"]=>
+        string(87) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/utility_bill"
+        ["fields"]=>
+        array(1) {
+          [0]=>
+          string(12) "address_sids"
+        }
+        ["detailed_fields"]=>
+        array(1) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(12) "address_sids"
+            ["friendly_name"]=>
+            string(14) "Address Sid(s)"
+          }
+        }
+        ["type"]=>
+        string(12) "utility_bill"
+        ["name"]=>
+        string(12) "Utility Bill"
+      }
+      [2]=>
+      array(5) {
+        ["url"]=>
+        string(87) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/tax_document"
+        ["fields"]=>
+        array(1) {
+          [0]=>
+          string(12) "address_sids"
+        }
+        ["detailed_fields"]=>
+        array(1) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(12) "address_sids"
+            ["friendly_name"]=>
+            string(14) "Address Sid(s)"
+          }
+        }
+        ["type"]=>
+        string(12) "tax_document"
+        ["name"]=>
+        string(10) "Tax Notice"
+      }
+      [3]=>
+      array(5) {
+        ["url"]=>
+        string(89) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/rental_receipt"
+        ["fields"]=>
+        array(1) {
+          [0]=>
+          string(12) "address_sids"
+        }
+        ["detailed_fields"]=>
+        array(1) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(12) "address_sids"
+            ["friendly_name"]=>
+            string(14) "Address Sid(s)"
+          }
+        }
+        ["type"]=>
+        string(14) "rental_receipt"
+        ["name"]=>
+        string(12) "Rent Receipt"
+      }
+      [4]=>
+      array(5) {
+        ["url"]=>
+        string(85) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/title_deed"
+        ["fields"]=>
+        array(1) {
+          [0]=>
+          string(12) "address_sids"
+        }
+        ["detailed_fields"]=>
+        array(1) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(12) "address_sids"
+            ["friendly_name"]=>
+            string(14) "Address Sid(s)"
+          }
+        }
+        ["type"]=>
+        string(10) "title_deed"
+        ["name"]=>
+        string(10) "Title Deed"
+      }
+    }
+    ["requirement_name"]=>
+    string(12) "address_info"
+  }
+  [3]=>
+  array(5) {
+    ["description"]=>
+    string(0) ""
+    ["type"]=>
+    string(8) "document"
+    ["name"]=>
+    string(4) "Name"
+    ["accepted_documents"]=>
+    array(3) {
+      [0]=>
+      array(5) {
+        ["url"]=>
+        string(91) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/national_id_card"
+        ["fields"]=>
+        array(2) {
+          [0]=>
+          string(10) "first_name"
+          [1]=>
+          string(9) "last_name"
+        }
+        ["detailed_fields"]=>
+        array(2) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(10) "first_name"
+            ["friendly_name"]=>
+            string(10) "First Name"
+          }
+          [1]=>
+          array(2) {
+            ["machine_name"]=>
+            string(9) "last_name"
+            ["friendly_name"]=>
+            string(9) "Last Name"
+          }
+        }
+        ["type"]=>
+        string(16) "national_id_card"
+        ["name"]=>
+        string(35) "National ID for Indonesian citizens"
+      }
+      [1]=>
+      array(5) {
+        ["url"]=>
+        string(83) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/passport"
+        ["fields"]=>
+        array(2) {
+          [0]=>
+          string(10) "first_name"
+          [1]=>
+          string(9) "last_name"
+        }
+        ["detailed_fields"]=>
+        array(2) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(10) "first_name"
+            ["friendly_name"]=>
+            string(10) "First Name"
+          }
+          [1]=>
+          array(2) {
+            ["machine_name"]=>
+            string(9) "last_name"
+            ["friendly_name"]=>
+            string(9) "Last Name"
+          }
+        }
+        ["type"]=>
+        string(8) "passport"
+        ["name"]=>
+        string(28) "Passport for non-Indonesians"
+      }
+      [2]=>
+      array(5) {
+        ["url"]=>
+        string(91) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/residence_permit"
+        ["fields"]=>
+        array(2) {
+          [0]=>
+          string(10) "first_name"
+          [1]=>
+          string(9) "last_name"
+        }
+        ["detailed_fields"]=>
+        array(2) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(10) "first_name"
+            ["friendly_name"]=>
+            string(10) "First Name"
+          }
+          [1]=>
+          array(2) {
+            ["machine_name"]=>
+            string(9) "last_name"
+            ["friendly_name"]=>
+            string(9) "Last Name"
+          }
+        }
+        ["type"]=>
+        string(16) "residence_permit"
+        ["name"]=>
+        string(50) "Residence Permit (KITAP/KITAS) for non-Indonesians"
+      }
+    }
+    ["requirement_name"]=>
+    string(9) "name_info"
+  }
+  [4]=>
+  array(5) {
+    ["description"]=>
+    string(0) ""
+    ["type"]=>
+    string(8) "document"
+    ["name"]=>
+    string(23) "Place and Date of Birth"
+    ["accepted_documents"]=>
+    array(3) {
+      [0]=>
+      array(5) {
+        ["url"]=>
+        string(91) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/national_id_card"
+        ["fields"]=>
+        array(2) {
+          [0]=>
+          string(11) "birth_place"
+          [1]=>
+          string(10) "birth_date"
+        }
+        ["detailed_fields"]=>
+        array(2) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(11) "birth_place"
+            ["friendly_name"]=>
+            string(11) "Birth Place"
+          }
+          [1]=>
+          array(2) {
+            ["machine_name"]=>
+            string(10) "birth_date"
+            ["friendly_name"]=>
+            string(10) "Birth Date"
+          }
+        }
+        ["type"]=>
+        string(16) "national_id_card"
+        ["name"]=>
+        string(35) "National ID for Indonesian citizens"
+      }
+      [1]=>
+      array(5) {
+        ["url"]=>
+        string(83) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/passport"
+        ["fields"]=>
+        array(2) {
+          [0]=>
+          string(11) "birth_place"
+          [1]=>
+          string(10) "birth_date"
+        }
+        ["detailed_fields"]=>
+        array(2) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(11) "birth_place"
+            ["friendly_name"]=>
+            string(11) "Birth Place"
+          }
+          [1]=>
+          array(2) {
+            ["machine_name"]=>
+            string(10) "birth_date"
+            ["friendly_name"]=>
+            string(10) "Birth Date"
+          }
+        }
+        ["type"]=>
+        string(8) "passport"
+        ["name"]=>
+        string(28) "Passport for non-Indonesians"
+      }
+      [2]=>
+      array(5) {
+        ["url"]=>
+        string(91) "https://numbers.twilio.com/v2/RegulatoryCompliance/SupportingDocumentTypes/residence_permit"
+        ["fields"]=>
+        array(2) {
+          [0]=>
+          string(11) "birth_place"
+          [1]=>
+          string(10) "birth_date"
+        }
+        ["detailed_fields"]=>
+        array(2) {
+          [0]=>
+          array(2) {
+            ["machine_name"]=>
+            string(11) "birth_place"
+            ["friendly_name"]=>
+            string(11) "Birth Place"
+          }
+          [1]=>
+          array(2) {
+            ["machine_name"]=>
+            string(10) "birth_date"
+            ["friendly_name"]=>
+            string(10) "Birth Date"
+          }
+        }
+        ["type"]=>
+        string(16) "residence_permit"
+        ["name"]=>
+        string(50) "Residence Permit (KITAP/KITAS) for non-Indonesians"
+      }
+    }
+    ["requirement_name"]=>
+    string(28) "place_and_date_of_birth_info"
+  }
+}
++ Name: 

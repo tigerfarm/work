@@ -70,7 +70,7 @@ Now back to the Okta configurations and use the JB id.
 https://www.twilio.com/docs/frontline/sso/okta#3-configure-your-application
 Go through the Okta steps.
 
-Note, "email" and "roles" is case sensitive, use lowercase.
+Note, "email" and "roles" are case sensitive, use lowercase.
 https://www.twilio.com/docs/frontline/sso/okta#4-configure-claims
 I had used "Email" and "Roles".
 That Okta configuration mistake caused an 70252 error on my Frontline app.

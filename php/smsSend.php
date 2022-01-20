@@ -32,7 +32,7 @@ $theMessage = $theWhatsAppTemplate;
 //
 echo '++ Send SMS message, From: ' . $fromPhoneNumber . " to " . $toPhoneNumber . " :" . $theMessage . ":\xA";
 // $echoUrl = "https://postb.in/1604958023910-9146091821603";
-$echoUrl = "http://www.tigerfarmpress.com/echo";
+$echoUrl = "https://tfpecho.herokuapp.com/smssend";
 echo '++ Echo URL: ', $echoUrl, "\xA";
 $sms = $client->account->messages->create(
         $toPhoneNumber,
