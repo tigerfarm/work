@@ -6,7 +6,7 @@ class HTTPRequester {
         $AuthToken = getenv('MASTER_AUTH_TOKEN');
         $query = http_build_query($params);
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_MAX_TLSv1_1);  // Causes connection fail because TLS 1.2 is required.
+        // curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_MAX_TLSv1_1);  // Causes connection fail because TLS 1.2 is required.
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, 1);
         curl_setopt($ch, CURLOPT_USERPWD, $AccountSid . ":" . $AuthToken);
@@ -32,8 +32,8 @@ $toPhoneNumber = getenv("MASTER_PHONE_NUMBER_2");
 $theMessage = "Message #1";
 $theMessageOkay = "J'aime l'été... éÉÑñ";
 //
-// $url = "https://api.twilio.com:8443/2010-04-01/Accounts/{$AccountSid}/Messages.json";
-$url = "https://api.twilio.com/2010-04-01/Accounts/{$AccountSid}/Messages.json";
+$url = "https://api.twilio.com:8443/2010-04-01/Accounts/{$AccountSid}/Messages.json";
+// $url = "https://api.twilio.com/2010-04-01/Accounts/{$AccountSid}/Messages.json";
 $data = array('From' => $fromPhoneNumber, 'To' => $toPhoneNumber, 'Body' => $theMessageOkay);
 echo "+ Send the messsage, URL: " . $url . "\xA";
 print_r($data);

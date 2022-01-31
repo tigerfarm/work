@@ -1,86 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./style.css" />
-    <title>Hello Twilio Serverless!</title>
-  </head>
-  <body>
-    <header><h1>Hello Twilio Serverless!</h1></header>
-
-    <main>
-      <p>
-        <strong>Congratulations</strong> you just started a new Twilio
-        Serverless project.
-      </p>
-
-      <h2>Assets</h2>
-      <p>
-        Assets are static files, like HTML, CSS, JavaScript, images or audio
-        files.
-      </p>
-
-      <p>
-        This HTML page is an example of a <strong>public</strong> asset, you can
-        access this by loading it in the browser. The HTML also refers to
-        another public asset for CSS styles.
-      </p>
-      <p>
-        You can also have <strong>private</strong> assets, there is an example
-        private asset called <code>message.private.js</code> in the
-        <code>/assets</code> directory. This file cannot be loaded in the
-        browser, but you can load it as part of a function by finding its path
-        using <code>Runtime.getAssets()</code> and then requiring the file.
-        There is an example of this in
-        <code>/functions/private-message.js</code>.
-      </p>
-
-      <h2>Functions</h2>
-      <p>
-        Functions are JavaScript files that will respond to incoming HTTP
-        requests. There are <strong>public</strong> and
-        <strong>protected</strong> functions.
-      </p>
-
-      <p>
-        <strong>Public</strong> functions respond to all HTTP requests. There is
-        an example of a public function in
-        <code>/functions/hello-world.js</code>.
-      </p>
-
-      <p>
-        <strong>Protected</strong> functions will only respond to HTTP requests
-        with a valid Twilio signature in the header. You can read more about
-        <a href="https://www.twilio.com/docs/usage/security#validating-requests"
-          >validating requests from Twilio in the documentation</a
-        >. There is an example of a protected function in
-        <code>/functions/sms/reply.protected.js</code>
-      </p>
-
-      <h2>twilio-run</h2>
-
-      <p>
-        Functions and assets are served, deployed and debugged using
-        <a href="https://github.com/twilio-labs/twilio-run"
-          ><code>twilio-run</code></a
-        >. You can serve the project locally with the command
-        <code>npm start</code> which is really running
-        <code>twilio-run --env</code> under the hood. If you want to see what
-        else you can do with <code>twilio-run</code> enter
-        <code>npx twilio-run --help</code> on the command line or check out
-        <a href="https://github.com/twilio-labs/twilio-run"
-          >the project documentation on GitHub</a
-        >.
-      </p>
-    </main>
-
-    <footer>
-      <p>
-        Made with 💖 by your friends at
-        <a href="https://www.twilio.com">Twilio</a>
-      </p>
-    </footer>
-  </body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Hello Twilio Serverless!</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113">
+  <style type="text/css">
+    p.p2 {margin: 0.0px 0.0px 24.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #0c0e20; -webkit-text-stroke: #0c0e20}
+    p.p4 {margin: 0.0px 24.0px 0.0px 24.0px; text-align: center; font: 12.0px 'Helvetica Neue'; color: #0c0e20; -webkit-text-stroke: #0c0e20}
+    span.s1 {font-kerning: none}
+    span.s2 {font: 12.0px Menlo; font-kerning: none; color: #eb1437; background-color: #f7f7f7; -webkit-text-stroke: 0px #eb1437}
+    span.s3 {font: 12.0px 'Helvetica Neue'; text-decoration: underline ; font-kerning: none; color: #0d74ff; -webkit-text-stroke: 0px #0d74ff}
+    span.s4 {font: 12.0px Menlo; text-decoration: underline ; font-kerning: none; color: #eb1437; background-color: #f7f7f7; -webkit-text-stroke: 0px #eb1437}
+  </style>
+</head>
+<body>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; font: 24.0px 'Helvetica Neue'; color: #0c0e20; -webkit-text-stroke: #0c0e20"><span class="s1"><b>Hello Twilio Serverless!</b></span></h1>
+<p class="p2"><span class="s1"><b>Congratulations</b> you just started a new Twilio Serverless project.<span class="Apple-converted-space"> </span></span></p>
+<h2 style="margin: 0.0px 0.0px 18.0px 0.0px; font: 18.0px 'Helvetica Neue'; color: #0c0e20; -webkit-text-stroke: #0c0e20"><span class="s1"><b>Assets</b></span></h2>
+<p class="p2"><span class="s1">Assets are static files, like HTML, CSS, JavaScript, images or audio files.</span></p>
+<p class="p2"><span class="s1">This HTML page is an example of a <b>public</b> asset, you can access this by loading it in the browser. The HTML also refers to another public asset for CSS styles.<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1">You can also have <b>private</b> assets, there is an example private asset called </span><span class="s2">message.private.js</span><span class="s1"> in the </span><span class="s2">/assets</span><span class="s1"> directory. This file cannot be loaded in the browser, but you can load it as part of a function by finding its path using </span><span class="s2">Runtime.getAssets()</span><span class="s1"> and then requiring the file. There is an example of this in </span><span class="s2">/functions/private-message.js</span><span class="s1">.<span class="Apple-converted-space"> </span></span></p>
+<h2 style="margin: 0.0px 0.0px 18.0px 0.0px; font: 18.0px 'Helvetica Neue'; color: #0c0e20; -webkit-text-stroke: #0c0e20"><span class="s1"><b>Functions</b></span></h2>
+<p class="p2"><span class="s1">Functions are JavaScript files that will respond to incoming HTTP requests. There are <b>public</b> and <b>protected</b> functions.<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"><b>Public</b> functions respond to all HTTP requests. There is an example of a public function in </span><span class="s2">/functions/hello-world.js</span><span class="s1">.<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"><b>Protected</b> functions will only respond to HTTP requests with a valid Twilio signature in the header. You can read more about <a href="https://www.twilio.com/docs/usage/security#validating-requests"><span class="s3">validating requests from Twilio in the documentation</span></a>. There is an example of a protected function in </span><span class="s2">/functions/sms/reply.protected.js</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
+<h2 style="margin: 0.0px 0.0px 18.0px 0.0px; font: 18.0px 'Helvetica Neue'; color: #0c0e20; -webkit-text-stroke: #0c0e20"><span class="s1"><b>twilio-run</b></span></h2>
+<p class="p2"><span class="s1">Functions and assets are served, deployed and debugged using <a href="https://github.com/twilio-labs/twilio-run"><span class="s4">twilio-run</span></a>. You can serve the project locally with the command </span><span class="s2">npm start</span><span class="s1"> which is really running </span><span class="s2">twilio-run --env</span><span class="s1"> under the hood. If you want to see what else you can do with </span><span class="s2">twilio-run</span><span class="s1"> enter </span><span class="s2">npx twilio-run --help</span><span class="s1"> on the command line or check out <a href="https://github.com/twilio-labs/twilio-run"><span class="s3">the project documentation on GitHub</span></a>.<span class="Apple-converted-space"> </span></span></p>
+<p class="p4"><span class="s1">Made with by your friends at <a href="https://www.twilio.com/"><span class="s3">Twilio</span></a><span class="Apple-converted-space"> </span></span></p>
+</body>
 </html>
