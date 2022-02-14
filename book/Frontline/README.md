@@ -300,7 +300,7 @@ const handleGetCustomerDetailsByCustomerIdCallback = async (req, res) => {
 Request example:
 ````
 curl -X POST 'http://localhost:8000/callbacks/crm?location=GetCustomerDetailsByCustomerId' \
-   --data-urlencode "Token=jwe token" \
+   --data-urlencode "Token=JWT token" \
    --data-urlencode "Worker=john@example.com" \
    --data-urlencode "CustomerId=1"
 ````
@@ -322,7 +322,7 @@ JSON response example:
 Request example:
 ````
 curl -X POST 'http://localhost:8000/callbacks/crm?location=GetCustomersList' \
-   --data-urlencode "Token=jwe token" \
+   --data-urlencode "Token=JWT token" \
    --data-urlencode "Worker=john@example.com" \
    --data-urlencode "PageSize=30"
 ````

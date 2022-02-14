@@ -119,5 +119,30 @@ Browser response, same as running it locally:
 ````
 
 --------------------------------------------------------------------------------
+### Environment Variables
+
+Here is how to set environment variable locally and once deployed.
++ Locally, add your environment variables into the ".env" file in the project's root directory.
++ Once deployed, the ".env" file environment variables will be created in the project service's Environment Variables.
+
+Note, in the UI, by default the project service's Environment Variables are not editable in the UI.
+Run the following to make them editable.
+````
+curl -X POST https://serverless.twilio.com/v1/Services/ZS7...f \
+--data-urlencode "UiEditable=True" \
+-u $TWILIO_ACCOUNT_SID:$TWILIO_AUTH_TOKEN
+````
+Documentation [link](https://www.twilio.com/docs/runtime/functions-assets-api/api/service#update-a-service-resource).
+
+#### For Multiple Environments (dev/staging/prod)
+
+Environment,
+https://www.twilio.com/docs/runtime/functions-assets-api/api/environment
+Environments define the different domains your Functions and Assets are available under. You can only have one environment, or you can have many, e.g. a dev, stage and prod. You can deploy Builds to many environments.
+
+Create an Environment resource
+https://www.twilio.com/docs/runtime/functions-assets-api/api/environment#create-an-environment-resource
+
+--------------------------------------------------------------------------------
 
 Cheers...

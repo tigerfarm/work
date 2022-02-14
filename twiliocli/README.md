@@ -72,8 +72,7 @@ $ twilio login
 [? The Account SID for your Twilio Account or Subaccount: AC5...1
 [? Your Twilio Auth Token for your Twilio Account or Subaccount: [hidden]
 [? Shorthand identifier for your profile: Writers
-[? Account credentials are currently stored in environment variables and will take precedence over the "Writers" profile when connecting to Twilio, unless the "Writers" profile is explicitly specified. Continue setting up "Writers" profile? Ye
-s
+[? Account credentials are currently stored in environment variables and will take precedence over the "Writers" profile when connecting to Twilio, unless the "Writers" profile is explicitly specified. Continue setting up "Writers" profile? Yes
 Created API Key SK6...9 and stored the secret in your keychain. See: https://www.twilio.com/console/runtime/api-keys/SK6...9
 twilio-cli configuration saved to "/Users/.../.twilio-cli/config.json"
 Saved Writers.

@@ -8,6 +8,30 @@ and create my personal website [https://tigerfarmpress.com](https://tigerfarmpre
 --------------------------------------------------------------------------------
 ## Create a GitHub Repository that will be deployed to Heroku
 
+#### Create a new GitHub repository.
+
+On your GitHub repository home page, add a new repository by clicking the "+" icon (top right), and clicking New repository.
+
+Create a local project repository directory on your computer.
+````
+cd /Users/user/Projects/
+$ mkdir myapp
+$ cd myapp
+````
+
+In your repository directory, initialize the GitHub repository.
+````
+$ git init
+$ git remote add origin https://github.com/tigerfarm/tfp.git
+$ git add .
+$ git commit -am "init new"
+$ git remote set-url origin https://a...B@github.com/tigerfarm/tfp.git (see 00-Acc.txt sample)
+$ git push -u origin master
+...
+````
+
+#### Use an Existing GitHub repository.
+
 If the repository exists on GitHub, can clone the repository using command line.
 For example,
 ````
@@ -23,11 +47,6 @@ $ ls -l
 notifications-quickstart-android
 ````
 
-Create a local project repository directory on your computer.
-````
-$ mkdir myapp
-$ cd myapp
-````
 Add files that are required to deploy to Heroku.
 
 Required for Heroku, the app information.
@@ -110,20 +129,6 @@ $ git rm --cached derby.log
 
 $ git rm -r DIRECTORY-NAME
 $ git rm -r dist
-````
-
-#### Create a new GitHub repository.
-
-On your GitHub repository home page, add a new repository by clicking the "+" icon (top right), and clicking New repository.
-
-In your repository directory, initialize the GitHub repository.
-````
-$ git init
-$ git remote add origin https://github.com/tigerfarm/tfp.git
-$ git add .
-$ git commit -am "init new"
-$ git push -u origin master
-...
 ````
 
 --------------------------------------------------------------------------------

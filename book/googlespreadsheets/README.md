@@ -72,6 +72,109 @@ for (i = 0; i < dataAll.messages.length; i++) {
 }
 ````
 
+Following is an advanced program version of the above.
+The following can be used to retrieve a conversation between a Twilio phone number and another phone number.
+````
+// -----------------------------------------------------------------------------
+// Parameters for the Twilio request.
+//
+// --------------------------------
+var ACCOUNT_SID = "account_sid";
+var ACCOUNT_TOKEN = "account_auth_token";
+var phoneNumber1 = "16505551111";
+var phoneNumber2 = "+16505552222";
+
+// --------------------------------
+var numberToRetrieve = 60;
+
+// -----------------------------------------------------------------------------
+// Various sample retrieves.
+//
+// -----------------
+var urlFrom="https://api.twilio.com/2010-04-01/Accounts/" + ACCOUNT_SID + "/Messages.json?From=" + phoneNumber1 + "&PageSize=" + numberToRetrieve;
+// -----------------
+var urlTo="https://api.twilio.com/2010-04-01/Accounts/" + ACCOUNT_SID + "/Messages.json?To=" + phoneNumber2 + "&PageSize=" + numberToRetrieve;
+
+// ---------------------------------------------------
+// Can use the next 2 for a conversation between the 2 given phone numbers.
+// -----------------
+var urlFromTo1="https://api.twilio.com/2010-04-01/Accounts/" + ACCOUNT_SID + "/Messages.json?From=" + phoneNumber1 + "&To=" + phoneNumber2 + "&PageSize=" + numberToRetrieve;
+// -----------------
+var urlFromTo2="https://api.twilio.com/2010-04-01/Accounts/" + ACCOUNT_SID + "/Messages.json?From=" + phoneNumber2 + "&To=" + phoneNumber1 + "&PageSize=" + numberToRetrieve;
+// -----------------
+
+// -----------------------------------------------------------------------------
+function getData(theUrl) {
+  // Get the JSON data.
+  // -------------------------------------------
+  // Parse the JSON data and put it into the spreadsheet's active page.
+  // Documentation: https://www.twilio.com/docs/api/rest/response
+  var options = { "method" : "get" };
+    options.headers = {
+      "Authorization" : "Basic " + Utilities.base64Encode(ACCOUNT_SID + ":" + ACCOUNT_TOKEN)
+  };
+  var theResponse = UrlFetchApp.fetch(theUrl,options);
+  var theDataAll = JSON.parse(theResponse.getContentText());
+  return(theDataAll);
+}
+
+// -----------------------------------------------------------------------------
+// Put the retrieved JSON data into the spreadsheet.
+//
+var theRow = 3;       // First row to print the data.
+function displayData(dataAll) {
+var theSheet = SpreadsheetApp.getActiveSheet();
+var startColumn = 2;
+var hoursOffset = 0;
+// --------------------------------------------
+for (i = 0; i < dataAll.messages.length; i++) {
+   theColumn = startColumn;
+   // -------------------------------------
+   // Date and Time
+   rowDate = dataAll.messages[i].date_sent;
+   var theDate = new Date (rowDate);
+   if(isNaN(theDate.valueOf())) {
+      theDate = 'Not a valid date-time';
+      theColumn++;
+      theColumn++;
+   }
+   else {
+      theDate.setHours(theDate.getHours()+hoursOffset);
+      theSheet.getRange(theRow, theColumn).setValue(theDate);
+      theColumn++;
+      theSheet.getRange(theRow, theColumn).setValue(theDate);
+      theColumn++;
+   }
+   // -------------------------------------
+   theSheet.getRange(theRow, theColumn).setValue(dataAll.messages[i].from);
+   theColumn++;
+   theSheet.getRange(theRow, theColumn).setValue(dataAll.messages[i].to);
+   theColumn++;
+   theSheet.getRange(theRow, theColumn).setValue(dataAll.messages[i].body);
+   theColumn++;
+   theSheet.getRange(theRow, theColumn).setValue(dataAll.messages[i].price);
+   theColumn++;
+   theSheet.getRange(theRow, theColumn).setValue("abc");
+   theColumn++;
+   theSheet.getRange(theRow, theColumn).setValue(dataAll.messages[i].error_code);
+   theRow++
+  }
+}
+
+// -------------------------------------------------------------------------------
+function callFunctions() {
+  var theData;
+  // ---------------------------------------------
+  // Get a conversation between 2 phone numbers.
+  theData = getData(urlFromTo1);
+  displayData(theData);
+  theData = getData(urlFromTo2);
+  theRow++;
+  displayData(theData);
+  // ---------------
+}
+````
+
 --------------------------------------------------------------------------------
 ## Steps to send SMS from a Google Spreadsheet
 
