@@ -162,7 +162,7 @@ for (i = 0; i < dataAll.messages.length; i++) {
 }
 
 // -------------------------------------------------------------------------------
-function callFunctions() {
+function myFunction() {
   var theData;
   // ---------------------------------------------
   // Get a conversation between 2 phone numbers.
