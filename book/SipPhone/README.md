@@ -66,7 +66,11 @@ You can use the same URL, by change "16505551234" to your Twilio phone number.
 <img src="sip02.jpg" width="400"/>
 
 ----------------------------------------
-My X-Lite configuration: In the first screen print below, my account configuration is green, indicating X-Lite is connected to, and matches my SIP Domain configuration for the user, "xlite" (user id in the 2nd screen print).
+### Sample X-Lite Configuration
+
+My X-Lite configuration: In the first screen print below, 
+my account configuration is green, indicating X-Lite is connected to, 
+and matches my SIP Domain configuration for the user, "xlite" (user id in the 2nd screen print).
 
 If your status is green, then your X-Lite configuration is correct and complete.
 
@@ -74,12 +78,16 @@ If your status is green, then your X-Lite configuration is correct and complete.
 
 <img src="sip04.jpg" width="400"/> 
 
-To receive calls, you will need a method to dial the SIP address of your X-Lite app. Following is a TwiML Bin to do just that.
-Create TwiML to redirect incoming calls to a SIP end point user (SIP address such as myuser).
-From the Twilio Console, go to the TwiML Bin web page: https://www.twilio.com/console/dev-tools/twiml-bins
-Click the create icon (red circle with a white plus sign in the middle).
-In the TwiML Bin Configuration form, enter:
-Click Create.
+##### To receive calls, 
+
+You will need a method to dial the SIP address of your X-Lite app. 
+
+Following is a TwiML Bin to do just that.
++ Create TwiML to redirect incoming calls to a SIP end point user (SIP address such as myuser).
++ From the Twilio Console, go to the TwiML Bin web page: https://www.twilio.com/console/dev-tools/twiml-bins
++ Click the create icon (red circle with a white plus sign in the middle).
++ In the TwiML Bin Configuration form, enter the following(sample in the screen print).
++ Click Create.
 
 <img src="sip05.jpg" width="400"/>
  
