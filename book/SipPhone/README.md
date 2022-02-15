@@ -28,16 +28,17 @@ and the Twilio Console configurations. As well, the instructions are separated i
 
 ##### Twilio Console configurations
 
-1. Log into the Twilio Console.
++ Log into the Twilio Console.
 Go to this link:https://www.twilio.com/console
 List your Twilio SIP Domains (Programmable Voice/SIP Domains/Domains) using this link: https://www.twilio.com/console/voice/sip/endpoints. Your list maybe empty, no SIP domains.
-2. Add a user credential list with an end point userid. This userid and password will be used in the SIP software.
++ Add a user credential list with an end point userid. This userid and password will be used in the SIP software.
 Go to the form to add a new user credential list: https://www.twilio.com/console/voice/sip/cls
 In the Credential Lists page, click the Create new Credential List icon.In the New Credential List form, enter:
 You have returned back to the Credential Lists page.mylist is in the list.
 You now have a list named mylist, which includes your end point userid.
-3. Add and configure a SIP Domain. Configure the domain for SIP users to make outgoing calls.
++ Add and configure a SIP Domain. Configure the domain for SIP users to make outgoing calls.
 Go to the form to add a new Twilio SIP Domain: https://www.twilio.com/console/voice/sip/endpoints/add
+
 In the New SIP Domain form, enter the following:
 + Under Voice Authentication, click the Credential Lists box. Select: mylist (do not enter the value, select the value). mylist is now display in the box.
 + For SIP Registration, click Enabled.
