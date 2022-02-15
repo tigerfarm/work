@@ -14,9 +14,7 @@ Sample SIP phone, [Grandstream](https://www.amazon.com/Grandstream-Business-Sing
 [Article](https://www.twilio.com/blog/2017/08/making-phone-calls-using-twilio-sip.html)
 which covers configuring a Twilio SIP Domain for making and receiving calls
 
-
-
-<img src="sipDiagram.jpg" width="400"/>
+<img src="sipDiagram.jpg" width="600"/>
 
 --------------------------------------------------------------------------------
 ### Sample SIP Software Configuration
