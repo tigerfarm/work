@@ -78,7 +78,7 @@ If your status is green, then your X-Lite configuration is correct and complete.
 
 <img src="sip04.jpg" width="400"/> 
 
-##### To receive calls, 
+##### To Receive Calls, 
 
 You will need a method to dial the SIP address of your X-Lite app. 
 
@@ -90,13 +90,16 @@ Following is a TwiML Bin to do just that.
 + Click Create.
 
 <img src="sip05.jpg" width="400"/>
- 
+
+##### Incoming Voice Calls, 
+
 Then configure your Twilio phone number to use the above TwiML Bin for incoming voice calls.
-Configure your Twilio phone number, to redirect incoming calls to your SIP address (to myuser).
-From the Twilio Console, go to your list of phone numbers:https://www.twilio.com/console/phone-numbers/incoming
-Click the phone number you want to use, example +12223331234.
-Under Voice & Fax, set:
-Click Save.
++ Configure your Twilio phone number, to redirect incoming calls to your SIP address (to myuser).
++ From the Twilio Console, go to your list of phone numbers:https://www.twilio.com/console/phone-numbers/incoming
++ Click the phone number you want to use, example +12223331234.
++ Under Voice & Fax, set:
++ Click Save.
+
 Calls to your Twilio phone number will now be directed to your SIP address.
 
 <img src="sip06.jpg" width="400"/>
@@ -106,17 +109,43 @@ article covers the Twilio SIP Domain configurations.
 
 -------------------------------------------------
 
-Create a Twilio Function to replace the above Heroku link (http://simpledial.herokuapp.com/voice?callerId=your_Twilio_phone_number)
-The advantage of using a Twilio Function is that you can add features. The example below, is mapping SIP addresses to phone numbers (caller ids). If you have multiple SIP devices, you can give each a their own caller id by mapping each device's SIP address to a unique phone number. The Heroku code doesn't allow this.
-Log into the Twilio Console.
-Create a Twilio Function to automatically reply with a custom message.Go to the Functions management page:https://www.twilio.com/console/runtime/functions/manage
-Click the option to Create a New Function.
-In the New Function pop up form, click Blank and click Create.
-Enter the following:Properties, Function name: SIP outbound callConfigure, Access Control: uncheck. This allows browser testing.Path: https://about-time-1235 /sipoutboundcall(Note, your Path will be different, "about-time-1235" is only an example)Enter "/sipoutboundcall" after your Path name.
-In the code box, add the following:
+Create a Twilio Function to replace the above 
+Heroku link(http://simpledial.herokuapp.com/voice?callerId=your_Twilio_phone_number)
 
-Click Save.
-Quick test, use your browser to go the the URL, example:https://about-time-1235.twil.io/sipcallforwardYou will be rewarded with:<?xml version="1.0" encoding="UTF-8"?><Response><Say voice="alice" language="en-CA">Error placing the call. From caller is required.</Say></Response>Another test, which show the mapping of a SIP address to a caller id:https://unnatural-seat-1873.twil.io/sipcallforward?To=15551231234&From=sip:home@yoursubdomain.sip.us1.twilio.comResponse:<?xml version="1.0" encoding="UTF-8"?><Response><Dial callerId="+12223331234" record="do-not-record">15551231234</Dial></Response>
+The advantage of using a Twilio Function is that you can add features. 
+The example below, is mapping SIP addresses to phone numbers (caller ids). 
+If you have multiple SIP devices, you can give each a their own caller id 
+by mapping each device's SIP address to a unique phone number. 
+The Heroku code doesn't allow this.
+
+Log into the Twilio Console.
++ Create a Twilio Function to automatically reply with a custom message.
+Go to the [Functions management page](https://www.twilio.com/console/runtime/functions/manage).
++ Click the option to Create a New Function.
++ In the New Function pop up form, click Blank and click Create.
++ Enter the following: Properties, Function name: SIP outbound callConfigure, 
+Access Control: uncheck. This allows browser testing.Path: https://about-time-1235 /sipoutboundcall(Note, your Path will be different, "about-time-1235" is only an example)Enter "/sipoutboundcall" after your Path name.
++ In the code box, add the following: ...
++ Click Save.
+
+Quick test, use your browser to go the the URL, 
+example: https://about-time-1235.twil.io/sipcallforward
+You will be rewarded with:
+````
+<?xml version="1.0" encoding="UTF-8"?><Response>
+<Say voice="alice" language="en-CA">Error placing the call. From caller is required.</Say>
+</Response>
+````
+
+
+Another test, which show the mapping of a SIP address to a caller id: 
+https://unnatural-seat-1873.twil.io/sipcallforward?To=15551231234&From=sip:home@yoursubdomain.sip.us1.twilio.comResponse:
+````
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+<Dial callerId="+12223331234" record="do-not-record">15551231234</Dial>
+</Response>
+````
 
 ````
 exports.handler = function(context, event, callback) {
