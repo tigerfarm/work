@@ -16,7 +16,7 @@ which covers configuring a Twilio SIP Domain for making and receiving calls
 
 
 
-<img src="sip01.jpg" width="400"/>
+<img src="sipDiagram.jpg" width="400"/>
 
 --------------------------------------------------------------------------------
 ### Sample SIP Software Configuration
