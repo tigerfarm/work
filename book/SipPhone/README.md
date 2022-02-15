@@ -9,8 +9,6 @@ with general information regarding the set up steps:
 For simplicity, I suggest you use our SIP Domain product where 
 we manage the PBX functions which you configure using your browser.
 
-Sample SIP phone, [Grandstream](https://www.amazon.com/Grandstream-Business-Single-account-GXP1610/dp/B01318HLCC)
-
 [Article](https://www.twilio.com/blog/2017/08/making-phone-calls-using-twilio-sip.html)
 which covers configuring a Twilio SIP Domain for making and receiving calls
 
@@ -298,6 +296,39 @@ exports.handler = function(context, event, callback) {
    callback(null, twiml);
 };
 ````
+
+--------------------------------------------------------------------------------
+### Cisco SPA112 SIP Device
+
+Log into Cisco SPA112 SIP device:
+````
++ I logged into the internet router and looked up IP address of SPA112.
++ I logged into the Cisco SPA112 using the IP address I got from the router:
+http://192.168.1.85 admin/admin
++ From the top menu, select Voice
++ From the left menu, select Line 1
++ Configure Line 1:
+++ Under Proxy and Registration, enter:
++++ Proxy: mytwiliosipsubdomain.sip.us1.twilio.com (my Twilio SIP domain)
+++ Under Subscriber Information, enter:
++++ Display Name: Home
++++ User ID: home
++++ Password: mytwiliosipDomainPassword
++++ SIP URI: sip:home@mytwiliosipsubdomain.sip.us1.twilio.com
+````
+
+I'm using the
+[Cisco SPA112 SIP device](https://www.cisco.com/c/en/us/products/unified-communications/spa112-2-port-phone-adapter/index.html?dtid=osscdc000283),
+was $30 on newegg.com. 
+
+A colleague also recommended the Obihai OBi200 VoIP Telephone Adapter. 
+
+Another colleague uses a SIP phone,
+[Grandstream](https://www.amazon.com/Grandstream-Business-Single-account-GXP1610/dp/B01318HLCC)
+
+Cisco SPA 100 SIP device doc for product Name: SPA112
+http://www.cisco.com/c/en/us/td/docs/voice_ip_comm/csbpvga/spa100-200/admin_guide_SPA100/spa100_ag/voice.html#91130
++ See: Subscriber Information
 
 --------------------------------------------------------------------------------
 ### Dialing a SIP device
