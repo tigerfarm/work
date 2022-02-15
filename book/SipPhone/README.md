@@ -1,7 +1,5 @@
 # Setting up a SIP Phone
 
-Following, are the steps I used to implement and test PKCV.
-
 (Note, work in progress)
 
 Links:
@@ -15,6 +13,10 @@ Sample SIP phone, [Grandstream](https://www.amazon.com/Grandstream-Business-Sing
 
 [Article](https://www.twilio.com/blog/2017/08/making-phone-calls-using-twilio-sip.html)
 which covers configuring a Twilio SIP Domain for making and receiving calls
+
+
+
+<img src="sip01.jpg" width="400"/>
 
 --------------------------------------------------------------------------------
 ### Sample SIP Software Configuration
@@ -123,8 +125,8 @@ Log into the Twilio Console.
 Go to the [Functions management page](https://www.twilio.com/console/runtime/functions/manage).
 + Click the option to Create a New Function.
 + In the New Function pop up form, click Blank and click Create.
-+ Enter the following: Properties, Function name: SIP outbound callConfigure, 
-Access Control: uncheck. This allows browser testing.Path: https://about-time-1235 /sipoutboundcall(Note, your Path will be different, "about-time-1235" is only an example)Enter "/sipoutboundcall" after your Path name.
++ Enter the following: Properties, Function name: SIP outbound callConfigure, Access Control: uncheck. 
+This allows browser testing.Path: https://about-time-1235 /sipoutboundcall(Note, your Path will be different, "about-time-1235" is only an example)Enter "/sipoutboundcall" after your Path name.
 + In the code box, add the following: ...
 + Click Save.
 
@@ -241,16 +243,9 @@ The other part of re-configuration, is to use the user's new SIP Domain in their
 </Response>
 ````
 
-Let me know if you have further questions on this topic.
-
-Regards,
-Stacy David
-
-
-I see you have created a Twilio Function.
-https://www.twilio.com/console/functions/manage
-
-In the following Function, I have an if/else/then statement that will allow you map the credential list username to Twilio phone number, which will be used as the caller id (from phone number).
+In the following Function, 
+I have an if/else/then statement that will allow you map the credential list username to Twilio phone number, 
+which will be used as the caller id (from phone number).
 
 Sample mapping from a username to a Twilio phone number:
 ````
