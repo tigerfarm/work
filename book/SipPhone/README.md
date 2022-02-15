@@ -28,25 +28,33 @@ and the Twilio Console configurations. As well, the instructions are separated i
 
 ##### Twilio Console configurations
 
-+ Log into the Twilio Console.
-Go to this link:https://www.twilio.com/console
-List your Twilio SIP Domains (Programmable Voice/SIP Domains/Domains) using this link: https://www.twilio.com/console/voice/sip/endpoints. Your list maybe empty, no SIP domains.
-+ Add a user credential list with an end point userid. This userid and password will be used in the SIP software.
-Go to the form to add a new user credential list: https://www.twilio.com/console/voice/sip/cls
+Log into the [Twilio Console](https://www.twilio.com/console).
+
+List your [Twilio SIP Domains](https://www.twilio.com/console/voice/sip/endpoints)
+(Programmable Voice/SIP Domains/Domains). Your list maybe empty, no SIP domains.
+
+Add a user credential list with an end point userid. 
+This userid and password will be used in the SIP software.
+Go to the [Twilio console form](https://www.twilio.com/console/voice/sip/cls) to add a new user credential list.
+
 In the Credential Lists page, click the Create new Credential List icon.In the New Credential List form, enter:
 You have returned back to the Credential Lists page.mylist is in the list.
+
 You now have a list named mylist, which includes your end point userid.
-+ Add and configure a SIP Domain. Configure the domain for SIP users to make outgoing calls.
-Go to the form to add a new Twilio SIP Domain: https://www.twilio.com/console/voice/sip/endpoints/add
+
+Add and configure a SIP Domain. Configure the domain for SIP users to make outgoing calls.
+Go to the [Twilio console form](https://www.twilio.com/console/voice/sip/endpoints/add) to add a new Twilio SIP Domain
 
 In the New SIP Domain form, enter the following:
 + Under Voice Authentication, click the Credential Lists box. Select: mylist (do not enter the value, select the value). mylist is now display in the box.
 + For SIP Registration, click Enabled.
-+ Under SIP Registration, click the Credential Lists box.Select: mylist (do not enter the value, select the value). mylist is now display in the box.
-Click Save.
++ Under SIP Registration, click the Credential Lists box.Select: mylist (do not enter the value, select the value). 
+mylist is now display in the box.
++ Click Save.
+
 Your SIP Domain configuration is complete, and the configuration for SIP users to make outgoing calls is complete.
 
-Screen print of Voice Configuration
+##### Screen print of Voice Configuration
 
 Twilio Console configurations to make outbound calls. In the my screen print below, my URL is:
 http://simpledial.herokuapp.com/voice?callerId=+16505551234
