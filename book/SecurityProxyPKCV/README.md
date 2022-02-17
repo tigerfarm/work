@@ -9,7 +9,7 @@ After installed using SquidMan(see below), I found the following to install and 
 ````
 $ brew install squid
 $ brew services start squid
-```
+````
 Squid config file is stored at /usr/local/etc/squid.conf.
 
 I downloaded SquidMan which includes the Squid proxy server and GUI management interface.
