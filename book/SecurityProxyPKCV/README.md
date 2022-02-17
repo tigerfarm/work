@@ -112,19 +112,21 @@ curl: (35) error:1400410B:SSL routines:CONNECT_CR_SRVR_HELLO:wrong version numbe
 </TwilioResponse>
 ````
 
-Note, "curl: (35) error..." is that HTTP is tried first, causing the error message.
+Note, "curl: (35) error..." is because HTTP is tried first and fails, causing the error message.
 Then HTTPS used successfully.
 
-Sample commands using curl with the proxy server,
+Sample commands using cURL with a proxy server,
 [link](https://oxylabs.io/blog/curl-with-proxy).
 
 Set up a squid Proxy with basic username and password authentication,
 [link](https://stackoverflow.com/questions/3297196/how-to-set-up-a-squid-proxy-with-basic-username-and-password-authentication).
+I haven't tested this.
 
 --------------------------------------------------------------------------------
 ### Using a Twilio HTTP Custom Client Through the Proxy Server
 
-To use customer client: twilioRestClient, add into the function call:
+To use customer client: twilioRestClient, add into the function call.
+For example:
 ````
   .read(twilioRestClient);
   .create(twilioRestClient);
@@ -132,7 +134,7 @@ To use customer client: twilioRestClient, add into the function call:
 Sample [main program](https://github.com/tigerfarm/JavaTwSamples/blob/master/proxypkcv/ProxiedNoPkcv.java)
 sending an SMS using the custom client.
 
-Sample [class](https://github.com/tigerfarm/JavaTwSamples/blob/master/proxypkcv/ProxiedNoPkcv.java)
+Sample [class](https://github.com/tigerfarm/JavaTwSamples/blob/master/proxypkcv/ProxiedNoPkcvTwilioClientCreator.java)
 to create the Twilio custom client object.
 
 Sample [program](https://github.com/tigerfarm/JavaTwSamples/blob/master/messaging/send_sms.java)
@@ -145,7 +147,7 @@ Tool to generate a SHA256 hash:
 https://emn178.github.io/online-tools/sha256.html
 
 
-Proxy server in a docker system:
+Proxy server using docker:
 https://github.com/qdm12/gluetun
 
 To test with a browser:
