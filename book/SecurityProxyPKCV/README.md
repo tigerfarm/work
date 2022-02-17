@@ -119,6 +119,14 @@ Then HTTPS used successfully.
 Sample commands using curl with the proxy server,
 [link](https://oxylabs.io/blog/curl-with-proxy).
 
+Set up a squid Proxy with basic username and password authentication,
+[link](https://stackoverflow.com/questions/3297196/how-to-set-up-a-squid-proxy-with-basic-username-and-password-authentication).
+
+--------------------------------------------------------------------------------
+### Using a Twilio HTTP Custom Client Through the Proxy Server
+
+
+
 --------------------------------------------------------------------------------
 ### PKCV
 
