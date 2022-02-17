@@ -3,7 +3,30 @@
 --------------------------------------------------------------------------------
 ### Proxy Server
 
-Squid proxy server, [download](https://squidman.net/squidman/).
+Squid proxy server home website [link](http://www.squid-cache.org/).
+
+I downloaded SquidMan which includes the Squid proxy server and GUI management interface.
+Website link to [download](https://squidman.net/squidman/).
+
+I put the DMG downloaded file in my Application directory.
+
+View the configuration file location:
+````
+$ cat /Users/dave/Library/Preferences/squid.conf
+````
+The GUI manages the configurations.
+
+Can run Squid in the background withou using the GUI.
+````
+/usr/local/squid/sbin/squid -f /Users/dave/Library/Preferences/squid.conf
+````
+I found the command by running, when the GUI was on screen:
+````
+$ ps -ef | grep squid
+  501 45845     1   0  9:47AM ??         0:00.48 /opt/homebrew/opt/squid/sbin/squid -N -d 1
+  501 47967     1   0 11:15AM ??         0:00.00 /usr/local/squid/sbin/squid -f /Users/dave/Library/Preferences/squid.conf
+  501 47969 47967   0 11:15AM ??         0:00.04 (squid-1) --kid squid-1 -f /Users/dave/Library/Preferences/squid.conf
+````
 
 <img src="squid01.jpg" width="400"/>
 
@@ -20,32 +43,41 @@ inet 192.168.1.76 netmask 0xffffff00 broadcast 192.168.1.255
 
 After changes to SquidMan configuration, restart. Squid menu: Control/Restart Squid.
 
+#### Test using cURL
+
+Sample genaric curl commands.
 ````
 curl --proxy "http://user:pwd@127.0.0.1:1234" "http://httpbin.org/ip"
 curl --proxy "user:pwd@127.0.0.1:1234" "http://httpbin.org/ip"
-
 curl --proxy "127.0.0.1:8080" "http://httpbin.org/ip"
+curl -x "127.0.0.1:8080" "http://httpbin.org/ip"
+curl -x "127.0.0.1:8080" "https://httpbin.org/ip"
+````
 
-curl --proxy "127.0.0.1:8080" "http://httpbin.org/ip"
+Sample curl commands that I used for testing.
 
-Without the proxy server:
+Following are test URL without the the proxy server.
+Note, replaced my actual IP address with a fake address: "303.10.1.6"
+````
 $ curl "http://httpbin.org/ip"
 {
-  "origin": "107.210.221.195"
+  "origin": "303.10.1.6"
 }
+````
 
-With proxy server:
+With the proxy server:
+````
 $ curl --proxy "192.168.1.76:8080" "http://httpbin.org/ip"
 {
-  "origin": "192.168.1.76, 107.210.221.195"
+  "origin": "192.168.1.76, 303.10.1.6"
 }
 $ curl --proxy "192.168.1.76:8080" "https://httpbin.org/ip"
 {
-  "origin": "107.210.221.195"
+  "origin": "303.10.1.6"
 }
 $ curl -x "192.168.1.76:8080" "https://httpbin.org/ip"
 {
-  "origin": "107.210.221.195"
+  "origin": "303.10.1.6"
 }
 
 $ curl "https://api.twilio.com:8443/"
