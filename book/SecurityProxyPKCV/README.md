@@ -97,10 +97,9 @@ $ curl "https://api.twilio.com:8443/"
 <SubresourceUris><Accounts>/2010-04-01/Accounts</Accounts></SubresourceUris>
 </Version></Versions></Versions>
 </TwilioResponse>
-
-$ curl --proxy "192.168.1.76:8080" "https://api.twilio.com:8443/"
-$ curl --proxy "https://192.168.1.76:8080" "https://api.twilio.com:8443/"
-
+````
+For testing with Twilio, I used "--proxy-insecure" instead of "--proxy".
+````
 $ curl --proxy-insecure "https://192.168.1.76:8080" "https://api.twilio.com:8443/"
 curl: (35) error:1400410B:SSL routines:CONNECT_CR_SRVR_HELLO:wrong version number
 <?xml version='1.0' encoding='UTF-8'?>
