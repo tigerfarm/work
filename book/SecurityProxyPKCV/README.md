@@ -125,7 +125,19 @@ Set up a squid Proxy with basic username and password authentication,
 --------------------------------------------------------------------------------
 ### Using a Twilio HTTP Custom Client Through the Proxy Server
 
+To use customer client: twilioRestClient, add into the function call:
+````
+  .read(twilioRestClient);
+  .create(twilioRestClient);
+````
+Sample [main program](https://github.com/tigerfarm/JavaTwSamples/blob/master/proxypkcv/ProxiedNoPkcv.java)
+sending an SMS using the custom client.
 
+Sample [class](https://github.com/tigerfarm/JavaTwSamples/blob/master/proxypkcv/ProxiedNoPkcv.java)
+to create the Twilio custom client object.
+
+Sample [program](https://github.com/tigerfarm/JavaTwSamples/blob/master/messaging/send_sms.java)
+sending an SMS without custom client.
 
 --------------------------------------------------------------------------------
 ### PKCV
