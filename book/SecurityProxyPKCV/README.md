@@ -49,7 +49,7 @@ inet 192.168.1.76 netmask 0xffffff00 broadcast 192.168.1.255
 ````
 <img src="squid02.jpg" width="400"/>
 
-After the configuration change, restart. Squid menu: Control/Restart Squid.
+After saving configuration changes, restart. Squid menu: Control/Restart Squid.
 
 #### Test using cURL
 
