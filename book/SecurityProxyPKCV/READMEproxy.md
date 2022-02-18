@@ -1,4 +1,8 @@
-# Security Notes
+# Proxy Server Notes
+
+Setup and use a proxy server application.
+
+Use a custom Twilio HTTP client to make Twilio API helper library requests.
 
 --------------------------------------------------------------------------------
 ### Install and Manage the Squid Proxy Server
