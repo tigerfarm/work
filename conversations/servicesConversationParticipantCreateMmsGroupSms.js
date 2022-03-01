@@ -11,8 +11,10 @@ client.conversations.services(serviceSid).conversations(conversationSid)
         .participants
         .create({
             messagingBinding: {
-                address: process.env.MY_PHONE_NUMBER
+                address: process.env.MY_PHONE_NUMBER    // Person's mobile phone number.
             }
+            // No identity attribute.
+            // Have not tested if attributes attribute, can be used here.
         })
         .then(participant => console.log(
                     "+ Created participant, SID: " + participant.sid
