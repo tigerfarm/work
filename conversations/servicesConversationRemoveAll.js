@@ -6,7 +6,7 @@ serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 client.conversations.services(serviceSid).conversations.list({limit: 20})
         .then(conversations => conversations.forEach(c => {
                 console.log(
-                        "+ Remove onversation SID: " + c.sid
+                        "+ Remove conversation SID: " + c.sid
                         + " " + c.friendlyName
                         );
                 client.conversations.services(serviceSid)

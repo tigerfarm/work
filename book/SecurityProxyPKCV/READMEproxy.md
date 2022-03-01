@@ -2,7 +2,8 @@
 
 Setup and use a proxy server application.
 
-Use a custom Twilio HTTP client to make Twilio API helper library requests.
+Use a custom Twilio HTTP client to make Twilio API helper library requests
+through the proxy server.
 
 --------------------------------------------------------------------------------
 ### Install and Manage the Squid Proxy Server
@@ -143,19 +144,6 @@ to create the Twilio custom client object.
 
 Sample [program](https://github.com/tigerfarm/JavaTwSamples/blob/master/messaging/send_sms.java)
 sending an SMS without custom client.
-
---------------------------------------------------------------------------------
-### PKCV
-
-Tool to generate a SHA256 hash:
-https://emn178.github.io/online-tools/sha256.html
-
-
-Proxy server using docker:
-https://github.com/qdm12/gluetun
-
-To test with a browser:
-https://www.youtube.com/watch?v=dMLK0cx7V_Y
 
 --------------------------------------------------------------------------------
 
