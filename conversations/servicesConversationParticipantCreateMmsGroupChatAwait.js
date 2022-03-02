@@ -10,6 +10,7 @@ console.log("+ Conversation SID: " + conversationSid + " Participant Identity: "
 //
 (async () => {
     try {
+        // Returns the response from the Twilio HTTP request.
         return await client.conversations.services(serviceSid)
                 .conversations(conversationSid)
                 .participants
@@ -29,6 +30,7 @@ console.log("+ Conversation SID: " + conversationSid + " Participant Identity: "
         // There was an error above.
         return;
     }
+    // Process the response.
     console.log("+ Response: ");
     console.log("+ Conversation participant SID: " + res.sid);
     console.log("+ messagingBinding.type, projected_address: " + res.messagingBinding.type + ", " + res.messagingBinding.projected_address);
