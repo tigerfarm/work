@@ -369,6 +369,16 @@ stegosaurus-95825  www.tigerfarmpress.com, tigerfarmpress.com  2019-11-13 15:10 
 --------------------------------------------------------------------------------
 ## Working the npm utility
 
+Run the following when npm is not found.
+````
+$ brew reinstall node
+...
+$ ls /opt/homebrew/bin/npm
+/opt/homebrew/bin/npm
+$ echo PATH
+/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+````
+
 View your version.
 ````
 $ npm -v 

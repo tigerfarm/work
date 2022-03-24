@@ -1,3 +1,9 @@
+// Asynchronous Programming: https://eloquentjavascript.net/11_async.html
+// Overview: https://www.youtube.com/watch?v=8aGhZQkoFbQ
+
+
+// -----------------------------------------------------------------------------
+// From Collin
 const { client } = require('../../client');
 
 // option 1

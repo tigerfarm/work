@@ -1,12 +1,12 @@
-console.log("+++ Delete all messages for a services's conversation.");
+console.log("+++ List and delete all messages for a services's conversation.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 //
 serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
-console.log("+ Service SID:      " + serviceSid);
 //
 // conversationSid = 'abc';
 conversationSid = process.env.CONVERSATIONS_ECHO_SID;
 //
+console.log("+ Service SID: " + serviceSid + ", Conversation SID: " + conversationSid );
 client.conversations.services(serviceSid).conversations(conversationSid)
         .fetch()
         .then(conversation => {

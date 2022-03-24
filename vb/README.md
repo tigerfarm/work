@@ -8,6 +8,9 @@ Twilio-5.27.0.dll was created using Alex makefile.
 Twilio-5.25.0.dll was created using Xamarin.
 ````
 
+To create an EXE that includes DLL files.
+https://dotnetcoretutorials.com/2019/06/20/publishing-a-single-exe-file-in-net-core-3-0/
+
 To view compile options:
 ````
 $ man vbnc

@@ -10,8 +10,8 @@ const client = require('twilio')(accountSid, authToken);
 // $ node createBindings.js mary $PHONE_NUMBER3 other
 // $ node createBindings.js david $PHONE_NUMBER4
 // $ node listBindingsByTag.js
-var theIdentity = process.argv[2] || "test";
-var thePhoneNumber = process.argv[3] || "+16505552222";
+var theIdentity = process.argv[2] || "test1";
+var thePhoneNumber = process.argv[3] || "+16505551111";
 var theTag = process.argv[4] || "";
 
 console.log("+ Create SMS binding for: " + theIdentity + ", Phone Number = " + thePhoneNumber + ", tag = " + theTag);
