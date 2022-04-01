@@ -21,6 +21,18 @@ To learn how to create credentials for a desktop application, refer to
 [API Key](https://developers.google.com/people/v1/how-tos/authorizing#APIKey): Acquiring and using an API key.
 [Credentials page](https://console.developers.google.com/apis/credentials), open in the API Console.
 
+API keys: The key identifies your project.
+It provides API access, quota, and reports.
+The API supports several types of restrictions on API keys. 
+Create an API key in the Console by clicking Create credentials > API key.
+
+This key is unrestricted. To prevent unauthorized use, we recommend restricting where and for which APIs it can be used. 
+Edit API key to add restrictions. Learn more 
+
+You can restrict the key before using it in production by clicking Restrict key and selecting one of the Restrictions
+
+After you have an API key, your application can append the query parameter key=yourAPIKey to all request URLs.
+
 --------------------------------------------------------------------------------
 ## Coding
 
@@ -32,6 +44,22 @@ I downloaded: google-api-services-people-v1-rev20220301-1.32.1.jar
 create a simple Java command-line application that makes requests to the People API.
 
 [Method: people.connections.list](https://developers.google.com/people/api/rest/v1/people.connections/list)
+
+[Node.JS](https://developers.google.com/people/quickstart/nodejs)
+
+[Create a project](https://developers.google.com/workspace/guides/create-project) and enable the People API.
+A Google Cloud Platform project with the API enabled.
+````
+Service name: people.googleapis.com 
+````
+
+sample command-line application to makes People API requests.
+````
+$ npm install googleapis@39 --save
+...
+$ npm audit fix --force
+...
+````
 
 --------------------------------------------------------------------------------
 Cheers...

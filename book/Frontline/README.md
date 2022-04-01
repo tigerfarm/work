@@ -9,6 +9,7 @@ Links:
 + [My Okta account](https://dev-29758280.okta.com/) for managing apps such as Frontline, and Okta users.
 + [Documentation](https://www.twilio.com/docs/frontline)
 + Twilio Console [Admin Center](https://www.twilio.com/console/admin)
++ [Frontline Integration Service Example](https://github.com/twilio/frontline-demo-service).
 
 Frontline implementation setup components:
 + Added an organization using Twilio Console, Project: [Admin Center](https://www.twilio.com/console/admin).
@@ -366,6 +367,55 @@ There are three options to handle the routing of incoming conversations:
 + Do not route, a Conversation will be created but it won't be routed.
 + Custom routing, and 
 + Pool routing.
+
+--------------------------------------------------------------------------------
+### Frontline with WhatsApp Notes
+
+From the Twilio Console: Develop/Frontline/Manage/Callbacks: Templates Callback URL
+I added in the URL, for example: https://example.com/callbacks/templates,
+and now I see that when I click the icon in my Frontline app conversation(Enter message field), 
+I get the list of Templates, which matches the templates in template.js.
+
+Here is the template.js I'm using that feeds me the templates:
+https://github.com/twilio/frontline-demo-service/blob/main/src/routes/callbacks/templates.js
+
+I guess I could add the Sandbox templates, yes? 
+And use those for sending template message that are not within a 24 hour session window? 
+I’ll need to wait 24 hours before I test because I’ve already exchanged free form messages.
+
+Twilio WhatsApp Sandbox templates, from the Twilio Console "learn" option:
+````
+Your {{1}} code is {{2}}
+//  Example: Your Twilio code is 1238432
+Your appointment is coming up on {{1}} at {{2}}
+//  Example: Your appointment is coming up on July 21 at 3PM
+Your {{1}} order of {{2}} has shipped and should be delivered on {{3}}. Details: {{4}}
+//  Example: Your Yummy Cupcakes Company order of 1 dozen frosted cupcakes has shipped and should be delivered on July 10, 2019. Details: http://www.yummycupcakes.com/
+````
+
+Learn how to configure message templates with Frontline’s built-in support for WhatsApp templated messages.
+https://www.twilio.com/docs/frontline/templated-messages
+The Frontline app has built-in support for templated messages.
+Note: To make a template visible in the WhatsApp channel, when there is no active 24 hour session, 
+you need to add whatsAppApproved: true flag on each approved template.
+
+I setup my Frontline system to use the Twilio WhatsApp Sandbox.
+Results of my testing:
++ I can use a program(I use curl) to send template messages to my WhatsApp user.
++ In my WhatsApp user app, I can receive and read messages from my program.
++ In my WhatsApp user app, I can send messages to my Frontline user.
++ In my Frontline app, I can receive and read messages from my WhatsApp user.
++ In my Frontline app, I can reply to the received messages from my WhatsApp user.
++ In my WhatsApp user app, I can receive and read messages from my Frontline user.
+
+I need to test:
++ Add the Sandbox templates listed above, into: templates.js.
++ In the Frontline app, sending a first message based on templates in: templates.js.
+
+Note,
+Frontline doesn’t automatically recognize templates that are approved at the account level, 
+you need to serve a template in the integration service via the 
+templates callback URL and indicate that it’s whatsAppApproved: true.
 
 --------------------------------------------------------------------------------
 ### Suggested Tutorial Updates:

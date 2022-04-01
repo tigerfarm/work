@@ -343,6 +343,11 @@ echo .
 echo Starting NetBeans...
 echo .
 ````
+
+Upgrade, download: Apache-NetBeans-13-bin-macosx.dmg
+Changed .../Projects/nb.sh to use 13 instead of 12.4.
+However, since the CPU usage didn't change, I went back to using 12.4.
+
 --------------------------------------------------------------------------------
 ### Install Xcode
 

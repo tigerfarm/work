@@ -21,13 +21,13 @@ $ cd myapp
 
 In your repository directory, initialize the GitHub repository.
 ````
-$ git init
-$ git remote add origin https://github.com/tigerfarm/tfp.git
-$ git add .
-$ git commit -am "init new"
-$ git remote set-url origin https://a...B@github.com/tigerfarm/tfp.git (see 00-Acc.txt sample)
-$ git push -u origin master
-...
+git init
+git add .
+git commit -am "first commit"
+git branch -M main
+git remote add origin https://github.com/tigerfarm/tfp.git (this line may not be required)
+git remote set-url origin https://g...hU@github.com/tigerfarm/tfp.git (see 00-Acc.txt sample)
+git push -u origin main
 ````
 
 #### Use an Existing GitHub repository.
