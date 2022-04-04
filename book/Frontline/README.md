@@ -1,6 +1,6 @@
 # Twilio Frontline Quickstart Implementation Steps
 
-Following, are the steps I used to implement and test Frontline.
+Following, are the steps I used to implement and demo Frontline server application.
 
 Links:
 + [Quickstart page](https://www.twilio.com/docs/frontline/nodejs-demo-quickstart)
