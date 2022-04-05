@@ -1,5 +1,9 @@
 # Twilio Sync PHP Samples
 
+Twilio Sync is service product. You can use the Twilio Console to create a new Sync Service.
+https://www.twilio.com/console/sync/services
+
+--------------------------------------------------------------------------------
 Sync components created using these repository's programs:
 ````
 Sync Service: name = counters (use the Twilio Console to create)
