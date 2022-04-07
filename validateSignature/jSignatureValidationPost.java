@@ -23,9 +23,11 @@ public class jSignatureValidationPost {
         Map<String, String> params = new HashMap<String, String>();
         String[] parts = requestString.split("&");
         for (String part : parts) {
-            String[] keyVal = part.split("="); // The equal separates attribute names and values.
+            String[] keyVal = part.split("=");  // The equal separates attribute names and values.
             if (keyVal.length > 1) {
                 params.put(keyVal[0], URLDecoder.decode(keyVal[1]));
+            } else {
+                params.put(keyVal[0], "");      // Keep attributes with no value.
             }
         }
         // The actual Twilio request URL
