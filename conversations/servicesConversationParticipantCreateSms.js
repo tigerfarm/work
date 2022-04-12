@@ -5,10 +5,10 @@ var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID
 // serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 serviceSid = 'IS186702e405b74452a449d67b9265669f'; // Frontline
 // conversationSid = process.env.CONVERSATION_SID;
-conversationSid = "CHc4e9e93750644ed88738f76c7e03f73f";
+conversationSid = "CH8077af8acacf4abf8d71f49b6476914f";
 
-// participantIdentitySms = process.env.MY_PHONE_NUMBER;
-participantIdentitySms = "+16508668221";
+participantIdentitySms = process.env.MY_PHONE_NUMBER;
+// participantIdentitySms = "+16508668221";
 console.log("+ Conversation SID: " + conversationSid + " Participant Identity: " + participantIdentitySms );
 client.conversations.services(serviceSid).conversations(conversationSid)
         .participants
@@ -18,7 +18,7 @@ client.conversations.services(serviceSid).conversations(conversationSid)
             // 'messagingBinding.address': process.env.CONVERSATION_PHONE_NUMBER_1,
             'messagingBinding.address': participantIdentitySms,
             // 'messagingBinding.proxyAddress': process.env.CONVERSATION_PROXY_PHONE_NUMBER_1
-            'messagingBinding.proxyAddress': "+12093308682"
+            'messagingBinding.proxyAddress': "+12093308682" // Frontline conversation
         })
         .then(participant => console.log(
                     "+ Created participant, SID: " + participant.sid

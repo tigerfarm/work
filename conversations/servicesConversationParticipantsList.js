@@ -5,7 +5,7 @@ var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID
 // serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 serviceSid = 'IS186702e405b74452a449d67b9265669f'; // Frontline
 // conversationSid = process.env.CONVERSATION_SID;
-conversationSid = "CHc4e9e93750644ed88738f76c7e03f73f";
+conversationSid = "CH0269d9f270744259977cff1ae19d5a5f";
 
 console.log("+ Conversation SID: " + conversationSid);
 client.conversations.services(serviceSid).conversations(conversationSid)
@@ -25,6 +25,7 @@ client.conversations.services(serviceSid).conversations(conversationSid)
                     console.log("+ Participant SID: " + p.sid 
                             + " Messaging: " + p.messagingBinding.type 
                             + ":  " +  p.messagingBinding.address
+                            + ":  " +  p.messagingBinding.proxy_address
                             + theName
                             );
                     // console.log("+ Participant SID: " + p.sid + " attributes:  " + p.attributes);
