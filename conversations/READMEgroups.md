@@ -33,19 +33,19 @@ Add chat participant#3 into the same conversation.
     Chat identity + conversation SID
 When Participant#1 sends an SMS to the conversation Twilio phone number(messagingBinding.proxyAddress).
       Participant#2 will receive SMS messages from the Twilio phone number(messagingBinding.proxyAddress).
-      Participant#3 will receive a chat message on their Conversations chat client. 
+      Participant#3 will receive a chat message on their Conversations chat client, identified as #1's Moble phone number. 
 When Participant#2 sends an SMS to your conversation Twilio phone number,
       Participant#1 will receive SMS messages.
-      Participant#3 will receive a chat message on your Conversations chat client.
+      Participant#3 will receive a chat message on their Conversations chat client, identified as #2's Moble phone number. 
 When Participant#3 uses your Conversations chat client to send a message to the conversation,
       Participant#1 will receive SMS messages.
       Participant#2 will receive SMS messages.
 ````
 Message routing:
 ````
-Participant#1 >> SMS >> Twilio >> Conversations service and conversation >> message to the other participants
-Participant#2 >> SMS >> Twilio >> Conversations service and conversation >> message to the other participants
-Participant#3 >> Chat >> Twilio >> Conversations service and conversation >> message to the other participants
+Participant#1 >> SMS >> Twilio >> Conversations service + conversation >> message to the other participants
+Participant#2 >> SMS >> Twilio >> Conversations service + conversation >> message to the other participants
+Participant#3 >> Chat >> Twilio >> Conversations service + conversation >> message to the other participants
 ````
 
 ### Using the Same Mobile Phone Number in Multiple Conversations
@@ -53,14 +53,18 @@ Participant#3 >> Chat >> Twilio >> Conversations service and conversation >> mes
 When having one person (one person's SMS phone number) in multiple conversations,
 use multiple Twilio phone numbers.
 Each Twilio phone number is mapped to a separate conversation.
- 
+````
 Unique combination:
  Person's SMS phone number + Twilio phone number >> matched to a conversation
 For example:
  Person's SMS phone number +16505551111 + Twilio phone number #1 >> matched to conversation #1 Person's SMS phone number +16505551111 + Twilio phone number #2 >> matched to conversation #2 Person's SMS phone number +16505552222 + Twilio phone number #1 >> matched to conversation #1 Person's SMS phone number +16505553333 + Twilio phone number #1 >> matched to conversation #2
-You just need to have the "Person's SMS phone number + Twilio phone number" unique, and matched to any one conversation.
- 
-Note, the number of Twilio phone numbers required, is the maximum number of active conversations per participant. If you have a maximum of 5 conversations at one time (for one person's phone number), the cost would be $5/month for 5 Twilio phone numbers.
+````
+You just need to have the "Person's SMS phone number + Twilio phone number" unique, 
+and matched to any one conversation.
+
+Note, the number of Twilio phone numbers required, is the maximum number of active conversations per participant. 
+If you have a maximum of 5 conversations at one time (for one person's phone number), 
+the cost would be $5/month for 5 Twilio phone numbers.
 * The number of phone numbers required, is the maximum number of active questions per user.
 
 ### WhatsApp notes
