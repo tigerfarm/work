@@ -5,11 +5,9 @@ You can build a group texting application using the Twilio Conversations API.
 The documentation covers how to manage a conversation that has a group of participants
 for group texting using Twilio Conversations.
 
-Following is a quickstart that will step you through the getting started steps 
-to send SMS messages using server side or command line programs.
-[Twilio account](https://www.twilio.com/docs/conversations/quickstart).
-Includes creating SMS and chat participants.
-Use the same code to create a WhatsApp participant.
+[Conversations quickstart](https://www.twilio.com/docs/conversations/quickstart)
+to create SMS and chat participants and exchange messages between the participants.
+The sample programs are server side(command line) programs.
 
 + Create a conversation object using the 
 [Conversations resource API](https://www.twilio.com/docs/conversations/api/conversation-resource):
@@ -23,23 +21,23 @@ into the conversations, then each of the participants would receive the messages
 
 Scenario steps:
 ````
-Add sms participant#1 into a Conversation:
+Add sms participant#1 into a conversation:
     Moble phone number(messagingBinding.address)
     + Twilio phone number(messagingBinding.proxyAddress)
     + conversation SID
-Add sms participant#2 into a Conversation.
+Add sms participant#2 into a conversation.
     Moble phone number(messagingBinding.address)
     + Twilio phone number(messagingBinding.proxyAddress) Note: can be a differenet Twilio phone number.
     + conversation SID
-Add chat participant#3 into the same Conversation.
+Add chat participant#3 into the same conversation.
     Chat identity + conversation SID
-When Participant#1 sends an SMS to the Conversation Twilio phone number,
+When Participant#1 sends an SMS to the conversation Twilio phone number,
       Participant#2 will receive SMS messages.
       Participant#3 will receive a chat message on your Conversations chat client. 
-When Participant#2 sends an SMS to your Conversation Twilio phone number,
+When Participant#2 sends an SMS to your conversation Twilio phone number,
       Participant#1 will receive SMS messages.
       Participant#3 will receive a chat message on your Conversations chat client.
-When Participant#3 uses your Conversation chat client to send a message to the Conversation,
+When Participant#3 uses your Conversations chat client to send a message to the conversation,
       Participant#1 will receive SMS messages.
       Participant#2 will receive SMS messages.
 ````
