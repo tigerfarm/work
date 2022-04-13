@@ -2,27 +2,23 @@
 # Conversations Group Messaging Notes
 
 You can build a group texting application using the Twilio Conversations API. 
-Following is a quickstart that will step you through the getting started steps 
-to send SMS messages using Twilio Conversations. 
-Below is specific documentation on managing group texting with Twilio Conversations.
+The documentation covers how to manage a conversation that has a group of participants
+for group texting using Twilio Conversations.
  
-Server side or command line programs to get started with Twilio Conversations, the quickstart:
+Following is a quickstart that will step you through the getting started steps 
+to send SMS messages using server side or command line programs.
 [Twilio account](https://www.twilio.com/docs/conversations/quickstart).
 Includes creating SMS and chat participants.
 Use the same code to create a WhatsApp participant.
 
-You can create a conversation object using the 
++ Create a conversation object using the 
 [Conversations resource API](https://www.twilio.com/docs/conversations/api/conversation-resource):
 Create, fetch, update, and delete a conversation.
-
-You can add and manage SMS and chat participants in a conversation.
++ Add and manage SMS and chat participants in a conversation.
 [Participants](https://www.twilio.com/docs/conversations/api/conversation-participant-resource).
- 
-If a message is sent to your group texting Twilio phone number,
-each of the participants would receive the message.
- 
-Or, you use a program to
-[create messages](https://www.twilio.com/docs/conversations/api/conversation-message-resource)
++ If a message is sent to your Twilio phone number that you are using for group messaging,
+each of the conversation's participants will receive the message.
++ Or, use a program to [create messages](https://www.twilio.com/docs/conversations/api/conversation-message-resource)
 into the conversations, then each of the participants would receive the messages.
 
 Scenario steps:
