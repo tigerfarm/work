@@ -57,7 +57,14 @@ Each Twilio phone number is mapped to a separate conversation.
 Unique combination:
  Person's SMS phone number + Twilio phone number >> matched to a conversation
 For example:
- Person's SMS phone number +16505551111 + Twilio phone number #1 >> matched to conversation #1 Person's SMS phone number +16505551111 + Twilio phone number #2 >> matched to conversation #2 Person's SMS phone number +16505552222 + Twilio phone number #1 >> matched to conversation #1 Person's SMS phone number +16505553333 + Twilio phone number #1 >> matched to conversation #2
+ Person's SMS phone number +16505551111 + Twilio phone number #1
+   >> matched to conversation #1
+ Person's SMS phone number +16505551111 + Twilio phone number #2
+   >> matched to conversation #2
+ Person's SMS phone number +16505552222 + Twilio phone number #1 
+   >> matched to conversation #1 
+ Person's SMS phone number +16505553333 + Twilio phone number #1 
+   >> matched to conversation #2
 ````
 You just need to have the "Person's SMS phone number + Twilio phone number" unique, 
 and matched to any one conversation.
