@@ -4,7 +4,7 @@
 You can build a group texting application using the Twilio Conversations API. 
 The documentation covers how to manage a conversation that has a group of participants
 for group texting using Twilio Conversations.
- 
+
 Following is a quickstart that will step you through the getting started steps 
 to send SMS messages using server side or command line programs.
 [Twilio account](https://www.twilio.com/docs/conversations/quickstart).
