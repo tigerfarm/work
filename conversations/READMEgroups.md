@@ -27,13 +27,13 @@ Add sms participant#1 into a conversation:
     + conversation SID
 Add sms participant#2 into a conversation.
     Moble phone number(messagingBinding.address)
-    + Twilio phone number(messagingBinding.proxyAddress) Note: can be a differenet Twilio phone number.
+    + Twilio phone number(messagingBinding.proxyAddress) Note: can be a different Twilio phone number.
     + conversation SID
 Add chat participant#3 into the same conversation.
     Chat identity + conversation SID
-When Participant#1 sends an SMS to the conversation Twilio phone number,
-      Participant#2 will receive SMS messages.
-      Participant#3 will receive a chat message on your Conversations chat client. 
+When Participant#1 sends an SMS to the conversation Twilio phone number(messagingBinding.proxyAddress).
+      Participant#2 will receive SMS messages from the Twilio phone number(messagingBinding.proxyAddress).
+      Participant#3 will receive a chat message on their Conversations chat client. 
 When Participant#2 sends an SMS to your conversation Twilio phone number,
       Participant#1 will receive SMS messages.
       Participant#3 will receive a chat message on your Conversations chat client.
