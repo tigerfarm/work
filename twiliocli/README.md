@@ -353,6 +353,20 @@ Phone Number  Region  ISO Country  Address Requirements
 ...
 ````
 
+List Twilio phone numbers with selected properties:
+````
+$ twilio api:core:incoming-phone-numbers:list --properties=sid,phoneNumber,friendlyName,voiceUrl
+...
+````
+List all properties for a specific Twilio phone number:
+````
+$ twilio api:core:incoming-phone-numbers:fetch --sid=PN1...Z -o json
+````
+Set the voice URL property to empty, which disables voice calls.
+````
+$ twilio api:core:incoming-phone-numbers:update   --sid PN1...Z   --voice-url ""
+````
+
 #### Conference calls
 ````
 $ twilio api:core:conferences --help

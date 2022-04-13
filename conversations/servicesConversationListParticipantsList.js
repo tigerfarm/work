@@ -9,6 +9,8 @@ serviceSid = 'IS186702e405b74452a449d67b9265669f'; // Frontline
 client.conversations.services(serviceSid).conversations.list({limit: 200})
         .then(conversations => conversations.forEach(c => {
                 console.log("+ Conversation SID: " + c.sid + " " + c.friendlyName);
+                // -------------------------------------------------------------
+                // Process each participant each of the conversations.
                 client.conversations.services(serviceSid).conversations(c.sid)
                         .participants
                         .list({limit: 20})
@@ -38,4 +40,7 @@ client.conversations.services(serviceSid).conversations.list({limit: 200})
                                 }
                             })
                         );
+                // -------------------------------------------------------------
+
             }));
+            
