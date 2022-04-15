@@ -1,20 +1,22 @@
+// Sample test URL:
+// https://abouttime-2357.twil.io/sendsms?From=+16505551111&To=+16505552222&Body=Hello1
 exports.handler = function (context, event, callback) {
-    let msgFrom = event.msgFrom || null;
+    let msgFrom = event.From || null;
     if (msgFrom === null) {
-        console.log("-- Required parameter: msgFrom.");
-        callback(null, "-- Required parameter: msgFrom.");
+        console.log("-- Required parameter: From.");
+        callback(null, "-- Required parameter: From.");
         return;
     }
-    let msgTo = event.msgTo || null;
+    let msgTo = event.To || null;
     if (msgTo === null) {
-        console.log("-- Required parameter: msgTo.");
-        callback(null, "-- Required parameter: msgTo.");
+        console.log("-- Required parameter: To.");
+        callback(null, "-- Required parameter: To.");
         return;
     }
-    let msgBody = event.msgBody || null;
+    let msgBody = event.Body || null;
     if (msgBody === null) {
-        console.log("-- Required parameter: msgBody.");
-        callback(null, "-- Required parameter: msgBody.");
+        console.log("-- Required parameter: Body.");
+        callback(null, "-- Required parameter: Body.");
         return;
     }
     console.log("Send SMS message from: " + msgFrom + " to: " + msgTo + " : " + msgBody);
