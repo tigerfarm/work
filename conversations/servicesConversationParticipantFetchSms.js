@@ -1,4 +1,4 @@
-console.log("++ Given an SMS participant's address(mobile phone number), get the Conversation SID and proxy address(Twilio phone number).");
+console.log("++ Given an SMS participant's address(mobile phone number), get the Conversation SID and proxy address(Twilio phone number) list.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
 // serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
