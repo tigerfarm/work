@@ -14,7 +14,7 @@ client.studio.v1.flows('FWa0a3e78899bc5d6ce69aa090bec43d14')
                 // Wed Apr 20 2022 17:25:48 GMT-0700 (Pacific Daylight Time)
                 var logMsg = "+ " + execution.sid + " " + execution.dateCreated + " " + execution.status;
                 if (execution.status === "active") {
-                    logMsg = logMsg + " ***"
+                    logMsg = logMsg + " ***";
                 }
                 console.log(logMsg);
             }))
