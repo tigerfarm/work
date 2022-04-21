@@ -174,7 +174,7 @@
           "y": 430
         },
         "trim": "do-not-trim",
-        "recording_status_callback": "https://tfpecho.herokuapp.com/rec",
+        "recording_status_callback": "https://example.com/record",
         "recording_status_callback_method": "POST",
         "recording_status_callback_events": "completed",
         "recording_channels": "dual"
