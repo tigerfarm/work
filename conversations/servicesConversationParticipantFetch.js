@@ -24,6 +24,7 @@ client.conversations.services(serviceSid).conversations(conversationSid)
                         + ":  " + p.messagingBinding.address
                         + ":  " + p.messagingBinding.proxy_address
                         + theName
+                        + " attributes: " + p.attributes
                         );
             }
 

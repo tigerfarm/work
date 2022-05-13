@@ -1,5 +1,7 @@
 console.log("++ List a Service's Conversations.");
 // https://www.twilio.com/docs/conversations/api/service-conversation-resource
+// https://www.twilio.com/docs/conversations/api/service-participant-resource
+// 
 // var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN, {logLevel: 'debug'});
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
