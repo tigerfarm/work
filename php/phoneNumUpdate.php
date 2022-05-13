@@ -7,8 +7,10 @@ $pnSid = "PN915869791137c6f05b12f4eb2e23a704";
 print("\xA+ Print Phone numbers information: " . $pnSid . "\xA");
 
 // $pnupdate = $twilio->incomingPhoneNumbers($pnSid)->update(["statusCallback" => "https://example.com/wh"]);
+// Neither of the following removes the statusCallback value.
+// $pnupdate = $twilio->incomingPhoneNumbers($pnSid)->update(["statusCallback" => ""]);
 $pnupdate = $twilio->incomingPhoneNumbers($pnSid)->update(["statusCallback" => null]);
-    
+
 // Properties: https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource#incomingphonenumber-properties
 $pnfetch = $twilio->incomingPhoneNumbers($pnSid)
         ->fetch();
