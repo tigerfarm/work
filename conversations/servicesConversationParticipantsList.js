@@ -16,7 +16,7 @@ client.conversations.services(serviceSid).conversations(conversationSid)
                     console.log("+ Participant SID: " + p.sid + " identity, Chat: " + p.identity);
                 } else {
                     // console.log("+ Participant SID: " + p.sid + " identity, SMS:  " + JSON.parse(p.attributes).name);
-                    // {"avatar":"https://someassets-1403.twil.io/Keats.jpg","customer_id":"3","display_name":"John Keats"}
+                    // {"avatar":"https://abouttime-2357.twil.io/Keats.jpg","customer_id":"3","display_name":"John Keats"}
                     // console.log("+ Participant SID: " + p.sid + " Messaging, SMS:  " + JSON.parse(p.attributes).display_name);
                     theName = "";
                     if (JSON.parse(p.attributes).display_name !== undefined) {
