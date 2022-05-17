@@ -1,13 +1,15 @@
 console.log("++ Create a chat participant into a Conversation.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
+// particpant: Group MMS
 serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 conversationSid = "CHab8e3e59734f48d0abfadbd80fbfa37e";
-participantSid = 'MBee1e65a5777c46779e29cb48fd5a1643';          // particpant: Group MMS
+participantSid = 'MBee1e65a5777c46779e29cb48fd5a1643';
 //
-// serviceSid = 'IS186702e405b74452a449d67b9265669f';          // Frontline
-// conversationSid = "CH0269d9f270744259977cff1ae19d5a5f";     // Frontline
-// participantSid = 'MB8f088d01ae9d4f109005bfd0871be755';      // Frontline particpant: SMS
+// Frontline particpant: SMS
+// serviceSid = 'IS186702e405b74452a449d67b9265669f';
+// conversationSid = "CH0269d9f270744259977cff1ae19d5a5f";
+// participantSid = 'MB8f088d01ae9d4f109005bfd0871be755';
 //
 console.log("+ Conversation SID: " + conversationSid
         + " Participant SID: " + participantSid
