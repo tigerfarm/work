@@ -1,10 +1,14 @@
 console.log("++ Create a chat participant into a Conversation.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
-// serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
-serviceSid = 'IS186702e405b74452a449d67b9265669f'; // Frontline
-conversationSid = "CH0269d9f270744259977cff1ae19d5a5f";
-participantSid = 'MB8f088d01ae9d4f109005bfd0871be755';
+serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
+conversationSid = "CHab8e3e59734f48d0abfadbd80fbfa37e";
+participantSid = 'MBee1e65a5777c46779e29cb48fd5a1643';          // particpant: Group MMS
+//
+// serviceSid = 'IS186702e405b74452a449d67b9265669f';          // Frontline
+// conversationSid = "CH0269d9f270744259977cff1ae19d5a5f";     // Frontline
+// participantSid = 'MB8f088d01ae9d4f109005bfd0871be755';      // Frontline particpant: SMS
+//
 console.log("+ Conversation SID: " + conversationSid
         + " Participant SID: " + participantSid
         );
@@ -15,19 +19,34 @@ client.conversations.services(serviceSid).conversations(conversationSid)
             if (p.identity !== null) {
                 console.log("+ Participant SID: " + p.sid + " identity, Chat: " + p.identity);
             } else {
+                theType = " Messaging type:" + p.messagingBinding.type;
+                if (JSON.parse(p.attributes).display_name !== undefined) {
+                    theName = " theName:" + JSON.parse(p.attributes).display_name;
+                }
                 theName = "";
                 if (JSON.parse(p.attributes).display_name !== undefined) {
-                    theName = "  " + JSON.parse(p.attributes).display_name;
+                    theName = " theName:" + JSON.parse(p.attributes).display_name;
+                }
+                theProxyAddress = "";
+                if (p.messagingBinding.proxy_address !== null) {
+                    theProxyAddress = " proxy_address:" + p.messagingBinding.proxy_address;
+                } else {
+                    theType = theType + "(Group MMS)";
+                }
+                theProjectedAddress = "";
+                if (p.messagingBinding.projected_address !== null) {
+                    theProjectedAddress = " projected_address:" + p.messagingBinding.projected_address;
                 }
                 console.log("+ Participant SID: " + p.sid
-                        + " Messaging: " + p.messagingBinding.type
-                        + ":  " + p.messagingBinding.address
-                        + ":  " + p.messagingBinding.proxy_address
+                        + theType
+                        + " address:" + p.messagingBinding.address
+                        + theProxyAddress
+                        + theProjectedAddress
                         + theName
-                        + " attributes: " + p.attributes
+                        + ", attributes: " + p.attributes
                         );
+                // console.log("+ messagingBinding: " + JSON.stringify(p.messagingBinding) );
             }
-
         })
         .catch(function (err) {
             console.error("- " + err);
