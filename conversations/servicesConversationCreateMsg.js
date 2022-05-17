@@ -1,14 +1,15 @@
 console.log("++ Create a text message for a Conversation.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
-// serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
-serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
+// particpant: Group MMS
+serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
+conversationSid = "CHab8e3e59734f48d0abfadbd80fbfa37e";
+//
+// serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
+// conversationSid = "CH183bde74b2314d2faef9a1c757b8f028";
 
-// conversationSid = process.env.CONVERSATION_SID;
-conversationSid = "CH183bde74b2314d2faef9a1c757b8f028";
-
-participantIdentity = 'dave3a';
-messageText = 'From dave3';
+participantIdentity = 'dave3';
+messageText = 'From dave, #1';
 console.log("+ Conversation SID: " + conversationSid
         + " Participant Identity: " + participantIdentity
         + " messageText: " + messageText
