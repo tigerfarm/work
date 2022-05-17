@@ -4,7 +4,7 @@ var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID
 // particpant: Group MMS
 serviceSid = process.env.CONVERSATIONS_SERVICE_SID;         // Default service
 conversationSid = "CHab8e3e59734f48d0abfadbd80fbfa37e";
-participantSid = 'MBa383f1c4b8ac49d08ce22f2252fe88c9';      // MBee1e65a5777c46779e29cb48fd5a1643 MBa383f1c4b8ac49d08ce22f2252fe88c9
+participantSid = 'MBee1e65a5777c46779e29cb48fd5a1643';      // MBee1e65a5777c46779e29cb48fd5a1643
 //
 participantAddress = '+16508661366';
 console.log("+ Conversation SID: " + conversationSid
