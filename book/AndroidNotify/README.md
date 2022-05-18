@@ -202,6 +202,16 @@ $ node fetchBinding.js
 
 #### Send a notification:
 
+When sending, include:
++ The Notify service SID, which has the FCM CREDENTIAL SID (FCM Credential information: SID, type: FCM, and FCM SECRET)
++ The app user's identity, which matches to the binding, which as the identity + the device id.
++ The notification message to send.
+
+The above information stored with Twilio, is the link between:
++ Your sending program,
++ To the Google(FCM) network. Or Apple(APN) networks if the app in on an iOS device.
++ To app on the specific device.
+
 Use the send notification Function to send a notification to the app user.
 ````
 https://about-time-2357.twil.io/send-notification?identity=user1&body=Hello
@@ -214,7 +224,6 @@ $ node sendNotification.js
 +++ Start sending notifications to an identity.
 + Sent: NT3f22872f3635ed14e3c4295cca45ac21
 ````
-
 Or, use a curl command.
 ````
 curl -X POST https://notify.twilio.com/v1/Services/IS6b86eea51935a036f0ae440652761e8a/Notifications \
