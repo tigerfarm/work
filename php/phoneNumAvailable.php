@@ -23,7 +23,7 @@ $numbers = $client->availablePhoneNumbers($theCountry)->local->read(
             'countryCode' => $theCountry,
             // 'inPostalCode' => $postalCode, 
             // 'Distance' => 500,
-            'areaCode' => $theAreaCode, 
+            'areaCode' => $theAreaCode,
             'SmsEnabled' => TRUE
             )
         );

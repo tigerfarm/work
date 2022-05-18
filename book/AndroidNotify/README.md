@@ -103,32 +103,57 @@ public class TwilioFunctionsAPI {
     ...
 ````
 
-Run the app.
+#### Use the app to register the device.
+
+Run the app on the Android device.
 
 When the app is running, enter Notify Binding identity and tap Register Binding.
 The app will make a call to the Twilio Binding Function which creates a Notify Binding for the identity.
++ FCM binding: Indentity + device ID
 
 Can use the following Node program to list the binding, [listBindings.js](listBindings.js)
 ````
 $ node listBindings.js
-+++ List bindings.
-+ List, IS6b86eea51935a036f0ae440652761e8a: SID bindingType:identity<address>)
-+ BS11...74 fcm:davea<fa...7V>
++++ List bindings for a Notify service.
++ Notify service SID: IS6b86eea51935a036f0ae440652761e8a
++ The listing:
+++ Binding-SID bindingType(fcm,apn):identity<address>)
+++ BSae07a764e8d5e78111f2f8362c291c9b fcm:davea<fa...7V>
 $
 ````
-Or, use a curl command.
++ FCM binding: Indentity(davea) + device ID(fa...7V)
+
+Or, use a curl command to the binding.
 ````
 curl -X GET 'https://notify.twilio.com/v1/Services/IS6b86eea51935a036f0ae440652761e8a/Bindings?PageSize=20' \
 -u $MASTER_ACCOUNT_SID:$MASTER_AUTH_TOKEN
 ````
 
+Fetch a single bindings information:
+````
+$ node fetchBinding.js 
++++ Fetch a binding.
++ Notify SID:        IS6b86eea51935a036f0ae440652761e8a
++ Fetch Binding SID: BSae07a764e8d5e78111f2f8362c291c9b
+++ Type:        fcm
+++ Identity:    davea
+++ Addres:     <fa...7V>
+````
+
 #### Send a notification:
 
 Use the send notification Function to send a notification to the app user.
-
+````
 https://about-time-2357.twil.io/send-notification?identity=user1&body=Hello
-
+```
 Or, use the following Node program to send a notification, [sendNotification.js](sendNotification.js)
+
+Sample run:
+````
+$ node sendNotification.js 
++++ Start sending notifications to an identity.
++ Sent: NT3f22872f3635ed14e3c4295cca45ac21
+````
 
 Or, use a curl command.
 ````
