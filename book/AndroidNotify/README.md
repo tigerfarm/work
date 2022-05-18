@@ -57,6 +57,11 @@ List the google-services.json.
 $ pwd
 /Users/<user>/Projects/android/notify/notifications-quickstart-android/app
 $ cat google-services.json
+{
+  "project_info": {
+    "project_number": "5...",
+    "firebase_url": "https://tignotify.firebaseio.com",
+    "project_id": "tignotify",
 ...
 ````
 
@@ -103,13 +108,65 @@ public class TwilioFunctionsAPI {
     ...
 ````
 
+Twilio Notify Quickstart (Register binding)
+````
+exports.handler = function(context, event, callback) {
+    const twilioClient = context.getTwilioClient();
+    const service = twilioClient.notify.services(
+       context.TWILIO_NOTIFICATION_SERVICE_SID
+   );
+   const binding = {
+       'identity':event.identity,
+       'bindingType':event.BindingType,
+       'address':event.Address
+   }
+   service.bindings.create(binding).then((binding) => {
+       console.log("Address:" + event.Address + ":");
+       console.log(binding);
+       // Send a JSON response indicating success
+       callback(null, {message: 'Binding created!'});
+   }).catch((error) => {
+       console.log(error);
+       callback(error, {
+       error: error,
+       message: 'Failed to create binding: ' + error,
+     });
+ });
+};
+````
+Twilio Notify Quickstart (Send notification)
+````
+exports.handler = function(context, event, callback) {
+ // Create a reference to the user notification service
+ const client = context.getTwilioClient();
+ const service = client.notify.services(
+   context.TWILIO_NOTIFICATION_SERVICE_SID
+ );
+ const notification = {
+   identity:event.identity,
+   body:event.body
+ };
+ console.log(notification);
+ // Send a notification
+ return service.notifications.create(notification).then((message) => {
+   console.log('Notification Message',message);
+   callback(null, "Message sent to: " + event.identity + ", " + event.body);
+ }).catch((error) => {
+   console.log(error);
+   callback(error,null);
+ });
+};
+````
+
 #### Use the app to register the device.
 
-Run the app on the Android device.
-
-When the app is running, enter Notify Binding identity and tap Register Binding.
-The app will make a call to the Twilio Binding Function which creates a Notify Binding for the identity.
+Using the app:
++ Run the app on the Android device.
++ The app have a link to the above Twilio Function: Twilio Notify Quickstart (Register binding)
++ Enter Notify Binding identity and tap Register Binding.
+The app will make a call to the register binding Twilio Function which creates a Notify Binding for the identity.
 + FCM binding: Indentity + device ID
++ Run the below listBindings.js program to see the binding.
 
 Can use the following Node program to list the binding, [listBindings.js](listBindings.js)
 ````
