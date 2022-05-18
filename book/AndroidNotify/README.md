@@ -168,6 +168,9 @@ The app will make a call to the register binding Twilio Function which creates a
 + FCM binding: Indentity + device ID
 + Run the below listBindings.js program to see the binding.
 
+Managing Notify bindings resource:
+https://www.twilio.com/docs/notify/api/binding-resource
+
 Can use the following Node program to list the binding, [listBindings.js](listBindings.js)
 ````
 $ node listBindings.js
