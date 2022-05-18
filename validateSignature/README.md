@@ -28,7 +28,16 @@ The parameter for signature validation:
 2. URL: the original URL that the Twilio service used to make the HTTP request.
 3. Signature: The signature header value from the received HTTP request that is being validated.
 4. POST parameters: raw POST parameter string.
+````
+GET request, the parameters are in the HTTP request string. Example:
+console.log(client.validateRequest(authToken, twilioSignature, url, {}));
 
+In an HTTP POST request, the parameters separate from the HTTP request string.
+const params = {
+ "ToCountry":"CA","ToState":"Alberta",...
+};
+console.log(client.validateRequest(authToken, twilioSignature, url, params));
+````
 When testing, for example and inbound received SMS, confirm by doing the following:
 + Send an SMS message your to Twilio phone number.
 + Twilio account auth token: The account auth token related to the Twilio phone number.
@@ -41,6 +50,7 @@ Attribute name value pairs:
 + Keep the attribute even if the value is empty, for example: ...&zip=&... >> ..., "zip": "", ...
 + Do not include the userid and password in the URL, if they are being used. For example:
 Use: "https://example.com/myapp", not: "https://userid:passwd@example.com/myapp"
++ Parameter sorting is not required.
 
 #### Content-Type: application-json
 

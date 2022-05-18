@@ -14,7 +14,8 @@ console.log("+ Conversation SID: " + conversationSid
 client.conversations.services(serviceSid).conversations(conversationSid)
         .participants(participantSid)
         .update({
-            // Doesn't work
+            // The following doesn't work. 
+            // The workaround is to remove the participant and re-create the participant.
             messagingBinding: JSON.stringify({address: participantAddress})
         })
         .then(participant => console.log(
