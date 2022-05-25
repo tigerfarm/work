@@ -1,5 +1,8 @@
 # Docs: https://www.twilio.com/docs/phone-numbers/api/availablephonenumberlocal-resource
 #
+# $ gem list twilio-ruby
+# twilio-ruby (5.58.2)
+#
 # require 'rubygems'
 require 'twilio-ruby'
 #
