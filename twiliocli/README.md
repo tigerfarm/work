@@ -928,6 +928,62 @@ $ twilio api:core:keys:create --friendly-name=p1
 SID            Friendly Name Date Created 
 SK93...5b      p1            May 24 2021 09:25:21 GMT-0700
 ````
+
+----------------------------------------------------------------------------------
+### Generate Notify Credentials
+
+Create an FCM [Notify credentials](https://www.twilio.com/docs/notify/api/credential-resource#create-a-credential-resource).
+````
+$ twilio api:notify:v1:credentials:create -l=debug --friendly-name=fcmcr1 --type=fcm --secret=AA...Tx
+...
+[DEBUG] -- BEGIN Twilio API Request --
+[DEBUG] post https://notify.twilio.com/v1/Credentials
+[DEBUG] Form data:
+[DEBUG] FriendlyName=fcmcr1&Secret=AAAAhV84ojc%3AAPA91bEH4kKISZRc34Ba8sdwC6MZAwb5GngznbWuOVMYwbW4lLOrwP5-F73ijJ6XBF0AuLy5L7AlNXfR2CZVHUJqSZCvUgnVol0ZiiHPjEccd-VJ3xneWZq9Ey9vlt998EIhQHyIVoTx&Type=fcm
+[DEBUG] Custom HTTP Headers:
+[DEBUG] User-Agent: twilio-cli/3.3.1 @twilio/cli-core/6.3.1 (darwin arm64) twilio-api-client/6.3.1 api:notify:v1:credentials:create
+[DEBUG] -- END Twilio API Request --
+[DEBUG] response.statusCode: 201
+[DEBUG] response.headers: {"date":"Fri, 10 Jun 2022 20:58:33 GMT","content-type":"application/json; charset=utf-8","content-length":"323","connection":"close","twilio-concurrent-requests":"1","twilio-request-id":"RQ7d807be1814aa50239d75efaf255d39b","twilio-request-duration":"0.052","access-control-allow-origin":"*","access-control-allow-headers":"Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match, If-Unmodified-Since","access-control-allow-methods":"GET, POST, DELETE, OPTIONS","access-control-expose-headers":"ETag","access-control-allow-credentials":"true","x-powered-by":"AT-5000","x-shenanigans":"none","x-home-region":"us1","x-api-domain":"notify.twilio.com","strict-transport-security":"max-age=31536000"}
+SID                                 Friendly Name  Type
+CR7f174d1f04b4498e8d6ae4f4a168f24d  fcmcr1         fcm
+$
+````
+
+The following should work for an APN credential.
+````
+$ twilio api:notify:v1:credentials:create -l=debug --friendly-name=apncr1 --type=apn --sandbox --certificate='-----BEGIN CERTIFICATE-----MIIFnTCCBIWgAwIBAgIIAjy9H849+E8wDQYJKoZIhvcNAQEFBQAwgZYxCzAJBgNV.....A==-----END CERTIFICATE-----' --private-key='-----BEGIN RSA PRIVATE KEY-----MIIEpQIBAAKCAQEAuyf/lNrH9ck8DmNyo3fGgvCI1l9s+cmBY3WIz+cUDqmxiieR\n.-----END RSA PRIVATE KEY-----'
+...
+````
+
+Some of the help output.
+````
+$ twilio api:notify:v1:credentials:create --help
+[BETA] create a Credentials resource
+USAGE
+  $ twilio api:notify:v1:credentials:create
+OPTIONS
+REQUIRED FLAGS
+  --type=(apn|fcm)  The Credential type. Can be: 'fcm' or 'apn'.
+OPTIONAL FLAGS
+  -l=(debug|info|warn|error|none)  [default: info] Level of logging messages.
+  -o=(columns|json|tsv|none)       [default: columns] Format of command output.
+  -p, --profile=profile            Shorthand identifier for your profile.
+  --properties=properties          [default: sid,friendlyName,type] The properties you would like to display (JSON output always shows all properties).
+
+  --friendly-name=friendly-name    A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+
+  --secret=secret                  [FCM only] The `Server key` of your project from Firebase console under Settings / Cloud messaging.
+
+  --certificate=certificate        [APN only] The URL-encoded representation of the certificate. Strip everything outside of the headers, e.g. 
+                                   `-----BEGIN CERTIFICATE-----MIIFnTCCBIWgAwIBAgIIAjy9H849+E8wDQYJKoZIhvcNAQEFBQAwgZYxCzAJBgNV.....A==-----END CERTIFICATE-----`
+
+  --private-key=private-key        [APN only] The URL-encoded representation of the private key. Strip everything outside of the headers, e.g.
+                                   `-----BEGIN RSA PRIVATE KEY-----MIIEpQIBAAKCAQEAuyf/lNrH9ck8DmNyo3fGgvCI1l9s+cmBY3WIz+cUDqmxiieR\n.-----END RSA PRIVATE KEY-----`
+
+  --[no-]sandbox                   [APN only] Whether to send the credential to sandbox APNs. Can be `true` to send to sandbox APNs or `false` to send to production.
+````
+
 ----------------------------------------------------------------------------------
 
 Cheers...
