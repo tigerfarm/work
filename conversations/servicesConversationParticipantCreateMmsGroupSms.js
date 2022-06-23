@@ -16,8 +16,8 @@ client.conversations.services(serviceSid).conversations(conversationSid)
             messagingBinding: {
                 // Person's mobile phone number.
                 // address: process.env.MY_PHONE_NUMBER
-                // address: "+16503790007"
-                address: "+16504837606"
+                // address: "+16505552222"
+                address: "+16505551111"
             }
             // No identity attribute.
             // Have not tested if attributes attribute, can be used here.
