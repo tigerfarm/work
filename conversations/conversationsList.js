@@ -3,10 +3,12 @@ var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID
 
 console.log("+ Conversations SID/friendlyName/uniqueName/createdBy");
 client.conversations.conversations.list({limit: 20})
-      .then(conversations => conversations.forEach(c => console.log(
-      "++ " + c.sid
-      + "/" + c.friendlyName
-      + "/" + c.uniqueName
-      + "/" + c.createdBy
-      )));
+        .then(conversations => conversations.forEach(c => console.log(
+                        "++ " + c.sid
+                        + "/" + c.friendlyName
+                        + "/" + c.uniqueName
+                        + "/" + c.createdBy
+                        )
+            )
+        );
       

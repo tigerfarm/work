@@ -360,8 +360,8 @@ Or, your the API, [user resource](https://www.twilio.com/docs/frontline/api/user
 To [Handle Incoming Conversations](https://www.twilio.com/docs/frontline/handle-incoming-conversations),
 you can let Twilio Conversations create new conversations for you automatically.
 
-What missing from a newly created conversation is a Twilio Frontline user.
-You will need to add a Frontline user with routing.
+What is missing from a newly created conversation is a Twilio Frontline user/worker.
+You will need to add a Frontline worker with routing, and update the CRM customer information.
 
 The onConversationAdd webhook will be called before creating a conversation.
 There are three options to handle the routing of incoming conversations: 

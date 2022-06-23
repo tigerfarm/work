@@ -19,15 +19,15 @@ client.conversations.services(serviceSid).conversations(conversationSid)
         .fetch()
         .then(p => {
             if (p.identity !== null) {
-                console.log("+ Participant SID: " + p.sid + " identity, Chat: " + p.identity);
+                console.log("+ Participant SID: " + p.sid + ", Chat identity: " + p.identity);
             } else {
                 theType = " Messaging type:" + p.messagingBinding.type;
                 if (JSON.parse(p.attributes).display_name !== undefined) {
-                    theName = " theName:" + JSON.parse(p.attributes).display_name;
+                    theName = " display_name:" + JSON.parse(p.attributes).display_name;
                 }
                 theName = "";
                 if (JSON.parse(p.attributes).display_name !== undefined) {
-                    theName = " theName:" + JSON.parse(p.attributes).display_name;
+                    theName = " display_name:" + JSON.parse(p.attributes).display_name;
                 }
                 theProxyAddress = "";
                 if (p.messagingBinding.proxy_address !== null) {
@@ -36,19 +36,19 @@ client.conversations.services(serviceSid).conversations(conversationSid)
                     theType = theType + "(Group MMS)";
                 }
                 theProjectedAddress = "";
-                if (p.messagingBinding.projected_address !== null) {
+                if (p.messagingBinding.projected_address !== undefined) {
                     theProjectedAddress = " projected_address:" + p.messagingBinding.projected_address;
                 }
-                console.log("+ Participant SID: " + p.sid
+                console.log("+ Participant SID: " + p.sid + ","
                         + theType
+                        + theName
                         + " address:" + p.messagingBinding.address
                         + theProxyAddress
                         + theProjectedAddress
-                        + theName
                         );
-                console.log("+ attributes JSON:       " + JSON.stringify(p.attributes) );
-                console.log("+ messagingBinding JSON: " + JSON.stringify(p.messagingBinding) );
+                // console.log("+ messagingBinding JSON: " + JSON.stringify(p.messagingBinding));
             }
+            // console.log("+ attributes JSON:       " + JSON.stringify(p.attributes));
         })
         .catch(function (err) {
             console.error("- " + err);
