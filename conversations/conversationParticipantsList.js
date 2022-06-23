@@ -20,7 +20,7 @@ client.conversations.conversations(conversationSid)
                         theName = " display_name:" + JSON.parse(p.attributes).display_name;
                     }
                     theProxyAddress = "";
-                    if (p.messagingBinding.proxy_address !== null) {
+                    if (p.messagingBinding.proxy_address !== undefined) {
                         theProxyAddress = " proxy_address:" + p.messagingBinding.proxy_address;
                     } else {
                         theType = theType + "(Group MMS)";
