@@ -11,12 +11,14 @@ class HTTPRequester {
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $query);
-        // $response = curl_exec($ch);
-        // curl_close($ch);
-        // return $response;
-        curl_exec($ch);
+        // With the response.
+        $response = curl_exec($ch);
         curl_close($ch);
-        return "";
+        return $response;
+        // Without the response.
+        // curl_exec($ch);
+        // curl_close($ch);
+        // return "";
     }
 }
 
