@@ -12,7 +12,7 @@ $room = $twilio->video->v1->rooms
     // "statusCallback" => "https://www.tigerfarmpress.com/cgi/echo.php",
     "type" => "group",
     "maxParticipants" => 2,
-    "uniqueName" => "abc"
+    "uniqueName" => "def"
         ]
 );
 
