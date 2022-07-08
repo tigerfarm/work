@@ -1168,15 +1168,17 @@ Send a text using the conversation SMS participant's phone number:
 + To: +16505551111(address: person's mobile phone number.
 + From: +1650555333(proxy address: the conversation Twilio phone number.
 ````
-Send an SMS from +16505553333 to +16505551111: hello.
+Send an SMS from +16505553333 to +16505551111, text: "hello."
 ````
-The Studio flow will respond with the text message: Hello, Boss.
+The Studio flow will respond with: "Hello Boss."
 
 Make a Studio REST API request to initate the flow.
 ````
 curl -X POST 'https://studio.twilio.com/v2/Flows/FWd1aa3231073181f8c812d4a77411767f/Executions' -d "From=+16505553333" -d "To=+16505551111" \
 -u $MASTER_ACCOUNT_SID:$MASTER_AUTH_TOKEN
 ````
+The Studio flow will send the message: "Hello Boss," to +16505551111.
+
 ----------------------------------------------------------------------------------
 
 Cheers...
