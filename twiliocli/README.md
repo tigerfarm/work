@@ -1129,9 +1129,9 @@ $ cat p1.json | more
 ### Conversations with Studio flow as the Target
 
 Create a Studio flow. I used a simplified version of the flow in the 
-[documentation](https://www.twilio.com/docs/conversations/connect-to-studio#existing-conversations)
+[documentation](https://www.twilio.com/docs/conversations/connect-to-studio#existing-conversations).
 
-<img src="StudioConversationsFlow.jpg" width="200"/>
+<img src="StudioConversationsFlow.jpg" width="300"/>
 
 Create a new conversation.
 ````
@@ -1151,7 +1151,7 @@ $ twilio api:conversations:v1:conversations:participants:list --conversation-sid
 SID                                 Messaging Binding                                                     
 MBb5837899193940d4812840440d5bef5e  {"proxy_address":"+16505553333","type":"sms","address":"+16505551111"}
 ````
-Add a conversation webhook that forwards inbound messages to the Studio flow.
+Add a conversation webhook that forwards that conversations's inbound messages to the Studio flow.
 ````
 twilio api:conversations:v1:conversations:webhooks:create \
 --target studio \
@@ -1163,9 +1163,10 @@ WH351aaf74dc4b415e9b3feab9718c5cf8  studio
 $ twilio api:conversations:v1:conversations:webhooks:list --conversation-sid=CHeae275b5ee0145ea9ffadd40ac0ec377
 SID                                 Target
 WH351aaf74dc4b415e9b3feab9718c5cf8  studio
-
 ````
-Send a text to the ProxyAddress of the conversation SMS participant.
+Send a text using the conversation SMS participant's phone number:
++ To: +16505551111(address: person's mobile phone number.
++ From: +1650555333(proxy address: the conversation Twilio phone number.
 ````
 Send an SMS from +16505553333 to +16505551111: hello.
 ````
@@ -1173,7 +1174,7 @@ The Studio flow will respond with the text message: Hello, Boss.
 
 Make a Studio REST API request to initate the flow.
 ````
-curl -X POST 'https://studio.twilio.com/v2/Flows/FWd1aa3231073181f8c812d4a77411767f/Executions' -d "From=16505553333" -d "To=16505551111" \
+curl -X POST 'https://studio.twilio.com/v2/Flows/FWd1aa3231073181f8c812d4a77411767f/Executions' -d "From=+16505553333" -d "To=+16505551111" \
 -u $MASTER_ACCOUNT_SID:$MASTER_AUTH_TOKEN
 ````
 ----------------------------------------------------------------------------------
