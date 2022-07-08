@@ -985,5 +985,67 @@ OPTIONAL FLAGS
 ````
 
 ----------------------------------------------------------------------------------
+### Autopilot
+
+[Autopilot CLI Plugin](https://www.twilio.com/docs/autopilot/twilio-autopilot-cli),
+a Community Project.
+
+[Commands and Usage](https://www.twilio.com/docs/autopilot/twilio-autopilot-cli#commands-and-usage)
+
+Install the plugin.
+````
+$ twilio plugins:install @dabblelab/plugin-autopilot
+...
+Installing plugin @dabblelab/plugin-autopilot... installed v1.0.5
+$
+````
+
+List your account's autopilot bots.
+````
+$ twilio autopilot:list help
+List all autopilot bots
+...
+$ twilio autopilot:list
+SID                                 Unique Name  Friendly Name                                                  
+UAf475242fee85b05307343b63eeee5d2d  CoffeeBot    Following the video https://www.youtube.com/watch?v=gOOrvhbJ9No
+UA96376fff94c83ea0349a3f97651f4f77  p1           p1  
+$
+````
+
+List tasks.
+````
+$ twilio autopilot:tasks:list help
+List all tasks for a bot
+USAGE
+  $ twilio autopilot:tasks:list
+OPTIONS
+REQUIRED FLAGS
+  -s, --assistant-sid=assistant-sid  bot sid
+OPTIONAL FLAGS
+  -p, --profile=profile    Shorthand identifier for your profile.
+  --properties=properties  [default: sid, uniqueName, friendlyName] The Autopilot bot Task List
+$
+
+$ twilio autopilot:tasks:list -s p1
+SID                                 Unique Name                         Friendly Name
+UD941bd7a0e950260b2b893b20716fc283  now                                 null         
+UD2cc4db2c7cd2d3a2016a25e7c6b6abcd  RedirectSayHelloRedirect            null         
+UDa54f6a58f0bde8799194040b51e332b1  RememberDataSay                     null         
+UD6f2ac026b2fc526539154216f41bb0a2  RememberDataSave                    null         
+UDc22f2a1a4f71c675801a76dcc6b47403  CollectQuestionValidateYN           null         
+UDd55cf16ce37dd95434b2cde82239d399  CollectQuestionValidateNum          null         
+UD74ec9382d86e93f6ab233f68cd9f27b7  CollectQuestionSayThanks            null         
+UD30cd3b45325973438fb2eb094d0ba45b  ControlLowConfidenceLevel           null         
+UD0ea6b5b75a2f15ff21273b951b83a007  welcome                             null         
+UD6b1e6609522e2e737fabe659e3f336b8  Fallback_task                       null         
+UD1e76477ec5babebcd50aeb3a31f3858f  voice_handoff_voicecall             null         
+UD8580826946155747a9bcfd6564caeb56  sayRedirectTofunction               null         
+UD6c68a934ff062316e935b9738bed6c17  send_sms                            null         
+UD3eba6e40314fa611141002ba0f48c3ed  yes_world                           null         
+UD643f25ec8d1e3784da9016fb8d7d1d2c  helloThereAndListen                 null         
+$
+````
+
+----------------------------------------------------------------------------------
 
 Cheers...
