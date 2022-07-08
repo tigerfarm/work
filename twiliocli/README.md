@@ -1165,20 +1165,17 @@ SID                                 Target
 WH351aaf74dc4b415e9b3feab9718c5cf8  studio
 
 ````
-$ node conversationParticipantsList.js 
-++ List Participants for a Conversation.
-+ Conversation SID: CHeae275b5ee0145ea9ffadd40ac0ec377
-+ Participant SID: MB662ecab5f9b94b25ae1025d32ca02c1e, Messaging type:sms address:+16504837603 proxy_address:+16508668221
-$ twilio api:conversations:v1:conversations:participants:list --conversation-sid=CHeae275b5ee0145ea9ffadd40ac0ec377
-SID                                 Messaging Binding                                                     
-MB662ecab5f9b94b25ae1025d32ca02c1e  {"proxy_address":"+16508668221","type":"sms","address":"+16504837603"}
+Send a text to the ProxyAddress of the conversation SMS participant.
+````
+Send an SMS from +16505553333 to +16505551111: hello.
+````
+The Studio flow will respond with the text message: Hello, Boss.
 
-Send a text to the ProxyAddress you specified in your MessagingBinding using the phone number you used as the Address.
-Send an SMS from +16508668933 to +16508668221: hello.
-
-curl -X POST 'https://studio.twilio.com/v2/Flows/FWd1aa3231073181f8c812d4a77411767f/Executions' -d "From=16508668221" -d "To=16504837603" -d "Parameters={\"body\":\"from-curl\"}" \
+Make a Studio REST API request to initate the flow.
+````
+curl -X POST 'https://studio.twilio.com/v2/Flows/FWd1aa3231073181f8c812d4a77411767f/Executions' -d "From=16505553333" -d "To=16505551111" \
 -u $MASTER_ACCOUNT_SID:$MASTER_AUTH_TOKEN
-
+````
 ----------------------------------------------------------------------------------
 
 Cheers...
