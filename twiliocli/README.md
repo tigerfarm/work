@@ -1046,6 +1046,139 @@ UD643f25ec8d1e3784da9016fb8d7d1d2c  helloThereAndListen                 null
 $
 ````
 
+Export a bot.
+````
+$ twilio autopilot:export help
+Export a bot schema
+
+USAGE
+  $ twilio autopilot:export
+
+OPTIONS
+OPTIONAL FLAGS
+  -p, --profile=profile              Shorthand identifier for your profile.
+  -s, --assistant-sid=assistant-sid  bot sid
+  --unique-name=unique-name          bot unique name
+
+$ twilio autopilot:export -s p1
+Bot schema file exported to "p1.json"
+$ cat p1.json | more
+{
+    "friendlyName" : "p1",
+    "logQueries" : true,
+    "uniqueName" : "p1",
+    "defaults" : {
+        "defaults" : {
+            "assistant_initiation" : "task://welcome",
+            "fallback" : "task://Fallback_task",
+            "collect" : {
+                "validate_on_failure" : "task://helloThereAndListen"
+            }
+        }
+    },
+    "styleSheet" : {
+        ...
+    },
+    "fieldTypes" : [],
+    "tasks" : [
+        {
+            "uniqueName" : "now",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "Received now. Now, back to you."
+                    }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "now"
+                }
+            ]
+        },
+        ...
+        {
+            "uniqueName" : "helloThereAndListen",
+            "actions" : {
+                "actions" : [
+                    { "say" : "Hello there." },
+                    { "listen" : true }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "good day"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "hello"
+                }
+            ]
+        }
+    ],
+    "modelBuild" : {
+        "uniqueName" : "p1_27-6-2022_4.50.56pm"
+    }
+}
+````
+----------------------------------------------------------------------------------
+### Conversations with Studio flow as the Target
+
+Create a Studio flow. I used a simplified version of the flow in the 
+[documentation](https://www.twilio.com/docs/conversations/connect-to-studio#existing-conversations)
+
+<img src="StudioConversationsFlow.jpg" width="200"/>
+
+Create a new conversation.
+````
+$ twilio api:conversations:v1:conversations:create --friendly-name "Studio-Conversations"
+SID                                 Chat Service SID                    Friendly Name         Date Created                 
+CHeae275b5ee0145ea9ffadd40ac0ec377  IS186702e405b74452a449d67b9265669f  Studio-Conversations  Jul 08 2022 15:46:29 GMT-0700
+````
+Add an SMS participant into the conversation. +16505553333 is the Twilio phone number.
+````
+$ twilio api:conversations:v1:conversations:participants:create \
+--conversation-sid CHeae275b5ee0145ea9ffadd40ac0ec377 \
+--messaging-binding.address +16505551111 \
+--messaging-binding.proxy-address +16505553333
+SID                                 Messaging Binding                                                     
+MBb5837899193940d4812840440d5bef5e  {"proxy_address":"+16505553333","type":"sms","address":"+16505551111"}
+$ twilio api:conversations:v1:conversations:participants:list --conversation-sid=CHeae275b5ee0145ea9ffadd40ac0ec377
+SID                                 Messaging Binding                                                     
+MBb5837899193940d4812840440d5bef5e  {"proxy_address":"+16505553333","type":"sms","address":"+16505551111"}
+````
+Add a conversation webhook that forwards inbound messages to the Studio flow.
+````
+twilio api:conversations:v1:conversations:webhooks:create \
+--target studio \
+--conversation-sid CHeae275b5ee0145ea9ffadd40ac0ec377 \
+--configuration.flow-sid FWd1aa3231073181f8c812d4a77411767f
+SID                                 Target
+WH351aaf74dc4b415e9b3feab9718c5cf8  studio
+
+$ twilio api:conversations:v1:conversations:webhooks:list --conversation-sid=CHeae275b5ee0145ea9ffadd40ac0ec377
+SID                                 Target
+WH351aaf74dc4b415e9b3feab9718c5cf8  studio
+
+````
+$ node conversationParticipantsList.js 
+++ List Participants for a Conversation.
++ Conversation SID: CHeae275b5ee0145ea9ffadd40ac0ec377
++ Participant SID: MB662ecab5f9b94b25ae1025d32ca02c1e, Messaging type:sms address:+16504837603 proxy_address:+16508668221
+$ twilio api:conversations:v1:conversations:participants:list --conversation-sid=CHeae275b5ee0145ea9ffadd40ac0ec377
+SID                                 Messaging Binding                                                     
+MB662ecab5f9b94b25ae1025d32ca02c1e  {"proxy_address":"+16508668221","type":"sms","address":"+16504837603"}
+
+Send a text to the ProxyAddress you specified in your MessagingBinding using the phone number you used as the Address.
+Send an SMS from +16508668933 to +16508668221: hello.
+
+curl -X POST 'https://studio.twilio.com/v2/Flows/FWd1aa3231073181f8c812d4a77411767f/Executions' -d "From=16508668221" -d "To=16504837603" -d "Parameters={\"body\":\"from-curl\"}" \
+-u $MASTER_ACCOUNT_SID:$MASTER_AUTH_TOKEN
+
 ----------------------------------------------------------------------------------
 
 Cheers...
