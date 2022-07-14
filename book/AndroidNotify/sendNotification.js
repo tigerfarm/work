@@ -10,6 +10,8 @@ console.log("+ notifyServiceSid: " + notifyServiceSid + " to theIdentity: " + th
 client.notify.services(notifyServiceSid).notifications.create({
     DeliveryCallbackUrl: 'https://example.com/notify',
     identity: theIdentity,
-    body: 'Hello there 5'
+    title: 'Notify title 1',
+    body: 'Hello there 1'
+    // , fcm: {notification: {title: 'Newalert', body: 'Hello Bob!'}}
 }).then(notification => console.log("+ Sent: " + notification.sid))
         .catch(error => console.log(error));
