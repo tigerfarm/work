@@ -56,9 +56,11 @@ Attribute name value pairs:
 Use: "https://example.com/myapp", not: "https://userid:passwd@example.com/myapp"
 + Parameter sorting is not required.
 
+#### Userid and Password Authentication And Signature Validation
+
 Both work together:
-+ Basic authentication (userid:password), and 
-+ Request validation.
++ Basic authentication (http://userid:password@domain/...), and 
++ Request signature validation.
 
 When doing the request validation, remove “userid:password@” from the validation URL.
 
@@ -73,9 +75,14 @@ http://example.com/abc
 
 #### Content-Type: application-json
 
-If the Content-Type is application-json, don't use the JSON body to fill in the validator's param for POST parameters.
-+ The query parameter bodySHA256 will be included in the request.
+If the Content-Type is application-json, 
+don't use the JSON body to fill in the validator's param for POST parameters.
++ The query parameter bodySHA256 will be included in the Twilio HTTP request.
 + Its value is calculated as the hexadecimal representation of the SHA-256 hash of the request body
 
+Example HTTP GET URL when Content-Type is application-json:
+````
+http://example.com/studio?bodySHA256=12345fd62d0edbf5034ee40ec14c210d230f87642535e25461e123465c545057
+````
 --------------------------------------------------------------------------------
 Cheers
