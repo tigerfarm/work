@@ -79,10 +79,9 @@ Click Save.
 ````
 In the tignotify Notify Service Instance, select FCM CREDENTIAL SID: tignotify. Click Save.
 
-#### Create Twilio Functions.
+#### Create Twilio Notify Create Binding Function
 
-+ One Function for the Notify app to register a user identity (Notify binding) that is used to send notifications.
-+ One to make a Twilio Notify API request to send a notification to the user running the Notify app.
+Twilio Function to receive an HTTP requset and create a Notify binding.
 
 To create the Functions in the Twilio Console, click [here](https://www.twilio.com/console/functions/manage).
 ````
@@ -95,6 +94,8 @@ Click Create. 2 Functions are created:
 Example Register binding URL:
 https://about-time-2357.twil.io/register-binding
 ````
+
+Note, the Send notification function is not used in this project.
 
 In the Notify app source code, enter the Twilio Function Register binding URL.
 ````
@@ -131,29 +132,6 @@ exports.handler = function(context, event, callback) {
        error: error,
        message: 'Failed to create binding: ' + error,
      });
- });
-};
-````
-Twilio Notify Quickstart (Send notification)
-````
-exports.handler = function(context, event, callback) {
- // Create a reference to the user notification service
- const client = context.getTwilioClient();
- const service = client.notify.services(
-   context.TWILIO_NOTIFICATION_SERVICE_SID
- );
- const notification = {
-   identity:event.identity,
-   body:event.body
- };
- console.log(notification);
- // Send a notification
- return service.notifications.create(notification).then((message) => {
-   console.log('Notification Message',message);
-   callback(null, "Message sent to: " + event.identity + ", " + event.body);
- }).catch((error) => {
-   console.log(error);
-   callback(error,null);
  });
 };
 ````

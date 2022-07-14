@@ -12,7 +12,7 @@ Program language prefixes:
 + php : PHP
 + ruby : Ruby
 
-## Samples
+## Program Samples
 
 [nGenerateSignature.js](nGenerateSignature.js): Generate Twilio validation signatures.
 
