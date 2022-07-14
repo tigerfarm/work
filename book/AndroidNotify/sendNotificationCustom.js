@@ -14,7 +14,7 @@ console.log("+ notifyServiceSid: " + notifyServiceSid + " to theIdentity: " + th
 client.notify.services(notifyServiceSid).notifications.create({
     identity: theIdentity,
     title: 'Notify foreground title',
-    body: 'Hello from the foreground 7',
+    body: 'Hello from the foreground 3',
     apn: {
         aps: {
             alert: {
@@ -29,18 +29,8 @@ client.notify.services(notifyServiceSid).notifications.create({
     fcm: {
         notification: {
             title: 'Notify background title',
-            body: 'Hello from the background 7'
+            body: 'Hello from the background 3'
         }
     }
 }).then(notification => console.log("+ Sent: " + notification.sid))
         .catch(error => console.log(error));
-
-// client.notify.v1.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX').notifications.create({
-// identity: ['00000001'],
-// title: 'Generic loooooooong title for all Bindings',
-// body: 'This is the body for all Bindings',
-// data: { custom_key1: 'custom value 1', custom_key2: 'custom value 2' },
-// fcm: { notification: { title: 'Newalert', body: 'Hello Bob!'}}
-// }).then(notification => console.log(notification.sid));```
-
-// fcm: { notification_body: body, notification_title: title, data: { data }, channel_id: 'fcm_default_channel'}
