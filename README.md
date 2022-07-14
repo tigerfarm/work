@@ -167,6 +167,8 @@ $ heroku config
 Set terminal widow to view console log messages:
 ````
 $ heroku logs --tail
+--- or ---
+$ heroku logs --tail -a tfpapp
 ````
 
 Incase of an application crash, restart it.

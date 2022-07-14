@@ -14,21 +14,22 @@ Program language prefixes:
 
 ## Samples
 
-nGenerateSignature.js, Generate Twilio validation signatures.
+[nGenerateSignature.js](nGenerateSignature.js): Generate Twilio validation signatures.
 
-jSignatureValidationPost.java, includes code to automatically
-convert the Twilio POST body RAW data string into validation data.
+[jSignatureValidationPost.java](jSignatureValidationPost.java), 
+includes code to automatically convert the Twilio POST body RAW data string into validation data.
 
 ## Notes
 
 Signature Validation documentation [notes](https://www.twilio.com/docs/usage/security#notes).
 
-The parameter for signature validation:
+Parameters for signature validation:
 1. Twilio account auth token: the account auth token used by the Twilio account that makes an HTTP request to your server.
 2. URL: the original URL that the Twilio service used to make the HTTP request.
 3. Signature: The signature header value from the received HTTP request that is being validated.
 4. POST parameters: raw POST parameter string.
-Note, the raw GET parameter string did not work from my test because the parameter order was different than the original request.
+Note, the raw GET parameter string did not work from my test because 
+the parameter order was different than the original request.
 ````
 GET request, the parameters are in the HTTP request string. Example:
 console.log(client.validateRequest(authToken, twilioSignature, url, {}));
@@ -41,7 +42,7 @@ const params = {
 };
 console.log(client.validateRequest(authToken, twilioSignature, url, params));
 ````
-When testing, for example and inbound received SMS, confirm by doing the following:
+When testing, for example an inbound received SMS, confirm by doing the following:
 + Send an SMS message your to Twilio phone number.
 + Twilio account auth token: The account auth token related to the Twilio phone number.
 + URL: the original URL based on the configuration of the Twilio phone number.
@@ -54,6 +55,21 @@ Attribute name value pairs:
 + Do not include the userid and password in the URL, if they are being used. For example:
 Use: "https://example.com/myapp", not: "https://userid:passwd@example.com/myapp"
 + Parameter sorting is not required.
+
+Both work together:
++ Basic authentication (userid:password), and 
++ Request validation.
+
+When doing the request validation, remove “userid:password@” from the validation URL.
+
+Example request URL with authentication:
+````
+http://user1:apassword@example.com/abc
+````
+However, for the request validation URL, use the following:
+````
+http://example.com/abc
+````
 
 #### Content-Type: application-json
 

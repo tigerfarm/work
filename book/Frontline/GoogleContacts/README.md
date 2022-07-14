@@ -10,6 +10,10 @@ Step 3. Set up your app,
 + [Client libraries](https://developers.google.com/people/v1/libraries) such as Java or PHP.
 + [Quick start sample code](https://developers.google.com/people/quickstart/js) which shows how to fetch a list of contacts.
 
+Related article regarding Google credentials,
+[How to use Google credentials with CodeExchange Quick Deploy](https://www.twilio.com/blog/how-to-use-google-credentials-with-codeexchange-quick-deploy):
+Gathering your credentials
+
 --------------------------------------------------------------------------------
 ## Authorization
 
