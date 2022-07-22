@@ -94,6 +94,8 @@ To deploy to your Twilio account, use the following command.
 The Twilio account is base on your Twilio CLI environment Twilio account SID.
 ````
 $ twilio serverless:deploy
+--- or ---
+$ twilio serverless:deploy --runtime=node14 --force
 
 Deploying functions & assets to the Twilio Runtime
 ...

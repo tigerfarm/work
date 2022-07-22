@@ -8,6 +8,7 @@ client.conversations.conversations.list({limit: 20})
                         + "/" + c.friendlyName
                         + "/" + c.uniqueName
                         + "/" + c.createdBy
+                        + "/" + c.state
                         )
             )
         );

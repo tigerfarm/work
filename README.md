@@ -149,8 +149,16 @@ Run the following from your repository directory.
 $ heroku create tfpapp
 Creating ⬢ tfpapp... done
 https://tfpconversations.herokuapp.com/ | https://git.heroku.com/tfpapp.git
+````
+
+Configure GitHub repository to Heroku app.
+````
 $ heroku git:remote -a tfpapp
 set git remote heroku to https://git.heroku.com/tfpapp.git
+````
+
+Push the GitHub repository to Heroku.
+````
 $ git push heroku master
 ... Installs the GitHub repository, myapp.git, to Heroku
 $ 

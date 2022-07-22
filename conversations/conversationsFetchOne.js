@@ -3,7 +3,7 @@ var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID
 
 conversationSid = process.env.CONVERSATION_SID;
 
-console.log("+ Fetch using conversatoin sid, retrieves: <sid> <uniqueName> <friendlyName>");
+console.log("+ Fetch using conversation sid, retrieves: <sid> <uniqueName> <friendlyName>");
 client.conversations.conversations(conversationSid)
         .fetch()
         .then(conversation => {
