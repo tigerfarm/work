@@ -18,7 +18,8 @@ client.notify.services(notifyServiceSid).notifications.create({
     apn: {
         aps: {
             alert: {
-                title: 'Short title for Watch.'
+                title: 'Alert, title: Short title for Watch.',
+                body: 'Alert, body: Hello from the background 3'
             }
         }
     },
@@ -26,10 +27,12 @@ client.notify.services(notifyServiceSid).notifications.create({
         custom_key1: 'custom value 1',
         custom_key2: 'custom value 2'
     },
+    "priority": "high",
     fcm: {
         notification: {
             title: 'Notify background title',
-            body: 'Hello from the background 3'
+            body: 'Hello from the background 3a',
+            priority: "high"
         }
     }
 }).then(notification => console.log("+ Sent: " + notification.sid))
