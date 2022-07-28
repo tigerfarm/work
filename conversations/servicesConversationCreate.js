@@ -5,7 +5,7 @@ serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 // serviceSid = 'IS4ebcc2d46cda47958628e59af9e53e55'; // Default
 // serviceSid = 'IS186702e405b74452a449d67b9265669f'; // Frontline
 
-conversationFriendlyName = 'group2';
+conversationFriendlyName = 'Group Messaging';
 console.log("+ Messaging Service SID: " + serviceSid
         + ", Friendly and unique Name: " + conversationFriendlyName
         );

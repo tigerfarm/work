@@ -1,4 +1,4 @@
-console.log("+++ List all messages for a services's conversation.");
+console.log("+++ List and remove all messages for a services's conversation.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 //
 conversationSid = "CHe5581f6e4299402aa77ef237a44c3c40"; // Default: tfpecho
@@ -18,16 +18,15 @@ client.conversations.conversations(conversationSid)
                     .list({limit: 200})
                     .then(messages => messages.forEach(message => {
                             console.log(
-                                    "+ " + message.sid
+                                    "+ Remove: " + message.sid
                                     + "  " + message.index
                                     + "  " + message.author
                                     + ", \"" + message.body
                                     // + ", \"" + message.body.substring(0, 25) + "...\""
                                     );
-                        }))
-                    .catch(function (err) {
-                        console.error("- " + err);
-                        exit();
-                    });
+                            client.conversations.v1.conversations(conversationSid)
+                                    .messages(message.sid)
+                                    .remove();
+                        }));
         });
 

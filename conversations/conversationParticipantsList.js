@@ -2,7 +2,7 @@ console.log("++ List Participants for a Conversation.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
 // conversationSid = process.env.CONVERSATION_SID;
-conversationSid = "CHeae275b5ee0145ea9ffadd40ac0ec377";
+conversationSid = "CHe5581f6e4299402aa77ef237a44c3c40";
 console.log("+ Conversation SID: " + conversationSid);
 client.conversations.conversations(conversationSid)
         .participants

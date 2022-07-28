@@ -1,17 +1,16 @@
 console.log("++ Create a text message for a Conversation.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
-// particpant: Group MMS
 serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
-conversationSid = "CHab8e3e59734f48d0abfadbd80fbfa37e";
-//
+conversationSid = process.env.CONVERSATION_SID;
 // serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
 // conversationSid = "CH183bde74b2314d2faef9a1c757b8f028";
-
-participantIdentity = 'dave3';
-messageText = 'From dave, #1';
-console.log("+ Conversation SID: " + conversationSid
-        + " Participant Identity: " + participantIdentity
+console.log("+ Conversations service SID: " + serviceSid);
+console.log("+ Conversation SID: " + conversationSid);
+//
+participantIdentity = '+16505551111';
+messageText = 'From +16505551111, msg2';
+console.log("+ Participant Identity: " + participantIdentity
         + " messageText: " + messageText
         );
 client.conversations.services(serviceSid).conversations(conversationSid)
@@ -19,7 +18,11 @@ client.conversations.services(serviceSid).conversations(conversationSid)
         .create({author: participantIdentity, body: messageText})
         .then(message => console.log(
                     "+ Created message, SID: " + message.sid
-                    ));
+                    ))
+        .catch(function (err) {
+            console.error("- " + err);
+            exit();
+        });
 
 // https://www.twilio.com/docs/conversations/api/conversation-message-resource?code-sample=code-create-a-conversation-message&code-language=Node.js&code-sdk-version=3.x
 // author: The channel specific identifier of the message's author. Defaults to system.

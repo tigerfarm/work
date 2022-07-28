@@ -7,7 +7,7 @@ conversationSid = "CHab8e3e59734f48d0abfadbd80fbfa37e";
 participantSid = 'MBee1e65a5777c46779e29cb48fd5a1643';      // MBee1e65a5777c46779e29cb48fd5a1643
 //
 participantAddress = '+16505551234';
-// participantAddress = '+16508661366';
+// participantAddress = '+16505551366';
 console.log("+ Conversation SID: " + conversationSid
         + " Participant Address: " + participantAddress
         );
