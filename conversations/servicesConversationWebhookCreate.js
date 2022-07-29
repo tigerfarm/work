@@ -9,11 +9,12 @@ console.log("+ Conversations service SID: " + serviceSid);
 console.log("+ Conversation SID: " + conversationSid);
 client.conversations.services(serviceSid).conversations(conversationSid)
         .webhooks
-        .list({limit: 20})
-        .then(webhooks => webhooks.forEach(w => {
-                console.log("++ SID: " + w.sid );
-                console.log("+++ filters: " + w.configuration.filters );
-                console.log("+++ URL: " + w.configuration.url );
-                console.log("+++ preWebhookUrl: " + w.configuration.preWebhookUrl );
-        }));
-      
+        .create({
+            'configuration.filters': ['onMessageAdded', 'onMessageUpdated'],
+            'configuration.url': 'https://samplefunctions-3239.twil.io/conversationMsgModify',
+            'preWebhookUrl': 'https://samplefunctions-3239.twil.io/conversationMsgModify',
+            target: 'webhook'
+        })
+        .then(webhook => console.log("++ Created: " + webhook.sid));
+
+

@@ -8,8 +8,8 @@ conversationSid = process.env.CONVERSATION_SID;
 console.log("+ Conversations service SID: " + serviceSid);
 console.log("+ Conversation SID: " + conversationSid);
 //
-participantIdentity = '+16505551111';
-messageText = 'From +16505551111, msg2';
+participantIdentity = 'daveg1';
+messageText = 'msg3';
 console.log("+ Participant Identity: " + participantIdentity
         + " messageText: " + messageText
         );

@@ -7,13 +7,13 @@ serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 conversationSid = process.env.CONVERSATION_SID;
 console.log("+ Conversations service SID: " + serviceSid);
 console.log("+ Conversation SID: " + conversationSid);
+webhookSid = 'WH34620dfe45d1469ab9cadb2c6006dbdf';
 client.conversations.services(serviceSid).conversations(conversationSid)
-        .webhooks
-        .list({limit: 20})
-        .then(webhooks => webhooks.forEach(w => {
-                console.log("++ SID: " + w.sid );
-                console.log("+++ filters: " + w.configuration.filters );
-                console.log("+++ URL: " + w.configuration.url );
-                console.log("+++ preWebhookUrl: " + w.configuration.preWebhookUrl );
-        }));
+        .webhooks(webhookSid)
+        .fetch()
+        .then(webhook => {
+                console.log("++ SID: " + webhook.sid);
+                console.log("+++ filters: " + webhook.configuration.filters);
+                console.log("+++ URL: " + webhook.configuration.url);
+            });
       
