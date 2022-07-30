@@ -7,7 +7,7 @@ serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 conversationSid = process.env.CONVERSATION_SID;
 console.log("+ Conversations service SID: " + serviceSid);
 console.log("+ Conversation SID: " + conversationSid);
-webhookSid = 'WH607319f4999b40c796a4402f5d22ff2f';
+webhookSid = 'WHe51bf17f12814afcaaf8eedb56e2dd26';
 client.conversations.services(serviceSid).conversations(conversationSid)
         .webhooks(webhookSid)
         .remove()
