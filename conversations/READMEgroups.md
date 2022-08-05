@@ -19,13 +19,14 @@ each of the conversation's participants will receive the message.
 + Or, use a program to [create messages](https://www.twilio.com/docs/conversations/api/conversation-message-resource)
 into the conversations, then each of the participants would receive the messages.
 
-Scenario steps:
+### Scenario steps:
 ````
-Add sms participant#1 into a conversation:
+Create a conversation.
+Add sms participant#1 into the conversation, using parameters:
     Moble phone number(messagingBinding.address)
     + Twilio phone number(messagingBinding.proxyAddress)
     + conversation SID
-Add sms participant#2 into a conversation.
+Add sms participant#2 into the conversation, using parameters:
     Moble phone number(messagingBinding.address)
     + Twilio phone number(messagingBinding.proxyAddress) Note: can be a different Twilio phone number.
     + conversation SID
@@ -48,19 +49,69 @@ Participant#2 >> SMS >> Twilio >> Conversations service + conversation >> messag
 Participant#3 >> Chat >> Twilio >> Conversations service + conversation >> message to the other participants
 ````
 
-### When there is more than 2 participants in a Conversation and at least 1 is an SMS participant
+#### Program steps to create a test group of participants.
+````
+$ export CONVERSATIONS_SERVICE_SID=IS5c86b7d0d6e44133acb09734274f94f6
+$ echo $CONVERSATIONS_SERVICE_SID
+IS5c86b7d0d6e44133acb09734274f94f6
 
-Add a Twilio Function to add the from-participant's identity into the message.
-This way, the SMS participant will know who sent the message.
+$ node servicesConversationCreate.js
+++ Create a conversation.
++ Messaging Service SID: IS5c86b7d0d6e44133acb09734274f94f6, Friendly and unique Name: Group Messaging
++ Conversation SID: CH1b50448d6e5641d2929207cfd3c4dcde Group Messaging
+
+$ export CONVERSATION_SID=CH1b50448d6e5641d2929207cfd3c4dcde
+$ echo $CONVERSATIONS_SERVICE_SID
+IS5c86b7d0d6e44133acb09734274f94f6
+
+$ node servicesConversationParticipantCreateChat.js
+++ Create an Chat participant for a conversation.
++ Conversations service SID: IS5c86b7d0d6e44133acb09734274f94f6
++ Conversation SID: CH1b50448d6e5641d2929207cfd3c4dcde
++ Participant Identity: daveg1
++ Created participant, SID: MBa34fcc12c7264fbebdf0fa5a1e55e837
+
+$ node servicesConversationParticipantCreateSms.js
+++ Create an SMS participant for a Conversation.
++ Conversation SID: CH1b50448d6e5641d2929207cfd3c4dcde
++ participantIdentitySms: +16505552222
++ conversationProxyAddress: +12095558688
++ Created participant, SID: MBbb2b92a325684eb4ad6b6503cea355d1
+
+$ node servicesConversationParticipantCreateSms.js
+++ Create an SMS participant for a Conversation.
++ Conversation SID: CH1b50448d6e5641d2929207cfd3c4dcde
++ participantIdentitySms: +16505558893
++ conversationProxyAddress: +12095558688
++ Created participant, SID: MB935888a50136442990f010cb5cec9db7
+
+$ node servicesConversationParticipantsList.js
+++ List Participants for a Conversation.
++ Conversations service SID: IS5c86b7d0d6e44133acb09734274f94f6
++ Conversation SID: CH1b50448d6e5641d2929207cfd3c4dcde
++ Participant SID: MB935888a50136442990f010cb5cec9db7 Messaging: sms:  +16505558893:  +12095558688
++ Participant SID: MBbb2b92a325684eb4ad6b6503cea355d1 Messaging: sms:  +16505552222:  +12095558688
++ Participant SID: MBa34fcc12c7264fbebdf0fa5a1e55e837 identity, Chat: daveg1
+````
+
+### Case where there is more than 2 participants in a Conversation and at least 1 is an SMS participant.
+
+Add a Twilio Function that will add the from-participant's identity into the message.
+This way, the SMS participants will know who sent the message.
 The Twilio Function would be set as the conversation's Pre-Event URL
 where onMessageAdd is checked.
 Then, when a message is added into the coversation,
-the message will be sent the other participants with the from-participant's identity in the message.
+the Twilio Function will add the from-participant's identity into the message,
+then the message will be sent the other participants with the from-participant's identity in the message.
 
-For example,
+Scenario sequence:
 ````
-Message added: "Hello"
-Message received by participants: "From: +16505551111, Hello"
+SMS participant(+16505551111) sends a message to the conversation twilio phone number: "Hello".
+Twilio SMS service receives the message: "Hello".
+The Twilio Convesations backend receives the message.
+The Twilio Function adds the from-participant's identity into the message: "From: +16505551111, Hello".
+The enhanced message is sent by the Twilio Convesations backend to participants of the conversation.
+The enhanced message received by participants: "From: +16505551111, Hello".
 ````
 
 Sample Twilio Function to add the from-participant's identity into the message.
@@ -74,14 +125,14 @@ Sample Twilio Function to add the from-participant's identity into the message.
 // Sample Conversations GET request from an SMS participant:
 //  + GET URL : https://tfpecho.herokuapp.com/pre?RetryCount=0&EventType=onMessageAdd&Attributes=%7B%7D&Author=%2B16505551111&ChatServiceSid=IS5c86b7d0d6e44133acb09734274f94f6&ParticipantSid=MB935888a50136442990f010cb5cec9db7&Body=you+got+it!&AccountSid=ACa...3&Source=SMS&ConversationSid=CH1b50448d6e5641d2929207cfd3c4dcde
 exports.handler = function (context, event, callback) {
-    // Cevent.lientIdentity is from a chat participant.
-    // event.Author is from an SMS participant.
+    // event.ClientIdentity is from a chat participant.
     let participantIdentity = event.ClientIdentity || null;
     if (participantIdentity === null) {
+        // event.Author is from an SMS participant.
         participantIdentity = event.Author || null;
         if (participantIdentity === null) {
-           console.log("-- Required parameter: ClientIdentity which is the author of the message.");
-           callback(null, "-- Required parameter: ClientIdentity which is the author of the message.");
+           console.log("-- Required parameter: ClientIdentity or Author which is the author of the message.");
+           callback(null, "-- Required parameter: ClientIdentity or Author which is the author of the message.");
         return;
         }
     }
@@ -97,32 +148,6 @@ exports.handler = function (context, event, callback) {
     return callback(null, { "body": modifiedMessage });
 }
 ````
-
-### Using the Same Mobile Phone Number in Multiple Conversations
-
-When having one person (one person's SMS phone number) in multiple conversations,
-use multiple Twilio phone numbers.
-Each Twilio phone number is mapped to a separate conversation.
-````
-Unique combination:
- Person's SMS phone number + Twilio phone number >> matched to a conversation
-For example:
- Person's SMS phone number +16505551111 + Twilio phone number #1
-   >> matched to conversation #1
- Person's SMS phone number +16505551111 + Twilio phone number #2
-   >> matched to conversation #2
- Person's SMS phone number +16505552222 + Twilio phone number #1 
-   >> matched to conversation #1 
- Person's SMS phone number +16505553333 + Twilio phone number #1 
-   >> matched to conversation #2
-````
-You just need to have the "Person's SMS phone number + Twilio phone number" unique, 
-and matched to any one conversation.
-
-Note, the number of Twilio phone numbers required, is the maximum number of active conversations per participant. 
-If you have a maximum of 5 conversations at one time (for one person's phone number), 
-the cost would be $5/month for 5 Twilio phone numbers.
-* The number of phone numbers required, is the maximum number of active questions per user.
 
 ----------------------------------------------------------------------------------
 Cheers
