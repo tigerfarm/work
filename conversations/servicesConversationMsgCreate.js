@@ -9,7 +9,7 @@ console.log("+ Conversations service SID: " + serviceSid);
 console.log("+ Conversation SID: " + conversationSid);
 //
 participantIdentity = 'daveg1';
-messageText = 'msg3';
+messageText = 'msg1';
 console.log("+ Participant Identity: " + participantIdentity
         + " messageText: " + messageText
         );

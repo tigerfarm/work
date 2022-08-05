@@ -48,6 +48,56 @@ Participant#2 >> SMS >> Twilio >> Conversations service + conversation >> messag
 Participant#3 >> Chat >> Twilio >> Conversations service + conversation >> message to the other participants
 ````
 
+### When there is more than 2 participants in a Conversation and at least 1 is an SMS participant
+
+Add a Twilio Function to add the from-participant's identity into the message.
+This way, the SMS participant will know who sent the message.
+The Twilio Function would be set as the conversation's Pre-Event URL
+where onMessageAdd is checked.
+Then, when a message is added into the coversation,
+the message will be sent the other participants with the from-participant's identity in the message.
+
+For example,
+````
+Message added: "Hello"
+Message received by participants: "From: +16505551111, Hello"
+````
+
+Sample Twilio Function to add the from-participant's identity into the message.
+````
+// Sample test URL:
+//  https://abouttime-2357.twil.io/conversationMsgModify?ClientIdentity=+16505551111&Body=Hello1
+// Documentation:
+//  https://www.twilio.com/docs/chat/webhook-events#using-pre-event-webhooks-to-modify-or-reject-changes
+// Sample Conversations GET request from a chat participant:
+//  + GET URL : .../conversation?ClientIdentity=dave&RetryCount=0&EventType=onMessageAdd&Attributes=%7B%7D&Author=dave&ChatServiceSid=IS5c86b7d0d6e44133acb09734274f94f6&ParticipantSid=MB0dc5ab0098d44e57bf7441eb9ac53cb8&Body=yes&AccountSid=ACa...3&Source=SDK&ConversationSid=CH1b50448d6e5641d2929207cfd3c4dcde
+// Sample Conversations GET request from an SMS participant:
+//  + GET URL : https://tfpecho.herokuapp.com/pre?RetryCount=0&EventType=onMessageAdd&Attributes=%7B%7D&Author=%2B16505551111&ChatServiceSid=IS5c86b7d0d6e44133acb09734274f94f6&ParticipantSid=MB935888a50136442990f010cb5cec9db7&Body=you+got+it!&AccountSid=ACa...3&Source=SMS&ConversationSid=CH1b50448d6e5641d2929207cfd3c4dcde
+exports.handler = function (context, event, callback) {
+    // Cevent.lientIdentity is from a chat participant.
+    // event.Author is from an SMS participant.
+    let participantIdentity = event.ClientIdentity || null;
+    if (participantIdentity === null) {
+        participantIdentity = event.Author || null;
+        if (participantIdentity === null) {
+           console.log("-- Required parameter: ClientIdentity which is the author of the message.");
+           callback(null, "-- Required parameter: ClientIdentity which is the author of the message.");
+        return;
+        }
+    }
+    let messageText = event.Body || null;
+    if (messageText === null) {
+        console.log("-- Required parameter: Body.");
+        callback(null, "-- Required parameter: Body.");
+        return;
+    }
+    console.log("+ Conversation message from: " + participantIdentity + ", Msg: \"" + messageText + "\"");
+    let modifiedMessage = "From: " + participantIdentity + ", " + messageText
+    console.log( "+ Modified Message: \"" + modifiedMessage + "\"");
+    return callback(null, { "body": modifiedMessage });
+}
+````
+
 ### Using the Same Mobile Phone Number in Multiple Conversations
 
 When having one person (one person's SMS phone number) in multiple conversations,

@@ -3,10 +3,8 @@ var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID
 //
 serviceSid = process.env.CONVERSATIONS_SERVICE_SID;     // Default
 conversationSid = process.env.CONVERSATION_SID;
-//
 // serviceSid = 'IS186702e405b74452a449d67b9265669f';   // Frontline
 // conversationSid = "CH0d499dee76f04d5b97ee6bf27e72a3cd"; // Default: tfpecho
-//
 console.log("+ Conversations service SID: " + serviceSid);
 console.log("+ Conversation SID: " + conversationSid);
 client.conversations.services(serviceSid).conversations(conversationSid)

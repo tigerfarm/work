@@ -3,10 +3,11 @@ console.log("++ Remove a Service's Conversations.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
 // serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
-serviceSid = 'IS186702e405b74452a449d67b9265669f'; // Frontline
-
-conversationSid = 'CHc4e9e93750644ed88738f76c7e03f73f';
-
+serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6';
+conversationSid = 'CH7db02b3cb4d747d2bbf8eca71207f7dd';
+//
+console.log("+ Conversations service SID: " + serviceSid);
+console.log("+ Conversation SID: " + conversationSid);
 client.conversations.services(serviceSid).conversations(conversationSid)
         .fetch()
         .then(conversation => {

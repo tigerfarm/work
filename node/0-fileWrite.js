@@ -1,18 +1,17 @@
 // -----------------------------------------------------------------------------
-console.log("+++ Start: fileWrite.js");
+console.log("+++ Start: fileWrite.");
 
 var fs = require("fs");
-var writeFilename = 'fileSample.txt';
+var writeFilename = '0-fileSample.txt';
 urlComponentMessage = "?- Hello there.\n\r";
 fs.writeFile(writeFilename, urlComponentMessage, err => {
     if (err) {
-        console.error("- Write error: " + err);
+        console.error("- Error: " + err);
     } else {
-        console.log("+ Wrote URL components to: " + writeFilename);
+        console.log("+ Wrote to: " + writeFilename);
     }
+    console.log("+++ Exit fileWrite.");
 });
-
-console.log("+++ Exit.");
 // 
 // -----------------------------------------------------------------------------
 // eof

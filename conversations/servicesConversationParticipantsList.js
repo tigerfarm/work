@@ -2,11 +2,10 @@ console.log("++ List Participants for a Conversation.");
 // https://www.twilio.com/docs/conversations/api/service-participant-resource
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
-serviceSid = process.env.CONVERSATIONS_SERVICE_SID;         // Group MMS
+serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 conversationSid = process.env.CONVERSATION_SID;
 // serviceSid = 'IS186702e405b74452a449d67b9265669f';       // Frontline
 // conversationSid = "CHf0220442f8974f559ba663c660f0bcea";  // Frontline
-
 console.log("+ Conversations service SID: " + serviceSid);
 console.log("+ Conversation SID: " + conversationSid);
 client.conversations.services(serviceSid).conversations(conversationSid)
