@@ -8,7 +8,10 @@
 
 [Run sample programs](https://go.dev/tour/welcome/1).
 
-[Twilio Golang](https://github.com/twilio/twilio-go)
+[Twilio Golang](https://github.com/twilio/twilio-go) has sample programs.
+
+[Blog, How to Send an SMS with Golang](https://www.twilio.com/blog/send-sms-30-seconds-golang).
+Note, has outdated syntax. Use the above sample programs.
 
 Install,
 + I downloaded: https://go.dev/dl/go1.19.darwin-amd64.pkg
@@ -68,9 +71,9 @@ Hello 世界, 早上 2
 --------------------------------------------------------------------------------
 ### Twilio Golang Sample
 
-[Blog, How to Send an SMS with Golang](https://www.twilio.com/blog/send-sms-30-seconds-golang)
 
-Create sms.go.
+Create sms.go based on the 
+[Twilio Golang samples](https://github.com/twilio/twilio-go).
 ````
 package main
 
@@ -78,20 +81,29 @@ import twilio "github.com/twilio/twilio-go"
 import openapi "github.com/twilio/twilio-go/rest/api/v2010"
 import "os"
 import "fmt"
+import "encoding/json"
 
 func main() {
     fmt.Println("+++ Send an SMS.")
-    client := twilio.NewRestClient()
+    accountSid := os.Getenv("MASTER_ACCOUNT_SID")
+    authToken := os.Getenv("MASTER_AUTH_TOKEN")
+    fmt.Println("+ accountSid = " + accountSid)
+    fmt.Println("+ authToken = " + authToken)
+    client := twilio.NewRestClientWithParams(twilio.ClientParams{
+         Username: accountSid,
+         Password: authToken,
+    })
     params := &openapi.CreateMessageParams{}
     params.SetFrom(os.Getenv("MASTER_PHONE_NUMBER_1"))
     params.SetTo(os.Getenv("MY_PHONE_NUMBER"))
     params.SetBody("Hello from Golang 1")
     fmt.Println("+ Send the SMS.")
-    _, err := client.ApiV2010.CreateMessage(params)
+    resp, err := client.Api.CreateMessage(params)
     if err != nil {
         fmt.Println(err.Error())
     } else {
-        fmt.Println("++ SMS sent.")
+        response, _ := json.Marshal(*resp)
+        fmt.Println("++ SMS sent, response: " + string(response))
     }
 }
 ````
@@ -99,7 +111,6 @@ Run sms.go.
 ````
 Remove the Hello World go.mod.
 Create a sms go.mod.
-go get github.com/twilio/twilio-go@1.x.x-rc.x
 
 $ rm go.mod
 $ go mod init sms
@@ -108,6 +119,11 @@ go: added github.com/golang/mock v1.6.0
 go: added github.com/pkg/errors v0.9.1
 go: added github.com/twilio/twilio-go v0.26.0
 $ go run sms.go
-
++++ Send an SMS.
++ accountSid = ACa...3
++ authToken = 8...3
++ Send the SMS.
+++ SMS sent, response: {"account_sid":"ACa...3" ... }
+````
 --------------------------------------------------------------------------------
 Cheers...
