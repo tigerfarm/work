@@ -1,5 +1,7 @@
 # Geting Started with Golang
 
+#### Links
+
 [Golang website](https://go.dev)
 
 [Getting started](https://go.dev/learn/) with a download link.
@@ -138,5 +140,11 @@ $ go run sms.go
 + Send the SMS.
 ++ SMS sent, response: {"account_sid":"ACa...3" ... }
 ````
+Note, can make changes to sms.go and rerun immediately.
+````
+$ go run sms.go
+...
+````
+
 --------------------------------------------------------------------------------
 Cheers...

@@ -28,4 +28,5 @@ func main() {
         response, _ := json.Marshal(*resp)
         fmt.Println("++ SMS sent, response: " + string(response))
     }
+    fmt.Println("+++ Exit.")
 }
