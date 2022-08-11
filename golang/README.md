@@ -1,0 +1,113 @@
+# Golang Notes
+
+[Golang website](https://go.dev)
+
+[Getting started](https://go.dev/learn/) with a download link.
+
+[Install guide](https://go.dev/doc/install) with how to run Go.
+
+[Run sample programs](https://go.dev/tour/welcome/1).
+
+[Twilio Golang](https://github.com/twilio/twilio-go)
+
+Install,
++ I downloaded: https://go.dev/dl/go1.19.darwin-amd64.pkg
++ Ran the package installer. It pause for a while, then completed.
+
+Post install.
+````
+$ ls /usr/local/go
+...
+$ PATH=$PATH:/usr/local/go/bin
+$ go version
+go version go1.19 darwin/amd64
+$
+````
+
+[Tutorial: Get started with Go](https://go.dev/doc/tutorial/getting-started)
+
+In a working directory, create a Hello World program.
+````
+package main
+import "fmt"
+func main() {
+    fmt.Println("Hello 世界")
+}
+````
+
+Sample run:
+````
+$ go mod init hello
+go: creating new go.mod: module hello
+go: to add module requirements and sums:
+	go mod tidy
+$ ls -l
+-rw-r--r--  1 dave  staff   22 Aug 11 09:51 go.mod
+-rw-r--r--  1 dave  staff   74 Aug 11 09:43 hello.go
+$ go run hello.go
+Hello 世界
+````
+Make a change to hello.go.
+Re-run.
+````
+$ go run hello.go
+Hello 世界, 早上
+````
+
+Optional running method: 
+````
+Make a change to hello.go.
+Update the run time file.
+Re-run.
+
+$ go mod tidy
+$ go run .
+Hello 世界, 早上 2
+````
+
+--------------------------------------------------------------------------------
+### Twilio Golang Sample
+
+[Blog, How to Send an SMS with Golang](https://www.twilio.com/blog/send-sms-30-seconds-golang)
+
+Create sms.go.
+````
+package main
+
+import twilio "github.com/twilio/twilio-go"
+import openapi "github.com/twilio/twilio-go/rest/api/v2010"
+import "os"
+import "fmt"
+
+func main() {
+    fmt.Println("+++ Send an SMS.")
+    client := twilio.NewRestClient()
+    params := &openapi.CreateMessageParams{}
+    params.SetFrom(os.Getenv("MASTER_PHONE_NUMBER_1"))
+    params.SetTo(os.Getenv("MY_PHONE_NUMBER"))
+    params.SetBody("Hello from Golang 1")
+    fmt.Println("+ Send the SMS.")
+    _, err := client.ApiV2010.CreateMessage(params)
+    if err != nil {
+        fmt.Println(err.Error())
+    } else {
+        fmt.Println("++ SMS sent.")
+    }
+}
+````
+Run sms.go.
+````
+Remove the Hello World go.mod.
+Create a sms go.mod.
+go get github.com/twilio/twilio-go@1.x.x-rc.x
+
+$ rm go.mod
+$ go mod init sms
+$ go get github.com/twilio/twilio-go
+go: added github.com/golang/mock v1.6.0
+go: added github.com/pkg/errors v0.9.1
+go: added github.com/twilio/twilio-go v0.26.0
+$ go run sms.go
+
+--------------------------------------------------------------------------------
+Cheers...

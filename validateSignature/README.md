@@ -62,7 +62,8 @@ Both work together:
 + Basic authentication (http://userid:password@domain/...), and 
 + Request signature validation.
 
-When doing the request validation, remove “userid:password@” from the validation URL.
+When doing the request validation, remove "userid:password@" from the validation URL.
+See "Note" below as to why the userid and password are not used in the signature.
 
 Example request URL with authentication:
 ````
@@ -72,6 +73,15 @@ However, for the request validation URL, use the following:
 ````
 http://example.com/abc
 ````
+
+[Note](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication),
+if the server doesn't ask for it, the username and password are not sent by the client.
++ Client makes the HTTP request: http://user1:apassword@example.com/abc
++ Client sends: http://example.com/abc
++ Server responds with: 401 (Unauthorized) response status.
++ Client sends user1:apassword, in an Authorization header such as: Authorization: Basic Skwosa829fSDLkjSile
+
+Authorization: <type> <credentials>
 
 #### Content-Type: application-json
 
