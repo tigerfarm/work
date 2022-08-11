@@ -1,4 +1,4 @@
-# Golang Notes
+# Geting Started with Golang
 
 [Golang website](https://go.dev)
 
@@ -6,7 +6,7 @@
 
 [Install guide](https://go.dev/doc/install) with how to run Go.
 
-[Run sample programs](https://go.dev/tour/welcome/1).
+[Run sample programs online](https://go.dev/tour/welcome/1).
 
 [Twilio Golang](https://github.com/twilio/twilio-go) has sample programs.
 
