@@ -13,6 +13,8 @@
 [Blog, How to Send an SMS with Golang](https://www.twilio.com/blog/send-sms-30-seconds-golang).
 Note, has outdated syntax. Use the above sample programs.
 
+## Install and Test Golang Command line
+
 Install,
 + I downloaded: https://go.dev/dl/go1.19.darwin-amd64.pkg
 + Ran the package installer. It pause for a while, then completed.
@@ -26,6 +28,8 @@ $ go version
 go version go1.19 darwin/amd64
 $
 ````
+
+## Run Hello World Golang Program
 
 [Tutorial: Get started with Go](https://go.dev/doc/tutorial/getting-started)
 
@@ -69,10 +73,10 @@ Hello 世界, 早上 2
 ````
 
 --------------------------------------------------------------------------------
-### Twilio Golang Sample
+### Twilio Golang Sample Program to Send an SMS
 
 
-Create sms.go based on the 
+In your working directory, create sms.go based on the 
 [Twilio Golang samples](https://github.com/twilio/twilio-go).
 ````
 package main
@@ -107,10 +111,19 @@ func main() {
     }
 }
 ````
+Set environment variables that are used in the above program.
+````
+$ MASTER_ACCOUNT_SID=ACa...3
+$ MASTER_AUTH_TOKEN=8...3
+$ MASTER_PHONE_NUMBER_1=+16505551111
+$ MY_PHONE_NUMBER=+16505552222
+````
 Run sms.go.
 ````
 Remove the Hello World go.mod.
-Create a sms go.mod.
+Init go.mod: create the sms go.mod.
+Get the Twilio library.
+Run sms.go.
 
 $ rm go.mod
 $ go mod init sms
