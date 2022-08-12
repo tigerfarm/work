@@ -107,7 +107,7 @@ Hello 世界, 早上 2
 
 In your working directory, create sms.go based on the 
 [Twilio Golang samples](https://github.com/twilio/twilio-go).
-This sample uses similar syntax to other language samples.
+This sample uses similar program statements to other language samples.
 ````
 package main
 
@@ -169,7 +169,7 @@ $ go run sms.go
 + Send the SMS.
 ++ SMS sent, response: {"account_sid":"ACa...3" ... }
 ````
-Note, can make changes to sms.go and rerun immediately.
+Note, like a scripting language, you can make changes to sms.go program and rerun immediately.
 ````
 $ go run sms.go
 ...
