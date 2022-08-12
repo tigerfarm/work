@@ -149,7 +149,8 @@ $ MASTER_AUTH_TOKEN=8...3
 $ MASTER_PHONE_NUMBER_1=+16505551111
 $ MY_PHONE_NUMBER=+16505552222
 ````
-Run sms.go.
+
+#### Run sms.go.
 
 Remove the Hello World go.mod.
 ````
