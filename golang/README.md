@@ -20,6 +20,7 @@ Syntax:
 + Variable declaration and initialization through type inference such as i := 3 or s := "Hello, world!"
 + Semicolons still terminate statements; but are implicit when the end of a line occurs.
 + Methods may return multiple values, and returning a result, err pair is the conventional way a method indicates an error to its caller in Go.
++ Uses nil instead of null.
 
 #### Links
 
