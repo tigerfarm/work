@@ -1,5 +1,26 @@
 # Geting Started with Golang
 
+The [Go programming language](https://en.wikipedia.org/wiki/Go_(programming_language)),
+often referred to as Golang, is a compiled programming language. 
+Go was designed at Google in 2007, first public release 2009, version 1.0.
+It's widely used in production at Google
+It's syntactically similar to C, but with memory safety, garbage collection, structural typing
+
+Characteristics from other languages:
++ Static typing and run-time efficiency (like C)
++ Readability and usability (like Python or JavaScript)
++ High-performance networking and multiprocessing
+
+Characteristics:
++ Fast compilation
++ Remote package management (go get)
++ A desire to keep the language specification simple enough to hold in a programmer's head
+
+Syntax:
++ Variable declaration and initialization through type inference such as i := 3 or s := "Hello, world!"
++ Semicolons still terminate statements; but are implicit when the end of a line occurs.
++ Methods may return multiple values, and returning a result, err pair is the conventional way a method indicates an error to its caller in Go.
+
 #### Links
 
 [Golang website](https://go.dev)

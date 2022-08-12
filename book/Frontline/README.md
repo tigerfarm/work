@@ -204,7 +204,7 @@ When first testing the application,
     // The following, fixes an issue with the above.
     app.use(express.urlencoded({ extended: true }));
 ````
-2) I got rid of the customer list filter: .../src/providers/customers.js
+2) When first testing, I got rid of the customer list filter: .../src/providers/customers.js
 ````
 const getCustomersList = async (worker, pageSize, anchor) => {
     // const workerCustomers = customers.filter(customer => customer.worker === worker);
@@ -212,8 +212,8 @@ const getCustomersList = async (worker, pageSize, anchor) => {
 ...
 };
 ````
-When I realized that the attribute, customers.worker, is the Frontline app logged in user id.
-So, I changed the customers.worker attribute to match my logged in identity.
+Later, when I realized that the attribute, customers.worker, is the Frontline app logged in user id;
+I changed the customers.worker attribute to match my logged in identity.
 
 Start the application.
 ````
@@ -264,6 +264,11 @@ Got proxy address!
 Process token info
 Getting Customer details:  3
 ````
+$ npm start
+> tfpfrontline@0.10.0 start
+> node src/index.js
++++ Start Frontline CRM Application web server.
+Application started at 8000
 
 Information added into: .../src/routes/callbacks/crm.js
 ````
