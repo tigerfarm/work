@@ -150,14 +150,15 @@ $ MASTER_PHONE_NUMBER_1=+16505551111
 $ MY_PHONE_NUMBER=+16505552222
 ````
 Run sms.go.
-````
-Remove the Hello World go.mod.
-$ rm go.mod
 
+Remove the Hello World go.mod.
+````
+$ rm go.mod
+````
 Init go.mod: create the sms go.mod.
 Get the Twilio module.
 Run sms.go.
-
+````
 $ go mod init sms
 $ go get github.com/twilio/twilio-go
 go: added ...
