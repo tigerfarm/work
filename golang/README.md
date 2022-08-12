@@ -3,7 +3,7 @@
 The [Go programming language](https://en.wikipedia.org/wiki/Go_(programming_language)),
 often referred to as Golang, is a compiled programming language. 
 Go was designed at Google in 2007, first public release 2009, version 1.0.
-It's widely used in production at Google
+It's widely used in production at Google.
 It's syntactically similar to C, but with memory safety, garbage collection, structural typing
 
 Characteristics from other languages:
@@ -15,12 +15,13 @@ Characteristics:
 + Fast compilation
 + Remote package management (go get)
 + A desire to keep the language specification simple enough to hold in a programmer's head
++ Less complex than C++, with the goal to run as fast.
 
 Syntax:
-+ Variable declaration and initialization through type inference such as i := 3 or s := "Hello, world!"
++ Variable declaration uses type inference such as i := 3 or s := "Hello, world!"
 + Semicolons still terminate statements; but are implicit when the end of a line occurs.
 + Methods may return multiple values, and returning a "result, err" pair(see SMS sample below)
-is the conventional way a method indicates an error to its caller in Go.
+is the conventional way a method indicates an error to its caller.
 + Uses nil instead of null.
 
 #### Links
