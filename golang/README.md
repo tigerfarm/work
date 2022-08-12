@@ -43,9 +43,9 @@ Note, has outdated syntax. Use the above sample programs.
 Install,
 + [Getting started](https://go.dev/learn/) with a download link.
 + I downloaded: https://go.dev/dl/go1.19.darwin-amd64.pkg
-+ Ran the package installer. It pause for a while, then completed.
++ I ran the package installer. It pause for a while, then completed.
 
-Post install.
+Post install, run the following to test Go commandline.
 ````
 $ ls /usr/local/go
 ...
@@ -57,7 +57,7 @@ $
 
 ## Run Hello World Golang Program
 
-[Tutorial: Get started with Go](https://go.dev/doc/tutorial/getting-started)
+Reference: [Tutorial: Get started with Go](https://go.dev/doc/tutorial/getting-started).
 
 In a working directory, create a Hello World program.
 ````
@@ -81,6 +81,9 @@ $ go run hello.go
 Hello 世界
 ````
 Make a change to hello.go.
+````
+    fmt.Println("Hello 世界, 早上")
+````
 Re-run.
 ````
 $ go run hello.go
@@ -104,6 +107,7 @@ Hello 世界, 早上 2
 
 In your working directory, create sms.go based on the 
 [Twilio Golang samples](https://github.com/twilio/twilio-go).
+This sample uses similar syntax to other language samples.
 ````
 package main
 
@@ -147,15 +151,16 @@ $ MY_PHONE_NUMBER=+16505552222
 Run sms.go.
 ````
 Remove the Hello World go.mod.
+$ rm go.mod
+
 Init go.mod: create the sms go.mod.
-Get the Twilio library.
+Get the Twilio module.
 Run sms.go.
 
-$ rm go.mod
 $ go mod init sms
 $ go get github.com/twilio/twilio-go
-go: added github.com/golang/mock v1.6.0
-go: added github.com/pkg/errors v0.9.1
+go: added ...
+...
 go: added github.com/twilio/twilio-go v0.26.0
 $ go run sms.go
 +++ Send an SMS.
