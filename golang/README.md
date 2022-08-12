@@ -156,9 +156,9 @@ Remove the Hello World go.mod.
 ````
 $ rm go.mod
 ````
-Init go.mod: create the sms go.mod.
-Get the Twilio module.
-Run sms.go.
++ Init go.mod: create the sms go.mod.
++ Get the Twilio module.
++ Run sms.go.
 ````
 $ go mod init sms
 $ go get github.com/twilio/twilio-go
