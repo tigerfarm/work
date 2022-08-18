@@ -1,4 +1,20 @@
-console.log("++ Create a text message for a Conversation.");
+console.log("++ Create a text message with media attached, for a Conversation.");
+//
+// I have not added the code to attach media.
+// Curl to add media resource:
+//  curl --data-binary @0graphic2s.jpg -H "Content-Type: image/jpeg" https://mcs.us1.twilio.com/v1/Services/IS5c86b7d0d6e44133acb09734274f94f6/Media -u $MASTER_ACCOUNT_SID:$MASTER_AUTH_TOKEN
+//  {"sid":"ME506c2de527d7005ed0bcb465b8464dd7","service_sid":"IS5c86b7d0d6e44133acb09734274f94f6", ... }
+// Another media resource:
+//  {"sid":"MEa8c53136b1efba640279eeef9eb7a75d", ...
+//  
+// media object[]: An array of objects that describe the Message's media, 
+// Each object contains these fields: 
+//      content_type with the MIME type of the media, 
+//      filename with the name of the media, 
+//      sid with the SID of the Media resource, and 
+//      size with the media object's file size in bytes. 
+// If the Message has no media, this value is null.
+//
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
 serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
@@ -24,7 +40,4 @@ client.conversations.services(serviceSid).conversations(conversationSid)
             exit();
         });
 
-// https://www.twilio.com/docs/conversations/api/conversation-message-resource?code-sample=code-create-a-conversation-message&code-language=Node.js&code-sdk-version=3.x
-// author: The channel specific identifier of the message's author. Defaults to system.
-// body: The content of the message, can be up to 1,600 characters long.
-
+// eof

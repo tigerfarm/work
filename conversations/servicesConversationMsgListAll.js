@@ -28,6 +28,13 @@ client.conversations.services(serviceSid).conversations(conversationSid)
                                     // + ", \"" + message.body.substring(0, 25) + "...\""
                                     + ", \"" + message.body + "\""
                                     );
+                            if (message.media !== null) {
+                                // [{"category":"media","filename":"0graphic1w.jpg","size":92724,"content_type":"image/jpeg","sid":"MEd373156040049ffa58a23a40ba2679e5"},{...}...]
+                                // console.log(JSON.stringify(message.media));
+                                message.media.forEach(media => {
+                                    console.log("++ SID: " + media.sid + " " + media.filename);
+                                });
+                            }
                         }));
         });
 

@@ -2,11 +2,18 @@
 // $ cd /Users/dthurston/2017m/tfpWebsite/docroot/tech/booksJava/projects/PhpBasics
 echo "\xA+++ Language tests.\xA";
 echo "\xA";
+
+echo "+ String index :" . strpos("[Response] HTTP 200", "HTTP") . ":\xA";
+echo "\xA";
+
 $anArray = split(" ", "hello over there, okay.");
 echo "Third = " . $anArray[2] . "\xA";
 foreach ($anArray as $eachOne) {
     echo "\xA" . $eachOne;
 }
+echo "\xA";
+echo substr('abcdef', 1);     // bcdef
+echo substr('abcdef', 1, 3);  // bcd
 echo "\xA";
 
 echo "\xA+ Current directory: ", getcwd();

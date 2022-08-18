@@ -19,6 +19,37 @@ Program language prefixes:
 [jSignatureValidationPost.java](jSignatureValidationPost.java), 
 includes code to automatically convert the Twilio POST body RAW data string into validation data.
 
+To run the Java program:
+````
+$ javac -cp twilio-8.18.0-jar-with-dependencies.jar jSignatureValidationPost.java
+...
+$ java -cp .:twilio-8.18.0-jar-with-dependencies.jar jSignatureValidationPost
+params.put("ToCountry", "US");  // US
+params.put("ToState", "CA");  // CA
+params.put("SmsMessageSid", "SM3558804311501f712c1b4772546a80e0");  // SM3558804311501f712c1b4772546a80e0
+params.put("NumMedia", "0");  // 0
+params.put("ToCity", "SAN BRUNO");  // SAN+BRUNO
+params.put("FromZip", "");  // 
+params.put("SmsSid", "SM3558804311501f712c1b4772546a80e0");  // SM3558804311501f712c1b4772546a80e0
+params.put("FromState", "CA");  // CA
+params.put("SmsStatus", "received");  // received
+params.put("FromCity", "");  // 
+params.put("Body", "you got it! 3");  // you+got+it%21+3
+params.put("FromCountry", "US");  // US
+params.put("To", "+16505552222");  // %2B16505552222
+params.put("ToZip", "94030");  // 94030
+params.put("NumSegments", "1");  // 1
+params.put("ReferralNumMedia", "0");  // 0
+params.put("MessageSid", "SM3558804311501f712c1b4772546a80e0");  // SM3558804311501f712c1b4772546a80e0
+params.put("AccountSid", "ACa...3");  // ACa...3
+params.put("From", "+16505551111");  // %2B16505551111
+params.put("ApiVersion", "2010-04-01");  // 2010-04-01
++ url :       https://tfpecho.herokuapp.com/inbound
++ signature : 123zg41LpXvfsjaiV+fT+vFlsAB=
++ params:     {ApiVersion=2010-04-01, SmsSid=SM3558804311501f712c1b4772546a80e0, SmsStatus=received, SmsMessageSid=SM3558804311501f712c1b4772546a80e0, NumSegments=1, ToState=CA, From=+16505551111, MessageSid=SM3558804311501f712c1b4772546a80e0, AccountSid=ACa...3, ToCity=SAN BRUNO, FromCountry=US, ToZip=94030, FromCity=, ReferralNumMedia=0, To=+16505552222, FromZip=, ToCountry=US, Body=you got it! 3, NumMedia=0, FromState=CA}
++ Signature validation is: true
+````
+
 ## Notes
 
 Signature Validation documentation [notes](https://www.twilio.com/docs/usage/security#notes).
