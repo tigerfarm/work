@@ -1,4 +1,4 @@
-# Twilio Chat Android Quickstart Implementation Steps
+# Twilio Functions using JWT for Authentication
 
 I read through the following document, and I see that there are a number of steps.
 Protect your Function with JSON Web Token
@@ -36,12 +36,24 @@ Scenario:
 + Generates a JWT token.
 + Responds to the request with a new JWT token, and response body: 'OK'.
 response.setBody('OK').appendHeader('access_token', token);
+````
+curl -i -L -X POST 'https://test-2357.twil.io/jwt' \
+-H 'Content-Type: application/json' \
+--data-raw '{
+    "username": "twilio",
+    "password": "ahoy"
+}'
+Returns:
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0d2lsaW8iLCJpc3MiOiJ0d2lsLmlvIiwib3JnIjoidHdpbGlvIiwicGVybXMiOlsicmVhZCJdLCJpYXQiOjE2NjI2NTc4NDQsImV4cCI6MTY2Mjc0NDI0NH0.3Ljfgp5eP7ekexG7jcAr0gwr4YFPq-6v8Dnk2E2Qnd0
+... OK
+````
 
-+ The requesting program would receive the the new JWT token, and store it for use when making other application requests that require a valid JWT token.
++ The requesting program would receive the the new JWT token(access_token), and 
+store it for use when making other application requests that require a valid JWT token.
 
 /bearer is a Twilio Function that receives a token, validates the token, and then processes the request.
 Scenario:
-+ The program makes a request to your Twilio Function: /bearer, including the valid JWT token in an HTTP header.
++ The program makes a request to your Twilio Function: /bearer, including the valid JWT token(access_token) in an HTTP header.
 + /bearer, receives the request.
 + Validates the JWT token.
 + If invalid, invalidate ('Unauthorized') response,
