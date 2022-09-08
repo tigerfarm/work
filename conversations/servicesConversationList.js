@@ -10,6 +10,7 @@ var acounter = 0;
 client.conversations.services(serviceSid).conversations.list({limit: 200})
         .then(conversations => {
             conversations.forEach(c => {
+                // + Conversation SID: CHcf287d6014d34cc68b89946c9baddd49 fn:c98 un:c98 state:active acounter = 89
                 acounter++;
                 console.log(
                         "+ Conversation SID: " + c.sid

@@ -5,6 +5,7 @@ $theFile = fopen($theFilename, "w");
 fwrite($theFile, "+ Top of file.\xA");
 $totalLines = 0;
 for ($i = 1; $i <= 10; $i++) {
+    // $theLine = "++ " . $i . "\r\n";
     $theLine = "++ " . $i . "\xA";
     fwrite($theFile, $theLine);
     $totalLines++;

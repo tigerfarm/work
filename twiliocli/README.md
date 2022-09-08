@@ -66,16 +66,34 @@ Create environment variables:
 ----------------------------------------------------------------------------------
 ### Setting Up Multiple Profiles
 
+Steps to add a subaccount profile.
 ````
-$ twilio login
+$ twilio login AC5...1
 ...
 [? The Account SID for your Twilio Account or Subaccount: AC5...1
 [? Your Twilio Auth Token for your Twilio Account or Subaccount: [hidden]
 [? Shorthand identifier for your profile: Writers
-[? Account credentials are currently stored in environment variables and will take precedence over the "Writers" profile when connecting to Twilio, unless the "Writers" profile is explicitly specified. Continue setting up "Writers" profile? Yes
-Created API Key SK6...9 and stored the secret in your keychain. See: https://www.twilio.com/console/runtime/api-keys/SK6...9
+[? Account credentials are currently stored in environment variables and will take precedence 
+over the "Writers" profile when connecting to Twilio, unless the "Writers" profile is explicitly specified. 
+Continue setting up "Writers" profile? Yes
+Created API Key SK6...9 and stored the secret in your keychain.
+See: https://www.twilio.com/console/runtime/api-keys/SK6...9
 twilio-cli configuration saved to "/Users/.../.twilio-cli/config.json"
 Saved Writers.
+$
+````
+The subaccount profile is now created.
+
+Once the subaccount profile is created, you can view the newly created API key, 
+from the Twilio Console: Account/Keys & Credentials/API keys & tokens.
+
+In this example:
+````
+Twilio-cli for dave on F...R
+SID: SK6...9
+````
+View the new profile.
+````
 $ cat /Users/.../.twilio-cli/config.json
 {"email":{},"prompts":{},"projects":[{"id":"Writers","accountSid":"AC5...1"}],"activeProject":null}
 $
