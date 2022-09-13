@@ -1,4 +1,4 @@
-# Getting Started with Twilio CLI
+# Getting Started with Twilio Go Library
 
 Twilio CLI [overview](https://www.twilio.com/cli),
 [quickstart](https://www.twilio.com/docs/twilio-cli/quickstart),
@@ -682,13 +682,13 @@ twilio api:bulkexports:v1:exports:jobs:create \
     --friendly-name ExportJuly27b \
     --start-day 2020-07-01 \
     --end-day 2020-07-27 \
-    --properties=friendlyName \
     --email dthurston@twilio.com \
     --webhook-method GET \
     --webhook-url http://www.example.com/echo
 
-Friendly Name
-ExportJuly27b
+Details  Email  End Day     Estimated Completion Time  Friendly Name  Job Queue Position  Job SID                             Resource Type  Start Day   Webhook Method  Webhook URL                             
+null     null   2022-09-07  2022-09-10T00:13:27.977    ExportJobs     2                   JSe1134e3eb0586e268fa340af53673b53  Calls          2022-09-07  GET             https://example.com/ExportJob2
+(The above is results from different create command)
 ````
 List the recent jobs.
 ````
@@ -738,10 +738,22 @@ Friendly Name  Start Day   End Day     Details
 ExportJuly27b  2020-07-01  2020-07-27  {"0":{"status":"Completed","count":27,"days":null}}
 ````
 
-Following needs to be re-tested.
+Get the completed report's URL for download.
 ````
-$ twilio api:bulkexports:v1:exports:days:fetch --resource-type=Messages --day=2020-07-26
-...
+$ twilio api:bulkexports:v1:exports:days:fetch --resource-type=Messages --day=2020-07-26 --properties=redirectTo
+Redirect To
+https://com-twilio-prod-exports.s3.amazonaws.com/daily/day%3D2020-07-26...
+````
+Download the file. It downloads as a GZIP file.
+Gunzip the file.
+List the file.
+````
+$ curl -X GET --output r.gz 'https://com-twilio-prod-exports.s3.amazonaws.com/daily/day%3D2020-07-26...'
+$ gunzip r.gz
+$ cat r
+{"from":"+1908...","sid":"CA9a967435e82eb9b94f2a45aa829d3be3",..,"direction":"inbound"}
+{"from":"+1908...","sid":"CAf54625b349558a2508a50a0051ad21a7",..,"direction":"inbound"}
+{"from":"+1908...","sid":"CAfeb0fa76d75011fe3faa4acbeddb0ded",..,"direction":"inbound"}
 ````
 
 ### BulkExport using cURL

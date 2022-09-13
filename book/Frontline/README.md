@@ -268,21 +268,24 @@ $ npm start
 > tfpfrontline@0.10.0 start
 > node src/index.js
 +++ Start Frontline CRM Application web server.
++ Set callbacks directory routes/index.js.
++ Get environment variables.
++ config.twilio.sso_realm_sid: JB3a...9
++ config.twilio.account_sid: ACa...3
++ config.twilio.sms_number: +12...2
++ config.twilio.whatsapp_number: whatsapp:+1415...6
 Application started at 8000
 
-Information added into: .../src/routes/callbacks/crm.js
+Log messages added into: .../src/routes/callbacks/crm.js
 ````
 const handleGetCustomerDetailsByCustomerIdCallback = async (req, res) => {
+    console.log('+ Getting Customers details: handleGetCustomerDetailsByCustomerIdCallback');
     const body = req.body;
-    console.log('Getting Customer details: ', body.CustomerId);
-
-    const workerIdentity = req.tokenInfo.identity;
+    const workerIdentity = req.body.Worker;
     const customerId = body.CustomerId;
-
-    // Fetch Customer Details based on his ID
-    // and information about a worker, that requested that information
+    console.log('+ Getting Customer details, customerId: ', customerId);
     const customerDetails = await getCustomerById(customerId);
-
+    console.log('+ customerDetails: ', customerDetails);
     // Respond with Contact object
     res.send({
         objects: {
@@ -304,10 +307,11 @@ const handleGetCustomerDetailsByCustomerIdCallback = async (req, res) => {
 
 [Get Customer Details By Customer Id](https://www.twilio.com/docs/frontline/my-customers#getcustomerdetailsbycustomerid)
 
+Note, the following will fail because a x-twilio-signature header is required.
+
 Request example:
 ````
 curl -X POST 'http://localhost:8000/callbacks/crm?location=GetCustomerDetailsByCustomerId' \
-   --data-urlencode "Token=JWT token" \
    --data-urlencode "Worker=john@example.com" \
    --data-urlencode "CustomerId=1"
 ````
@@ -329,7 +333,6 @@ JSON response example:
 Request example:
 ````
 curl -X POST 'http://localhost:8000/callbacks/crm?location=GetCustomersList' \
-   --data-urlencode "Token=JWT token" \
    --data-urlencode "Worker=john@example.com" \
    --data-urlencode "PageSize=30"
 ````

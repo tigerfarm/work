@@ -23,6 +23,8 @@ Syntax:
 + Methods may return multiple values, and returning a "result, err" pair(see SMS sample below)
 is the conventional way a method indicates an error to its caller.
 + Uses nil instead of null.
++ Upper case variables for public access.
++ Lower case variables for private access.
 
 #### Links
 
@@ -38,6 +40,8 @@ is the conventional way a method indicates an error to its caller.
 
 [Blog, How to Send an SMS with Golang](https://www.twilio.com/blog/send-sms-30-seconds-golang).
 Note, has outdated syntax. Use the above sample programs.
+
+[Getting Started on Heroku with Go](https://devcenter.heroku.com/articles/getting-started-with-go)
 
 ## Install and Test Golang Command line
 
@@ -177,6 +181,12 @@ Note, like a scripting language, you can make changes to sms.go program and reru
 $ go run sms.go
 ...
 ````
+
+Use the following to update library version.
+````
+$ go get
+````
+For example, it’ll pull 0.26.0 instead of 1.0.0.rc-8.
 
 --------------------------------------------------------------------------------
 Cheers...

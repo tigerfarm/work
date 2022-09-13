@@ -76,5 +76,19 @@ Actually response JSON data received by the requesting program:
 + The requesting program receives and processes the response.
 
 --------------------------------------------------------------------------------
+### Use a Header to Contain the Username and Password
+
+HTTP Authorization header,
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization
+````
+Syntax:
+Authorization: <auth-scheme> <authorization-parameters>
+Basic authentication:
+Authorization: Basic <credentials>
+```` 
+Format example:
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization#basic_authentication
+
+--------------------------------------------------------------------------------
 
 Cheers...
