@@ -1,4 +1,5 @@
 <?php
+error_reporting( E_ALL ^ ( E_NOTICE | E_WARNING | E_DEPRECATED ) );
 // Docs: https://www.twilio.com/docs/phone-numbers/api/available-phone-numbers
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;

@@ -7,7 +7,7 @@ var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID
 
 serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 // serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6'; // Frontline
-console.log("+ Conversatios service SID: " + serviceSid);
+console.log("+ Conversations for a Twilio Conversations service SID: " + serviceSid);
 client.conversations.services(serviceSid).conversations.list({limit: 200})
         .then(conversations => conversations.forEach(c => {
                 console.log("+ Conversation SID: " + c.sid + " " + c.friendlyName);
