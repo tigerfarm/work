@@ -10,7 +10,7 @@
     "start": "node webserver.js"
   },
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
     "twilio": "^3.31.0"
   },
   "repository": {

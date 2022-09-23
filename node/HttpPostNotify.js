@@ -3,8 +3,8 @@ var basicAuth = "Basic " + Buffer.from(process.env.MASTER_ACCOUNT_SID + ":" + pr
 console.log('+ basicAuth: ' + basicAuth);
 var theRequestUrl = "https://notify.twilio.com/v1/Services/" + process.env.MASTER_NOTIFY_SID + "/Notifications";
 console.log('+ theRequestUrl: ' + theRequestUrl);
-var ToBindings1 = "ToBinding=" + JSON.stringify({ "binding_type": "sms", "address": "+16504837603" });
-var ToBindings = ToBindings1 + "&ToBinding=" + JSON.stringify({ "binding_type": "sms", "address": "+16508661366" });
+var ToBindings1 = "ToBinding=" + JSON.stringify({ "binding_type": "sms", "address": process.env.MY_PHONE_NUMBER });
+var ToBindings = ToBindings1 + "&ToBinding=" + JSON.stringify({ "binding_type": "sms", "address": process.env.MASTER_PHONE_NUMBER_1 });
 console.log('+ ToBindings: ' + ToBindings);
 var theMessage = "Hello there 1";
 console.log('+ theMessage: ' + theMessage);
