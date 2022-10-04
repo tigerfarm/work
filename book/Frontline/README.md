@@ -12,8 +12,10 @@ Links:
 + [Frontline Integration Service Example](https://github.com/twilio/frontline-demo-service).
 + [Test Frontline login](https://frontline.twilio.com/login)
 
+--------------------------------------------------------------------------------
 Frontline implementation setup components:
 + Added an organization using Twilio Console, Project: [Admin Center](https://www.twilio.com/console/admin).
+    This creates an JB id.
 + My Okta account is configured for the Frontline app.
     It uses the Realm SID (starts with JB) from the Twilio Console: Frontline/Manage/SSO/Log in
 + Okta account settings are configured in Twilio Console: Frontline/Manage/SSO/Log in
