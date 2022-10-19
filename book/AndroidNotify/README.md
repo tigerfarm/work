@@ -3,17 +3,70 @@
 Following, are the steps I used to set up required configurations and run the sample Twilio notification app on my phone.
 This allows notifications to be sent from my computer, and received on the phone that is running the notification app.
 
-Once all requirements are configured and the Notify App compiled,
-I ran the Notify App on my phone.
-In the app, I register a user identity. The identity is used on the server side to create a Twilio Notify Binding.
-````
-User Notify App >> Twilio Function: register binding >> Twilio creates a Notify Binding.
+--------------------------------------------------------------------------------
+### Components and Configurations
 
-Laptop program to send a notification >> Twilio >> Google >> Twilio Notify phone app
-Requires a mapping from Twilio to the phone app, through Google.
-Create a Google project FCM phone app token.
-The Google token, is stored by Twilio to address the phone app.
+Android Notify app is configured using:
 ````
+Firebase project: tignotify
+````
+From the project, I downloaded the file: google-services.json,
+which is included in the Android app, app directory (see below).
+````
+...
+"project_number": "57...1"
+...
+"api_key": [
+        {
+          "current_key": "AIza...LdQ"
+        }
+      ],
+...
+````
+Android Notify app,
++ Calls the Twilio Classic Function: /register-binding
+    Which uses Notify service: IS6b86eea51935a036f0ae440652761e8a
++ Bindings will be registered to that Notify service.
+
+Twilio Console Notify credentials configurations,
+````
+Name: tignotify
+SID: CR974006399e509f2f1fe0d9930f1b121f
+FCM Secret: AAAA...VoTx (from the Firebase project)
+````
+Twilio Console Twilio Notify service,
+````
+Name: Android Notify app
+SID: IS6b86eea51935a036f0ae440652761e8a
+FCM CREDENTIAL SID: tignotify
+MESSAGING SERVICE SID: Default Twilio SMS message
+````
+
+I ran the Notify App on my phone.
+In the app, I register a user identity: davea.
+````
+$ node listBindings.js 
++++ List bindings for a Notify service.
++ Notify service SID: IS6b86eea51935a036f0ae440652761e8a
++ The listing:
+++ Binding-SID bindingType(fcm,apn):identity<address>)
+++ BS9f6046e01845afd2407271b47d8637ff fcm:davea<faR...s7V>
+
+$ node sendNotification.js
++++ Start sending notifications to an identity.
++ Notify service SID: IS6b86eea51935a036f0ae440652761e8a to theIdentity: davea
++ Sent: NT3ed9c8e73cb6fc41c7ce979adc02b8a5
+````
+The notification shows on my phone.
+
+Then, I can view the log in the Twilio Console:
+````
+Develop/Notify/Services click Android Notify app.
+Click left menu item: Logs.
+2022-10-19 00:30:08.91 UTC faR...s7V  fcm  davea  BS9f6046e01845afd2407271b47d8637ff  SENT	
+````
+
+--------------------------------------------------------------------------------
 #### Clone the Twilio Notify App repository
 
 ````
@@ -31,7 +84,8 @@ notifications-quickstart-android
 Create a Notify Service Instance: [Twilio Console link](https://www.twilio.com/console/notify/services) 
 ([Tutorial docs](https://www.twilio.com/docs/notify/quickstart/android)). Example SID:
 ````
-IS6b86eea51935a036f0ae440652761e8a
+Name: p1Android
+SID: IS6b86eea51935a036f0ae440652761e8a
 ````
 
 #### Create a Google App Mapping to the Notify App
@@ -59,8 +113,7 @@ $ pwd
 $ cat google-services.json
 {
   "project_info": {
-    "project_number": "5...",
-    "firebase_url": "https://tignotify.firebaseio.com",
+    "project_number": "57...1",
     "project_id": "tignotify",
 ...
 ````
@@ -74,7 +127,7 @@ Add the key value into a newly [created/added Push Credential](https://www.twili
 ````
 Friendly Name: tignotify
 Type: FCM
-FCM Secret: AAA...oTx (Server key Token)
+FCM Secret: AAA...VoTx (Server key Token)
 Click Save.
 ````
 In the tignotify Notify Service Instance, select FCM CREDENTIAL SID: tignotify. Click Save.
@@ -101,6 +154,9 @@ In the Notify app source code, enter the Twilio Function Register binding URL.
 ````
 Example: https://about-time-2357.twil.io/register-binding
 Don't include, "/register-binding".
+
+File:
+notifications-quickstart-android/app/src/main/java/com/twilio/notify/quickstart/notifyapi/TwilioFunctionsAPI.java
 
 public class TwilioFunctionsAPI {
     // The URL below should be the domain for your Twilio Functions, without the trailing slash:

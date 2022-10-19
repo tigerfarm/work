@@ -12,6 +12,8 @@ and create my personal website [https://tigerfarmpress.com](https://tigerfarmpre
 
 On your GitHub repository home page, add a new repository by clicking the "+" icon (top right), and clicking New repository.
 
+To make it private, go to Settings/General/Danger Zone/Change repository visibility, click Change visibility. Select Make private.
+
 Create a local project repository directory on your computer.
 ````
 cd /Users/user/Projects/
@@ -214,6 +216,15 @@ Check build packs. Set a build pack.
 ````
 $ heroku buildpacks 
 $ heroku buildpacks:set heroku/nodejs
+````
+
+Get account information,
+````
+$ heroku ps 
+Free dyno hours quota remaining this month: 734h 46m (73%)
+Free dyno usage for this app: 8h 53m (0%)
+For more information on dyno sleeping and how to upgrade, see:
+https://devcenter.heroku.com/articles/dyno-sleeping
 ````
 
 #### Other Heroku commands

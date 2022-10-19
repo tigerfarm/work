@@ -1,4 +1,4 @@
-console.log("++ List Conversations.");
+console.log("++ List and remove conversations.");
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
 console.log("+ Conversations SID/friendlyName/uniqueName/createdBy");

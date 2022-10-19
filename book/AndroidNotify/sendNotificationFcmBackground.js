@@ -8,16 +8,19 @@ const notifyServiceSid = "IS6b86eea51935a036f0ae440652761e8a";       // Notify: 
 const theIdentity = "davea";
 console.log("+ Notify service SID: " + notifyServiceSid + " to theIdentity: " + theIdentity)
 client.notify.services(notifyServiceSid).notifications.create({
-    // DeliveryCallbackUrl: 'https://example.com/notify',
-    DeliveryCallbackUrl: 'https://tfpecho.herokuapp.com/notify',
     identity: theIdentity,
-    title: 'Notify title 1',
-    body: 'Hello there 1'
-    // , fcm: {notification: {title: 'Newalert', body: 'Hello Bob!'}}
+    title: 'Notify foreground title',
+    body: 'Hello from the foreground 1',
+    fcm: {
+        notification: {
+            title: 'Notify background title',
+            body: 'Hello from the background 3a',
+            priority: "high"
+        }
+    }
 }).then(notification => console.log("+ Sent: " + notification.sid))
         .catch(error => console.log(error));
 
+// Notification with badge value:
+//  https://www.twilio.com/docs/notify/send-notifications?code-sample=code-send-a-detailed-notification-with-badge&code-language=Node.js&code-sdk-version=3.x
 
-// Twilio Notify service: notifyweb
-// Change FCM CREDENTIAL SID From: twilionotify
-// to: tignotify

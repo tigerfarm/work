@@ -1,10 +1,21 @@
 # Manage Google Contacts
 
-[A getting started blog](https://www.nylas.com/blog/google-people-api-vs-contacts-api-migration)
+[Google Cloud Console](https://console.cloud.google.com), I selected my project: Access Contacts.
+Click Dashboard to see the project information.
++ API/Credentials to see the Client ID oAuth credentials.
 
 Getting started using the Google People API.
 https://developers.google.com/people/v1/getting-started
+To get started using People API, you need to first use the [setup tool](https://console.developers.google.com/start/api?id=people.googleapis.com&credential=client_key), 
+which guides you through creating a project in the Google API Console, 
+enabling the API, and creating credentials.
++ I used the setup tool to enable People API.
++ Get the [Node.js library](https://developers.google.com/people/v1/libraries#nodejs).
++ [Developer's Guide](https://github.com/googleapis/google-api-nodejs-client)
+  or web page formated: [Google APIs Node.js Client](https://googleapis.dev/nodejs/googleapis/latest/people/index.html)
++ [API Explorer](https://developers.google.com/apis-explorer/#p/people/v1/)
 
+--------------------------------------------------------------------------------
 Step 3. Set up your app,
 + [Authorization](https://developers.google.com/people/v1/how-tos/authorizing): Before making an API request, set up authorization.
 + [Client libraries](https://developers.google.com/people/v1/libraries) such as Java or PHP.
@@ -13,6 +24,8 @@ Step 3. Set up your app,
 Related article regarding Google credentials,
 [How to use Google credentials with CodeExchange Quick Deploy](https://www.twilio.com/blog/how-to-use-google-credentials-with-codeexchange-quick-deploy):
 Gathering your credentials
+
+[A getting started blog](https://www.nylas.com/blog/google-people-api-vs-contacts-api-migration)
 
 --------------------------------------------------------------------------------
 ## Authorization
