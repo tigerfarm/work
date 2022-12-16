@@ -1,5 +1,5 @@
 <?php
-
+error_reporting( E_ALL ^ ( E_NOTICE | E_WARNING | E_DEPRECATED ) );
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 
 use Twilio\Rest\Client;

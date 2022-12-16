@@ -1,5 +1,6 @@
 console.log("++ Create an SMS participant for a Conversation.");
 // https://www.twilio.com/docs/conversations/api/service-participant-resource
+// https://www.twilio.com/docs/conversations/quickstart?code-sample=code-add-a-conversation-participant-sms
 var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
 
 serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
