@@ -49,6 +49,9 @@ Participant#3 >> Chat >> Twilio >> Conversations service + conversation >> messa
 ````
 
 #### Program steps to create a test group of participants.
+
+The programs used in the following, can be found on my 
+[work GitHub responsitory](./).
 ````
 $ export CONVERSATIONS_SERVICE_SID=IS5c86b7d0d6e44133acb09734274f94f6
 $ echo $CONVERSATIONS_SERVICE_SID
