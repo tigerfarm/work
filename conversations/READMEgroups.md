@@ -50,8 +50,7 @@ Participant#3 >> Chat >> Twilio >> Conversations service + conversation >> messa
 
 #### Program steps to create a test group of participants.
 
-The programs used in the following, can be found on my 
-[work GitHub responsitory](./).
+The programs used in the following, can be found on this [GitHub responsitory](./).
 ````
 $ export CONVERSATIONS_SERVICE_SID=IS5c86b7d0d6e44133acb09734274f94f6
 $ echo $CONVERSATIONS_SERVICE_SID
@@ -97,6 +96,9 @@ $ node servicesConversationParticipantsList.js
 ````
 
 ### Case where there is more than 2 participants in a Conversation and at least 1 is an SMS participant.
+
+The issue, is that the SMS participant does not know who sent/created the new conversation message.
+The following shows a method to add the from-conversation-user-identity into the message.
 
 ````
 Add a Twilio Function that will add the from-participant's identity into the message.
