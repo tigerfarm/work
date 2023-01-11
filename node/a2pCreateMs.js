@@ -7,7 +7,7 @@ client.messaging.v1.services('MG634319110a48b2e82f1a08247cd8f0ba')
             optInKeywords: ['START', 'BEGIN'],
             optInMessage: 'Thanks for subscribing',
             description: 'Send marketing messages about sales and offers',
-            message_flow: 'End user consent is received by email today',
+            messageFlow: 'End user consent is received by email today',
             messageSamples: ['Message Sample 1', 'Message Sample 2'],
             usAppToPersonUsecase: 'MARKETING',
             hasEmbeddedLinks: true,
