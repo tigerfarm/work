@@ -5,13 +5,13 @@ require __DIR__ . '/../../twilio-php-main/src/Twilio/autoload.php';
 
 use Twilio\Rest\Client;
 use Twilio\Exceptions\RestException;
-$client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
-// $fromPhoneNumber = getenv('MASTER_PHONE_NUMBER_2');
-$fromPhoneNumber = "+16508661366";
+$client = new Client(getenv('MAIN_ACCOUNT_SID'), getenv('MAIN_AUTH_TOKEN'));
+// $fromPhoneNumber = getenv('MAIN_PHONE_NUMBER_2');
+$fromPhoneNumber = getenv('MAIN_PHONE_NUMBER_3');
 // $toPhoneNumber = '+16515551212';
 $toPhoneNumber = getenv('MY_PHONE_NUMBER');
 // $toPhoneNumber = '+16505550077';
-// $toPhoneNumber = getenv('MASTER_PHONE_NUMBER_1');
+// $toPhoneNumber = getenv('MAIN_PHONE_NUMBER_1');
 // $fromPhoneNumber = 'whatsapp:+14155551111';
 // $toPhoneNumber = 'whatsapp:+1605552222';
 //
