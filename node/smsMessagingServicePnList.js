@@ -2,14 +2,16 @@
 
 console.log("++ Fetch SMS message log information.");
 var client = require('twilio')(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
-console.log("+ Account SID: " + process.env.ACCOUNT_SID);
-client.messaging.v1.services
-        .each(ms => {
+let theMessageServiceSid = 'MG59cd7596af3f40b86bce2052ded6b034';
+console.log("+ Account SID: " + process.env.ACCOUNT_SID + " Message SID: " + theMessageServiceSid);
+client.messaging.v1.services(theMessageServiceSid)
+        .phoneNumbers
+        .each(pn => {
             console.log(
-                    "+ Message SID: " + ms.sid
-                    , ' friendlyName: ' + ms.friendlyName
+                    '++ phoneNumber: ' + pn.phoneNumber
                     // , '\n++ links phone numbers: ' + ms.links.phone_numbers
                     // , '\n++ links: ' + JSON.stringify(ms.links)
                     );
         });
+
            
