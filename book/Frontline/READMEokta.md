@@ -16,7 +16,8 @@ Links:
 Frontline implementation setup components:
 + Added an organization using Twilio Console, Project: [Admin Center](https://www.twilio.com/console/admin).
 + My Okta account is configured for the Frontline app.
-    It uses the Realm SID (starts with JB SID) from Twilio Console: Frontline/Manage/SSO/Log in. The JB SID is created when "Create" is clicked in Frontline/Overview.
+    It uses the Realm SID (starts with JB SID) from Twilio Console: Frontline/Manage/SSO/Log in. 
+        The JB SID is created when "Create" is clicked in Frontline/Overview.
 + Okta account settings are configured in Twilio Console: Frontline/Manage/SSO/Log in
 + I can log into the Frontline app on my Android phone.
 + I setup a localhost Frontline server side application to server customer data to the Frontline app, through Ngrok.

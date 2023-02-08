@@ -5,21 +5,21 @@ require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 
 // $client = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
-// $client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
-$client = new Client(getenv('MASTER_API_KEY'),getenv('MASTER_API_KEY_SECRET'),getenv('MASTER_ACCOUNT_SID'));
+// $client = new Client(getenv('MAIN_ACCOUNT_SID'), getenv('MAIN_AUTH_TOKEN'));
+$client = new Client(getenv('MAIN_API_KEY'),getenv('MAIN_API_KEY_SECRET'),getenv('MAIN_ACCOUNT_SID'));
 // $client = new Client(getenv('LABS_ACCOUNT_SID'), getenv('LABS_AUTH_TOKEN'));
 //
 // $fromPhoneNumber = "david";
-// $toPhoneNumber = getenv('MASTER_UK');
+// $toPhoneNumber = getenv('MAIN_UK');
 //
 // $fromPhoneNumber = getenv('PHONE_NUMBER4');
-$fromPhoneNumber = getenv('MASTER_PHONE_NUMBER_1');
+$fromPhoneNumber = getenv('MAIN_PHONE_NUMBER_1');
 // $fromPhoneNumber = 'DAVEnnec';
 // $fromPhoneNumber = 'DAVENN';
 // $toPhoneNumber = '+16515551212';
 // $toPhoneNumber = getenv('PHONE_NUMBER3');
 $toPhoneNumber = getenv('MY_PHONE_NUMBER');
-// $toPhoneNumber = getenv('MASTER_PHONE_NUMBER_1');
+// $toPhoneNumber = getenv('MAIN_PHONE_NUMBER_1');
 // $fromPhoneNumber = 'whatsapp:+14155551111';
 // $toPhoneNumber = 'whatsapp:+1605552222';
 // $toPhoneNumber = '+12098319168'; // : Sample landline phone number';

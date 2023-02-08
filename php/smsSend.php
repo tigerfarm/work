@@ -1,8 +1,6 @@
 <?php
 echo "++ Send SMS message with error checking.\xA";
-
 require __DIR__ . '/../../twilio-php-main/src/Twilio/autoload.php';
-
 use Twilio\Rest\Client;
 use Twilio\Exceptions\RestException;
 $client = new Client(getenv('MAIN_ACCOUNT_SID'), getenv('MAIN_AUTH_TOKEN'));

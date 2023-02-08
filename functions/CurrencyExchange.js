@@ -1,6 +1,6 @@
 const got = require('got');
 exports.handler = function (context, event, callback) {
-    console.log("+ Memory: " + event.Memory );
+  console.log("+ Memory: " + event.Memory );
   const answers = JSON.parse(event.Memory).twilio.collected_data.convert_currencies.answers;
   const cur_from = answers.cur_from.answer.toUpperCase();
   const cur_to = answers.cur_to.answer.toUpperCase();

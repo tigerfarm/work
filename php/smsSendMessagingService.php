@@ -1,10 +1,10 @@
 <?php
+echo "++ Send SMS message using a Messaging Service.\xA";
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 use Twilio\Exceptions\RestException;
-// $client = new Client(getenv('ACCOUNT_SID'), getenv('AUTH_TOKEN'));
-$client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
-$fromMs = 'MG44e9e310ae478d5635bc11685758da4a';
+$client = new Client(getenv('MAIN_ACCOUNT_SID'), getenv('MAIN_AUTH_TOKEN'));
+$fromMs = 'MG84efa27ae1c252e334ff357fc1aa760e';
 $toPhoneNumber = getenv('MY_PHONE_NUMBER');
 // $toPhoneNumber = getenv('PHONE_NUMBER3');
 $theMessage = "Twilio support test message #2";
