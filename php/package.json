@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "twilio-chat": "^5.0.1"
+    "twilio-chat": "^6.0.0"
   }
 }
