@@ -2,6 +2,6 @@
   "dependencies": {
     "fs": "^0.0.1-security",
     "moment-timezone": "^0.5.34",
-    "twilio": "^3.84.1"
+    "twilio": "^4.7.2"
   }
 }
