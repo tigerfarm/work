@@ -1,7 +1,15 @@
 console.log("++ Create an SMS participant for a Conversation.");
 // https://www.twilio.com/docs/conversations/api/service-participant-resource
-// https://www.twilio.com/docs/conversations/quickstart?code-sample=code-add-a-conversation-participant-sms
-var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
+var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
+// 
+// https://www.twilio.com/docs/conversations/api/conversation-participant-resource?code-sample=code-create-conversation-participant-sms&code-language=Node.js&code-sdk-version=4.x
+//    "identity": null,
+//    "messaging_binding": {
+//      "type": "sms",
+//      "address": "+15558675310"
+//      "proxy_address": "+15017122661"
+//    },
+// 
 
 serviceSid = process.env.CONVERSATIONS_SERVICE_SID;         // Conversation service: Testing
 // serviceSid = 'IS186702e405b74452a449d67b9265669f';       // Frontline

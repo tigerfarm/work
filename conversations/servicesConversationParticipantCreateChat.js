@@ -1,7 +1,11 @@
 console.log("++ Create an Chat participant for a conversation.");
 // https://www.twilio.com/docs/conversations/api/service-participant-resource
-var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
+var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 
+// https://www.twilio.com/docs/conversations/api/conversation-participant-resource?code-sample=code-create-conversation-participant-chat&code-language=Node.js&code-sdk-version=4.x
+//    "identity": "davehere",
+//    "messaging_binding": null,
+// 
 serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 conversationSid = process.env.CONVERSATION_SID;
 // serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline

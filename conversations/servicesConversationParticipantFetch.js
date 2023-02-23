@@ -13,7 +13,8 @@ var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, 
 //
 serviceSid = "IS5c86b7d0d6e44133acb09734274f94f6";          // testing
 conversationSid = "CHe02e49468eb64f8aaa92a845f10ece78";     // abc
-participantSid = 'MBf494fc53a1444dc983319d37fc70fe1b';      // Dave
+// participantSid = 'MBf494fc53a1444dc983319d37fc70fe1b';      // Dave
+participantSid = 'MBf8a48f0dd6f644a489156c65cba79adb';      // SMS participante
 
 console.log("+ Conversation SID: " + conversationSid
         + " Participant SID: " + participantSid
@@ -38,10 +39,12 @@ client.conversations.services(serviceSid).conversations(conversationSid)
                 if (p.messagingBinding.proxy_address !== null) {
                     theProxyAddress = " proxy_address:" + p.messagingBinding.proxy_address;
                 } else {
+                    // No proxy_address, which is a Twilio phone number.
                     theType = theType + "(Group MMS)";
                 }
                 theProjectedAddress = "";
-                if (p.messagingBinding.projected_address !== undefined) {
+                if (p.messagingBinding.projected_address !== undefined && p.messagingBinding.projected_address !== null) {
+                    // Chat participant in a Group MMS conversation, has a projected_address.
                     theProjectedAddress = " projected_address:" + p.messagingBinding.projected_address;
                 }
                 console.log("+ Participant SID: " + p.sid + ","
