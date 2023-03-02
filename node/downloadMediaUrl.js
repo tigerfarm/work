@@ -13,7 +13,7 @@ async function SaveMedia(mediaUrl, filename) {
         response.body.pipe(fileStream);
         fileStream.on("finish", () => {
             fileStream.close();
-            console.log("+ Download Complete.");
+            console.log("+ Download complete, and file written.");
         });
     }
 }
