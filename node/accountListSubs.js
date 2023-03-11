@@ -2,7 +2,7 @@ console.log("+++ Start.");
 // Documentation:
 // https://www.twilio.com/docs/iam/api/subaccounts?code-sample=code-return-a-subaccount-resource-by-its-account-sid-8
 
-var client = require('twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
+var client = require('twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 
 client.api.accounts.list({status: "active"}).then(accounts =>
     accounts.forEach(

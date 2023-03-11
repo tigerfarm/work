@@ -654,6 +654,46 @@ The resource was deleted successfully
 ````
 
 ----------------------------------------------------------------------------------
+### Usage using Twilio CLI
+````
+$ twilio --help api:core:usage
+TOPICS
+  api core usage records   Twilio account usage records
+  api core usage triggers  Webhooks that notify you of usage thresholds
+
+$ twilio --help api:core:usage:records
+TOPICS
+  api core usage records all-time    Usage records for all time
+  api core usage records daily       Usage records summarized by day
+  api core usage records last-month  Usage records for last month
+  api core usage records monthly     Usage records summarized by month
+  api core usage records this-month  Usage records for this month
+  api core usage records today       Usage records for today
+  api core usage records yearly      Usage records summarized by year
+  api core usage records yesterday   Usage records for yesterday
+COMMANDS
+  api core usage records list  Retrieve a list of usage-records belonging to the account used to make the request
+
+$ twilio --help api:core:usage:records:list
+Retrieve a list of usage-records belonging to the account used to make the request
+USAGE
+  $ twilio api:core:usage:records:list [-l debug|info|warn|error|none] [-o columns|json|tsv|none] [--silent] [-p <value>] 
+    [--account-sid <value>] [--category <value>] [--start-date <value>] [--end-date <value>] [--include-subaccounts] [--page-size <value>] [--properties <value>] [--no-header] [--limit <value> | ]
+````
+
+REST API: Usage Records, WhatsApp Business API Categories:
+https://www.twilio.com/docs/usage/api/usage-record#usage-whatsapp
+
+````
+$ twilio api:core:usage:records:list --category channels-whatsapp-outbound --start-date 2023-01-01 --end-date 2023-06-06
+Category                    Start Date  End Date    Count  Count Unit
+channels-whatsapp-outbound  2023-01-01  2023-03-07  1      messages
+$ twilio api:core:usage:records:list --category channels-whatsapp-inbound --start-date 2023-01-01 --end-date 2023-06-06
+Category                   Start Date  End Date    Count  Count Unit
+channels-whatsapp-inbound  2023-01-01  2023-03-07  2      messages
+````
+
+----------------------------------------------------------------------------------
 ### BulkExport using Twilio CLI
 
 We have a new API for pulling logs, BulkExport API. Custom BulkExport Jobs allow you to create exports for any date range.
