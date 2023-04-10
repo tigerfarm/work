@@ -19,7 +19,7 @@ client.conversations.services(serviceSid).conversations(conversationSid)
         .participants
         .create({
             messagingBinding: {
-                projectedAddress: process.env.MASTER_PHONE_NUMBER_1 // Twilio phone number.
+                projectedAddress: process.env.MAIN_PHONE_NUMBER_1 // Twilio phone number.
             },
             identity: participantIdentity,
             attributes: JSON.stringify({name: participantIdentity})

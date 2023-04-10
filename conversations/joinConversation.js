@@ -1,5 +1,5 @@
 console.log("++ List Conversations.");
-var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
+var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 
 // app.get('/joinConversation', function (req, res) {
 // Can join a conversation using either the SID or unique name.

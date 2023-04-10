@@ -63,6 +63,17 @@ Create environment variables:
 - `TWILIO_API_KEY` = your Twilio CLI API Key SID, starts with "SK".
 - `TWILIO_API_SECRET` = the secret text string for the API Key.
 
+#### Install a Plugin
+
+Example to install the token generator plugin:
+````
+$ npm update -g twilio-cli
+...
+$ twilio plugins:install @twilio-labs/plugin-token
+...
+$ twilio token:chat --identity dave --chat-service-sid IS5c86b7d0d6e44133acb09734274f94f6
+    TypeError: undefined is not iterable (cannot read property Symbol(Symbol.iterator))
+````
 ----------------------------------------------------------------------------------
 ### Setting Up Multiple Profiles
 

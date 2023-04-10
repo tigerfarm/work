@@ -115,7 +115,7 @@ SMS participant(+16505551111) sends a message to the conversation twilio phone n
 Twilio SMS service receives the message: "Hello".
 The Twilio Convesations backend receives the message.
 The Twilio Function adds the from-participant's identity into the message: "From: +16505551111, Hello".
-The enhanced message is sent by the Twilio Convesations backend to participants of the conversation.
+The enhanced message is sent by the Twilio Conversations backend to participants of the conversation.
 The enhanced message received by participants: "From: +16505551111, Hello".
 ````
 

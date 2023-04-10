@@ -1,5 +1,5 @@
 console.log("+++ List a conversation's message delivery information.");
-var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
+var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 //
 conversationSid = "CHe5581f6e4299402aa77ef237a44c3c40"; // Default: tfpecho
 messageSid = "IM62f30f1d99b64c909cf5627682998e7c";

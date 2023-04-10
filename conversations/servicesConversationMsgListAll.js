@@ -1,10 +1,11 @@
 console.log("+++ List all messages for a services's conversation.");
-var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
+var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 //
-serviceSid = process.env.CONVERSATIONS_SERVICE_SID;     // Default
-conversationSid = process.env.CONVERSATION_SID;
-// serviceSid = 'IS186702e405b74452a449d67b9265669f';   // Frontline
+// serviceSid = process.env.CONVERSATIONS_SERVICE_SID;     // Default
+// conversationSid = process.env.CONVERSATION_SID;
+serviceSid = 'IS186702e405b74452a449d67b9265669f';   // Frontline
 // conversationSid = "CH0d499dee76f04d5b97ee6bf27e72a3cd"; // Default: tfpecho
+conversationSid = "CH3b88e37c89ce4e39955dd734364c5a78";
 console.log("+ Conversations service SID: " + serviceSid);
 console.log("+ Conversation SID: " + conversationSid);
 client.conversations.services(serviceSid).conversations(conversationSid)

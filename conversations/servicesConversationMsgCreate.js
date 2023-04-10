@@ -1,15 +1,15 @@
 console.log("++ Create a text message for a Conversation.");
-var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
+var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 
 serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
-// serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
 // conversationSid = process.env.CONVERSATION_SID;
-conversationSid = "CHe02e49468eb64f8aaa92a845f10ece78";
+serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
+conversationSid = "CH99fa94032181488888e0491e0a62b95c";
 console.log("+ Conversations service SID: " + serviceSid);
 console.log("+ Conversation SID: " + conversationSid);
 //
-participantIdentity = 'daveg2';
-messageText = 'msg2a';
+participantIdentity = 'cs1';
+messageText = 'msg2aa';
 console.log("+ Participant Identity: " + participantIdentity
         + " messageText: " + messageText
         );

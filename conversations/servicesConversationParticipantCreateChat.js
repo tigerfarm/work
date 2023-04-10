@@ -6,14 +6,14 @@ var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, 
 //    "identity": "davehere",
 //    "messaging_binding": null,
 // 
-serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
+// serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 conversationSid = process.env.CONVERSATION_SID;
-// serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
-// conversationSid = "CHf0220442f8974f559ba663c660f0bcea";
+serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
+conversationSid = "CH99fa94032181488888e0491e0a62b95c";
 console.log("+ Conversations service SID: " + serviceSid);
 console.log("+ Conversation SID: " + conversationSid);
 //
-participantIdentity = 'daveg1';
+participantIdentity = 'cs1';
 console.log("+ Participant Identity: " + participantIdentity );
 client.conversations.services(serviceSid).conversations(conversationSid)
         .participants

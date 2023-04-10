@@ -2,11 +2,11 @@ console.log("++ List a Service's Conversations.");
 // https://www.twilio.com/docs/conversations/api/service-conversation-resource
 // https://www.twilio.com/docs/conversations/api/service-participant-resource
 // 
-// var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN, {logLevel: 'debug'});
-var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
+// var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN, {logLevel: 'debug'});
+var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 
-serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
-// serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6'; // Frontline
+// serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
+serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6'; // Frontline
 console.log("+ Conversations for a Twilio Conversations service SID: " + serviceSid);
 client.conversations.services(serviceSid).conversations.list({limit: 200})
         .then(conversations => conversations.forEach(c => {

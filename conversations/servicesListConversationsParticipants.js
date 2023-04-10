@@ -1,7 +1,7 @@
 console.log("+ List Services, their conversations and the conversation's participants.");
 console.log("+ Report data: Conversations Service: IS... Conversation: CH... Participant: MB...");
 // https://www.twilio.com/docs/conversations/api/service-resource
-var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
+var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 
 client.conversations.services.list({limit: 20})
         .then(services => services.forEach(s => {

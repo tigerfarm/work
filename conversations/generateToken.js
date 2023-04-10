@@ -3,9 +3,9 @@ console.log("++ Generate a Conversations Token.");
 const AccessToken = require('../../node_modules/twilio').jwt.AccessToken;
 const ChatGrant = AccessToken.ChatGrant;
 
-const twilioAccountSid = process.env.ACCOUNT_SID;
-const twilioApiKey = process.env.MASTER_API_KEY;
-const twilioApiSecret = process.env.MASTER_API_KEY_SECRET;
+const twilioAccountSid = process.env.MAIN_ACCOUNT_SID;
+const twilioApiKey = process.env.MAIN_API_KEY;
+const twilioApiSecret = process.env.MAIN_API_KEY_SECRET;
 
 const identity = 'dave';
 const token = new AccessToken(

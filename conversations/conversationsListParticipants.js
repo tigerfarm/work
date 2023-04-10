@@ -1,5 +1,5 @@
 console.log("++ List Conversation participants.");
-var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
+var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 console.log("+ Conversations SID/friendlyName/uniqueName/createdBy");
 var conversationSid = "";
 client.conversations.conversations.list({limit: 20})

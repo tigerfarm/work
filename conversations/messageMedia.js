@@ -1,8 +1,8 @@
 console.log("++ Create a text message for a Conversation.");
-var client = require('../../node_modules/twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
+var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 
 // Create a media object which has a SID that begins with ME.
-// $ curl --data-binary @mediaSample.jpg -H "Content-Type: image/jpeg" https://mcs.us1.twilio.com/v1/Services/IS4ebcc2d46cda47958628e59af9e53e55/Media -u $MASTER_ACCOUNT_SID:$MASTER_AUTH_TOKEN
+// $ curl --data-binary @mediaSample.jpg -H "Content-Type: image/jpeg" https://mcs.us1.twilio.com/v1/Services/IS4ebcc2d46cda47958628e59af9e53e55/Media -u $MAIN_ACCOUNT_SID:$MAIN_AUTH_TOKEN
 mediaURL = "";
 if (mediaURL !== "") {
     console.log('Upload media to Twilio from URL ${mediaURL}');
