@@ -23,7 +23,7 @@ func main() {
 
 	log.Println("+ theIdentity:  " + theIdentity)
 
-        // Source code: https://github.com/twilio/twilio-go/blob/main/client/jwt/access_token.go#L55
+        // Twilio SDK source code: https://github.com/twilio/twilio-go/blob/main/client/jwt/access_token.go#L55
 	params := jwt.AccessTokenParams{
 		AccountSid:     accountSid,
 		SigningKeySid:  apiKey,
@@ -32,10 +32,10 @@ func main() {
                 //
 		ValidUntil:     float64(time.Now().Add(time.Duration(expireTimeMinutes) * time.Minute).Unix()),
 		// Ttl:            float64(expireTimeSeconds),  
-                // No Ttl and no ValidUntil = default 1 hour expire time.
-                // If Ttl is less than 3600 (one hour) and no ValidUntil = defaults to 1 hour expire time.
-                // If Ttl is greater than 3600 (one hour)and no ValidUntil = Set to the expire time based on expireTimeSeconds.
-                // No Ttl and ValidUntil = sets the expire time where expireTimeMinutes.
+                // No Ttl and no ValidUntil = Sets to default 1 hour expire time.
+                // If Ttl is less than 3600 (one hour) and no ValidUntil = Sets to 1 hour expire time.
+                // If Ttl is greater than 3600 (one hour)and no ValidUntil = Sets to the expire time based on expireTimeSeconds.
+                // No Ttl and ValidUntil = Sets the expire time where expireTimeMinutes.
                 //  ValidUntil can be used to set less than one hour expire time.
 	}
 	jwtToken := jwt.CreateAccessToken(params)
