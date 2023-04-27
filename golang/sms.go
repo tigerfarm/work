@@ -8,8 +8,8 @@ import "encoding/json"
 
 func main() {
     fmt.Println("+++ Send an SMS.")
-    accountSid := os.Getenv("MASTER_ACCOUNT_SID")
-    authToken := os.Getenv("MASTER_AUTH_TOKEN")
+    accountSid := os.Getenv("MAIN_ACCOUNT_SID")
+    authToken := os.Getenv("MAIN_AUTH_TOKEN")
     fmt.Println("+ accountSid = " + accountSid)
     fmt.Println("+ authToken = " + authToken)
     client := twilio.NewRestClientWithParams(twilio.ClientParams{
@@ -17,7 +17,7 @@ func main() {
          Password: authToken,
     })
     params := &openapi.CreateMessageParams{}
-    params.SetFrom(os.Getenv("MASTER_PHONE_NUMBER_1"))
+    params.SetFrom(os.Getenv("MAIN_PHONE_NUMBER_1"))
     params.SetTo(os.Getenv("MY_PHONE_NUMBER"))
     params.SetBody("Hello from Golang 1")
     fmt.Println("+ Send the SMS.")

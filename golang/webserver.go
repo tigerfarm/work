@@ -2,7 +2,7 @@ package main
 
 // First run,
 //  go mod tidy
-//  go mod vendor
+//  Maybe required: go mod vendor
 // Then, to run the program or run the program after updates:
 //  go run webserver.go
 
