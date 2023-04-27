@@ -15,9 +15,11 @@ var theService string = "chat"
 var theRoom string = "myroom"
 var theIdentity string = "dave"
 var expireTime int = 10
+var expireTimeSeconds int = 3720
 
 func main() {
     log.Println("+++ Generate a Twilio Conversations token.")
+    log.Println("+ Time now: " + time.Now().String() )
 
 	// Query Params:
 	//	//	identity
@@ -27,12 +29,16 @@ func main() {
 	log.Println("+ serviceSid:  " + serviceSid)
 	log.Println("+ theRoom:     " + theRoom)
 	log.Println("+ theIdentity: " + theIdentity)
+        // Source code: https://github.com/twilio/twilio-go/blob/main/client/jwt/access_token.go#L55
 	params := jwt.AccessTokenParams{
-		AccountSid:    accountSid,
-		SigningKeySid: apiKey,
-		Secret:        apiSecret,
-		Identity:      theIdentity,
-		ValidUntil:    float64(time.Now().Add(time.Duration(expireTime) * time.Minute).Unix()),
+		AccountSid:     accountSid,
+		SigningKeySid:  apiKey,
+		Secret:         apiSecret,
+		Identity:       theIdentity,
+		Ttl:            float64(expireTimeSeconds),  
+//		ValidUntil:    float64(time.Now().Add(time.Duration(expireTime) * time.Minute).Unix()),
+                // No ttl, no ValidUntil = default 1 hour expire time.
+                // ValidUntil = sets the expire time where expireTime is the number of minutes.
 	}
 	jwtToken := jwt.CreateAccessToken(params)
 	chatGrant := &jwt.ChatGrant{
