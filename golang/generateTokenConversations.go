@@ -14,6 +14,7 @@ var serviceSid string = os.Getenv("CONVERSATIONS_SERVICE_SID")
 var theService string = "chat"
 var theRoom string = "myroom"
 var theIdentity string = "dave"
+var expireTime int = 10
 
 func main() {
     log.Println("+++ Generate a Twilio Conversations token.")
@@ -31,7 +32,7 @@ func main() {
 		SigningKeySid: apiKey,
 		Secret:        apiSecret,
 		Identity:      theIdentity,
-		ValidUntil:    float64(time.Now().Add(time.Duration(30) * time.Minute).Unix()),
+		ValidUntil:    float64(time.Now().Add(time.Duration(expireTime) * time.Minute).Unix()),
 	}
 	jwtToken := jwt.CreateAccessToken(params)
 	chatGrant := &jwt.ChatGrant{
