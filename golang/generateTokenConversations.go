@@ -11,11 +11,10 @@ var apiKey string = os.Getenv("CONVERSATIONS_API_KEY")
 var apiSecret string = os.Getenv("CONVERSATIONS_API_KEY_SECRET")
 
 var serviceSid string = os.Getenv("CONVERSATIONS_SERVICE_SID")
-var theService string = "chat"
-var theRoom string = "myroom"
+var theVideoRoom string = "myroom"  // Optional, if creating a video token
 var theIdentity string = "dave"
-var expireTime int = 10
-var expireTimeSeconds int = 7200
+var expireTimeMinutes int = 10      // 10 minutes
+var expireTimeSeconds int = 7200    // 7200 seconds = 2 hours
 
 func main() {
     log.Println("+++ Generate a Twilio Conversations token.")
@@ -25,9 +24,8 @@ func main() {
 	//	//	identity
 	//	//	service
 	//	//	room
-	log.Println("+ theService:  " + theService)
 	log.Println("+ serviceSid:  " + serviceSid)
-	log.Println("+ theRoom:     " + theRoom)
+	log.Println("+ theVideoRoom:     " + theVideoRoom)
 	log.Println("+ theIdentity: " + theIdentity)
         // Source code: https://github.com/twilio/twilio-go/blob/main/client/jwt/access_token.go#L55
 	params := jwt.AccessTokenParams{
@@ -36,18 +34,18 @@ func main() {
 		Secret:         apiSecret,
 		Identity:       theIdentity,
                 //
-//		ValidUntil:    float64(time.Now().Add(time.Duration(expireTime) * time.Minute).Unix()),
-		Ttl:            float64(expireTimeSeconds),  
-                // No ttl and no ValidUntil = default 1 hour expire time.
-                // If ttl is less than 3600 (one hour) = defaults to 1 hour expire time.
-                // If ttl is greater than 3600 (one hour) = Set to the expire time based on expireTimeSeconds.
-                // ValidUntil = sets the expire time where expireTime is in minutes.
+		ValidUntil:    float64(time.Now().Add(time.Duration(expireTimeMinutes) * time.Minute).Unix()),
+//		Ttl:            float64(expireTimeSeconds),  
+                // No Ttl and no ValidUntil = default 1 hour expire time.
+                // If Ttl is less than 3600 (one hour) and no ValidUntil = defaults to 1 hour expire time.
+                // If Ttl is greater than 3600 (one hour)and no ValidUntil = Set to the expire time based on expireTimeSeconds.
+                // No Ttl and ValidUntil = sets the expire time where expireTimeMinutes.
                 //  ValidUntil can be used to set less than one hour expire time.
 	}
 	jwtToken := jwt.CreateAccessToken(params)
 	chatGrant := &jwt.ChatGrant{ ServiceSid: serviceSid }
 	jwtToken.AddGrant(chatGrant)
-	// videoGrant := &jwt.VideoGrant{ Room: theRoom }
+	// videoGrant := &jwt.VideoGrant{ Room: theVideoRoom }
 	// jwtToken.AddGrant(videoGrant)
 	token, err := jwtToken.ToJwt()
 	if err != nil {
