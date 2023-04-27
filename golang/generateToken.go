@@ -1,4 +1,5 @@
 package main
+
 import (
     "log"
     "os"
@@ -20,13 +21,8 @@ func main() {
     log.Println("+++ Generate a Twilio Conversations token.")
     log.Println("+ Time now: " + time.Now().String() )
 
-	// Query Params:
-	//	//	identity
-	//	//	service
-	//	//	room
-	log.Println("+ serviceSid:  " + serviceSid)
-	log.Println("+ theVideoRoom:     " + theVideoRoom)
-	log.Println("+ theIdentity: " + theIdentity)
+	log.Println("+ theIdentity:  " + theIdentity)
+
         // Source code: https://github.com/twilio/twilio-go/blob/main/client/jwt/access_token.go#L55
 	params := jwt.AccessTokenParams{
 		AccountSid:     accountSid,
@@ -35,7 +31,7 @@ func main() {
 		Identity:       theIdentity,
                 //
 		ValidUntil:     float64(time.Now().Add(time.Duration(expireTimeMinutes) * time.Minute).Unix()),
-//		Ttl:            float64(expireTimeSeconds),  
+		// Ttl:            float64(expireTimeSeconds),  
                 // No Ttl and no ValidUntil = default 1 hour expire time.
                 // If Ttl is less than 3600 (one hour) and no ValidUntil = defaults to 1 hour expire time.
                 // If Ttl is greater than 3600 (one hour)and no ValidUntil = Set to the expire time based on expireTimeSeconds.
@@ -43,10 +39,16 @@ func main() {
                 //  ValidUntil can be used to set less than one hour expire time.
 	}
 	jwtToken := jwt.CreateAccessToken(params)
+        //
+        // If creating a Conversations access token.
+	log.Println("+ serviceSid:   " + serviceSid)
 	chatGrant := &jwt.ChatGrant{ ServiceSid: serviceSid }
 	jwtToken.AddGrant(chatGrant)
+        // If creating a Video access token.
+	// log.Println("+ theVideoRoom: " + theVideoRoom)
 	// videoGrant := &jwt.VideoGrant{ Room: theVideoRoom }
 	// jwtToken.AddGrant(videoGrant)
+        //
 	token, err := jwtToken.ToJwt()
 	if err != nil {
 		log.Fatal(err)
