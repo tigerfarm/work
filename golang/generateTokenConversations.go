@@ -35,21 +35,20 @@ func main() {
 		SigningKeySid:  apiKey,
 		Secret:         apiSecret,
 		Identity:       theIdentity,
+                //
 //		ValidUntil:    float64(time.Now().Add(time.Duration(expireTime) * time.Minute).Unix()),
 		Ttl:            float64(expireTimeSeconds),  
-                // No ttl, no ValidUntil = default 1 hour expire time.
-                // ValidUntil = sets the expire time where expireTime is the number of minutes.
+                // No ttl and no ValidUntil = default 1 hour expire time.
                 // If ttl is less than 3600 (one hour) = defaults to 1 hour expire time.
+                // If ttl is greater than 3600 (one hour) = Set to the expire time based on expireTimeSeconds.
+                // ValidUntil = sets the expire time where expireTime is in minutes.
+                //  ValidUntil can be used to set less than one hour expire time.
 	}
 	jwtToken := jwt.CreateAccessToken(params)
-	chatGrant := &jwt.ChatGrant{
-		ServiceSid: serviceSid,
-	}
-	videoGrant := &jwt.VideoGrant{
-		Room: theRoom,
-	}
+	chatGrant := &jwt.ChatGrant{ ServiceSid: serviceSid }
 	jwtToken.AddGrant(chatGrant)
-	jwtToken.AddGrant(videoGrant)
+	// videoGrant := &jwt.VideoGrant{ Room: theRoom }
+	// jwtToken.AddGrant(videoGrant)
 	token, err := jwtToken.ToJwt()
 	if err != nil {
 		log.Fatal(err)
