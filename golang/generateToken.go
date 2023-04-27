@@ -34,7 +34,7 @@ func main() {
 		Secret:         apiSecret,
 		Identity:       theIdentity,
                 //
-		ValidUntil:    float64(time.Now().Add(time.Duration(expireTimeMinutes) * time.Minute).Unix()),
+		ValidUntil:     float64(time.Now().Add(time.Duration(expireTimeMinutes) * time.Minute).Unix()),
 //		Ttl:            float64(expireTimeSeconds),  
                 // No Ttl and no ValidUntil = default 1 hour expire time.
                 // If Ttl is less than 3600 (one hour) and no ValidUntil = defaults to 1 hour expire time.
