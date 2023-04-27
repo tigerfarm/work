@@ -131,6 +131,8 @@ $ git rm --cached derby.log
 
 $ git rm -r DIRECTORY-NAME
 $ git rm -r dist
+Example:
+$ git rm -r golang/vendor
 ````
 
 --------------------------------------------------------------------------------
