@@ -9,8 +9,8 @@ import (
 var accountSid string = os.Getenv("CONVERSATIONS_ACCOUNT_SID")
 var apiKey string = os.Getenv("CONVERSATIONS_API_KEY")
 var apiSecret string = os.Getenv("CONVERSATIONS_API_KEY_SECRET")
-
 var serviceSid string = os.Getenv("CONVERSATIONS_SERVICE_SID")
+
 var theVideoRoom string = "myroom"  // Optional, if creating a video token
 var theIdentity string = "dave"
 var expireTimeMinutes int = 10      // 10 minutes
