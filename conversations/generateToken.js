@@ -9,10 +9,13 @@ const twilioApiSecret = process.env.MAIN_API_KEY_SECRET;
 
 const identity = 'dave';
 const token = new AccessToken(
-  twilioAccountSid,
-  twilioApiKey,
-  twilioApiSecret,
-  {identity: identity, ttl: 43200}  // ttl is good for 12 hours.
+        twilioAccountSid,
+        twilioApiKey,
+        twilioApiSecret,
+        {identity: identity,
+//            ttl: 43200      // ttl is good for 12 hours.
+            ttl: 600        // ttl is good for 10 minutes.
+        }
 );
 
 // Link when using Conversations default service:
@@ -22,7 +25,7 @@ const serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 // Create a "grant" which enables a client to use Chat as a given user,
 // on a given device
 const chatGrant = new ChatGrant({
-  serviceSid: serviceSid
+    serviceSid: serviceSid
 });
 token.addGrant(chatGrant);
 
