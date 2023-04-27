@@ -3,8 +3,8 @@ package main
 // First run,
 //  go mod tidy
 //  go mod vendor
-// Run
-//  go run accessToken.go
+// Then, to run the program or run the program after updates:
+//  go run webserver.go
 
 import (
     "log"
@@ -59,6 +59,10 @@ func sayHello(c *gin.Context) {
     log.Println(`Running func sayHello`)
     c.String(0,"Hello there")
 }
+func sayTop(c *gin.Context) {
+    log.Println(`Running func sayTop`)
+    c.String(0,"Top of the world.")
+}
 
 func main() {
 	gin.SetMode(gin.ReleaseMode)
@@ -66,6 +70,7 @@ func main() {
 
 	r.GET("/token", GenerateAccessToken)
 	r.GET("/hello", sayHello)
+	r.GET("/", sayTop)
 
 	r.NoRoute(func(c *gin.Context) {
 		c.String(http.StatusNotFound, "404 not found.")
