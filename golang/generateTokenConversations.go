@@ -15,7 +15,7 @@ var theService string = "chat"
 var theRoom string = "myroom"
 var theIdentity string = "dave"
 var expireTime int = 10
-var expireTimeSeconds int = 3720
+var expireTimeSeconds int = 7200
 
 func main() {
     log.Println("+++ Generate a Twilio Conversations token.")
@@ -35,10 +35,11 @@ func main() {
 		SigningKeySid:  apiKey,
 		Secret:         apiSecret,
 		Identity:       theIdentity,
-		Ttl:            float64(expireTimeSeconds),  
 //		ValidUntil:    float64(time.Now().Add(time.Duration(expireTime) * time.Minute).Unix()),
+		Ttl:            float64(expireTimeSeconds),  
                 // No ttl, no ValidUntil = default 1 hour expire time.
                 // ValidUntil = sets the expire time where expireTime is the number of minutes.
+                // If ttl is less than 3600 (one hour) = defaults to 1 hour expire time.
 	}
 	jwtToken := jwt.CreateAccessToken(params)
 	chatGrant := &jwt.ChatGrant{
