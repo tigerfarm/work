@@ -7,7 +7,7 @@ serviceSid = 'IS186702e405b74452a449d67b9265669f';       // Frontline
 console.log("+ Conversations service SID: " + serviceSid);
 
 client.conversations.services(serviceSid).participantConversations
-        .list({address: process.env.MY_PHONE_NUMBER, limit: 20})
+        .list({limit: 20})
         .then(participantConversations => participantConversations.forEach(p =>
                 console.log( "+ "
                         + " participantSid: " + p.participantSid
