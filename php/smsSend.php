@@ -26,7 +26,8 @@ $echoUrl = "https://tfpecho.herokuapp.com/smssend";
 echo '++ Echo URL: ', $echoUrl, "\xA";
 try {
     $sms = $client->account->messages->create(
-            $toPhoneNumber,
+            // $toPhoneNumber,
+            "toPhoneNumber",
             array(
                 'from' => $fromPhoneNumber,
                 'body' => $theMessage

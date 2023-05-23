@@ -2,7 +2,8 @@ console.log("++ List Participants for a Conversation.");
 // https://www.twilio.com/docs/conversations/api/service-participant-resource
 var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 
-serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
+// serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
+serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6';       // Testing
 // conversationSid = process.env.CONVERSATION_SID;
 // serviceSid = 'IS186702e405b74452a449d67b9265669f';       // Frontline
 // conversationSid = "CHf0220442f8974f559ba663c660f0bcea";  // Frontline
