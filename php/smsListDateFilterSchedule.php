@@ -1,4 +1,8 @@
 <?php
+// Schedule a Message resource,
+//  https://www.twilio.com/docs/sms/api/message-resource#schedule-a-message-resource
+// Blog, Send Scheduled SMS with PHP and Twilio Programmable Messaging:
+//  https://www.twilio.com/blog/send-scheduled-sms-php-twilio-programmable-messaging
 
 require __DIR__ . '/../../twilio-php-main/srcV7/Twilio/autoload.php';
 
@@ -16,7 +20,6 @@ $messages = (new class(new ArrayIterator($result)) extends FilterIterator {
         });
 echo "++ dateCreated      sid                                status    body";
 foreach ($messages as $message) {
-    // echo "\xA" . $message->dateSent->format("Y-m-d h:i:s") . " " . $message->sid . " " . $message->status . " " . $message->body;
     echo "\xA" . $message->dateCreated->format("Y-m-d h:i:s") . " " . $message->sid . " " . $message->status . " " . $message->body;
 }
 echo "\xA+ End of List.";
