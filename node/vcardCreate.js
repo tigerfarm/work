@@ -13,7 +13,7 @@ vCard.firstName = 'Dave';
 vCard.lastName = 'Here';
 vCard.title = 'Writer';
 vCard.workPhone = process.env.MAIN_PHONE_NUMBER_1;     // Twilio phone number
-vCard.photo.embedFromFile(`./vardCardLogo.jpg`);
+vCard.photo.embedFromFile(`./vcardCardLogo.jpg`);
 vCard.url = 'https://www.twilio.com/blog/send-vcard-twilio-sms-node-js';
 vCard.saveToFile('./vcardSample.vcf');
 
