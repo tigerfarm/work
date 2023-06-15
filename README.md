@@ -27,8 +27,8 @@ git init
 git add .
 git commit -am "first commit"
 git branch -M main
-git remote add origin https://github.com/tigerfarm/tfp.git (this line may not be required)
-git remote set-url origin https://g...hU@github.com/tigerfarm/tfp.git (see 00-Acc.txt sample)
+git remote add origin https://github.com/tigerfarm/tfpfilesOther.git (this line may not be required)
+git remote set-url origin https://g...hU@github.com/tigerfarm/tfpfilesOther.git (see 00-Acc.txt sample)
 git push -u origin main
 ````
 
@@ -207,6 +207,24 @@ $ git add .
 $ git commit -am "update"
 $ git push -u origin master
 $ git push heroku master
+````
+
+I had the following issue.
+Ran the "config" command to use 150 MiB, and now the push works.
+````
+$ git push -u origin master
+...
+Compressing objects: 100% (32/32), done.
+error: RPC failed; HTTP 500 curl 22 The requested URL returned error: 500
+send-pack: unexpected disconnect while reading sideband packet
+Writing objects: 100% (32/32), 49.46 MiB | 2.90 MiB/s, done.
+Total 32 (delta 6), reused 2 (delta 0), pack-reused 0
+fatal: the remote end hung up unexpectedly
+Everything up-to-date
+
+$ git config --global http.postBuffer 157286400
+$ git push -u origin master
+... ran fine.
 ````
 
 Note, this will override any new updates with the current directory updates.
