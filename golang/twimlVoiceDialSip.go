@@ -7,9 +7,9 @@ import (
 func main() {
     fmt.Println("+++ Generate Twiml.")
     dial := &twiml.VoiceDial{}
-    dial.Number = "+123456789"
-
-
+    sip := &twiml.VoiceSip{}
+    sip.SipUrl = "sip:jack@example.com?x-mycustomheader=foo&x-myotherheader=bar"
+    dial.InnerElements = []twiml.Element{sip}   // SIP embedded(InnerElements) with the Dial tags
     twimlResult, err := twiml.Voice([]twiml.Element{dial})
     if err != nil {
         fmt.Println(err)
@@ -20,5 +20,5 @@ func main() {
 }
 
 // +++ Generate Twiml.
-// <?xml version="1.0" encoding="UTF-8"?><Response><Dial>+123456789</Dial></Response>
+// <?xml version="1.0" encoding="UTF-8"?><Response><Dial><Sip>sip:jack@example.com?x-mycustomheader=foo&amp;x-myotherheader=bar</Sip></Dial></Response>
 // +++ Exit.
