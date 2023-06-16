@@ -1,5 +1,5 @@
 package main
-// https://www.twilio.com/docs/voice/quickstart/go
+// https://www.twilio.com/blog/introducing-twilio-go-helper-library
 import (
     "fmt"
     "github.com/twilio/twilio-go/twiml"

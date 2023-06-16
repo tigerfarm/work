@@ -36,7 +36,8 @@ is the conventional way a method indicates an error to its caller.
 
 [Run sample programs online](https://go.dev/tour/welcome/1).
 
-[Twilio Golang library](https://github.com/twilio/twilio-go) GitHub repository has sample programs.
+[Twilio Golang library](https://github.com/twilio/twilio-go) GitHub repository 
+has many sample programs.
 
 [Blog, How to Send an SMS with Golang](https://www.twilio.com/blog/send-sms-30-seconds-golang).
 Note, has outdated syntax. Use the above sample programs.
