@@ -41,6 +41,15 @@ is the conventional way a method indicates an error to its caller.
 [Blog, How to Send an SMS with Golang](https://www.twilio.com/blog/send-sms-30-seconds-golang).
 Note, has outdated syntax. Use the above sample programs.
 
+[Blog, introducing Twilio using Go](https://www.twilio.com/blog/introducing-twilio-go-helper-library)
+````
+Send an SMS
+Respond to a webhook with TwiML
+Request Validation
+````
+
+[Programmable Voice Quickstart for Go](https://www.twilio.com/docs/voice/quickstart/go)
+
 [Getting Started on Heroku with Go](https://devcenter.heroku.com/articles/getting-started-with-go)
 
 ## Install and Test Golang Command line
@@ -108,7 +117,6 @@ Hello 世界, 早上 2
 
 --------------------------------------------------------------------------------
 ### Twilio Golang Sample Program to Send an SMS
-
 
 In your working directory, create sms.go based on the 
 [Twilio Golang samples](https://github.com/twilio/twilio-go).
@@ -187,6 +195,37 @@ Use the following to update library version.
 $ go get
 ````
 For example, it’ll pull 0.26.0 instead of 1.0.0.rc-8.
+
+### Twilio Golang Sample Program to Generate TwiML
+
+Sample program.
+````
+package main
+import (
+    "fmt"
+    "github.com/twilio/twilio-go/twiml"
+)
+func main() {
+    fmt.Println("+++ Go Twiml.")
+    var msg = &twiml.MessagingMessage{}
+    msg.Body = "Hello there"
+    // Generate TwiML response
+    twiml, _ := twiml.Messages([]twiml.Element{msg})
+    fmt.Println(twiml)
+    fmt.Println("+++ Exit.")
+}
+````
+Use the following to update library version.
+````
+go get github.com/twilio/twilio-go/twiml
+````
+Run the program.
+````
+$ go run twiml1.go
++++ Go Twiml.
+<?xml version="1.0" encoding="UTF-8"?><Response><Message>Hello there</Message></Response>
++++ Exit.
+````
 
 --------------------------------------------------------------------------------
 Cheers...
