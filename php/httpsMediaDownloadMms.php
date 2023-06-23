@@ -31,8 +31,19 @@ echo "+++ Start.\xA";
 // + Media id: ME2458b013013432076b041812bec916dc
 // Or from a webhook: {...,"SmsMessageSid":"MM0888aad8ca4ab5c698a58ecc6e6c96f9","MediaContentType0":"image/jpeg","MediaUrl0":"https://api.twilio.com/2010-04-01/Accounts/ACa...3/Messages/MM0888aad8ca4ab5c698a58ecc6e6c96f9/Media/ME7d57db8c0196a2f45d3da1d5ad496910",...} 
 // 
-$mmsMedia = 'https://api.twilio.com/2010-04-01/Accounts/' . getenv('MASTER_ACCOUNT_SID') . '/Messages/MM46ee5a085e0f4aebbe194f8d4234c9ef/Media/ME7f791f3c62be51c176b1c75ff05fe752';
+$theMmsMmSid = "MMf28ecbfbfd8c8964f89ae523e6f83d65"; // MMf28ecbfbfd8c8964f89ae523e6f83d65 MM840711a306a13165e8e832426e8f718a
+$theMmsMeSid = "ME390dbc2eaee42e49e42fca2da68ca29f"; // ME390dbc2eaee42e49e42fca2da68ca29f ME1f1a0a45e0936ede1b2bfa19d21c374e
+//
+// The following does not have account SID and auth token for access.
+// $theUri = 'https://api.twilio.com/2010-04-01/Accounts/';
+// The following does have account SID and auth token for access.
+$theUri = 'https://' . getenv('MAIN_ACCOUNT_SID') . ':' . getenv('MAIN_AUTH_TOKEN') . '@api.twilio.com/2010-04-01/Accounts/';
+//
+// echo "+ $theUri \xA";
+$mmsMedia = $theUri . getenv('MAIN_ACCOUNT_SID') . '/Messages/' . $theMmsMmSid . '/Media/' . $theMmsMeSid;
+//
 echo "+ $mmsMedia \xA";
+//
 $http = new HTTPRequester();
 $mmsFileContent = $http->getMediaContent($mmsMedia);
 $mmsMediaFilenameWrite = "httpsMmsMediaUrl.jpg";
