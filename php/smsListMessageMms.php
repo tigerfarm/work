@@ -1,18 +1,19 @@
 <?php
-
+error_reporting( E_ALL ^ ( E_NOTICE | E_WARNING | E_DEPRECATED ) );
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 
 use Twilio\Rest\Client;
 use Twilio\Exceptions\RestException;
 
-$client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
+$client = new Client(getenv('MAIN_ACCOUNT_SID'), getenv('MAIN_AUTH_TOKEN'));
+$theSid = "MM840711a306a13165e8e832426e8f718a";
 try {
-    $message = $client->messages("MMdb6a8e05fcac48dc823874b6db03445a")->fetch();
+    $message = $client->messages($theSid)->fetch();
     echo "+ Sent, SID:" . $message->sid . " To:" . $message->to . " Status:" . $message->status
     . " MediaUrl0: " . $message->numMedia
     . "\xA";
 
-    $media = $client->messages("MMdb6a8e05fcac48dc823874b6db03445a")->media->read([], 20);
+    $media = $client->messages($theSid)->media->read([], 20);
     foreach ($media as $record) {
         print("+ Media id: " . $record->sid . "\xA");
     }

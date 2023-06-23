@@ -2,7 +2,7 @@
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 use Twilio\Exceptions\RestException;
-$client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
+$client = new Client(getenv('MAIN_ACCOUNT_SID'), getenv('MAIN_AUTH_TOKEN'));
 try {
     $message = $client->messages("SM3570cf47fa1e429c90ef659387ac9c42")->fetch();
     echo "+ Sent, SID: " 

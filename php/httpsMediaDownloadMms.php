@@ -26,7 +26,7 @@ echo "+++ Start.\xA";
 // ---
 // Get the Media ME id from the Twilio Console SMS log: https://www.twilio.com/console/sms/logs
 // Or
-// $ php smsListMessage.php 
+// $ php smsListMessageMms.php 
 // + Sent, SID:MMdb6a8e05fcac48dc823874b6db03445a To:+16505552222 Status:delivered MediaUrl0: 1
 // + Media id: ME2458b013013432076b041812bec916dc
 // Or from a webhook: {...,"SmsMessageSid":"MM0888aad8ca4ab5c698a58ecc6e6c96f9","MediaContentType0":"image/jpeg","MediaUrl0":"https://api.twilio.com/2010-04-01/Accounts/ACa...3/Messages/MM0888aad8ca4ab5c698a58ecc6e6c96f9/Media/ME7d57db8c0196a2f45d3da1d5ad496910",...} 
