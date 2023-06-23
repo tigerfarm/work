@@ -1,5 +1,7 @@
 <?php
 // Program to download an MMS media file.
+// Given an MMS SID and the ME media file id, download the media file.
+// Note each ME media file id has a 4 hour expiration window.
 
 class HTTPRequester {
 

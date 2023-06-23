@@ -1,5 +1,7 @@
 <?php
-// Program to get the ME ids(media ids) when given an MMS SID
+// Program to an MMS's ME media file ids.
+// Given an MMS SID, retrieve the ME media file ids.
+
 error_reporting( E_ALL ^ ( E_NOTICE | E_WARNING | E_DEPRECATED ) );
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 
