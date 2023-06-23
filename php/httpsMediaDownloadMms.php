@@ -1,4 +1,5 @@
 <?php
+// Program to download an MMS media file.
 
 class HTTPRequester {
 
