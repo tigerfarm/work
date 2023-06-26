@@ -1,14 +1,15 @@
 console.log("++ Send SMS message.");
-var client = require('twilio')(process.env.MASTER_ACCOUNT_SID, process.env.MASTER_AUTH_TOKEN);
-theMsg = "Hello 3";
-console.log("+ SID: " + process.env.MASTER_ACCOUNT_SID
-        + ", from: " + process.env.MASTER_PHONE_NUMBER_1
+var client = require('twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
+theMsg = "Hello 2";
+console.log("+ SID: " + process.env.MAIN_ACCOUNT_SID
+        + ", from: " + process.env.MAIN_PHONE_NUMBER_1
         + ", to: " + process.env.MY_PHONE_NUMBER
         + ", MSG: " + theMsg);
 client.messages.create({
-    from: process.env.MASTER_PHONE_NUMBER_1,
+    from: process.env.MAIN_PHONE_NUMBER_1,
     to: process.env.MY_PHONE_NUMBER,
     body: theMsg
+    , statusCallback: process.env.ECHO_REQUEST_URL
 }, function (err) {
     if (err) {
         console.error("- Error: " + err.message + ", code: " + err.code);
