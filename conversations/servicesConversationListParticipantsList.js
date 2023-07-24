@@ -1,4 +1,4 @@
-console.log("++ List a Service's Conversations.");
+console.log("++ List a service's conversations and its participants.");
 // https://www.twilio.com/docs/conversations/api/service-conversation-resource
 // https://www.twilio.com/docs/conversations/api/service-participant-resource
 // 

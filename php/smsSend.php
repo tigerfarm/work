@@ -1,6 +1,6 @@
 <?php
 echo "++ Send SMS message with error checking.\xA";
-require __DIR__ . '/../../twilio-php-main/src/Twilio/autoload.php';
+require __DIR__ . '/../../twilio-php-main/srcV6/Twilio/autoload.php';
 use Twilio\Rest\Client;
 use Twilio\Exceptions\RestException;
 $client = new Client(getenv('MAIN_ACCOUNT_SID'), getenv('MAIN_AUTH_TOKEN'));
@@ -22,12 +22,12 @@ $theMessage = $theWhatsAppTemplate;
 //
 echo '++ Send SMS message, From: ' . $fromPhoneNumber . " to " . $toPhoneNumber . " :" . $theMessage . ":\xA";
 // $echoUrl = "https://postb.in/1604958023910-9146091821603";
-$echoUrl = "https://tfpecho.herokuapp.com/smssend";
+$echoUrl = "https://tfpbooks.herokuapp.com/twilio/smsstatus?con_id=649226a3819e2a601f6661cf&org_id=147&m_id=64b6c296819e2a77f22daaa2";
 echo '++ Echo URL: ', $echoUrl, "\xA";
 try {
     $sms = $client->account->messages->create(
-            // $toPhoneNumber,
-            "toPhoneNumber",
+            $toPhoneNumber,
+            // "toPhoneNumber",
             array(
                 'from' => $fromPhoneNumber,
                 'body' => $theMessage
@@ -37,7 +37,8 @@ try {
             // Other media files I can send:
             // MP3: https://about-time-2357.twil.io/assets/MI01.mp3
             // JPG: https://about-time-2357.twil.io/assets/netscapeIcons.jpg
-            // , 'statusCallback' => $echoUrl
+            // Doesn't work: , 'statusCallbackMethod' => 'GET'
+            , 'statusCallback' => $echoUrl
             )
     );
     echo "+ Sent, SID: " . $sms->sid . " Status: " . $sms->status . "\xA";

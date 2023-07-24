@@ -108,21 +108,45 @@ View the new profile.
 $ cat /Users/.../.twilio-cli/config.json
 {"email":{},"prompts":{},"projects":[{"id":"Writers","accountSid":"AC5...1"}],"activeProject":null}
 $
+````
+Sequence: list, use(set profile), list:
+````
 $ twilio profiles:list
-ID       Account SID                         Active
-[env]    ACa...3                             true  
-Writers  AC5...1                             false
+ID       Account SID  Active
+[env]    AC59...11    true  
+Writers  AC59...11    false 
+machine  AC1b...9d    false 
+$ twilio profiles:use machine
+set "machine" as active profile
+twilio-cli configuration saved to "/Users/.../.twilio-cli/config.json"
+$ twilio profiles:list
+ID       Account SID  Active
+[env]    AC59...11    true  
+Writers  AC59...11    false
+machine  AC1b...9d    false
+
+The [env] profile overrides the selected active profile that is in the config.json file.
+````
+
+Remove the default environment value.
+````
+$ export TWILIO_ACCOUNT_SID=
+````
+Re-list profiles. Note, the above selected profile is not active("true").
+````
+$ twilio profiles:list
+ID       Account SID  Active
+Writers  AC59...11    false 
+machine  AC1b...9d    true  
 $ twilio profiles:use Writers
 set "Writers" as active profile
 twilio-cli configuration saved to "/Users/.../.twilio-cli/config.json"
-$ cat /Users/dave/.twilio-cli/config.json
-{"email":{},"prompts":{},"projects":[{"id":"Writers","accountSid":"AC5...1"}],"activeProject":"Writers"}
 $ twilio profiles:list
-ID       Account SID                         Active
-[env]    ACa...3                             true  
-Writers  AC5...1                             false
-$ 
+ID       Account SID  Active
+Writers  AC59...11    true  
+machine  AC1b...9d    false 
 ````
+
 The [env] profile will override the selected active profile.
 To use the config.json profiles, remove the environment variable TWILIO_ACCOUNT_SID.
 Here is how I remove it on my MacBook:

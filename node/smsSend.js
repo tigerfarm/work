@@ -10,10 +10,9 @@ client.messages.create({
     to: process.env.MY_PHONE_NUMBER,
     body: theMsg
     , statusCallback: process.env.ECHO_REQUEST_URL
-}, function (err) {
-    if (err) {
-        console.error("- Error: " + err.message + ", code: " + err.code);
-        console.log("--- Exit.");
-    }
-}).then((message) => console.log("+ Message sent, SID: " + message.sid));
-
+}).then((message) => console.log("+ Message sent, SID: " + message.sid))
+        .catch(function (err) {
+            console.error("- Error: " + err.message + ", code: " + err.code);
+            console.log("--- Exit.");
+            exit();
+        });
