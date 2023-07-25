@@ -14,6 +14,9 @@ console.log('+ addSum(2,3) = ' + addSum(2,3));
 console.log("-----------------");
 
 // -----------------------------------------------------------------------------
+console.log('+ JSON.stringify({ x: 5, y: 6 }) : ' + JSON.stringify({ x: 5, y: 6 }));
+
+// -----------------------------------------------------------------------------
 var d2i = require("./0-declartionsToInclude.js");
 
 console.log('+ aTestString: ' + aTestString);
