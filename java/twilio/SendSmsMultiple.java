@@ -17,7 +17,7 @@ public class SendSmsMultiple {
         String theMsg = "¡Hola Dave!";
         Message message;
 
-        for (int aCounter = 1; aCounter < 10; aCounter++) {
+        for (int aCounter = 0; aCounter < 20; aCounter++) {
             message = Message.creator(
                     new PhoneNumber(toPhoneNumber),
                     new PhoneNumber(fromPhoneNumber),
