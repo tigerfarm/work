@@ -1285,5 +1285,20 @@ curl -X POST 'https://studio.twilio.com/v2/Flows/FWd1aa3231073181f8c812d4a774117
 The Studio flow will send the message: "Hello Boss," to +16505551111.
 
 ----------------------------------------------------------------------------------
+### Executing a Studio Flow
+
+Documentation link:
+https://www.twilio.com/docs/studio/rest-api/v2/execution
+
+Make the request. Note, if successful, the flow execution ID is returned.
+````
+$ twilio api:studio:v2:flows:executions:create \
+     --flow-sid FWcba9788711079914a18dd8098b20baae \
+     --to $MY_PHONE_NUMBER \
+     --from $MAIN_PHONE_NUMBER_4
+SID                                 Status  Date Created                 
+FN5f8ab958148cf268302cf428d6d2d7fa  active  Jul 28 2023 12:38:58 GMT-0700
+````
+----------------------------------------------------------------------------------
 
 Cheers...
