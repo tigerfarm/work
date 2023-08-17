@@ -184,9 +184,10 @@ Screen print of a spreadsheet after sending messages:
 <img width="300px"  src="SendSms.jpg"/>
 
 Setup Steps:
-+ Create a Google spreadsheet. This requires you have a Google account. If you have a Gmail account, then you have a Google account.
++ This requires you have a Google account and [Twilio account](https://www.twilio.com).
++ Create a Google spreadsheet.
 + In the spreadsheet, enter titles: Column A, "Phone numbers", column B, "Message body", column C, "Status".
-+ For the phone numbers, set data type to text string. Click column A. Click the menu item and select: Format/Number/Plain text.
++ For the phone numbers column, set data type to text string. Click column A. Click the menu item and select: Format/Number/Plain text.
 + Load your phones number into the spreadsheet's Column A, starting in row 2.
 + In the column next to the phone numbers, enter the message you wish to send.
 + From the spreadsheet menu, select Tools/Script Editor.
@@ -231,11 +232,10 @@ function sendAll() {
    }
 }
 ````
-+ In the script, enter your account SID (by replacing "your_account_SID") and auth token (by replacing "your_account_auth_token") into the script. You get these values from the first screen, when you log into the Twilio Console (http://twilio.com/console). Enter your Twilio phone number (by replacing "your_Twilio_phone_number") into the script, example: "+12223331234".
++ In the script, enter your Twilio account SID (by replacing "your_account_SID") and auth token (by replacing "your_account_auth_token") into the script. You get these values from the first screen, when you log into the Twilio Console (http://twilio.com/console). Enter your Twilio phone number (by replacing "your_Twilio_phone_number") into the script, example: "+12223331234".
 + In the Google Spreadsheet Script Editor, click Select function and select sendAll.
 + Save the updates.
 + Run the script. Your messages will be sent.
-
 
 Reference article, How to Send SMS from a Google Spreadsheet:
 https://www.twilio.com/blog/2016/02/send-sms-from-a-google-spreadsheet.html
