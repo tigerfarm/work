@@ -30,5 +30,23 @@ $ gem list | grep twilio
 twilio-ruby (6.3.0)
 ````
 
+Ruby code sample into code:
+
+Documentation links:
+[API](https://www.twilio.com/docs/iam/keys/api-key)
+[library doc](https://www.twilio.com/docs/libraries/reference/twilio-ruby/5.8.0/Twilio/REST/Client.html#new_keys-instance_method)
+````
+#new_keys ⇒ Twilio::REST::Api::V2010::AccountContext::NewKeyInstance
+Returns: (Twilio::REST::Api::V2010::AccountContext::NewKeyInstance)
+The following is under "View source"):
+# File 'lib/twilio-ruby/rest/client.rb', line 281
+def new_keys
+  self.api.v2010.account.new_keys
+end
+
+Actual code line:
+new_key = @client.api.v2010.account.new_keys.create(friendly_name: 'ruby2')
+````
+
 --------------------------------------------------------------------------------
 Cheers...
