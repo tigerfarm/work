@@ -5,22 +5,17 @@ GitHub repository:
 https://github.com/twilio/twilio-ruby
 
 --------------------------------------------------------------------------------
-## Ruby gem management
+## Ruby gem library management
 
 ````
 $ gem list | grep twilio
 twilio-ruby (5.58.2)
-
-$ ruby apiKeyCreate.rb 
-+ Create API key for account: ACae...a3
-SK56...22
 
 $ sudo gem install twilio-ruby -v 6.3.0
 Password: ...
 ...
 Successfully installed twilio-ruby-6.3.0
 ...
-
 $ gem list | grep twilio
 twilio-ruby (6.3.0, 5.58.2)
 
@@ -48,6 +43,12 @@ Actual code line:
 new_key = @client.api.v2010.account.new_keys.create(friendly_name: 'ruby2')
 ````
 Full program sample, [apiKeyCreate.rb](apiKeyCreate.rb).
+Sample run:
+````
+$ ruby apiKeyCreate.rb 
++ Create API key for account: ACae...a3
+SK56...22
+````
 
 --------------------------------------------------------------------------------
 Cheers...
