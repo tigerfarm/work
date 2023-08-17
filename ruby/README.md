@@ -47,7 +47,7 @@ end
 Actual code line:
 new_key = @client.api.v2010.account.new_keys.create(friendly_name: 'ruby2')
 ````
-Full program sample, [apiKeyCreate.rb].
+Full program sample, [apiKeyCreate.rb](apiKeyCreate.rb).
 
 --------------------------------------------------------------------------------
 Cheers...
