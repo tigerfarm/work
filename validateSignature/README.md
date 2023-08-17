@@ -67,7 +67,10 @@ console.log(client.validateRequest(authToken, twilioSignature, url, {}));
 
 The GET parameters need to be in the same order as originally received, as originally sent (HTTP GET request) by Twilio. 
 
-In an HTTP POST request, the parameters separate from the HTTP request string.
+In an HTTP POST request:
++ original parameter name-value pair order is not required,
++ the parameters separate from the HTTP request string.
+
 const params = {
  "ToCountry":"CA","ToState":"Alberta",...
 };

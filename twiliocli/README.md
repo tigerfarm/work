@@ -168,6 +168,53 @@ ID       Account SID                         Active
 Writers  AC5...1                             false
 machine  AC1...d                             true 
 ````
+
+#### Transfer a Phone Number between Twilio Accounts
+
+````
+$ twilio profiles:use labs
+set "labs" as active profile
+twilio-cli configuration saved to "/Users/dave/.twilio-cli/config.json"
+
+$ twilio profiles:list
+ID       Account SID                         Active
+machine  AC1xxxxxxxxxxxxxxxxxxxxxxxxxxxxx9d  false  
+labs     AC4xxxxxxxxxxxxxxxxxxxxxxxxxxxxx81  true 
+main     ACaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxa3  false 
+
+$ twilio api:core:incoming-phone-numbers:list
+No results
+
+$ twilio profiles:use machine
+set "machine" as active profile
+twilio-cli configuration saved to "/Users/dave/.twilio-cli/config.json"
+
+$ twilio profiles:list
+ID       Account SID                         Active
+machine  AC1xxxxxxxxxxxxxxxxxxxxxxxxxxxxx9d  true  
+labs     AC4xxxxxxxxxxxxxxxxxxxxxxxxxxxxx81  false 
+main     ACaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxa3  false 
+
+$ twilio api:core:incoming-phone-numbers:list
+SID                                 Phone Number  Friendly Name
+...
+PN1b376bb9768d867c8c591fa9c5730934  +16505552222  (650) 555-2222
+
+$ twilio api:core:incoming-phone-numbers:update --sid PN1b376bb9768d867c8c591fa9c5730934 --target-account-sid $LABS_ACCOUNT_SID
+SID                                 Phone Number  Friendly Name
+PN1b376bb9768d867c8c591fa9c5730934  +16505552222  (650) 555-2222
+
+$ twilio profiles:use labs
+set "labs" as active profile
+twilio-cli configuration saved to "/Users/dave/.twilio-cli/config.json"
+
+$ twilio api:core:incoming-phone-numbers:list
+SID                                 Phone Number  Friendly Name
+PN1b376bb9768d867c8c591fa9c5730934  +16505552222  (650) 555-2222
+
+$ twilio api:core:incoming-phone-numbers:update --sid PN1b376bb9768d867c8c591fa9c5730934 --target-account-sid $MACHINE_ACCOUNT_SID
+````
+
 ----------------------------------------------------------------------------------
 ### Send Messages
 
