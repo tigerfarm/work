@@ -1,4 +1,3 @@
-# require 'rubygems'
 require 'twilio-ruby'
 account_sid = ENV["MAIN_ACCOUNT_SID"]
 auth_token = ENV["MAIN_AUTH_TOKEN"]
