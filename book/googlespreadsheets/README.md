@@ -190,7 +190,7 @@ Setup Steps:
 + For the phone numbers column, set data type to text string. Click column A. Click the menu item and select: Format/Number/Plain text.
 + Load your phones number into the spreadsheet's Column A, starting in row 2.
 + In the column next to the phone numbers, enter the message you wish to send.
-+ From the spreadsheet menu, select Tools/Script Editor.
++ From the spreadsheet menu, select Extensions/App Script.
 + Copy and paste the script into the Google spreadsheet's Script Editor (replacing whatever is there by default):
 ````
 function sendSms(to, body) {
@@ -233,8 +233,9 @@ function sendAll() {
 }
 ````
 + In the script, enter your Twilio account SID (by replacing "your_account_SID") and auth token (by replacing "your_account_auth_token") into the script. You get these values from the first screen, when you log into the Twilio Console (http://twilio.com/console). Enter your Twilio phone number (by replacing "your_Twilio_phone_number") into the script, example: "+12223331234".
-+ In the Google Spreadsheet Script Editor, click Select function and select sendAll.
-+ Save the updates.
++ In the Google Spreadsheet Script Editor, click Select function and select: sendAll.
++ Click the Save icon. Note, if the Save icon is not enabled, type something into the line 5 comment.
+That will enable the Save icon for clicking.
 + Run the script. Your messages will be sent.
 
 Reference article, How to Send SMS from a Google Spreadsheet:
