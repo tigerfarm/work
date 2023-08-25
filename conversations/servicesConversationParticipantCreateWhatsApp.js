@@ -9,9 +9,7 @@ serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6';      // Testing
 conversationSid = "CH252ce7f0b14e45ee89a12156ce6652a4";  // Conversation service/conversation: Testing/WhatsApp c1
 
 // participantIdentitySms = process.env.MY_PHONE_NUMBER;
-// participantIdentitySms = "+16505558893";
-participantIdentitySms = "whatsapp:+16508661007";
-// conversationProxyAddress = "+12093308688";
+participantIdentitySms = "whatsapp:+16505558893";
 conversationProxyAddress = "whatsapp:+14155238886";     // Twilio WhatsApp sandbox id
 console.log("+ Conversation SID: " + conversationSid );
 console.log("+ participantIdentitySms: " + participantIdentitySms );

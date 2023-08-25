@@ -11,14 +11,14 @@ var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, 
 //    },
 // 
 
-serviceSid = process.env.CONVERSATIONS_SERVICE_SID;         // Conversation service: Testing
-// serviceSid = 'IS186702e405b74452a449d67b9265669f';       // Frontline
+// serviceSid = process.env.CONVERSATIONS_SERVICE_SID;         // Conversation service: Testing
+serviceSid = 'IS186702e405b74452a449d67b9265669f';       // Frontline
 // conversationSid = process.env.CONVERSATION_SID;             // Conversation service/conversation: Testing/Group Messaging
-conversationSid = "CHe02e49468eb64f8aaa92a845f10ece78";  // Conversation service/conversation: Testing/abc
+conversationSid = "CHaa8df2fcdcde42f4ba401249bd19b889";
 
-participantIdentitySms = process.env.MY_PHONE_NUMBER;
-// participantIdentitySms = "+16505558893";
-conversationProxyAddress = "+12093308688";
+// participantIdentitySms = process.env.MY_PHONE_NUMBER;
+participantIdentitySms = "+16505558893";
+conversationProxyAddress = "+18665552222";
 console.log("+ Conversation SID: " + conversationSid );
 console.log("+ participantIdentitySms: " + participantIdentitySms );
 console.log("+ conversationProxyAddress: " + conversationProxyAddress );

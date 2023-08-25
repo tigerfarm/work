@@ -8,12 +8,12 @@ var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, 
 // 
 // serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 conversationSid = process.env.CONVERSATION_SID;
-serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
-conversationSid = "CH99fa94032181488888e0491e0a62b95c";
+serviceSid = 'IS186702e405b74452a449d67b9265669f';          // Frontline
+conversationSid = "CH5ae2655888904021a43f0d69d6cf9917";     // John Keats Frontline conversation
 console.log("+ Conversations service SID: " + serviceSid);
 console.log("+ Conversation SID: " + conversationSid);
 //
-participantIdentity = 'cs1';
+participantIdentity = 'example.com';
 console.log("+ Participant Identity: " + participantIdentity );
 client.conversations.services(serviceSid).conversations(conversationSid)
         .participants
