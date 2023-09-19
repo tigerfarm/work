@@ -22,8 +22,9 @@ class HTTPRequester {
 
 echo "+++ Start.\xA";
 
-$AccountSid = getenv("ACCOUNT_SID");
-$fromPhoneNumber = getenv("MASTER_PHONE_NUMBER_1");
+$AccountSid = getenv("MAIN_ACCOUNT_SID");
+$fromPhoneNumber = getenv("MAIN_PHONE_NUMBER_1");
+// $toPhoneNumber = getenv("MAIN_PHONE_NUMBER_2");
 $toPhoneNumber = getenv("MY_PHONE_NUMBER");
 //                                                                                                              100
 //             1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890

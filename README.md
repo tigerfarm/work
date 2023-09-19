@@ -644,6 +644,20 @@ I'm using Apache NetBeans 11.1. I wrote a send SMS servlet.
 + When I called the servlet, an SMS message was sent successfully.
 
 --------------------------------------------------------------------------------
+### Apache NetBeans
+
+Install location:
+````
+ls "/Applications/NetBeans/Apache NetBeans 12.4.app/Contents/Resources/NetBeans/netbeans/"
+...
+$ cat "/Applications/NetBeans/Apache NetBeans 12.4.app/Contents/Resources/NetBeans/netbeans/etc/netbeans.conf"
+````
+Starting NetBeans with a memory usage size override.
+This helped the running 
+````
+/Applications/NetBeans/Apache\ NetBeans\ 12.4.app/Contents/Resources/NetBeans/netbeans/bin/netbeans -J-XX:MaxPermSize=1024m &
+````
+--------------------------------------------------------------------------------
 ### Testing
 
 How to reduce the time to deploy to Heroku from GitHub?
