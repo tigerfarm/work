@@ -9,9 +9,10 @@ $twilio = new Client(getenv("ACCOUNT_SID"), getenv('AUTH_TOKEN'));
 // With error checking added.
 echo "+++ Get availablePhoneNumbers(...)";
 try {
-    $numbers = $twilio->availablePhoneNumbers("US") // GB US
+    $numbers = $twilio->availablePhoneNumbers("GB") // GB US
             ->local
-            ->read(["smsEnabled" => false, "voiceEnabled" => false], 20, 20);
+            ->read(["smsEnabled" => true, "mmsEnabled" => false, "voiceEnabled" => true], 20, 20);
+            // ->read(["smsEnabled" => false, "mmsEnabled" => false, "voiceEnabled" => true, "contains" => "312"], 20, 20);
 } catch (exception $e) {
     echo "+ getStatusCode(): " . $e->getStatusCode() . "\xA";
     echo "+ getMessage(): " . $e->getMessage() . "\xA";
