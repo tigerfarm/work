@@ -2,10 +2,9 @@ console.log("++ Remove a participant from a Conversation.");
 // https://www.twilio.com/docs/conversations/api/service-participant-resource
 var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 
-serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
-// conversationSid = process.env.CONVERSATION_SID;
-conversationSid = "CHeedba31ca8114e099294549b22fe3336";
-participantSid = 'MBceaae8f55ed94a55a218d3e2da8e8137';
+serviceSid = 'IS186702e405b74452a449d67b9265669f';       // Frontline
+conversationSid = "CH8aeaf8fdb8e54440a1a281bb9cf0d360";
+participantSid = 'MBc2b6e65aaac84afda5d73fd261680fc3';
 console.log("+ Conversation SID: " + conversationSid + " Participant Identity: " + participantSid );
 client.conversations.services(serviceSid).conversations(conversationSid)
         .participants(participantSid)

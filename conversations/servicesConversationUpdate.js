@@ -1,15 +1,10 @@
-console.log("++ Fetch a conversation's data.");
+console.log("++ Fetch, then update a conversation's data.");
 // https://www.twilio.com/docs/conversations/api/conversation-resource
-var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
-
-// serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
-// serviceSid = 'IS4ebcc2d46cda47958628e59af9e53e55'; // Default
-// serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6'; // Web application: tfpconversations
-serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
+// 
+// Note, both active and inactive conversations are displayed in Frontline. Closed conversations are not displayed.
 //
-// conversationSid = process.env.CONVERSATION_SID;
-// conversationSid = process.env.CONVERSATIONS_ECHO_SID;
-// conversationSid = 'CHf9c45437d4bd4de2bc8ee2821db1c94b';
+var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
+serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
 conversationSid = 'CH3b5ec959d0684954a9dffc40c1f9d0f4';
 //
 console.log("++ Conversation SID: " + conversationSid);
@@ -36,4 +31,11 @@ client.conversations.services(serviceSid).conversations(conversationSid)
                                     );
                         });
             }
+            console.log("+ Update using the conversation sid: " + conversationSid);
+            client.conversations.v1.conversations(conversationSid)
+                    .update({state: 'closed'})    // active inactive closed
+                    .then(conversation => console.log(
+                                "++ state:           " + conversation.state
+                                ));
         });
+

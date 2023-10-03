@@ -29,7 +29,7 @@ client.conversations.services(serviceSid).conversations(conversationSid)
                             + theName
                             );
                 } else {
-                    // + Participant SID: MBf8a48f0dd6f644a489156c65cba79adb Messaging: sms:  +16504837603:  +12093308688
+                    // + Participant SID: MBf8a48f0dd6f644a489156c65cba79adb Messaging: sms:  +16505552222:  +12095551111
                     console.log("+ Participant SID: " + p.sid
                             + " Messaging: " + p.messagingBinding.type
                             + ":  " + p.messagingBinding.address
