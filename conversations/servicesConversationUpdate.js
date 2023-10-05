@@ -4,10 +4,11 @@ console.log("++ Fetch, then update a conversation's data.");
 // Note, both active and inactive conversations are displayed in Frontline. Closed conversations are not displayed.
 //
 var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
-serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
-conversationSid = 'CH3b5ec959d0684954a9dffc40c1f9d0f4';
-//
+serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6'; // Testing
+// serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
+conversationSid = 'CH1509b3a92b8c4c7bbcf8d11ff9857fb1';
 console.log("++ Conversation SID: " + conversationSid);
+
 client.conversations.services(serviceSid).conversations(conversationSid)
         .fetch()
         .then(conversation => {
@@ -18,22 +19,9 @@ client.conversations.services(serviceSid).conversations(conversationSid)
                     + "\n++ uniqueName:      " + conversation.uniqueName
                     + "\n++ state:           " + conversation.state
                     );
-            if (conversation.uniqueName !== null) {
-                console.log("+ Fetch using unique name: " + conversation.uniqueName);
-                client.conversations.services(serviceSid).conversations(conversation.uniqueName)
-                        .fetch()
-                        .then(c => {
-                            console.log(
-                                    "++ Conversation SID: " + c.sid
-                                    + "\n++ friendlyName:    " + c.friendlyName
-                                    + "\n++ uniqueName:      " + c.uniqueName
-                                    + "\n++ state:           " + c.state
-                                    );
-                        });
-            }
             console.log("+ Update using the conversation sid: " + conversationSid);
             client.conversations.v1.conversations(conversationSid)
-                    .update({state: 'closed'})    // active inactive closed
+                    .update({state: 'inactive'})    // active inactive closed
                     .then(conversation => console.log(
                                 "++ state:           " + conversation.state
                                 ));

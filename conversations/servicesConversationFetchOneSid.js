@@ -21,18 +21,6 @@ client.conversations.services(serviceSid).conversations(conversationSid)
                     + "\n++ friendlyName:    " + conversation.friendlyName
                     + "\n++ uniqueName:      " + conversation.uniqueName
                     + "\n++ state:           " + conversation.state
+                    + "\n++ messagingServiceSid: " + conversation.messagingServiceSid
                     );
-            if (conversation.uniqueName !== null) {
-                console.log("+ Fetch using unique name: " + conversation.uniqueName);
-                client.conversations.services(serviceSid).conversations(conversation.uniqueName)
-                        .fetch()
-                        .then(c => {
-                            console.log(
-                                    "++ Conversation SID: " + c.sid
-                                    + "\n++ friendlyName:    " + c.friendlyName
-                                    + "\n++ uniqueName:      " + c.uniqueName
-                                    + "\n++ state:           " + c.state
-                                    );
-                        });
-            }
         });
