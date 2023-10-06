@@ -3,11 +3,14 @@ var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, 
 //
 // serviceSid = process.env.CONVERSATIONS_SERVICE_SID;     // Default
 // conversationSid = process.env.CONVERSATION_SID;
-serviceSid = 'IS186702e405b74452a449d67b9265669f';   // Frontline
-// conversationSid = "CH0d499dee76f04d5b97ee6bf27e72a3cd"; // Default: tfpecho
-conversationSid = "CH3b5ec959d0684954a9dffc40c1f9d0f4";
+// serviceSid = 'IS4ebcc2d46cda47958628e59af9e53e55'; // Default
+serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6'; // Testing
 console.log("+ Conversations service SID: " + serviceSid);
+//
+// conversationSid = "CH0d499dee76f04d5b97ee6bf27e72a3cd"; // Default: tfpecho
+conversationSid = "CH1509b3a92b8c4c7bbcf8d11ff9857fb1";
 console.log("+ Conversation SID: " + conversationSid);
+
 client.conversations.services(serviceSid).conversations(conversationSid)
         .fetch()
         .then(conversation => {
