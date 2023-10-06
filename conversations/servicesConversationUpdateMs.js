@@ -1,8 +1,6 @@
-console.log("++ Update a conversation's Messaging Service SID.");
+console.log("++ Update a conversation's attribute values.");
 // https://www.twilio.com/docs/conversations/api/conversation-resource
 // 
-// Note, both active and inactive conversations are displayed in Frontline. Closed conversations are not displayed.
-//
 var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 
 serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6'; // Testing
@@ -15,6 +13,9 @@ console.log("+ Update the conversation sid: " + conversationSid);
 // Test value: MG9abb26060f3b4b8ff952eb775544789a
 // {"messagingServiceSid": "MG634319110a48b2e82f1a08247cd8f0ba"}
 // {friendlyName: 'new1 ch1'}
+// {state: 'inactive'}    // active inactive closed
+// Note, both active and inactive conversations are displayed in Frontline. Closed conversations are not displayed.
+
 client.conversations.services(serviceSid).conversations(conversationSid)
         .update(
                 {"messagingServiceSid": "MG634319110a48b2e82f1a08247cd8f0ba"}
