@@ -17,7 +17,8 @@ console.log("+ Update the conversation sid: " + conversationSid);
 // Note, both active and inactive conversations are displayed in Frontline. Closed conversations are not displayed.
 
 // When using the Default service SID: 
-// client.conversations.v1.conversations(conversationSid)
+//    client.conversations.v1.conversations(conversationSid)
+// When specifying the service SID:
 client.conversations.services(serviceSid).conversations(conversationSid)
         .update(
                 {"messagingServiceSid": "MG634319110a48b2e82f1a08247cd8f0ba"}
