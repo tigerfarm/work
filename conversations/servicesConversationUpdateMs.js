@@ -8,14 +8,12 @@ serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6'; // Testing
 //
 conversationSid = 'CH1509b3a92b8c4c7bbcf8d11ff9857fb1';
 console.log("+ Update the conversation sid: " + conversationSid);
-
+// 
 // Original:   MG634319110a48b2e82f1a08247cd8f0ba
 // Test value: MG9abb26060f3b4b8ff952eb775544789a
-// {"messagingServiceSid": "MG634319110a48b2e82f1a08247cd8f0ba"}
-// {friendlyName: 'new1 ch1'}
-// {state: 'inactive'}    // active inactive closed
-// Note, both active and inactive conversations are displayed in Frontline. Closed conversations are not displayed.
 
+// When using the Default service SID:
+// client.conversations.v1.conversations(conversationSid)
 client.conversations.services(serviceSid).conversations(conversationSid)
         .update(
                 {"messagingServiceSid": "MG634319110a48b2e82f1a08247cd8f0ba"}
