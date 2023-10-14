@@ -6,7 +6,7 @@ var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, 
 serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6'; // Testing
 // serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
 //
-conversationSid = 'CH1509b3a92b8c4c7bbcf8d11ff9857fb1';
+conversationSid = 'CHe02e49468eb64f8aaa92a845f10ece78';
 console.log("+ Update the conversation sid: " + conversationSid);
 
 // Original:   MG634319110a48b2e82f1a08247cd8f0ba
@@ -23,7 +23,7 @@ console.log("+ Update the conversation sid: " + conversationSid);
 // When specifying the service SID:
 client.conversations.services(serviceSid).conversations(conversationSid)
         .update(
-                {state: 'active'}    // active inactive closed
+                {state: 'inactive'}    // active inactive closed
         ).then(conversation => console.log(
             "+ After update, attribute values: "
             + "\n++ state: " + conversation.state

@@ -6,6 +6,14 @@ Following are steps I use to work with GitHub and Heroku to create applications,
 and create my personal website [https://tigerfarmpress.com](https://tigerfarmpress.com).
 
 --------------------------------------------------------------------------------
+### UNIX Commands
+
+Count files in a directory.
+````
+$ ls -l *.js | wc -l
+````
+
+--------------------------------------------------------------------------------
 ## Create a GitHub Repository that will be deployed to Heroku
 
 #### Create a new GitHub repository.

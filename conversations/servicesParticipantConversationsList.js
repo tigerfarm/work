@@ -18,27 +18,29 @@ var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, 
 // serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
 serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6';       // Testing
 //serviceSid = 'IS186702e405b74452a449d67b9265669f';       // Frontline
-console.log("+ Service SID:                 " + serviceSid);
+console.log("+ Service SID:     " + serviceSid);
 
 // Use one or the other: address or identity.
 // addressPn = process.env.MY_PHONE_NUMBER;
 // console.log("+ Participant address PN:      " + addressPn);
 // identityString = "dave@example.com";
 identityString = "dave";
-console.log("+ Participant identity string: " + identityString);
+console.log("+ Identity string: " + identityString);
 
 // Also works with default conversation: 
 //  client.conversations.v1.participantConversations
 client.conversations.services(serviceSid).participantConversations
         // .list({address: addressPn, limit: 20})
-        .list({identity: identityString, limit: 20})
-        .then(participantConversations => participantConversations.forEach(
-                    participant => console.log(
-                    "+ Service:" + participant.chatServiceSid
-                    + " conversation:" + participant.conversationSid
-                    + " participant:" + participant.participantSid
-                    + " participantIdentity:" + participant.participantIdentity
-                    + " FriendlyName:" + participant.conversationFriendlyName
-                    )
+        // .list({identity: identityString, limit: 20})
+        .list({identity: identityString})
+        .then(theConversations => theConversations.forEach(
+                    aConversation => console.log(
+                                "+ Service:" + aConversation.chatServiceSid
+                                + " conversation:" + aConversation.conversationSid
+                                + " participant:" + aConversation.participantSid
+                                + " participantIdentity:" + aConversation.participantIdentity
+                                + " state:" + aConversation.conversationState
+                                + " FriendlyName:" + aConversation.conversationFriendlyName
+                                )
             ));
 
