@@ -1,7 +1,7 @@
 // Docs: https://www.twilio.com/docs/usage/security#validating-requests
 
 const client = require('twilio');
-const authToken = process.env.AUTH_TOKEN; // Your account Auth Token
+const authToken = process.env.MAIN_AUTH_TOKEN; // Your account Auth Token
 // The Twilio request URL
 // const url = 'https://example.com/echo?f1=abc&f2=def';
 const url = 'https://tfpecho.herokuapp.com/show?body=rbody';

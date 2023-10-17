@@ -8,7 +8,7 @@ serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6'; // Testing
 console.log("+ Conversations service SID: " + serviceSid);
 //
 // conversationSid = "CH0d499dee76f04d5b97ee6bf27e72a3cd"; // Default: tfpecho
-conversationSid = "CH1509b3a92b8c4c7bbcf8d11ff9857fb1";
+conversationSid = "CHe02e49468eb64f8aaa92a845f10ece78";
 console.log("+ Conversation SID: " + conversationSid);
 
 client.conversations.services(serviceSid).conversations(conversationSid)
@@ -26,9 +26,36 @@ client.conversations.services(serviceSid).conversations(conversationSid)
                     .messages
                     .list({limit: 200})
                     .then(messages => messages.forEach(message => {
+                            theMonth = message.dateCreated.getMonth() + 1;
+                            pMonth = "";
+                            if (theMonth < 10) {
+                                pMonth = "0";
+                            }
+                            theDay = message.dateCreated.getDay() + 1;
+                            pDay = "";
+                            if (theDay < 10) {
+                                pDay = "0";
+                            }
+                            theHours = message.dateCreated.getHours() + 1;
+                            pHours = "";
+                            if (theHours < 10) {
+                                pHours = "0";
+                            }
+                            theMinutes = message.dateCreated.getMinutes() + 1;
+                            pMinutes = "";
+                            if (theMinutes < 10) {
+                                pMinutes = "0";
+                            }
                             console.log(
                                     "+ " + message.sid
                                     + "  " + message.index
+                                    // 0123456789012345678901234567890123456789012345678901234567890
+                                    // Tue Aug 01 2023 10:46:15 GMT-0700 (Pacific Daylight Time)
+                                    + " " + pMonth + theMonth
+                                    + "/" + pDay + theDay
+                                    + "/" + message.dateCreated.getFullYear()
+                                    + " " + pHours + theHours + ":" + pMinutes + theMinutes
+                                    // + "  " + message.dateCreated.toString().substring(4, 21)
                                     + "  " + message.author
                                     // + ", \"" + message.body.substring(0, 25) + "...\""
                                     + ", \"" + message.body + "\""

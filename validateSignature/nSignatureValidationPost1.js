@@ -1,7 +1,7 @@
 // Docs: https://www.twilio.com/docs/usage/security#validating-requests
 
 const client = require('twilio');
-const authToken = process.env.AUTH_TOKEN; // Your account Auth Token
+const authToken = process.env.MAIN_AUTH_TOKEN; // Your account Auth Token
 // The Twilio request URL
 const url = 'https://tigerfarmpress.com/cgi/echo1.php';
 //

@@ -461,12 +461,14 @@ $ npm version
 ... }
 ````
 
-Show lastest version of module that is available.
+Show latest version of module that is available.
 ````
 $ npm view twilio version
-3.68.0
+4.18.1
 $ npm view twilio
-twilio@3.66.1 | MIT | deps: 11 | versions: 216
+twilio@4.18.1 | MIT | deps: 8 | versions: 280
+A Twilio helper library
+https://github.com/twilio/twilio-node#readme
 ...
 ````
 

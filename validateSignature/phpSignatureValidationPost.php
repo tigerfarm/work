@@ -8,7 +8,7 @@ $postVars = array(
 );
 $signature = 'wTa...1pA=';
 $url = 'https://example.herokuapp.com/show';
-$validator = new RequestValidator(getenv('MASTER_AUTH_TOKEN'));
+$validator = new RequestValidator(getenv('MAIN_AUTH_TOKEN'));
 if ($validator->validate($signature, $url, $postVars)) {
     echo "+ Confirmed to have come from Twilio.\xA";
 } else {

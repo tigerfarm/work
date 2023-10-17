@@ -3,7 +3,7 @@ echo "+++ Start.\xA";
 require __DIR__ . '/../twilio-php-main/src/Twilio/autoload.php';
 use Twilio\Security\RequestValidator;
 //
-$validator = new RequestValidator(getenv('MASTER_AUTH_TOKEN'));
+$validator = new RequestValidator(getenv('MAIN_AUTH_TOKEN'));
 //
 $signature = 'p9asdljeafoijawljfeiaelfjsa=';
 $url = 'http://example.com/studio?bodySHA256=12345fd62d0edbf5034ee40ec14c210d230f87642535e25461e123465c545057';

@@ -34,13 +34,14 @@ client.conversations.services(serviceSid).participantConversations
         // .list({identity: identityString, limit: 20})
         .list({identity: identityString})
         .then(theConversations => theConversations.forEach(
-                    aConversation => console.log(
+                    aConversation => {
+                        console.log(
                                 "+ Service:" + aConversation.chatServiceSid
                                 + " conversation:" + aConversation.conversationSid
-                                + " participant:" + aConversation.participantSid
-                                + " participantIdentity:" + aConversation.participantIdentity
                                 + " state:" + aConversation.conversationState
-                                + " FriendlyName:" + aConversation.conversationFriendlyName
-                                )
-            ));
+                                + " FriendlyName: " + aConversation.conversationFriendlyName
+                                + "\n+ participant: " + aConversation.participantSid
+                                + " participantIdentity: " + aConversation.participantIdentity
+                                );
+                    }));
 

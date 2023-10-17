@@ -3,7 +3,7 @@ echo "+++ Start.\xA";
 
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Security\RequestValidator;
-$token = getenv('AUTH_TOKEN');
+$token = getenv('MAIN_AUTH_TOKEN');
 // Data order matters with PHP. In Node, data order didn't matter.
 // ++ ToCountry => US
 // ++ ToState => CA

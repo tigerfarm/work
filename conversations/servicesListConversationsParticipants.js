@@ -20,13 +20,14 @@ client.conversations.services.list({limit: 20})
                                         .then(participants => participants.forEach(p => {
                                                 if (p.identity !== null) {
                                                     // Chat participants.
-                                                    /*
                                                     console.log(
                                                             "++ Service: " + s.sid
                                                             + " Conversation: " + c.sid
+                                                            + " state:" + c.state
                                                             + " Participant SID: " + p.sid
                                                             + " identity, Chat: " + p.identity
                                                             + " " + c.friendlyName);
+                                                    /*
                                                      */
                                                 } else {
                                                     // SMS or WhatsApp participants.
