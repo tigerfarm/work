@@ -1,12 +1,14 @@
 <?php
 
-error_reporting(E_ALL ^ ( E_NOTICE | E_WARNING | E_DEPRECATED ));
-require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
+// error_reporting(E_ALL ^ ( E_NOTICE | E_WARNING | E_DEPRECATED ));
+// require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
+require __DIR__ . '/../../twilio-php-main/srcV7x/Twilio/autoload.php';
 
 print("+++ Test Twilio TLS version.\xA");
 $client = new Twilio\Http\CurlClient();
 try {
-    $response = $client->request('GET', 'https://api.twilio.com:8443');
+    // $response = $client->request('GET', 'https://api.twilio.com:8443');
+    $response = $client->request('GET', 'https://api.twilio.com');
     if (strpos($response, "HTTP 200") !== false) {
         print("+ Test successful, TLS version is TLSv1.2.\xA");
     } else {

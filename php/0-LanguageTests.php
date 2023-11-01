@@ -3,6 +3,8 @@
 echo "\xA+++ Language tests.\xA";
 echo "\xA";
 
+//    + String index :11:
+//                                01234567890123
 echo "+ String index :" . strpos("[Response] HTTP 200", "HTTP") . ":\xA";
 echo "\xA";
 

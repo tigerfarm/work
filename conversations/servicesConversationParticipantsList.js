@@ -6,7 +6,7 @@ var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, 
 //serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6';       // Testing
 // conversationSid = process.env.CONVERSATION_SID;
 serviceSid = 'IS186702e405b74452a449d67b9265669f';       // Frontline
-conversationSid = "CH5ae2655888904021a43f0d69d6cf9917";
+conversationSid = "CHc90bc7befd0949178891e703059ce84a";
 // conversationSid = "CH3b88e37c89ce4e39955dd734364c5a78";
 console.log("+ Conversations service SID: " + serviceSid);
 console.log("+ Conversation SID: " + conversationSid);

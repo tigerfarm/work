@@ -1,9 +1,9 @@
 console.log("++ Create a text message for a Conversation.");
 var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 
-conversationSid = "CHe5581f6e4299402aa77ef237a44c3c40";
-participantIdentity = 'daveg1';
-messageText = 'From daveg1, msg 4';
+conversationSid = "CH5ae2655888904021a43f0d69d6cf9917";     // Frontline "notify" conversation
+participantIdentity = 'davenotify';
+messageText = 'From davenotify, msg 2';
 console.log("+ Conversation SID: " + conversationSid
         + " Participant Identity: " + participantIdentity
         + " messageText: " + messageText
