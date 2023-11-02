@@ -1,33 +1,36 @@
 exports.handler = function(context, event, callback) {
     console.log("=====================================");
-    // Prints event JSON.
+    console.log("++ Print event JSON.");
+    console.log("------");
     console.log(event);
     console.log("-------------------------------------");
-    // Header attribute values
+    console.log("++ Header attribute values.");
+    console.log("------");
     console.log("+ Header, host: " + event.request.headers['host']);
     console.log("+ Headers: " + JSON.stringify(event.request.headers));
     console.log("------");
     for (let key in event.request.headers) {
         console.log("+ event keys: " + `${key}: ${event.request.headers[key]}`);
-        if (key === 'run') {
-            state = event[key];
-            console.log('+ event keys, run: ' + state);
+        if (key === 'user-agent') {
+            state = event.request.headers[key];
+            console.log('+++ Found match for event header, user-agent: ' + state);
         }
     }
     console.log("-------------------------------------");
-    // HTTP parameters
-    console.log("+ event.run: " + event.f1);
+    console.log("++ HTTP parameters.");
+    console.log("------");
+    console.log("+ event.f1: " + event.f1);
     console.log("------");
     for (let key in event) {
         console.log("+ event keys: " + `${key}: ${event[key]}`);
         if (key === 'f1') {
             state = event[key];
-            console.log('+ event keys, run: ' + state);
+            console.log('+++ Found match for event HTTP parameter, f1: ' + state);
         }
     }
     console.log("-------------------------------------");
     const twiml = new Twilio.twiml.VoiceResponse();
-    twiml.say('Hello from cSip.');
+    twiml.say('Hello from this function.');
     callback(null, twiml);
     // callback(null, 'Hello from cSip.');
 };
