@@ -152,34 +152,37 @@ Echo HTTP headers and parameters to the console.
 ````
 exports.handler = function(context, event, callback) {
     console.log("=====================================");
-    // Prints event JSON.
+    console.log("++ Print event JSON.");
+    console.log("------");
     console.log(event);
     console.log("-------------------------------------");
-    // Header attribute values
+    console.log("++ Header attribute values.");
+    console.log("------");
     console.log("+ Header, host: " + event.request.headers['host']);
     console.log("+ Headers: " + JSON.stringify(event.request.headers));
     console.log("------");
     for (let key in event.request.headers) {
         console.log("+ event keys: " + `${key}: ${event.request.headers[key]}`);
-        if (key === 'run') {
-            state = event[key];
-            console.log('+ event keys, run: ' + state);
+        if (key === 'user-agent') {
+            state = event.request.headers[key];
+            console.log('+++ Found match for event header, user-agent: ' + state);
         }
     }
     console.log("-------------------------------------");
-    // HTTP parameters
-    console.log("+ event.run: " + event.f1);
+    console.log("++ HTTP parameters.");
+    console.log("------");
+    console.log("+ event.f1: " + event.f1);
     console.log("------");
     for (let key in event) {
         console.log("+ event keys: " + `${key}: ${event[key]}`);
         if (key === 'f1') {
             state = event[key];
-            console.log('+ event keys, run: ' + state);
+            console.log('+++ Found match for event HTTP parameter, f1: ' + state);
         }
     }
     console.log("-------------------------------------");
     const twiml = new Twilio.twiml.VoiceResponse();
-    twiml.say('Hello from cSip.');
+    twiml.say('Hello from this function.');
     callback(null, twiml);
     // callback(null, 'Hello from cSip.');
 };
@@ -189,6 +192,8 @@ From the browser, console results:
 http://localhost:3000/cSip?f1=abc&f2=def
 ````
 =====================================
+++ Print event JSON.
+------
 {
   request: {
     headers: {
@@ -209,11 +214,14 @@ http://localhost:3000/cSip?f1=abc&f2=def
   f2: 'def'
 }
 -------------------------------------
+++ Header attribute values.
+------
 + Header, host: localhost:3000
 + Headers: {"host":"localhost:3000","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/118.0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8","accept-language":"en-US,en;q=0.5","accept-encoding":"gzip, deflate, br","upgrade-insecure-requests":"1","sec-fetch-dest":"document","sec-fetch-mode":"navigate","sec-fetch-site":"none","sec-fetch-user":"?1"}
 ------
 + event keys: host: localhost:3000
 + event keys: user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/118.0
++++ Found match for event header, user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/118.0
 + event keys: accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
 + event keys: accept-language: en-US,en;q=0.5
 + event keys: accept-encoding: gzip, deflate, br
@@ -223,14 +231,16 @@ http://localhost:3000/cSip?f1=abc&f2=def
 + event keys: sec-fetch-site: none
 + event keys: sec-fetch-user: ?1
 -------------------------------------
-+ event.run: abc
+++ HTTP parameters.
+------
++ event.f1: abc
 ------
 + event keys: request: [object Object]
 + event keys: f1: abc
-+ event keys, run: abc
++++ Found match for event HTTP parameter, f1: abc
 + event keys: f2: def
 -------------------------------------
-200 GET /cSip?f1=abc&f2=def
+200 GET /params?f1=abc&f2=def
 ````
 
 --------------------------------------------------------------------------------
