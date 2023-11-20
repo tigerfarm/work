@@ -52,7 +52,9 @@ console.log("+ Participant Identity: " + participantIdentity
         );
 client.conversations.services(serviceSid).conversations(conversationSid)
         .messages
-        .create({author: participantIdentity, body: messageText
+        .create({
+            author: participantIdentity,
+            body: messageText
             , mediaSid: mediaId
         })
         .then(message => console.log(

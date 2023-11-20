@@ -25,8 +25,8 @@ class HTTPRequester {
 echo "+++ Start.\xA";
 
 $AccountSid = getenv("MAIN_ACCOUNT_SID");
-$fromPhoneNumber = getenv("MAIN_PHONE_NUMBER_1");
-$toPhoneNumber = getenv("MAIN_PHONE_NUMBER_2");
+$fromPhoneNumber = getenv("MAIN_PN_1007");
+$toPhoneNumber = getenv("MAIN_PN_9665");
 // $toPhoneNumber = getenv("MY_PHONE_NUMBER");
 $theMessage = "Message #1";
 $theMessageOkay = "J'aime l'été... éÉÑñ";

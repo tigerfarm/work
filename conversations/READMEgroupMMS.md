@@ -22,8 +22,11 @@
 ````
 
 ### Participant types for Group MMS conversations
+
 ````
 ++ Create an Chat participant for a Group MMS conversation.
++ Project address (Twilio phone number) is to give a conversation chat participant 
+  a phone number for a Group MMS conversation.
 // https://www.twilio.com/docs/conversations/group-texting?code-sample=code-add-a-chat-participant-real-estate-agent&code-language=Node.js&code-sdk-version=4.x
 //    "identity": "davehere",
 //    "messaging_binding": {

@@ -16,9 +16,9 @@ class HTTPRequester {
 
 echo "+++ Start.\xA";
 
-$AccountSid = getenv("ACCOUNT_SID");
-$fromPhoneNumber = getenv("PHONE_NUMBER_2");
-$toPhoneNumber = getenv("PHONE_NUMBER_3");
+$AccountSid = getenv("MAIN_ACCOUNT_SID");
+$fromPhoneNumber = getenv("MAIN_PN_1007");
+$toPhoneNumber = getenv("MAIN_PN_9665");
 //
 $url = "https://api.twilio.com/2010-04-01/Accounts/{$AccountSid}/Messages.json";
 $dataParms = 'From=' . $fromPhoneNumber . '&To=' . $toPhoneNumber;

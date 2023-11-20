@@ -808,6 +808,15 @@ twilio api:bulkexports:v1:exports:jobs:create \
     --webhook-method GET \
     --webhook-url http://www.example.com/echo
 
+twilio api:bulkexports:v1:exports:jobs:create \
+    --resource-type Messages \
+    --email you@example.com \
+    --webhook-method POST \
+    --webhook-url https://www.company.com/bulkexporthook \
+    --start-day 2019-11-20 \
+    --end-day 2019-11-30 \
+    --friendly-name Export1
+
 Details  Email  End Day     Estimated Completion Time  Friendly Name  Job Queue Position  Job SID                             Resource Type  Start Day   Webhook Method  Webhook URL                             
 null     null   2022-09-07  2022-09-10T00:13:27.977    ExportJobs     2                   JSe1134e3eb0586e268fa340af53673b53  Calls          2022-09-07  GET             https://example.com/ExportJob2
 (The above is results from different create command)
@@ -819,6 +828,11 @@ Friendly Name  Job SID
 ExportJuly27   JS1dca2e0dfb7815c1fea2362d9f61c16c
 ExportJuly27   JS677d0986311ebb99cfa945425e1889c0
 ExportJuly27b  JSed5cd7ba5451574475d4d4bb890aed4f
+
+$ twilio api:bulkexports:v1:exports:jobs:list --resource-type Messages --properties=friendlyName,jobSid,estimatedCompletionTime
+Friendly Name  Job SID                             Estimated Completion Time
+ExportJuly27   JS1dca2e0dfb7815c1fea2362d9f61c16c  2023-11-15T00:56:58.232  
+...
 
 $ twilio api:bulkexports:v1:exports:jobs:list --resource-type Messages --properties=friendlyName,jobSid,details
 Friendly Name  Job SID                             Details 
