@@ -3,8 +3,10 @@ console.log("++ List a Service's Conversations.");
 // var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN, {logLevel: 'debug'});
 var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 
-serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
-conversationSid = process.env.CONVERSATION_SID;
+// serviceSid = process.env.CONVERSATIONS_SERVICE_SID;
+serviceSid = "IS5c86b7d0d6e44133acb09734274f94f6";       // Testing
+// conversationSid = process.env.CONVERSATION_SID;
+conversationSid = "CHe02e49468eb64f8aaa92a845f10ece78";
 console.log("+ Conversations service SID: " + serviceSid);
 console.log("+ Conversation SID: " + conversationSid);
 client.conversations.services(serviceSid).conversations(conversationSid)
