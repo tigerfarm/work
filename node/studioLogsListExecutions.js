@@ -5,9 +5,6 @@ console.log("+ Account SID: " + process.env.MAIN_ACCOUNT_SID + " theFlow: " + th
 client.studio.v1.flows(theFlow)
         .executions
         .list({
-            // Dates didn't work for me.
-            // dateCreatedFrom: new Date(Date.UTC(2022, 1, 1, 0, 0, 0)),
-            // dateCreatedTo: new Date(Date.UTC(2022, 6, 30, 0, 0, 0)),
             limit: 3
         })
         .then(executions => executions.forEach(e => {
