@@ -122,7 +122,7 @@ Authorization: <type> <credentials>
 If the Content-Type is application-json, 
 don't use the JSON body to fill in the validator's param for POST parameters.
 + The query parameter bodySHA256 will be included in the Twilio HTTP request.
-+ Its value is calculated as the hexadecimal representation of the SHA-256 hash of the request body
++ Its value is calculated as the hexadecimal representation of the SHA-256 hash of the request body.
 
 Example HTTP GET URL when Content-Type is application-json:
 ````

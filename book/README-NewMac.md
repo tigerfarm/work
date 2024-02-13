@@ -1,6 +1,12 @@
 --------------------------------------------------------------------------------
 # New MacBook Air M1 Notes
 
+--------------------------------------------------------------------------------
++++ Finder
+
+Command + Shift + . (period) to toggle the showing of hidden filenames.
+
+--------------------------------------------------------------------------------
 I have an Apple Adapter unit that has a USB, HDMI, and Apple connector.
 Item description from Amazon.com: 
 USB C to HDMI Adapter USB Type C Adapter Multiport AV Converter with 4K HDMI Output USB C Port & USD3.0 

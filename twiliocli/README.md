@@ -1360,6 +1360,43 @@ $ twilio api:studio:v2:flows:executions:create \
 SID                                 Status  Date Created                 
 FN5f8ab958148cf268302cf428d6d2d7fa  active  Jul 28 2023 12:38:58 GMT-0700
 ````
+
+----------------------------------------------------------------------------------
+### Video Room information
+
+You can list video room information properties:
+https://www.twilio.com/docs/video/api/rooms-resource#resource-properties
+
+Sample command to list completed room properties: sid and uniqueName.
+````
+$ twilio api:video:v1:rooms:list --status completed --properties=sid,uniqueName
+RM7809b6adc70ef0611ddeaec46114497c  abc        
+RMd01aed309eeb8f0324c1d377b0a222a2  abc        
+RM0ca367837d5005d0f4544086ec559c56  door       
+RM8589e9c72f1851bb6a7893cbb8e1b685  door       
+RM039ebc54933a62a0e836f21218d367f2  door       
+...
+````
+Save to a file that can be opened in a spreadsheet:
+````
+$ twilio api:video:v1:rooms:list --status completed --properties=sid,uniqueName > t.csv
+````
+Getting help for listing video rooms:
+````
+$ twilio api:video:v1:rooms:list --help
+list multiple Rooms resources
+USAGE
+$ twilio api:video:v1:rooms:list [-o columns|json|tsv|none] [--status <value>] [--unique-name <value>] [--date-created-after <value>]  [--date-created-before <value>] [--properties <value>]
+OPTIONAL FLAGS
+-o=(columns|json|tsv|none)       [default: columns] Format of command output.
+--date-created-after=<value>     Read only rooms that started on or after this date, given as `YYYY-MM-DD`.
+--date-created-before=<value>    Read only rooms that started before this date, given as `YYYY-MM-DD`.
+--properties=<value>             [default: sid,uniqueName,status] The properties you would like to display.
+--status=<value>                 Read only the rooms with this status. Can be: `in-progress` (default) or `completed`
+--unique-name=<value>            Read only rooms with the this `unique_name`.
+...
+````
+
 ----------------------------------------------------------------------------------
 
 Cheers...
