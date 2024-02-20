@@ -18,7 +18,9 @@ $ ls -l *.js | wc -l
 
 #### Create a new GitHub repository.
 
-On your GitHub repository home page, add a new repository by clicking the "+" icon (top right), and clicking New repository.
+On your GitHub repository home page, add a new repository by 
+clicking the "+" icon (top right), 
+and clicking New repository.
 
 To make it private, go to Settings/General/Danger Zone/Change repository visibility, click Change visibility. Select Make private.
 
@@ -35,7 +37,7 @@ git init
 git add .
 git commit -am "first commit"
 git branch -M main
-git remote add origin https://github.com/tigerfarm/tfpfilesOther.git (this line may not be required)
+git remote add origin https://github.com/tigerfarm/tfpfilesOther.git
 git remote set-url origin https://g...hU@github.com/tigerfarm/tfpfilesOther.git (see 00-Acc.txt sample)
 git push -u origin main
 ````
