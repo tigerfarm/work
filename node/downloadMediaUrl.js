@@ -17,7 +17,8 @@ async function SaveMedia(mediaUrl, filename) {
         });
     }
 }
-console.log("+ call: SaveMedia(...)");
+console.log("+ before call: SaveMedia(...)");
 SaveMedia("https://tfpbooks.herokuapp.com/StacyDavid/JamesGoslingAndI.jpg", "downloadMediaUrl.jpg");
+console.log("+ after call: SaveMedia(...)");
 
 // eof
