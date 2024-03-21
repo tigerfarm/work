@@ -8,8 +8,8 @@ var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, 
 //
 // Frontline particpant: SMS
 serviceSid = 'IS186702e405b74452a449d67b9265669f';
-conversationSid = "CHaa8df2fcdcde42f4ba401249bd19b889";
-participantSid = 'MB3b50ad0cf2104c8095cecc4c1e036552';
+conversationSid = "CH3b5ec959d0684954a9dffc40c1f9d0f4";
+participantSid = 'MB83baecb5b3464c00874c83c90e926165';
 //
 console.log("+ Conversations service SID: " + serviceSid);
 console.log("+ Conversation SID: " + conversationSid);

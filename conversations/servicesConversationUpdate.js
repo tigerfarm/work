@@ -3,10 +3,10 @@ console.log("++ Update a conversation's attribute values.");
 // 
 var client = require('../../node_modules/twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 
-serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6'; // Testing
-// serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
+// serviceSid = 'IS5c86b7d0d6e44133acb09734274f94f6'; // Testing
+serviceSid = 'IS186702e405b74452a449d67b9265669f';  // Frontline
 //
-conversationSid = 'CHe02e49468eb64f8aaa92a845f10ece78';
+conversationSid = 'CH3b5ec959d0684954a9dffc40c1f9d0f4';
 console.log("+ Update the conversation sid: " + conversationSid);
 
 // Original:   MG634319110a48b2e82f1a08247cd8f0ba

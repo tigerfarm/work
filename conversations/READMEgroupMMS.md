@@ -1,16 +1,31 @@
 ----------------------------------------------------------------------------------
 # Group MMS Conversations Notes
 
+Group Texting in Conversations
+https://www.twilio.com/docs/conversations/group-texting
+Scenario 1: Set up a group message with one Chat participant and two SMS participants
+Step 1: Create the Conversation
+Step 2: Add the real estate agent which is a chat participant for the conversation
+Uses a Messaging Binding Projected Address, a Twilio phone number.
+Step 3: Add the first homebuyer that is a regular SMS conversation participant.
+Uses a Messaging Binding Address that is the person's mobile phone number.
+Step 4: Send a 1:1 message. The chat participant creates the conversation message.
+Step 5: Add the second homebuyer to the group text
+Uses a Messaging Binding Address that is the person's mobile phone number.
+Step 6: Send another message. The chat participant creates another conversation message.
+
 ## Type of Twilio Conversations Participants
+
+10 max in a group MMS conversations.
 
 ### Participant types for regular conversations, a non-Group MMS conversations
 ````
-++ Create an Chat participant for a conversation.
+++ Create one chat participant for the conversation.
 // https://www.twilio.com/docs/conversations/api/conversation-participant-resource?code-sample=code-create-conversation-participant-chat&code-language=Node.js&code-sdk-version=4.x
 //    "identity": "davehere",
 //    "messaging_binding": null,
 
-++ Create an SMS participant for a Conversation.
+++ Create up to 9 SMS participants for a Conversation.
 // https://www.twilio.com/docs/conversations/api/conversation-participant-resource?code-sample=code-create-conversation-participant-sms&code-language=Node.js&code-sdk-version=4.x
 //    "identity": null,
 //    "messaging_binding": {
