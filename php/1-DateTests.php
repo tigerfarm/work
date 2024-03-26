@@ -29,11 +29,12 @@ $date = new DateTime('2001-02-03 04:05:06');
 echo "\xA+ date->format  : ". $date->format('Y-m-d H:i:s');
 echo "\xA";
 
-$todayStart = date('Y-m-d') + ' 00:00:00';  // date('2018-08-24 00:00:00')
+$todayStart = date('Y-m-d') . ' 00:00:00';  // date('2018-08-24 00:00:00')
 $date1 = new DateTime($todayStart);
 echo "\xA+ todayStart    : " . $date1->format('Y-m-d H:i:s');
+echo "\xA";
 
-$todayEnd = date('Y-m-d') + ' 21:59:59';    // date('2018-08-24 21:59:59')
+$todayEnd = date('Y-m-d') . ' 21:59:59';    // date('2018-08-24 21:59:59')
 $date2 = new DateTime($todayEnd);
 echo "\xA+ todayEnd      : " . $date2->format('Y-m-d H:i:s');
 
