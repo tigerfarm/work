@@ -1,0 +1,218 @@
+{
+  "description": "A New Flow",
+  "states": [
+    {
+      "type": "InitialState",
+      "name": "Trigger",
+      "properties": {
+        "offset": {
+          "x": 10,
+          "y": 10
+        },
+        "flow_url": "https://webhooks.twilio.com/v1/Accounts/AC1b32414e8ab41e56e6393bcbba7d5a9d/Flows/FW0b079a7614077376f3b5c825319cc34e"
+      },
+      "transitions": [
+        {
+          "event": "incomingMessage",
+          "conditions": [],
+          "next": null,
+          "uuid": "65562a02-587e-4c1f-bd39-c19cac690582"
+        },
+        {
+          "event": "incomingCall",
+          "conditions": [],
+          "next": "FF3f131627662f70e24a20408c2f48585e",
+          "uuid": "7feb89a6-a426-4d5f-aeee-acbe7ef3ba00"
+        },
+        {
+          "event": "incomingRequest",
+          "conditions": [],
+          "next": null,
+          "uuid": "651cf68a-f0fc-4133-867e-e9ec16a9e0c7"
+        }
+      ],
+      "sid": "FFfc1ce214b650f93863ab7a0e973c6705"
+    },
+    {
+      "type": "Gather",
+      "name": "gather_1",
+      "properties": {
+        "offset": {
+          "x": 39,
+          "y": 180
+        },
+        "timeout": 5,
+        "finish_on_key": "#",
+        "stop_gather": true,
+        "number_of_digits": null,
+        "save_response_as": null,
+        "say": "Enter the number of dollars you want to be charged.",
+        "play": null,
+        "voice": "alice",
+        "language": "en",
+        "loop": 1,
+        "hints": null,
+        "gather_language": "en"
+      },
+      "transitions": [
+        {
+          "event": "keypress",
+          "conditions": [],
+          "next": "FF9632a55e2c04cec54ea5c8aeaa2bdc1e",
+          "uuid": "81bebb0b-2d4e-484f-87f0-2b5288deebfc"
+        },
+        {
+          "event": "speech",
+          "conditions": [],
+          "next": null,
+          "uuid": "c913c9c3-482c-4486-9181-3bc9b3c6f17e"
+        },
+        {
+          "event": "timeout",
+          "conditions": [],
+          "next": "FF3f131627662f70e24a20408c2f48585e",
+          "uuid": "aa54d843-080b-4e44-9cc0-2d0f685021de"
+        }
+      ],
+      "sid": "FF3f131627662f70e24a20408c2f48585e"
+    },
+    {
+      "type": "Pay",
+      "name": "pay_1",
+      "properties": {
+        "offset": {
+          "x": 0,
+          "y": 410
+        },
+        "timeout": 5,
+        "max_attempts": 3,
+        "security_code": false,
+        "postal_code": "false",
+        "payment_connector": "Default",
+        "payment_token_type": "one-time",
+        "payment_amount": "{{widgets.gather_1.Digits}}",
+        "currency": "usd",
+        "description": "Testcharge=12.34",
+        "valid_card_types": [
+          "visa"
+        ],
+        "language": "en-US",
+        "min_postal_code_length": null,
+        "payment_method": null,
+        "bank_account_type": null,
+        "parameters": null
+      },
+      "transitions": [
+        {
+          "event": "success",
+          "conditions": [],
+          "next": "FF5e0b6b7b22b921ce5a77d5a334d698d4",
+          "uuid": "40d8afc7-82b5-4351-9ee2-800e1d08aadd"
+        },
+        {
+          "event": "maxFailedAttempts",
+          "conditions": [],
+          "next": "FF0369b1fc887156397b19f9f8e8a60fed",
+          "uuid": "508e3b57-b25f-420a-b4c1-eaefa88fe9d6"
+        },
+        {
+          "event": "providerError",
+          "conditions": [],
+          "next": "FFea7fb9322442149e42875297c9c1b2c8",
+          "uuid": "2faf96e6-01ad-4e1f-b514-5e65caedd3f1"
+        },
+        {
+          "event": "payInterrupted",
+          "conditions": [],
+          "next": "FFea7fb9322442149e42875297c9c1b2c8",
+          "uuid": "2f1f91bc-e9a1-4414-b36e-cc3fd299c0fb"
+        },
+        {
+          "event": "hangup",
+          "conditions": [],
+          "next": null,
+          "uuid": "bb44737c-a012-4a79-a5f6-3a5ba23cba2d"
+        },
+        {
+          "event": "validationError",
+          "conditions": [],
+          "next": "FFea7fb9322442149e42875297c9c1b2c8",
+          "uuid": "fbddbb89-b28f-46ae-a9b4-2127b140c5d7"
+        }
+      ],
+      "sid": "FF9632a55e2c04cec54ea5c8aeaa2bdc1e"
+    },
+    {
+      "type": "SayPlay",
+      "name": "say_play_2",
+      "properties": {
+        "offset": {
+          "x": -310,
+          "y": 410
+        },
+        "say": "payment success",
+        "play": null,
+        "voice": null,
+        "language": null,
+        "loop": 1
+      },
+      "transitions": [
+        {
+          "event": "audioComplete",
+          "conditions": [],
+          "next": null,
+          "uuid": "6f62dbc9-e862-49cb-88e7-ee60bf15dc39"
+        }
+      ],
+      "sid": "FF5e0b6b7b22b921ce5a77d5a334d698d4"
+    },
+    {
+      "type": "SayPlay",
+      "name": "say_play_3",
+      "properties": {
+        "offset": {
+          "x": -150,
+          "y": 670
+        },
+        "say": "Max failed attempts",
+        "play": null,
+        "voice": null,
+        "language": null,
+        "loop": 1
+      },
+      "transitions": [
+        {
+          "event": "audioComplete",
+          "conditions": [],
+          "next": null,
+          "uuid": "82ede741-772d-49c8-972e-9430b64ef57c"
+        }
+      ],
+      "sid": "FF0369b1fc887156397b19f9f8e8a60fed"
+    },
+    {
+      "type": "SayPlay",
+      "name": "say_play_4",
+      "properties": {
+        "offset": {
+          "x": 202,
+          "y": 631
+        },
+        "say": "Provider error, pay interrupted, or validation error.",
+        "play": null,
+        "voice": null,
+        "language": null,
+        "loop": 1
+      },
+      "transitions": [
+        {
+          "event": "audioComplete",
+          "conditions": [],
+          "next": null,
+          "uuid": "791f9b50-530c-4b21-9084-190d866a7182"
+        }
+      ],
+      "sid": "FFea7fb9322442149e42875297c9c1b2c8"
+    }
+  ]
+}

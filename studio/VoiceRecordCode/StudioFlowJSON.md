@@ -1,0 +1,248 @@
+{
+  "description": "Gather until code entered",
+  "states": [
+    {
+      "name": "Trigger",
+      "type": "trigger",
+      "transitions": [
+        {
+          "event": "incomingMessage"
+        },
+        {
+          "next": "say_play_4",
+          "event": "incomingCall"
+        },
+        {
+          "event": "incomingRequest"
+        },
+        {
+          "event": "incomingParent"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -280,
+          "y": 20
+        }
+      }
+    },
+    {
+      "name": "say_play_1",
+      "type": "say-play",
+      "transitions": [
+        {
+          "next": "gather_1",
+          "event": "audioComplete"
+        }
+      ],
+      "properties": {
+        "voice": "Polly.Amy",
+        "offset": {
+          "x": -410,
+          "y": 640
+        },
+        "loop": 1,
+        "say": "Record until entered 1 2 3",
+        "language": "en-GB"
+      }
+    },
+    {
+      "name": "gather_1",
+      "type": "gather-input-on-call",
+      "transitions": [
+        {
+          "next": "split_1",
+          "event": "keypress"
+        },
+        {
+          "next": "gather_1",
+          "event": "speech"
+        },
+        {
+          "next": "gather_1",
+          "event": "timeout"
+        }
+      ],
+      "properties": {
+        "number_of_digits": 3,
+        "speech_timeout": "auto",
+        "offset": {
+          "x": 180,
+          "y": 260
+        },
+        "loop": 1,
+        "finish_on_key": "#",
+        "stop_gather": true,
+        "gather_language": "en",
+        "profanity_filter": "false",
+        "timeout": 30
+      }
+    },
+    {
+      "name": "split_1",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "gather_1",
+          "event": "noMatch"
+        },
+        {
+          "next": "say_play_2",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If value equal_to 123",
+              "arguments": [
+                "{{widgets.gather_1.Digits}}"
+              ],
+              "type": "equal_to",
+              "value": "123"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.gather_1.Digits}}",
+        "offset": {
+          "x": 10,
+          "y": 490
+        }
+      }
+    },
+    {
+      "name": "say_play_2",
+      "type": "say-play",
+      "transitions": [
+        {
+          "next": "call_recording_2",
+          "event": "audioComplete"
+        }
+      ],
+      "properties": {
+        "voice": "Polly.Amy",
+        "offset": {
+          "x": 170,
+          "y": 710
+        },
+        "loop": 1,
+        "say": "Recording completed,\nstop recording.",
+        "language": "en-GB"
+      }
+    },
+    {
+      "name": "call_recording_2",
+      "type": "record-call",
+      "transitions": [
+        {
+          "next": "send_message_1",
+          "event": "success"
+        },
+        {
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "record_call": false,
+        "offset": {
+          "x": 70,
+          "y": 950
+        },
+        "trim": "do-not-trim",
+        "recording_status_callback": "",
+        "recording_status_callback_method": "POST",
+        "recording_status_callback_events": "completed",
+        "recording_channels": "dual"
+      }
+    },
+    {
+      "name": "call_recording_3",
+      "type": "record-call",
+      "transitions": [
+        {
+          "next": "say_play_1",
+          "event": "success"
+        },
+        {
+          "next": "say_play_3",
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "record_call": true,
+        "offset": {
+          "x": -410,
+          "y": 430
+        },
+        "trim": "do-not-trim",
+        "recording_status_callback": "https://example.com/record",
+        "recording_status_callback_method": "POST",
+        "recording_status_callback_events": "completed",
+        "recording_channels": "dual"
+      }
+    },
+    {
+      "name": "say_play_3",
+      "type": "say-play",
+      "transitions": [
+        {
+          "event": "audioComplete"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -340,
+          "y": 850
+        },
+        "loop": 1,
+        "say": "Call Recording widget failed."
+      }
+    },
+    {
+      "name": "say_play_4",
+      "type": "say-play",
+      "transitions": [
+        {
+          "next": "call_recording_3",
+          "event": "audioComplete"
+        }
+      ],
+      "properties": {
+        "voice": "Polly.Amy",
+        "offset": {
+          "x": -410,
+          "y": 220
+        },
+        "loop": 1,
+        "say": "Annoucement, turning call recording on.",
+        "language": "en-GB"
+      }
+    },
+    {
+      "name": "send_message_1",
+      "type": "send-message",
+      "transitions": [
+        {
+          "event": "sent"
+        },
+        {
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 390,
+          "y": 940
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "to": "+16505552222",
+        "body": "Recording information,\nCall SID: {{widgets.call_recording_3.CallSid}} \nRecording Sid: {{widgets.call_recording_3.Sid}} \nTap to listen: https://api.twilio.com/2010-04-01/Accounts/\n{{widgets.call_recording_3.AccountSid}}/Recordings/{{widgets.call_recording_3.Sid}}"
+      }
+    }
+  ],
+  "initial_state": "Trigger",
+  "flags": {
+    "allow_concurrent_calls": true
+  }
+}

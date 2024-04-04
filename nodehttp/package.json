@@ -1,0 +1,26 @@
+{
+  "name": "nodeexpress",
+  "version": "0.1.0",
+  "description": "Sample Node.js Express web server",
+  "engines": {
+    "node": "10.x"
+  },
+  "main": "webserver.js",
+  "scripts": {
+    "start": "node webserver.js"
+  },
+  "dependencies": {
+    "express": "^4.15.2",
+    "twilio": "^3.31.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/tighttp"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}

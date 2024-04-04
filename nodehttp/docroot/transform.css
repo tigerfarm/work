@@ -1,0 +1,27 @@
+/* -------------------------------------------------------------------------- 
+    https://developer.mozilla.org/en-US/docs/Web/CSS/transform
+*/
+
+/* Test class */
+.dotransform
+{
+    background: black;
+    padding: 9px;
+    transform: scaleX(-1);
+    /* 
+    Mirror image. Suggested for Twilio video workaround:
+    transform: scaleX(-1);
+    ----------
+    Offset starting point:
+    transform: translate(30px, 20px);
+    Rotate the object:
+    transform: rotate(20deg);
+    ----------
+    Doesn't do anything:
+    transform: rotateX();
+    Makes narrower:
+    transform: rotateY(60deg);
+    */
+}
+
+/* -------------------------------------------------------------------------- */

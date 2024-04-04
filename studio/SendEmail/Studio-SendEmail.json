@@ -1,0 +1,107 @@
+{
+  "description": "A New Flow",
+  "states": [
+    {
+      "type": "InitialState",
+      "name": "Trigger",
+      "properties": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "flow_url": "https://webhooks.twilio.com/v1/Accounts/AC1b32414e8ab41e56e6393bcbba7d5a9d/Flows/FWaaa306d281432b7a166ee99c41f39333"
+      },
+      "transitions": [
+        {
+          "event": "incomingMessage",
+          "conditions": [],
+          "next": "FFeec6caad0f2b6458a7d1b8a758d8e0ae",
+          "uuid": "35db6dd6-997c-4494-a7bc-af01c7fb7ca5"
+        },
+        {
+          "event": "incomingCall",
+          "conditions": [],
+          "next": null,
+          "uuid": "4b4d39c8-d3cb-4521-b326-6a9d5707f15c"
+        },
+        {
+          "event": "incomingRequest",
+          "conditions": [],
+          "next": null,
+          "uuid": "3a6f6039-bb3e-466e-a589-31ad2d7a1705"
+        }
+      ],
+      "sid": "FFadb8aa6286d61bcd782c4ad00359b25b"
+    },
+    {
+      "type": "Message",
+      "name": "send_message_1",
+      "properties": {
+        "offset": {
+          "x": 100,
+          "y": 150
+        },
+        "body": "From: {{trigger.message.From}} \nTo: {{trigger.message.To}} \nMessage: {{trigger.message.Body}}",
+        "from": "{{flow.channel.address}}",
+        "to": "+16505552222",
+        "media_url": null,
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "attributes": null
+      },
+      "transitions": [
+        {
+          "event": "sent",
+          "conditions": [],
+          "next": "FF5417b658ddc48b0fa90e33b632038383",
+          "uuid": "9b3a6ce6-7b09-494c-8d6f-d9b780afd19d"
+        },
+        {
+          "event": "failed",
+          "conditions": [],
+          "next": null,
+          "uuid": "b4cb10ab-1595-491c-8c23-1b79dcdfdc43"
+        }
+      ],
+      "sid": "FFeec6caad0f2b6458a7d1b8a758d8e0ae"
+    },
+    {
+      "type": "Function",
+      "name": "function_1",
+      "properties": {
+        "offset": {
+          "x": 130,
+          "y": 360
+        },
+        "url": "https://about-time-2357.twil.io/sendemailsdk",
+        "timeout": null,
+        "parameters": [
+          {
+            "key": "msg",
+            "value": "From: {{trigger.message.From}}  To: {{trigger.message.To}}  Message: {{trigger.message.Body}}"
+          },
+          {
+            "key": "sendto",
+            "value": "me@example.com",
+            "index": 1
+          }
+        ]
+      },
+      "transitions": [
+        {
+          "event": "success",
+          "conditions": [],
+          "next": null,
+          "uuid": "7470fd74-b498-45ac-b75a-23015cf324db"
+        },
+        {
+          "event": "fail",
+          "conditions": [],
+          "next": null,
+          "uuid": "866d620b-18c9-4742-ab2f-63753e188df4"
+        }
+      ],
+      "sid": "FF5417b658ddc48b0fa90e33b632038383"
+    }
+  ]
+}

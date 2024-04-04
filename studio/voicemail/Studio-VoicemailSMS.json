@@ -1,0 +1,307 @@
+{
+  "description": "Voicemail only with SMS",
+  "states": [
+    {
+      "type": "InitialState",
+      "name": "Trigger",
+      "properties": {
+        "offset": {
+          "x": -30,
+          "y": 0
+        },
+        "flow_url": "https://webhooks.twilio.com/v1/Accounts/AC1b32414e8ab41e56e6393bcbba7d5a9d/Flows/FWc76a1e4abbc3f80e0652c165e4f56ed2"
+      },
+      "transitions": [
+        {
+          "event": "incomingMessage",
+          "conditions": [],
+          "next": null,
+          "uuid": "123b8f37-a9c1-46da-bd3a-577cef88b568"
+        },
+        {
+          "event": "incomingCall",
+          "conditions": [],
+          "next": "FF5b6da6e2d7797d07a32bc415e1704743",
+          "uuid": "f0b56062-a9fb-4352-8350-eb36c5a2711f"
+        },
+        {
+          "event": "incomingRequest",
+          "conditions": [],
+          "next": null,
+          "uuid": "47e08d7e-a6e1-4289-b361-26eca8612c96"
+        }
+      ],
+      "sid": "FFd09ed3a23219adef545320134e5e996a"
+    },
+    {
+      "type": "Record",
+      "name": "record_voicemail_1",
+      "properties": {
+        "offset": {
+          "x": 230,
+          "y": 190
+        },
+        "timeout": 6,
+        "finish_on_key": "*",
+        "max_length": 3600,
+        "transcribe": null,
+        "transcription_callback_url": null
+      },
+      "transitions": [
+        {
+          "event": "recordingComplete",
+          "conditions": [],
+          "next": "FFc902921def2dac1bb87e45e7f4d0bd1a",
+          "uuid": "6bbdd4d1-f81e-4154-9df8-af25596e5e3e"
+        },
+        {
+          "event": "noAudio",
+          "conditions": [],
+          "next": "FFdff3a5c2dc47b73d7cec858fb85abb42",
+          "uuid": "cf0d1fff-f80a-4208-af1c-1440da788280"
+        },
+        {
+          "event": "hangup",
+          "conditions": [],
+          "next": "FF1fc13c450213822b35ff886056859a77",
+          "uuid": "77809593-ce87-42bb-b5be-ce4aba916d03"
+        }
+      ],
+      "sid": "FF1d2c7fd46705d8de47d9d0674348fa40"
+    },
+    {
+      "type": "Message",
+      "name": "send_voicemail_message",
+      "properties": {
+        "offset": {
+          "x": 0,
+          "y": 750
+        },
+        "body": "Voicemail received from: {{trigger.call.From}} \nDuration: {{widgets.record_voicemail_1.RecordingDuration}} \nLink: :{{widgets.record_voicemail_1.RecordingUrl}}",
+        "from": "{{flow.channel.address}}",
+        "to": "+16505552222",
+        "media_url": null,
+        "service": null,
+        "channel": null,
+        "attributes": null
+      },
+      "transitions": [
+        {
+          "event": "sent",
+          "conditions": [],
+          "next": null,
+          "uuid": "718af1e8-4fc6-44cf-81aa-d2b9a6f53e3d"
+        },
+        {
+          "event": "failed",
+          "conditions": [],
+          "next": null,
+          "uuid": "6e4b3228-59eb-47a9-b722-1e64f28e3dc3"
+        }
+      ],
+      "sid": "FFc8ff34e8c3a7951336d2eff71b7ff5fb"
+    },
+    {
+      "type": "Message",
+      "name": "send_missed_call_message",
+      "properties": {
+        "offset": {
+          "x": 340,
+          "y": 710
+        },
+        "body": "Missed call from: {{trigger.call.From}}",
+        "from": "{{flow.channel.address}}",
+        "to": "+16505552222",
+        "media_url": null,
+        "service": null,
+        "channel": null,
+        "attributes": null
+      },
+      "transitions": [
+        {
+          "event": "sent",
+          "conditions": [],
+          "next": null,
+          "uuid": "d9bdb915-64c2-486f-843a-4f1857edc926"
+        },
+        {
+          "event": "failed",
+          "conditions": [],
+          "next": null,
+          "uuid": "4afad961-5c91-41ad-a6a8-abe9b7f6bbf1"
+        }
+      ],
+      "sid": "FFdff3a5c2dc47b73d7cec858fb85abb42"
+    },
+    {
+      "type": "SayPlay",
+      "name": "say_thank_you",
+      "properties": {
+        "offset": {
+          "x": -150,
+          "y": 450
+        },
+        "say": "Thank you, good bye",
+        "play": null,
+        "voice": "alice",
+        "language": "en-US",
+        "loop": 1
+      },
+      "transitions": [
+        {
+          "event": "audioComplete",
+          "conditions": [],
+          "next": "FF1fc13c450213822b35ff886056859a77",
+          "uuid": "fbf86bbe-0050-4eb5-a6f3-d2b090d9e757"
+        }
+      ],
+      "sid": "FFc902921def2dac1bb87e45e7f4d0bd1a"
+    },
+    {
+      "type": "Gather",
+      "name": "gather_1",
+      "properties": {
+        "offset": {
+          "x": -120,
+          "y": 190
+        },
+        "timeout": 1,
+        "finish_on_key": "",
+        "stop_gather": true,
+        "number_of_digits": 1,
+        "save_response_as": null,
+        "say": "Please leave a message after the tone.",
+        "play": null,
+        "voice": "alice",
+        "language": "en-US",
+        "loop": 1,
+        "hints": null,
+        "gather_language": "en"
+      },
+      "transitions": [
+        {
+          "event": "keypress",
+          "conditions": [],
+          "next": "FF1d2c7fd46705d8de47d9d0674348fa40",
+          "uuid": "5b1b9018-dd75-4a11-9106-2fe46c57a564"
+        },
+        {
+          "event": "speech",
+          "conditions": [],
+          "next": "FF1d2c7fd46705d8de47d9d0674348fa40",
+          "uuid": "373ceea2-9ebf-4003-894c-56960585ca64"
+        },
+        {
+          "event": "timeout",
+          "conditions": [],
+          "next": "FF1d2c7fd46705d8de47d9d0674348fa40",
+          "uuid": "7514c83e-03d5-4206-b3e9-915d274152ee"
+        }
+      ],
+      "sid": "FFaea71b5a41f41c0ceeeca7a80a3c5be6"
+    },
+    {
+      "type": "Branch",
+      "name": "split_1",
+      "properties": {
+        "offset": {
+          "x": 420,
+          "y": 450
+        },
+        "input": "{{widgets.record_voicemail_1.RecordingDuration}}"
+      },
+      "transitions": [
+        {
+          "event": "noMatch",
+          "conditions": [],
+          "next": "FFdff3a5c2dc47b73d7cec858fb85abb42",
+          "uuid": "b1c334cb-4f90-4787-a528-3a07a0013fa0"
+        },
+        {
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "2_seconds_plus",
+              "type": "greater_than",
+              "arguments": [
+                "{{widgets.record_voicemail_1.RecordingDuration}}"
+              ],
+              "value": "2"
+            }
+          ],
+          "next": "FFc8ff34e8c3a7951336d2eff71b7ff5fb",
+          "uuid": "e98236df-d911-4731-9dbb-6945aa61848e"
+        }
+      ],
+      "sid": "FF1fc13c450213822b35ff886056859a77"
+    },
+    {
+      "type": "ConnectCaller",
+      "name": "connect_call_1",
+      "properties": {
+        "offset": {
+          "x": -540,
+          "y": 50
+        },
+        "to": "+16505552222",
+        "caller_id": "{{contact.channel.address}}",
+        "record": null,
+        "noun": "number",
+        "sip_endpoint": null,
+        "sip_username": null,
+        "sip_password": null,
+        "timeout": 3
+      },
+      "transitions": [
+        {
+          "event": "callCompleted",
+          "conditions": [],
+          "next": "FFebeb0c32dd56149f56fb7facc7cef8d0",
+          "uuid": "0805fd1f-3235-4850-a0b0-f39cc47f1cb2"
+        },
+        {
+          "event": "hangup",
+          "conditions": [],
+          "next": null,
+          "uuid": "bf6f7ea5-8dbe-4813-8594-bdb02d0cbf23"
+        }
+      ],
+      "sid": "FF5b6da6e2d7797d07a32bc415e1704743"
+    },
+    {
+      "type": "Branch",
+      "name": "split_2",
+      "properties": {
+        "offset": {
+          "x": -540,
+          "y": 270
+        },
+        "input": "{{widgets.connect_call_1.DialCallStatus}}"
+      },
+      "transitions": [
+        {
+          "event": "noMatch",
+          "conditions": [],
+          "next": null,
+          "uuid": "f2996133-d329-4271-b205-055d182cdba9"
+        },
+        {
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "no-answer",
+              "type": "equal_to",
+              "arguments": [
+                "{{widgets.connect_call_1.DialCallStatus}}"
+              ],
+              "value": "no-answer"
+            }
+          ],
+          "next": "FFaea71b5a41f41c0ceeeca7a80a3c5be6",
+          "uuid": "7d1b2619-a089-48e3-8130-031bbe1415ce"
+        }
+      ],
+      "sid": "FFebeb0c32dd56149f56fb7facc7cef8d0"
+    }
+  ]
+}

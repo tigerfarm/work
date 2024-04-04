@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Send SMS</title>
+        <link href="sendSms.css" rel="stylesheet" type="text/css"/>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript">
+            function sendSms() {
+                // logger("Send message.");
+                msgFrom = $("#msgFrom").val();
+                if (msgFrom === "") {
+                    logger("Required: Send from Twilio number.");
+                    return;
+                }
+                msgTo = $("#msgTo").val();
+                if (msgTo === "") {
+                    logger("Required: Send to number.");
+                    return;
+                }
+                msgBody = $("#msgBody").val();
+                if (msgBody === "") {
+                    logger("Required: Message.");
+                    return;
+                }
+                logger("Send SMS message from: " + msgFrom + " to: " + msgTo + " : " + msgBody);
+                // https://api.jquery.com/jquery.get/
+                $.get("sendSms.php?msgFrom=" + msgFrom + "&msgTo=" + msgTo + "&msgBody=" + msgBody, function (response) {
+                    logger("Response: " + response);
+                }).fail(function () {
+                    logger("- Send failed.");
+                });
+            }
+// -----------------------------------------------------------------------------
+            function logger(message) {
+                var aTextarea = document.getElementById('log');
+                aTextarea.value += "\n> " + message;
+                aTextarea.scrollTop = aTextarea.scrollHeight;
+            }
+            function clearLog() {
+                log.value = "+ Ready";
+            }
+            window.onload = function () {
+                log.value = "+++ Start.";
+            };
+        </script>
+    </head>
+    <body>
+        <div id="topBar">
+            <table><tr>
+                    <td><h1>Send an SMS Message</h1></td>
+                </tr></table>
+        </div>
+        <div id="chatBox">
+            <div class="panelTitle">
+                Send an SMS using Twilio Programmable Messaging
+            </div>
+            <div class="panelArea">
+                <table>
+                    <tr><td>Send from Twilio number &nbsp;</td><td><input id="msgFrom" type="text"/></td><td id="cUsername"></td></tr>
+                    <tr><td>Send to number </td><td><input id="msgTo" type="text"/></td></tr>
+                    <tr><td>Message </td><td><input id="msgBody" type="text"/></td></tr>
+                </table>
+            </div>
+            <div class="panelArea">
+                <table>
+                    <tr>
+                        <td><button id="btn-sendSms" onclick="sendSms();">Send</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="logBox">
+            <div class="panelTitle">
+                Log messages
+            </div>
+            <div class="panelArea">
+                <textarea id="log"></textarea>
+            </div>
+            <div class="panelArea">
+                <table>
+                    <tr>
+                        <td><button id="clearLog" onclick="clearLog();">Clear</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,514 @@
+{
+    "friendlyName" : "p1",
+    "logQueries" : true,
+    "uniqueName" : "p1",
+    "defaults" : {
+        "defaults" : {
+            "assistant_initiation" : "task://welcome",
+            "fallback" : "task://Fallback_task",
+            "collect" : {
+                "validate_on_failure" : "task://helloThereAndListen"
+            }
+        }
+    },
+    "styleSheet" : {
+        "style_sheet" : {
+            "collect" : {
+                "validate" : {
+                    "on_failure" : {
+                        "repeat_question" : false,
+                        "messages" : [
+                            {
+                                "say" : "I'm sorry, can you please say that again"
+                            },
+                            {
+                                "say" : "hmm I still did'nt catch that, can you please repeat"
+                            },
+                            {
+                                "say" : "Let's give it one more try. Please say it one more time"
+                            }
+                        ]
+                    },
+                    "on_success" : { "say" : "" },
+                    "max_attempts" : 4
+                }
+            },
+            "voice" : {
+                "say_voice" : "Polly.Matthew"
+            }
+        }
+    },
+    "fieldTypes" : [],
+    "tasks" : [
+        {
+            "uniqueName" : "now",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "Received now. Now, back to you."
+                    }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "now"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "RedirectSayHelloRedirect",
+            "actions" : {
+                "actions" : [
+                    {
+                        "redirect" : {
+                            "method" : "GET",
+                            "uri" : "https://autopilotredirects-4952.twil.io/sayRedirect"
+                        }
+                    }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "redirect"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "Task_2",
+            "actions" : {
+                "actions" : [{ "say" : "Task 2, here." }]
+            },
+            "fields" : [],
+            "samples" : []
+        },
+        {
+            "uniqueName" : "auto_loan_apply",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "Auto loan question."
+                    },
+                    { "listen" : true }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "car loan"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "how can i apply for an auto loan?"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "i want auto loan"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "RememberDataSay",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "Call Twilio Function and say remember data1."
+                    },
+                    {
+                        "redirect" : "https://autopilotredirects-4952.twil.io/sayMemData1"
+                    }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "rdsay"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "RememberDataSave",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "Use remember to save data1, data2, and data3 values."
+                    },
+                    {
+                        "remember" : {
+                            "data1" : "this is data1",
+                            "data3" : "this is data3",
+                            "data2" : "this is data2"
+                        }
+                    },
+                    { "listen" : true }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "rdsave"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "CollectQuestionValidateYN",
+            "actions" : {
+                "actions" : [
+                    {
+                        "collect" : {
+                            "on_complete" : {
+                                "redirect" : "https://autopilotredirects-4952.twil.io/sayThis"
+                            },
+                            "name" : "collect_yn",
+                            "questions" : [
+                                {
+                                    "type" : "Twilio.YES_NO",
+                                    "validate" : {
+                                        "on_failure" : {
+                                            "repeat_question" : true,
+                                            "messages" : [
+                                                {
+                                                    "say" : "Invalid answer. "
+                                                }
+                                            ]
+                                        },
+                                        "max_attempts" : {
+                                            "redirect" : "task://welcome",
+                                            "num_attempts" : 2
+                                        },
+                                        "on_success" : {
+                                            "say" : "Great, got your answer."
+                                        },
+                                        "allowed_values" : { "list" : ["Yes", "No"] }
+                                    },
+                                    "question" : "Yes or No?",
+                                    "name" : "theanswer"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "qyn"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "CollectQuestionValidateNum",
+            "actions" : {
+                "actions" : [
+                    {
+                        "collect" : {
+                            "on_complete" : {
+                                "redirect" : "https://autopilotredirects-4952.twil.io/sayThis"
+                            },
+                            "name" : "collect_anumber",
+                            "questions" : [
+                                {
+                                    "type" : "Twilio.NUMBER",
+                                    "validate" : {
+                                        "on_failure" : {
+                                            "repeat_question" : false,
+                                            "messages" : [
+                                                { "say" : "Invalid number." }
+                                            ]
+                                        },
+                                        "max_attempts" : {
+                                            "redirect" : "task://welcome",
+                                            "num_attempts" : 2
+                                        },
+                                        "on_success" : {
+                                            "say" : "Great, got your number."
+                                        },
+                                        "allowed_values" : { "list" : ["1", "2", "3"] }
+                                    },
+                                    "question" : "Enter a number: 1, 2, or 3.",
+                                    "name" : "anumber"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "qnum"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "CollectQuestionSayThanks",
+            "actions" : {
+                "actions" : [
+                    {
+                        "collect" : {
+                            "on_complete" : {
+                                "redirect" : "https://autopilotredirects-4952.twil.io/sayThis"
+                            },
+                            "name" : "collect_comments",
+                            "questions" : [
+                                {
+                                    "question" : "Any comments?",
+                                    "name" : "comments"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "cq"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "ControlLowConfidenceLevel",
+            "actions" : {
+                "actions" : [
+                    {
+                        "redirect" : {
+                            "method" : "GET",
+                            "uri" : "https://autopilotredirects-4952.twil.io/lowConfidence"
+                        }
+                    }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "1"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "ask_question",
+            "actions" : {
+                "actions" : [
+                    { "say" : "Ask question." },
+                    {
+                        "redirect" : {
+                            "method" : "GET",
+                            "uri" : "https://unnatural-seat-1873.twil.io/askq"
+                        }
+                    }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "askq"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "qd"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "QuestionThenSayAnswerUsingRedirect",
+            "actions" : {
+                "actions" : [
+                    {
+                        "collect" : {
+                            "on_complete" : {
+                                "redirect" : {
+                                    "method" : "GET",
+                                    "uri" : "https://unnatural-seat-1873.twil.io/autopilotsayname"
+                                }
+                            },
+                            "name" : "get_name",
+                            "questions" : [
+                                {
+                                    "type" : "Twilio.FIRST_NAME",
+                                    "question" : "What's your name?",
+                                    "name" : "the_name"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "qa"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "welcome",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "Welcome to the machine."
+                    },
+                    { "listen" : true }
+                ]
+            },
+            "fields" : [],
+            "samples" : []
+        },
+        {
+            "uniqueName" : "Fallback_task",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "Default fallback Task response."
+                    },
+                    { "listen" : true }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "no"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "voice_handoff_voicecall",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "Autopilot handoff voice call."
+                    },
+                    {
+                        "handoff" : {
+                            "method" : "POST",
+                            "channel" : "voice",
+                            "uri" : "https://unnatural-seat-1873.twil.io/autopilotplay"
+                        }
+                    }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "voice"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "play"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "sayv"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "sayRedirectTofunction",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "Redirect to a Twilio Function that will say a message."
+                    },
+                    {
+                        "redirect" : {
+                            "method" : "GET",
+                            "uri" : "https://autopilotredirects-4952.twil.io/sayRedirect"
+                        }
+                    }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "sayr"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "send_sms",
+            "actions" : {
+                "actions" : [
+                    { "say" : "Send an SMS." },
+                    {
+                        "redirect" : {
+                            "method" : "GET",
+                            "uri" : "http://www.tigerfarmpress.com/echo?f1=p1_send_sms"
+                        }
+                    },
+                    { "say" : "Sent SMS." }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "send"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "send sms"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "yes_world",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "Yeah, I hear ya."
+                    },
+                    { "listen" : true }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "okay"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "yes"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "helloThereAndListen",
+            "actions" : {
+                "actions" : [
+                    { "say" : "Hello there." },
+                    { "listen" : true }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "good day"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "hello"
+                }
+            ]
+        }
+    ],
+    "modelBuild" : {
+        "uniqueName" : "p1_27-6-2022_4.50.56pm"
+    }
+}
