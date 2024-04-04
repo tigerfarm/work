@@ -1,8 +1,8 @@
 <?php
-require __DIR__ . '/../../../twilio-php-main/src/Twilio/autoload.php';
+print("++ List conversations.\xA");
+require __DIR__ . '/../../../twilio-php-main/srcV6/Twilio/autoload.php';
 use Twilio\Rest\Client;
-$twilio = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
-print('++ List conversations.\xA');
+$twilio = new Client(getenv('MAIN_ACCOUNT_SID'), getenv('MAIN_AUTH_TOKEN'));
 $conversations = $twilio->conversations->v1->conversations->read(20);
 
 foreach ($conversations as $conversation) {
@@ -11,5 +11,3 @@ foreach ($conversations as $conversation) {
             . ' friendlyName:' . $conversation->friendlyName
             . ":\xA");
 }
-
-?>
