@@ -1,6 +1,6 @@
 puts "+++ Start."
 require 'twilio-ruby'
-auth_token = ENV["MASTER_AUTH_TOKEN"]
+auth_token = ENV["MAIN_AUTH_TOKEN"]
 validator = Twilio::Security::RequestValidator.new(auth_token)
 url = 'http://tfpecho.herokuapp.com/studio'
 params = {

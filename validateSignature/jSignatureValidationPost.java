@@ -13,7 +13,7 @@ public class jSignatureValidationPost {
 
     public static void main(String[] args) {
         // Initialize the validator
-        String AUTH_TOKEN = System.getenv("MASTER_AUTH_TOKEN");
+        String AUTH_TOKEN = System.getenv("MAIN_AUTH_TOKEN");
         RequestValidator validator = new RequestValidator(AUTH_TOKEN);
         //
         // The POST body in the Twilio request.
