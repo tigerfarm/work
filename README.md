@@ -721,7 +721,7 @@ Effectively making the internal URL http://localhost:3000, available on the inte
 --------------------------------------------------------------------------------
 +++ How to Remove All History for a GitHub Repository
 
-Tested where the main branch was "main". v2
+Tested where the main branch was "main".
 ````
 $ git checkout --orphan latest_branch
 Switched to a new branch 'latest_branch'
