@@ -1,4 +1,4 @@
-# Getting Started with Twilio Go Library
+# Getting Started with Twilio CLI
 
 Twilio CLI [overview](https://www.twilio.com/cli),
 [quickstart](https://www.twilio.com/docs/twilio-cli/quickstart),
