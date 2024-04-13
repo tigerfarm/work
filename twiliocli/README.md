@@ -10,7 +10,7 @@ Twilio CLI project repository: https://github.com/twilio/twilio-cli.
 Twilio CLI project repository issues: https://github.com/twilio/twilio-cli/issues
 
 Adam's Twilio CLI repository:
-https://github.com/adamchasetaylor/twilio-cli-keys
+https://github.com/adamchasetaylor/twilio-cli-keys (old)
 
 ----------------------------------------------------------------------------------
 ### Install
