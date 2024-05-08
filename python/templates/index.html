@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Flask Sessions</title>
+        <!--
+        Quick start: http://flask.pocoo.org/docs/0.12/quickstart/
+        -->
+    </head>
+    <body>
+        <hr>
+        <h3>Flask Sessions calls</h3>
+        <p><a href="/inc">/inc</a></p>
+        <p><a href="/clear">/clear</a></p>
+        <p><a href="/show">/show</a></p>
+        <hr>
+        <h3>Other</h3>
+        <p><a href="/sms">/sms</a> : return SMS TwiML which uses the session key, counter.</p>
+        <p>Current counter value = {{ counter }}.<br>Note, you may need to refresh the page to get the latest value.</p>
+        
+    </body>
+</html>

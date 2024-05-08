@@ -1,0 +1,14 @@
+{
+	"actions": [
+		{
+			"say": "Autopilot handoff voice call."
+		},
+		{
+			"handoff": {
+				"method": "POST",
+				"channel": "voice",
+				"uri": "https://www.twilio.com/console/twiml-bins/EH92a1cf781574e781b22e618f65d7712f"
+			}
+		}
+	]
+}

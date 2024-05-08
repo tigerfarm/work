@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script src="https://sdk.twilio.com/js/conversations/v2.5/twilio-conversations.min.js"></script>
+
+        <script>
+            // Commented out so that it can be uploaded to GitHub
+            const thisToken = "";
+
+            // const client = new Twilio.Conversations.Client(thisToken);
+            const client = new Twilio.Conversations.Client.create(thisToken);
+            client.on('initFailed', ({ error }) => {
+                console.log(error);
+            });
+            client.on('initialized', () => {
+                console.log("initialized");
+            });
+            client.on('connecting', () => {
+                console.log("connecting");
+            });
+            client.on('connected', () => {
+                console.log("connected");
+            });
+
+
+            Twilio.Conversations.Client.create(thisToken).then(client => {
+                client.on('initFailed', ({ error }) => {
+                    console.log(error);
+                });
+                client.on('initialized', () => {
+                    console.log("initialized");
+                });
+                client.on('connecting', () => {
+                    console.log("connecting");
+                });
+                client.on('connected', () => {
+                    console.log("connected");
+                });
+            });
+
+
+        </script>
+    </head>
+</html>
