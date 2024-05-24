@@ -764,5 +764,26 @@ Enumerating objects: 60, done.
 $
 ````
 
+Tested where the main branch was "master" which is changed to be "main".
+````
+$ git checkout --orphan latest_branch
+Switched to a new branch 'latest_branch'
+$ git add -A
+$ git commit -am "commit message"
+[latest_branch (root-commit) 0f2ac40] commit message
+ 51 files changed, 3134 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 README.md
+...
+$ git branch -D master
+Deleted branch main (was f21a7b2).
+$ git branch -m main
+$ git push -f origin main
+Enumerating objects: 60, done.
+...
+... main -> main (forced update)
+$
+````
+
 --------------------------------------------------------------------------------
 Cheers...

@@ -24,7 +24,24 @@ Successfully uninstalled twilio-ruby-5.58.2
 $ gem list | grep twilio
 twilio-ruby (6.3.0)
 ````
+Update to most recent version:
+````
+$ sudo gem update 'twilio-ruby'
+Updating installed gems
+Updating twilio-ruby
+Fetching twilio-ruby-7.0.2.gem
+Successfully installed twilio-ruby-7.0.2
+...
+Gems updated: twilio-ruby
+$ gem list | grep twilio
+twilio-ruby (7.0.2, 6.4.0)
+$ sudo gem uninstall twilio-ruby -v 6.4.0
+Successfully uninstalled twilio-ruby-6.4.0
+/Users/dave/ruby $ gem list | grep twilio
+twilio-ruby (7.0.2)
+````
 
+--------------------------------------------------------------------------------
 Ruby code sample into code:
 
 Documentation links:
@@ -52,3 +69,4 @@ SK56...22
 
 --------------------------------------------------------------------------------
 Cheers...
+

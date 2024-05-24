@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "fs": "^0.0.1-security",
+    "got": "^14.3.0",
     "moment-timezone": "^0.5.34",
     "twilio": "^4.9.0",
     "vcards-js": "^2.10.0"
