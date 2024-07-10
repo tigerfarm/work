@@ -14,5 +14,7 @@ token = Twilio::JWT::AccessToken.new(
   [grant],
   identity: 'dave'
 )
+# Option for the above: ttl:1800
+#
 # Generate the token
 puts token.to_jwt

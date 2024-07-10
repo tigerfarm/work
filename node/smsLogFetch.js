@@ -1,8 +1,8 @@
 // twilio api:core:messages:fetch --sid SM2feb3243087344fcae1652e603fa5462
 console.log("++ Fetch SMS message log information.");
-var client = require('twilio')(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
+var client = require('twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 
-let theMessageSid = 'SM294ccb9d07b3ecb08484f47442688895';       // SMS or WhatsApp message SID
+let theMessageSid = 'SMf245bfde04c75ebf70af9fa1d0314dd8';       // SMS or WhatsApp message SID
 console.log("+ Account SID: " + process.env.ACCOUNT_SID + " Message SID: " + theMessageSid);
 client.messages(theMessageSid)
         .fetch()

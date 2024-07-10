@@ -1,16 +1,16 @@
 console.log("++ Send SMS message.");
 var client = require('twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 theMsg = "Hello 2";
-theFrom = process.env.MAIN_PN_8003         // MAIN_PN_8003: registered.
+theFromMsgService = "MG634319110a48b2e82f1a08247cd8f0ba";
 theTo = process.env.MY_PHONE_NUMBER
 console.log("+ SID: " + process.env.MAIN_ACCOUNT_SID
-        + ", from: " + theFrom
+        + ", theFromMsgService: " + theFromMsgService
         + ", to: " + theTo
         + ", MSG: " + theMsg);
 // theStatusCallbackURL = process.env.ECHO_REQUEST_URL;
 theStatusCallbackURL = 'https://statuscallback-8821.twil.io/echoRequestTest';
 client.messages.create({
-    from: theFrom,
+    messagingServiceSid: theFromMsgService,
     to: theTo,
     body: theMsg
     , statusCallback: theStatusCallbackURL
