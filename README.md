@@ -136,6 +136,26 @@ Ignoring files or directories by adding the file name into: ".gitignore".
 If the file or directory has already been uploaded, use the following to remove it from the repository.
 Once removed, it will no longer upload.
 
+Example remove all VB EXE files.
+Add into: ".gitignore"
+````
+...
+/vb/*.exe
+...
+````
+Remove from GitHub:
+````
+$ cd /.../Projects/work
+$ git rm --cached ./vb/*.exe
+rm 'vb/hello.exe'
+...
+$ git commit -am "update"
+[main 4397163] update
+ 8 files changed, 1 insertion(+), 1 deletion(-)
+ delete mode 100644 vb/hello.exe
+...
+````
+
 Example remove a single file:
 ````
 $ git rm --cached fcmNewJSON.md
