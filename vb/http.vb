@@ -41,10 +41,8 @@ Class Example
     reqparm.Add("Body", "media1i")
 '
     reqparm.Add("MediaUrl", "https://c1.staticflickr.com/3/2899/14341091933_1e92e62d12_b.jpg")
-'    reqparm.Add("MediaUrl", "https://tfpbooks.herokuapp.com/images/topImgLeft.jpg")
+    reqparm.Add("MediaUrl", "https://tfpbooks.herokuapp.com/images/topImgLeft.jpg")
 '
-    reqparm.Add("MediaUrl", "http://www.centurisoft.com/wp-content/uploads/2014/10/logo.png")
-'    reqparm.Add("MediaUrl", "Http://66.37.145.96:8990/basictest.mp3")
 
 Try
     Dim responsebytes As Byte() = client.UploadValues(twilio_url, "POST", reqparm)
