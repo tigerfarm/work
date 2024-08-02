@@ -1,12 +1,9 @@
 ' Send an SMS message using the Twilio library
 ' To compile:
-' vbnc -r:lib/Twilio.dll -r:lib/Newtonsoft.Json.dll -out:sendsms.exe sendsms.vb
+' vbnc -r:lib/Twilio.dll -r:lib/Newtonsoft.Json.dll -out:sendsms3.exe sendsms3.vb
 ' To run:
 ' export MONO_PATH=lib
-' mono sendsms.exe
-'
-' Note: Convert PhoneNumber to a String
-' Dim FromRec As String = record.From.ToString
+' mono sendsms3.exe
 '
 Imports System
 Imports Twilio
@@ -18,17 +15,14 @@ Class Example
   
     Dim AccountSid As String = Environment.GetEnvironmentVariable("ACCOUNT_SID")
     Dim AuthToken As String = Environment.GetEnvironmentVariable("AUTH_TOKEN")
-    Dim PhoneNumber3 As String = Environment.GetEnvironmentVariable("PHONE_NUMBER_3")
-    Dim PhoneNumber4 As String = Environment.GetEnvironmentVariable("PHONE_NUMBER_4")
-
     TwilioClient.Init(AccountSid,AuthToken)
-    Dim FromNumber As New PhoneNumber(PhoneNumber3)
-    Dim ToNumber As New PhoneNumber(PhoneNumber4)
+    Dim FromNumber As String = Environment.GetEnvironmentVariable("MAIN_PN_8003")
+    Dim ToNumber As String = Environment.GetEnvironmentVariable("MY_PHONE_NUMBER")
     Try
       Dim Message As MessageResource = MessageResource.Create(
         to:=ToNumber,
         from:=FromNumber,
-        body:="Test #2 from VB .NET/mono/OS X"
+        body:="Test #3b from VB .NET/mono/OS X"
       )
       Console.WriteLine(Message.Sid)
       Console.WriteLine("Sent")

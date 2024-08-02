@@ -15,12 +15,13 @@ console.log("+ Brands for SID: " + process.env.MAIN_ACCOUNT_SID
                     );
             console.log("++ All: " + JSON.stringify(b));
         });
-    } catch (e) {
-        return e;
+    } catch (error) {
+        console.log("++ Error: " + error);
+        return;
     }
 })().then(
-        res => {
-            if (typeof res !== "undefined") {
-                console.log("Result: " + res)
+        result => {
+            if (typeof result !== "undefined") {
+                console.log("+ Result of async: " + result);
             }
         });

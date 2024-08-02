@@ -4,6 +4,9 @@
 ' To run:
 ' mono hello.exe
 '
+' Can add parameter to change the output executable file name.
+' vbnc -out:hello1.exe hello.vb
+'
 ' How to do command line args:
 ' strFriendlyName = CmdArgs(0)
 ' to1 = CmdArgs(1)

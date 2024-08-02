@@ -31,4 +31,9 @@ $ mono hello.exe
 + From Machine Name: ABC
 ````
 
+SMS test:
+````
+$ mono sendsms.exe
+````
+
 Cheers...

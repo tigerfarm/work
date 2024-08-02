@@ -2,7 +2,7 @@
 Imports System
 Class Example
   Overloads Shared Sub Main(ByVal args() As String)
-      Dim AccountSid As String = Environment.GetEnvironmentVariable("MASTER_ACCOUNT_SID")
+      Dim AccountSid As String = Environment.GetEnvironmentVariable("MAIN_ACCOUNT_SID")
       Dim GatewayAPI As String
       Console.WriteLine("+ Hello there.")
       GatewayAPI = "https://api.twilio.com/2010-04-01/Accounts/" + AccountSid + "/SMS/Messages.json?"
