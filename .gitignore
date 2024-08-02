@@ -7,7 +7,7 @@
 #
 *.log
 #
-/work/*.exe
+/vb/*.exe
 #
 /conversations/0setvars.sh
 #
