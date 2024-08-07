@@ -12,9 +12,10 @@ async function createRateLimit() {
             .rateLimits.create({
                 description: "Limit on interval and max.",
                 uniqueName: "end_user_ip_address"           // interval_and _max
-            }).catch(function (err) {
-        console.error("-- Error: " + err.message + ", code: " + err.code);
-    });
+            })
+            .catch(function (err) {
+                console.error("-- Error: " + err.message + ", code: " + err.code);
+            });
     if (rateLimit === undefined) {
         console.log("- Failed");
         return;
@@ -28,4 +29,4 @@ if (theRateLimitSid === "") {
     console.log("- createRateLimit failed.");
     process.exit(1);
 }
-createBucket();
+console.log("+++ Normal program exit.");
