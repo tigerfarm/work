@@ -515,6 +515,8 @@ $ npm list twilio
 Projects@ /Users/dave/Projects
 └── twilio@5.0.4
 ...
+$ npm view twilio
+
 ````
 
 View node.js module information.

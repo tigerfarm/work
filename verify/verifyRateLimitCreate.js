@@ -10,8 +10,8 @@ async function createRateLimit() {
     const rateLimit = await client.verify.v2
             .services(verifyServiceSID)
             .rateLimits.create({
-                description: "Limit on interval and max.",
-                uniqueName: "end_user_ip_address"           // interval_and _max
+                description: "Limit on end user IP Address 4.", // Limit on interval and max
+                uniquename: "end_user_ip_address4"              // interval_and _max
             })
             .catch(function (err) {
                 console.error("-- Error: " + err.message + ", code: " + err.code);
@@ -20,7 +20,7 @@ async function createRateLimit() {
         console.log("- Failed");
         return;
     }
-    console.log("++ rateLimit: ");
+    console.log("++ rateLimit information");
     theRateLimitSid = rateLimit.sid;
     console.log("++ theRateLimitSid: " + theRateLimitSid);  // Starts with RK.
 }

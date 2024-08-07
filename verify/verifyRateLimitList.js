@@ -4,7 +4,6 @@ verifyServiceSID = "VA706b554a11dca4066e71ed8ce66749cf";
 console.log("+ Twilio account SID: " + process.env.MAIN_ACCOUNT_SID
         + ", verifyServiceSID: " + verifyServiceSID
         );
-
 theRateLimitSid = "";
 async function listAllRateLimits() {
     console.log("+ listAllRateLimits()");
