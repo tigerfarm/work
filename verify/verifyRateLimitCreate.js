@@ -1,4 +1,6 @@
-console.log("+++ Create a RateLimit with a bucket.");
+console.log("+++ Create a RateLimit.");
+// Since this fails, use my Java sample program.
+
 var client = require('twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 verifyServiceSID = "VA706b554a11dca4066e71ed8ce66749cf";
 console.log("+ Twilio account SID: " + process.env.MAIN_ACCOUNT_SID

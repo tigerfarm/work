@@ -1,10 +1,12 @@
 console.log("+++ Create verification.");
 var client = require('twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
-verifyServiceSID = "VA112d25d22d3305f3eae4d3b9e2f2a8d5";
+verifyServiceSID = "VA706b554a11dca4066e71ed8ce66749cf";
 theTo = process.env.MY_PHONE_NUMBER
+theRateLimitSid = "RK0669f564c2401802a2b1aa696a76e529";
 console.log("+ Twilio account SID: " + process.env.MAIN_ACCOUNT_SID
         + ", verifyServiceSID: " + verifyServiceSID
         + ", to: " + theTo
+        + ", theRateLimitSid: " + theRateLimitSid
         );
 
 async function createVerification() {
@@ -12,7 +14,8 @@ async function createVerification() {
             .services(verifyServiceSID)
             .verifications.create({
                 channel: "sms",    // Channels: sms whatsapp
-                to: theTo
+                to: theTo,
+                rateLimitSid: theRateLimitSid
             }).catch(function (err) {
         console.error("-- Error: " + err.message + ", code: " + err.code);
         console.log("--- Exit.");
