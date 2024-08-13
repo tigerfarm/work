@@ -13,7 +13,8 @@ console.log("++ Send SendGrid email message.");
 //
 SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 theFrom = process.env.EMAIL_TF;
-theTo = process.env.EMAIL_DT;
+// theTo = process.env.EMAIL_DT;
+theTo = "jgonzalez@twilio.com";
 console.log("+ SENDGRID_API_KEY: " + SENDGRID_API_KEY
         + "\n+ theFrom: " + theFrom
         + "\n+ to: " + theTo

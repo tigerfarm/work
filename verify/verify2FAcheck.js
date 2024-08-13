@@ -2,7 +2,8 @@ console.log("+++ Create verification.");
 var client = require('twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 verifyServiceSID = "VA112d25d22d3305f3eae4d3b9e2f2a8d5";
 // verifyServiceSID = "VA706b554a11dca4066e71ed8ce66749cf";
-theTo = process.env.MY_PHONE_NUMBER
+// theTo = process.env.MY_PHONE_NUMBER
+theTo = process.env.EMAIL_DT;
 verifyCode = "1872";
 console.log("+ Twilio account SID: " + process.env.MAIN_ACCOUNT_SID
         + ", verifyServiceSID: " + verifyServiceSID
