@@ -1,0 +1,29 @@
+console.log("+++ TOTP: Validate a factor token (authentiation code).");
+var client = require('twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
+verifyServiceSID = "VA112d25d22d3305f3eae4d3b9e2f2a8d5";
+theIdentitySID = "ffiddv1a";
+factorSID = "YF0266bd3b0da405139cded5ad732c7229";
+authenticationCode = "249578";
+console.log("+ Twilio account SID:    " + process.env.MAIN_ACCOUNT_SID
+        + "\n+ verifyServiceSID:      " + verifyServiceSID
+        + "\n+ theIdentitySID:        " + theIdentitySID
+        + "\n+ factorSID:             " + factorSID
+        + "\n+ authenticationCode:    " + authenticationCode
+        );
+async function createChallenge() {
+    const challenge = await client.verify.v2
+            .services(verifyServiceSID)
+            .entities(theIdentitySID)
+            .challenges.create({
+                factorSid: factorSID,
+                authPayload: authenticationCode
+            }).catch(function (err) {
+        console.error("-- Error: " + err.message + ", code: " + err.code);
+    });
+    if (challenge === undefined) {
+        return;
+    }
+    console.log("++ challenge.status: " + challenge.status);    // pending: failed, approved: success/matched
+    console.log("++ challenge JSON: " + JSON.stringify(challenge));
+}
+createChallenge();
