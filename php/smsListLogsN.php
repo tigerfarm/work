@@ -10,8 +10,9 @@ use Twilio\Rest\Client;
 $client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
 
 // -----------------------------------------------------------------------------
-echo "\xA+ List first N logs.\xA";
-$messages = $client->messages->read([], 200);
+$numberToList = 6;
+echo "\xA+ Number of logs to list: " + $numberToList + "\xA";
+$messages = $client->messages->read([], $numberToList);
 $counter = 0;
 foreach ($messages as $message) {
     echo "++ ";

@@ -25,17 +25,19 @@ echo "+++ Start.\xA";
 // ---
 // Use the following to send an MMS:
 // $ php smsSendMmsSingle.php
-// + Sent, SID: MMdb6a8e05fcac48dc823874b6db03445a
+// ++ Send SMS message, From: +16505551111 to +16505552222 :Forwarded MMS...:
+// + Sent, SID: MM469decf8f1650d0df3960608cfcdb7ac
 // ---
 // Get the Media ME id from the Twilio Console SMS log: https://www.twilio.com/console/sms/logs
 // Or
 // $ php smsListMessageMms.php 
-// + Sent, SID:MMdb6a8e05fcac48dc823874b6db03445a To:+16505552222 Status:delivered MediaUrl0: 1
-// + Media id: ME2458b013013432076b041812bec916dc
-// Or from a webhook: {...,"SmsMessageSid":"MM0888aad8ca4ab5c698a58ecc6e6c96f9","MediaContentType0":"image/jpeg","MediaUrl0":"https://api.twilio.com/2010-04-01/Accounts/ACa...3/Messages/MM0888aad8ca4ab5c698a58ecc6e6c96f9/Media/ME7d57db8c0196a2f45d3da1d5ad496910",...} 
+// + Sent, SID: MM469decf8f1650d0df3960608cfcdb7ac To:+16505552222 Status:delivered
+// ++ MediaUrl0: 1
+// + Media id:  ME82ea1e92bc6282c80476531b8090cc26
+// Or from a webhook: {...,"SmsMessageSid":"MM469decf8f1650d0df3960608cfcdb7ac","MediaContentType0":"image/jpeg","MediaUrl0":"https://api.twilio.com/2010-04-01/Accounts/ACa...3/Messages/MM469decf8f1650d0df3960608cfcdb7ac/Media/ME82ea1e92bc6282c80476531b8090cc26",...} 
 // 
-$theMmsMmSid = "MMf28ecbfbfd8c8964f89ae523e6f83d65"; // MMf28ecbfbfd8c8964f89ae523e6f83d65 MM840711a306a13165e8e832426e8f718a
-$theMmsMeSid = "ME390dbc2eaee42e49e42fca2da68ca29f"; // ME390dbc2eaee42e49e42fca2da68ca29f ME1f1a0a45e0936ede1b2bfa19d21c374e
+$theMmsMmSid = "MM469decf8f1650d0df3960608cfcdb7ac"; // MM469decf8f1650d0df3960608cfcdb7ac
+$theMmsMeSid = "ME82ea1e92bc6282c80476531b8090cc26"; // ME82ea1e92bc6282c80476531b8090cc26
 //
 // The following does not have account SID and auth token for access.
 // $theUri = 'https://api.twilio.com/2010-04-01/Accounts/';
