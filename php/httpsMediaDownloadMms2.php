@@ -58,5 +58,6 @@ $mmsFileContent = $http->getMediaContent($mmsMedia, $theSID, $theAuth);
 $mmsMediaFilenameWrite = "httpsMmsMediaUrl.jpg";
 $mmsFileWrite = fopen($mmsMediaFilenameWrite, 'w');
 fwrite($mmsFileWrite, $mmsFileContent);
+echo "+ MMS graphic file saved to: $mmsMediaFilenameWrite \xA";
 
 echo "+++ Exit.\xA";
