@@ -9,9 +9,10 @@ $twilio = new Client(getenv("ACCOUNT_SID"), getenv('AUTH_TOKEN'));
 // With error checking added.
 echo "+++ Get availablePhoneNumbers(...)";
 try {
-    $numbers = $twilio->availablePhoneNumbers("GB") // GB US
+    $numbers = $twilio->availablePhoneNumbers("CA") // GB US CA
             ->local
-            ->read(["smsEnabled" => true, "mmsEnabled" => false, "voiceEnabled" => true], 20, 20);
+            ->read([], 6);
+            // ->read(["smsEnabled" => true, "mmsEnabled" => false, "voiceEnabled" => true], 20, 20);
             // ->read(["smsEnabled" => false, "mmsEnabled" => false, "voiceEnabled" => true, "contains" => "312"], 20, 20);
 } catch (exception $e) {
     echo "+ getStatusCode(): " . $e->getStatusCode() . "\xA";
@@ -25,14 +26,14 @@ if ($theCount == 0) {
     exit;
 }
 foreach ($numbers as $number) {
-    echo "\xA++ " . $number->phoneNumber;
+    echo "\xA++ " . $number->phoneNumber . " " . $number->isoCountry;
 }
 echo "\xA+ End of list.";
-echo "\xA+ number 1: " . $numbers[0]->phoneNumber
- . " isoCountry: " . $numbers[0]->region
- . " region: " . $numbers[0]->region
- . " postalCode: " . $numbers[0]->postalCode
- . " locality: " . $numbers[0]->locality;
+echo "\xA+ number[0]:" . $numbers[0]->phoneNumber
+ . " isoCountry:" . $numbers[0]->isoCountry
+ . " region:" . $numbers[0]->region
+ . " postalCode:" . $numbers[0]->postalCode
+ . " locality:" . $numbers[0]->locality;
 
 echo "\xA+ End of lists.\xA";
 ?>

@@ -1,8 +1,7 @@
 <?php
 // Docs: https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource
 
-// require __DIR__ . '/twilio-php-master/Twilio/autoload.php';
-require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
+require __DIR__ . '/../../twilio-php-main/srcV6/Twilio/autoload.php';
 use Twilio\Rest\Client;
 $client = new Client(getenv("ACCOUNT_SID"), getenv('AUTH_TOKEN'));
 
@@ -33,7 +32,7 @@ foreach ( $numbers as $number) {
 }
 echo "\xA+ End of list.";
 echo "\xA+ number 1: " . $numbers[0]->phoneNumber
-        . " isoCountry: " . $numbers[0]->region 
+        . " isoCountry: " . $numbers[0]->isoCountry 
         . " region: " . $numbers[0]->region
         . " postalCode: " . $numbers[0]->postalCode
         . " locality: " . $numbers[0]->locality;

@@ -4,11 +4,10 @@ require __DIR__ . '/../../twilio-php-main/srcV6/Twilio/autoload.php';
 use Twilio\Rest\Client;
 use Twilio\Exceptions\RestException;
 $client = new Client(getenv('MAIN_ACCOUNT_SID'), getenv('MAIN_AUTH_TOKEN'));
-// $fromPhoneNumber = getenv('MAIN_PHONE_NUMBER_2');
-$fromPhoneNumber = getenv('MAIN_PHONE_NUMBER_3');
+$fromPhoneNumber = getenv('MAIN_PN_8003');
 // $toPhoneNumber = '+16515551212';
-$toPhoneNumber = getenv('MY_PHONE_NUMBER');
-// $toPhoneNumber = '+16505550077';
+// $toPhoneNumber = getenv('MY_PHONE_NUMBER');
+$toPhoneNumber = '+1 6504837603';
 // $toPhoneNumber = getenv('MAIN_PHONE_NUMBER_1');
 // $fromPhoneNumber = 'whatsapp:+14155551111';
 // $toPhoneNumber = 'whatsapp:+1605552222';
@@ -17,7 +16,7 @@ $theMessageSupport = "Twilio support test \nmessage #3, \n newline.";
 // $theMessageSupport = "Twilio support test #4";
 $theMessageChinese = "你好";
 $theMessageOkay = "J'aime l'été... éÉÑñ";
-$theWhatsAppTemplate = "Your code is 1234567";
+$theWhatsAppTemplate = "Your code is 1234567b";
 $theMessage = $theWhatsAppTemplate;
 //
 echo '++ Send SMS message, From: ' . $fromPhoneNumber . " to " . $toPhoneNumber . " :" . $theMessage . ":\xA";
@@ -38,7 +37,7 @@ try {
             // MP3: https://about-time-2357.twil.io/assets/MI01.mp3
             // JPG: https://about-time-2357.twil.io/assets/netscapeIcons.jpg
             // Doesn't work: , 'statusCallbackMethod' => 'GET'
-            , 'statusCallback' => $echoUrl
+            // , 'statusCallback' => $echoUrl
             )
     );
     echo "+ Sent, SID: " . $sms->sid . " Status: " . $sms->status . "\xA";
