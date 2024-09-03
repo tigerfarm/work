@@ -84,7 +84,7 @@ When testing, for example an inbound received SMS, confirm by doing the followin
 + POST parameters: raw POST parameter string, also from the logs or from the Twilio logs.
 
 Attribute name value pairs:
-+ Values are URL decoded.
++ Values are URL decoded. Use: "+16505552222" instead of "%2B16505552222".
 + Keep the attribute even if the value is empty, for example: ...&zip=&... >> ..., "zip": "", ...
 + Do not include the userid and password in the URL, if they are being used. For example:
 Use: "https://example.com/myapp", not: "https://userid:passwd@example.com/myapp"

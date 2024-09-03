@@ -4,7 +4,7 @@ var ACCOUNT_SID = process.env.ACCOUNT_SID;
 var AUTH_TOKEN = process.env.AUTH_TOKEN;
 var theType = "json";
 var theRequest = "https://api.twilio.com/2010-04-01/Accounts/" + ACCOUNT_SID + "/Messages." + theType;
-var basicAuth = "Basic " + new Buffer(ACCOUNT_SID + ":" + AUTH_TOKEN).toString("base64");
+var basicAuth = "Basic " + new Buffer(ACCOUNT_SID+"x" + ":" + AUTH_TOKEN).toString("base64");
 var options = {
     method: 'POST',
     'uri': theRequest,
