@@ -1,8 +1,9 @@
 console.log("++ Send SMS message.");
 var client = require('twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
-theMsg = "Hello 2";
-theFrom = process.env.MAIN_PN_8003         // MAIN_PN_8003: registered.
-theTo = process.env.MY_PHONE_NUMBER+"x"
+//
+theFrom = "whatsapp:" + process.env.MAIN_PN_7002;        // MAIN_PN_8003: registered.
+theTo = "whatsapp:" + process.env.MY_PHONE_NUMBER;
+theMsg = "Hello from Dave 1";
 console.log("+ SID: " + process.env.MAIN_ACCOUNT_SID
         + ", from: " + theFrom
         + ", to: " + theTo
@@ -12,7 +13,7 @@ console.log("+ SID: " + process.env.MAIN_ACCOUNT_SID
 // https://www.twilio.com/docs/proxy/api/webhooks
 // theWebhookURL = process.env.ECHO_REQUEST_URL;
 //
-theWebhookURL = 'https://statuscallback-8821.twil.io/echoRequestTest';
+// theWebhookURL = 'https://statuscallback-2357.twil.io/echoRequestTest';
 //
 client.messages.create({
     from: theFrom,
