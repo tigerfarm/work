@@ -10,7 +10,7 @@ async function listServices() {
             .services
             .list({limit: 20});
     services.forEach((s) => {
-        console.log("++ " + s.sid + s.friendlyName);
+        console.log("++ " + s.sid + " " + s.friendlyName);
         console.log("+++ codeLength: " + s.codeLength + ", defaultTemplateSid: "+ s.defaultTemplateSid);
         // console.log("+++ " + JSON.stringify(s));
     });
