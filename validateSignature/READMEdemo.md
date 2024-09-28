@@ -62,6 +62,12 @@ exports.handler = function(context, event, callback) {
 ````
 
 + I made an SMS request that would fail because the Twilio phone number is not registered to send SMS.
+````
+$ node smsSend.js
+++ Send SMS message.
++ SID: ACa...a3, from: +16505551111, to: +16505552222, MSG: Hello from Dave 5, StatusCallback: https://statuscallback-2357.twil.io/echoRequestTest
++ Message sent, SID: SMa6b28c6d6a5d1a66c865af6487221a71
+````
 + Received the callback status request content:
 ````
 + List headers:

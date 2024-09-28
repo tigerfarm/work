@@ -61,6 +61,8 @@ Parameters for signature validation:
 4. POST parameters: raw POST parameter string.
 Note, the raw GET parameter string did not work from my test because 
 the parameter order was different than the original request.
+5. Do not include webhook override parameters in the POST URL. 
+For example, use: https://example.com/process, not: https://example.com/process?#rp=all&rc=3
 ````
 GET request, the parameters are in the HTTP request string. Example:
 console.log(client.validateRequest(authToken, twilioSignature, url, {}));

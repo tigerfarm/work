@@ -9,7 +9,7 @@ require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 
 use Twilio\Rest\Client;
 
-$client = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
+$client = new Client(getenv('MAIN_ACCOUNT_SID'), getenv('MAIN_AUTH_TOKEN'));
 
 // -----------------------------------------------------------------------------
 $pageCounter = 0;

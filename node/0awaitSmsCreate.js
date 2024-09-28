@@ -10,7 +10,7 @@ const sendSMS = async () => {
         return await client.messages
                 .create({
                     body: 'Concurrency header test',
-                    from: process.env.MASTER_PHONE_NUMBER_1,
+                    from: process.env.MAIN_PHONE_NUMBER_1,
                     to: process.env.MY_PHONE_NUMBER 
                 })
                 .then(message => {
