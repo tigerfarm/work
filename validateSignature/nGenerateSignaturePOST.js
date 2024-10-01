@@ -27,17 +27,38 @@ function getExpectedTwilioSignature(authToken, url, params) {
 }
 // -----------------------------------------------------------------------------
 // Use a validate auth token. Or use a dummy value such as: '12345';
-// var authToken = process.env.MASTER_AUTH_TOKEN
-var authToken = '12345';
+const authToken = process.env.MAIN_AUTH_TOKEN; // Your account Auth Token
+// var authToken = '12345';
 //
-// The Twilio request URL
-// const url = 'https://example.com/show?Attributes=%7B%7D&EventType=onMessageAdded&DateCreated=2021-08-12T23:54:50.674Z&Index=28&MessageSid=IM0e30471ca07642c98e69588f6c45872b&AccountSid=ACa...3&Source=SDK&ClientIdentity=dave2&RetryCount=0&Author=dave2&ParticipantSid=MB54907865d0eb407c8208e228dd6a4216&Body=okay+today&ConversationSid=CHc97669141a784c92a74c296c84850d25';
+// The Twilio webhook request URL
 // const url = 'https://example.com/show?f1=hello there';
-const url = 'https://example.com/show?f1=hello+there';
+const url = 'https://example.com/show';
 //
 // The post variables in Twilio's request. Empty for a GET request.
 const params = {
-    // "ToCountry":"CA",
-    // "ToState":"Alberta"
+    "f1": "hello there",
+    "f2": "Dave"
 };
-console.log(getExpectedTwilioSignature(authToken, url, params));
+console.log("-----------------------------------------------");
+console.log("+++ Generate and validate an HTTP POST type signature.\n");
+//
+console.log("+ Twilio signature validate parameters:");
+console.log("+ authToken: " + authToken);
+console.log("+ url:       " + url);
+//
+console.log("+ params:");
+var i = 0;
+Object.keys(params).forEach(k => {
+    console.log("++           " + k + ": " + Object.values(params)[i++]);
+});
+//
+console.log("-----------------------------------------------");
+console.log("+ Twilio signature is generated:");
+const twilioSignature = getExpectedTwilioSignature(authToken, url, params);
+console.log("++ Twilio signature: " + twilioSignature);
+//
+console.log("-----------------------------------------------");
+console.log("+ Validate the generated Twilio signature:");
+const client = require('twilio');
+console.log("++ Twilio signature test: " + client.validateRequest(authToken, twilioSignature, url, params));
+console.log("-----------------------------------------------");
