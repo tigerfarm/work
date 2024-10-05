@@ -1,9 +1,10 @@
 console.log("++ Send SMS message with a media attachment.");
 var client = require('twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 sendTo = process.env.MY_PHONE_NUMBER;
-sendFrom = process.env.MAIN_PHONE_NUMBER_1;
+sendFrom = process.env.MAIN_PN_7002;
 theMsg = "Hello with media.";
-theMediaUrl = 'https://unnatural-seat-1873.twil.io/assets/vcardSample1.vcf';
+theMediaUrl = 'https://statuscallback-8821.twil.io/echoRequestTest';
+// theMediaUrl = 'https://tfpbooks.herokuapp.com/images/topImgLeft.jpg';
 console.log("+ SID: " + process.env.MAIN_ACCOUNT_SID
         + ", from: " + sendFrom
         + ", to: " + sendTo

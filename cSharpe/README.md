@@ -1,5 +1,23 @@
 # CSharpe Programing Environment
 
+--------------------------------------------------------------------------------
++++ New notes using Visual Studio
+
+To create a new commandline app:
++ From the menu select New Solution.
++ Choose a template: Console Application. Next.
++ Framework: >NET 5.0. Next.
++ Project Name: ValidateSignature
+++ Location: /Users/dave/Projects/cSharpProjects/ValidateSignatureGET.
++ Create.
++ Program.cs is displayed.
++ Run the program to get: Hello World!
++ Right click "Dependencies". In popup: "Twilio". Add package, latest stable.
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+### Following are my old notes
+
 I found a list on compilers on [Wikipedia](http://www.mono-project.com/download/).
 Ethan confirmed the Mono compiler works.
 
