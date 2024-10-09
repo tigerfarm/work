@@ -16,7 +16,7 @@ client.messages.create({
     from: theMsgService,
     to: theTo,
     contentSid: HxTemplate,
-    contentVariables: theTemplateMsg
+    contentVariables: theTemplateMsg     // Without, sends: "Welcome to the machine." Because, "the machine" is a sample value.
     // , statusCallback: process.env.ECHO_REQUEST_URL
 }).then((message) => console.log("+ Message sent, SID: " + message.sid))
         .catch(function (err) {
