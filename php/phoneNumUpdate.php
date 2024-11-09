@@ -2,7 +2,7 @@
 error_reporting(E_ALL ^ ( E_NOTICE | E_WARNING | E_DEPRECATED ));
 require __DIR__ . '/../../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
-$twilio = new Client(getenv('MASTER_ACCOUNT_SID'), getenv('MASTER_AUTH_TOKEN'));
+$twilio = new Client(getenv('MAIN_ACCOUNT_SID'), getenv('MAIN_AUTH_TOKEN'));
 $pnSid = "PN915869791137c6f05b12f4eb2e23a704";
 print("\xA+ Print Phone numbers information: " . $pnSid . "\xA");
 

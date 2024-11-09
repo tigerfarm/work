@@ -5,6 +5,11 @@ In this repository are my sample programs which are works in progress.
 Following are steps I use to work with GitHub and Heroku to create applications,
 and create my personal website [https://tigerfarmpress.com](https://tigerfarmpress.com).
 
+QR code generator
+https://www.qr-code-generator.com/
+Can generate a QR code that has a text message
+or a forwarding link.
+
 --------------------------------------------------------------------------------
 ### UNIX Commands
 

@@ -12,7 +12,7 @@ Requirements:
 + Buy a phone number. Here is the Twilio Console link to buy one:
 https://www.twilio.com/console/phone-numbers/search
 
-The following script includes an error code, if there was an issue.
+The following script includes error code, if there was an issue.
 
 ````
 function myFunction() {
