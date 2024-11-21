@@ -51,4 +51,48 @@ Twilio Console Functions screen print showing logs.
 <img src="echoWebhook.jpg" width="600"/>
 
 --------------------------------------------------------------------------------
+Another sample echo program:
+````
+// For testing HTTP requests such as Twilio webhook requests.
+// Pretty print request JSON data: headers, cookies, and parameters
+
+exports.handler = function(context, event, callback) {
+    let theRequest = event;
+    // console.log("+ JSON: " + JSON.stringify(theRequest));
+    //
+    console.log('----------------------------------------------------------------');
+    console.log('+ List context:');
+    for (const x in context) {
+        if (x !== "AUTH_TOKEN") {
+            console.log('++ ' + x + ': ' + JSON.stringify(context[x]));
+        }
+    }
+    console.log('+ context.DOMAIN_NAME: ' + context.DOMAIN_NAME);
+    console.log('+ context.PATH: ' + context.PATH);
+    //
+    console.log('----------------------------------------------------------------');
+    console.log('+ List headers:');
+    for (const x in theRequest.request.headers) {
+        console.log('++ ' + x + ': ' + JSON.stringify(theRequest.request.headers[x]));
+    }
+    console.log('------------------');
+    console.log('+ List cookies:');
+    for (const x in theRequest.request.cookies) {
+        console.log('++ ' + x + ': ' + JSON.stringify(theRequest.request.cookies[x]));
+    }
+    console.log('------------------');
+    console.log('+ List parameters:');
+    for (const x in theRequest) {
+        if (x !== "request") {
+            console.log('++ ' + x + ': ' + JSON.stringify(theRequest[x]));
+        }
+    }
+    console.log("}");
+    //
+    theResponse = '<?xml version="1.0" encoding="UTF-8"?><Response><Message><Body>F1</Body></Message></Response>';
+    // theResponse = "<Response/>";
+    callback(null, theResponse);
+};
+````
+--------------------------------------------------------------------------------
 Cheers
