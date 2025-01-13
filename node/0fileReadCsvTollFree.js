@@ -20,7 +20,7 @@ const results = [];
 var i;
 //
 // The first row of the CSV file is the attribute names:
-// Phone_Numbers
+// Phone_Number
 // Business_Name
 // Business_Contact_First_Name
 // Business_Contact_Last_Name
@@ -94,7 +94,7 @@ fs.createReadStream('0fileReadCsv.csv')
                 iString = i + 1;
                 console.log('++ "' + iString + ": " + results[i].Business_Name
                         );
-                // // Have to get the phone number PN SID from the attribute: Phone_Numbers
+                // // Have to get the phone number PN SID from the attribute: Phone_Number
                 // Phone_Number_PN = fn(results[i].Phone_Numbers);
                 // // Request a toll free number verification:
                 // createTollfreeVerification();

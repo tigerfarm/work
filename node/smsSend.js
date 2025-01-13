@@ -2,8 +2,8 @@ console.log("++ Send SMS message.");
 var client = require('twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 //
 theFrom = process.env.MAIN_PN_7002;        // MAIN_PN_8003: registered.
-// theTo = process.env.MY_PHONE_NUMBER;
-theTo = process.env.MAIN_PN_8003;
+theTo = process.env.MY_PHONE_NUMBER;
+// theTo = process.env.MAIN_PN_8003;
 theMsg = "Hello from Dave 6a";
 // theTo = '+';
 // theMsg = "Test message from Stacy of Twilio support, test: 1.";

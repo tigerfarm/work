@@ -2,7 +2,8 @@
 console.log("+++ Start:");
 console.log("++ Read a CSV file of toll free phone number into JSON attribute-value pairs.");
 console.log("++ Make a Twilio API request to get the PN SID of each phone number.");
-// API request documentation: https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource
+// API request documentation: 
+// https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource
 //
 // -----------------------------------------------------------------------------
 var fs = require("fs");
