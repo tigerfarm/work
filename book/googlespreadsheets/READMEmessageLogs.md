@@ -9,11 +9,11 @@ Date	Time	To	From	Message
 ````
 The script retrieves the messages and posts the data into the spreadsheet under the titles.
 
-<img width="300px"  src="ListMessageLogs1a.jpg"/>
+<img width="600px"  src="ListMessageLogs1a.jpg"/>
 
 2) Google Apps Script:
 
-<img width="300px"  src="ListMessageLogs2a.jpg"/>
+<img width="600px"  src="ListMessageLogs2a.jpg"/>
 
 --------------------------------------------------------------------------------
 ## Sample Google Apps Scripts
