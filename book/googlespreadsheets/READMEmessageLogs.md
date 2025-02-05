@@ -207,7 +207,7 @@ Manage [projects](https://script.google.com/home)
 [Web Apps](https://developers.google.com/apps-script/guides/web)
 
 Article, How to View Twilio SMS Received Messages in a Google Spreadsheet:
-https://www.twilio.com/blog/2018/05/receive-sms-messages-google-sheets-apps-script.html
+https://www.twilio.com/en-us/blog/receive-sms-messages-google-sheets-apps-script-html
 
 Requirements:
 + Create a Twilio account: https://twilio.com/console.
