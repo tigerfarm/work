@@ -1,5 +1,9 @@
 # Using Google Apps Script to make an Twilio API HTTP request to list message logs
 
+It's very straightforward: create a spreadsheet with titles and 
+add a Google Apps Script to make the Twilio API request 
+and process the rows of data returned from the request.
+
 --------------------------------------------------------------------------------
 ## 2 Parts: spreadsheet and a script
 
