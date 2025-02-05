@@ -1,7 +1,7 @@
 # Using Google Apps Script to make an Twilio API HTTP request to list message logs
 
 --------------------------------------------------------------------------------
-## 2 Parts
+## 2 Parts: spreadsheet and a script
 
 1) A Google Spreadsheet with titles such as:
 ````
@@ -16,9 +16,7 @@ The script retrieves the messages and posts the data into the spreadsheet under 
 <img width="600px"  src="ListMessageLogs2a.jpg"/>
 
 --------------------------------------------------------------------------------
-## Sample Google Apps Scripts
-
-#### Basic listing
+### Google Apps Script: Basic Twilio message log listing
 
 Basic script to list message logs sent to a specific "To" phone number where the direction is "inbound".
 ````
@@ -93,7 +91,8 @@ function myFunction() {
 }
 ````
 
-#### List message logs from 2 phone numbers such a conversation between 2 phone numbers
+--------------------------------------------------------------------------------
+### Google Apps Script: List message logs from 2 phone numbers such a conversation between 2 phone numbers
 
 The following can be used to retrieve a conversation between a Twilio phone number and another phone number.
 ````
