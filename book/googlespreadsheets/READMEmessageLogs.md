@@ -22,6 +22,10 @@ The script retrieves the messages and posts the data into the spreadsheet under 
 --------------------------------------------------------------------------------
 ### Google Apps Script: Basic Twilio message log listing
 
+Twilio API HTTP URI documentation of 
+[query parameters](https://www.twilio.com/docs/messaging/api/message-resource#query-parameters)
+such as "To":
+
 Basic script to list message logs sent to a specific "To" phone number where the direction is "inbound".
 ````
 function myFunction() {
