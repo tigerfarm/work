@@ -28,7 +28,6 @@ such as "To".
 
 Click [here](https://www.twilio.com/docs/messaging/api/message-resource#message-properties)
 for a list of properties that can be listed.
-    //    
 
 Basic script to list message logs sent to a specific "To" phone number where the direction is "inbound".
 ````
