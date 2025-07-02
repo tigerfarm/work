@@ -25,10 +25,10 @@ class HTTPRequester {
 echo "+++ Start.\xA";
 
 $AccountSid = getenv("MAIN_ACCOUNT_SID");
-$fromPhoneNumber = getenv("MAIN_PN_1007");
-$toPhoneNumber = getenv("MAIN_PN_9665");
+$fromPhoneNumber = getenv("MAIN_PN_8003");
+$toPhoneNumber = getenv("MY_PHONE_NUMBER");
 // $toPhoneNumber = getenv("MY_PHONE_NUMBER");
-$theMessage = "Message #1";
+$theMessage = "Message #1a";
 $theMessageOkay = "J'aime l'été... éÉÑñ";
 //
 $url = "https://api.twilio.com/2010-04-01/Accounts/{$AccountSid}/Messages.json";

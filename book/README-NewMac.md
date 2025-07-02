@@ -10,6 +10,7 @@ Command + Shift + . (period) to toggle the showing of hidden filenames.
 In Finder, select a file with type "*.odg" for example: LibraOffice Draw file.
 + Right click and select "Get Info".
 + Under "Open with", select "LibreOffice.app".
++ Click "Change All..." to change all "*.odg" files to open with "LibreOffice.app".
 Now, all file of type "*.odg" are opened by LibreOffice when double clicked.
 
 --------------------------------------------------------------------------------

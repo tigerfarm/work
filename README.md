@@ -43,7 +43,7 @@ git add .
 git commit -am "first commit"
 git branch -M main
 git remote add origin https://github.com/tigerfarm/tfpfilesOther.git
-git remote set-url origin https://g...hU@github.com/tigerfarm/tfpfilesOther.git (see 00-Acc.txt sample)
+git remote set-url origin https://g...hU@github.com/tigerfarm/tfpfilesOther.git (see Account.txt sample)
 git push -u origin main
 ````
 
