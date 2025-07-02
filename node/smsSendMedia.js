@@ -3,8 +3,9 @@ var client = require('twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AU
 sendTo = process.env.MY_PHONE_NUMBER;
 sendFrom = process.env.MAIN_PN_7002;
 theMsg = "Hello with media.";
-theMediaUrl = 'https://statuscallback-8821.twil.io/echoRequestTest';
+// theMediaUrl = 'https://statuscallback-8821.twil.io/echoRequestTest';
 // theMediaUrl = 'https://tfpbooks.herokuapp.com/images/topImgLeft.jpg';
+theMediaUrl = 'https://github.com/tigerfarm/work/blob/main/book/rec1a.m4a';
 console.log("+ SID: " + process.env.MAIN_ACCOUNT_SID
         + ", from: " + sendFrom
         + ", to: " + sendTo
