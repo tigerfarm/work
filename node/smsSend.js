@@ -24,7 +24,7 @@ client.messages.create({
     from: theFrom,
     to: theTo,
     body: theMsg
-    , statusCallback: thestatusCallbackUrl
+    // , statusCallback: thestatusCallbackUrl
     // , statusCallbackMethodx: "GET" // this option doesn't seem to work anymore and I could not find it in the docs anymore.
 }).then((message) => console.log("+ Message sent, SID: " + message.sid))
         .catch(function (err) {
