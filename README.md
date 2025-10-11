@@ -474,6 +474,12 @@ $ npm -v
 7.18.1
 ````
 
+Update node
+````
+brew upgrade node
+
+````
+
 Add yourself as a user.
 ````
 $ npm adduser
@@ -569,7 +575,7 @@ $ npm version 1.0.0
 $ npm publish
 + <package name>
 ````
-
+Note, package-lock.json is automatically created and updated.
 
 Check if there's a new version: `npm outdated -g twilio-cli`
 Update the CLI globally: `npm update -g twilio-cli`

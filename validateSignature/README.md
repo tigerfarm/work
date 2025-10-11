@@ -55,12 +55,11 @@ params.put("ApiVersion", "2010-04-01");  // 2010-04-01
 Signature Validation documentation [notes](https://www.twilio.com/docs/usage/security#notes).
 
 Parameters for signature validation:
-1. Twilio account auth token: the account auth token used by the Twilio account that makes an HTTP request to your server.
-2. URL: the original URL that the Twilio service used to make the HTTP request.
+1. Twilio account auth token: use the account auth token of the Twilio account that makes an HTTP request to your server. This can be an issue when an environment is validating for multiple Twilio accounts and subaccounts.
+2. URL: confirm the program is using the original URL that the Twilio service used to make the HTTP request.
 3. Signature: The signature header value from the received HTTP request that is being validated.
-4. POST parameters: raw POST parameter string.
-Note, the raw GET parameter string did not work from my test because 
-the parameter order was different than the original request.
+4. POST parameters: raw POST parameter string. The parameter values need to be url decoded.
+Note, the raw GET parameter string needs the parameters in request original order.
 5. Do not include webhook override parameters in the POST URL. 
 For example, use: https://example.com/process, not: https://example.com/process?#rp=all&rc=3
 ````

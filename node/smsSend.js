@@ -1,11 +1,13 @@
 console.log("++ Send SMS message.");
 var client = require('twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AUTH_TOKEN);
 //
+// theFrom = "whatsapp:" + process.env.MAIN_PN_7002;        // MAIN_PN_8003: registered.
+// theFrom = "MG9abb26060f3b4b8ff952eb775544789a";
+// theTo = "whatsapp:" +process.env.MY_PHONE_NUMBER;
 theFrom = process.env.MAIN_PN_7002;        // MAIN_PN_8003: registered.
-// theTo = process.env.MAIN_PN_1007;
 theTo = process.env.MY_PHONE_NUMBER;
 // theTo = process.env.MAIN_PN_8003;
-theMsg = "Hello from Twilio support, test 1a";
+theMsg = "Hello from Twilio support, test 1b";
 // theTo = '+';
 // theMsg = "Test message from Stacy of Twilio support, test: 1.";
 // 

@@ -935,7 +935,7 @@ curl -X POST https://bulkexports.twilio.com/v1/Exports/Messages/Jobs \
 "webhook_url": "http://www.example.com/echo", 
 "email": "dthurston@twilio.com", "resource_type": null}
 ````
-Get a job's information.
+Get job information.
 ````
 curl -X GET 'https://bulkexports.twilio.com/v1/Exports/Jobs/JS1dca2e0dfb7815c1fea2362d9f61c16c' \
 -u TwilioAccountSID:TwilioAuthToken

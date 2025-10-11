@@ -3,7 +3,7 @@
     "fs": "^0.0.1-security",
     "got": "^14.3.0",
     "moment-timezone": "^0.5.34",
-    "twilio": "^5.2.2",
+    "twilio": "^5.8.0",
     "vcards-js": "^2.10.0"
   }
 }
