@@ -13,6 +13,67 @@ Adam's Twilio CLI repository:
 https://github.com/adamchasetaylor/twilio-cli-keys (old)
 
 ----------------------------------------------------------------------------------
+### My Login and Authentication
+
+Steps I recently went through:
+````
+$ twilio login
+You can find your Account SID and Auth Token at https://www.twilio.com/console
+ » Your Auth Token will be used once to create an API Key for future CLI access to your Twilio Account or Subaccount, and then forgotten.
+? The Account SID for your Twilio Account or Subaccount: ACae...a3
+? Your Twilio Auth Token for your Twilio Account or Subaccount: [hidden]
+? Shorthand identifier for your profile: tfp
+? Account credentials are currently stored in environment variables and 
+ will take precedence over the "tfp" profile when connecting to Twilio, unless the "tfp" profile is explicitly specified.
+ Continue setting up "tfp" profile? Yes
+Created API Key SKc8...d1 and stored the secret in Config. 
+See: https://www.twilio.com/console/runtime/api-keys/SKc8...d1
+twilio-cli configuration saved to "/Users/dave/.twilio-cli/config.json"
+````
+Remove "[env]" option by removing "TWILIO_ACCOUNT_SID". "[env]" doesn't work for me.
+````
+$ twilio profiles:list
+ID       Account SID  Active
+[env]    ACae...a3    true  
+Writers  AC59...11    false 
+machine  AC1b...9d    false 
+main     ACae...a3    false 
+tfp      ACae...a3    false 
+
+$ export TWILIO_ACCOUNT_SID=
+````
+Note, "tfp" profile is true. 
+````
+$ twilio profiles:list
+Writers  AC59...11    false 
+machine  AC1b...9d    false 
+main     ACae...a3    false 
+tfp      ACae...a3    true 
+````
+Likely, "main" would work as well. Select to use main:
+````
+$ twilio profiles:use main
+set "main" as active profile
+twilio-cli configuration saved to "/Users/dave/.twilio-cli/config.json"
+$ twilio profiles:list
+Writers  AC59...11    false 
+machine  AC1b...9d    false 
+main     ACae...a3    true 
+tfp      ACae...a3    false 
+````
+Test by listing jobs.
+````
+$ twilio api:bulkexports:v1:exports:jobs:list --resource-type Messages --properties=friendlyName,jobSid
+Friendly Name  Job SID                           
+ExportSep30a   JS17f83b6382eedd99ac795af386779c07
+
+--- If no jobs at the time:
+$ twilio api:bulkexports:v1:exports:jobs:list --resource-type Messages --properties=friendlyName,jobSid
+No results
+
+````
+
+----------------------------------------------------------------------------------
 ### Install
 
 Requirement: [Node.js](https://nodejs.org/) >= 8.0
@@ -167,6 +228,28 @@ $ twilio profiles:list
 ID       Account SID                         Active
 Writers  AC5...1                             false
 machine  AC1...d                             true 
+````
+
+Remove a profile.
+````
+$ twilio profiles:list
+ID       Account SID  Active
+Writers  AC59...11    false  
+machine  AC1b...9d    false
+main     ACae...a3    true
+
+$ twilio profiles:remove Writers
+? Are you sure you want to remove the "Writers" profile? Yes
+? Would you like to attempt to delete the API Key? Yes
+keys is deprecated. Use account.keys instead.
+ » Could not delete the API Key. See: https://www.twilio.com/console/runtime/api-keys to delete the API Key from The Twilio Console.
+Deleted Writers profile.
+twilio-cli configuration saved to "/Users/dave/.twilio-cli/config.json"
+
+$ twilio profiles:list
+ID       Account SID  Active
+machine  AC1b...9d    false
+main     ACae...a3    true
 ````
 
 #### Transfer a Phone Number between Twilio Accounts
