@@ -1,4 +1,5 @@
-title="++ List and delete received SMS messages."
+title="++ List received SMS messages."
+# title="++ List and delete received SMS messages."
 import os
 import sys
 from datetime import date

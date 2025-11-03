@@ -1,6 +1,8 @@
 --------------------------------------------------------------------------------
 # New MacBook Air M1 Notes
 
+Netbeans (see below)
+
 --------------------------------------------------------------------------------
 +++ Finder
 
@@ -345,6 +347,23 @@ The workaround is test on actual hardware. My Hello World app runs fine on my ph
 --------------------------------------------------------------------------------
 ### Install NetBeans
 
+2025 install:
++ Downloaded and ran: Apache-NetBeans-27-x86_64.pkg
++ Add runtime memory, else there is hesitation when typing.
+$ sudo vi "/Applications/Apache NetBeans.app/Contents/Resources/Netbeans/etc/netbeans.conf"
+````
+# Stacy, added: "-J-XX:MaxPermSize=2048m"
+netbeans_default_options="-J-XX:+UseStringDeduplication -J-XX:MaxPermSize=2048m -J-Xss2m...
+...
+````
+
+Run Netbase using double click: Applications/Apache NetBeans.app
+
+Can set autosave to a few mintues or so:
++ NetBeans menu/Settings/Editor autosave. However, it does autosave every keystroke.
++ I didn't find a keystroke save option.
+
+----------------------------
 + Installed recent Java SDK.
 + Installed NetBeans.
 + Modified my startup script (nb.sh) to load environment variables
