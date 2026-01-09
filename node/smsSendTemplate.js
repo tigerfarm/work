@@ -3,7 +3,8 @@ var client = require('twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AU
 //
 // Can use a actual sender id or a messaging service containing the sender id.
 // theMsgService = "whatsapp:" + process.env.MAIN_PN_7002;
-theMsgService = "MGf0df9883c5d0720e89ad6c14e2a76f9f";   // Has my Twilio WhatsApp sender id
+// theMsgService = "MG9abb26060f3b4b8ff952eb775544789a";
+theMsgService = "whatsapp:+18663117002";
 //
 theTo = "whatsapp:" + process.env.MY_PHONE_NUMBER;
 //
