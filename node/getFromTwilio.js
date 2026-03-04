@@ -11,8 +11,8 @@ const VoiceGrant = AccessToken.VoiceGrant;
 
 // Used when generating any kind of tokens
 const twilioAccountSid = process.env.ACCOUNT_SID;
-const twilioApiKey = 'SK1080a9c863d003a65a9bdc78c0a27c78';
-const twilioApiSecret = 'bRAZjdORQJdT12dXzwmF2Xpb6R1OZWjv';
+const twilioApiKey = 'SK1...78';
+const twilioApiSecret = 'a...b';
 
 // Used specifically for creating Voice tokens
 const outgoingApplicationSid = 'AP7bcb6d12228748038b9baa65566a615a';

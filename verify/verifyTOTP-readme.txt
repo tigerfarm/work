@@ -20,8 +20,8 @@ Sample:
 "identity":"ffiddv1a",
 "friendlyName":"Dave account 1a",
 "binding":{
-"secret":"VLFCG5VTXHIGB5YZ5QXPNSRHWBWGDGEB",
-"uri":"otpauth://totp/Starlight%20Press:Dave%20account%201a?secret=VLFCG5VTXHIGB5YZ5QXPNSRHWBWGDGEB&issuer=Starlight%20Press&algorithm=SHA1&digits=6&period=30"
+"secret":"VL...EB",
+"uri":"otpauth://totp/Starlight%20Press:Dave%20account%201a?secret=VL...EB&issuer=Starlight%20Press&algorithm=SHA1&digits=6&period=30"
 },
 "status":"unverified",
 "dateCreated":"2024-08-14T23:17:33.000Z",
@@ -48,7 +48,7 @@ Step: Create a QR code
 https://www.twilio.com/docs/verify/quickstarts/totp#create-a-qr-code
 + Create QR code using:
 The "uri" from above:
-otpauth://totp/Starlight%20Press:Dave%20account%201a?secret=VLFCG5VTXHIGB5YZ5QXPNSRHWBWGDGEB&issuer=Starlight%20Press&algorithm=SHA1&digits=6&period=30
+otpauth://totp/Starlight%20Press:Dave%20account%201a?secret=VL...EB&issuer=Starlight%20Press&algorithm=SHA1&digits=6&period=30
 Pasted into the following URL, using the URL option:
 https://www.qr-code-generator.com/
 + I used Google Authenticator to add (+) a new authentication item.

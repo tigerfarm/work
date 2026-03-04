@@ -3,6 +3,10 @@
 
 Netbeans (see below)
 
+If keyboard does not not auto-connect:
++ System Settings/Bluetooth/My Devices/Keyboad K780
++ Click Connect and pair
+
 --------------------------------------------------------------------------------
 +++ Finder
 
