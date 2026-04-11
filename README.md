@@ -19,6 +19,12 @@ $ ls -l *.js | wc -l
 ````
 
 --------------------------------------------------------------------------------
+Command to update a local GitHub repository after the repository was updated from another location:
+````
+$ git pull origin main
+````
+
+--------------------------------------------------------------------------------
 ## Create a GitHub Repository that will be deployed to Heroku
 
 #### Create a new GitHub repository.
@@ -83,7 +89,7 @@ heroku: Press any key to open up the browser to login or q to exit:
 Opening browser to https://cli-auth.heroku.com/auth/cli/browser/cd...i0
 Logging in... done
 Logged in as t...@gmail.com
-$ git push heroku master
+$ git push heroku main
 ````
 
 #### Heroku repository information file.
@@ -211,7 +217,7 @@ set git remote heroku to https://git.heroku.com/tfpapp.git
 
 Push the GitHub repository to Heroku.
 ````
-$ git push heroku master
+$ git push heroku main
 ... Installs the GitHub repository, myapp.git, to Heroku
 $ 
 ...
@@ -253,14 +259,14 @@ Steps to update the GitHub repository and deployment, after initialization:
 ````
 $ git add .
 $ git commit -am "update"
-$ git push -u origin master
-$ git push heroku master
+$ git push -u origin main
+$ git push heroku main
 ````
 
 I had the following issue.
 Ran the "config" command to use 150 MiB, and now the push works.
 ````
-$ git push -u origin master
+$ git push -u origin main
 ...
 Compressing objects: 100% (32/32), done.
 error: RPC failed; HTTP 500 curl 22 The requested URL returned error: 500
@@ -271,13 +277,13 @@ fatal: the remote end hung up unexpectedly
 Everything up-to-date
 
 $ git config --global http.postBuffer 157286400
-$ git push -u origin master
+$ git push -u origin main
 ... ran fine.
 ````
 
 Note, this will override any new updates with the current directory updates.
 ````
-$ git push -u --force origin master
+$ git push -u --force origin main
 ````
 
 Check build packs. Set a build pack.
@@ -632,7 +638,7 @@ $ cat package.json
 ---------------------
 + Deploy the repository to Heroku.
 ````
-git push heroku master
+git push heroku main
 ````
 + Test.
 ++ My Node program: webserver.js, is running and PHP is available.
@@ -652,8 +658,8 @@ $
 ````
 git add .
 git commit -am "updates"
-git push -u origin master
-git push heroku master
+git push -u origin main
+git push heroku main
 ````
 --------------------------------------------------------------------------------
 ## Tomcat
@@ -797,7 +803,7 @@ Enumerating objects: 60, done.
 $
 ````
 
-Tested where the main branch was "master" which is changed to be "main".
+Tested with the main branch.
 ````
 $ git checkout --orphan latest_branch
 Switched to a new branch 'latest_branch'
@@ -808,7 +814,7 @@ $ git commit -am "commit message"
  create mode 100644 .gitignore
  create mode 100644 README.md
 ...
-$ git branch -D master
+$ git branch -D main
 Deleted branch main (was f21a7b2).
 $ git branch -m main
 $ git push -f origin main
