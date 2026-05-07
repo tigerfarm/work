@@ -7,7 +7,13 @@ const fs = require('fs');
 const DOMAIN = process.env.WIKI_DOMAIN;
 const EMAIL = process.env.WIKI_EMAIL;
 const API_TOKEN = process.env.WIKI_API_TOKEN;
-const PAGE_IDS = ['357851599', '357850453', '357850393'];
+const PAGE_IDS = [
+      '357851599', '357850453', '357850393', '357853750'
+    , '357873141', '357831945', '357834987', '365303847'
+    , '357872861', '489985061', '357843129', '1534328856'
+    , '357826592', '374906046', '345835545', '357840227'
+    , '357840368'
+    ];
 const OUTPUT_FILE = 'confluence_pages_export.txt';
 
 console.log(`+ DOMAIN: ${DOMAIN}...`);
