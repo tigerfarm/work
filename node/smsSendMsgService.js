@@ -10,12 +10,13 @@ console.log("+ SID: " + process.env.MAIN_ACCOUNT_SID
 // theStatusCallbackURL = process.env.ECHO_REQUEST_URL;
 theStatusCallbackURL = 'https://statuscallback-8821.twil.io/echoRequestTest';
 //
-// The 
+// theFrom = "+13038003875";
 client.messages.create({
     // , statusCallback: theStatusCallbackURL   // Add statusCallback here or in the messaging service.
     messagingServiceSid: theFromMsgService,     // This adds the messaging service features and functionality.
     // from: theFromMsgService,                 // "from" can be the messaging service SID.
     // from: process.env.MAIN_PN_7002,          // "from" can be used to override the messaging service selection from the pool of numbers.
+    // from: "3038003875",                      // Fails because need "+1".
     to: theTo,                                  // Destination is required.
     body: theMsg                                // Message text is required.
 }).then((message) => console.log("+ Message sent, SID: " + message.sid))

@@ -5,6 +5,7 @@ var client = require('twilio')(process.env.MAIN_ACCOUNT_SID, process.env.MAIN_AU
 // theFrom = "MG9abb26060f3b4b8ff952eb775544789a";
 // theTo = "whatsapp:" +process.env.MY_PHONE_NUMBER;
 theFrom = process.env.MAIN_PN_7002;        // MAIN_PN_8003: registered.
+
 // theFrom = "TWLOTEST";
 // theTo = "+1";
 theTo = process.env.MY_PHONE_NUMBER;
