@@ -285,6 +285,12 @@ Note, this will override any new updates with the current directory updates.
 ````
 $ git push -u --force origin main
 ````
+Note, the following is forcing a pull which overrides any new updates within the current directory updates.
+````
+$ git fetch --all
+$ git reset --hard origin/main
+HEAD is now at ... updates
+````
 
 Check build packs. Set a build pack.
 ````
