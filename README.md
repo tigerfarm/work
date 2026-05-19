@@ -24,6 +24,20 @@ Command to update a local GitHub repository after the repository was updated fro
 $ git pull origin main
 ````
 
+After updates on another computer, run the following to update remote files into the local directories.
+This merges in other computer's updates. 
+Then, push local updates.
+````
+$ git config pull.rebase false
+$ git pull
+Merge made by the 'ort' strategy.
+ myCAD/development/4CubeArtKR.3mf | Bin 0 -> 602760 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 myCAD/development/4CubeArtKR.3mf
+$ git push -u origin main
+Enumerating objects: 18, done.
+...
+````
 --------------------------------------------------------------------------------
 ## Create a GitHub Repository that will be deployed to Heroku
 
